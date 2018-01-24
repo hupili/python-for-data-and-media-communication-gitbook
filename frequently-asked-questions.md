@@ -1,12 +1,16 @@
 ## How to exit Python shell if entered accidentally
 
-Exit with a zero exit status: **`quit()`** or **Control-D** on Unix, **Control-Z** on Windows
+Exit with a zero exit status: `quit()` or **Control-D** on Unix, **Control-Z** on Windows
 
 ## Invalid ASCII character problem when executing a script
 
 Use **unicode\(\)** access to all registered Unicode codecs, then converted with **str\(\)**
 
 ## MAC's TextEdit change quotes from ASCII character to unicode character
+
+> TODO: change to another text editor, e.g. Visual Studio Code
+
+## Declare file encoding other than the default
 
 To declare an encoding other than the default one, a special comment line should be added as the first line of the file. the syntax is as follows:
 
