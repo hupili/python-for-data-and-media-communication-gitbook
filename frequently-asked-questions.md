@@ -10,6 +10,8 @@ Use **unicode\(\)** access to all registered Unicode codecs, then converted with
 
 > TODO: change to another text editor, e.g. Visual Studio Code
 
+![](/assets/Screen Shot 2018-01-24 at 6.57.18 PM.png)
+
 ## Declare file encoding other than the default
 
 To declare an encoding other than the default one, a special comment line should be added as the first line of the file. the syntax is as follows:
