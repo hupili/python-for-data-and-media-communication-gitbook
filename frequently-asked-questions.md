@@ -6,9 +6,9 @@ Exit with a zero exit status: `quit()` or **Control-D** on Unix, **Control-Z** o
 
 Use **unicode\(\)** access to all registered Unicode codecs, then converted with **str\(\)**
 
-## MAC's TextEdit change quotes from ASCII character to unicode character
+## MAC's TextEdit change quotes from ASCII character to unicode character \(smart quotes\)
 
-> TODO: change to another text editor, e.g. Visual Studio Code
+It is suggested to disable system wide smart quotes and smart dashes function. Read more [here](https://support.apple.com/kb/PH25635?viewlocale=en_GB&locale=en_GB).![](/assets/Screen Shot 2018-01-25 at 10.00.11 PM.png)
 
 ![](/assets/Screen Shot 2018-01-24 at 6.57.18 PM.png)
 
