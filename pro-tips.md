@@ -20,7 +20,7 @@ upward key
 
 ### tab for auto completion
 
-#### "command"+s: save the code
+### "command"+s: save the code
 
 
 
