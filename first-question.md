@@ -2,9 +2,9 @@
 
 ## Windows
 
+
+
 ## MAC
 
 MAC has Python 2.0 installed by default.
-
-
 
