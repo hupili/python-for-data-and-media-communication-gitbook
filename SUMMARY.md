@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* [Outline](outline.md)
 * [Setup Python Environment on Windows and MAC](first-question.md)
 * [Python Language Basics](second-question.md)
 * [Other Frequently Asked Questions](frequently-asked-questions.md)
