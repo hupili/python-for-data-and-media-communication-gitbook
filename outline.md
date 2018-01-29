@@ -4,8 +4,9 @@
 
 **Objective:**
 
-* Able to navigate file system in Terminal, using shell
-* 
+> * Able to navigate file system in Terminal, using shell
+> * Create the first python script and execute it
+
 MAC:
 
 * `Cmd+space` to open Spotlight; search “Terminal” to open terminal
@@ -25,7 +26,9 @@ Shell commands:
 
 ## Week 2 - Use Python as a daily tool
 
-After the 
+**Objective**:
+
+> * Can use Python as a daily tool -- at least a powerful calculator
 
 Python language introduction:
 
@@ -41,9 +44,17 @@ Python language introduction:
   * `str.*` functions
   * `random`
 
-## Week 3
+## Week 3 - Python for anything
 
-Python language 
+**Objective**:
 
+> * Master the control logics in Python
+> * Understand Python engineering
+
+Python language:
+
+* `help`
+* Composite data types: `list` `[]`, `dict` `{}`
+* 
 
 
