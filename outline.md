@@ -2,7 +2,12 @@
 
 ## Week 1
 
+MAC:
+
 * `Cmd+space` to open Spotlight; search “Terminal” to open terminal
+
+Shell commands:
+
 * `cd` to switch working folder
   * Path separated by `/`
   * Special paths: `.`,`..`,`-`,`~`
@@ -13,8 +18,6 @@
 * `python` to execute python scripts \(usually in `.py` but not necessary\)
 * Format of shell commands: 
   * `<command-name> <arg1> <arg2>..` \(space separated arguments\)
-
-
 
 
 
