@@ -10,7 +10,7 @@ Use "Tab" button. For example,  type "python ev", then use "Tab", you can see th
 
 ### find last command
 
-upward key
+upward arrow key
 
 ## Visual Studio Code
 
