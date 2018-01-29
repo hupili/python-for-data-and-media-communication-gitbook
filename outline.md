@@ -24,6 +24,10 @@ Shell commands:
 * Format of shell commands: 
   * `<command-name> <arg1> <arg2>..` \(space separated arguments\)
 
+Challenge:
+
+1. Write a Python script to output "Good evening" in the Terminal.
+
 ## Week 2 - Use Python as a daily tool
 
 **Objective**:
@@ -44,6 +48,11 @@ Python language introduction:
   * `str.*` functions
   * `random`
 
+Challenge:
+
+1. Build a mortgage calculator - given principal `P`, interest rate `r` and load period `n`, calculated the amortised monthly payment `A`
+2. Calculate the `area` of a circle given its radius `r`
+
 ## Week 3 - Python for anything
 
 **Objective**:
@@ -56,10 +65,13 @@ Python language:
 * `help`
 * Composite data types: `list` `[]`, `dict` `{}`
 * Control flow:
-   * `for`, `while`
-   * `if`
-   * `try..except`
+  * `for`, `while`
+  * `if`
+  * `try..except`
 * Function, class, module:
-   * `def`
-   * `class`
-   * `*.py`; `from`, `import`
+  * `def`
+  * `class`
+  * `*.py`; `from`, `import`
+
+
+
