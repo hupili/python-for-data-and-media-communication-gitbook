@@ -19,5 +19,31 @@ Shell commands:
 * Format of shell commands: 
   * `<command-name> <arg1> <arg2>..` \(space separated arguments\)
 
+## Week 2
+
+Variables and assignment
+
+Basic data types: int, float, str
+
+Arithmetic:
+
++, -, \*, /, //, %, \*\*
+
+Math, Numpy \(may need pip\)
+
+Use functions and modules: import; “.” notation; “\(\)” notation.
+
+Common modules
+
+sys
+
+Numpy, scipy
+
+str.\* functions
+
+random
+
+
+
 
 
