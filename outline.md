@@ -52,6 +52,8 @@ Challenge:
 
 1. Build a mortgage calculator - given principal `P`, interest rate `r` and load period `n`, calculated the amortised monthly payment `A`
 2. Calculate the `area` of a circle given its radius `r`
+3. Given the length of hypotenuse of a right triangle, calculate the length of its legs. You may want to get values like $$\sin(\frac{\pi}{6})$$ via `numpy.pi` and `numpy.sin` 
+4. Generate 10 random numbers. \(it is OK to run your script 10 times\)
 
 ## Week 3 - Python for anything
 
