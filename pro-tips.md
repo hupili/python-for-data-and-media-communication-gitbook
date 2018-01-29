@@ -6,7 +6,7 @@ Good use of hotkeys and shorthands can boost your efficiency.
 
 ### auto completion
 
-"Tab" bottom \(e.g  code "python ev", then use "Tab", you can see the "python evening.py"\(assume the file name is evening\)\)
+Use "Tab" button. For example,  type "python ev", then use "Tab", you can see the "python evening.py" \(assume the file name is evening\)
 
 ### find last command
 
