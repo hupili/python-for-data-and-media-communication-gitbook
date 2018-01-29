@@ -2,7 +2,7 @@
 
 ## Windows
 
-## Shell environment in Windows
+### Shell environment in Windows
 
 Anyway, shell environment is just one thing. The Unix/ Linux world has a collection tools that nicely work together. You will need to troubleshoot environment frequently on Windows. I suggest you to use MAC or rely on our lab for this semester, to reduce such hussle. Once you master the essence, it is easier to move to other environments later.I have not used Windows for a long time. There are problems stitching things together. For those who have tried/ are trying Windows, please share your experience, no matter it is successful case or not. Here are some pointers to get started.
 
@@ -11,13 +11,15 @@ Anyway, shell environment is just one thing. The Unix/ Linux world has a collect
 * Some students who learned Python before told me the Python installer on Windows is shipped with a shell by default. You may try this route.
 * [http://gitforwindows.org/](http://gitforwindows.org/)  Git for Windows ships with a shell by default. You can key in most Linux-like commands there.
 * [https://pythonhosted.org/spyder/](https://pythonhosted.org/spyder/)   and  [https://conda.io/docs/user-guide/install/windows.html](https://conda.io/docs/user-guide/install/windows.html)  . Those are two integrated Python environments. It saves time installing dependencies.
-* Another shell like environment you can try on Windows: https://github.com/bmatzelle/gow/wiki . GOW is the rising star alternative to Cygwin 
+* Another shell like environment you can try on Windows: [https://github.com/bmatzelle/gow/wiki](https://github.com/bmatzelle/gow/wiki) . GOW is the rising star alternative to Cygwin 
 
 Anyway, shell environment is just one thing. The Unix/ Linux world has a collection tools that nicely work together. You will need to troubleshoot environment frequently on Windows. I suggest you to use MAC or rely on our lab for this semester, to reduce such hussle. Once you master the essence, it is easier to move to other environments later.
 
 ## MAC
 
 MAC has Python 2.0 installed by default. MAC also has UNIX shell environment, accessible from the Terminal App. Use `cmd+space` to call up Spotlight search and type `Terminal` to find it.
+
+### Manage Linux-like packages \(commands/ executables\)
 
 [Homebrew](https://brew.sh/) is a commonly used package manager for MAC software.
 
