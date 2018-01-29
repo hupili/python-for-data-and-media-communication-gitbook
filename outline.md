@@ -55,6 +55,11 @@ Python language:
 
 * `help`
 * Composite data types: `list` `[]`, `dict` `{}`
-* 
-
-
+* Control flow:
+   * `for`, `while`
+   * `if`
+   * `try..except`
+* Function, class, module:
+   * `def`
+   * `class`
+   * `*.py`; `from`, `import`
