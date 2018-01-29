@@ -21,5 +21,16 @@ MAC has Python 2.0 installed by default. MAC also has UNIX shell environment, ac
 
 ### Manage Linux-like packages \(commands/ executables\)
 
-[Homebrew](https://brew.sh/) is a commonly used package manager for MAC software. The usual way to install package by homebrew is `brew install {package}`  
+[Homebrew](https://brew.sh/) is a commonly used package manager for MAC software. The usual way to install package by homebrew is `brew install {package}`
+
+## Text Editor
+
+* VSCode
+* Sublime Text
+* Atom
+* PyCharm \(IDE\)
+
+
+
+
 
