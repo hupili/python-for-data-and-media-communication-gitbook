@@ -6,4 +6,5 @@
 * [Other Frequently Asked Questions](frequently-asked-questions.md)
 * [Guide for contributor](guide-for-contributor.md)
 * [Pro Tips](pro-tips.md)
+* [Resources](reading-materials.md)
 
