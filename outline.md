@@ -21,29 +21,17 @@ Shell commands:
 
 ## Week 2
 
-Variables and assignment
-
-Basic data types: int, float, str
-
-Arithmetic:
-
-+, -, \*, /, //, %, \*\*
-
-Math, Numpy \(may need pip\)
-
-Use functions and modules: import; “.” notation; “\(\)” notation.
-
-Common modules
-
-sys
-
-Numpy, scipy
-
-str.\* functions
-
-random
-
-
+* Variables and assignment
+* Basic data types: int, float, str
+* Arithmetic:
+  * `+`, `-`, `*`, `/`, `//`, `%`, `**`
+  * `math` , `numpy` \(may need `pip`\)
+* Use functions and modules: `import`; `.` notation; `()` notation.
+* Common modules
+  * `sys`
+  * `numpy`, `scipy`
+  * `str.*` functions
+  * `random`
 
 
 
