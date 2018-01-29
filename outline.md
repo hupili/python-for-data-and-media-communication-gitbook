@@ -1,7 +1,11 @@
 # Course Outline
 
-## Week 1
+## Week 1 - Hands-on the Terminal
 
+**Objective:**
+
+* Able to navigate file system in Terminal, using shell
+* 
 MAC:
 
 * `Cmd+space` to open Spotlight; search “Terminal” to open terminal
@@ -19,7 +23,11 @@ Shell commands:
 * Format of shell commands: 
   * `<command-name> <arg1> <arg2>..` \(space separated arguments\)
 
-## Week 2
+## Week 2 - Use Python as a daily tool
+
+After the 
+
+Python language introduction:
 
 * Variables and assignment
 * Basic data types: int, float, str
@@ -32,6 +40,10 @@ Shell commands:
   * `numpy`, `scipy`
   * `str.*` functions
   * `random`
+
+## Week 3
+
+Python language 
 
 
 
