@@ -1,4 +1,4 @@
-# Outline
+# Course Outline
 
 ## Week 1
 
