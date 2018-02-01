@@ -9,4 +9,5 @@
 * [Pro Tips](pro-tips.md)
 * [Resources](reading-materials.md)
 * [Guide for contributor](guide-for-contributor.md)
+* [module: geopy](module-geopy.md)
 
