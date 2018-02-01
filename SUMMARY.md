@@ -11,5 +11,5 @@
 * [Guide for contributor](guide-for-contributor.md)
 * [module: geopy](module-geopy.md)
 * [Notes: Week 01](notes-week-01.md)
-* Notes: Week 02
+* [Notes: Week 02](notes-week-02.md)
 
