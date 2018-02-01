@@ -10,4 +10,6 @@
 * [Resources](reading-materials.md)
 * [Guide for contributor](guide-for-contributor.md)
 * [module: geopy](module-geopy.md)
+* Notes: Week 01
+* Notes: Week 02
 
