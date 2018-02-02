@@ -31,6 +31,9 @@ MAC has Python 2.0 installed by default. MAC also has UNIX shell environment, ac
 * PyCharm \(IDE\)
 
 
+## Other integrated environments
 
+* Anaconda: https://conda.io/docs/user-guide/install/download.html
+* Spyder: https://pythonhosted.org/spyder/installation.html
 
 
