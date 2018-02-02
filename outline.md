@@ -91,14 +91,13 @@ Challenge:
    1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.
    2. Use `list` and `for` loop to handle multiple cities
    3. Use function to increase the reusability
-2. Divide into groups:
-   1. 
+2. Divide HW1 groups randomly: \(case contribution\)
+   1. Get the list of student IDs from the lecturer
+   2. Generate the grouping randomly
 
 References:
 
 * Chapter 4, 5, 6 of [official Python 2 tutorial](https://docs.python.org/2/tutorial/)
-
-
 
 
 
