@@ -120,5 +120,77 @@ Modules:
 * Parse web page: `lxml`, Beautiful Soup, `HTMLPaser`, 
 * Serialiser: `csv`, `json`
 
+## Week 5 - 1-Dimensional analysis
 
+**Objective**:
+
+> * Master the schema of "data-driven story telling": the crowd (pattern) and the outlier (anomaly)
+> * Can efficiently manipulate structured table formatted datasets
+> * Use `pandas` for basic calculation and plotting
+
+Modules:
+
+* `pandas`
+* `matplotlib`
+
+Statistics:
+
+* mean, media, percentile
+* min, max
+* variance
+* histogram
+* central tendency and spread of data
+
+## Week 6 - Text analysis
+
+## Week 7 - Time series
+
+## Week 8 - 2-Dimensional analysis
+
+**Objective**:
+
+> * Understand correlation and causality
+> * Can conduct visual (explorative) analysis of correlation
+> * Can interpret common statistic quantities
+
+Modules:
+
+* `seaborn`
+* `scipy.statsmodel`
+
+## Week 9 - High-dimensional analysis
+
+**Objective**:
+
+> * Dimensionality reduction
+
+Challenge:
+
+1. Explore the HK Legco voting records
+
+## Week 10 - Machine learning: clustering, classification and regression
+
+**Objective**:
+
+> * (TODO)
+
+## Week 11 - Graph theory and social network analysis
+
+**Objective**:
+
+> * (TODO)
+
+## Week 12 - Project presentation
+
+**Objective**:
+
+> Be able to efficiently **sell** your work after so many heavy duty hard works!
+
+
+## Open topics
+
+Those topics may be discussed if there is plenty Q/A time left in certain week. Or, you are welcome to explore those topics via group project.
+
+* Cloud (AWS)
+* Deep learning
 
