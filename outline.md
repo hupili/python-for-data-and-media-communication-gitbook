@@ -89,8 +89,7 @@ Workflow:
 
 * Python interpreter
 * pip: `pip3` for `python3`
-   * `--user` option in shared computer
-
+  * `--user` option in shared computer
 
 Challenge:
 
@@ -106,6 +105,20 @@ Challenge:
 References:
 
 * Chapter 4, 5, 6 of [official Python 2 tutorial](https://docs.python.org/2/tutorial/)
+
+## Week 4 - Web scraping and API
+
+**Objective**:
+
+> * Understand the basics of HTML language, HTTP protocol, web server and Internet architecture
+> * Able scrape static web pages and turn them into CSV files
+> * Understand API/ JSON and can retrieve data from online databases (twitter, GitHub, weibo, douban, ...)
+
+Modules:
+
+* Handle HTTP request/ response: `requests`
+* Parse web page: `lxml`, Beautiful Soup, `HTMLPaser`, 
+* Serialiser: `csv`, `json`
 
 
 
