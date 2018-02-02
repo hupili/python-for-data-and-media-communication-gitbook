@@ -85,6 +85,13 @@ Python language:
   * `class`
   * `*.py`; `from`, `import`
 
+Workflow:
+
+* Python interpreter
+* pip: `pip3` for `python3`
+   * `--user` option in shared computer
+
+
 Challenge:
 
 1. Distances among cities:
@@ -94,6 +101,7 @@ Challenge:
 2. Divide HW1 groups randomly: \(case contribution\)
    1. Get the list of student IDs from the lecturer
    2. Generate the grouping randomly
+3. Solve the "media business model" calculator.
 
 References:
 
