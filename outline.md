@@ -28,6 +28,11 @@ Challenge:
 
 1. Write a Python script to output "Good evening" in the Terminal.
 
+References:
+
+* [Terminal and shell commands \(Chinese\)](https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html)
+* [Appendix A of "Learn Python the hard way"](https://learnpythonthehardway.org/python3/appendixa.html)
+
 ## Week 2 - Use Python as a daily tool
 
 **Objective**:
@@ -55,10 +60,15 @@ Challenge:
 3. Given the length of hypotenuse of a right triangle, calculate the length of its legs. You may want to get values like $$\sin(\frac{\pi}{6})$$ via `numpy.pi` and `numpy.sin` 
 4. Generate 10 random numbers. \(it is OK to run your script 10 times\)
 
+References:
+
+* Chapter 1, 2, 3 of [official Python 2 tutorial](https://docs.python.org/2/tutorial/)
+
 ## Week 3 - Python for anything
 
 **Objective**:
 
+> * Master the composite data type \[\] and {} in Python
 > * Master the control logics in Python
 > * Understand Python engineering
 
@@ -77,9 +87,18 @@ Python language:
 
 Challenge:
 
-1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.
-2. Use `list` and `for` loop to handle multiple cities
-3. Use function to increase the reusability
+1. Distances among cities:
+   1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.
+   2. Use `list` and `for` loop to handle multiple cities
+   3. Use function to increase the reusability
+2. Divide into groups:
+   1. 
+
+References:
+
+* Chapter 4, 5, 6 of [official Python 2 tutorial](https://docs.python.org/2/tutorial/)
+
+
 
 
 
