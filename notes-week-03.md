@@ -232,9 +232,10 @@ it will print
 
 **Q: Distances among cities:**
 
-Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.  
-Use list and for loop to handle multiple cities  
-Use function to increase the reusability
+Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance.
+* "Great-circle distance" is the academic name you use to search for the formula.  
+* Use list and for loop to handle multiple cities  
+* Use function to increase the reusability
 
 ** A:** \(One possible solution\)
 
