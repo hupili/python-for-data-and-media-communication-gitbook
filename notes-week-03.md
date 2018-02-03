@@ -61,9 +61,11 @@ and then you can get the information about numpy as follow:
 
 ## 2. Use "If-else Statement"
 
-If-else statement is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. Take the case that group one made as an example.
+1. _**If-else statement**_ is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. Take the case that group1 made as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline］）) ）
 
-\(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline］）) ）
+
+
+> _Example_ _1:_  we assume that there are 100,000 users right now, and we want to know how much is the cost it will be with 100,000 users.  when the number of users is less than 50,000, the cost will be 10,000, if the number of users is not less than 50,000, then cost=1000+0.1×（the number of users-10000）.
 
 ```
 number_of_users = 100000
@@ -74,5 +76,11 @@ else: # number_of_users >= 50000
 print (cost)
 ```
 
+then you will get the cost as
 
+`19000.0`
+
+
+
+Example 2: If the situation is more complicated. 
 
