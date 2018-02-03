@@ -20,6 +20,13 @@ Bracket is a function quote \(e.g print \(\) \); quotation mark is used to quote
 
 ### Small p is different from capital P
 
+```
+p = 1
+print(P)
+```
+
+You will see the error message `NameError: name 'P' is not defined` . That is because Python is **case-sensitive. **The lowercase `p` and uppercase `P` mean different variables.
+
 ## Self learning resources
 
 > TODO: study the following pointers and add comments
