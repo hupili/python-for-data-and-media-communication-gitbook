@@ -3,8 +3,13 @@
 ### 1. Use "Help"
 
 In the Terminal of your computer. You can type `>>> help` for any instruction for using Python functions.
+** Notes:** 
+* Type 'Q' to quit help; 
+* Type 'J' to view up; 
+* Type 'K' to view down
 
-* If you want to know how to use 'numpy'. Type`>>>help()`  and then type`numpy` .
+
+> _Example1_: If you want to know how to use 'numpy'. Type`>>>help()`  and then type`numpy` .
 
 ```
 Type "help", "copyright", "credits" or "license" for more information.
@@ -57,15 +62,13 @@ and then you can get the information about numpy as follow:
 
     :
 
-* Notes: Type 'Q' to quit help; Type 'J' to view up; Type 'K' to view down
+
 
 ## 2. Use "If-else Statement"
 
-1. _**If-else statement**_ is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. Take the case that group1 made as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline］）) ）
+_**If-else statement**_ is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. Take the case that group1 made as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline］）) ）
 
-
-
-> _Example_ _1:_  we assume that there are 100,000 users right now, and we want to know how much is the cost it will be with 100,000 users.  when the number of users is less than 50,000, the cost will be 10,000, if the number of users is not less than 50,000, then cost=1000+0.1×（the number of users-10000）.
+> _Example_ _1:_  We want to know how much is the cost it is with the number of users we have.  When the number is less than 50,000, the cost will be 10,000, if the number is not less than 50,000, then cost=1000+0.1×（number\_of\_\_\_users -10000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
 
 ```
 number_of_users = 100000
@@ -76,11 +79,142 @@ else: # number_of_users >= 50000
 print (cost)
 ```
 
-then you will get the cost as
+    then you will get the cost in the terminal as `19000.0`
 
-`19000.0`
+> _Example_ 2: If we add one condition. when the number of users is less than 50,000, cost is 10，000.  If then number is equal to or more than 50,000. Then there are other two situations:1. when  50,000≤the number of user&lt;100,000, the cost= 10000+0.1×\(number\_of\_\_\_users -10000\); 2. when the number of user ≥10,000,  cost=10000 + 5000 + 0.1 \* \(number\_of\_users - 10000\). The actual number of users we have now is 90,000. The if-else statement will be as fellow:
+
+```
+number_of_users = 90000
+if number_of_users < 50000:
+    cost = 10000
+else: # number_of_users >= 50000
+   if number_of_users<100000:
+       cost=10000+0.1*(number_of_users-10000)
+   else:
+       cost = 10000 + 5000+ 0.1 * (number_of_users - 10000)
+print (cost)
+```
+
+it will print `18000.0`
+
+### 3. Use "For loop"/ "For Statement"
+
+_**For loops\(For Statement\)**_ has the ability to iterate over the items of any sequence, such as a list or a string.
+
+**1. Use "for statement" to pick up string/number from a list.**
+
+> _Example1: _you want to list every integer from 1 to 10.
+
+```
+for i in range(1,10):
+    print(i)
+```
+
+It will print ```1,2,3,4,5,6,7,8,9```
+> _Example2: _you want to list the square of every integer from 1 to 10.
+```
+for i in range(1,10):
+    print(i**2)
+```
+
+it will print```1,4,9,16,25,36,49,64,81```
+
+> _Example3: _you want to list number from numbers and string.
+
+```
+for number in [1, 5, 2, 'fun']: #(a list)
+    print(number)
+```
+it will print ```1,5,2```
+  
+> _Example4: _you want to list number from numbers and string.
+
+**2. Use for loop to calculate.**
+> _Example1: _you want to calculate the number of plussing from 1 to 100.
+```
+total = 0
+for i in range(1, 101): # numbers which are >=1 and <101 
+    total = total + i
+print (total)
+```
+it will print```5050```
+
+###4. Use "For statement" and "if-else statement" together****
+> _Example1: _ Like the example we used before. If we want to know the breakeven point of number of users, and we find that breakeven point of subscribed users is among 110,000 and 210,000, when the actual number of users we have is 190,000.
+
+```
+number_of_users = 190000
+for number_of_users in range(110000, 210000):
+    if number_of_users < 50000:
+        cost = 10000
+    else: # number_of_users >= 50000
+        if number_of_users < 100000:
+            cost = 10000 + 0.1 * (number_of_users - 50000)
+        else: 
+            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
+    revenue = 0.1 * number_of_users
+    profit = revenue - cost
+    if profit >= 0:
+        break
+print(profit)
+print(number_of_users)
+```
+it will print ```0.0``` and ```200000```
+
+###5. Use "Def function"
+**Notes:**
+* Keyword ```def``` marks the start of function header.
+* A function name to uniquely identify it
+* Parameters (arguments) through which we pass values to a function. They are optional.
+* A colon (:) to mark the end of function header.
+* Describe what the function does.
+* Statements must have same indentation level (usually 4 spaces)
+* An optional```return``` statement to return a value from the function
+
+> _Example1: _ If we want to calculate the profits, when the numbers of users are 100,1000,10000, respectively.
+
+```
+def calculate_profit(number_of_users):
+    if number_of_users < 50000:
+        cost = 10000
+    else: # number_of_users >= 50000
+        if number_of_users < 100000:
+            cost = 10000 + 0.1 * (number_of_users - 50000)
+        else: 
+            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
+    revenue = 0.1 * number_of_users
+    profit = revenue - cost
+    return profit
+
+# result = calculate_profit(100)
+# print(result)
+for i in range(1,1000000):
+    if calculate_profit(i) >= 0:
+        break
+print(i)
+print(calculate_profit(1000))
+print(calculate_profit(10000))
+
+for i in range (float(1, 10)):
+    print(i)
+```
+it will print ```200000```,```-9900.0```,```-9000.0```
+
+
+### 6. Use "Import Statement"
+
+**Notes:**
+* To use any package in your code, you must first make it accessible. You have to import it. You can't use anything in Python before it is defined.
+
+> _Example1:_ You want to pick up students randomly from a list named 1 to 6.
 
 
 
-Example 2: If the situation is more complicated. 
+
+
+
+
+
+
+
 
