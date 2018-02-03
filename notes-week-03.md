@@ -208,9 +208,16 @@ it will print ```200000```,```-9900.0```,```-9000.0```
 
 > _Example1:_ You want to pick up students randomly from a list named 1 to 6.
 
-
-
-
+```
+import random
+students = [1, 2, 3 ,4, 5, 6] # l=[ , , ,]
+print (students)
+random.shuffle(students)
+print (students)
+```
+it will print
+```[1, 2, 3, 4, 5, 6]```
+```[2, 4, 1, 3, 5, 6]```
 
 
 
