@@ -2,12 +2,12 @@
 
 ### 1. Use "Help"
 
-In the Terminal of your computer. You can type `>>> help` for any instruction for using Python functions.
-** Notes:** 
+In the Terminal of your computer. You can type `>>> help` for any instruction for using Python functions.  
+** Notes:**
+
 * Type 'Q' to quit help; 
 * Type 'J' to view up; 
 * Type 'K' to view down
-
 
 > _Example1_: If you want to know how to use 'numpy'. Type`>>>help()`  and then type`numpy` .
 
@@ -62,8 +62,6 @@ and then you can get the information about numpy as follow:
 
     :
 
-
-
 ## 2. Use "If-else Statement"
 
 _**If-else statement**_ is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. Take the case that group1 made as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline］）) ）
@@ -103,43 +101,50 @@ _**For loops\(For Statement\)**_ has the ability to iterate over the items of an
 
 **1. Use "for statement" to pick up string/number from a list.**
 
-> _Example1: _you want to list every integer from 1 to 10.
+> \_Example1: \_you want to list every integer from 1 to 10.
 
 ```
 for i in range(1,10):
     print(i)
 ```
 
-It will print ```1,2,3,4,5,6,7,8,9```
-> _Example2: _you want to list the square of every integer from 1 to 10.
-```
-for i in range(1,10):
-    print(i**2)
-```
+It will print `1,2,3,4,5,6,7,8,9`
 
-it will print```1,4,9,16,25,36,49,64,81```
+> \_Example2: \_you want to list the square of every integer from 1 to 10.
+>
+> ```
+> for i in range(1,10):
+>     print(i**2)
+> ```
 
-> _Example3: _you want to list number from numbers and string.
+it will print`1,4,9,16,25,36,49,64,81`
+
+> \_Example3: \_you want to list number from numbers and string.
 
 ```
 for number in [1, 5, 2, 'fun']: #(a list)
     print(number)
 ```
-it will print ```1,5,2```
-  
-> _Example4: _you want to list number from numbers and string.
+
+it will print `1,5,2`
+
+> \_Example4: \_you want to list number from numbers and string.
 
 **2. Use for loop to calculate.**
-> _Example1: _you want to calculate the number of plussing from 1 to 100.
-```
-total = 0
-for i in range(1, 101): # numbers which are >=1 and <101 
-    total = total + i
-print (total)
-```
-it will print```5050```
 
-###4. Use "For statement" and "if-else statement" together****
+> \_Example1: \_you want to calculate the number of plussing from 1 to 100.
+>
+> ```
+> total = 0
+> for i in range(1, 101): # numbers which are >=1 and <101 
+>     total = total + i
+> print (total)
+> ```
+>
+> it will print`5050`
+
+### 4. Use "For statement" and "if-else statement" together_\*\*_
+
 > _Example1: _ Like the example we used before. If we want to know the breakeven point of number of users, and we find that breakeven point of subscribed users is among 110,000 and 210,000, when the actual number of users we have is 190,000.
 
 ```
@@ -159,18 +164,20 @@ for number_of_users in range(110000, 210000):
 print(profit)
 print(number_of_users)
 ```
-it will print ```0.0``` and ```200000```
 
-###5. Use "Def function"
+it will print `0.0` and `200000`
+
+### 5. Use "Def function"
 
 **Notes:**
-* Keyword ```def``` marks the start of function header.
+
+* Keyword `def` marks the start of function header.
 * A function name to uniquely identify it
-* Parameters (arguments) through which we pass values to a function. They are optional.
-* A colon (:) to mark the end of function header.
+* Parameters \(arguments\) through which we pass values to a function. They are optional.
+* A colon \(:\) to mark the end of function header.
 * Describe what the function does.
-* Statements must have same indentation level (usually 4 spaces)
-* An optional```return``` statement to return a value from the function
+* Statements must have same indentation level \(usually 4 spaces\)
+* An optional`return` statement to return a value from the function
 
 > _Example1: _ If we want to calculate the profits, when the numbers of users are 100,1000,10000, respectively.
 
@@ -199,12 +206,13 @@ print(calculate_profit(10000))
 for i in range (float(1, 10)):
     print(i)
 ```
-it will print ```200000```,```-9900.0```,```-9000.0```
 
+it will print `200000`,`-9900.0`,`-9000.0`
 
 ### 6. Use "Import Statement"
 
 **Notes:**
+
 * To use any package in your code, you must first make it accessible. You have to import it. You can't use anything in Python before it is defined.
 
 > _Example1:_ You want to pick up students randomly from a list named 1 to 6.
@@ -216,24 +224,22 @@ print (students)
 random.shuffle(students)
 print (students)
 ```
-it will print
-```[1, 2, 3, 4, 5, 6]```
-```[2, 4, 1, 3, 5, 6]```
 
+it will print  
+`[1, 2, 3, 4, 5, 6]`  
+`[2, 4, 1, 3, 5, 6]`
 
-
-##Exercise
+## Exercise
 
 **Q: Distances among cities:**
 
-Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.
-Use list and for loop to handle multiple cities
+Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.  
+Use list and for loop to handle multiple cities  
 Use function to increase the reusability
 
-** A:** (One possible solution)
+** A:** \(One possible solution\)
 
 ```
-
 # -*- coding: utf-8 -*-
 
 import math
@@ -270,7 +276,8 @@ if __name__ == '__main__':
     for city in cities:
         distanceToHK(city)
 ```
-it will print 
+
+it will print
 
 ```
 Distance from New York to Hong Kong is 12951.815192 KM.
@@ -279,5 +286,6 @@ Distance from Stockholm to Hong Kong is 8224.867416 KM.
 Distance from Buenos Aires to Hong Kong is 18464.264219 KM.
 Distance from Perth to Hong Kong is 6033.948760 KM.
 ```
+
 
 
