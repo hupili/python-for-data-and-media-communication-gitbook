@@ -66,7 +66,7 @@ and then you can get the information about numpy as follow:
 
 _**If-else statement**_ is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. Take the case that group1 made as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline］）) ）
 
-> _Example_ _1:_  We want to know how much is the cost it is with the number of users we have.  When the number is less than 50,000, the cost will be 10,000, if the number is not less than 50,000, then cost=1000+0.1×（number\_of\_\_\_users -10000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
+> _Example_ _1:_  We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=1000+0.1×（number\_of\_\_\_users -10000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
 
 ```
 number_of_users = 100000
