@@ -76,8 +76,7 @@ else: # number_of_users >= 50000
     cost = 10000 + 0.1 * (number_of_users - 10000)
 print (cost)
 ```
-
-    then you will get the cost in the terminal as `19000.0`
+then you will get the cost in the terminal as `19000.0`
 
 > _Example_ 2: If we add one condition. when the number of users is less than 50,000, cost is 10，000.  If then number is equal to or more than 50,000. Then there are other two situations:1. when  50,000≤the number of user&lt;100,000, the cost= 10000+0.1×\(number\_of\_\_\_users -10000\); 2. when the number of user ≥10,000,  cost=10000 + 5000 + 0.1 \* \(number\_of\_users - 10000\). The actual number of users we have now is 90,000. The if-else statement will be as fellow:
 
