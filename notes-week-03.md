@@ -162,6 +162,7 @@ print(number_of_users)
 it will print ```0.0``` and ```200000```
 
 ###5. Use "Def function"
+
 **Notes:**
 * Keyword ```def``` marks the start of function header.
 * A function name to uniquely identify it
@@ -221,7 +222,62 @@ it will print
 
 
 
+##Exercise
 
+**Q: Distances among cities:**
 
+Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.
+Use list and for loop to handle multiple cities
+Use function to increase the reusability
+
+** A:** (One possible solution)
+
+```
+
+# -*- coding: utf-8 -*-
+
+import math
+
+cities = [
+    { 'lat': 40.785091, 'lon': -73.968285, 'name': 'New York' },
+    { 'lat': -123.12073750000002, 'lon': 49.2827291, 'name': 'Vancouver' },
+    { 'lat': 59.336559, 'lon': 18.062660, 'name': 'Stockholm' },
+    { 'lat': -34.603722, 'lon': -58.381592, 'name': 'Buenos Aires' },
+    { 'lat': -31.953512, 'lon': 115.857048, 'name': 'Perth' }
+]
+
+def distance(lat1, lon1, lat2, lon2):
+    r = 6371.009
+
+    lat1 = math.radians(lat1)
+    lon1 = math.radians(lon1)
+    lat2 = math.radians(lat2)
+    lon2 = math.radians(lon2)
+    londelta = lon2 - lon1
+
+    a = math.pow(math.cos(lat2) * math.sin(londelta), 2) + math.pow(math.cos(lat1) * math.sin(lat2) - math.sin(lat1) * math.cos(lat2) * math.cos(londelta), 2)
+    b = math.sin(lat1) * math.sin(lat2) + math.cos(lat1) * math.cos(lat2) * math.cos(londelta)
+    angle = math.atan2(math.sqrt(a), b)
+
+    return angle * r
+
+def distanceToHK(city):
+    hk = { 'lat': 22.286394, 'lon': 114.149139 }
+    di = distance(city['lat'], city['lon'], hk['lat'], hk['lon'])
+    print ("Distance from %s to Hong Kong is %f KM." % (city['name'], di))
+
+if __name__ == '__main__':
+    for city in cities:
+        distanceToHK(city)
+```
+it will print 
+
+```
+Distance from New York to Hong Kong is 12951.815192 KM.
+Distance from Vancouver to Hong Kong is 13584.132126 KM.
+Distance from Stockholm to Hong Kong is 8224.867416 KM.
+Distance from Buenos Aires to Hong Kong is 18464.264219 KM.
+Distance from Perth to Hong Kong is 6033.948760 KM.
+```
 
 
