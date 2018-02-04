@@ -12,11 +12,22 @@ double quotes equal to single quotes
 
 ### \[\] does not work to specify precedence in formula
 
-> //TODO
+\(\) is used to specify precedence in formula rather than \[\]
+
+For example, \(\(1+r\)\*n-1\) can be executed, but \[\(1+r\)\*n-1\] can not be executed.
+
+\[\] have other function, like ```
+range\[1:50\]```
+
+
+
 
 ### Multiplication operator `*` can not be omitted in formula
 
-> //TODO
+Take an example:
+
+when we exercise the mortgage calculator: `A=P*r*(1+r)`  
+is different from `A=Pr\(1+r\)`, the latter one can not be executed.
 
 ### Where need to be bracket? Where need to be quotation mark?
 
