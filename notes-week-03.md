@@ -170,15 +170,18 @@ it will print `0.0` and `200000`
 
 **Notes:**
 
-* Keyword `def` marks the start of function header.
-* A function name to uniquely identify it
+* Keyword `def`(means definite) marks the start of function header.
+* A function name to uniquely identify it.
 * Parameters \(arguments\) through which we pass values to a function. They are optional.
 * A colon \(:\) to mark the end of function header.
 * Describe what the function does.
-* Statements must have same indentation level \(usually 4 spaces\)
-* An optional`return` statement to return a value from the function
+* Statements must have same indentation level \(usually 4 spaces\).
+* An optional `return` statement to return a value from the function.
 
-> _Example1: _ If we want to calculate the profits, when the numbers of users are 100,1000,10000, respectively.
+* Use when you find you are using a function again and again. you can use "def statement"to duplicate the logic. 
+  Type "Tab“to move the section rightwards. Type"tab"+"Shift" to move the section leftwards.
+
+> _Example1: _ If we want to calculate the profits, the cost is 10,000 when user is less than 50,000, or when the number is not less than 50000 and also less than 100,000, the cost=10000+0.1×(number of users -50000), or the cost= 10000 + 5000 + 0.05×(number_of_users - 100000) When the numbers of users are 100,1000 and 10,000 respectively.
 
 ```
 def calculate_profit(number_of_users):
@@ -192,21 +195,49 @@ def calculate_profit(number_of_users):
     revenue = 0.1 * number_of_users
     profit = revenue - cost
     return profit
-
-# result = calculate_profit(100)
-# print(result)
-for i in range(1,1000000):
-    if calculate_profit(i) >= 0:
-        break
-print(i)
-print(calculate_profit(1000))
-print(calculate_profit(10000))
-
-for i in range (float(1, 10)):
-    print(i)
+print(calculate_profit(100))
 ```
 
-it will print `200000`,`-9900.0`,`-9000.0`
+it will print ```-9990.0```
+
+The advantage of using "def" is that you can recall the function  again and again.
+
+```
+def calculate_profit(number_of_users):
+    if number_of_users < 50000:
+        cost = 10000
+    else: # number_of_users >= 50000
+        if number_of_users < 100000:
+            cost = 10000 + 0.1 * (number_of_users - 50000)
+        else: 
+            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
+    revenue = 0.1 * number_of_users
+    profit = revenue - cost
+    return profit
+    print(calculate_profit(100))
+
+it will print ```-9990.0```
+The advantage of using "def"is that you can recall the function again and again.
+
+```
+def calculate_profit(number_of_users):
+    if number_of_users < 50000:
+        cost = 10000
+    else: # number_of_users >= 50000
+        if number_of_users < 100000:
+            cost = 10000 + 0.1 * (number_of_users - 50000)
+        else: 
+            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
+    revenue = 0.1 * number_of_users
+    profit = revenue - cost
+    return profit
+    
+print(calculate_profit(100))
+print(calculate_profit(1000))
+print(calculate_profit(10000))
+print(calculate_profit(100000))
+```
+It will print ```-9990```,```-9900```,```-9000```,```-5000``` at a time.
 
 ### 6. Use "Import Statement"
 
