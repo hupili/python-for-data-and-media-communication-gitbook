@@ -36,3 +36,11 @@ Terminal is a session which can receive and send input and output for command-li
 
 Shell is a program which is used for controlling and running programs.
 
+
+
+## With or without ".py" extension name?
+
+Without the extension name, Visual Studio Code can not highlight the code:![](/assets/no py..jpeg)After adding to the extension name, the interface become normal:![](/assets/with py..jpeg)
+
+
+
