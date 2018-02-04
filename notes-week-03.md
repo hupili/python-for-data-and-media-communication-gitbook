@@ -1,4 +1,4 @@
-# Week 3  Python for anything
+# Week 3 Python for anything
 
 ### 1. Use "Help"
 
@@ -9,7 +9,7 @@ In the Terminal of your computer. You can type `>>> help` for any instruction fo
 * Type 'J' to view up; 
 * Type 'K' to view down
 
-> _Example1_: If you want to know how to use 'numpy'. Type`>>>help()`  and then type`numpy` .
+> _Example1_: If you want to know how to use 'numpy'. Type`>>>help()`  and then type `numpy` .
 
 ```
 Type "help", "copyright", "credits" or "license" for more information.
@@ -76,6 +76,7 @@ else: # number_of_users >= 50000
     cost = 10000 + 0.1 * (number_of_users - 10000)
 print (cost)
 ```
+
 then you will get the cost in the terminal as `19000.0`
 
 > _Example_ 2: If we add one condition. when the number of users is less than 50,000, cost is 10，000.  If then number is equal to or more than 50,000. Then there are other two situations:1. when  50,000≤the number of user&lt;100,000, the cost= 10000+0.1×\(number\_of\_\_\_users -10000\); 2. when the number of user ≥10,000,  cost=10000 + 5000 + 0.1 \* \(number\_of\_users - 10000\). The actual number of users we have now is 90,000. The if-else statement will be as fellow:
@@ -94,7 +95,7 @@ print (cost)
 
 it will print `18000.0`
 
-### 3. Use "For loop"/ "For Statement"
+###3. Use "For loop"/ "For Statement"
 
 _**For loops\(For Statement\)**_ has the ability to iterate over the items of any sequence, such as a list or a string.
 
@@ -170,7 +171,7 @@ it will print `0.0` and `200000`
 
 **Notes:**
 
-* Keyword `def`(means definite) marks the start of function header.
+* Keyword `def`\(means definite\) marks the start of function header.
 * A function name to uniquely identify it.
 * Parameters \(arguments\) through which we pass values to a function. They are optional.
 * A colon \(:\) to mark the end of function header.
@@ -178,10 +179,10 @@ it will print `0.0` and `200000`
 * Statements must have same indentation level \(usually 4 spaces\).
 * An optional `return` statement to return a value from the function.
 
-* Use when you find you are using a function again and again. you can use "def statement"to duplicate the logic. 
+* Use when you find you are using a function again and again. you can use "def statement"to duplicate the logic.   
   Type "Tab“to move the section rightwards. Type"tab"+"Shift" to move the section leftwards.
 
-> _Example1: _ If we want to calculate the profits, the cost is 10,000 when user is less than 50,000, or when the number is not less than 50000 and also less than 100,000, the cost=10000+0.1×(number of users -50000), or the cost= 10000 + 5000 + 0.05×(number_of_users - 100000) When the numbers of users are 100,1000 and 10,000 respectively.
+> _Example1: _ If we want to calculate the profits, the cost is 10,000 when user is less than 50,000, or when the number is not less than 50000 and also less than 100,000, the cost=10000+0.1×\(number of users -50000\), or the cost= 10000 + 5000 + 0.05×\(number\_of\_users - 100000\) When the numbers of users are 100,1000 and 10,000 respectively.
 
 ```
 def calculate_profit(number_of_users):
@@ -198,25 +199,25 @@ def calculate_profit(number_of_users):
 print(calculate_profit(100))
 ```
 
-it will print ```-9990.0```
+it will print `-9990.0`
 
 The advantage of using "def" is that you can recall the function  again and again.
 
-```
-def calculate_profit(number_of_users):
-    if number_of_users < 50000:
-        cost = 10000
-    else: # number_of_users >= 50000
-        if number_of_users < 100000:
-            cost = 10000 + 0.1 * (number_of_users - 50000)
-        else: 
-            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
-    revenue = 0.1 * number_of_users
-    profit = revenue - cost
-    return profit
-    print(calculate_profit(100))
+    def calculate_profit(number_of_users):
+        if number_of_users < 50000:
+            cost = 10000
+        else: # number_of_users >= 50000
+            if number_of_users < 100000:
+                cost = 10000 + 0.1 * (number_of_users - 50000)
+            else: 
+                cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
+        revenue = 0.1 * number_of_users
+        profit = revenue - cost
+        return profit
+        print(calculate_profit(100))
 
-it will print ```-9990.0```
+    it will print ```-9990.0
+
 The advantage of using "def"is that you can recall the function again and again.
 
 ```
@@ -231,13 +232,14 @@ def calculate_profit(number_of_users):
     revenue = 0.1 * number_of_users
     profit = revenue - cost
     return profit
-    
+
 print(calculate_profit(100))
 print(calculate_profit(1000))
 print(calculate_profit(10000))
 print(calculate_profit(100000))
 ```
-It will print ```-9990```,```-9900```,```-9000```,```-5000``` at a time.
+
+It will print `-9990`,`-9900`,`-9000`,`-5000` at a time.
 
 ### 6. Use "Import Statement"
 
@@ -264,6 +266,7 @@ it will print
 **Q: Distances among cities:**
 
 Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance.
+
 * "Great-circle distance" is the academic name you use to search for the formula.  
 * Use list and for loop to handle multiple cities  
 * Use function to increase the reusability
