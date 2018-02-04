@@ -12,5 +12,5 @@
 * [Guide for contributor](guide-for-contributor.md)
 * [module: geopy](module-geopy.md)
 * [Notes: Week 01](notes-week-01.md)
-* Python 2 v.s. Python 3
+* [Python 2 v.s. Python 3](python-2-vs-python-3.md)
 

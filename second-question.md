@@ -16,11 +16,7 @@ double quotes equal to single quotes
 
 For example, \(\(1+r\)\*n-1\) can be executed, but \[\(1+r\)\*n-1\] can not be executed.
 
-\[\] have other function, like ```
-range\[1:50\]```
-
-
-
+\[\] have other function, like `range\[1:50\]`
 
 ### Multiplication operator `*` can not be omitted in formula
 
@@ -41,6 +37,15 @@ print(P)
 ```
 
 You will see the error message `NameError: name 'P' is not defined` . That is because Python is **case-sensitive. **The lowercase `p` and uppercase `P` mean different variables.
+
+### \(\) close to the range in the left, open the range in the right
+
+```
+For i in range(1,10):
+print (i)
+```
+
+You will see the outcome: 1,2,3,4,5,6,7,8,9 without 10, because the left range is included, while the right range is excluded.
 
 ## Self learning resources
 
