@@ -63,6 +63,7 @@ Challenge:
 References:
 
 * Chapter 1, 2, 3 of [official Python 2 tutorial](https://docs.python.org/2/tutorial/)
+* Python format string: [https://pyformat.info/](https://pyformat.info/)
 
 ## Week 3 - Python for anything
 
@@ -112,7 +113,7 @@ References:
 
 > * Understand the basics of HTML language, HTTP protocol, web server and Internet architecture
 > * Able scrape static web pages and turn them into CSV files
-> * Understand API/ JSON and can retrieve data from online databases (twitter, GitHub, weibo, douban, ...)
+> * Understand API/ JSON and can retrieve data from online databases \(twitter, GitHub, weibo, douban, ...\)
 
 Modules:
 
@@ -124,7 +125,7 @@ Modules:
 
 **Objective**:
 
-> * Master the schema of "data-driven story telling": the crowd (pattern) and the outlier (anomaly)
+> * Master the schema of "data-driven story telling": the crowd \(pattern\) and the outlier \(anomaly\)
 > * Can efficiently manipulate structured table formatted datasets
 > * Use `pandas` for basic calculation and plotting
 
@@ -150,7 +151,7 @@ Statistics:
 **Objective**:
 
 > * Understand correlation and causality
-> * Can conduct visual (explorative) analysis of correlation
+> * Can conduct visual \(explorative\) analysis of correlation
 > * Can interpret common statistic quantities
 
 Modules:
@@ -172,13 +173,13 @@ Challenge:
 
 **Objective**:
 
-> * (TODO)
+> * \(TODO\)
 
 ## Week 11 - Graph theory and social network analysis
 
 **Objective**:
 
-> * (TODO)
+> * \(TODO\)
 
 ## Week 12 - Project presentation
 
@@ -186,11 +187,12 @@ Challenge:
 
 > Be able to efficiently **sell** your work after so many heavy duty hard works!
 
-
 ## Open topics
 
 Those topics may be discussed if there is plenty Q/A time left in certain week. Or, you are welcome to explore those topics via group project.
 
-* Cloud (AWS)
+* Cloud \(AWS\)
 * Deep learning
+
+
 
