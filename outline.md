@@ -121,6 +121,23 @@ Modules:
 * Parse web page: `lxml`, Beautiful Soup, `HTMLPaser`, 
 * Serialiser: `csv`, `json`
 
+Tools:
+
+* Jupyter notebook
+
+Challenges: \(save to `*.csv`
+
+* Use `lxml` / `bs4` `requests`
+  * Collect a table for the [NSFC/RGC join research fund](http://www.ugc.edu.hk/eng/rgc/funded_research/funding_results/list_award_e2009.html). A full table can be found [here](http://www.ugc.edu.hk/eng/rgc/funded_research/funding_results/other.html). You are also welcome to collect data of [other funding schemes](http://www.ugc.edu.hk/eng/rgc/funded_research/funding_results.html).
+  * Collect all the faculty's information and make a contact book. [site](http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept.htm).
+  * Collect the movie list and their rating from [IMDB](http://www.imdb.com/list/ls058982125/).
+* Bonus:
+  * Collect the tweets from a celebrity like [this post](http://initiumlab.com/blog/20170329-trump-and-ivanka/). You can search "python twitter" for many useful modules online.
+
+References:
+
+* Allison Parrish's [tutorial of scraper](https://github.com/aparrish/dmep-python-intro/blob/master/scraping-html.ipynb) in summer 2017.
+
 ## Week 5 - 1-Dimensional analysis
 
 **Objective**:
