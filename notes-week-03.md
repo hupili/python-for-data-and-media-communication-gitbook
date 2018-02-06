@@ -9,33 +9,7 @@ In the Terminal of your computer. You can type `>>> help` for any instruction fo
 * Type 'J' to view up; 
 * Type 'K' to view down
 
-> _Example1_: If you want to know how to use 'numpy'. Type`>>>help()`  and then type `numpy` .
-
-```
-Type "help", "copyright", "credits" or "license" for more information.
->>> help
-Type help() for interactive help, or help(object) for help about object.
->>> help()
-Welcome to Python 2.7!  This is the online help utility.
-
-If this is your first time using Python, you should definitely check out
-the tutorial on the Internet at http://docs.python.org/2.7/tutorial/.
-
-Enter the name of any module, keyword, or topic to get help on writing
-Python programs and using Python modules.  To quit this help utility and
-return to the interpreter, just type "quit".
-
-To get a list of available modules, keywords, or topics, type "modules",
-"keywords", or "topics".  Each module also comes with a one-line summary
-of what it does; to list the modules whose summaries contain a given word
-such as "spam", type "modules spam".
-
-help> numpy
-
-help>
-```
-
-and then you can get the information about numpy as follow:
+> _Example1_: If you want to know how to use 'numpy'. Type`>>>help()`  and then type `numpy` , then you can get the information about numpy as follow:
 
     Help on package numpy:
 
@@ -66,7 +40,7 @@ and then you can get the information about numpy as follow:
 
 _**If-else statement**_ is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. Take the case that group1 made as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline］）) ）
 
-> _Example_ _1:_  We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=1000+0.1×（number\_of\_\_\_users -10000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
+> _Example_ _1:_  We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=1000+0.1×（number\_of\_users -10000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
 
 ```
 number_of_users = 100000
@@ -95,7 +69,7 @@ print (cost)
 
 it will print `18000.0`
 
-###3. Use "For loop"/ "For Statement"
+### 3. Use "For loop"/ "For Statement"
 
 _**For loops\(For Statement\)**_ has the ability to iterate over the items of any sequence, such as a list or a string.
 
@@ -128,8 +102,6 @@ for number in [1, 5, 2, 'fun']: #(a list)
 
 it will print `1,5,2`
 
-> \_Example4: \_you want to list number from numbers and string.
-
 **2. Use for loop to calculate.**
 
 > \_Example1: \_you want to calculate the number of plussing from 1 to 100.
@@ -143,7 +115,9 @@ it will print `1,5,2`
 >
 > it will print`5050`
 
-### 4. Use "For statement" and "if-else statement" together_\*\*_
+
+
+### 4. Use "for statement" and "if-else statement" together
 
 > _Example1: _ Like the example we used before. If we want to know the breakeven point of number of users, and we find that breakeven point of subscribed users is among 110,000 and 210,000, when the actual number of users we have is 190,000.
 
@@ -167,6 +141,8 @@ print(number_of_users)
 
 it will print `0.0` and `200000`
 
+
+
 ### 5. Use "Def function"
 
 **Notes:**
@@ -179,7 +155,7 @@ it will print `0.0` and `200000`
 * Statements must have same indentation level \(usually 4 spaces\).
 * An optional `return` statement to return a value from the function.
 
-* Use when you find you are using a function again and again. you can use "def statement"to duplicate the logic.   
+* Use when you find you are using a function again and again. you can use "def statement"to duplicate the logic.  
   Type "Tab“to move the section rightwards. Type"tab"+"Shift" to move the section leftwards.
 
 > _Example1: _ If we want to calculate the profits, the cost is 10,000 when user is less than 50,000, or when the number is not less than 50000 and also less than 100,000, the cost=10000+0.1×\(number of users -50000\), or the cost= 10000 + 5000 + 0.05×\(number\_of\_users - 100000\) When the numbers of users are 100,1000 and 10,000 respectively.
@@ -201,24 +177,24 @@ print(calculate_profit(100))
 
 it will print `-9990.0`
 
-The advantage of using "def" is that you can recall the function  again and again.
+The advantage of using "def" is that you can recall the function again and again.
 
-    def calculate_profit(number_of_users):
-        if number_of_users < 50000:
-            cost = 10000
-        else: # number_of_users >= 50000
-            if number_of_users < 100000:
-                cost = 10000 + 0.1 * (number_of_users - 50000)
-            else: 
-                cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
-        revenue = 0.1 * number_of_users
-        profit = revenue - cost
-        return profit
-        print(calculate_profit(100))
+```
+def calculate_profit(number_of_users):
+    if number_of_users < 50000:
+        cost = 10000
+    else: # number_of_users >= 50000
+        if number_of_users < 100000:
+            cost = 10000 + 0.1 * (number_of_users - 50000)
+        else: 
+            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
+    revenue = 0.1 * number_of_users
+    profit = revenue - cost
+    return profit
+    print(calculate_profit(100))
+```
 
-    it will print ```-9990.0
-
-The advantage of using "def"is that you can recall the function again and again.
+it will print `-9990.0`
 
 ```
 def calculate_profit(number_of_users):
@@ -241,6 +217,8 @@ print(calculate_profit(100000))
 
 It will print `-9990`,`-9900`,`-9000`,`-5000` at a time.
 
+### 
+
 ### 6. Use "Import Statement"
 
 **Notes:**
@@ -260,6 +238,8 @@ print (students)
 it will print  
 `[1, 2, 3, 4, 5, 6]`  
 `[2, 4, 1, 3, 5, 6]`
+
+## 
 
 ## Exercise
 
