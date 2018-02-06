@@ -5,9 +5,9 @@
 In the Terminal of your computer. You can type `>>> help` for any instruction for using Python functions.  
 ** Notes:**
 
-* Type 'Q' to quit help; 
-* Type 'J' to view up; 
-* Type 'K' to view down
+* Type 'q' to quit help; 
+* Type 'j' to view up; 
+* Type 'k' to view down
 
 > _Example1_: If you want to know how to use 'numpy'. Type`>>>help()`  and then type `numpy` , then you can get the information about numpy as follow:
 
@@ -35,6 +35,8 @@ In the Terminal of your computer. You can type `>>> help` for any instruction fo
         `the NumPy homepage <http://www.scipy.org>`_.
 
     :
+
+An alternative way is to type `help(numpy)` directly.
 
 ## 2. Use "If-else Statement"
 
@@ -115,8 +117,6 @@ it will print `1,5,2`
 >
 > it will print`5050`
 
-
-
 ### 4. Use "for statement" and "if-else statement" together
 
 > _Example1: _ Like the example we used before. If we want to know the breakeven point of number of users, and we find that breakeven point of subscribed users is among 110,000 and 210,000, when the actual number of users we have is 190,000.
@@ -140,8 +140,6 @@ print(number_of_users)
 ```
 
 it will print `0.0` and `200000`
-
-
 
 ### 5. Use "Def function"
 
@@ -217,8 +215,6 @@ print(calculate_profit(100000))
 
 It will print `-9990`,`-9900`,`-9000`,`-5000` at a time.
 
-### 
-
 ### 6. Use "Import Statement"
 
 **Notes:**
@@ -236,10 +232,11 @@ print (students)
 ```
 
 it will print  
-`[1, 2, 3, 4, 5, 6]`  
-`[2, 4, 1, 3, 5, 6]`
 
-## 
+```
+[1, 2, 3, 4, 5, 6]
+[2, 4, 1, 3, 5, 6]
+```
 
 ## Exercise
 
