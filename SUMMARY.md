@@ -2,6 +2,15 @@
 
 * [Introduction](README.md)
 * [Course Outline](outline.md)
+
+## Weekly Notes
+
+* [Notes: Week 01](notes-week-01.md)
+* [Notes: Week 02](notes-week-02.md)
+* [Notes: Week 03](notes-week-03.md)
+
+## General FAQs
+
 * [Setup Python Environment on Windows and MAC](first-question.md)
 * [Shell](shell.md)
 * [Python Language Basics](second-question.md)
@@ -10,7 +19,13 @@
 * [Pro Tips](pro-tips.md)
 * [Resources](reading-materials.md)
 * [Guide for contributor](guide-for-contributor.md)
+
+## Python Modules FAQs
+
 * [module: geopy](module-geopy.md)
-* [Notes: Week 01](notes-week-01.md)
-* [Notes: Week 02](notes-week-02.md)
-* [Notes: Week 03](notes-week-03.md)
+* [module: requests](module-requests.md)
+* [module: csv](module-csv.md)
+* [module: BeautifulSoup](module-beautifulsoup.md)
+
+
+
