@@ -138,6 +138,11 @@ References:
 
 * Allison Parrish's [tutorial of scraper](https://github.com/aparrish/dmep-python-intro/blob/master/scraping-html.ipynb) in summer 2017.
 
+Further reading:
+
+* Study `urllib` as an alternative to `requests`
+* Study Regular Expression and `re` library in Python
+
 ## Week 5 - 1-Dimensional analysis
 
 **Objective**:
