@@ -121,10 +121,6 @@ Modules:
 * Parse web page: `lxml`, Beautiful Soup, `HTMLPaser`, 
 * Serialiser: `csv`, `json`
 
-Tools:
-
-* Jupyter notebook
-
 Challenges: \(save to `*.csv`
 
 * Use `lxml` / `bs4` `requests`
@@ -155,6 +151,11 @@ Modules:
 
 * `pandas`
 * `matplotlib`
+
+Tools:
+
+* Virtualenv
+* Jupyter notebook
 
 Statistics:
 

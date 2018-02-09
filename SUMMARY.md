@@ -1,5 +1,7 @@
 # Summary
 
+## Overview
+
 * [Introduction](README.md)
 * [Course Outline](outline.md)
 
@@ -26,6 +28,4 @@
 * [module: requests](module-requests.md)
 * [module: csv](module-csv.md)
 * [module: BeautifulSoup](module-beautifulsoup.md)
-
-
 
