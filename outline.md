@@ -118,7 +118,8 @@ References:
 Modules:
 
 * Handle HTTP request/ response: `requests`
-* Parse web page: `lxml`, Beautiful Soup, `HTMLPaser`, 
+* Parse web page: `lxml`, Beautiful Soup, `HTMLPaser`, `help(str)`
+  * Useful string functions: `strip()`, `split()`, `find()`, `replace()`, `str[begin:end]`
 * Serialiser: `csv`, `json`
 
 Challenges: \(save to `*.csv`
