@@ -4,7 +4,6 @@
 
 * [Introduction](README.md)
 * [Course Outline](outline.md)
-* [module: jupyter](module-jupyter.md)
 
 ## Weekly Notes
 
@@ -29,4 +28,7 @@
 * [module: requests](module-requests.md)
 * [module: csv](module-csv.md)
 * [module: BeautifulSoup](module-beautifulsoup.md)
+* [module: jupyter](module-jupyter.md)
+
+
 

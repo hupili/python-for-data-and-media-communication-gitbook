@@ -114,6 +114,11 @@ References:
 > * Understand the basics of HTML language, HTTP protocol, web server and Internet architecture
 > * Able scrape static web pages and turn them into CSV files
 
+Tools: ( [Step-by-step reference](module-jupyter.md) )
+
+* Virtualenv -- Create isolated environment to avoid projects clutter each other
+* Jupyter notebook -- Web-based REPL; ready to distribute; all-in-one presentation
+
 Modules:
 
 * Handle HTTP request/ response: `requests`
@@ -155,11 +160,6 @@ Modules:
 
 * `pandas`
 * `matplotlib`
-
-Tools:
-
-* Virtualenv -- Create isolated environment to avoid projects clutter each other
-* Jupyter notebook -- Web-based REPL; ready to distribute; all-in-one presentation
 
 Statistics:
 
