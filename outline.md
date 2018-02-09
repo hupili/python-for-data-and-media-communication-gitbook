@@ -113,7 +113,6 @@ References:
 
 > * Understand the basics of HTML language, HTTP protocol, web server and Internet architecture
 > * Able scrape static web pages and turn them into CSV files
-> * Understand API/ JSON and can retrieve data from online databases \(twitter, GitHub, weibo, douban, ...\)
 
 Modules:
 
@@ -139,6 +138,10 @@ Further reading:
 
 * Study `urllib` as an alternative to `requests`
 * Study Regular Expression and `re` library in Python
+
+Unimplemented objective:
+
+> Understand API/ JSON and can retrieve data from online databases \(twitter, GitHub, weibo, douban, ...\)
 
 ## Week 5 - 1-Dimensional analysis
 
