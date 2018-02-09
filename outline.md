@@ -154,8 +154,8 @@ Modules:
 
 Tools:
 
-* Virtualenv
-* Jupyter notebook
+* Virtualenv -- Create isolated environment to avoid projects clutter each other
+* Jupyter notebook -- Web-based REPL; ready to distribute; all-in-one presentation
 
 Statistics:
 
