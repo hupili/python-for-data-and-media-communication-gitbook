@@ -4,6 +4,7 @@
 
 * [Introduction](README.md)
 * [Course Outline](outline.md)
+* [module: jupyter](module-jupyter.md)
 
 ## Weekly Notes
 
