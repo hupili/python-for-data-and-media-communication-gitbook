@@ -23,4 +23,9 @@
 ## Python Modules FAQs
 
 * [module: geopy](module-geopy.md)
+* [module: requests](module-requests.md)
+* [module: csv](module-csv.md)
+* [module: BeautifulSoup](module-beautifulsoup.md)
+
+
 
