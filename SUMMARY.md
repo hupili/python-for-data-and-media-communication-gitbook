@@ -4,14 +4,6 @@
 
 * [Introduction](README.md)
 * [Course Outline](outline.md)
-* [Notes: Week 05](notes-week-05.md)
-* [Notes: Week 05](notes-week-05.md)
-* [Notes: Week 06](notes-week-06.md)
-* [Notes: Week 07](notes-week-07.md)
-* [Notes: Week 08](notes-week-08.md)
-* [Notes: Week 09](notes-week-09.md)
-* [Notes: Week 10](notes-week-10.md)
-* [Notes: Week 11](notes-week-11.md)
 
 ## Weekly Notes
 
@@ -19,6 +11,13 @@
 * [Notes: Week 02](notes-week-02.md)
 * [Notes: Week 03](notes-week-03.md)
 * [Notes: Week 04](notes-week-04.md)
+* [Notes: Week 05](notes-week-05.md)
+* [Notes: Week 06](notes-week-06.md)
+* [Notes: Week 07](notes-week-07.md)
+* [Notes: Week 08](notes-week-08.md)
+* [Notes: Week 09](notes-week-09.md)
+* [Notes: Week 10](notes-week-10.md)
+* [Notes: Week 11](notes-week-11.md)
 
 ## General FAQs
 
