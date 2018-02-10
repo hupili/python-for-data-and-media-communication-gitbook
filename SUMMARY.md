@@ -4,13 +4,14 @@
 
 * [Introduction](README.md)
 * [Course Outline](outline.md)
-* [Notes: Week 04](notes-week-04.md)
 
 ## Weekly Notes
 
 * [Notes: Week 01](notes-week-01.md)
 * [Notes: Week 02](notes-week-02.md)
 * [Notes: Week 03](notes-week-03.md)
+* [Notes: Week 04](notes-week-04.md)
+
 
 ## General FAQs
 
