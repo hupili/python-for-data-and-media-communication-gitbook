@@ -107,14 +107,14 @@ References:
 
 * Chapter 4, 5, 6 of [official Python 2 tutorial](https://docs.python.org/2/tutorial/)
 
-## Week 4 - Web scraping and API
+## Week 4 - Web Scraping
 
 **Objective**:
 
 > * Understand the basics of HTML language, HTTP protocol, web server and Internet architecture
 > * Able scrape static web pages and turn them into CSV files
 
-Tools: ( [Step-by-step reference](module-jupyter.md) )
+Tools: \( [Step-by-step reference](module-jupyter.md) \)
 
 * Virtualenv -- Create isolated environment to avoid projects clutter each other
 * Jupyter notebook -- Web-based REPL; ready to distribute; all-in-one presentation
