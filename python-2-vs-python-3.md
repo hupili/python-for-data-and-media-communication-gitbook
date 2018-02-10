@@ -22,5 +22,7 @@ Python 2 has ASCII`str()`types, separate`unicode()`, but no`byte`type.
 
 Now, in Python 3, we finally have Unicode \(utf-8\)`str`ings, and 2 byte classes:`byte`and`bytearray`s.
 
+## How to set up Python 2.7 and Python 3 at the same time on your Mac OSX?
 
+You can follow the steps in this[ Link](https://stringpiggy.hpd.io/mac-osx-python3-dual-install/#step1) to set up both of them. 
 
