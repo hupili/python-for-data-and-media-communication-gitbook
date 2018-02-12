@@ -10,7 +10,9 @@ Use "Tab" button. For example,  type "python ev", then use "Tab", you can see th
 
 ### find last command
 
-upward arrow key
+Use upward arrow key.
+
+Try `control+r` to conduct a search in command history.
 
 ## Visual Studio Code
 
