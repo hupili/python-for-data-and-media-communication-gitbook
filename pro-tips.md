@@ -22,5 +22,12 @@ upward arrow key
 
 ### "command"+s: save the code
 
+### The "Code Runner" extension
 
+This extension allows you to quickly run your code within VSCode by hitting `control+option+n`.
 
+![](/assets/Screen Shot 2018-02-12 at 10.59.38 AM.png)
+
+![](/assets/Screen Shot 2018-02-12 at 11.01.18 AM.png)
+
+This is equivalent by executing your code from the Terminal.
