@@ -19,17 +19,18 @@ pip3 install --user lxml
 * A directory named 'venv' is on your desktop now. The files you put here can be run in the virtual environment by jupyter.
 
 ### Tips of usage:
+
 ##### Q1: How to quit the last steps's situation?
-![](/assets/Screen Shot 2018-02-13 at 1.03.46 pm.png)
+![](/assets/Screen Shot 2018-02-13 at 5.40.27 pm.png)
 
 A:
 The answer is in the picture: control+C. \( Pay attention to the text. \)Then you will get the following picture.Please input `y` in 5 seconds.
+
 ![](/assets/Screen Shot 2018-02-13 at 1.06.35 pm.png)
 
 ##### Q2:How to quit from virtual environment?
 ![](/assets/Screen Shot 2018-02-13 at 1.09.51 pm.png)
 A: input `deactivate`
-
 
 ##### Tab & type & help & print
 There are some useful tips for you.
@@ -59,7 +60,6 @@ str
 
 ### Open a new file
 ![](/assets/Screen Shot 2018-02-13 at 1.17.50 pm.png)
-
 * `shift+return` to run the code.
 
 
@@ -72,7 +72,7 @@ str
 3. Build reverse index,which means making a relationship between the keyword and web page.
 4. Extract page-level features
 
-### html JS css
+### Html JS css
 ![](/assets/Screen Shot 2018-02-13 at 1.12.33 pm.png)
 
 * HTML is a machine language of web page. Writing something in HTML means to create a web page.It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag.
@@ -87,7 +87,7 @@ str
 
 
 # 3.Scraper
-#### import modules
+### Import modules
 ```
 import requests
 import bs4
@@ -96,35 +96,32 @@ import csv
 * `requests` is a module containing diverse functions relating to the web page.
 * `bs4` is the abbreviation of BeautifulSoup4.It is used to analyse web page.
 
-#### requests + .text
-
+### Requests + .text
 ```
 r = requests.get('http://initiumlab.com/blog/20170329-trump-and-ivanka/'
 r.text
 ```
-
 It can be wrote in one line.
-
 `r = requests.get('http://initiumlab.com/blog/20170329-trump-and-ivanka/').text`
-
 * Store the web as `r`, `get` means try to get response of that web page.
 * `text` means to show the text of the web page.
 
-#### BeautifulSoup
-
+### BeautifulSoup
 ```
 from bs4 import BeautifulSoup
+mypage = BeautifulSoup(r.text)
 ```
-
 * `BeautifulSoup` is to extract the web's content.
-It relies on certain engine to analyse `lxml` is one of the engine. By default, it will choose the best engine.
+It relies on certain engine to analyse. `lxml` is one of the engine. By default, it will choose the best engine.
 
 * Warning is not an error. So no need to worry at this stage.
 
-#### find + strip\(\) to get title
 
+### Find + strip\(\) to get title
+>`h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1
+`
 
-* Open the console, by moving the mouse you can find title is in `<h1........</h1>`.(see the above html part.)
+* Open the console, by moving the mouse you can find title is in `<h1........</h1>`.(see the above 'html' part.)
 
 ```
 myh1 = mypage.find('h1')
@@ -137,58 +134,105 @@ mytitle.strip()
 * `strip()`means delete the meaningless coding.
 * You can `help(str.strip)` to see the usage of strip.
 
-#### get date
+### Get date
+>```
+<time itemprop="dateCreated" datetime="2017-03-29T....." content="2017-03-29">
+                  2017-03-29
+                </time>
+```
 
 ```
 mydate = mypage.find('time').text.strip()
 ```
 
-#### get author \(Important\)
+### Get author \(Important\)
 ##### Try 1:fail
-
 `myauthor = mypage.find('span')`
+![](/assets/Screen Shot 2018-02-13 at 5.44.54 pm.png)
 
-![](/assets/Screen Shot 2018-02-13 at 2.17.14 pm.png)
-
-* It is not what we want,as there are too many 'span'.So check how many span there, and find the difference between those tags.`command+f` to open the search bar in console,and input 'span'.You can see, there are more than 2 'span'.
+* It is not what we want, as there are too many 'span'.So check how many span there, and find the difference between those tags. `command+f` to open the search bar in console,and input 'span'.You can see, there are more than 2 'span'.
 
 `myspans = mypage.find_all('span')`
-
-![](/assets/Screen Shot 2018-02-13 at 2.17.24 pm.png)
-
-
-
-##### Try 2:succeed
-
-`h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1
-`
-* In the HTML, we can find that authors upper tag is `td`. But there are too many td. And it is difficult to be specific.
-![](/assets/Screen Shot 2018-02-13 at 2.41.09 pm.png)
-
-* Then try to locate the upper file ' tr class="post\_\_authors" ':
-
-`len(mypage.find_all('tr'))`
-
-> ![](/assets/Screen Shot 2018-02-13 at 3.06.54 pm.png)
-
+![](/assets/Screen Shot 2018-02-13 at 5.48.09 pm.png)
 * `find_all` means output all the items it finds.
-
 * `find` means only output the first one.
 
-* There are 5 tr. So we want to narrow the area to search the 'span'.`find(a,b)` attrs= attributs. You can add more detailed information about tr, which helps to locate the tr.
+* 'myspans' is a list. 
+ `myspans[0]`means extract the first one in the list.
+ `myspans[1]`means extract the second one in the list.
+
+##### Try 2:succeed to find all the authors
+
+> ![](/assets/Screen Shot 2018-02-13 at 2.41.09 pm.png)
+
+* In the HTML, we can find that authors upper tag is 'td'. But there are too many td. And it is difficult to be specific.
+
+* As 'tr' has class, which means more specific than 'td', so try to locate the more upper file: 'tr':
+
+`len(mypage.find_all('tr')`
+>`5`
+
+* There are 5 tr. We have to narrow the area to search the 'span'.
+
+`mytr = mypage.find('tr', attrs={'class': 'post__authors'})`
+
+* `attrs`= attributes. You can add more detailed information about tr, which helps to locate the tr. 
+
+
+`mytr` 
+>```
+<tr class="post__authors">
+<td>.......</td>
+<td>
+<span>Li Yiming</span>
+<span>Li Yuqiong</span>
+</td>
+</tr>
+```
+
+`mytr.find_all('span')`
+>`[<span>Li Yiming</span>, <span>Li Yuqiong</span>]`
+
+
+##### Try to output those authors.
+```
+authors = []
+for myspan in mytr.find_all('span'):
+    authors.append(myspan.text)
+```
+
+* Create a new empty list called 'authors'. Then add the information in it.
+* `list1.append()`means add the item into the list1.
 
 ```
-mytr = mypage.find('tr', attrs={'class': 'post__authors'})
-mytr
+article = {
+    'title': mytitle,
+    'authors': authors,
+    'date': mydate
+}
 ```
+* `{}` is a dictionary. wichi
 
-> ![](/assets/Screen Shot 2018-02-13 at 2.46.30 pm.png)
 
-* `mytr.find_all('span')`to check what we have got.
 
-> ![](/assets/Screen Shot 2018-02-13 at 3.01.51 pm.png)
 
-##### Requests
+
+
+### "For" loop to scraper articles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ##### Requests
 
