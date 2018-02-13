@@ -144,9 +144,35 @@ Further reading:
 * Study `urllib` as an alternative to `requests`
 * Study Regular Expression and `re` library in Python
 
-Unimplemented objective:
 
-> Understand API/ JSON and can retrieve data from online databases \(twitter, GitHub, weibo, douban, ...\)
+## Week 5 - JSON and API
+
+**Objective**:
+
+> * Reinforce the knowledge of scraper. Able to analyse and scrape normal web pages
+> * Understand API/ JSON and can retrieve data from online databases \(twitter, GitHub, weibo, douban, ...\)
+
+Modules:
+
+* Handle HTTP request/ response: `requests`
+* Serialiser: `json`
+
+Challenges:
+
+* Taiwan had an earthquake in early Feb. Let's discuss this issue:
+   * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/)
+   * Search on Twitter and collect user's discussions about this topic. See if there is any findings. You can approach from the human interface [here](https://twitter.com/search?q=%23%E5%8F%B0%E6%B9%BE%E5%9C%B0%E9%9C%87) (hard mode) or use [python-twitter](https://github.com/bear/python-twitter) module (need to register developer and obtain API key).
+* Retrieve and analyse the recent movie. Douban's API will be helpful here.
+   * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
+   * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
+
+
+-------
+
+Following are TBC topics 
+
+-------
+
 
 ## Week 5 - 1-Dimensional analysis
 
