@@ -174,7 +174,7 @@ Following are TBC topics
 -------
 
 
-## Week 5 - 1-Dimensional analysis
+## Week 6 - 1-D and 2-D analysis
 
 **Objective**:
 
@@ -185,7 +185,8 @@ Following are TBC topics
 Modules:
 
 * `pandas`
-* `matplotlib`
+* `seaborn`
+* `matplotlib` 
 
 Statistics:
 
@@ -195,11 +196,15 @@ Statistics:
 * histogram
 * central tendency and spread of data
 
-## Week 6 - Text analysis
+References:
 
-## Week 7 - Time series
+* First two chapters (i.e. before "3D") of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar 
 
-## Week 8 - 2-Dimensional analysis
+## Week 7 - Text analysis
+
+## Week 8 - Time series
+
+## Week 9 - 2-Dimensional analysis
 
 **Objective**:
 
