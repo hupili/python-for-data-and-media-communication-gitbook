@@ -202,6 +202,11 @@ References:
 
 ## Week 7 - Text analysis
 
+Related cases:
+
+* [Quartz's analysis](https://qz.com/962718/we-analyzed-every-modern-love-column-from-the-past-10-years-heres-what-we-learned-about-love/) of New York Times's column of "Modern Love"
+* Prof. Qian Gang's famous [analysis of texts in political communication](https://www.bloomberg.com/news/articles/2017-07-18/party-of-one-newspaper-mentions-show-xi-s-dominance-of-china).
+
 ## Week 8 - Time series
 
 ## Week 9 - 2-Dimensional analysis
