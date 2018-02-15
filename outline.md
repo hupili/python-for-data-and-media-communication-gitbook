@@ -202,6 +202,11 @@ References:
 
 ## Week 7 - Text analysis
 
+Modules:
+
+* `nltk`
+* 
+
 Related cases:
 
 * [Quartz's analysis](https://qz.com/962718/we-analyzed-every-modern-love-column-from-the-past-10-years-heres-what-we-learned-about-love/) of New York Times's column of "Modern Love"
