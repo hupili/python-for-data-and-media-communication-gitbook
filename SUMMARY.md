@@ -38,4 +38,8 @@
 * [module: csv](module-csv.md)
 * [module: BeautifulSoup](module-beautifulsoup.md)
 * [module: jupyter](module-jupyter.md)
+* [module: pandas](module-pandas.md)
+* [module: seaborn](module-seaborn.md)
+* [module: matplotlib](module-matplotlib.md)
+* [module: lxml](module-lxml.md)
 
