@@ -4,6 +4,7 @@
 
 * [Introduction](README.md)
 * [Course Outline](outline.md)
+* [Dataprep](dataprep.md)
 
 ## Weekly Notes
 
