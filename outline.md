@@ -171,13 +171,6 @@ Further readings:
 
 * Use `beautifulsoup` to [scrape Twitter timeline content](http://www.lyonwj.com/2017/11/12/scraping-russian-twitter-trolls-python-neo4j/) from [Wayback machine](http://archive.org/web/). A good example of investigative journalism, by William Lyon from [neo4j](https://neo4j.com/).
 
--------
-
-Following are TBC topics 
-
--------
-
-
 ## Week 6 - 1-D and 2-D analysis
 
 **Objective**:
@@ -199,6 +192,7 @@ Statistics:
 * variance
 * histogram
 * central tendency and spread of data
+* Scatter plot and correlation
 
 References:
 
@@ -206,40 +200,56 @@ References:
 
 ## Week 7 - Text analysis
 
-Modules:
+Modules & topics:
 
-* `nltk`
-* 
+* `str` - basic string processing
+   * `%s` format string
+   * `''.format()` function
+* (optional) `re`- Regular Expression (regex) is the swiss knife for text pattern matching.
+* `nltk` - contains common routines for text analysis
+* `jieba` - the most widely used Chinese word segmentation package.
+* (optional) `gensim` - topic mining package. It also contains the `Word2Vec` routine.
+* (optional) Sentiment analysis - construct classifier using `sklearn` or use an API like [text-processing](http://text-processing.com/docs/sentiment.html)
 
 Related cases:
 
 * [Quartz's analysis](https://qz.com/962718/we-analyzed-every-modern-love-column-from-the-past-10-years-heres-what-we-learned-about-love/) of New York Times's column of "Modern Love"
 * Prof. Qian Gang's famous [analysis of texts in political communication](https://www.bloomberg.com/news/articles/2017-07-18/party-of-one-newspaper-mentions-show-xi-s-dominance-of-china).
 
+References:
+
+* Construct Naive Bayes based classifier for sentiment analysis. [Read here](https://www.kaggle.com/ngyptr/python-nltk-sentiment-analysis)
+
+-------
+
+Following are TBC topics 
+
+-------
+
+
 ## Week 8 - Time series
-
-## Week 9 - 2-Dimensional analysis
-
-**Objective**:
-
-> * Understand correlation and causality
-> * Can conduct visual \(explorative\) analysis of correlation
-> * Can interpret common statistic quantities
 
 Modules:
 
 * `seaborn`
-* `scipy.statsmodel`
 
 ## Week 9 - High-dimensional analysis
 
 **Objective**:
 
+> * Understand correlation and causality. Can conduct visual \(explorative\) analysis of correlation
+> * Can interpret common statistic quantities
 > * Dimensionality reduction
 
 Challenge:
 
 1. Explore the HK Legco voting records
+
+Modules:
+
+* `sklearn`
+* `seaborn`
+* `scipy.statsmodel`
 
 ## Week 10 - Machine learning: clustering, classification and regression
 
