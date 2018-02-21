@@ -143,6 +143,7 @@ Further reading:
 
 * Study `urllib` as an alternative to `requests`
 * Study Regular Expression and `re` library in Python
+* See how [reproducibility is improved](https://www.nature.com/articles/d41586-018-01322-9) with Jupyter notebook and other tools (not only Python).
 
 
 ## Week 5 - JSON and API
