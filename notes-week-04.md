@@ -94,6 +94,7 @@ import bs4
 import csv
 ```
 * `requests` is a module containing diverse functions relating to the web page.
+
 * `bs4` is the abbreviation of BeautifulSoup4.It is used to analyse web page.
 
 ### Requests + .text
@@ -102,8 +103,11 @@ r = requests.get('http://initiumlab.com/blog/20170329-trump-and-ivanka/'
 r.text
 ```
 It can be wrote in one line.
+
 `r = requests.get('http://initiumlab.com/blog/20170329-trump-and-ivanka/').text`
+
 * Store the web as `r`, `get` means try to get response of that web page.
+
 * `text` means to show the text of the web page.
 
 ### BeautifulSoup
@@ -202,6 +206,7 @@ for myspan in mytr.find_all('span'):
 ```
 
 * Create a new empty list called 'authors'. Then add the information in it.
+
 * `list1.append()`means add the item into the list1.
 
 ```
@@ -211,31 +216,74 @@ article = {
     'date': mydate
 }
 ```
-* `{}` is a dictionary. wichi
+* `{}` is a dictionary.The left of the colon is the key, or name. The right of the colon is the value of the key.
+
+
+### Def to scraper more articles                                                                       
+```
+def scrape_one_page(url):
+    r = requests.get(url).text
+    mypage = BeautifulSoup(r,'lxml')
+    mytitle = mypage.find('h1').text.strip()
+    mydate = mypage.find('time').text.strip()
+    mytr = mypage.find('tr', attrs={'class': 'post__authors'})
+    authors = []
+    for myspan in mytr.find('span'):
+        authors.append(myspan)
+    article = {
+        'title': mytitle,
+        'authors': authors,
+        'date': mydate
+    }
+    return article
+```
+* Create a function for future.
+
+* Following is an example of the function`scrape_one_page` 's usage:
+`print(scrape_one_page('http://initiumlab.com/blog/20170401-data-news/'))`
+
+
+### "For" loop to scraper more articles
+```
+urls = [
+    'http://initiumlab.com/blog/20170407-open-data-hk/',
+    'http://initiumlab.com/blog/20170401-data-news/',
+    'http://initiumlab.com/blog/20170329-trump-and-ivanka/'
+]
+
+articles= []
+for url in urls:
+    article= scrape_one_page(url)
+    articles.append(article)
+print(articles)
+```
+* Input a list of urls. Create an empty list called articles. For every urls' meaningful information, use the `scrape_one_page` function to extract.Then add those into the articles.
+
+
+### Write .csv
+```
+with open('eggs.csv', 'w') as f:
+    writer= csv.writer(f)
+    for article in articles:
+        writer.writerow([
+            article['authors'],
+            article['date'],
+            article['title']
+        ])
+```
+* We can save those infornation with in different ways. `csv` is one of the types which can be easily opened and read.
+
+* `with open ('eggs.cdv','w') as f:` means create a file called 'eggs.csv'. 'w' is one of the way to open it, which is usually in default. 'as f' means that when we write f, it equals to open the file.
+
+* `csv.writer` means edit a csv file.
+
+* `writer.writerow([])` means add information in row. It can be wrote like this `s.writerow(['Spam', '1', '2', '3'])`
 
 
 
 
 
 
-### "For" loop to scraper articles.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##### Requests
-
-### da f
 
 
