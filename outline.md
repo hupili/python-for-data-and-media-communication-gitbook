@@ -161,7 +161,7 @@ Modules:
 Challenges:
 
 * Taiwan had an earthquake in early Feb. Let's discuss this issue:
-   * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/)
+   * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/). Checkout the [API description](https://earthquake.usgs.gov/fdsnws/event/1/). The `count` and `query` API are useful.
    * Search on Twitter and collect user's discussions about this topic. See if there is any findings. You can approach from the human interface [here](https://twitter.com/search?q=%23%E5%8F%B0%E6%B9%BE%E5%9C%B0%E9%9C%87) (hard mode) or use [python-twitter](https://github.com/bear/python-twitter) module (need to register developer and obtain API key).
 * Retrieve and analyse the recent movie. Douban's API will be helpful here.
    * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
