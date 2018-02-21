@@ -4,7 +4,6 @@
 
 * [Introduction](README.md)
 * [Course Outline](outline.md)
-* [Dataprep](dataprep.md)
 
 ## Weekly Notes
 
@@ -26,10 +25,11 @@
 * [Shell](shell.md)
 * [Python Language Basics](second-question.md)
 * [Python 2 v.s. Python 3](python-2-vs-python-3.md)
-* [Other Frequently Asked Questions](frequently-asked-questions.md)
+* [Dataprep](dataprep.md)
 * [Pro Tips](pro-tips.md)
 * [Resources](reading-materials.md)
 * [Guide for contributor](guide-for-contributor.md)
+* [Other Frequently Asked Questions](frequently-asked-questions.md)
 
 ## Python Modules FAQs
 
