@@ -33,3 +33,9 @@ This extension allows you to quickly run your code within VSCode by hitting `con
 ![](/assets/Screen Shot 2018-02-12 at 11.01.18 AM.png)
 
 This is equivalent by executing your code from the Terminal.
+
+## Chrome
+
+The `JSONView` extension can help to structure and highlight JSON. In this way, it is easier to read the JSON response from common APIs.
+
+![](/assets/Screen Shot 2018-02-21 at 9.22.17 PM.png)
