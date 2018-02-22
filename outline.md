@@ -197,6 +197,7 @@ Statistics:
 Datasets to work on:
 
 * [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) -- The 200,000 deleted Twitter messages posted by Russian's troll accounts. Around 50M, in CSV format.
+* [Hillary Clinton email archive from WikiLeaks](https://www.wikileaks.org/clinton-emails/emailid/20000) There are the plain text and parsed data but you may need to run a scraper to get the data first.
 
 References:
 
