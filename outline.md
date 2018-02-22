@@ -194,6 +194,10 @@ Statistics:
 * central tendency and spread of data
 * Scatter plot and correlation
 
+Datasets to work on:
+
+* [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) -- The 200,000 deleted Twitter messages posted by Russian's troll accounts. Around 50M, in CSV format.
+
 References:
 
 * First two chapters (i.e. before "3D") of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar 
