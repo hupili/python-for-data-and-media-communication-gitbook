@@ -1,3 +1,7 @@
+## Class references
+
+* [Sample GitHub repo for homeworks](https://github.com/hupilidemo/hkbu-big-data-media)
+
 ## Beginner exercises
 
 DataCamp provides a good set of multiple choice questions to get you familiar with the language: [Link](https://challenges.datacamp.com/practice/107)
