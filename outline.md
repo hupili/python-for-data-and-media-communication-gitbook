@@ -171,6 +171,8 @@ Further readings:
 
 * Use `beautifulsoup` to [scrape Twitter timeline content](http://www.lyonwj.com/2017/11/12/scraping-russian-twitter-trolls-python-neo4j/) from [Wayback machine](http://archive.org/web/). A good example of investigative journalism, by William Lyon from [neo4j](https://neo4j.com/).
 
+> Post-class note: Week 5 was spent to strengthen the knowledge of scraper. This section is left for self-study. It is not dependency for future weeks. One can pick up in need.
+
 ## Week 6 - 1-D and 2-D analysis
 
 **Objective**:
@@ -201,7 +203,11 @@ Datasets to work on:
 
 References:
 
-* First two chapters (i.e. before "3D") of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar 
+* First two chapters (i.e. before "3D") of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
+
+Additional notes:
+
+* You need to finish [Dataprep](dataprep.md) before analysis. That is, we start with structured data. Preparing the structured and cleaned data has no common schema. We have pointers in [Dataprep](dataprep.md) for your own reading.
 
 ## Week 7 - Text analysis
 
