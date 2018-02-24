@@ -29,6 +29,7 @@
 * [Pro Tips](pro-tips.md)
 * [Resources](reading-materials.md)
 * [Guide for contributor](guide-for-contributor.md)
+* [GitHub](github.md)
 * [Other Frequently Asked Questions](frequently-asked-questions.md)
 
 ## Python Modules FAQs
@@ -43,5 +44,4 @@
 * [module: matplotlib](module-matplotlib.md)
 * [module: lxml](module-lxml.md)
 * [module: python-twitter](module-python-twitter.md)
-
 
