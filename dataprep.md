@@ -7,3 +7,5 @@ Dataprep generally involves data cleaning, normalisation and joining. From a DB 
 * Google Cloud Dataprep, released in 2017: https://cloud.google.com/dataprep/
 * Tableau, in its recent "BI trends 2018", implied as 11th trend that it would enrich/ extend Tableau with Dataprep capability: https://www.tableau.com/reports/business-intelligence-trends
 * Open Refine, a classical data cleaning tool, can well address part of Dataprep problems: http://openrefine.org/
+
+The [Quartz bad data guide](https://github.com/Quartz/bad-data-guide) is a well developed guide for people who starts to handle data sourcing and cleaning.
