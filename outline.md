@@ -247,6 +247,9 @@ Modules:
    * zoom in/ out:  `.resample`, `.aggregate`
 * `seaborn`
 
+References:
+
+* timestamp usually come in unit of milliseconds (1/1000) of a second. [An example](https://github.com/dmep2017/dmep2017.github.io/blob/master/d3-map-sichuan-earthquate/Data%20Process.ipynb) to parse this timestamp format into `datetime` format.
 
 -------
 
