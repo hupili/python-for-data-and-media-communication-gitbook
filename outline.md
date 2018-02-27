@@ -240,8 +240,18 @@ Following are TBC topics
 
 ## Week 8 - Time series
 
+> * Understand the principle of timestamp and datetime format
+> * Master basic computation on datetime values
+> * Understand periodical analysis (daily, weekly, monthly, seasonal, etc)
+> * Can handle timezone conversion
+
 Modules:
 
+* `datetime`
+* `dtparser`
+* `pandas`
+   * basic visualisation `.plot`
+   * zoom in/ out:  `.resample`, `.aggregate`
 * `seaborn`
 
 ## Week 9 - High-dimensional analysis
