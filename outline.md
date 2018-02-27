@@ -231,13 +231,6 @@ References:
 
 * Construct Naive Bayes based classifier for sentiment analysis. [Read here](https://www.kaggle.com/ngyptr/python-nltk-sentiment-analysis)
 
--------
-
-Following are TBC topics 
-
--------
-
-
 ## Week 8 - Time series
 
 > * Understand the principle of timestamp and datetime format
@@ -253,6 +246,13 @@ Modules:
    * basic visualisation `.plot`
    * zoom in/ out:  `.resample`, `.aggregate`
 * `seaborn`
+
+
+-------
+
+Following are TBC topics 
+
+-------
 
 ## Week 9 - High-dimensional analysis
 
