@@ -40,3 +40,28 @@ Shell is a program which is used for controlling and running programs.
 
 Without the extension name, Visual Studio Code can not highlight the code:![](/assets/no py..jpeg)After adding to the extension name, the interface become normal:![](/assets/with py..jpeg)
 
+# Check modules before enter PYVENV VENV
+
+PYVENV means setting up a new VENV environment, and it probably erases some modules you installed previously.
+
+So, if you have already entered ‘pyvenv venv’ before and deactivate, next time you use the same computer, you could enter ‘source venv/bin/activate’ to get into VENV environment, and ‘deactivate’ to exit VENV environment.
+
+In the lab, you probably will change the seat and computer, before you enter the ‘VENV’ and use the Jupyter, you could check in the terminal to check whether the module is on the computer:
+
+![](/assets/1.png)
+
+and to check this module again:
+
+![](/assets/2.png)
+
+It means you successfully installed this module.
+This situation is same to those modules: ‘requests’, ‘bs4’, etc.
+
+# I already install some module before executing the Jupyter, why is this happen?
+
+![](/assets/3.png)
+
+Maybe you enter ’pyvenv venv’ again before you enter ‘jupyter notebook’, try to enter the ‘venv’ environment by typing ‘source venv/bin/activate’.
+
+If it does not work, you could set up the ‘venv’ environment again by typing ’pyvenv venv’. Then install all the modules you will use before enter the ‘jupyter notebook’. Once you finish your work, use ‘deactivate’ to exit ‘venv’ environment. Do remember that you should use ‘source venv/bin/activate’ next time, not ‘pyvenv venv’.
+
