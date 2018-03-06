@@ -22,8 +22,21 @@
 
 > Example: Today, We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
 
-**Step1: read csv file**
+**Step1: Save csv file**
+* Here is the link of csv life and the csv needs to be downloaded here.
 
+  https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas
+  ![](/assets/Screen Shot 2018-03-06 at 11.58.50 PM.png)
+  Click "raw" on the right upper corner.
+  ![](/assets/Screen Shot 2018-03-07 at 12.04.02 AM.png)
+  You can see the raw csv file as below. 
+  ![](/assets/Screen Shot 2018-03-07 at 12.05.46 AM.png)   
+  Click right and choose "save as"
+  ![](/assets/Screen Shot 2018-03-07 at 12.07.17 AM.png)
+  Then the csv file can be saved as csv(comma-separated values).
+  ![](/assets/Screen Shot 2018-03-07 at 12.07.40 AM.png)
+  
+** Step2: Read csv file**
 * Put csv file into the same folder with venv.
 * `import pandas`
 * Read csv file 
@@ -40,7 +53,7 @@
   ** Notes:**
 * `df`is short for "dataframe", is used in as return value in pandas.
 
-**Step2: Select data from csv**
+**Step3: Select data from csv**
 
 * If you want to the first 10 data from the csv file. then you can use
 
@@ -60,7 +73,7 @@
   Then the output will be as below \(the picture do not show all the locations due to the limited space\):  
   ![](/assets/Screen Shot 2018-03-05 at 11.01.01 PM.png)
 
-  ** Step3: Analysis just one dimension**
+** Step4: Analysis just one dimension**
 
 * One dimension is one column in a form.
 * You can use   
@@ -88,7 +101,7 @@
   `df['likes'].hist(bins=20)`  
   ![](/assets/Screen Shot 2018-03-06 at 12.11.42 AM.png)
 
-**Step3: How to describe distribution **
+**Step5: How to describe distribution **
 
 * After you get the distribution, you can do some analysis. Compare the distribution with mean, media numbers.
  ![](/assets/Screen Shot 2018-03-06 at 12.29.17 AM.png)
