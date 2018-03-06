@@ -231,7 +231,7 @@ random.shuffle(students)
 print (students)
 ```
 
-it will print  
+it will print
 
 ```
 [1, 2, 3, 4, 5, 6]
