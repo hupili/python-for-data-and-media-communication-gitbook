@@ -27,6 +27,7 @@
 * Here is the link of csv life and the csv needs to be downloaded here.
 
   https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas
+  
   ![](/assets/Screen Shot 2018-03-06 at 11.58.50 PM.png)
   
 * Click "raw" on the right upper corner.
