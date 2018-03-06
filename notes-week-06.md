@@ -23,17 +23,22 @@
 > Example: Today, We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
 
 **Step1: Save csv file**
+
 * Here is the link of csv life and the csv needs to be downloaded here.
 
   https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas
   ![](/assets/Screen Shot 2018-03-06 at 11.58.50 PM.png)
-  Click "raw" on the right upper corner.
+  
+* Click "raw" on the right upper corner.
   ![](/assets/Screen Shot 2018-03-07 at 12.04.02 AM.png)
-  You can see the raw csv file as below. 
+  
+* You can see the raw csv file as below. 
   ![](/assets/Screen Shot 2018-03-07 at 12.05.46 AM.png)   
-  Click right and choose "save as"
+  
+* Click right and choose "save as"
   ![](/assets/Screen Shot 2018-03-07 at 12.07.17 AM.png)
-  Then the csv file can be saved as csv(comma-separated values).
+  
+* Then the csv file can be saved as csv(comma-separated values).
   ![](/assets/Screen Shot 2018-03-07 at 12.07.40 AM.png)
   
 ** Step2: Read csv file**
