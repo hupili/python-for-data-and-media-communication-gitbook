@@ -120,7 +120,31 @@ dictionary2={'title':['NY','HK','TK'],'rank':[1,2,3]}
 
 ### Scrape:IMDB
 
-![](/assets/Screen Shot 2018-03-07 at 9.42.13 pm.png)
+>![](/assets/Screen Shot 2018-03-07 at 10.01.03 pm.png)
+
+Line 1-4 to import the module
+>![](/assets/Screen Shot 2018-03-07 at 10.03.09 pm.png)
+
+Line 5-7 to get the text.
+`request.get` means get response of the website.
+`BeautifulSoup` is a function to understand to HTML content by the tool `html.parser`. 
+
+>![](/assets/Screen Shot 2018-03-07 at 10.06.57 pm.png)
+
+Line 9-10 is to create 2 empty lists.
+>![](/assets/Screen Shot 2018-03-07 at 10.10.49 pm.png)
+![](/assets/Screen Shot 2018-03-07 at 10.07.26 pm.png)
+
+This part is to find the titles of the movie.
+First, we locate the titles by `find_all('h3',attrs = {'class':'lister-item-header')`.
+Then 
+
+```
+for title in titles:
+  name = title.find('a')
+  list_name.append(name.text)
+```
+
 
 ### Contacts
 
