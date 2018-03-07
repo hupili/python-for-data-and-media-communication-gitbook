@@ -144,6 +144,8 @@ for title in titles:
   name = title.find('a')
   list_name.append(name.text)
 ```
+In this part, you can use every word you like to substitute 'title', like `for x in titles`.It is OK. It means 
+
 
 
 ### Contacts
