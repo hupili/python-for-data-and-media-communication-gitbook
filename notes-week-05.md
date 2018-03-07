@@ -91,7 +91,7 @@ There are 3 items, or 3 lists, in the list. So there will be 3 rows. Every list 
 
 
 # List and dictionary
-Some functions may require you input a list. Others may require you input a dictionary.
+
 
 ```
 list1=[1,2,3,4]
@@ -101,20 +101,32 @@ b=list1[1]
 c=dictionary1['title']
 ```
 ![](/assets/Screen Shot 2018-03-07 at 9.37.08 pm.png)
+
+* Some functions may require you input a list. Others may require you input a dictionary.
+
 * Every dictionary has its key and value. The keys of dictionary1 are 'title' and 'date'. The value of dictionary1 are 'teacher' and '2018/2/2'. Every key has its own value. They are matched. 
 
 
 ```
-list2=[[(40.712775,-74.005973),'NY'],[(49.282729,-123.120738),'Vancouver']]
-dictionary2={ }
+list2=[[(40.7,-74.0),'NY'],[(49.2,-123.1),'Vancouver']]
+list3=[{'code':0001,'price':11,'P/E':21},
+       {'code':0002,'price':15,'P/E':3},
+       {'code':0003,'price':13,'P/E':50},
+]
+dictionary2={'title':['NY','HK','TK'],'rank':[1,2,3]}
 ```
+* list and dictionary can be very complete.Please understand the structure above.
+
+
+### Scrape:IMDB
 
 ![](/assets/Screen Shot 2018-03-07 at 9.42.13 pm.png)
 
+### Contacts
 
 
-
-### da da
+### Contacts2
+da
 
 
 
