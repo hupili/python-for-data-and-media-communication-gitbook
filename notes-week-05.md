@@ -90,7 +90,8 @@ myWriter.writerows([['spam','1'],['2','3'],['OK'])
 There are 3 items, or 3 lists, in the list. So there will be 3 rows. Every list is a row. 
 
 
-### list and dictionary
+# List and dictionary
+Some functions may require you input a list. Others may require you input a dictionary.
 
 ```
 list1=[1,2,3,4]
@@ -99,10 +100,16 @@ a=list1[0]
 b=list1[1]
 c=dictionary1['title']
 ```
+![](/assets/Screen Shot 2018-03-07 at 9.37.08 pm.png)
+* Every dictionary has its key and value. The keys of dictionary1 are 'title' and 'date'. The value of dictionary1 are 'teacher' and '2018/2/2'. Every key has its own value. They are matched. 
 
-The keys of dictionary1 are 'title' and 'date'. The value of dictionary1 are 'teacher' and '2018/2/2'. Every key has its own value. They are matched. 
 
+```
+list2=[[(40.712775,-74.005973),'NY'],[(49.282729,-123.120738),'Vancouver']]
+dictionary2={ }
+```
 
+![](/assets/Screen Shot 2018-03-07 at 9.42.13 pm.png)
 
 
 
