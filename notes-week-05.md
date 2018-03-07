@@ -75,28 +75,32 @@ with open('NAME.csv','w') as f:
 ```
 ![](/assets/Screen Shot 2018-03-07 at 8.21.08 pm.png)
 
-* writerows example 1:
+* Writerows example 1:
 ```
 myWriter.writerows(['spam','1','2','3'])
 ```
 ![](/assets/Screen Shot 2018-03-07 at 8.36.30 pm.png)
 `writerows()` means write all the rows in one time. It writes every item of the list into a row. Every item has a row. As 'spam' has 4 characters, or 4 strings, it can't understand the word. Then it is put in 4 columns.
 
-`writerows()` means write all the rows in one time.
-* example 2:
+* Writerow example 2:
+```
+myWriter.writerows([['spam','1'],['2','3'],['OK']) 
+```
+![](/assets/Screen Shot 2018-03-07 at 9.26.19 pm.png)
+There are 3 items, or 3 lists, in the list. So there will be 3 rows. Every list is a row. 
+
+
+### list and dictionary
 
 ```
-myWriter.writerows([['spam','1'],['2','3']]) 
-```  
+list1=[1,2,3,4]
+dictionary1={'title':'teacher', 'date':'2018/2/2'}
+a=list1[0]
+b=list1[1]
+c=dictionary1['title']
+```
 
-![](/assets/Screen Shot 2018-03-07 at 8.36.30 pm.png)
-
-\
-
-
-
-
-
+The keys of dictionary1 are 'title' and 'date'. The value of dictionary1 are 'teacher' and '2018/2/2'. Every key has its own value. They are matched. 
 
 
 
