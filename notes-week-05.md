@@ -18,6 +18,7 @@
     step 3 : `print(a)`then you will find that the a is not defined, thus there is an error.
 
 # csv
+### Introduction
 csv is an inside function in python, which is easy to read and write, You don't need to pip install csv in terminal. Just import csv before using it.
 * example:
 ```
@@ -40,31 +41,56 @@ The output will be a NAME.csv, whose contents are following:
 
 * `newline=' '` is one of the certain structure, which is used to avoid blank line.
 
-`with open(...) as f` means you give f a definition, which stands for opening the file. In the example,`f` can be changed by any words you like. It just means you rename the step of the opening.
 * `csv.writer()` means to write something in the NAME.csv file.
 
 * `writerow()` means wirte one row and then another row. The input should be list type.
 
-* example 1：
 
-  `myWrite.writerow("hello")` 
-  ![](/assets/Screen Shot 2018-03-07 at 8.18.06 pm.png)
-  
-  If you want to write "hello" in A1 in the excel table, you should code `myWrite.writerow(["hello"])`.
-  ![](/assets/Screen Shot 2018-03-07 at 8.19.02 pm.png)
+### Writerow vs Writerows 
 
-* example 2:
+##### Exercise: write "hello" in A1 in the excel table 
+
+##### Try: fail 
 ```
-  import csv
+import csv
 with open('NAME.csv','w') as f:   
 	myWriter=csv.writer(f)
+	myWriter.writerows('hello')
+``` 
+![](/assets/Screen Shot 2018-03-07 at 8.18.06 pm.png)
+
+##### Try: succeed
+
+ you should put it in a list.Every item of the list will be write in a cell of the table.
+```
+	myWrite.writerow(['hello'])
+```
+![](/assets/Screen Shot 2018-03-07 at 8.19.02 pm.png)
+
+##### Write rows
+
+* If you want to write 2 rows:
+```
 	myWriter.writerow(['spam','1','2','3'])
 	myWriter.writerow(['spam2','11','22','33'])
 ```
 ![](/assets/Screen Shot 2018-03-07 at 8.21.08 pm.png)
-  
 
-`writerows()` means write all the rows in one time. 
+* example 1:
+```
+myWriter.writerows(['spam','1','2','3'])
+```
+![](/assets/Screen Shot 2018-03-07 at 8.36.30 pm.png)
+`writerows()` means write all the rows in one time.
+
+* example 2:
+
+```
+myWriter.writerows([['spam','1'],['2','3']]) 
+```  
+
+![](/assets/Screen Shot 2018-03-07 at 8.36.30 pm.png)
+It writes every item of the list into a row. Every item has a row. As 'spam' has 4 characters, or 4 strings, it can't understand the word. Then it is put in 4 columns.
 
 
 
@@ -81,6 +107,12 @@ with open('NAME.csv','w') as f:
 
 
 ### da da
+
+
+
+
+
+
 
 
 
