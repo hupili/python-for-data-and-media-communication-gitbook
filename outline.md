@@ -198,7 +198,7 @@ Statistics:
 
 Datasets to work on:
 
-* [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group 2
+* [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group 1
 
 References:
 
@@ -228,7 +228,7 @@ Modules & topics:
 * (optional) `re`- Regular Expression (regex) is the swiss knife for text pattern matching.
 * (optional) `nltk` - contains common routines for text analysis
 * (optional) `gensim` - topic mining package. It also contains the `Word2Vec` routine.
-* (optional) Sentiment analysis - construct classifier using `sklearn` or use an API like [text-processing](http://text-processing.com/docs/sentiment.html). 
+* (optional) Sentiment analysis - construct classifier using `sklearn` or use an API like [text-processing](http://text-processing.com/docs/sentiment.html). `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
 
 Related cases:
 
