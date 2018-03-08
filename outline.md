@@ -173,7 +173,7 @@ Further readings:
 
 > Post-class note: Week 5 was spent to strengthen the knowledge of scraper. This section is left for self-study. It is not dependency for future weeks. One can pick up in need.
 
-## Week 6 - 1-D and 2-D analysis
+## Week 6 - Table manipulation and 1-D analysis
 
 **Objective**:
 
@@ -198,8 +198,7 @@ Statistics:
 
 Datasets to work on:
 
-* [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) -- The 200,000 deleted Twitter messages posted by Russian's troll accounts. Around 50M, in CSV format.
-* [Hillary Clinton email archive from WikiLeaks](https://www.wikileaks.org/clinton-emails/emailid/20000) There are the plain text and parsed data but you may need to run a scraper to get the data first.
+* [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group 2
 
 References:
 
@@ -211,16 +210,25 @@ Additional notes:
 
 ## Week 7 - Text analysis
 
+**Objective**:
+
+> * Further strengthen the proficiency of pandas: DataFrame and Series
+> * Learn to plot and adjust charts with `matplotlib`
+> * Master basic string operations
+> * Understand some major text mining models and be able to apply algorithm from 3rd party libraries.
+
 Modules & topics:
 
 * `str` - basic string processing
+   * `.split()`, `in`, `.find()`
    * `%s` format string
    * `''.format()` function
-* (optional) `re`- Regular Expression (regex) is the swiss knife for text pattern matching.
-* `nltk` - contains common routines for text analysis
+* `collections.Counter` for word frequency calculation
 * `jieba` - the most widely used Chinese word segmentation package.
+* (optional) `re`- Regular Expression (regex) is the swiss knife for text pattern matching.
+* (optional) `nltk` - contains common routines for text analysis
 * (optional) `gensim` - topic mining package. It also contains the `Word2Vec` routine.
-* (optional) Sentiment analysis - construct classifier using `sklearn` or use an API like [text-processing](http://text-processing.com/docs/sentiment.html)
+* (optional) Sentiment analysis - construct classifier using `sklearn` or use an API like [text-processing](http://text-processing.com/docs/sentiment.html). 
 
 Related cases:
 
@@ -230,6 +238,12 @@ Related cases:
 References:
 
 * Construct Naive Bayes based classifier for sentiment analysis. [Read here](https://www.kaggle.com/ngyptr/python-nltk-sentiment-analysis)
+
+Datasets to work on:
+
+* [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) -- The 200,000 deleted Twitter messages posted by Russian's troll accounts. Around 50M, in CSV format.
+* [Hillary Clinton email archive from WikiLeaks](https://www.wikileaks.org/clinton-emails/emailid/20000) There are the plain text and parsed data but you may need to run a scraper to get the data first.
+
 
 ## Week 8 - Time series
 
