@@ -116,39 +116,100 @@ list3=[{'code':0001,'price':11,'P/E':21},
 dictionary2={'title':['NY','HK','TK'],'rank':[1,2,3]}
 ```
 * list and dictionary can be very complete.Please understand the structure above.
+### Scrape:IMDB (version1)
+
+* The page's HTML is following. There are many 'contents'
+>![](/assets/Screen Shot 2018-03-09 at 4.30.50 pm.png)
+![](/assets/Screen Shot 2018-03-09 at 4.29.03 pm.png)
+
+```
+r='http://www.imdb.com/list/ls058982125/'
+mypage=bs4.BeautifulSoup(r.text)
+mymovies=mypage.find_all('div',attrs = {'class':'lister-item-content'})
+```
+* So every item in 'mymovies' is a movie, which contains header and rating.
+
+>![](/assets/Screen Shot 2018-03-09 at 4.24.41 pm.png)
+
+* So every item in 'mymovies' is a movie, which contains header and rating.
+
+ 
+>![](/assets/Screen Shot 2018-03-09 at 4.25.40 pm.png)
+![](/assets/Screen Shot 2018-03-09 at 4.18.42 pm.png)
 
 
-### Scrape:IMDB
+  
+
+
+
+
+
+
+
+### Scrape:IMDB (version2)
 
 >![](/assets/Screen Shot 2018-03-07 at 10.01.03 pm.png)
 
-Line 1-4 to import the module
+* Line 1-4 to import the module
+
 >![](/assets/Screen Shot 2018-03-07 at 10.03.09 pm.png)
 
-Line 5-7 to get the text.
+* Line 5-7 to get the text.
 `request.get` means get response of the website.
 `BeautifulSoup` is a function to understand to HTML content by the tool `html.parser`. 
 
 >![](/assets/Screen Shot 2018-03-07 at 10.06.57 pm.png)
 
-Line 9-10 is to create 2 empty lists.
+* Line 9-10 is to create 2 empty lists, which is a preparation step for Line16.
+
 >![](/assets/Screen Shot 2018-03-07 at 10.10.49 pm.png)
 ![](/assets/Screen Shot 2018-03-07 at 10.07.26 pm.png)
 
-This part is to find the titles of the movie.
+* This part is to find the titles of the movie.
 First, we locate the titles by `find_all('h3',attrs = {'class':'lister-item-header')`.
-Then 
 
+* If we don't use for loop, then will only find one 'a' tag, like the following picture.
+![](/assets/Screen Shot 2018-03-09 at 4.03.04 pm.png)
+
+* So we need a for loop: 
 ```
 for title in titles:
   name = title.find('a')
   list_name.append(name.text)
 ```
-In this part, you can use every word you like to substitute 'title', like `for x in titles`.It is OK. It means 
+* In this part, you can use every word you like to substitute 'title', like `for x in titles`. It is OK, as long as it is easy to understand. It means for every item in the 'titles',which we find in the last step, find 'a' tag ,and assign it to name.
+
+* `append` means add something to a list. Every time you find an 'a' tag, define it as 'name'.Then add its text to the list 'list_name'. For loop is to apply this into every item in the 'titles'.
+
+>![](/assets/Screen Shot 2018-03-09 at 4.08.46 pm.png)
+![](/assets/Screen Shot 2018-03-09 at 3.58.13 pm.png)
+
+* Line18-Line21 are the same as the previous part.
+
+>![](/assets/Screen Shot 2018-03-09 at 4.11.59 pm.png)
+
+* 
+```
+with open("movie.csv",'w') as f:
+    writer = csv.writer(f)    
+```
+It means create a csv file called movie.csv.
+* `len` means the length of the list.
+For every items in the list, write the content in the format like the following:
+```
+writer.writerow([list_name[i],list_score[i]])
+```
+Every item in 'list_name' matches every item in 'list_score'.
+
+
+
+
 
 
 
 ### Contacts
+
+
 
 
 ### Contacts2
@@ -156,6 +217,21 @@ da
 
 
 
+# Submit homework on Github
+* Register account on https://www.github.com
+
+* Click the '+' to create a new repo.
+![](/assets/Screen Shot 2018-03-09 at 3.38.06 pm.png) 
+
+
+* Remember to create a 'readme' text by ticking the box in the picture.
+![](/assets/Screen Shot 2018-03-09 at 3.37.51 pm.png) 
+
+* Create folder name homework2 in your desktop, which contains your homework 'csv' and 'py' file, and drag your the folder into the window.
+![](/assets/Screen Shot 2018-03-09 at 3.43.26 pm.png)
+![](/assets/Screen Shot 2018-03-09 at 3.43.48 pm.png)
+
+* Create a file at 'homework2/README.md' to briefly explain the dataset.
 
 
 
