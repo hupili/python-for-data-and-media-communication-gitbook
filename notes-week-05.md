@@ -119,31 +119,29 @@ dictionary2={'title':['NY','HK','TK'],'rank':[1,2,3]}
 ### Scrape:IMDB (version1)
 
 * The page's HTML is following. There are many 'contents'
+
 >![](/assets/Screen Shot 2018-03-09 at 4.30.50 pm.png)
 ![](/assets/Screen Shot 2018-03-09 at 4.29.03 pm.png)
 
-```
+* ```
 r='http://www.imdb.com/list/ls058982125/'
 mypage=bs4.BeautifulSoup(r.text)
 mymovies=mypage.find_all('div',attrs = {'class':'lister-item-content'})
 ```
-* So every item in 'mymovies' is a movie, which contains header and rating.
+Locate the content and name it as 'mymovies'.
 
 >![](/assets/Screen Shot 2018-03-09 at 4.24.41 pm.png)
+![](/assets/Screen Shot 2018-03-09 at 4.25.40 pm.png)
 
-* So every item in 'mymovies' is a movie, which contains header and rating.
+* So every item in 'mymovies' is a movie, which contains its header and rating like following. We need to find the information we want:
 
+>![](/assets/Screen Shot 2018-03-09 at 4.18.42 pm.png)
+
+* Next step is to have add these information in to the list.
+* Create an empty list 'movie' in the former step 54. Then add `movie.append(mytitle,myrating)`
+in the for loop, which means we add every movie's information into the list.
  
->![](/assets/Screen Shot 2018-03-09 at 4.25.40 pm.png)
-![](/assets/Screen Shot 2018-03-09 at 4.18.42 pm.png)
-
-
-  
-
-
-
-
-
+![](/assets/Screen Shot 2018-03-09 at 4.40.40 pm.png)
 
 
 ### Scrape:IMDB (version2)
@@ -189,6 +187,7 @@ for title in titles:
 >![](/assets/Screen Shot 2018-03-09 at 4.11.59 pm.png)
 
 * 
+
 ```
 with open("movie.csv",'w') as f:
     writer = csv.writer(f)    
@@ -200,20 +199,6 @@ For every items in the list, write the content in the format like the following:
 writer.writerow([list_name[i],list_score[i]])
 ```
 Every item in 'list_name' matches every item in 'list_score'.
-
-
-
-
-
-
-
-### Contacts
-
-
-
-
-### Contacts2
-da
 
 
 
