@@ -286,8 +286,14 @@ Challenge:
 Modules:
 
 * `sklearn`
+   * `decomposition.PCA`
 * `seaborn`
-* `scipy.statsmodel`
+* (optional) `scipy.statsmodel`
+
+References:
+
+* [HK Legco 2012 - 2016 dataset](https://github.com/hupili/hhba2016-hk-legco-dataset-2012-2016) from Initium Media, 2016
+* [HK Legco voting analysis](https://github.com/hupili/legcohk/blob/master/LegCoHK.ipynb) with PCA, an early version, 2014.
 
 ## Week 10 - Machine learning: clustering, classification and regression
 
