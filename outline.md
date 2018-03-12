@@ -42,7 +42,7 @@ References:
 Python language introduction:
 
 * Variables and assignment
-* Basic data types: int, float, str
+* Basic data types: `int`, `float`, `str`, `bool`
 * Arithmetic:
   * `+`, `-`, `*`, `/`, `//`, `%`, `**`
   * `math` , `numpy` \(may need `pip`\)
@@ -76,6 +76,8 @@ References:
 Python language:
 
 * `help`
+* `bool` and comparisions
+   * `str` comparison and `int` comparison
 * Composite data types: `list` `[]`, `dict` `{}`
 * Control flow:
   * `for`, `while`
@@ -193,6 +195,7 @@ Statistics:
 * min, max
 * variance
 * histogram
+* sort
 * central tendency and spread of data
 * Scatter plot and correlation
 
