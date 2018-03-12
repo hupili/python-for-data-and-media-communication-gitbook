@@ -40,3 +40,9 @@ jupyter notebook
 
 By default the notebook will be available at [http://localhost:8888/tree](http://localhost:8888/tree)
 
+## Runtime troubleshooting guide
+
+* Rerun all the cells
+* Restart the kernel
+* Clear the output cells
+
