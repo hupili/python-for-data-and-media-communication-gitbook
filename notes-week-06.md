@@ -6,6 +6,7 @@
 
 * Before learning, we will use jupyter notebook here, please enter venv environment first and enter into jupyter notebook.
 * install pandas, seaborn, matplotlib, requests, csv
+
   ```
   pip install pandas
   ```
@@ -26,23 +27,24 @@
 
 * Here is the link of csv life and the csv needs to be downloaded here.
 
-  https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas
-  
+  [https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas)
+
   ![](/assets/Screen Shot 2018-03-06 at 11.58.50 PM.png)
-  
-* Click "raw" on the right upper corner.
+
+* Click "raw" on the right upper corner.  
   ![](/assets/Screen Shot 2018-03-07 at 12.04.02 AM.png)
-  
-* You can see the raw csv file as below. 
-  ![](/assets/Screen Shot 2018-03-07 at 12.05.46 AM.png)   
-  
-* Click right and choose "save as"
+
+* You can see the raw csv file as below.   
+  ![](/assets/Screen Shot 2018-03-07 at 12.05.46 AM.png)
+
+* Click right and choose "save as"  
   ![](/assets/Screen Shot 2018-03-07 at 12.07.17 AM.png)
-  
-* Then the csv file can be saved as csv(comma-separated values).
+
+* Then the csv file can be saved as csv\(comma-separated values\).  
   ![](/assets/Screen Shot 2018-03-07 at 12.07.40 AM.png)
-  
+
 ** Step2: Read csv file**
+
 * Put csv file into the same folder with venv.
 * `import pandas`
 * Read csv file 
@@ -50,13 +52,15 @@
 * The output will be as below:
   ![](/assets/Screen Shot 2018-03-05 at 2.27.28 AM.png)
 * If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
+
   ```
   df = pandas.read_csv('openrice.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
   ```
 
-  then the output will be like this:
-  ![](/assets/Screen Shot 2018-03-05 at 2.38.15 AM.png)
+  then the output will be like this:  
+  ![](/assets/Screen Shot 2018-03-05 at 2.38.15 AM.png)  
   ** Notes:**
+
 * `df`is short for "dataframe", is used in as return value in pandas.
 
 **Step3: Select data from csv**
@@ -67,7 +71,7 @@
   df.head(10)
   ```
 
-  the output will be as blow:
+  the output will be as blow:  
   ![](/assets/Screen Shot 2018-03-05 at 10.49.58 PM.png)
 
 * If you want to select one column. You can use dataframe as a dictionary, use a key to refer to certain value. For example, you want all the restaurant locations.You can type:
@@ -110,8 +114,8 @@
 **Step5: How to describe distribution **
 
 * After you get the distribution, you can do some analysis. Compare the distribution with mean, media numbers.
- ![](/assets/Screen Shot 2018-03-06 at 12.29.17 AM.png)
-* If you need to compare price which is a interval.You need to pay special attention on numbers. Python recognize '$101-200'&lt;'$51-100' because Python only compare the   
+  ![](/assets/Screen Shot 2018-03-06 at 12.29.17 AM.png)
+* If you need to compare price which is a interval.You need to pay special attention on numbers. Python recognize '$101-200'&lt;'$51-100' because Python only compare the  
   numbers in sequence of each interval.
 
   You need to convert each interval string into numbers, which means you need to choose a number to represent each interval to do comparison.  
@@ -137,7 +141,7 @@
     cleaning('$50以下')
   ```
 
- ![](/assets/Screen Shot 2018-03-06 at 12.48.49 AM.png)
+  ![](/assets/Screen Shot 2018-03-06 at 12.48.49 AM.png)
 
 * Then you can use the coding below to transfer intervals into numbers.
 
@@ -160,20 +164,13 @@
   ![](/assets/Screen Shot 2018-03-06 at 1.05.35 AM.png)
 
 * If you want to sort price from high to low.
+
   ```
     df.sort_values(by='price_num', ascending=False)
   ```
 
-  the output will be
+  the output will be  
   ![](/assets/Screen Shot 2018-03-06 at 1.10.13 AM.png)
-
-
-
-
-
-
-
-
 
 
 
