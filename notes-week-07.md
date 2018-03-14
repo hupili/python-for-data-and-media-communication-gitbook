@@ -78,10 +78,51 @@ The parameters can be negative.
 
 * `extend` means extract the items and add those items into the new list.
 
-### Verify every step
-* 
+### Verify every step -splinter python
 
+##### Fail to save content.
+
+![](/assets/Screen Shot 2018-03-14 at 9.34.32 pm.png)
+```
+r=requests.get('XXXXthe website')
+```
+The above step is OK.
+
+>```
+r.text
+open('mypage','w').write(r.text) 
+```
+Then you can find a file.
+![](/assets/Screen Shot 2018-03-14 at 9.38.22 pm.png)
+If you open it, you will find that![](/assets/Screen Shot 2018-03-14 at 9.38.37 pm.png) 
+It is blank, which means the file you save is blank.
+SO try to verify everything step by step.
+
+##### Resolution: splinter
+
+* Splinter is a browser to emulate a real person. So the website won't know whether you are a man or a robot.
+![](/assets/Screen Shot 2018-03-14 at 9.45.48 pm.png)
+
+You can google to learn that. 
+
+
+### Exercise: Tweeter Troll Data 
+
+* Puli's Github 
+https://github.com/hupili/python-for-data-and-media-communication
+
+* Exercise Data:
+https://github.com/hupili/python-for-data-and-media-communication/blob/master/w7-text/Twitter%20Troll%20data%20from%20NBC%20(nltk).ipynb
+
+Research get those deleted data from archive.
+
+![](/assets/Screen Shot 2018-03-14 at 9.52.25 pm.png)
+
+* Create a new   
+   
+     
 ### Pandas plotting
+
 * Please learn to learn from others by google.
 
 * Pandas can be more powerful than excel.First of all,let's start from the excel function.
@@ -98,8 +139,6 @@ The parameters can be negative.
 
 
     
-
-
 
 
 *
