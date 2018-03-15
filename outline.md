@@ -247,7 +247,6 @@ Datasets to work on:
 * [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) -- The 200,000 deleted Twitter messages posted by Russian's troll accounts. Around 50M, in CSV format.
 * [Hillary Clinton email archive from WikiLeaks](https://www.wikileaks.org/clinton-emails/emailid/20000) There are the plain text and parsed data but you may need to run a scraper to get the data first.
 
-
 ## Week 8 - Time series
 
 > * Understand the principle of timestamp and datetime format
@@ -268,13 +267,14 @@ References:
 
 * timestamp usually come in unit of milliseconds (1/1000) of a second. [An example](https://github.com/dmep2017/dmep2017.github.io/blob/master/d3-map-sichuan-earthquate/Data%20Process.ipynb) to parse this timestamp format into `datetime` format.
 
--------
+Datasets:
 
-Following are TBC topics 
+* [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) (used last week)
+* [Twitter Data](https://github.com/kestrel614/HKODD17-Trump/tree/master/data) of the [Donald & Ivanka Trump analysis](https://initiumlab.com/blog/20170329-trump-and-ivanka/) -- reproduce the charts.
 
--------
+## Week 9 - 2D analysis and more on visualisations
 
-## Week 9 - High-dimensional analysis
+## Week 10 - High-dimensional analysis
 
 **Objective**:
 
@@ -298,17 +298,24 @@ References:
 * [HK Legco 2012 - 2016 dataset](https://github.com/hupili/hhba2016-hk-legco-dataset-2012-2016) from Initium Media, 2016
 * [HK Legco voting analysis](https://github.com/hupili/legcohk/blob/master/LegCoHK.ipynb) with PCA, an early version, 2014.
 
-## Week 10 - Machine learning: clustering, classification and regression
-
-**Objective**:
-
-> * \(TODO\)
-
 ## Week 11 - Graph theory and social network analysis
 
 **Objective**:
 
 > * \(TODO\)
+
+-------
+
+Following are TBC topics 
+
+-------
+
+
+## Week 10 - Machine learning: clustering, classification and regression
+
+**Objective**:
+
+> * \(TODO\）
 
 ## Week 12 - Project presentation
 
