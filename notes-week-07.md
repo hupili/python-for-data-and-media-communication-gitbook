@@ -13,7 +13,7 @@ Obviously, they are the same.
 
 * You can also drag the pip file and pip3 file into the Visual Studio Code,after you use `which` to know their location.
 
-### Simple steps to use Jupyter notebook.
+### Simple steps to start Jupyter notebook in terminal.
 
 ##### 4 Steps
 * Step1
@@ -47,8 +47,12 @@ Jupyter notebook
 ![](/assets/Screen Shot 2018-03-14 at 8.59.18 pm.png)
 
 
+### Install modules in jupyter
 
-### For loop.
+* You can just pip install packages in jupyter notebook.
+![](/assets/Screen Shot 2018-03-15 at 6.16.50 pm.png)
+
+### For loop
 
 ##### Range()
 * Function 'Range' has 3 parameters. From XX to XX with the step size XX.  
@@ -82,11 +86,13 @@ The parameters can be negative.
 
 ##### Fail to save content.
 
-![](/assets/Screen Shot 2018-03-14 at 9.34.32 pm.png)
+>![](/assets/Screen Shot 2018-03-14 at 9.34.32 pm.png)
 ```
 r=requests.get('XXXXthe website')
 ```
-The above step is OK.
+
+* The above step is OK.
+
 
 >```
 r.text
@@ -103,7 +109,7 @@ SO try to verify everything step by step.
 * Splinter is a browser to emulate a real person. So the website won't know whether you are a man or a robot.
 ![](/assets/Screen Shot 2018-03-14 at 9.45.48 pm.png)
 
-You can google to learn that. 
+* You can google to learn that. 
 
 
 ### Exercise: Tweeter Troll Data 
@@ -114,13 +120,138 @@ https://github.com/hupili/python-for-data-and-media-communication
 * Exercise Data:
 https://github.com/hupili/python-for-data-and-media-communication/blob/master/w7-text/Twitter%20Troll%20data%20from%20NBC%20(nltk).ipynb
 
-Research get those deleted data from archive.
+* Research get those deleted data from archive.
 
+##### Download the file.
+
+* `Control + right click` the 'save the file(link) as ...'.
 ![](/assets/Screen Shot 2018-03-14 at 9.52.25 pm.png)
 
-* Create a new   
-   
-     
+* Drag that into our working folder or just download into the folder.
+![](/assets/Screen Shot 2018-03-15 at 6.22.23 pm.png)
+
+##### Dataframe
+* 
+```
+import pandas as pd
+df= pd.read_csv('XXXXXXXXXXXXXX.csv')
+```
+![](/assets/Screen Shot 2018-03-15 at 6.24.03 pm.png)
+
+* It can also be opened by 'https://XXXX links'.
+```
+import pandas as pd
+df= pd.read_csv('https://XXXXXXXXXXXXXXXXX')
+```
+
+*  
+```
+df.sample(10)
+```
+![](/assets/Screen Shot 2018-03-15 at 9.35.47 pm.png)
+It means it randomly print 10 samples. It is useful when your dataset is very large, which will be slow to run the code.
+
+* 
+```
+df['user_key'].value_acount()
+```
+![](/assets/Screen Shot 2018-03-15 at 9.38.53 pm.png)
+Count the popular users. They post largest number of messages.
+
+* 
+```
+'a' in 'am'
+```
+![](/assets/Screen Shot 2018-03-15 at 9.49.07 pm.png)
+`in` is to check if it is contained in the text.
+
+* 
+```
+'abc'.find('b')
+```
+![](/assets/Screen Shot 2018-03-15 at 9.55.47 pm.png)
+It shows the index, which starts from 0. You can see from [46], space is also contained. And '-1' means the last one.
+
+##### Apply a function onto every element of the dataframe.
+* 
+```
+df.apply()
+```
+![](/assets/Screen Shot 2018-03-15 at 10.04.07 pm.png)
+![](/assets/Screen Shot 2018-03-15 at 10.10.38 pm.png)
+* `def` is to define a function called check_name, which checks if 'amXXX' in x. If it is true, it will return 'amXXX'.  
+* x is just a variable. 
+* `apply` to make the function work for all the 'text' in the dataframe. In other words, x='text' in the example.
+*  There is an error in the second line. There are some dirty data in 'text'.
+
+##### Convert into str(),lower().
+
+* 
+```
+str(x)
+```
+![](/assets/Screen Shot 2018-03-15 at 10.13.31 pm.png)
+
+* 
+```
+.value_count()
+```
+![](/assets/Screen Shot 2018-03-15 at 10.19.54 pm.png)
+It is to check how many times it appears. And they are the same, which means there are some errors.
+
+* 
+```
+lower()
+upper()
+```
+![](/assets/Screen Shot 2018-03-15 at 9.55.21 pm.png)
+![](/assets/Screen Shot 2018-03-15 at 10.21.29 pm.png)
+
+##### Use the previous step as a filter
+
+* 
+```
+df[df['XXX'] ]
+```
+![](/assets/Screen Shot 2018-03-15 at 10.23.33 pm.png)
+![](/assets/Screen Shot 2018-03-15 at 10.24.01 pm.png)
+
+##### Find the most one retweeted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* 
+```
+import pandas as pd
+df= pd.read_csv('XXXXXXXXXXXXXX.csv')
+```
+![](/assets/Screen Shot 2018-03-15 at 6.24.03 pm.png)
+* It can also be open by the https://XXXX links.
+
+
+* 
+```
+import pandas as pd
+df= pd.read_csv('XXXXXXXXXXXXXX.csv')
+```
+![](/assets/Screen Shot 2018-03-15 at 6.24.03 pm.png)
+
+
+
+
+
 ### Pandas plotting
 
 * Please learn to learn from others by google.
