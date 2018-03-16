@@ -272,9 +272,32 @@ Datasets:
 * [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) (used last week)
 * [Twitter Data](https://github.com/kestrel614/HKODD17-Trump/tree/master/data) of the [Donald & Ivanka Trump analysis](https://initiumlab.com/blog/20170329-trump-and-ivanka/) -- reproduce the charts.
 
-## Week 9 - 2D analysis and more on visualisations
+## Week 9 - Graph theory and social network analysis
 
-## Week 10 - High-dimensional analysis
+**Objective**:
+
+> * Understand the basics of graph theory
+> * Understand most common applications in social network analysis
+> * Can conduct graph analysis and visualisation in `networkx`
+
+Graph metrics and algorithms:
+
+* Shortest path
+* Graph profiling: diameter, degree distribution, clustering coefficient
+* Centrality: degree, PageRank, betweenness, closeness, ...
+* Community detection
+* 
+
+Challenges:
+
+* Generate the [Zachary's Karate Club data](https://en.wikipedia.org/wiki/Zachary%27s_karate_club).
+* [SNAP dataset](http://snap.stanford.edu/)
+* [Cosponsorship Network Data](http://jhfowler.ucsd.edu/cosponsorship.htm)
+
+
+## Week 10 - 2D analysis and more on visualisations
+
+## Week 11 - High-dimensional analysis
 
 **Objective**:
 
@@ -298,11 +321,6 @@ References:
 * [HK Legco 2012 - 2016 dataset](https://github.com/hupili/hhba2016-hk-legco-dataset-2012-2016) from Initium Media, 2016
 * [HK Legco voting analysis](https://github.com/hupili/legcohk/blob/master/LegCoHK.ipynb) with PCA, an early version, 2014.
 
-## Week 11 - Graph theory and social network analysis
-
-**Objective**:
-
-> * \(TODO\)
 
 -------
 
