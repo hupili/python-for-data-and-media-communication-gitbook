@@ -188,7 +188,8 @@
   ![](/assets/Screen Shot 2018-03-15 at 10.04.07 pm.png)  
   ![](/assets/Screen Shot 2018-03-15 at 10.10.38 pm.png)
 
-* `def` is to define a function called check\_name, which checks if 'amXXX' in x. If it is true, it will return 'amXXX'.  
+* `def` is to define a function called check\_name, which checks if 'amXXX' in x. If it is true, it will return 'amXXX'.
+
 * x is just a variable. 
 * `apply` to make the function work for all the 'text' in the dataframe. In other words, x='text' in the example.
 * There is an error in the second line. There are some dirty data in 'text'.
@@ -264,13 +265,11 @@ df['text'].apply[check_names].value_counts()[True]
 
   ![](/assets/Screen Shot 2018-03-16 at 3.25.56 pm.png)
 
-##### Apply the function into all the names. 
+##### Apply the function into all the names.
 
 ##### Try1: Fail
 
-* ```
-  df['user_key']
-  ```![](/assets/Screen Shot 2018-03-16 at 4.06.19 pm.png)
+* `df['user_key']`![](/assets/Screen Shot 2018-03-16 at 4.06.19 pm.png)
 
   ![](/assets/Screen Shot 2018-03-16 at 3.27.10 pm.png)  
   It is a Series.
@@ -281,116 +280,209 @@ df['text'].apply[check_names].value_counts()[True]
 
   ![](/assets/Screen Shot 2018-03-16 at 3.35.18 pm.png)  
   ![](/assets/Screen Shot 2018-03-16 at 3.32.53 pm.png)  
-  The `value_counts` is just to show you how many times they appear. 's_user' is just like a dictionary.
-
+  The `value_counts` is just to show you how many times they appear. 's\_user' is just like a dictionary.
 
 * ```
   s_user.apply(count_retweeted_number)
   ```
 
   ![](/assets/Screen Shot 2018-03-16 at 3.41.17 pm.png)  
-  `apply` is a function which only works for the values.
-  Apply the function into all the 'user_key'. But there is an error. Because we are applying on the values of the 's\__user',  which is obviously integers in \[75\].  So we have to change the name as the value of the Series. Then we can apply to the names.
+  `apply` is a function which only works for the values.  
+  Apply the function into all the 'user\_key'. But there is an error. Because we are applying on the values of the 's\_\_user',  which is obviously integers in \[75\].  So we have to change the name as the value of the Series. Then we can apply to the names.
 
 ##### Try2: change the name as the value of the Series
 
-* 
-```
-s_user.index
-s_user.values
-```
-![](/assets/Screen Shot 2018-03-16 at 3.51.38 pm.png)
-It is to check the index and values. They are correspond to each other.
+* ```
+  s_user.index
+  s_user.values
+  ```
 
-* 
-```
-s_user.to_frame.reset_index()
-```
-![](/assets/Screen Shot 2018-03-16 at 3.59.49 pm.png)
-`to_frame` is to change Series into Dataframe.
-`reset_index` is to add an index. Then the formal index will be change into a value, whose column name is 'index'.
+  ![](/assets/Screen Shot 2018-03-16 at 3.51.38 pm.png)  
+  It is to check the index and values. They are correspond to each other.
 
-* 
-```
-df_user['index'].apply()
-```
-![](/assets/Screen Shot 2018-03-16 at 4.10.23 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 4.06.19 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 4.07.55 pm.png)
-* 
-The error is in the picture below:
-![](/assets/Screen Shot 2018-03-16 at 4.08.44 pm.png)
-In this step, if the answer is false, there will be an error.
+* ```
+  s_user.to_frame.reset_index()
+  ```
+
+  ![](/assets/Screen Shot 2018-03-16 at 3.59.49 pm.png)  
+  `to_frame` is to change Series into Dataframe.  
+  `reset_index` is to add an index. Then the formal index will be change into a value, whose column name is 'index'.
+
+* ```
+  df_user['index'].apply()
+  ```
+
+  ![](/assets/Screen Shot 2018-03-16 at 4.10.23 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 4.06.19 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 4.07.55 pm.png)
+
+* The error is in the picture below:
+  ![](/assets/Screen Shot 2018-03-16 at 4.08.44 pm.png)
+  In this step, if the answer is false, there will be an error.
 
 ##### Try3: succeed
 
 * As we write before:
-```
+
+  ```
   s_user=df['user_key']
   ```
 
   ![](/assets/Screen Shot 2018-03-16 at 3.35.18 pm.png)  
-  ![](/assets/Screen Shot 2018-03-16 at 3.32.53 pm.png)  
-* 
-```
-.get()
-```
-![](/assets/Screen Shot 2018-03-16 at 4.16.07 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 4.19.32 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 4.19.49 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 4.19.58 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 4.20.02 pm.png)
->[87] is something appear in the content.
-[88] is the same.
-[89] does not exist in the content.
-[90] and [91] means we change the return of the 'false'. In default, it is empty. We can change it in the 2nd parameter. It is better to set it as 0 in this example.
-* 
-```
-.get(True,0)
-```
-![](/assets/Screen Shot 2018-03-16 at 4.28.30 pm.png)
+  ![](/assets/Screen Shot 2018-03-16 at 3.32.53 pm.png)
 
-* 
-```
-sort_values(by='user_key',ascending=False)
-```
-![](/assets/Screen Shot 2018-03-16 at 4.30.18 pm.png)
-We can find out who tweeted the largest number of tweets.
+* ```
+  .get()
+  ```
 
-*
+  ![](/assets/Screen Shot 2018-03-16 at 4.16.07 pm.png)
+  ![](/assets/Screen Shot 2018-03-16 at 4.19.32 pm.png)
+  ![](/assets/Screen Shot 2018-03-16 at 4.19.49 pm.png)
+  ![](/assets/Screen Shot 2018-03-16 at 4.19.58 pm.png)
+  ![](/assets/Screen Shot 2018-03-16 at 4.20.02 pm.png)
+  > \[87\] is something appear in the content.  
+  > \[88\] is the same.  
+  > \[89\] does not exist in the content.  
+  > \[90\] and \[91\] means we change the return of the 'false'. In default, it is empty. We can change it in the 2nd parameter. It is better to set it as 0 in this example.
+* ```
+  .get(True,0)
+  ```
+
+  ![](/assets/Screen Shot 2018-03-16 at 4.28.30 pm.png)
+
+* ```
+  sort_values(by='user_key',ascending=False)
+  ```
+
+  ![](/assets/Screen Shot 2018-03-16 at 4.30.18 pm.png)  
+  We can find out who tweeted the largest number of tweets.
+
+*   
 ```
 sort_values(by='count',ascending=False)
-``
-![](/assets/Screen Shot 2018-03-16 at 4.33.28 pm.png)
+```  
+![](/assets/Screen Shot 2018-03-16 at 4.33.28 pm.png)  
 We can find out who is retweeted most.
-
-*  
 ![](/assets/Screen Shot 2018-03-16 at 4.37.55 pm.png)
 So it will execute 454 times. It really takes a long time to finish the whole code.
 
 ##### Save time
-* You can interrupt it.
-![](/assets/Screen Shot 2018-03-16 at 4.35.26 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 4.36.54 pm.png)
 
-* You can run the top20.
-![](/assets/Screen Shot 2018-03-16 at 4.38.47 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 4.39.12 pm.png)
+* You can interrupt it.  
+  ![](/assets/Screen Shot 2018-03-16 at 4.35.26 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 4.36.54 pm.png)
+
+* You can run the top20.  
+  ![](/assets/Screen Shot 2018-03-16 at 4.38.47 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 4.39.12 pm.png)
 
 ### Calculate the frequent terms
 
-![](/assets/Screen Shot 2018-03-16 at 5.06.43 pm.png)
-
-![](/assets/Screen Shot 2018-03-16 at 5.06.53 pm.png)
-
+##### Get text
+*  
+>![](/assets/Screen Shot 2018-03-16 at 5.06.43 pm.png)  
+![](/assets/Screen Shot 2018-03-16 at 5.06.53 pm.png)  
 ![](/assets/Screen Shot 2018-03-16 at 5.07.07 pm.png)
+Get the text.
 
+*  
+```
+.split()
+```
 ![](/assets/Screen Shot 2018-03-16 at 5.07.21 pm.png)
-
 ![](/assets/Screen Shot 2018-03-16 at 5.07.46 pm.png)
-
 ![](/assets/Screen Shot 2018-03-16 at 5.07.59 pm.png)
+Split by space or comma.
 
+*  
+```
+[:10]
+```
+![](/assets/Screen Shot 2018-03-16 at 5.13.49 pm.png)
+Get the formal 10 items' text.
+
+*  
+```
+extend()
+```
+![](/assets/Screen Shot 2018-03-16 at 5.15.14 pm.png)
+Split the formal 5 items' text and split them by space. Then extract the items and add the items into list 'all_text'.
+
+* >If we run for whole text, cancelling '[:5]'. There is an error.
+![](/assets/Screen Shot 2018-03-16 at 5.20.33 pm.png)
+We have to change the text into str.![](/assets/Screen Shot 2018-03-16 at 5.21.36 pm.png)
+
+##### Word count
+
+* 
+![](/assets/Screen Shot 2018-03-16 at 5.23.56 pm.png)
+![](/assets/Screen Shot 2018-03-16 at 5.25.09 pm.png)
+
+* 
+```
+pd.Series()
+```
+![](/assets/Screen Shot 2018-03-16 at 5.26.54 pm.png)
+![](/assets/Screen Shot 2018-03-16 at 5.27.33 pm.png)
+Convert 'word count' into a Series, and reset index.
+
+* 
+```
+.to_frame().reset_index()
+```
+![](/assets/Screen Shot 2018-03-16 at 5.28.05 pm.png)
+Convert into a dataframe.
+
+
+*  
+```
+sort_values(ascending=False)
+```
+![](/assets/Screen Shot 2018-03-16 at 5.30.33 pm.png)
+They are not informative, as there are so many 'stop-words'. We can delete those words manually.
+
+*  
+```
+set(['RT', 'the', 'of'])
+```
+![](/assets/Screen Shot 2018-03-16 at 6.03.44 pm.png)
+`set` is more efficient for the integers to check in or not in.
+
+* You can search google you can find 'stop word' resources.
+
+##### Stop_word
+
+>![](/assets/Screen Shot 2018-03-16 at 6.07.07 pm.png)
+![](/assets/Screen Shot 2018-03-16 at 6.09.15 pm.png)
+
+*  
+Step1
+```
+def is_stop_word(x):
+  return x in stop_words
+```
+
+*  
+Step2
+```
+df_wrod_count[df_word_count['index'].apply(is_stop_word)]
+```
+
+*  
+Step3
+```
+.sort_values(by=0,ascending=False)
+```
+
+*  
+Step4
+```
+is not stop
+```
+![](/assets/Screen Shot 2018-03-16 at 6.16.07 pm.png)
+
+
+##### LTK
 
 
 ### Pandas plotting
@@ -398,4 +490,6 @@ So it will execute 454 times. It really takes a long time to finish the whole co
 * Please learn to learn from others by google.
 
 * Pandas can be more powerful than excel.First of all,let's start from the excel function.
+
+
 
