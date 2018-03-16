@@ -384,26 +384,3 @@ So it will execute 454 times. It really takes a long time to finish the whole co
 
 * Pandas can be more powerful than excel.First of all,let's start from the excel function.
 
-_    
-_  
-_    
-_  
-_    
-_  
-_    
-_  
-_    
-_  
-_    
-_  
-_    
-_  
-_    
-_  
-_    
-_  
-\*
-
-* 
-
-
