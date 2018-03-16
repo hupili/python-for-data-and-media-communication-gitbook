@@ -286,14 +286,12 @@ Graph metrics and algorithms:
 * Graph profiling: diameter, degree distribution, clustering coefficient
 * Centrality: degree, PageRank, betweenness, closeness, ...
 * Community detection
-* 
 
 Challenges:
 
 * Generate the [Zachary's Karate Club data](https://en.wikipedia.org/wiki/Zachary%27s_karate_club).
 * [SNAP dataset](http://snap.stanford.edu/)
 * [Cosponsorship Network Data](http://jhfowler.ucsd.edu/cosponsorship.htm)
-
 
 ## Week 10 - 2D analysis and more on visualisations
 
