@@ -490,9 +490,23 @@ is not stop
 
 
 ##### Word cloud
+
 * ![](/assets/Screen Shot 2018-03-16 at 6.29.19 pm.png)
 ![](/assets/Screen Shot 2018-03-16 at 6.27.26 pm.png)
 ![](/assets/Screen Shot 2018-03-16 at 6.32.55 pm.png)
+
+##### Jieba
+
+*  
+![](/assets/Screen Shot 2018-03-16 at 7.33.26 pm.png)
+
+* 
+```
+jieba.cut()
+```
+![](/assets/Screen Shot 2018-03-16 at 7.35.45 pm.png)
+It means we have to change it into a list.
+![](/assets/Screen Shot 2018-03-16 at 7.37.21 pm.png)
 
 ### Pandas plotting
 
