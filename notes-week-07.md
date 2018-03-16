@@ -377,6 +377,21 @@ So it will execute 454 times. It really takes a long time to finish the whole co
 ![](/assets/Screen Shot 2018-03-16 at 4.38.47 pm.png)
 ![](/assets/Screen Shot 2018-03-16 at 4.39.12 pm.png)
 
+### Calculate the frequent terms
+
+![](/assets/Screen Shot 2018-03-16 at 5.06.43 pm.png)
+
+![](/assets/Screen Shot 2018-03-16 at 5.06.53 pm.png)
+
+![](/assets/Screen Shot 2018-03-16 at 5.07.07 pm.png)
+
+![](/assets/Screen Shot 2018-03-16 at 5.07.21 pm.png)
+
+![](/assets/Screen Shot 2018-03-16 at 5.07.46 pm.png)
+
+![](/assets/Screen Shot 2018-03-16 at 5.07.59 pm.png)
+
+
 
 ### Pandas plotting
 
