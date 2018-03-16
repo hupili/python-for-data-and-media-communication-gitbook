@@ -449,6 +449,13 @@ set(['RT', 'the', 'of'])
 `set` is more efficient for the integers to check in or not in.
 
 * You can search google you can find 'stop word' resources.
+* NLTK: 
+![](/assets/Screen Shot 2018-03-16 at 6.19.21 pm.png)
+
+
+
+
+
 
 ##### Stop_word
 
@@ -482,8 +489,10 @@ is not stop
 ![](/assets/Screen Shot 2018-03-16 at 6.16.07 pm.png)
 
 
-##### LTK
-
+##### Word cloud
+* ![](/assets/Screen Shot 2018-03-16 at 6.29.19 pm.png)
+![](/assets/Screen Shot 2018-03-16 at 6.27.26 pm.png)
+![](/assets/Screen Shot 2018-03-16 at 6.32.55 pm.png)
 
 ### Pandas plotting
 
