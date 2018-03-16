@@ -153,7 +153,7 @@ It means it randomly print 10 samples. It is useful when your dataset is very la
 
 * 
 ```
-df['user_key'].value_acount()
+df['user_key'].value_counts()
 ```
 ![](/assets/Screen Shot 2018-03-15 at 9.38.53 pm.png)
 Count the popular users. They post largest number of messages.
@@ -195,7 +195,7 @@ str(x)
 
 * 
 ```
-.value_count()
+.value_counts()
 ```
 ![](/assets/Screen Shot 2018-03-15 at 10.19.54 pm.png)
 It is to check how many times it appears. And they are the same, which means there are some errors.
@@ -220,7 +220,7 @@ df[df['XXX'] ]
 
 *
 ```
-df['text'].apply[check_names].value_account()[True]
+df['text'].apply[check_names].value_counts()[True]
 ```
 ![](/assets/Screen Shot 2018-03-16 at 3.03.09 pm.png)
 * We extract the True.
@@ -231,7 +231,7 @@ df['text'].apply[check_names].value_account()[True]
 ```
 def check_name(x):
     retutn 'ten_gop' in str(x).lower()
-df['text'].apply[check_names].value_account()[True]       
+df['text'].apply[check_names].value_counts()[True]       
 ```
 It is the previous step.
 
@@ -240,36 +240,51 @@ It is the previous step.
 def count_retweeted_number(name):
     def check_name(x):
         retutn 'name' in str(x).lower()
-    return df['text'].apply(check_name).value_count()[True]
+    return df['text'].apply(check_name).value_counts()[True]
 ```
 ![](/assets/Screen Shot 2018-03-16 at 3.17.36 pm.png)
 * Now we write the previous one into a function. In the inside function, we change 'x' into 'name'.
 
+* 
+```
+count_retweeted_number('XXX')
+```
+![](/assets/Screen Shot 2018-03-16 at 3.25.56 pm.png)
 
 
 
-
-
-
-
-
-
-
-
+##### Apply the function into all the names.
 
 * 
 ```
-import pandas as pd
-df= pd.read_csv('XXXXXXXXXXXXXX.csv')
+df['user_key']
 ```
-* It can also be open by the https://XXXX links.
-
+![](/assets/Screen Shot 2018-03-16 at 3.27.10 pm.png)
 
 * 
 ```
-import pandas as pd
-df= pd.read_csv('XXXXXXXXXXXXXX.csv')
+a_user=df['user_key']
 ```
+![](/assets/Screen Shot 2018-03-16 at 3.35.18 pm.png)
+![](/assets/Screen Shot 2018-03-16 at 3.32.53 pm.png)
+The `value_counts` is just to show you how many times they appear.
+
+*
+```
+
+```
+![](/assets/Screen Shot 2018-03-16 at 3.41.17 pm.png)
+Apply the function into all the 'user_key'
+
+
+
+
+
+
+
+
+
+
 
 
 
