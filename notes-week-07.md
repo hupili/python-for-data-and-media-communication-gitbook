@@ -184,13 +184,14 @@ df.apply()
 * `apply` to make the function work for all the 'text' in the dataframe. In other words, x='text' in the example.
 *  There is an error in the second line. There are some dirty data in 'text'.
 
-##### Convert into str(),lower().
+##### Convert text by str(),lower().
 
 * 
 ```
 str(x)
 ```
 ![](/assets/Screen Shot 2018-03-15 at 10.13.31 pm.png)
+
 
 * 
 ```
@@ -215,10 +216,34 @@ df[df['XXX'] ]
 ```
 ![](/assets/Screen Shot 2018-03-15 at 10.23.33 pm.png)
 ![](/assets/Screen Shot 2018-03-15 at 10.24.01 pm.png)
+* [61] is a filter. Now it works. We successfully find out how many times they are retweeted.
 
-##### Find the most one retweeted.
+*
+```
+df['text'].apply[check_names].value_account()[True]
+```
+![](/assets/Screen Shot 2018-03-16 at 3.03.09 pm.png)
+* We extract the True.
 
+##### Find the most one retweeted - by function.
 
+* 
+```
+def check_name(x):
+    retutn 'ten_gop' in str(x).lower()
+df['text'].apply[check_names].value_account()[True]       
+```
+It is the previous step.
+
+* 
+```
+def count_retweeted_number(name):
+    def check_name(x):
+        retutn 'name' in str(x).lower()
+    return df['text'].apply(check_name).value_count()[True]
+```
+![](/assets/Screen Shot 2018-03-16 at 3.17.36 pm.png)
+* Now we write the previous one into a function. In the inside function, we change 'x' into 'name'.
 
 
 
@@ -237,7 +262,6 @@ df[df['XXX'] ]
 import pandas as pd
 df= pd.read_csv('XXXXXXXXXXXXXX.csv')
 ```
-![](/assets/Screen Shot 2018-03-15 at 6.24.03 pm.png)
 * It can also be open by the https://XXXX links.
 
 
@@ -246,8 +270,6 @@ df= pd.read_csv('XXXXXXXXXXXXXX.csv')
 import pandas as pd
 df= pd.read_csv('XXXXXXXXXXXXXX.csv')
 ```
-![](/assets/Screen Shot 2018-03-15 at 6.24.03 pm.png)
-
 
 
 
