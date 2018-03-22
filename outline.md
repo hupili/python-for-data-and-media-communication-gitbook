@@ -77,7 +77,7 @@ Python language:
 
 * `help`
 * `bool` and comparisions
-   * `str` comparison and `int` comparison
+  * `str` comparison and `int` comparison
 * Composite data types: `list` `[]`, `dict` `{}`
 * Control flow:
   * `for`, `while`
@@ -145,8 +145,7 @@ Further reading:
 
 * Study `urllib` as an alternative to `requests`
 * Study Regular Expression and `re` library in Python
-* See how [reproducibility is improved](https://www.nature.com/articles/d41586-018-01322-9) with Jupyter notebook and other tools (not only Python).
-
+* See how [reproducibility is improved](https://www.nature.com/articles/d41586-018-01322-9) with Jupyter notebook and other tools \(not only Python\).
 
 ## Week 5 - JSON and API
 
@@ -163,11 +162,11 @@ Modules:
 Challenges:
 
 * Taiwan had an earthquake in early Feb. Let's discuss this issue:
-   * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/). Checkout the [API description](https://earthquake.usgs.gov/fdsnws/event/1/). The `count` and `query` API are useful.
-   * Search on Twitter and collect user's discussions about this topic. See if there is any findings. You can approach from the human interface [here](https://twitter.com/search?q=%23%E5%8F%B0%E6%B9%BE%E5%9C%B0%E9%9C%87) (hard mode) or use [python-twitter](https://github.com/bear/python-twitter) module (need to register developer and obtain API key).
+  * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/). Checkout the [API description](https://earthquake.usgs.gov/fdsnws/event/1/). The `count` and `query` API are useful.
+  * Search on Twitter and collect user's discussions about this topic. See if there is any findings. You can approach from the human interface [here](https://twitter.com/search?q=%23台湾地震) \(hard mode\) or use [python-twitter](https://github.com/bear/python-twitter) module \(need to register developer and obtain API key\).
 * Retrieve and analyse the recent movie. Douban's API will be helpful here.
-   * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
-   * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
+  * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
+  * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
 
 Further readings:
 
@@ -205,7 +204,7 @@ Datasets to work on:
 
 References:
 
-* First two chapters (i.e. before "3D") of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
+* First two chapters \(i.e. before "3D"\) of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
 
 Additional notes:
 
@@ -223,15 +222,15 @@ Additional notes:
 Modules & topics:
 
 * `str` - basic string processing
-   * `.split()`, `in`, `.find()`
-   * `%s` format string
-   * `''.format()` function
+  * `.split()`, `in`, `.find()`
+  * `%s` format string
+  * `''.format()` function
 * `collections.Counter` for word frequency calculation
 * `jieba` - the most widely used Chinese word segmentation package.
-* (optional) `re`- Regular Expression (regex) is the swiss knife for text pattern matching.
-* (optional) `nltk` - contains common routines for text analysis
-* (optional) `gensim` - topic mining package. It also contains the `Word2Vec` routine.
-* (optional) Sentiment analysis - construct classifier using `sklearn` or use an API like [text-processing](http://text-processing.com/docs/sentiment.html). `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
+* \(optional\) `re`- Regular Expression \(regex\) is the swiss knife for text pattern matching.
+* \(optional\) `nltk` - contains common routines for text analysis
+* \(optional\) `gensim` - topic mining package. It also contains the `Word2Vec` routine.
+* \(optional\) Sentiment analysis - construct classifier using `sklearn` or use an API like [text-processing](http://text-processing.com/docs/sentiment.html). `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
 
 Related cases:
 
@@ -251,7 +250,7 @@ Datasets to work on:
 
 > * Understand the principle of timestamp and datetime format
 > * Master basic computation on datetime values
-> * Understand periodical analysis (daily, weekly, monthly, seasonal, etc)
+> * Understand periodical analysis \(daily, weekly, monthly, seasonal, etc\)
 > * Can handle timezone conversion
 
 Modules:
@@ -259,17 +258,17 @@ Modules:
 * `datetime`
 * `dtparser`
 * `pandas`
-   * basic visualisation `.plot`
-   * zoom in/ out:  `.resample`, `.aggregate`
+  * basic visualisation `.plot`
+  * zoom in/ out:  `.resample`, `.aggregate`
 * `seaborn`
 
 References:
 
-* timestamp usually come in unit of milliseconds (1/1000) of a second. [An example](https://github.com/dmep2017/dmep2017.github.io/blob/master/d3-map-sichuan-earthquate/Data%20Process.ipynb) to parse this timestamp format into `datetime` format.
+* timestamp usually come in unit of milliseconds \(1/1000\) of a second. [An example](https://github.com/dmep2017/dmep2017.github.io/blob/master/d3-map-sichuan-earthquate/Data Process.ipynb) to parse this timestamp format into `datetime` format.
 
 Datasets:
 
-* [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) (used last week)
+* [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) \(used last week\)
 * [Twitter Data](https://github.com/kestrel614/HKODD17-Trump/tree/master/data) of the [Donald & Ivanka Trump analysis](https://initiumlab.com/blog/20170329-trump-and-ivanka/) -- reproduce the charts.
 
 ## Week 9 - Graph theory and social network analysis
@@ -289,9 +288,10 @@ Graph metrics and algorithms:
 
 Challenges:
 
-* Generate the [Zachary's Karate Club data](https://en.wikipedia.org/wiki/Zachary%27s_karate_club).
+* Generate the [Zachary's Karate Club data](https://en.wikipedia.org/wiki/Zachary's_karate_club).
 * [SNAP dataset](http://snap.stanford.edu/)
 * [Cosponsorship Network Data](http://jhfowler.ucsd.edu/cosponsorship.htm)
+* Analyse the [Les Miserables' graph data](https://bl.ocks.org/mbostock/4062045).
 
 ## Week 10 - 2D analysis and more on visualisations
 
@@ -310,22 +310,20 @@ Challenge:
 Modules:
 
 * `sklearn`
-   * `decomposition.PCA`
+  * `decomposition.PCA`
 * `seaborn`
-* (optional) `scipy.statsmodel`
+* \(optional\) `scipy.statsmodel`
 
 References:
 
 * [HK Legco 2012 - 2016 dataset](https://github.com/hupili/hhba2016-hk-legco-dataset-2012-2016) from Initium Media, 2016
 * [HK Legco voting analysis](https://github.com/hupili/legcohk/blob/master/LegCoHK.ipynb) with PCA, an early version, 2014.
 
+---
 
--------
+Following are TBC topics
 
-Following are TBC topics 
-
--------
-
+---
 
 ## Week 10 - Machine learning: clustering, classification and regression
 
