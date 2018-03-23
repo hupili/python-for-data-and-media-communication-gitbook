@@ -10,8 +10,6 @@ Create virtual environment:
 pyvenv venv
 ```
 
-
-
 Enter virtual environment:
 
 ```
@@ -45,4 +43,14 @@ By default the notebook will be available at [http://localhost:8888/tree](http:/
 * Rerun all the cells
 * Restart the kernel
 * Clear the output cells
+
+## Install frequently used dependencies
+
+You do not want to install and re-install dependencies every time. It is more convenient to setup a virtual environment and install common dependencies/ modules for data analysis.
+
+You can download this [requirement.txt](https://github.com/hupili/python-for-data-and-media-communication/blob/master/requirements.txt) and then run the following command (inside virtual environment)
+
+```
+pip install -r requirements.txt
+```
 
