@@ -288,7 +288,7 @@ Graph metrics and algorithms:
 
 Challenges:
 
-* Generate the \[Zachary's Karate Club data\]\([https://en.wikipedia.org/wiki/Zachary's\_karate\_club](https://en.wikipedia.org/wiki/Zachary's_karate_club)\).
+* Generate the Zachary's Karate Club data: https://en.wikipedia.org/wiki/Zachary's_karate_club .
 * [SNAP dataset](http://snap.stanford.edu/)
 * [Cosponsorship Network Data](http://jhfowler.ucsd.edu/cosponsorship.htm)
 * Analyse the [Les Miserables' graph data](https://bl.ocks.org/mbostock/4062045).
