@@ -45,3 +45,5 @@
 * [module: lxml](module-lxml.md)
 * [module: python-twitter](module-python-twitter.md)
 * [module: datetime](module-datetime.md)
+* [module: selenium](module-selenium.md)
+
