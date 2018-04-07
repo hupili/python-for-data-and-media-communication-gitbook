@@ -61,8 +61,8 @@
 
 * Function 'Range' has 3 parameters. From XX to XX with the step size XX.  
   The 3rd parameter is the step size. If you don't input the 3rd one, it will take 1 in default.  
-  ![](/assets/Screen Shot 2018-03-14 at 9.10.05 pm.png)  
-  The parameters can be negative.
+  >![](/assets/Screen Shot 2018-03-14 at 9.10.05 pm.png)  
+*  The parameters can be negative.
 
   > ![](/assets/Screen Shot 2018-03-14 at 9.11.39 pm.png)  
   > ![](/assets/Screen Shot 2018-03-14 at 9.12.03 pm.png)
@@ -100,11 +100,12 @@
 * The above step is OK.
 
 > ```
-> r.text
-> open('mypage','w').write(r.text)
-> ```
->
-> Then you can find a file.  
+ r.text
+ open('mypage','w').write(r.text)
+ ```
+
+*  Then you can find a file.  
+
 > ![](/assets/Screen Shot 2018-03-14 at 9.38.22 pm.png)  
 > If you open it, you will find that![](/assets/Screen Shot 2018-03-14 at 9.38.37 pm.png)  
 > It is blank, which means the file you save is blank.  
