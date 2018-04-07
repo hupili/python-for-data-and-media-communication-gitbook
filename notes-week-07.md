@@ -190,8 +190,10 @@
 
 * `def` is to define a function called check\_name, which checks if 'amXXX' in x. If it is true, it will return 'amXXX'.
 
-* x is just a variable. 
+* x is just a variable.
+
 * `apply` to make the function work for all the 'text' in the dataframe. In other words, x='text' in the example.
+
 * There is an error in the second line. There are some dirty data in 'text'.
 
 ##### Convert text by str\(\),lower\(\).
@@ -219,21 +221,20 @@
 
 ##### Use the previous step as a filter
 
-* ```
-  df[df['XXX'] ]
-  ```
+*  
+```
+df[df['XXX'] ]
+```
 
   ![](/assets/Screen Shot 2018-03-15 at 10.23.33 pm.png)  
   ![](/assets/Screen Shot 2018-03-15 at 10.24.01 pm.png)
 
 * \[61\] is a filter. Now it works. We successfully find out how many times they are retweeted.
 
-\*
-
+* 
 ```
 df['text'].apply[check_names].value_counts()[True]
 ```
-
 ![](/assets/Screen Shot 2018-03-16 at 3.03.09 pm.png)
 
 * We extract the True.
@@ -269,7 +270,8 @@ df['text'].apply[check_names].value_counts()[True]
 
 ##### Try1: Fail
 
-* `df['user_key']`![](/assets/Screen Shot 2018-03-16 at 4.06.19 pm.png)
+* `df['user_key']`  
+  ![](/assets/Screen Shot 2018-03-16 at 4.06.19 pm.png)
 
   ![](/assets/Screen Shot 2018-03-16 at 3.27.10 pm.png)  
   It is a Series.
@@ -316,8 +318,8 @@ df['text'].apply[check_names].value_counts()[True]
   ![](/assets/Screen Shot 2018-03-16 at 4.06.19 pm.png)  
   ![](/assets/Screen Shot 2018-03-16 at 4.07.55 pm.png)
 
-* The error is in the picture below:
-  ![](/assets/Screen Shot 2018-03-16 at 4.08.44 pm.png)
+* The error is in the picture below:  
+  ![](/assets/Screen Shot 2018-03-16 at 4.08.44 pm.png)  
   In this step, if the answer is false, there will be an error.
 
 ##### Try3: succeed
@@ -335,15 +337,17 @@ df['text'].apply[check_names].value_counts()[True]
   .get()
   ```
 
-  ![](/assets/Screen Shot 2018-03-16 at 4.16.07 pm.png)
-  ![](/assets/Screen Shot 2018-03-16 at 4.19.32 pm.png)
-  ![](/assets/Screen Shot 2018-03-16 at 4.19.49 pm.png)
-  ![](/assets/Screen Shot 2018-03-16 at 4.19.58 pm.png)
+  ![](/assets/Screen Shot 2018-03-16 at 4.16.07 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 4.19.32 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 4.19.49 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 4.19.58 pm.png)  
   ![](/assets/Screen Shot 2018-03-16 at 4.20.02 pm.png)
+
   > \[87\] is something appear in the content.  
   > \[88\] is the same.  
   > \[89\] does not exist in the content.  
   > \[90\] and \[91\] means we change the return of the 'false'. In default, it is empty. We can change it in the 2nd parameter. It is better to set it as 0 in this example.
+
 * ```
   .get(True,0)
   ```
@@ -357,14 +361,14 @@ df['text'].apply[check_names].value_counts()[True]
   ![](/assets/Screen Shot 2018-03-16 at 4.30.18 pm.png)  
   We can find out who tweeted the largest number of tweets.
 
-*   
-```
-sort_values(by='count',ascending=False)
-```  
-![](/assets/Screen Shot 2018-03-16 at 4.33.28 pm.png)  
-We can find out who is retweeted most.
-![](/assets/Screen Shot 2018-03-16 at 4.37.55 pm.png)
-So it will execute 454 times. It really takes a long time to finish the whole code.
+* ```
+  sort_values(by='count',ascending=False)
+  ```
+
+  ![](/assets/Screen Shot 2018-03-16 at 4.33.28 pm.png)  
+  We can find out who is retweeted most.  
+  ![](/assets/Screen Shot 2018-03-16 at 4.37.55 pm.png)  
+  So it will execute 454 times. It really takes a long time to finish the whole code.
 
 ##### Save time
 
@@ -379,134 +383,127 @@ So it will execute 454 times. It really takes a long time to finish the whole co
 ### Calculate the frequent terms
 
 ##### Get text
-*  
->![](/assets/Screen Shot 2018-03-16 at 5.06.43 pm.png)  
-![](/assets/Screen Shot 2018-03-16 at 5.06.53 pm.png)  
-![](/assets/Screen Shot 2018-03-16 at 5.07.07 pm.png)
-Get the text.
 
-*  
-```
-.split()
-```
-![](/assets/Screen Shot 2018-03-16 at 5.07.21 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 5.07.46 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 5.07.59 pm.png)
-Split by space or comma.
+* > ![](/assets/Screen Shot 2018-03-16 at 5.06.43 pm.png)  
+  > ![](/assets/Screen Shot 2018-03-16 at 5.06.53 pm.png)  
+  > ![](/assets/Screen Shot 2018-03-16 at 5.07.07 pm.png)  
+  > Get the text.
+* ```
+  .split()
+  ```
+  
+  >![](/assets/Screen Shot 2018-03-16 at 5.07.21 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 5.07.46 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 5.07.59 pm.png)  
+  Split by space or comma.
 
-*  
-```
-[:10]
-```
-![](/assets/Screen Shot 2018-03-16 at 5.13.49 pm.png)
-Get the formal 10 items' text.
+* ```
+  [:10]
+  ```
 
-*  
-```
-extend()
-```
-![](/assets/Screen Shot 2018-03-16 at 5.15.14 pm.png)
-Split the formal 5 items' text and split them by space. Then extract the items and add the items into list 'all_text'.
+  >![](/assets/Screen Shot 2018-03-16 at 5.13.49 pm.png)  
+  Get the formal 10 items' text.
 
-* >If we run for whole text, cancelling '[:5]'. There is an error.
-![](/assets/Screen Shot 2018-03-16 at 5.20.33 pm.png)
-We have to change the text into str.![](/assets/Screen Shot 2018-03-16 at 5.21.36 pm.png)
+* ```
+  extend()
+  ```
+
+  >![](/assets/Screen Shot 2018-03-16 at 5.15.14 pm.png)  
+  Split the formal 5 items' text and split them by space. Then extract the items and add the items into list 'all\_text'.
+
+*  If we run for whole text, cancelling '\[:5\]'. There is an error.  
+  > ![](/assets/Screen Shot 2018-03-16 at 5.20.33 pm.png)  
+  > We have to change the text into str.![](/assets/Screen Shot 2018-03-16 at 5.21.36 pm.png)
 
 ##### Word count
 
-* 
-![](/assets/Screen Shot 2018-03-16 at 5.23.56 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 5.25.09 pm.png)
+* >![](/assets/Screen Shot 2018-03-16 at 5.23.56 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 5.25.09 pm.png)
 
-* 
-```
-pd.Series()
-```
-![](/assets/Screen Shot 2018-03-16 at 5.26.54 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 5.27.33 pm.png)
-Convert 'word count' into a Series, and reset index.
+* ```
+  pd.Series()
+  ```
 
-* 
-```
-.to_frame().reset_index()
-```
-![](/assets/Screen Shot 2018-03-16 at 5.28.05 pm.png)
-Convert into a dataframe.
+  ![](/assets/Screen Shot 2018-03-16 at 5.26.54 pm.png)  
+  ![](/assets/Screen Shot 2018-03-16 at 5.27.33 pm.png)  
+  Convert 'word count' into a Series, and reset index.
 
+* ```
+  .to_frame().reset_index()
+  ```
 
-*  
-```
-sort_values(ascending=False)
-```
-![](/assets/Screen Shot 2018-03-16 at 5.30.33 pm.png)
-They are not informative, as there are so many 'stop-words'. We can delete those words manually.
+  ![](/assets/Screen Shot 2018-03-16 at 5.28.05 pm.png)  
+  Convert into a dataframe.
 
-*  
-```
-set(['RT', 'the', 'of'])
-```
-![](/assets/Screen Shot 2018-03-16 at 6.03.44 pm.png)
-`set` is more efficient for the integers to check in or not in.
+* ```
+  sort_values(ascending=False)
+  ```
+
+  ![](/assets/Screen Shot 2018-03-16 at 5.30.33 pm.png)  
+  They are not informative, as there are so many 'stop-words'. We can delete those words manually.
+
+* ```
+  set(['RT', 'the', 'of'])
+  ```
+
+  ![](/assets/Screen Shot 2018-03-16 at 6.03.44 pm.png)  
+  `set` is more efficient for the integers to check in or not in.
 
 * You can search google you can find 'stop word' resources.
-* NLTK: 
-![](/assets/Screen Shot 2018-03-16 at 6.19.21 pm.png)
 
+* NLTK:   
+  ![](/assets/Screen Shot 2018-03-16 at 6.19.21 pm.png)
 
+##### Stop\_word
 
+> ![](/assets/Screen Shot 2018-03-16 at 6.07.07 pm.png)  
+> ![](/assets/Screen Shot 2018-03-16 at 6.09.15 pm.png)
 
+* Step1
 
-
-##### Stop_word
-
->![](/assets/Screen Shot 2018-03-16 at 6.07.07 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 6.09.15 pm.png)
-
-*  
-Step1
-```
-def is_stop_word(x):
+  ```
+  def is_stop_word(x):
   return x in stop_words
-```
+  ```
 
-*  
-Step2
-```
-df_wrod_count[df_word_count['index'].apply(is_stop_word)]
-```
+* Step2
 
-*  
-Step3
-```
-.sort_values(by=0,ascending=False)
-```
+  ```
+  df_wrod_count[df_word_count['index'].apply(is_stop_word)]
+  ```
 
-*  
-Step4
-```
-is not stop
-```
-![](/assets/Screen Shot 2018-03-16 at 6.16.07 pm.png)
+* Step3
 
+  ```
+  .sort_values(by=0,ascending=False)
+  ```
+
+* Step4
+
+  ```
+  is not stop
+  ```
+
+  ![](/assets/Screen Shot 2018-03-16 at 6.16.07 pm.png)
 
 ##### Word cloud
 
-* ![](/assets/Screen Shot 2018-03-16 at 6.29.19 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 6.27.26 pm.png)
-![](/assets/Screen Shot 2018-03-16 at 6.32.55 pm.png)
+![](/assets/Screen Shot 2018-03-16 at 6.29.19 pm.png)
+*  ![](/assets/Screen Shot 2018-03-16 at 6.27.26 pm.png)
+   ![](/assets/Screen Shot 2018-03-16 at 6.32.55 pm.png)
 
 ##### Jieba
 
-*  
 ![](/assets/Screen Shot 2018-03-16 at 7.33.26 pm.png)
 
-* 
-```
-jieba.cut()
-```
-![](/assets/Screen Shot 2018-03-16 at 7.35.45 pm.png)
-It means we have to change it into a list.
-![](/assets/Screen Shot 2018-03-16 at 7.37.21 pm.png)
+* ```
+  jieba.cut()
+  ```
+
+  >![](/assets/Screen Shot 2018-03-16 at 7.35.45 pm.png)  
+
+*  It means we have to change it into a list.  
+  >![](/assets/Screen Shot 2018-03-16 at 7.37.21 pm.png)
 
 ### Pandas plotting
 
