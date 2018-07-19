@@ -17,7 +17,7 @@ The function of the terminal is very powerful, and all the basic operations of t
 * press **command+space** to open spotlight
 * search "terminal" to open terminal.
 
-![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ckagp5j20g701swel.jpg) 
+![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ckagp5j20g701swel.jpg) <br>
 *Terminal interface*
 ### 2. Shell commands
 Following are some elementary commands you should know in terminal.
