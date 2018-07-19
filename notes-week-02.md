@@ -41,7 +41,7 @@ You will get red in terminal, as **"red"** is different from **red**. (Quotation
 In fact,there are so many different kinds of data you can use to define the variables. Different data types are totally different.
 Following are some basic data types.
 
-### 1. int
+### int
 
 `int` means integer, like 7, 8, 9 and so on. those numbers are integer.eg:
 
@@ -51,7 +51,7 @@ print a
 ```
 int\(\) is a function, which converts the number in \(\) to an integer. You have defined "a" equals "int\(7.9\)" , so it will print 7.
 
-##### 2. float
+### float
 
 `float` means a number with decimal, like2.1, 3.8, 5.6 and so on. eg:
 
@@ -59,17 +59,16 @@ int\(\) is a function, which converts the number in \(\) to an integer. You have
 b= float(7)
 print b
 ```
-
 It will print `7.0`.
 
-##### 3. str
+### str
 
 * `str` means string, a sequence of characters, like quiet, asdf, HK\_NY and so on.
 * If you **" "** something, python will regard it as strings, or characters.So you `print "red"`, you will get red in terminal.
 
-### 3. Arithmetic
+## 3. Arithmetic
 
-##### 1. Basic rules
+### Basic rules
 
 * `+` means plus
 * `-` means minus
@@ -88,7 +87,7 @@ print "a =",a,"b=",b,"c=",c
 ```
 You will get a = 3, b = 1, c =1000.
 
-##### 2. Exercise: Caculate a mortgage
+### Exercise: Caculate a mortgage
 
 Question: Caculate mortgage based on the following formula: (Assign "i" "P" "n" specific numbers by yourself.)
 
@@ -102,14 +101,14 @@ P=5000000
 A=i*P*(1+i)**n/((1+i)**n-1)
 print "A=",A
 ```
-### 4. Modules and functions
+## 4. Modules and functions
 
 There are diverse modules on the Internet,like math, geopy, numpy, scipy and so on.
 Differnt modules contains different functions relating to modules' features.
 
-##### 1. Import a module and choose a function to use
+### Import a module and choose a function to use
 
-`import` means import a module from the Internet. eg: `import numpy` to import a module called numpy. ("import" is always written on the top to indicate readers what kind of module and functions you will use.)
+`import` means import a module from the Internet. eg: `import numpy` to import a module called numpy. (Generally, "import" is always written on the top to indicate readers what kind of module and functions you will use.)
 
 `.` means we choose one of the functions in a specific module. eg:
 
@@ -117,7 +116,6 @@ Differnt modules contains different functions relating to modules' features.
 import numpy
 print numpy.pi
 ```
-
 It means choose a function called "pi" from the module "numpy".You will get pi as 3.1415927.eg:
 
 ```
@@ -125,7 +123,7 @@ import scipy
 print scipy.pi
 ```
 
-You will get pi as 3.1415927.(It means both "numpy" and "scipi" contain the pi variable.)
+You will get pi as 3.1415927.(Both "numpy" and "scipi" contain the pi function.)
 
 `()`means you should input something in the function. Otherwise, it will automatically input default numbers.
 
