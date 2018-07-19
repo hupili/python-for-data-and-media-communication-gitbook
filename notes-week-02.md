@@ -92,6 +92,7 @@ You will get a = 3, b = 1, c =1000.
 Question: Caculate mortgage based on the following formula: (Assign "i" "P" "n" specific numbers by yourself.)
 
 ![](https://www.myamortizationchart.com/img/amortization-formula.jpg)
+*[formula from wikipedia](https://en.wikipedia.org/wiki/Mortgage_loan) you can check out what each variable represents*
 
 Answer:
 
