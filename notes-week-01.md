@@ -4,7 +4,7 @@
 In this very first chapter, you will start a journey, swimming in the ocean of codes and data. During the following months, you may experience a staggering start, enjoyable progress or even deeply frustration. You have to step out your comfort zone, learning from each other and conquer the overwhlming information world with your persistence and intelligence. If you have the determination to accept this chanllenge, you will see a brand new yourself at the end of the course.
 ## Objective of this week
 * Learn what is terminal, Able to navigate file system in Terminal, using shell.
-* Create the first python script and execute it
+* Create the first python script and execute it.
 
 ## 1. About terminal on Mac
 ### What is terminal on Mac？
@@ -27,14 +27,18 @@ Please type often `pwd` and `ls` to know where you are.
 * `ls` means listing, showing the files in current folder.
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13e6cg8yj20fg01v0ss.jpg)
 * `cd` means change directory, or change to a folder, and you can add the location after `cd`.<br>
-  eg:
+  eg:<br>
      `cd desktop` to go to "desktop".<br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg)      
+    ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg) 
+    
     `cd ~` or `cd `to return to home.<br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ghb9grj20es012747.jpg)    
+    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ghb9grj20es012747.jpg) 
+    
     `cd desktop/17444519` <br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13j4q9jkj20dr00wwee.jpg)    
-    `cd .` to go to current diretory.    
+    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13j4q9jkj20dr00wwee.jpg)
+    
+    `cd .` to go to current diretory.
+    
     `cd ..` to return back to the upper directory.<br>
    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13k20gw1j20ea00yglj.jpg)
 
@@ -72,7 +76,7 @@ eg:
   `mv ex1.py exercise.py` to rename "ex1.py" as "exercise.py".
   `mv 123 456`to rename "123" as "456".
 
-## 3. Edit and execute python file:
+## 3. Edit and execute python file
 You can open .py by double clicking the file.
 *(If it doesn't work, you can download some third party editors,such as **sublime**, **visual studio code**. You can edit .py file by these editors.)*
 * type something and save the file
