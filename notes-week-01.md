@@ -14,10 +14,10 @@ The function of the terminal is very powerful, and all the basic operations of t
 * Many features of computers are not available in the graphical interface, only through the command line.
 * Work can be more efficient with command-line scripts.
 #### How to open terminal on MAC
-* **command+space** to open spotlight
+* press **command+space** to open spotlight
 * search "terminal" to open terminal.
 
-![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ckagp5j20g701swel.jpg)
+![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ckagp5j20g701swel.jpg) *Terminal interface
 
 ### 2. Shell commands
 Following are some commands you can input in terminal.
