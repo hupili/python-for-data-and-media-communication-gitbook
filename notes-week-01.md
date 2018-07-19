@@ -18,11 +18,11 @@ The function of the terminal is very powerful, and all the basic operations of t
 * search "terminal" to open terminal.
 
 ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ckagp5j20g701swel.jpg) 
-
+*Terminal interface*
 ### 2. Shell commands
-Following are some commands you can input in terminal.
+Following are some elementary commands you should know in terminal.
 ##### 1. Directory: Where you are 
-Please type often `pwd` and `ls` to make sure where you are. 
+Please type often `pwd` and `ls` to know where you are. 
 * `ls` means listing, showing the files in current folder.
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13e6cg8yj20fg01v0ss.jpg)
 
