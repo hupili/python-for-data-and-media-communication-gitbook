@@ -94,7 +94,7 @@ Question: Caculate mortgage based on the following formula: (Assign "i" "P" "n" 
 ![](https://www.myamortizationchart.com/img/amortization-formula.jpg)<br>
 *[formula from wikipedia](https://en.wikipedia.org/wiki/Mortgage_loan) , you can check out what each variable represents*
 
-Answer:
+Example:
 
 ```
 i=0.05
@@ -110,24 +110,23 @@ Differnt modules contains different functions relating to modules' features.
 
 ### Import a module and choose a function to use
 
-`import` means import a module from the Internet. eg: `import numpy` to import a module called numpy. (Generally, "import" is always written on the top to indicate readers what kind of module and functions you will use.)
+`import` means import a module from the Internet. you can import modules by writing `import`+ module name on terminal. And there are many modules out there, commonly used modules like [numpy](https://docs.scipy.org/doc/numpy/user/quickstart.html),[scipy](http://scipy.github.io/devdocs/tutorial/index.html), *click to check out more details*
 
-`.` means we choose one of the functions in a specific module. eg:
+eg: `import numpy` to import a module called numpy. (Generally, "import" is always written on the top to indicate readers what kind of module and functions you will use.)
+
+* There are many functions in a module, *module name +`.`+function name* means we choose a specific functions in a module. eg:
 
 ```
 import numpy
 print numpy.pi
 ```
-It means choose a function called "pi" from the module "numpy".You will get pi as 3.1415927.eg:
-
+It means choose a function called "pi" from the module "numpy".You will get pi as 3.1415927. Therefore, whenever you want to use a function, you should check out which modules contain this function, then you use `.` notation to reference to one function, and input the parameter into `()`  after the function, after excute this command, you can get the results you want.eg:
 ```
-import scipy
-print scipy.pi
+import numpy
+print(numpy.sin(numpy.pi/6))
 ```
+> 0.5
 
-You will get pi as 3.1415927.(Both "numpy" and "scipi" contain the pi function.)
-
-`()`means you should input something in the function. Otherwise, it will automatically input default numbers.
 
 #### 2. Exercise: Caculate the area of a round
 
