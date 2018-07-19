@@ -3,7 +3,8 @@
 ## Introduction
 In this very first chapter, you will start a journey, swimming in the ocean of codes and data. During the following months, you may experience a staggering start, enjoyable progress or even deeply frustration. You have to step out your comfort zone, learning from each other and conquer the overwhlming information world with your persistence and intelligence. If you have the determination to accept this chanllenge, you will see a brand new yourself at the end of the course.
 ## Objective of this week
-* Learn what is terminal, and use terminal to do certain simple tasks.
+* Learn what is terminal, Able to navigate file system in Terminal, using shell.
+* Create the first python script and execute it
 
 ## 1. About terminal on Mac
 ### What is terminal on Mac？
@@ -15,19 +16,17 @@ The function of the terminal is very powerful, and all the basic operations of t
 * Work can be more efficient with command-line scripts.
 ### How to open terminal on MAC
 * press **command+space** to open spotlight
-* search "terminal" to open terminal.
-
+* search "terminal" to open terminal.<br>
 ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ckagp5j20g701swel.jpg) <br>
-*Terminal interface*
+:*Terminal interface*:
+
 ## 2. Shell commands
 Following are some elementary commands you should know in terminal.
 ### Directory: Where you are 
 Please type often `pwd` and `ls` to know where you are. 
 * `ls` means listing, showing the files in current folder.
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13e6cg8yj20fg01v0ss.jpg)
-
-* `cd` means change directory, or change to a folder, and you can add the location after `cd`.
-
+* `cd` means change directory, or change to a folder, and you can add the location after `cd`.<br>
   eg:
 
      `cd desktop` to go to "desktop".<br>
@@ -62,7 +61,6 @@ eg:
   
   `rm ex1.py` to remove a file called "ex1.py". 
 
-
 * `mkdir` means creat a folder
 * `rmdir` means delete a folder
 eg:
@@ -94,3 +92,8 @@ eg:
   `python ex1.py`on terminal to execute the file.<br>
 ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13vng40hj20f201vq2y.jpg)
 
+## Challenge
+* Write a Python script to output "Good evening" in the Terminal.
+## References
+[Terminal and shell commands (Chinese)](https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html)
+[Appendix A of "Learn Python the hard way"](https://learnpythonthehardway.org/python3/appendixa.html)
