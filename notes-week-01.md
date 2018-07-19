@@ -28,18 +28,13 @@ Please type often `pwd` and `ls` to know where you are.
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13e6cg8yj20fg01v0ss.jpg)
 * `cd` means change directory, or change to a folder, and you can add the location after `cd`.<br>
   eg:
-
      `cd desktop` to go to "desktop".<br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg)  
-    
+    ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg)      
     `cd ~` or `cd `to return to home.<br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ghb9grj20es012747.jpg)
-    
+    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ghb9grj20es012747.jpg)    
     `cd desktop/17444519` <br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13j4q9jkj20dr00wwee.jpg)
-    
-    `cd .` to go to current diretory. 
-    
+    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13j4q9jkj20dr00wwee.jpg)    
+    `cd .` to go to current diretory.    
     `cd ..` to return back to the upper directory.<br>
    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13k20gw1j20ea00yglj.jpg)
 
@@ -84,7 +79,7 @@ You can open .py by double clicking the file.
  `print ` is a python language, which means print, or show the things that written in the files in the terminal.
 eg:
   `print "hello"` on sublime to print the string hello.<br>
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ui71hqj20at03fjre.jpg)
+  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ui71hqj20at03fjre.jpg)<br>
   *sublime interface* 
 * press **command+S** to save the file as "ex1.py" on desktop.
   
@@ -95,5 +90,5 @@ eg:
 ## Challenge
 * Write a Python script to output "Good evening" in the Terminal.
 ## References
-[Terminal and shell commands (Chinese)](https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html)
-[Appendix A of "Learn Python the hard way"](https://learnpythonthehardway.org/python3/appendixa.html)
+* [Terminal and shell commands (Chinese)](https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html)
+* [Appendix A of "Learn Python the hard way"](https://learnpythonthehardway.org/python3/appendixa.html)
