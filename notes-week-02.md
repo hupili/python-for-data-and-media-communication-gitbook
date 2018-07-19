@@ -1,45 +1,47 @@
 # Chapter 2: Use Python as a daily tool
 In the previous chapter, I introduced the basic knowledge about teminal on Mac and how to navigate file system in Terminal, using shell,
-creating the first python script and execute it.. But in this chapter, we want to focus specifically on Python, introducing python language, functions like  `import`,`notation` and several commonly used modules you need to know about to get up and going as a python developer, like `sys` `numpy`, `scipy`...
+creating the first python script and execute it.. But in this chapter, we want to focus specifically on Python, introducing python language. Including Variables, Basic data types, Arithmetic, assignment functions like  `import`,`notation` and several commonly used modules you need to know about to get up and going as a python developer, like `sys` `numpy`, `scipy`...
 
 ## Objective of this week
 * Can use Python as a daily tool -- at least a powerful calculator
 
 ## 1. Variables
 
-Variables means changable. It can be a character or a word, which is not defined in python language. You should give it a definition.
+Variables means changable. It can be a character or a word, which is not defined in python language. Therefore you should give it a definition or assign value to it.
 
-
+eg1:
 ```
 a=1+2
 print a
 ```
-
 "a" is variable, so you give it a definition that a equals 1+2, and you will get 3 in terminal.
 
+eg2:
 ```
 fruit1=apple
 print fruit1
 ```
 It means you define fruit1 as apple, so you will get apple in terminal.
 
+eg3:
 ```red=0
 print red
 ```
 red is a variables, and you define it as 0,so it will print 0 in terminal.
 
+eg4:
 ```
 red=0
 print "red"
 ```
 You will get red in terminal, as **"red"** is different from **red**. (Quotation marks are important.)
 
-### 2. Basic data types
+## 2. Basic data types
 
 In fact,there are so many different kinds of data you can use to define the variables. Different data types are totally different.
 Following are some basic data types.
 
-##### 1. int
+### 1. int
 
 `int` means integer, like 7, 8, 9 and so on. those numbers are integer.eg:
 
