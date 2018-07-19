@@ -85,9 +85,9 @@ b=10%3
 c=10**3
 print "a =",a,"b=",b,"c=",c
 ```
-You will get a = 3, b = 1, c =1000.
+> You will get a = 3, b = 1, c =1000.
 
-### Exercise: Caculate a mortgage
+### Exercise 1: Caculate a mortgage
 
 Question: Caculate mortgage based on the following formula: (Assign "i" "P" "n" specific numbers by yourself.)
 
@@ -116,7 +116,7 @@ Differnt modules contains different functions relating to modules' features.
 
 eg: `import numpy` to import a module called numpy. (Generally, "import" is always written on the top to indicate readers what kind of module and functions you will use.)
 
-* There are many functions in a module, *module name +`.`+function name* means we choose a specific functions in a module. eg:
+There are many functions in a module, *module name +`.`+function name* means we choose a specific functions in a module. eg:
 
 ```
 import numpy
@@ -127,43 +127,55 @@ It means choose a function called "pi" from the module "numpy".You will get pi a
 import numpy
 print(numpy.sin(numpy.pi/6))
 ```
+![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/week2-1.jpg)
 > 0.5
 
 
-#### 2. Exercise: Caculate the area of a round
+### Exercise 2: Caculate the area of a round
 
 * Q: Caculate the area of a round
 Assign specific radius by yourself.
 
-* Answer:
+* Example:
 ```
 import numpy
 r=5
 area=r**2*numpy.pi
 print "area=", area
 ```
+> Answer: area=78.53981633974483
 
-##### 3. Exercise: Test sin\(\) function
+### Exercise 3: Test sin\(\) function
 
-* Q: Caculate sin pi/6
+* Q: Caculate sin pi/3
 
-* Answer:
+* Example:
 ```
-import numppy
-a=numpy.sin(numpy.pi/6)
+import numpy
+a=numpy.sin(numpy.pi/3)
 print "a=",a
 ```
+> Answer: a=0.8660254037844386
 
-##### 4. Exercise: Test random
+### Exercise 4: Test random
+*If you don't know `random`, you can google this module and look at their documentation to learn several different functions* 
 
 * Q: Randomly select a number from 1 to 10
 
-* Answer:
+* Example:
 ```
 import random
 print random.randrange(1,11)
 ```
+> Answer should be one of int numbers in 1 to 10
 
 
+## Challenge
+* Build a mortgage calculator - given principal P, interest rate r and load period n, calculated the amortised monthly payment A
+* Calculate the area of a circle given its radius r
+* Given the length of hypotenuse of a right triangle, calculate the length of its legs. You may want to get values like $$\sin(\frac{\pi}{6})$$ via numpy.pi and numpy.sin
+* Generate 10 random numbers. (it is OK to run your script 10 times)
 
-
+## References
+* [Chapter 1, 2, 3 of official Python 2 tutorial](https://docs.python.org/2/tutorial/)
+* [Python format string](https://pyformat.info/)
