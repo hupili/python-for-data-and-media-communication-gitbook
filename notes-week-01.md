@@ -1,5 +1,10 @@
 # Week 01: Hand-on the Terminal
 
+### Introduction
+In this very first chapter, you will start a journey, swimming in the ocean of codes and data. During the following months, you may experience a staggering start, enjoyable progress or even deeply frustration. You have to step out your comfort zone, learning from each other and conquer the overwhlming information world with your persistence and intelligence. If you have the determination to accept this chanllenge, you will see a brand new yourself at the end of the course.
+
+* Learn what is terminal(Basically, terminal is a Mac command line interface which allows you to control your Mac using a command prompt) , and use terminal to do certain simple tasks.
+
 ### 1. Open terminal on MAC
 Terminal is a shell which receive/send input and output for command-line program.
 * **command+space** to open spotlight
