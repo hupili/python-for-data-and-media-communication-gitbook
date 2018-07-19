@@ -79,18 +79,18 @@ eg:
   `mv ex1.py exercise.py` to rename "ex1.py" as "exercise.py".
   `mv 123 456`to rename "123" as "456".
 
-## 3. Edit Python file:
+## 3. Edit and execute python file:
 You can open .py by double clicking the file.
 *(If it doesn't work, you can download some third party editors,such as **sublime**, **visual studio code**. You can edit .py file by these editors.)*
-
-* `print ` is a python language, which means print, or show, in the terminal.
+* type something and save the file
+ `print ` is a python language, which means print, or show the things that written in the files in the terminal.
 eg:
   `print "hello"` on sublime to print the string hello.<br>
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ui71hqj20at03fjre.jpg)
+   
+  press **command+S** to save the file as "ex1.py" on desktop.
   
-  press**command+S** to save the file as "ex1.py" on desktop.
-  
-  ### Execute .py file
+### Execute .py file
   `python ex1.py`on terminal to execute the file.
 ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13vng40hj20f201vq2y.jpg)
 
