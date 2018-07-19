@@ -27,8 +27,11 @@ Please type often `pwd` and `ls` to know where you are.
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13e6cg8yj20fg01v0ss.jpg)
 
 * `cd` means change directory, or change to a folder.
+
 eg:
+
   `cd desktop` to go to "desktop".
+  
   ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg)  
     
   `cd ~` or `cd `to return to home.
