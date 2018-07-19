@@ -23,14 +23,14 @@ The function of the terminal is very powerful, and all the basic operations of t
 Following are some elementary commands you should know in terminal.
 ##### 1. Directory: Where you are 
 Please type often `pwd` and `ls` to know where you are. 
-* `ls` means listing, showing the files in current folder.
+* ```ls``` means listing, showing the files in current folder.
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13e6cg8yj20fg01v0ss.jpg)
 
-* `cd` means change directory, or change to a folder.
+* `cd` means change directory, or change to a folder, and you can add the location after `cd`.
 
   eg:
 
-    `cd desktop` to go to "desktop".<br>
+     ```cd desktop``` to go to "desktop".<br>
     ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg)  
     
     `cd ~` or `cd `to return to home.<br>
