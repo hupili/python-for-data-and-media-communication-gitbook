@@ -1,7 +1,12 @@
-# Week 2: Use Python as a daily tool
+# Chapter 2: Use Python as a daily tool
+In the previous chapter, I introduced the basic knowledge about teminal on Mac and how to navigate file system in Terminal, using shell,
+creating the first python script and execute it.. But in this chapter, we want to focus specifically on Python, introducing python language, functions like  `import',`notation` and several commonly used modules you need to know about JavaScript to get up and going as a python developer, like `sys` `numpy`, `scipy`...
 
 By writing python languages in the editor, we can get what we want on terminal.
 There are many rules in python language.
+
+## Objective of this week
+* Can use Python as a daily tool -- at least a powerful calculator
 
 ### 1. Variables
 
