@@ -53,7 +53,7 @@ int\(\) is a function, which converts the number in \(\) to an integer. You have
 
 ### float
 
-`float` means a number with decimal, like2.1, 3.8, 5.6 and so on. eg:
+`float` means a number with decimal, like 2.1, 3.8, 5.6 and so on. eg:
 
 ```
 b= float(7)
@@ -85,14 +85,14 @@ b=10%3
 c=10**3
 print "a =",a,"b=",b,"c=",c
 ```
-> You will get a = 3, b = 1, c =1000.
+> Answer: You will get a = 3, b = 1, c =1000.
 
 ### Exercise 1: Caculate a mortgage
 
 Question: Caculate mortgage based on the following formula: (Assign "i" "P" "n" specific numbers by yourself.)
 
 ![](https://www.myamortizationchart.com/img/amortization-formula.jpg)<br>
-*[formula from wikipedia](https://en.wikipedia.org/wiki/Mortgage_loan) , you can check out what each variable represents*
+*[formula from wikipedia](https://en.wikipedia.org/wiki/Mortgage_loan) , you can check out what each variable represents.*
 
 Example:
 
@@ -112,7 +112,7 @@ Differnt modules contains different functions relating to modules' features.
 
 ### Import a module and choose a function to use
 
-`import` means import a module from the Internet. you can import modules by writing `import`+ module name on terminal. And there are many modules out there, commonly used modules like [numpy](https://docs.scipy.org/doc/numpy/user/quickstart.html),[scipy](http://scipy.github.io/devdocs/tutorial/index.html), *click to check out more details*
+`import` means import a module from the Internet. you can import modules by writing `import`+ module name on terminal. And there are many modules out there, commonly used modules like [numpy](https://docs.scipy.org/doc/numpy/user/quickstart.html),[scipy](http://scipy.github.io/devdocs/tutorial/index.html), *click to check out more details.*
 
 eg: `import numpy` to import a module called numpy. (Generally, "import" is always written on the top to indicate readers what kind of module and functions you will use.)
 
@@ -128,15 +128,14 @@ import numpy
 print(numpy.sin(numpy.pi/6))
 ```
 ![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/week2-1.jpg)
-> 0.5
+> Answer: 0.5
 
 
 ### Exercise 2: Caculate the area of a round
 
-* Q: Caculate the area of a round
-Assign specific radius by yourself.
+Q: Caculate the area of a round, and assign specific radius by yourself.
 
-* Example:
+Example:
 ```
 import numpy
 r=5
@@ -147,9 +146,9 @@ print "area=", area
 
 ### Exercise 3: Test sin\(\) function
 
-* Q: Caculate sin pi/3
+Q: Caculate sin pi/3
 
-* Example:
+Example:
 ```
 import numpy
 a=numpy.sin(numpy.pi/3)
@@ -160,9 +159,9 @@ print "a=",a
 ### Exercise 4: Test random
 *If you don't know `random`, you can google this module and look at their documentation to learn several different functions* 
 
-* Q: Randomly select a number from 1 to 10
+Q: Randomly select a number from 1 to 10
 
-* Example:
+Example:
 ```
 import random
 print random.randrange(1,11)
