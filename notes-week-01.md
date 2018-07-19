@@ -87,10 +87,10 @@ You can open .py by double clicking the file.
 eg:
   `print "hello"` on sublime to print the string hello.<br>
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ui71hqj20at03fjre.jpg)
-   
-  press **command+S** to save the file as "ex1.py" on desktop.
+  *sublime interface* 
+* press **command+S** to save the file as "ex1.py" on desktop.
   
 ### Execute .py file
-  `python ex1.py`on terminal to execute the file.
+  `python ex1.py`on terminal to execute the file.<br>
 ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13vng40hj20f201vq2y.jpg)
 
