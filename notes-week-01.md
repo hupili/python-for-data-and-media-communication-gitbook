@@ -21,16 +21,16 @@ The function of the terminal is very powerful, and all the basic operations of t
 *Terminal interface*
 ### 2. Shell commands
 Following are some elementary commands you should know in terminal.
-##### 1. Directory: Where you are 
+##### Directory: Where you are 
 Please type often `pwd` and `ls` to know where you are. 
-* ```ls``` means listing, showing the files in current folder.
+* `ls` means listing, showing the files in current folder.
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13e6cg8yj20fg01v0ss.jpg)
 
 * `cd` means change directory, or change to a folder, and you can add the location after `cd`.
 
   eg:
 
-     ```cd desktop``` to go to "desktop".<br>
+     `cd desktop` to go to "desktop".<br>
     ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg)  
     
     `cd ~` or `cd `to return to home.<br>
@@ -47,7 +47,7 @@ Please type often `pwd` and `ls` to know where you are.
 * `pwd ` means print what directory, or show where you are.<br>
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13l2gwb2j20ep01g0sp.jpg)
 
-##### 2. Creat/delete/rename files and folders 
+##### Creat/delete/rename files and folders 
 Space separates the arguments and commands. So be careful.You can `ls` to check the new file or folder.
 *(Make sure it exists.)*
 
@@ -79,7 +79,7 @@ eg:
   `mv ex1.py exercise.py` to rename "ex1.py" as "exercise.py".
   `mv 123 456`to rename "123" as "456".
 
-##### 3. Execute .py file
+##### Execute .py file
 * `python exercise.py` to execute python scripts.
 
 ### 3. Edit Python file:
