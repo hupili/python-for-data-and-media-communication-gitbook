@@ -103,6 +103,8 @@ P=5000000
 A=i*P*(1+i)**n/((1+i)**n-1)
 print "A=",A
 ```
+> Answer:262500
+
 ## 4. Modules and functions
 
 There are diverse modules on the Internet,like math, geopy, numpy, scipy and so on.
@@ -120,7 +122,7 @@ eg: `import numpy` to import a module called numpy. (Generally, "import" is alwa
 import numpy
 print numpy.pi
 ```
-It means choose a function called "pi" from the module "numpy".You will get pi as 3.1415927. Therefore, whenever you want to use a function, you should check out which modules contain this function, then you use `.` notation to reference to one function, and input the parameter into `()`  after the function, after excute this command, you can get the results you want.eg:
+It means choose a function called "pi" from the module "numpy".You will get pi as 3.1415927. Therefore, whenever you want to use a function, you should check out which modules contain this function, then you use `.` notation to reference to the function, and input the parameter into `()`  after the function, after excuting this command, you can get the results you want.eg:
 ```
 import numpy
 print(numpy.sin(numpy.pi/6))
