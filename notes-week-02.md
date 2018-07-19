@@ -127,7 +127,7 @@ You will get pi as 3.1415927.(Both "numpy" and "scipi" contain the pi function.)
 
 `()`means you should input something in the function. Otherwise, it will automatically input default numbers.
 
-##### 2. Exercise: Caculate the area of a round
+#### 2. Exercise: Caculate the area of a round
 
 * Q: Caculate the area of a round
 Assign specific radius by yourself.
