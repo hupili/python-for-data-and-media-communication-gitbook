@@ -28,21 +28,21 @@ Please type often `pwd` and `ls` to know where you are.
 
 * `cd` means change directory, or change to a folder.
 
-eg:
+  eg:
 
-  `cd desktop` to go to "desktop".<br>
-  ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg)  
+    `cd desktop` to go to "desktop".<br>
+    ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg)  
     
-  `cd ~` or `cd `to return to home.<br>
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ghb9grj20es012747.jpg)
+    `cd ~` or `cd `to return to home.<br>
+    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ghb9grj20es012747.jpg)
     
-  `cd desktop/17444519` <br>
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13j4q9jkj20dr00wwee.jpg)
+    `cd desktop/17444519` <br>
+    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13j4q9jkj20dr00wwee.jpg)
     
-  `cd .` to go to current diretory. 
+    `cd .` to go to current diretory. 
     
-  `cd ..` to return back to the upper directory.<br>
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13k20gw1j20ea00yglj.jpg)
+    `cd ..` to return back to the upper directory.<br>
+   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13k20gw1j20ea00yglj.jpg)
 
 * `pwd ` means print what directory, or show where you are.<br>
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13l2gwb2j20ep01g0sp.jpg)
