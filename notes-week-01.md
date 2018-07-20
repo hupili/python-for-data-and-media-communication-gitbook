@@ -93,10 +93,10 @@ then cd to `big_data` folder, creat a new python file `ex1.py`, rename it as `ex
 You can open .py by double clicking the file.
 *(If it doesn't work, you can download some third party editors,such as **sublime**, **visual studio code**. You can edit .py file by these editors.)*
 * Type something on codes editor.<br>
- `print ` is a python language, which means print, or show the things that written in the files in the terminal.
+`print ` is a python language, which means print, or show the things that written in the files in the terminal.
 eg:
   `print ("hello")` on sublime to print the string hello.<br> 
-  *Ps: there are some compatibility issues between python 2&3, and we prefer to use python 3. Here is an [examples](https://stackoverflow.com/questions/25445439/what-does-syntaxerror-missing-parentheses-in-call-to-print-mean-in-python), and you can check out more compatibility issues by google it.*
+*Ps: there are some compatibility issues between python 2&3, and we prefer to use python 3. Here is an [examples](https://stackoverflow.com/questions/25445439/what-does-syntaxerror-missing-parentheses-in-call-to-print-mean-in-python), and you can check out more compatibility issues by google it.*
   ![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/sublime.png)<br>
 * Press **command+S** to save the file as "ex1.py" on desktop.
   
