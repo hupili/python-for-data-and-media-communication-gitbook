@@ -40,25 +40,22 @@ Please type often `pwd` and `ls` to know where you are.
     $ cd Desktop
     desktop $ pwd 
     /Users/xuyucan/desktop
-    // `cd ~` or `cd `to return to home.
-    // `cd python`, cd to a certain folder
-     $ cd python
-     python $ ls
-     17426316.py		hello.py		scrabe 2.py
+                           // `cd ~` or `cd `to return to home.
+                           // `cd python`, cd to a certain folder
+    $ cd python
+    python $ ls
+    17426316.py		hello.py		scrabe 2.py
     2_2.py			homework.py		scrabe.py
     Case1_Advanced.py	homework2.py		sight.py
     Case1_Fundamental.py	imdb.py			taiwan-comments.py
     H1.py			list.py			taiwan_earthquake.csv
     comments.csv		list2.py		taiwanearthquake.py
   
-    // `cd .` to go to current diretory.
-    //`cd ..` to return back to the upper directory.<br>
+                          // `cd .` to go to current diretory.
+                          //`cd ..` to return back to the upper directory.<br>
     python $ cd ..
     desktop $
     ```
-
-* `pwd ` means print what directory, or show where you are.<br>
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13l2gwb2j20ep01g0sp.jpg)
 
 ### Creat/delete/rename files and folders 
 Space separates the arguments and commands. So be careful.You can `ls` to check the new file or folder.
