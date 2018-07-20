@@ -41,8 +41,10 @@ Please type often `pwd` and `ls` to know where you are.
     $ cd Desktop
     desktop$ pwd 
     /Users/xuyucan/desktop
-                           // `cd ~` or `cd `to return to home.
-                           // `cd python`, cd to a certain folder
+    ```
+* `cd ~` or `cd `to return to home.
+* `cd python`, cd to a certain folder.
+    ```bash
     $ cd python
     python$ ls
     17426316.py		hello.py		scrabe 2.py
@@ -51,10 +53,11 @@ Please type often `pwd` and `ls` to know where you are.
     Case1_Fundamental.py	imdb.py			taiwan-comments.py
     H1.py			list.py			taiwan_earthquake.csv
     comments.csv		list2.py		taiwanearthquake.py
-  
-                          // `cd .` to go to current diretory.
-                          // `cd ..` to return back to the upper directory.
-    python $ cd ..
+    ```
+* `cd .` to go to current diretory.
+* `cd ..` to return back to the upper directory.
+    ```bash
+    python$ cd ..
     desktop$
     ```
 
