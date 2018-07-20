@@ -24,7 +24,7 @@ Following are some elementary commands you should know in terminal.
 ### Directory: Where you are 
 Please type often `pwd` and `ls` to know where you are. 
 * `ls` means listing, showing the files in current folder. ps:`$` represent this line is your input 
-  ```
+  ```bash
   $ ls
   Applications		Library			chromedriver
   Calibre 书库		Movies			pandas
