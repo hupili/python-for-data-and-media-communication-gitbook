@@ -15,17 +15,26 @@ The function of the terminal is very powerful, and all the basic operations of t
 * Many features of computers are not available in the graphical interface, only through the command line.
 * Work can be more efficient with command-line scripts.
 ### How to open terminal on MAC
-* press **command+space** to open spotlight
+* press **command+space** to open spotlight<br>
+![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/terminal%20search%202018-07-20%20%E4%B8%8B%E5%8D%882.00.29.png)
 * search "terminal" to open terminal.<br>
-![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ckagp5j20g701swel.jpg) <br>
+![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/terminal%20interface%202018-07-20%20%E4%B8%8B%E5%8D%882.01.53.png) <br> 
 *Terminal interface* 
 
 ## 2. Shell commands
 Following are some elementary commands you should know in terminal.
 ### Directory: Where you are 
 Please type often `pwd` and `ls` to know where you are. 
-* `ls` means listing, showing the files in current folder.
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13e6cg8yj20fg01v0ss.jpg)
+* `ls` means listing, showing the files in current folder. ps:`$` represent this line is your input 
+  ```
+  $ ls
+  Applications		Library			chromedriver
+  Calibre 书库		Movies			pandas
+  Creative Cloud Files	Music			python-twitter
+  Desktop			Pictures		venv
+  Documents		Public
+  Downloads		PycharmProjects
+  ```
 * `cd` means change directory, or change to a folder, and you can add the location after `cd`.<br>
   eg:<br>
      `cd desktop` to go to "desktop".<br>
