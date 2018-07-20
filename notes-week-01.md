@@ -70,14 +70,14 @@ Space separates the arguments and commands. So be careful.You can `ls` to check 
 
 eg:
   At first, cd to desktop and creat a new folder `big_data`
-  ```bush
+  ```bash
   $ cd desktop
   desktop$ mkdir big_data
   ```
 ![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/folder%202018-07-20%20%E4%B8%8B%E5%8D%884.25.42.png) <br>
 you can see the new folder in your desktop
 then cd to `big_data` folder, creat a new python file `ex1.py`, rename it as `exercise.py`, delete this file, and delete the `big_data` directory. During the process, you can check out whther the file/folder changed.
-  ```bush
+  ```bash
   $ cd big_data
   big_data$ touch ex1.py
   big_data$ mv ex1.py exercise.py
@@ -99,7 +99,7 @@ eg:
   
 * Execute .py file
   `python ex1.py`on terminal to execute the file.<br>
-```bush
+```bash
 desktop$ python ex1.py
 hello
 ```
