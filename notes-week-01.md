@@ -89,15 +89,15 @@ then cd to `big_data` folder, creat a new python file `ex1.py`, rename it as `ex
 ## 3. Edit and execute python file
 You can open .py by double clicking the file.
 *(If it doesn't work, you can download some third party editors,such as **sublime**, **visual studio code**. You can edit .py file by these editors.)*
-### type something on codes editor.<br>
+* Type something on codes editor.<br>
  `print ` is a python language, which means print, or show the things that written in the files in the terminal.
 eg:
-  `print ("hello")` on sublime to print the string hello.<br> Ps: there are some compatibility issues between python 2&3, we prefer to use python 3, [examples](https://stackoverflow.com/questions/25445439/what-does-syntaxerror-missing-parentheses-in-call-to-print-mean-in-python), you can check out more compatibility issues by google it.
+  `print ("hello")` on sublime to print the string hello.<br> Ps: there are some compatibility issues between python 2&3, and we prefer to use python 3. Here is an [examples](https://stackoverflow.com/questions/25445439/what-does-syntaxerror-missing-parentheses-in-call-to-print-mean-in-python), and you can check out more compatibility issues by google it.
   ![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/sublime.png)<br>
   *sublime interface* 
-### press **command+S** to save the file as "ex1.py" on desktop.
+* Press **command+S** to save the file as "ex1.py" on desktop.
   
-### Execute .py file
+* Execute .py file
   `python ex1.py`on terminal to execute the file.<br>
 ```bush
 desktop$ python ex1.py
