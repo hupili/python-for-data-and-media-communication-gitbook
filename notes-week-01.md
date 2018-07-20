@@ -36,7 +36,7 @@ Please type often `pwd` and `ls` to know where you are.
 * `cd` means change directory, or change to a folder, and you can add the location after `cd`.<br>
   eg:<br>
      `cd desktop` to go to "desktop".<br>
-    ```
+    ```bash
     $ cd Desktop
     desktop $ pwd //`pwd ` means print what directory, or show where you are
     /Users/xuyucan/desktop
@@ -57,6 +57,7 @@ Please type often `pwd` and `ls` to know where you are.
     //`cd ..` to return back to the upper directory.<br>
     python $ cd ..
     desktop $
+    ```
 
 * `pwd ` means print what directory, or show where you are.<br>
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13l2gwb2j20ep01g0sp.jpg)
