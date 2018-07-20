@@ -89,7 +89,7 @@ then cd to `big_data` folder, creat a new python file `ex1.py`, rename it as `ex
 ## 3. Edit and execute python file
 You can open .py by double clicking the file.
 *(If it doesn't work, you can download some third party editors,such as **sublime**, **visual studio code**. You can edit .py file by these editors.)*
-* type something and save the file
+* type something and save the file.<br>
  `print ` is a python language, which means print, or show the things that written in the files in the terminal.
 eg:
   `print "hello"` on sublime to print the string hello.<br>
