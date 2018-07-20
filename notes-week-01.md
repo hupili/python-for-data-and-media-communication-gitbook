@@ -89,17 +89,20 @@ then cd to `big_data` folder, creat a new python file `ex1.py`, rename it as `ex
 ## 3. Edit and execute python file
 You can open .py by double clicking the file.
 *(If it doesn't work, you can download some third party editors,such as **sublime**, **visual studio code**. You can edit .py file by these editors.)*
-* type something and save the file.<br>
+### type something on codes editor.<br>
  `print ` is a python language, which means print, or show the things that written in the files in the terminal.
 eg:
-  `print "hello"` on sublime to print the string hello.<br>
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ui71hqj20at03fjre.jpg)<br>
+  `print ("hello")` on sublime to print the string hello.<br> Ps: there are some compatibility issues between python 2&3, we prefer to use python 3, [examples](https://stackoverflow.com/questions/25445439/what-does-syntaxerror-missing-parentheses-in-call-to-print-mean-in-python), you can check out more compatibility issues by google it.
+  ![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/sublime.png)<br>
   *sublime interface* 
-* press **command+S** to save the file as "ex1.py" on desktop.
+### press **command+S** to save the file as "ex1.py" on desktop.
   
 ### Execute .py file
   `python ex1.py`on terminal to execute the file.<br>
-![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13vng40hj20f201vq2y.jpg)
+```bush
+desktop$ python ex1.py
+hello
+```
 
 ## Challenge
 * Write a Python script to output "Good evening" in the Terminal.
