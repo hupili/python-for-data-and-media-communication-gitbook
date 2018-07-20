@@ -38,7 +38,7 @@ Please type often `pwd` and `ls` to know where you are.
      `cd desktop` to go to "desktop".<br>
     ```
     $ cd Desktop
-    desktop $ pwd [//]: # (`pwd ` means print what directory, or show where you are)
+    desktop $ pwd //`pwd ` means print what directory, or show where you are
     /Users/xuyucan/desktop
     // `cd ~` or `cd `to return to home.<br>
   
