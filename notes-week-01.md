@@ -21,6 +21,7 @@ The function of the terminal is very powerful, and all the basic operations of t
 ![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/terminal%20interface%202018-07-20%20%E4%B8%8B%E5%8D%882.01.53.png) <br> 
 ## 2. Shell commands
 Following are some elementary commands you should know in terminal.
+![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/terminal%20commands%202018-07-20%20%E4%B8%8B%E5%8D%882.48.27.png)
 ### Directory: Where you are 
 Please type often `pwd` and `ls` to know where you are. 
 * `ls` means listing, showing the files in current folder. ps:`$` represent this line is your input 
