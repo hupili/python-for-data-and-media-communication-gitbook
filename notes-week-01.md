@@ -52,7 +52,7 @@ Please type often `pwd` and `ls` to know where you are.
     comments.csv		list2.py		taiwanearthquake.py
   
                           // `cd .` to go to current diretory.
-                          //`cd ..` to return back to the upper directory.<br>
+                          // `cd ..` to return back to the upper directory.
     python $ cd ..
     desktop $
     ```
