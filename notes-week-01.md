@@ -19,8 +19,6 @@ The function of the terminal is very powerful, and all the basic operations of t
 ![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/terminal%20search%202018-07-20%20%E4%B8%8B%E5%8D%882.00.29.png)
 * search "terminal" to open terminal.<br>
 ![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/terminal%20interface%202018-07-20%20%E4%B8%8B%E5%8D%882.01.53.png) <br> 
-*Terminal interface* 
-
 ## 2. Shell commands
 Following are some elementary commands you should know in terminal.
 ### Directory: Where you are 
@@ -38,18 +36,27 @@ Please type often `pwd` and `ls` to know where you are.
 * `cd` means change directory, or change to a folder, and you can add the location after `cd`.<br>
   eg:<br>
      `cd desktop` to go to "desktop".<br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35gy1fo1c690shmj20eh015t8n.jpg) 
+    ```
+    $ cd Desktop
+    desktop $ pwd // `pwd ` means print what directory, or show where you are
+    /Users/xuyucan/desktop
+    // `cd ~` or `cd `to return to home.<br>
+  
+    // `cd python` cd to a certain folder
+     $ cd python
+     python $ ls
+     17426316.py		hello.py		scrabe 2.py
+    2_2.py			homework.py		scrabe.py
+    Case1_Advanced.py	homework2.py		sight.py
+    Case1_Fundamental.py	imdb.py			taiwan-comments.py
+    H1.py			list.py			taiwan_earthquake.csv
+    comments.csv		list2.py		taiwanearthquake.py
     
-    `cd ~` or `cd `to return to home.<br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13ghb9grj20es012747.jpg) 
+    // `cd .` to go to current diretory.
     
-    `cd desktop/17444519` <br>
-    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13j4q9jkj20dr00wwee.jpg)
-    
-    `cd .` to go to current diretory.
-    
-    `cd ..` to return back to the upper directory.<br>
-   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13k20gw1j20ea00yglj.jpg)
+    //`cd ..` to return back to the upper directory.<br>
+    python $ cd ..
+    desktop $
 
 * `pwd ` means print what directory, or show where you are.<br>
   ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13l2gwb2j20ep01g0sp.jpg)
