@@ -67,6 +67,7 @@ Space separates the arguments and commands. So be careful.You can `ls` to check 
 * `mkdir` means creat a folder
 * `rmdir` means delete a folder
 * `mv` means rename<br>
+
 eg:
   At first, cd to desktop and creat a new folder `big_data`
   ```bush
