@@ -39,12 +39,12 @@ Please type often `pwd` and `ls` to know where you are.
   eg:<br>
     ```bash
     $ cd Desktop
-    desktop $ pwd 
+    desktop$ pwd 
     /Users/xuyucan/desktop
                            // `cd ~` or `cd `to return to home.
                            // `cd python`, cd to a certain folder
     $ cd python
-    python $ ls
+    python$ ls
     17426316.py		hello.py		scrabe 2.py
     2_2.py			homework.py		scrabe.py
     Case1_Advanced.py	homework2.py		sight.py
@@ -55,7 +55,7 @@ Please type often `pwd` and `ls` to know where you are.
                           // `cd .` to go to current diretory.
                           // `cd ..` to return back to the upper directory.
     python $ cd ..
-    desktop $
+    desktop$
     ```
 
 ### Creat/delete/rename files and folders 
@@ -64,30 +64,25 @@ Space separates the arguments and commands. So be careful.You can `ls` to check 
 
 * `touch` means creat a file
 * `rm` means delete a file
-eg:
-  At first, `ls` to see files in current folder.
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13qeisecj20e700t0so.jpg)
-  
-  `touch ex1.py` to creat a file called "ex1.py",then `ls`.
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13qx0ejmj20ek01y3yl.jpg)
-  
-  `rm ex1.py` to remove a file called "ex1.py". 
-
 * `mkdir` means creat a folder
 * `rmdir` means delete a folder
-eg:
-  `ls`to see files in current folder.
-  ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13sjhu6hj20ed016mx4.jpg)
-  
-  `mkdir Big_data` to creat a new directory, or a folder.
-    ![](https://ws1.sinaimg.cn/large/5b088c35ly1fo13sucn5ej20f601v3ym.jpg)
-    
-  `rmdir Big_data` to remove the directory.
-
 * `mv` means rename
 eg:
-  `mv ex1.py exercise.py` to rename "ex1.py" as "exercise.py".
-  `mv 123 456`to rename "123" as "456".
+  At first, cd to desktop and creat a new folder `big_data`
+  ```bush
+  $ cd desktop
+  desktop$ mkdir big_data
+  ```
+![](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assets/folder%202018-07-20%20%E4%B8%8B%E5%8D%884.25.42.png) you can see the new folder in your desktop
+  then cd to `big_data` folder, creat a new python file `ex1.py`, rename it as `exercise.py`, delete this file, and delete the `big_data` directory. During the process, you can check out whther the file/folder changed.
+  ```bush
+  $ cd big_data
+  big_data$ touch ex1.py
+  big_data$ mv ex1.py exercise.py
+  big_data$ rm exercise.py
+  big_data$ cd ..
+  desktop$ rmdir big_data
+  ```
 
 ## 3. Edit and execute python file
 You can open .py by double clicking the file.
