@@ -1,10 +1,12 @@
+## Difference between python 2 and 3
 Python 2 and Python 3 are mostly the same during our discussions. However there are some differences if you explore further. During this semester, we base our discussions and exercises on Python 3. We highlight some main differences here for your reference. To read further, you can click [here](http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html#the-print-function)
 
-## pip and pip3
+## How to install python3?
+* pip and pip3
 
 If you want to install modules for Python3, please use `pip3` . To install in user mode, you can use
 
-```
+```bash
 pip3 install --user {name-of-the-module}
 ```
 
