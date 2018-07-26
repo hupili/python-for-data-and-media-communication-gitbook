@@ -3,7 +3,7 @@
 ## MAC
 
 Modern Mac OS versions come with Python 2.7.x installed (or Python 2.6.1 if an older Mac OS X version), but with several reasons, many Python users may need to update Python in Mac OS to a newer version like Python 3.  
-* You can type`python --version` to check out the version on your computer.
+* You can type`python --version`in terminal to check out the version on your computer.
 
 ### How to Install the Updated Python 3 in Mac OS  
 1. by using the Python package installer from python.org
