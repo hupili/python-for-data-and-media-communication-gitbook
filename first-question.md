@@ -6,7 +6,7 @@ Modern Mac OS versions come with Python 2.7.x installed (or Python 2.6.1 if an o
 * You can type`python --version`in terminal to check out the version on your computer.
 
 ### How to Install the Updated Python 3 in Mac OS  
-1. by using the Python package installer from python.org
+1. by using the Python package installer from [python.org](python.org)
     * Go to Python.org and download the [latest Python installer package](https://www.python.org/downloads/)  
     * Run the Python installer package and install Python 3 onto the Mac   
 
