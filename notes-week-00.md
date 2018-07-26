@@ -23,12 +23,16 @@ Markdown is a lightweight and easy-to-use syntax for styling all forms of writin
 The GitHub issue has a lot of features, but overall it looks like a lightweight collaboration system. Assignee or project manager can pull requests for new contributors and set a to-do list for contributors and teammates. You can use issue to ask questions, discuss with your team, label the `issue` you encounter, and collaborate with others, which greatly advances the managing of a Project.  
 e.g.1: Set a to-do list for your teammates, once they finished the quest you pull, they can just tick to show the progress.
 ![](/assets/Chapter0-issue.png)  
+
+
 e.g.2：To discuss with your team members to track the working process.
 ![](/assets/Chapter0-discussion.png)
 
 ### Learn other's code from commit history
 ![](/assets/Chapter0-commit%20history.png)  
 You can see the latest update time and a brief summary of every piece of work in one's repository.  
+
+
 ![](/assets/Chapter0-commit%20details.png)
 By clicking one of the files, you can see the details of the improvements and changes they recently made, and you can learn from their work. 
 The red blocks represent the old one, and the green is the newer one, which makes it easy for you to know the difference and learn the logic behind it.
@@ -44,6 +48,8 @@ The Jupyter Notebook is an open-source web application that allows you to create
 * [Nbviewer](http://nbviewer.jupyter.org/)  
 Nbviewer creates a simple way to view and share Jupyter Notebooks. You just need to copy the link of one Jupyter notebook and paste in nbviewer.
 ![](/assets/Chapter0-jupyter%20notebook%20link.jpg) 
+
+
 ![](/assets/Chapter0-nbviewer.png)
 
 ## GitHub Desktop
