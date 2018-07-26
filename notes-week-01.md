@@ -117,7 +117,7 @@ Terminal is an interactive environment. The advantage of writing code inside is 
 We recommend two text editors, [sublime](https://www.sublimetext.com/) and [visual studio code](https://code.visualstudio.com/)(*click to download*). Then you can edit a .py file by these editors by double clicking the file. MAC will open "TextEdit" by default editor. You can set one of those two editors as default editor if necessary.
 
 ### Install python 3
-Python is a popular programming language that is widely used by beginners and longtime developers alike. Meanwhile, its the language that we learn in this course to scrape, clean, analyze, and visualize data.  And there are basically 2 main versions of python. Python 2 and 3. But in this course, we base our discussions and exercises on Python 3, and you can check out the [difference between python 2 and 3](/python-2-vs-python-3.md) and the instruction for [installation of python 3](/first-question.md).
+Python is a popular programming language that is widely used by beginners and longtime developers alike. Meanwhile, its the language that we learn in this course to scrape, clean, analyze, and visualize data.  And there are basically 2 main versions of python. Python 2 and 3. But in this course, we base our discussions and exercises on Python 3, you can check out the [difference between python 2 and 3](/python-2-vs-python-3.md) and the instruction for [installation of python 3](/first-question.md) in related materials in our gitbook.
 
 * Modify the `ex1.py` file by a text editor.
 
