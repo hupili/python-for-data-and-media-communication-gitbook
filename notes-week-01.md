@@ -25,9 +25,9 @@ The function of the terminal is very powerful, and all the basic operations of t
 ### How to open terminal on MAC
 
 * press **command+space** to open spotlight  
-![](assets/Chapter1-terminal%20search.png)
+![](/assets/Chapter1-terminal%20search.png)
 * search "terminal" to open terminal.
-![](/assets/terminal%20interface%202018-07-20%20%E4%B8%8B%E5%8D%882.01.53.png) 
+![](/assets/Chapter1-terminal%20interface.png) 
 When you open terminal, you can see these two lines. The first line represents the last time you log in. And the second line **xuyucandeMacbook-pro** shows your computer model.**~xuyucan** is your account/username. What you need to focus is notation `$` . Its the sign that you can input some commands, and after you click the return, the computer will send back the results in next line.
 
 ## 2. Shell commands
