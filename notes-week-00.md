@@ -20,23 +20,22 @@ Markdown is a lightweight and easy-to-use syntax for styling all forms of writin
 
 
 ### Use GitHub issue tracker as discussion forum
-The GitHub issue has a lot of features, but overall it looks like a lightweight collaboration system. Assignee or project manager can pull requests for new contributors and set a to-do list for contributors and teammates. You can use issue to ask questions, discuss with your team, label the `issue` you encounter, and collaborate with others, which greatly advances the managing of a Project.
+The GitHub issue has a lot of features, but overall it looks like a lightweight collaboration system. Assignee or project manager can pull requests for new contributors and set a to-do list for contributors and teammates. You can use issue to ask questions, discuss with your team, label the `issue` you encounter, and collaborate with others, which greatly advances the managing of a Project.  
 e.g.1: Set a to-do list for your teammates, once they finished the quest you pull, they can just tick to show the progress.
-
+![](/assets/Chapter0-issue.png)  
 e.g.2：To discuss with your team members to track the working process.
-
+![](/assets/Chapter0-discussion.png)
 
 ### Learn other's code from commit history
-Pic1
+![](/assets/Chapter0-commit%20history.png)  
 You can see the latest update time and a brief summary of every piece of work in one's repository.  
-Pic2
+![](/assets/Chapter0-commit%20details.png)
 By clicking one of the files, you can see the details of the improvements and changes they recently made, and you can learn from their work. 
 The red blocks represent the old one, and the green is the newer one, which makes it easy for you to know the difference and learn the logic behind it.
+
 ### Preview a Jupyter notebook hosted on GitHub with nbviewer
 * [Jupyter Notebook](http://jupyter.org/)  
 The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. In our course, Jupyter notebook will be our daily tool to write, test, and sharing our codes and works. It's very useful for us to learn and make **reproducible works**. 
-pic
-
     The good advantage of jupyter notebook includes
     * The Notebook has support for over 40 programming languages, including Python, R, Julia, and Scala.
     * Notebooks can be shared with others using email, Dropbox, GitHub and the Jupyter Notebook Viewer.
@@ -44,7 +43,8 @@ pic
 
 * [Nbviewer](http://nbviewer.jupyter.org/)  
 Nbviewer creates a simple way to view and share Jupyter Notebooks. You just need to copy the link of one Jupyter notebook and paste in nbviewer.
-pic
+![](/assets/Chapter0-jupyter%20notebook%20link.jpg) 
+![](/assets/Chapter0-nbviewer.png)
 
 ## GitHub Desktop
 
