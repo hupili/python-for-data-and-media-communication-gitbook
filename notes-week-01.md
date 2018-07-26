@@ -33,7 +33,7 @@ When you open terminal, you can see these two lines. The first line represents t
 ## 2. Shell commands
 
 Following are some elementary commands you should know in terminal.
-![](/assets/terminal%20commands%202018-07-20%20%E4%B8%8B%E5%8D%882.48.27.png)
+![](/assets/Chapter1-terminal%20commands.png)
 
 ### Directory: Where you are 
 
@@ -98,7 +98,7 @@ e.g.: At first, cd to desktop and create a new folder `big_data`
   desktop xuyucan$ mkdir big_data
   ```
 
-![](/assets/folder%202018-07-20%20%E4%B8%8B%E5%8D%884.25.42.png)   
+![](/assets/Chapter1-new%20folder.png)   
 you can see the new folder in your desktop
 then cd to `big_data` folder, create a new python file `ex1.py`, rename it as `exercise.py`, delete this file, and delete the `big_data` directory. During the process, you can check out whether the file/folder changed.
   ```bash
@@ -123,7 +123,7 @@ Python is a popular programming language that is widely used by beginners and lo
 
   * `print ` is a python language, which means print, or show the things that written in the files in the terminal. eg:
   * `print ("hello")` on sublime to print the string hello.
-![](/assets/sublime.png)  
+![](/assets/Chapter1-sublime.png)  
   * Press **Command+s** to save the file as "ex1.py" on desktop.
   * Execute .py file
   `python ex1.py`on terminal to execute the file.
