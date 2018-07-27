@@ -4,6 +4,7 @@ In this very first chapter, you will start a journey, swimming in the ocean of c
 
 ## Objective of this week
 
+* Setup the Python environment. Please read [here](setup-environment.md).
 * Learn what is terminal, Able to navigate file system in Terminal, using the shell.
 * Create the first python script and execute it.
 
