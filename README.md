@@ -29,9 +29,9 @@ The course COMM7780/JOUR7280 Big Data for Media and Communication is setup for m
 
 ## General FAQs
 
-* [Setup Python Environment on Windows and MAC](first-question.md)
+* [Setup Python Environment on Windows and MAC](setup-environment.md)
 * [Shell](shell.md)
-* [Python Language Basics](second-question.md)
+* [Python Language Basics](python-language-basics.md)
 * [Python 2 v.s. Python 3](python-2-vs-python-3.md)
 * [Dataprep](dataprep.md)
 * [Pro Tips](pro-tips.md)
