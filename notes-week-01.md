@@ -149,3 +149,7 @@ Python is a popular programming language that is widely used by beginners and lo
 
 * [Terminal and shell commands (Chinese)](https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html)
 * [Appendix A of "Learn Python the hard way"](https://learnpythonthehardway.org/python3/appendixa.html) - Suggest all students make some self-study of this tutorial. Being comfortable in shell environment can make one efficient in programming.
+
+------
+
+If you have any questions, or seek for help troubleshotting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
