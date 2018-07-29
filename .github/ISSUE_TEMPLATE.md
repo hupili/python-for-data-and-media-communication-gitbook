@@ -7,6 +7,7 @@
 * Hardware:
 * Internet access:
 * Jupyter notebook or not? [Y/N]:
+* Which chapter of book?:
 
 <!-- Texts appear in angle brackets like this are comments and will not show in your issue body. They are here to help you fill in this form. Feel free to remove those comments. You can also remove other texts that is irrelevant to your issue -->
 
