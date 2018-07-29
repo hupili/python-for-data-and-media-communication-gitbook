@@ -1,12 +1,6 @@
-GitBook's account system failed multiple access in spring 2018. I lost access to the original GitBook project. This is a dump at April 22, 2018. The books in this repository will not be regularly updated. Learning materials, e.g. books and codes, will be updated in the main repo: https://github.com/hupili/python-for-data-and-media-communication/
+# Python and Data Analysis for Communication Students
 
-------
-
-# COMM7780/JOUR7280 of HKBU
-
-The course COMM7780/JOUR7280 Big Data for Media and Communication is setup for master students in the school of communication, Hong Kong Baptist University. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This GitBook collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining. Every week, one group of students will apply that week's knowledge into a real problem from their own domain. The solution is posted on [Data and News Society](https://dnnsociety.org/tag/comm7780-jour7280/).
-
-# Table of Contents
+This is the text book for HKBU's COMM7780/JOUR7280 courses. The course COMM7780/JOUR7280 "Big Data for Media and Communication" is setup for master students in the school of communication, Hong Kong Baptist University. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This GitBook collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining. Every week, one group of students will apply that week's knowledge into a real problem from their own domain. The solution is posted on [Data and News Society](https://dnnsociety.org/tag/comm7780-jour7280/).
 
 ## Overview
 
@@ -15,11 +9,12 @@ The course COMM7780/JOUR7280 Big Data for Media and Communication is setup for m
 
 ## Weekly Notes
 
-* [Notes: Week 01](notes-week-01.md)
-* [Notes: Week 02](notes-week-02.md)
-* [Notes: Week 03](notes-week-03.md)
-* [Notes: Week 04](notes-week-04.md)
-* [Notes: Week 05](notes-week-05.md)
+* [Notes: Week 00 - GitHub and markdown](notes-week-00.md)
+* [Notes: Week 01 - Terminal, shell and first code](notes-week-01.md)
+* [Notes: Week 02 - Python basics](notes-week-02.md)
+* [Notes: Week 03 - Python data structure and control flow](notes-week-03.md)
+* [Notes: Week 04 - API, JSON and CSV](notes-week-04.md)
+* [Notes: Week 05 - Web scraping](notes-week-05.md)
 * [Notes: Week 06](notes-week-06.md)
 * [Notes: Week 07](notes-week-07.md)
 * [Notes: Week 08](notes-week-08.md)
@@ -55,3 +50,10 @@ The course COMM7780/JOUR7280 Big Data for Media and Communication is setup for m
 * [module: datetime](module-datetime.md)
 * [module: selenium](module-selenium.md)
 
+------
+
+## License
+
+CC-BY-NC
+
+[List of contributors](https://github.com/hupili/python-for-data-and-media-communication-gitbook/graphs/contributors)
