@@ -1,5 +1,13 @@
 # Course Outline
 
+## Week 0 - GitHub
+
+**Objective**
+
+> * Can use GitHub for resource hosting, project management and discussion forum.
+> * Can use GitHub Desktop to sync local repos with remote repos.
+> * Can use `gh-pages` to host static web pages as one's portfolio.
+
 ## Week 1 - Hands-on the Terminal
 
 **Objective:**
@@ -109,7 +117,46 @@ References:
 
 * Chapter 4, 5, 6 of [official Python 2 tutorial](https://docs.python.org/2/tutorial/)
 
-## Week 4 - Web Scraping
+## Week 4 - JSON and API
+
+**Objective**:
+
+> * Learn to use Jupyter notebook. All demos following this week will be conducted in Jupyter notebook.
+> * Understand API/ JSON and can retrieve data from online databases \(twitter, GitHub, weibo, douban, ...\)
+> * Understand basic file format like `json` and `csv`. 
+>    * Be able to comfortably navigate through compound structures like `{}` and `[]`. 
+>    * Be able to comfortably use (multiple layer of) for-loop to re-format data.
+>    * Be able to use serialisers to handle input/ output to files.
+
+The brief of Application Programming Interface (API):
+
+* Operate in client-and-server mode.
+* Client does not have to download the full volume of data from server. Only use the data on demand.
+* Server can handle intensive computations that not available by client.
+* Server can send updated data upon request.
+
+Modules:
+
+* Handle HTTP request/ response: `requests`
+* Serialiser: `json` and `csv`
+
+Challenges:
+
+* Taiwan had an earthquake in early Feb. Let's discuss this issue:
+  * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/). Checkout the [API description](https://earthquake.usgs.gov/fdsnws/event/1/). The `count` and `query` API are useful.
+  * Search on Twitter and collect user's discussions about this topic. See if there is any findings. You can approach from the human interface [here](https://twitter.com/search?q=%23台湾地震) \(hard mode\) or use [python-twitter](https://github.com/bear/python-twitter) module \(need to register developer and obtain API key\).
+* Retrieve and analyse the recent movie. Douban's API will be helpful here.
+  * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
+  * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
+* Use Google Map API to retrieve geo-locaitons and canonical names: e.g. [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university)
+* 
+
+Further readings:
+
+* Use `beautifulsoup` to [scrape Twitter timeline content](http://www.lyonwj.com/2017/11/12/scraping-russian-twitter-trolls-python-neo4j/) from [Wayback machine](http://archive.org/web/). A good example of investigative journalism, by William Lyon from [neo4j](https://neo4j.com/).
+
+
+## Week 5 - Web Scraping
 
 **Objective**:
 
@@ -147,32 +194,6 @@ Further reading:
 * Study Regular Expression and `re` library in Python
 * See how [reproducibility is improved](https://www.nature.com/articles/d41586-018-01322-9) with Jupyter notebook and other tools \(not only Python\).
 
-## Week 5 - JSON and API
-
-**Objective**:
-
-> * Reinforce the knowledge of scraper. Able to analyse and scrape normal web pages
-> * Understand API/ JSON and can retrieve data from online databases \(twitter, GitHub, weibo, douban, ...\)
-
-Modules:
-
-* Handle HTTP request/ response: `requests`
-* Serialiser: `json`
-
-Challenges:
-
-* Taiwan had an earthquake in early Feb. Let's discuss this issue:
-  * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/). Checkout the [API description](https://earthquake.usgs.gov/fdsnws/event/1/). The `count` and `query` API are useful.
-  * Search on Twitter and collect user's discussions about this topic. See if there is any findings. You can approach from the human interface [here](https://twitter.com/search?q=%23台湾地震) \(hard mode\) or use [python-twitter](https://github.com/bear/python-twitter) module \(need to register developer and obtain API key\).
-* Retrieve and analyse the recent movie. Douban's API will be helpful here.
-  * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
-  * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
-
-Further readings:
-
-* Use `beautifulsoup` to [scrape Twitter timeline content](http://www.lyonwj.com/2017/11/12/scraping-russian-twitter-trolls-python-neo4j/) from [Wayback machine](http://archive.org/web/). A good example of investigative journalism, by William Lyon from [neo4j](https://neo4j.com/).
-
-> Post-class note: Week 5 was spent to strengthen the knowledge of scraper. This section is left for self-study. It is not dependency for future weeks. One can pick up in need.
 
 ## Week 6 - Table manipulation and 1-D analysis
 
