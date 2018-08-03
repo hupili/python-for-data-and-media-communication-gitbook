@@ -12,13 +12,13 @@ This chapter covers "GitHub literacy" and walks the readers through the basic st
 
 ## Getting-started on GitHub
 
-You can sign up in [Github](https://github.com/). Pick a nice name, then you can start your wonderful journey conquering the galaxy of data and codes. There are many useful learning materials and meaningful projects on the platform waiting for you to open it, many interesting stories to discover.
+You can sign up in [GitHub](https://github.com/). Pick a nice name, then you can start your wonderful journey conquering the galaxy of data and codes. There are many useful learning materials and meaningful projects on the platform waiting for you to open it, many interesting stories to discover.
 
 ### Understand markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling all forms of writing on the GitHub platform. - explanation by Github. Markdown is a way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images, and creating lists are just a few of the things we can do with Markdown. Mostly, Markdown is just regular text with a few non-alphabetic characters thrown in, like # or *.
+Markdown is a lightweight and easy-to-use syntax for styling all forms of writing on the GitHub platform. - explanation by GitHub. Markdown is a way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images, and creating lists are just a few of the things we can do with Markdown. Mostly, Markdown is just regular text with a few non-alphabetic characters thrown in, like # or *.
 
-* Here is the official document of [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) in Github.
+* Here is the official document of [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) in GitHub.
 * Also, another good introduction of use of markdown [Markdown 基本语法](https://github.com/younghz/Markdown)
 
 ### Use GitHub issue tracker as a discussion forum
@@ -60,20 +60,24 @@ Nbviewer creates a simple way to view and share Jupyter Notebooks. You just need
 
 ![](/assets/Chapter0-nbviewer.png)
 
+#### Why we should preview Jupyter notebook on NBviewer
+
+Usually, we can directly preview a Python notebook on GitHub. However, GitHub prohibits Javascript execution for security reasons. If you have interactive chart, e.g. `echart`, `plotly`, those will not render on GitHub. Nbviewer supports javascript and it is the first free online tool to preview Python notebook, so we recommend it. For concrete examples of dynamic charts, here is an [example](http://nbviewer.jupyter.org/github/data-projects-archive/201804-Air-Crash/blob/master/Final%20Project%20-%20Airplane%20crash/A%20Brief%20report%20Airplane%20crash%20worldwide.ipynb) from students' last year. The last interactive map *flight path* can not be shown directly in GitHub, that's why we need Nbviewer.
+
 ## GitHub Desktop
 
-### Install Github desktop
+### Install GitHub desktop
 
 You can download from [here](https://desktop.github.com/), and install it like you installed other apps before.
 
 ### Use GitHub Desktop to synchronize codes between local repo and GitHub hosted repo
 
-Talking about this function, Github is like a cloud disk, which is similar to Google Drive，OneDrive. You can synchronize your codes and files between local and Github website. It's useful not just others can see your recent updates, but also improve the efficiency during the collaboration with others. If one of your teammates commit changes, you can synchronize by Github desktop and keep the same stage with them.
+Talking about this function, GitHub is like a cloud disk, which is similar to Google Drive，OneDrive. You can synchronize your codes and files between local and GitHub website. It's useful not just others can see your recent updates, but also improve the efficiency during the collaboration with others. If one of your teammates commit changes, you can synchronize by GitHub desktop and keep the same stage with them.
 
 #### Create your first repository
 
 ![new repo](/assets/Chapter0-create%20new%20repo.png)
-After you log in Github desktop, click `create new repository`, give a name you like and choose the local path you want(but keep in mind where they are).
+After you log in GitHub desktop, click `create new repository`, give a name you like and choose the local path you want(but keep in mind where they are).
 
 #### Create a file in this repository
 
@@ -82,28 +86,27 @@ Drag the repository/folder you created into the text editor, in this case, I use
 ![write a file](/assets/Chapter0-write%20a%20file.png)
 Under the example repo, create your first file `hello github.md`, write an H1 line `Let's try out github`, and save it.
 
-#### Publish your repo to Github
+#### Publish your repo to GiHhub
 
 ![publish repo](/assets/Chapter0-publish%20repo.png)
-After creating your first file, open github desktop, you can see the changes you did before. Give a description of this changes in [1], then commit to master in [2],(this step is like that you confirm the changes). After that, you can click [3] and [4] to publish your repo.
+After creating your first file, open GitHub desktop, you can see the changes you did before. Give a description of this changes in [1], then commit to master in [2],(this step is like that you confirm the changes). After that, you can click [3] and [4] to publish your repo.
 
 ![find new file](/assets/Chapter0-find%20new%20file.png)
-Open the Github website, find your new repo, click the repo and check out the files in this repo, whether it keeps the same pace with your local file.
+Open the GitHub website, find your new repo, click the repo and check out the files in this repo, whether it keeps the same pace with your local file.
 
 #### Re-edit your file and synchronize codes between two ends
 
-You can re-edited the files and codes both in Github website and in local text editor.
+You can re-edited the files and codes both in GitHub website and in local text editor.
 
 * If you edit in the website, after you save the file, click the `fetch origin`. Then the change you commit in the website will synchronize into your local repo.
 
 ![fetch orign](/assets/Chapter0-fetch%20origin.png)
 
-* If you edit in a local text editor, it's pretty much the same. You give a description, commit to mater, and then `fetch origin`. Then the change you commit in a local repo will synchronize into your Github site.
+* If you edit in a local text editor, it's pretty much the same. You give a description, commit to mater, and then `fetch origin`. Then the change you commit in a local repo will synchronize into your GitHub site.
 
+## GitHub Pages
 
-## GitHub pages
-
-Github pages are websites for you and your projects. It helps you turn your Github repository into elegant websites to showcase your portfolio, your projects, documentation or anything you want to share with the world. There are no need to set up the database and configure servers. It's the most direct path to create websites for you and your projects. You can visit [github pages](https://pages.github.com/) to learn more.
+GitHub Pages are websites for you and your projects. It helps you turn your GitHub repository into elegant websites to showcase your portfolio, your projects, documentation or anything you want to share with the world. There are no need to set up the database and configure servers. It's the most direct path to create websites for you and your projects. You can visit [GitHub Pages](https://pages.github.com/) to learn more.
 
 ### Publish your first webpage on gh-pages
 
@@ -115,13 +118,15 @@ Head over to GitHub and create a new repository named `username.github.io`, wher
 
 ##### Step 2. Clone the repository
 
-There are basically two ways to clone the repository. Use terminal with codes or Github desktop. Since we just talk about the Github desktop. So we use this way to check out whether we are already familiar with it.
+There are basically two ways to clone the repository. Use terminal with codes or GitHub desktop. Since we just talk about the GitHub desktop. So we use this way to check out whether we are already familiar with it.
 
 Click the "Set up in Desktop" button. When the GitHub desktop app opens, save the project.
 
 ![clone repo](/assets/Chapter0-clone%20repo.png)
 
 #### Step 3. Create an index file
+
+Basically, index.html is the default file served by the web server. So it is equivalent to visit example.com and example.com/index.html. Naming your file as index.html can lead to this more concise notation in browser's address bar and in communication campaigns -- the naming in the world of web is usually the shorter the better. More explanations are [here](https://en.wikipedia.org/wiki/Webserver_directory_index).
 
 ![html](/assets/Chapter0-html.png)
 
@@ -132,7 +137,7 @@ Grab your favorite text editor and add an index.html file to your project. You c
 <html>
     <head>
         <meta "charset=utf-8"/>
-        <title>Github is fun!</title>
+        <title>GitHub is fun!</title>
     </head>
     <body>
         <p>I'm hosted with GitHub Pages.</p>
@@ -142,10 +147,10 @@ Grab your favorite text editor and add an index.html file to your project. You c
 
 #### Step 4. Commit & publish
 
-Change to your Github desktop, commit your changes, and press the publish button.
+Change to your GitHub desktop, commit your changes, and press the publish button.
 ![commit/publish](/assets/Chapter0-commit%20and%20publish.png)
 
-Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use Github pages to do more, to share and show anything you want with the world.
+Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world.
 
 ### Bind a customised domain name
 
@@ -153,9 +158,9 @@ Coming soon.
 
 ## References and further reading
 
-*[Github sharing by our lecturer](https://drive.google.com/file/d/1iwL-N4GdA3WqkVwtCJ36d3X0sJyr5_ni/view?usp=sharing). You can check out more functions and possibilities on Github.
+*[GitHub sharing by our lecturer in 2017](https://drive.google.com/file/d/1fUcnMEQUHnAHycGswLubEccC3Xukq63D/view). You can check out more functions and possibilities on GitHub.
 
-*[Github offical guide](https://guides.github.com/). You can basically learn everything about Github in it's guide.
+*[GitHub offical guide](https://guides.github.com/). You can basically learn everything about GitHub in it's guide.
 
 ------
 
