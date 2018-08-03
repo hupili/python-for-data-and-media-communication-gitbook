@@ -55,10 +55,9 @@ You can check out our [tutorial](/module-jupyter.md) for how to install Jupyter 
 #### [Nbviewer](http://nbviewer.jupyter.org/)  
 
 Nbviewer creates a simple way to view and share Jupyter Notebooks. You just need to copy the link of one Jupyter notebook and paste in nbviewer.
-![](/assets/Chapter0-jupyter%20notebook%20link.jpg) 
+![notebook link](/assets/Chapter0-jupyter%20notebook%20link.jpg)
 
-
-![](/assets/Chapter0-nbviewer.png)
+![nbviewer](/assets/Chapter0-nbviewer.png)
 
 #### Why we should preview Jupyter notebook on NBviewer
 
@@ -158,7 +157,7 @@ Coming soon.
 
 ## References and further reading
 
-*[GitHub sharing by our lecturer in 2017](https://drive.google.com/file/d/1fUcnMEQUHnAHycGswLubEccC3Xukq63D/view). You can check out more functions and possibilities on GitHub.
+*[Jupyter Notebooks from 2017 fall students](https://drive.google.com/file/d/1fUcnMEQUHnAHycGswLubEccC3Xukq63D/view). You can check out some projects and their notesbooks to get more falimilar with Jupyter Notebook.
 
 *[GitHub offical guide](https://guides.github.com/). You can basically learn everything about GitHub in it's guide.
 
