@@ -1,14 +1,25 @@
 # Chapter 0: Introdution and Preparation
 
-## Foreward
+## Foreword
 
 The course COMM7780/JOUR7280 Big Data for Media and Communication is set up for master students in the school of communication, Hong Kong Baptist University. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This open book collects all the materials related with lab exercises covering Python basics, data scraping, table manipulation and data mining. Students also apply their duly learned knowledge to write data-driven reports on a regular basis.
 
-The final projects of past students can be found in this archive GitHub organisation: https://github.com/data-projects-archive/
+The final projects of past students can be found in this archive GitHub organization: <https://github.com/data-projects-archive/>
 
-## Chapter introduction
+## Course structure
+
+![course structure](/assets/Chapter0-COMM7780.png)
+Here is a brief map about what we are going to learn in the first semester. For more details, please refer to our [course outline](outline.md).
+
+## Chapter 0 introduction
 
 This chapter covers "GitHub literacy" and walks the readers through the basic steps towards an open source experience.
+
+## Objective
+
+* Can use GitHub for resource hosting, project management and discussion forum.
+* Can use GitHub Desktop to sync local repository with remote repository.
+* Can use gh-pages to host static web pages as one's portfolio.
 
 ## Getting-started on GitHub
 
@@ -40,7 +51,7 @@ By clicking one of the files, you can see the details of the improvements and ch
 
 The red blocks represent the old one, and the green is the newer one, which makes it easy for you to know the difference and learn the logic behind it.
 
-### Preview a Jupyter notebook hosted on GitHub with nbviewer
+### Preview a Jupyter notebook hosted on GitHub with Nbviewer
 
 #### [Jupyter Notebook](http://jupyter.org/)
 
@@ -50,16 +61,16 @@ The Jupyter Notebook is an open-source web application that allows you to create
 * Notebooks can be shared with others using email, Dropbox, GitHub and the Jupyter Notebook Viewer.
 * Your code can produce rich, interactive output: HTML, images, videos, LaTeX, and custom MIME types.
 
-You can check out our [tutorial](/module-jupyter.md) for how to install Jupyter environment and use Jupyter notebook, though, it's still in improvement satge.
+You can check out our [tutorial](/module-jupyter.md) for how to install Jupyter environment and use Jupyter notebook, though, it's still in improvement stage.
 
 #### [Nbviewer](http://nbviewer.jupyter.org/)  
 
-Nbviewer creates a simple way to view and share Jupyter Notebooks. You just need to copy the link of one Jupyter notebook and paste in nbviewer.
+Nbviewer creates a simple way to view and share Jupyter Notebooks. You just need to copy the link of one Jupyter notebook and paste in Nbviewer.
 ![notebook link](/assets/Chapter0-jupyter%20notebook%20link.jpg)
 
 ![nbviewer](/assets/Chapter0-nbviewer.png)
 
-#### Why we should preview Jupyter notebook on NBviewer
+#### Why we should preview Jupyter notebook on Nbviewer
 
 Usually, we can directly preview a Python notebook on GitHub. However, GitHub prohibits Javascript execution for security reasons. If you have interactive chart, e.g. `echart`, `plotly`, those will not render on GitHub. Nbviewer supports javascript and it is the first free online tool to preview Python notebook, so we recommend it. For concrete examples of dynamic charts, here is an [example](http://nbviewer.jupyter.org/github/data-projects-archive/201804-Air-Crash/blob/master/Final%20Project%20-%20Airplane%20crash/A%20Brief%20report%20Airplane%20crash%20worldwide.ipynb) from students' last year. The last interactive map *flight path* can not be shown directly in GitHub, that's why we need Nbviewer.
 
@@ -69,7 +80,7 @@ Usually, we can directly preview a Python notebook on GitHub. However, GitHub pr
 
 You can download from [here](https://desktop.github.com/), and install it like you installed other apps before.
 
-### Use GitHub Desktop to synchronize codes between local repo and GitHub hosted repo
+### Use GitHub Desktop to synchronize codes between local repository and GitHub hosted repository
 
 Talking about this function, GitHub is like a cloud disk, which is similar to Google Drive，OneDrive. You can synchronize your codes and files between local and GitHub website. It's useful not just others can see your recent updates, but also improve the efficiency during the collaboration with others. If one of your teammates commit changes, you can synchronize by GitHub desktop and keep the same stage with them.
 
@@ -83,9 +94,9 @@ After you log in GitHub desktop, click `create new repository`, give a name you 
 ![edit file](/assets/Chapter0-edit%20file.png)
 Drag the repository/folder you created into the text editor, in this case, I use *visual studio code*.  
 ![write a file](/assets/Chapter0-write%20a%20file.png)
-Under the example repo, create your first file `hello github.md`, write an H1 line `Let's try out github`, and save it.
+Under the example repository, create your first file `hello github.md`, write an H1 line `Let's try out github`, and save it.
 
-#### Publish your repo to GiHhub
+#### Publish your repository to GitHub
 
 ![publish repo](/assets/Chapter0-publish%20repo.png)
 After creating your first file, open GitHub desktop, you can see the changes you did before. Give a description of this changes in [1], then commit to master in [2],(this step is like that you confirm the changes). After that, you can click [3] and [4] to publish your repo.
@@ -99,7 +110,7 @@ You can re-edited the files and codes both in GitHub website and in local text e
 
 * If you edit in the website, after you save the file, click the `fetch origin`. Then the change you commit in the website will synchronize into your local repo.
 
-![fetch orign](/assets/Chapter0-fetch%20origin.png)
+![fetch origin](/assets/Chapter0-fetch%20origin.png)
 
 * If you edit in a local text editor, it's pretty much the same. You give a description, commit to mater, and then `fetch origin`. Then the change you commit in a local repo will synchronize into your GitHub site.
 
@@ -151,16 +162,16 @@ Change to your GitHub desktop, commit your changes, and press the publish button
 
 Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world.
 
-### Bind a customised domain name
+### Bind a customized domain name
 
 Coming soon.
 
 ## References and further reading
 
-*[Jupyter Notebooks from 2017 fall students](https://drive.google.com/file/d/1fUcnMEQUHnAHycGswLubEccC3Xukq63D/view). You can check out some projects and their notesbooks to get more falimilar with Jupyter Notebook.
+*[Jupyter Notebooks from 2017 fall students](https://github.com/data-projects-archive/). You can check out some projects and their notebooks to get more familiar with Jupyter Notebook.
 
-*[GitHub offical guide](https://guides.github.com/). You can basically learn everything about GitHub in it's guide.
+*[GitHub official guide](https://guides.github.com/). You can basically learn everything about GitHub in it's guide.
 
 ------
 
-If you have any questions, or seek for help troubleshotting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
