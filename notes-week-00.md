@@ -30,6 +30,7 @@
                 - [Step 2. Clone the repository](#step-2-clone-the-repository)
             - [Step 3. Create an index file](#step-3-create-an-index-file)
             - [Step 4. Commit & publish](#step-4-commit--publish)
+        - [Add sub-path to your GitHub hosted domain](#add-sub-path-to-your-github-hosted-domain)
         - [Bind a customized domain name](#bind-a-customized-domain-name)
     - [References and further reading](#references-and-further-reading)
 
@@ -204,6 +205,33 @@ Change to your GitHub desktop, commit your changes, and press the publish button
 ![commit/publish](/assets/Chapter0-commit%20and%20publish.png)
 
 Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world.
+
+### Add sub-path to your GitHub hosted domain
+
+By default, every user gets a secondary domain name at `username.github.io` where `username` is your GitHub username and `username.github.io` is also the repo name. It is of practical interest to add a sub-path to your domain for many reasons:
+
+1. Test
+2. Hand-in homework
+3. Work on projects
+
+Suppose you already have everything in a locla folder called `homework1`. There are two ways to publish this folder at the URL `https://username.github.io/homework1`:
+
+1. Host via the main repo:
+   * Upload `homework1` to the root of repo `username.github.io` directly.
+2. Host via a separate repo:
+   * Create a new repo called `homework1`;
+   * Create a branch called `gh-pages`;
+   * Sync (upload) the content of your local folder `homework1` to the repo `homework1` on the branch `gh-pages`.
+
+We recommend the first way to host basic materials about yourself and the second way to host projects. The second way exercises the principle of [Separation of Concerns](https://en.wikipedia.org/wiki/Separation_of_concerns).
+
+In short, if your username is `XXX`, then the following repositories will be hosted as web sites on corresponding paths:
+
+![Summary table for relationships between gh-pages and repos](assets/gh-pages-repo-names-summary.png)
+
+Here is one way you can create a new branch on GitHub web UI:
+
+![Create new branch on GitHub](assets/github-web-create-new-branch.png)
 
 ### Bind a customized domain name
 
