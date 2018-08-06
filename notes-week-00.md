@@ -239,8 +239,9 @@ Coming soon.
 
 ## References and further reading
 
-* [Jupyter Notebooks from 2017 fall students](https://github.com/data-projects-archive/). You can check out some projects and their notebooks to get more familiar with Jupyter Notebook.
+* [Jupyter Notebooks from S2018 students](https://github.com/data-projects-archive/). You can check out some projects and their notebooks to get more familiar with Jupyter Notebook.
 * [GitHub official guide](https://guides.github.com/). You can basically learn everything about GitHub in it's guide.
+* GitHub and GitHub Desktop are just two graphical ways to operate the powerful version control system, **"Git"**. Interested readers cna further study the command line from this online resource: <https://try.github.io/>
 
 ------
 
