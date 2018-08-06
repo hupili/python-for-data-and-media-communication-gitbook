@@ -34,7 +34,7 @@
             - [Step 1. Purchase domain](#step-1-purchase-domain)
             - [Step 2. Point domain name to GitHub](#step-2-point-domain-name-to-github)
             - [Step 3. Point GitHub repo to domain name](#step-3-point-github-repo-to-domain-name)
-            - [The principle](#the-principle)
+            - [The principle further explained](#the-principle-further-explained)
     - [References and further reading](#references-and-further-reading)
 
 <!-- /TOC -->
@@ -240,6 +240,11 @@ Here is one way you can create a new branch on GitHub web UI:
 
 ### [O] Bind a custom domain name
 
+See it in action first:
+
+* The live website: http://datavis.studio/
+* The GitHub repo: https://github.com/hkbu-jour2106/hkbu-jour2106.github.io
+
 #### Step 1. Purchase domain
 
 ![Bind custom domain step 1](assets/gh-pages-custom-domain-principle-step1.png)
@@ -252,7 +257,9 @@ Here is one way you can create a new branch on GitHub web UI:
 
 ![Bind custom domain step 3](assets/gh-pages-custom-domain-principle-step3.png)
 
-#### The principle
+Checkout the working [CNAME](https://github.com/hkbu-jour2106/hkbu-jour2106.github.io/blob/master/CNAME)
+
+#### The principle further explained
 
 ![Custom domain principle](assets/gh-pages-custom-domain-principle.png)
 
