@@ -6,9 +6,8 @@
 
 - [Chapter 0: Introdution and Preparation](#chapter-0-introdution-and-preparation)
     - [Foreword](#foreword)
-    - [Course structure](#course-structure)
-    - [Chapter 0 introduction](#chapter-0-introduction)
-    - [Objective](#objective)
+        - [Course structure](#course-structure)
+    - [Introduction & Objectives](#introduction--objectives)
     - [Getting-started on GitHub](#getting-started-on-github)
         - [Understand markdown](#understand-markdown)
         - [Use GitHub issue tracker as a discussion forum](#use-github-issue-tracker-as-a-discussion-forum)
@@ -30,8 +29,8 @@
                 - [Step 2. Clone the repository](#step-2-clone-the-repository)
             - [Step 3. Create an index file](#step-3-create-an-index-file)
             - [Step 4. Commit & publish](#step-4-commit--publish)
-        - [[A] Add sub-path to your GitHub hosted domain](#a-add-sub-path-to-your-github-hosted-domain)
-        - [[A] Bind a custom domain name](#a-bind-a-custom-domain-name)
+        - [[O] Add sub-path to your GitHub hosted domain](#o-add-sub-path-to-your-github-hosted-domain)
+        - [[O] Bind a custom domain name](#o-bind-a-custom-domain-name)
             - [Step 1 - Purchase domain](#step-1---purchase-domain)
             - [Step 2 - Point domain name to GitHub](#step-2---point-domain-name-to-github)
             - [Step 3 - Point GitHub repo to domain name](#step-3---point-github-repo-to-domain-name)
@@ -54,20 +53,22 @@ This course is tailor made for communication background students and imposes no 
 2. Expect intensive coding exercises in Python. Every class is about half lecture and half lab exercise. You will also have many exercises after the class.
 3. Identify and solve practical problems in one's own domain, that can be tackled by a limited set of duly learned data analytics knowledge. Every week, one group will work on a real case using that week's knowledge.
 
-## Course structure
+### Course structure
+
+Figure last updated: 20180803
 
 ![course structure](/assets/Chapter0-COMM7780.png)
 Here is a brief map about what we are going to learn in the first semester. For more details, please refer to our [course outline](outline.md).
 
-## Chapter 0 introduction
+## Introduction & Objectives
 
-This chapter covers "GitHub literacy" and walks the readers through the basic steps towards an open source experience.
-
-## Objective
+This chapter covers "GitHub literacy" and walks the readers through the basic steps towards an open source learning experience. Following are the concrete objectives:
 
 * Can use GitHub for resource hosting, project management and discussion forum.
 * Can use GitHub Desktop to sync local repository with remote repository.
-* Can use gh-pages to host static web pages as one's portfolio.
+* Can use `gh-pages` to host static web pages as one's portfolio.
+
+Chapter 0 is intended for anyone who wants to enroll in this course to study before the class. Besides learning GitHub, we also expect the readers to "tune in" our open book. You should feel confortable navigate around our openbook, identify developed/ working-in-progress files, contribute ideas/ codes, and actively participate in the issue tracker. Note that sections marked **"[O]"** are optional materials. You can still follow the rest of the course without learning those sections.
 
 ## Getting-started on GitHub
 
@@ -210,7 +211,7 @@ Change to your GitHub desktop, commit your changes, and press the publish button
 
 Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world.
 
-### [A] Add sub-path to your GitHub hosted domain
+### [O] Add sub-path to your GitHub hosted domain
 
 By default, every user gets a secondary domain name at `username.github.io` where `username` is your GitHub username and `username.github.io` is also the repo name. It is of practical interest to add a sub-path to your domain for many reasons:
 
@@ -237,7 +238,7 @@ Here is one way you can create a new branch on GitHub web UI:
 
 ![Create new branch on GitHub](assets/github-web-create-new-branch.png)
 
-### [A] Bind a custom domain name
+### [O] Bind a custom domain name
 
 #### Step 1 - Purchase domain
 
