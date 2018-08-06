@@ -1,5 +1,7 @@
 # Chapter 0: Introdution and Preparation
 
+<div id="toc">
+
 <!-- TOC -->
 
 - [Chapter 0: Introdution and Preparation](#chapter-0-introdution-and-preparation)
@@ -33,7 +35,9 @@
 
 <!-- /TOC -->
 
-## Foreword
+</div>
+
+## Foreword 
 
 The course COMM7780/JOUR7280 Big Data for Media and Communication is set up for master students in the school of communication, Hong Kong Baptist University. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This open book collects all the materials related with lab exercises covering Python basics, data scraping, table manipulation and data mining. Students also apply their duly learned knowledge to write data-driven reports on a regular basis.
 
