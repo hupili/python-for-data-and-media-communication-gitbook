@@ -195,7 +195,7 @@ Grab your favorite text editor and add an index.html file to your project. You c
 <!DOCTYPE html>
 <html>
     <head>
-        <meta "charset=utf-8"/>
+        <meta charset="utf-8"/>
         <title>GitHub is fun!</title>
     </head>
     <body>
