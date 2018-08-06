@@ -6,6 +6,12 @@ The course COMM7780/JOUR7280 Big Data for Media and Communication is set up for 
 
 The final projects of past students can be found in this archive GitHub organization: <https://github.com/data-projects-archive/>
 
+This course is tailor made for communication background students and imposes no prerequisites. However, one need to get prepared to the following challenges:
+
+1. Become a native GitHub resident -- join discussions, hand-in homeworks and collaborate projects, all on [GitHub](http://github.com/).
+2. Expect intensive coding exercises in Python. Every class is about half lecture and half lab exercise. You will also have many exercises after the class.
+3. Identify and solve practical problems in one's own domain, that can be tackled by a limited set of duly learned data analytics knowledge. Every week, one group will work on a real case using that week's knowledge.
+
 ## Course structure
 
 ![course structure](/assets/Chapter0-COMM7780.png)
