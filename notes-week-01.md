@@ -1,5 +1,29 @@
 # Chapter 1: Hands-on the Terminal
 
+<div id="toc">
+
+<!-- TOC -->
+
+- [Chapter 1: Hands-on the Terminal](#chapter-1-hands-on-the-terminal)
+    - [Objective of this week](#objective-of-this-week)
+    - [About terminal on Mac](#about-terminal-on-mac)
+        - [What is terminal on Mac？](#what-is-terminal-on-mac)
+        - [What is the function of the terminal on Mac？](#what-is-the-function-of-the-terminal-on-mac)
+        - [Why we need to use it？](#why-we-need-to-use-it)
+        - [How to open terminal on MAC？](#how-to-open-terminal-on-mac)
+    - [Shell commands](#shell-commands)
+        - [Directory: Where you are](#directory-where-you-are)
+        - [Create/delete/rename files and folders](#createdeleterename-files-and-folders)
+    - [Edit and execute python file](#edit-and-execute-python-file)
+        - [Text editor](#text-editor)
+        - [Install python 3](#install-python-3)
+    - [Challenge](#challenge)
+    - [References and Further Readings](#references-and-further-readings)
+
+<!-- /TOC -->
+
+</div>
+
 In this very first chapter, you will start a journey, swimming in the ocean of codes and data. During the following months, you may experience a staggering start, enjoyable progress or even deeply frustration. You have to step out your comfort zone, learning from each other and conquer the overwhelming information world with your persistence and intelligence. If you have the determination to accept this challenge, you will see a brand new yourself at the end of the course.
 
 ## Objective of this week
@@ -8,7 +32,7 @@ In this very first chapter, you will start a journey, swimming in the ocean of c
 * Learn what is terminal, Able to navigate file system in Terminal, using the shell.
 * Create the first python script and execute it.
 
-## 1. About terminal on Mac
+## About terminal on Mac
 
 ### What is terminal on Mac？
 
@@ -27,17 +51,17 @@ The function of the terminal is very powerful, and all the basic operations of t
 
 * press **command+space** to open spotlight
 
-![Chapter1-terminal search](/assets/Chapter1-terminal%20search.png)
+![Chapter1-terminal search](/assets/terminal-search.png)
 
 * search "terminal" to open terminal.
 
-![Chapter1-terminal interface](/assets/Chapter1-terminal%20interface.png)
+![Chapter1-terminal interface](/assets/terminal-interface.png)
 When you open terminal, you can see these two lines. The first line represents the last time you log in. And the second line **xuyucandeMacbook-pro** shows your computer model. **~xuyucan** is your account/username. What you need to focus is notation `$` . Its the sign that you can input some commands, and after you click the return, the computer will send back the results in next line.
 
-## 2. Shell commands
+## Shell commands
 
 Following are some elementary commands you should know in terminal.
-![Chapter1-terminal commands](/assets/Chapter1-terminal%20commands.png)
+![Chapter1-terminal commands](/assets/terminal-commands.png)
 
 ### Directory: Where you are
 
@@ -85,7 +109,7 @@ Please type often `pwd` and `ls` to know where you are. And use `cd` to the chan
       ~ xuyucan$
       ```
 
-### Creat/delete/rename files and folders
+### Create/delete/rename files and folders
 
 Space separates the arguments and commands. So be careful. You can `ls` to check the new file or folder. *(Make sure it exists.)*
 
@@ -102,7 +126,7 @@ e.g.: At first, cd to desktop and create a new folder `big_data`
   desktop xuyucan$ mkdir big_data
   ```
 
-![Chapter1-new folder](/assets/Chapter1-new%20folder.png)  
+![Chapter1-new folder](/assets/new-folder.png)  
 you can see the new folder in your desktop
 then cd to `big_data` folder, create a new python file `ex1.py`, rename it as `exercise.py`, delete this file, and delete the `big_data` directory. During the process, you can check out whether the file/folder changed.
 
@@ -115,7 +139,7 @@ then cd to `big_data` folder, create a new python file `ex1.py`, rename it as `e
   desktop xuyucan$ rmdir big_data
   ```
 
-## 3. Edit and execute python file
+## Edit and execute python file
 
 ### Text editor
 
@@ -130,7 +154,7 @@ Python is a popular programming language that is widely used by beginners and lo
 
   `print` is a python language, which means print, or show the things that written in the files in the terminal. eg:`print ("hello")` on sublime to print the string hello.
 
-![Chapter1-sublime](/assets/Chapter1-sublime.png)
+![Chapter1-sublime](/assets/sublime-interface.png)
 
 * Press **Command+s** to save the file as "ex1.py" on desktop.
 
@@ -152,4 +176,4 @@ Python is a popular programming language that is widely used by beginners and lo
 
 ------
 
-If you have any questions, or seek for help troubleshotting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
