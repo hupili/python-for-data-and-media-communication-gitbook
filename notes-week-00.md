@@ -30,8 +30,12 @@
                 - [Step 2. Clone the repository](#step-2-clone-the-repository)
             - [Step 3. Create an index file](#step-3-create-an-index-file)
             - [Step 4. Commit & publish](#step-4-commit--publish)
-        - [Add sub-path to your GitHub hosted domain](#add-sub-path-to-your-github-hosted-domain)
-        - [Bind a customized domain name](#bind-a-customized-domain-name)
+        - [[A] Add sub-path to your GitHub hosted domain](#a-add-sub-path-to-your-github-hosted-domain)
+        - [[A] Bind a custom domain name](#a-bind-a-custom-domain-name)
+            - [Step 1 - Purchase domain](#step-1---purchase-domain)
+            - [Step 2 - Point domain name to GitHub](#step-2---point-domain-name-to-github)
+            - [Step 3 - Point GitHub repo to domain name](#step-3---point-github-repo-to-domain-name)
+            - [The principle](#the-principle)
     - [References and further reading](#references-and-further-reading)
 
 <!-- /TOC -->
@@ -206,7 +210,7 @@ Change to your GitHub desktop, commit your changes, and press the publish button
 
 Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world.
 
-### Add sub-path to your GitHub hosted domain
+### [A] Add sub-path to your GitHub hosted domain
 
 By default, every user gets a secondary domain name at `username.github.io` where `username` is your GitHub username and `username.github.io` is also the repo name. It is of practical interest to add a sub-path to your domain for many reasons:
 
@@ -233,9 +237,25 @@ Here is one way you can create a new branch on GitHub web UI:
 
 ![Create new branch on GitHub](assets/github-web-create-new-branch.png)
 
-### Bind a customized domain name
+### [A] Bind a custom domain name
 
-Coming soon.
+#### Step 1 - Purchase domain
+
+![Bind custom domain step 1](assets/gh-pages-cutsom-domain-principle-step1.png)
+
+#### Step 2 - Point domain name to GitHub
+
+![Bind custom domain step 2](assets/gh-pages-cutsom-domain-principle-step2.png)
+
+#### Step 3 - Point GitHub repo to domain name
+
+![Bind custom domain step 3](assets/gh-pages-cutsom-domain-principle-step3.png)
+
+#### The principle
+
+![](assets/gh-pages-cutsom-domain-principle.png)
+
+Checkout [this article](https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml) for how DNS works.
 
 ## References and further reading
 
