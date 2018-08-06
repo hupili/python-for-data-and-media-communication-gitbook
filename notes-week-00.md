@@ -1,5 +1,38 @@
 # Chapter 0: Introdution and Preparation
 
+<!-- TOC -->
+
+- [Chapter 0: Introdution and Preparation](#chapter-0-introdution-and-preparation)
+    - [Foreword](#foreword)
+    - [Course structure](#course-structure)
+    - [Chapter 0 introduction](#chapter-0-introduction)
+    - [Objective](#objective)
+    - [Getting-started on GitHub](#getting-started-on-github)
+        - [Understand markdown](#understand-markdown)
+        - [Use GitHub issue tracker as a discussion forum](#use-github-issue-tracker-as-a-discussion-forum)
+        - [Learn other's code from commit history](#learn-others-code-from-commit-history)
+        - [Preview a Jupyter notebook hosted on GitHub with Nbviewer](#preview-a-jupyter-notebook-hosted-on-github-with-nbviewer)
+            - [[Jupyter Notebook](http://jupyter.org/)](#jupyter-notebookhttpjupyterorg)
+            - [[Nbviewer](http://nbviewer.jupyter.org/)](#nbviewerhttpnbviewerjupyterorg)
+            - [Why we should preview Jupyter notebook on Nbviewer](#why-we-should-preview-jupyter-notebook-on-nbviewer)
+    - [GitHub Desktop](#github-desktop)
+        - [Install GitHub desktop](#install-github-desktop)
+        - [Use GitHub Desktop to synchronize codes between local repository and GitHub hosted repository](#use-github-desktop-to-synchronize-codes-between-local-repository-and-github-hosted-repository)
+            - [Create your first repository](#create-your-first-repository)
+            - [Create a file in this repository](#create-a-file-in-this-repository)
+            - [Publish your repository to GitHub](#publish-your-repository-to-github)
+            - [Re-edit your file and synchronize codes between two ends](#re-edit-your-file-and-synchronize-codes-between-two-ends)
+    - [GitHub Pages](#github-pages)
+        - [Publish your first webpage on gh-pages](#publish-your-first-webpage-on-gh-pages)
+            - [Step 1. Create a repository](#step-1-create-a-repository)
+                - [Step 2. Clone the repository](#step-2-clone-the-repository)
+            - [Step 3. Create an index file](#step-3-create-an-index-file)
+            - [Step 4. Commit & publish](#step-4-commit--publish)
+        - [Bind a customized domain name](#bind-a-customized-domain-name)
+    - [References and further reading](#references-and-further-reading)
+
+<!-- /TOC -->
+
 ## Foreword
 
 The course COMM7780/JOUR7280 Big Data for Media and Communication is set up for master students in the school of communication, Hong Kong Baptist University. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This open book collects all the materials related with lab exercises covering Python basics, data scraping, table manipulation and data mining. Students also apply their duly learned knowledge to write data-driven reports on a regular basis.
