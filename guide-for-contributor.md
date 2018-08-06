@@ -1,3 +1,16 @@
+<!-- TOC -->
+
+- [Guide for Contributor](#guide-for-contributor)
+    - [Screenshot on MAC](#screenshot-on-mac)
+    - [Heading levels](#heading-levels)
+    - [Git commit message](#git-commit-message)
+    - [File naming convention](#file-naming-convention)
+    - [Table of Contents (TOC)](#table-of-contents-toc)
+
+<!-- /TOC -->
+
+--------
+
 # Guide for Contributor
 
 ## Screenshot on MAC
