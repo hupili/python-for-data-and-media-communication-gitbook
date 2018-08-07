@@ -34,7 +34,7 @@
             - [Step 1. Purchase domain](#step-1-purchase-domain)
             - [Step 2. Point domain name to GitHub](#step-2-point-domain-name-to-github)
             - [Step 3. Point GitHub repo to domain name](#step-3-point-github-repo-to-domain-name)
-            - [The principle](#the-principle)
+            - [The principle further explained](#the-principle-further-explained)
     - [References and further reading](#references-and-further-reading)
 
 <!-- /TOC -->
@@ -76,10 +76,30 @@ You can sign up in [GitHub](https://github.com/). Pick a nice name, then you can
 
 ### Understand markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling all forms of writing on the GitHub platform. - explanation by GitHub. Markdown is a way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images, and creating lists are just a few of the things we can do with Markdown. Mostly, Markdown is just regular text with a few non-alphabetic characters thrown in, like `#` or `*`.
+> Markdown is a lightweight and easy-to-use syntax for styling all forms of writing on the GitHub platform.
 
-- Here is the official document of [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) in GitHub.
-- Also, another good introduction of use of markdown [Markdown 基本语法](https://github.com/younghz/Markdown)
+-- Here is the explanation by GitHub.
+
+<!-- Markdown is a way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images, and creating lists are just a few of the things we can do with Markdown. Mostly, Markdown is just regular text with a few non-alphabetic characters thrown in, like `#` or `*`. -->
+
+Markdown is an easy-to-read and easy-to-write markup language. Computer programming language usually needs to be compiled or interpreted or rendered in order to get readable result from the source code. Markdown syntax is design in a way that makes it readable in both rendered (HTML) format or source code format. The conventional extension for a markdown file is `.md` and the content is just plain text.
+
+As a beginner, one needs to master those syntax:
+
+- Headings
+- Listing, ordered or unordered
+- URL
+- Image
+- Inline code snippet
+- Code block (verbatim)
+- Quote
+
+Here are some readings to get you started with markdown:
+
+- See the markdown source code of [the current chapter](https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication-gitbook/master/notes-week-00.md) on GitHub.
+- Go to the issue tracker (introduced in next section) and "edit" any message. See how markdown works in the discussion thread.
+- The official document of [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) from GitHub.
+- Another good introduction of use of markdown [Markdown Syntax](https://github.com/younghz/Markdown) (in Chinese)
 
 ### Use GitHub issue tracker as a discussion forum
 
@@ -240,6 +260,11 @@ Here is one way you can create a new branch on GitHub web UI:
 
 ### [O] Bind a custom domain name
 
+See it in action first:
+
+* The live website: http://datavis.studio/
+* The GitHub repo: https://github.com/hkbu-jour2106/hkbu-jour2106.github.io
+
 #### Step 1. Purchase domain
 
 ![Bind custom domain step 1](assets/gh-pages-custom-domain-principle-step1.png)
@@ -252,7 +277,9 @@ Here is one way you can create a new branch on GitHub web UI:
 
 ![Bind custom domain step 3](assets/gh-pages-custom-domain-principle-step3.png)
 
-#### The principle
+Checkout the working [CNAME](https://github.com/hkbu-jour2106/hkbu-jour2106.github.io/blob/master/CNAME)
+
+#### The principle further explained
 
 ![Custom domain principle](assets/gh-pages-custom-domain-principle.png)
 
