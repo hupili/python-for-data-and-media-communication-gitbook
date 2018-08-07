@@ -103,7 +103,8 @@ Here are some readings to get you started with markdown:
 
 ### Use GitHub issue tracker as a discussion forum
 
-The GitHub issue has a lot of features, but overall it looks like a lightweight collaboration system. Assignee or project manager can pull requests for new contributors and set a to-do list for contributors and teammates. You can use issue to ask questions, discuss with your team, label the `issue` you encounter, and collaborate with others, which greatly advances the managing of a Project.  
+The GitHub issue has a lot of features, but overall it looks like a lightweight collaboration system. Assignee or project manager can pull requests for new contributors and set a to-do list for contributors and teammates. You can use issue to ask questions, discuss with your team, label the `issue` you encounter, and collaborate with others, which greatly advances the managing of a Project. You can click [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues) to participate in the issues channel of our Gitbook to discuss with us. Feel free to leave your comments or questions so that we can help each other and learn from each other.
+
 e.g.1: Set a to-do list for your teammates, once they finished the quest you pull, they can just tick to show the progress.
 ![Issues pull request](/assets/github-issues-to-pull-request.png)  
 
@@ -134,7 +135,8 @@ You can check out our [tutorial](/module-jupyter.md) for how to install Jupyter 
 
 #### Nbviewer
 
-[Nbviewer](http://nbviewer.jupyter.org/) creates a simple way to view and share Jupyter Notebooks. You just need to copy the link of one Jupyter notebook and paste in Nbviewer.
+[Nbviewer](http://nbviewer.jupyter.org/) creates a simple way to view and share Jupyter Notebooks. You just need to copy the link of one Jupyter notebook and paste in Nbviewer. Click [here](https://github.com/jupyter/nbviewer) to know more about Nbviwer,to see what formats they support to present notebooks to the user.  
+Here is an example, you can find one Jupyter notebook from github, and copy the link, paste into the Nbviwer.
 ![Jupyter notebook link](/assets/jupyter-notebook-link.jpg)
 
 ![Nbviewer interface](/assets/nbviewer-interface.png)
@@ -151,7 +153,7 @@ You can download from [here](https://desktop.github.com/), and install it like y
 
 ### Use GitHub Desktop to synchronize codes between local repository and GitHub hosted repository
 
-Talking about this function, GitHub is like a cloud disk, which is similar to Google Drive，OneDrive. You can synchronize your codes and files between local and GitHub website. It's useful not just others can see your recent updates, but also improve the efficiency during the collaboration with others. If one of your teammates commit changes, you can synchronize by GitHub desktop and keep the same stage with them.
+Talking about this function, GitHub is like a cloud disk, which is similar to Google Drive, OneDrive. You can synchronize your codes and files between local and GitHub website. It's useful not just others can see your recent updates, but also improve the efficiency during the collaboration with others. If one of your teammates commit changes, you can synchronize by GitHub desktop and keep the same stage with them.
 
 #### Create your first repository
 
@@ -215,7 +217,7 @@ Grab your favorite text editor and add an index.html file to your project. You c
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8">
         <title>GitHub is fun!</title>
     </head>
     <body>
@@ -226,7 +228,7 @@ Grab your favorite text editor and add an index.html file to your project. You c
 
 #### Step 4. Commit & publish
 
-Change to your GitHub desktop, commit your changes, and press the publish button.
+Change to your GitHub desktop, commit your changes, and press the publish/push button.
 ![Git commit/publish](/assets/git-commit-and-publish.png)
 
 Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world.
@@ -262,8 +264,8 @@ Here is one way you can create a new branch on GitHub web UI:
 
 See it in action first:
 
-* The live website: http://datavis.studio/
-* The GitHub repo: https://github.com/hkbu-jour2106/hkbu-jour2106.github.io
+- The live website: http://datavis.studio/
+- The GitHub repo: https://github.com/hkbu-jour2106/hkbu-jour2106.github.io
 
 #### Step 1. Purchase domain
 
