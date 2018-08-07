@@ -1,40 +1,64 @@
 # Chapter 2: Use Python as a daily tool
-In the previous chapter, I introduced the basic knowledge about teminal on Mac and how to navigate file system in Terminal, using shell,
-creating the first python script and execute it.. But in this chapter, we want to focus specifically on Python, introducing python language. Including Variables, Basic data types, Arithmetic, assignment functions like  `import`,`notation` and several commonly used modules you need to know about to get up and going as a python developer, like `sys` `numpy`, `scipy`...
+
+In the previous chapter, I introduced the basic knowledge about terminal on Mac and how to navigate file system in Terminal, using shell, creating the first python script and execute it... In this chapter, we want to focus specifically on Python, introducing python basics, including `variables`, basic `data types`, `arithmetic`, assignment `functions` like  `import`,`notation` and several commonly used modules you need to know about to get up and going as a python developer, like `sys` `numpy`, `scipy` etc.
 
 ## Objective of this week
+
+* Understand python basics
+* Use python interactive environment to do simple tasks
 * Can use Python as a daily tool -- at least a powerful calculator
 
-## 1. Variables
+## Python interactive mode
 
-Variables means changable. It can be a character or a word, which is not defined in python language. Therefore you should give it a definition or assign value to it.
+Python has two basic modes: script and interactive.  
+`The script mode` is the normal mode where the scripted and finished .py files are run in the Python interpreter.  
+`The interactive mode` is a command line shell which gives immediate feedback for each statement.
+
+### Deference between two modes
+
+* A `.py` file can only be executed in script mode.
+* In interactive mode , you can only enter one line and execute one line each time, while in script mode, you can execute all the code in the file at once by running the .py file directly.
+* The interactive mode is primarily used to debug the code and testing.
+
+### Enter and exit interactive mode
+
+When you are in script mode, you can type `python` or `python 3` to enter the interactive mode. The notation `>>>` means that you have already entered interactive mode. And type`control + d` to exit from interactive mode.  
+
+## Variables and assignment
+
+Think of a variable as a name attached to a particular object. In Python, variables need not be declared or defined in advance. Therefore you should give it a definition or assign value to it. The equal sign `=` is used to assign values to variables.
 
 eg1:
+
+```python
+>>> a=1+2
+>>> print a
 ```
-a=1+2
-print a
-```
-"a" is variable, so you give it a definition that a equals 1+2, and you will get 3 in terminal.
+
+"a" is variable, so you give it a definition that a equals 1+2, and print a you will get 3 in terminal.
 
 eg2:
+
+```python
+>>> fruit1='apple'
+>>> print fruit1
+apple
 ```
-fruit1=apple
-print fruit1
-```
+
 It means you define fruit1 as apple, so you will get apple in terminal.
+**Notes** You should use `''` to hold apple, or the terminal will think apple is another variables. You can't assign variables to other variables.``
 
 eg3:
-```red=0
-print red
-```
-red is a variables, and you define it as 0,so it will print 0 in terminal.
 
-eg4:
+```python
+>>> a='hello'
+>>> b='world'
+>>> c=a+' '+b
+>>> print c
+hello world
 ```
-red=0
-print "red"
-```
-You will get red in terminal, as **"red"** is different from **red**. (Quotation marks are important.)
+
+a, b, c are all variables, and you can do calculation like normal numbers.
 
 ## 2. Basic data types
 
