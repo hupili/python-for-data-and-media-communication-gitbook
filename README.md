@@ -54,6 +54,6 @@ This is the text book for HKBU's COMM7780/JOUR7280 courses. The course COMM7780/
 
 ## License
 
-CC-BY-NC
+CC-BY-NC-ND
 
 [List of contributors](https://github.com/hupili/python-for-data-and-media-communication-gitbook/graphs/contributors)
