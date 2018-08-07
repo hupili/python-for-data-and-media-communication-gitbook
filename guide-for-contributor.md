@@ -6,6 +6,7 @@
     - [Git commit message](#git-commit-message)
     - [File naming convention](#file-naming-convention)
     - [Table of Contents (TOC)](#table-of-contents-toc)
+    - [Link whenever possible](#link-whenever-possible)
 
 <!-- /TOC -->
 
@@ -93,3 +94,10 @@ To help our future development, e.g. render the openbook via a static site gener
 <!-- TOC -->
 </div>
 ```
+
+## Link whenever possible
+
+The beauty of Internet and one of its original design goal is to **connect everything**. URL/ URI provides a system for inter linking between documents. In our openbook, contributors try the best to link to relevant resources if those resources are public already. When making quote or taking screenshots, it is a convention to link to the original article/ interface.
+
+For example, when explaining how the discussion forum works on GitHub, one do not only have screenshots but also can experience the live version. This [Git diff](https://github.com/hupili/python-for-data-and-media-communication-gitbook/commit/f5a246f1950c2a64496422dd8252080e745239a9#diff-1c07895b36976c761440cb56a1d15a76L108) demonstrates how and [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-00.md#use-github-issue-tracker-as-a-discussion-forum) is the rendered version.
+
