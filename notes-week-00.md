@@ -15,7 +15,7 @@
         - [Preview a Jupyter notebook hosted on GitHub with Nbviewer](#preview-a-jupyter-notebook-hosted-on-github-with-nbviewer)
             - [Jupyter Notebook](#jupyter-notebook)
             - [Nbviewer](#nbviewer)
-            - [Why we should preview Jupyter notebook on Nbviewer](#why-we-should-preview-jupyter-notebook-on-nbviewer)
+            - [Why do we need to preview Jupyter notebook on Nbviewer?](#why-do-we-need-to-preview-jupyter-notebook-on-nbviewer)
     - [GitHub Desktop](#github-desktop)
         - [Install GitHub Desktop](#install-github-desktop)
         - [Use GitHub Desktop to synchronize codes between local repository and GitHub hosted repository](#use-github-desktop-to-synchronize-codes-between-local-repository-and-github-hosted-repository)
@@ -92,7 +92,7 @@ As a beginner, one needs to master those syntax:
 - Image
 - Inline code snippet
 - Code block (verbatim)
-- Quote
+- Quote
 
 Here are some readings to get you started with markdown:
 
@@ -105,21 +105,25 @@ Here are some readings to get you started with markdown:
 
 The GitHub issue has a lot of features, but overall it looks like a lightweight collaboration system. Assignee or project manager can pull requests for new contributors and set a to-do list for contributors and teammates. You can use issue to ask questions, discuss with your team, label the `issue` you encounter, and collaborate with others, which greatly advances the managing of a Project. You can click [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues) to participate in the issues channel of our Gitbook to discuss with us. Feel free to leave your comments or questions so that we can help each other and learn from each other.
 
-e.g.1: Set a to-do list for your teammates, once they finished the quest you pull, they can just tick to show the progress.
+[Example 1](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/2#issue-342975310): Set a to-do list for your teammates, once they finished the quest you pull, they can just tick to show the progress.
+
 ![Issues pull request](/assets/github-issues-to-pull-request.png)  
 
-e.g.2：To discuss with your team members to track the working process.
+[Example 2](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/2#issuecomment-407719706): Discuss with your team members to track the working process.
+
 ![Issues discussion](/assets/github-issues-as-discussion-channel.png)
 
 ### Learn other's code from commit history
 
 ![Git commit history](/assets/git-commit-history.png)  
+
 You can see the latest update time and a brief summary of every piece of work in one's repository.  
 
 ![Git commit details](/assets/git-commit-details.png)
-By clicking one of the files, you can see the details of the improvements and changes they recently made, and you can learn from their work.
 
-The red blocks represent the old one, and the green is the newer one, which makes it easy for you to know the difference and learn the logic behind it.
+By clicking one of the files, and its commits, you can see the details of the improvements and changes they recently made, and you can learn from their work.
+
+Red means deletion and green means addition. This notation makes it easy for you to track the difference and learn what others are doing.
 
 ### Preview a Jupyter notebook hosted on GitHub with Nbviewer
 
@@ -141,7 +145,7 @@ Here is an example, you can find one Jupyter notebook from github, and copy the 
 
 ![Nbviewer interface](/assets/nbviewer-interface.png)
 
-#### Why we should preview Jupyter notebook on Nbviewer
+#### Why do we need to preview Jupyter notebook on Nbviewer?
 
 Usually, we can directly preview a Python notebook on GitHub. However, GitHub prohibits Javascript execution for security reasons. If you have interactive chart, e.g. `echart`, `plotly`, those will not render on GitHub. Nbviewer supports javascript and it is the first free online tool to preview Python notebook, so we recommend it. For concrete examples of dynamic charts, here is an [example](http://nbviewer.jupyter.org/github/data-projects-archive/201804-Air-Crash/blob/master/Final%20Project%20-%20Airplane%20crash/A%20Brief%20report%20Airplane%20crash%20worldwide.ipynb) from students' last year. The last interactive map *flight path* can not be shown directly in GitHub, that's why we need Nbviewer.
 
