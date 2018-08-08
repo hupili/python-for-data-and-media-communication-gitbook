@@ -47,6 +47,7 @@ References:
 
 > * Can use Python as a daily tool -- at least a powerful calculator
 > * Become comfortable with Python interpreter -- the REPL pattern (Read-Evaluate-Print Loop)
+> * Can use `help` to get inline documentation on new modules and functions
 
 Python language introduction:
 
@@ -54,13 +55,17 @@ Python language introduction:
 * Basic data types: `int`, `float`, `str`, `bool`
 * Arithmetic:
   * `+`, `-`, `*`, `/`, `//`, `%`, `**`
-  * `math` , `numpy` \(may need `pip`\)
-* Use functions and modules: `import`; `.` notation; `()` notation.
+  * `math`, `numpy` \(may need `pip`\)
+* Use functions and modules: 
+  * `import` (and `import ... from ...`)
+  * `.` notation to reference to member variable/ method
+  * `()` notation to call function
 * Common modules
-  * `sys`
-  * `numpy`, `scipy`
   * `str.*` functions
+    * String templating 1: `str.format`
+    * String templating 2: `format_str % (var1, var2, ...)`
   * `random`
+  * `numpy`, `scipy`
 
 Challenge:
 
