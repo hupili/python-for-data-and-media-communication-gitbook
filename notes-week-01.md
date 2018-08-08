@@ -14,10 +14,12 @@
     - [Shell commands](#shell-commands)
         - [Directory: Where you are](#directory-where-you-are)
         - [Create/delete/rename files and folders](#createdeleterename-files-and-folders)
+        - [Get inline help in the command line](#get-inline-help-in-the-command-line)
     - [Edit and execute python file](#edit-and-execute-python-file)
         - [Text editor](#text-editor)
         - [Install python 3](#install-python-3)
-    - [Challenge](#challenge)
+    - [Check Python version](#check-python-version)
+    - [Exercises and Challenges](#exercises-and-challenges)
     - [References and Further Readings](#references-and-further-readings)
 
 <!-- /TOC -->
@@ -139,6 +141,10 @@ then cd to `big_data` folder, create a new python file `ex1.py`, rename it as `e
   desktop xuyucan$ rmdir big_data
   ```
 
+### Get inline help in the command line
+
+> TODO: The `man` command
+
 ## Edit and execute python file
 
 ### Text editor
@@ -165,9 +171,20 @@ Python is a popular programming language that is widely used by beginners and lo
   hello
   ```
 
-## Challenge
+## Check Python version
 
-* Write a Python script to output "Good evening" in the Terminal.
+Note that your default Python version may be 2 or 3 dependig on the system, the installed package and execution environemnt. You can check the version using following command:
+
+```shell
+python --version
+```
+
+If the output is "2.x", you will need to try `python3`. For example, when you execute Python script, you need to type `python3 myscript.py` when our book uses `python myscript.py`.
+
+## Exercises and Challenges
+
+- Write a Python script to output "Good evening" in the Terminal.
+- Use shell commands to re-organise the notes you take from this course. We understand that you can do this very quickly in GUI (e.g. in Finder of OS X). Please try the command line way and make it part of your daily life.
 
 ## References and Further Readings
 

@@ -35,6 +35,7 @@
             - [Step 2. Point domain name to GitHub](#step-2-point-domain-name-to-github)
             - [Step 3. Point GitHub repo to domain name](#step-3-point-github-repo-to-domain-name)
             - [The principle further explained](#the-principle-further-explained)
+    - [Exercises and Challenges](#exercises-and-challenges)
     - [References and further reading](#references-and-further-reading)
 
 <!-- /TOC -->
@@ -290,6 +291,14 @@ Checkout the working [CNAME](https://github.com/hkbu-jour2106/hkbu-jour2106.gith
 ![Custom domain principle](assets/gh-pages-custom-domain-principle.png)
 
 Checkout [this article](https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml) for how DNS works.
+
+## Exercises and Challenges
+
+- [Data Projects Archive](https://github.com/data-projects-archive) is the archive for our student data projects from various related courses. Try to navigate those repositories (repo) and:
+  - Find the presentation slides and final report (if available).
+  - Find the code and data.
+  - Check the commit history to roughly understand how the project evolves.
+  - Challenge: before learning any programming or data analysis/ visualization skills, can you figure out the major steps of a data project by exploring Git?
 
 ## References and further reading
 

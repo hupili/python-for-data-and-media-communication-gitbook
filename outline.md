@@ -46,6 +46,7 @@ References:
 **Objective**:
 
 > * Can use Python as a daily tool -- at least a powerful calculator
+> * Become comfortable with Python interpreter -- the REPL pattern (Read-Evaluate-Print Loop)
 
 Python language introduction:
 
@@ -77,9 +78,10 @@ References:
 
 **Objective**:
 
-> * Master the composite data type \[\] and {} in Python
-> * Master the control logics in Python
-> * Understand Python engineering
+> * Master the composite data type `[]` and `{}` in Python
+> * Master the control logics in Python, especially `if` and `for`
+> * Further understand the different roles of text editor and interpreter. Be comfortable writing batch codes in `.py` file and execute in Shell environment.
+> * [O] Understand Python engineering
 
 Python language:
 
@@ -115,7 +117,7 @@ Challenge:
 
 References:
 
-* Chapter 4, 5, 6 of [official Python 2 tutorial](https://docs.python.org/2/tutorial/)
+* Chapter 4, 5, 6 of [official Python 3 tutorial](https://docs.python.org/3/tutorial/)
 
 ## Week 4 - JSON and API
 
