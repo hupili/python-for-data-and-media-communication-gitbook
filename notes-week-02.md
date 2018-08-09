@@ -10,8 +10,8 @@
     - [Basic data types](#basic-data-types)
         - [Int](#int)
         - [Float](#float)
-        - [Str](#str)
         - [Bool](#bool)
+        - [Str](#str)
         - [Escape character](#escape-character)
     - [Arithmetic](#arithmetic)
         - [Basic rules](#basic-rules)
@@ -69,33 +69,33 @@ When you are in script mode, you can type `python` or `python 3` to enter the in
 
 Think of a variable as a name attached to a particular object. In Python, variables need not be declared or defined in advance. Therefore you should give it a definition or assign value to it. The equal sign `=` is used to assign values to variables.
 
-e.g.1:
+Example 1:
 
 ```python
->>> a=1+2
->>> print (a)
+>>> a = 1 + 2
+>>> print(a)
 ```
 
 "a" is variable, so you give it a definition that a equals 1+2, and print a you will get 3 in terminal.
 
-e.g.2:
+Example 2:
 
 ```python
->>> fruit1='apple'
->>> print (fruit1)
+>>> fruit1 = 'apple'
+>>> print(fruit1)
 apple
 ```
 
 It means you define fruit1 as apple, so you will get apple in terminal.
 **Notes** You should use `''` to hold apple, or the terminal will think apple is another variables. You can't assign variables to other variables.``
 
-e.g.3:
+Example 3:
 
 ```python
->>> a='hello'
->>> b='world'
->>> c=a+' '+b
->>> print (c)
+>>> a = 'hello'
+>>> b = 'world'
+>>> c = a +' '+ b
+>>> print(c)
 hello world
 ```
 
@@ -110,11 +110,11 @@ Following are some basic data types.
 
 `int` means integer, like 7, 8, 9 and so on. those numbers are integer.
 
-e.g.4:
+Example 4:
 
 ```python
->>> a=int(7.9)
->>> print (a)
+>>> a = int(7.9)
+>>> print(a)
 7
 ```
 
@@ -124,33 +124,15 @@ e.g.4:
 
 `float` means a number with decimal, like 2.1, 3.8, 5.6 and so on.
 
-e.g.5:
+Example 5:
 
 ```python
->>> b= float(7)
->>> print (b)
+>>> b = float(7)
+>>> print(b)
 7.0
 ```
 
 `float()` means you converts the number/integer in `()` to a decimal.
-
-### Str
-
-* `str` means string, a sequence of characters, like quiet, asdf, HK_NY and so on.
-* Strings can be created by enclosing characters inside a single quote or double quotes, like `''`,`""`. Even triple quotes can be used in Python but generally used to represent multi-line strings and doc-strings.
-
-**Note**: what if there is a `""` in your line, how do you print this string line?
-
-e.g.6:
-
-Please print `Xiao Ming says " I don't feel well today."`.
-
-```python
->>> print ("Xiao Ming says \"I don't feel well today\"")
-Xiao Ming says "I don't feel well today"
-```
-
-What does `\"` means?, let's talk about this more.
 
 ### Bool
 
@@ -169,7 +151,7 @@ The following values are considered false in Python:
 
 All other values except these values are considered true.
 
-e.g.7:
+Example 6:
 
 ```python
 >>> test = []
@@ -192,6 +174,24 @@ True is True
 Loving you is True
 ```
 
+### Str
+
+* `str` means string, a sequence of characters, like quiet, asdf, HK_NY and so on.
+* Strings can be created by enclosing characters inside a single quote or double quotes, like `''`,`""`. Even triple quotes can be used in Python but generally used to represent multi-line strings and doc-strings.
+
+**Note**: what if there is a `""` in your line, how do you print this string line?
+
+Example 7:
+
+Please print `Xiao Ming says " I don't feel well today."`.
+
+```python
+>>> print("Xiao Ming says \"I don't feel well today\"")
+Xiao Ming says "I don't feel well today"
+```
+
+What does `\"` means?, let's talk about this more.
+
 ### Escape character
 
 >According to wikipedia, An [escape character](https://en.wikipedia.org/wiki/Escape_character) is a character which invokes an alternative interpretation on subsequent characters in a character sequence.
@@ -208,10 +208,10 @@ So basically when you need to use special characters in a string, you should use
 * `\f` means form feed
 * `\v` means vertical tab
 
-e.g.8:
+Example 8:
 
 ```python
->>> print ("I don't feel well \ntoday")
+>>> print("I don't feel well \ntoday")
 I don't feel well
 today
 ```
@@ -235,10 +235,10 @@ today
 a=10//3, b=10%3, c=10**3, print a, b, c.
 
 ```python
->>> a=10//3
->>> b=10%3
->>> c=10**3
->>> print ("a=",a, "b=",b, "c=",c)
+>>> a = 10//3
+>>> b = 10%3
+>>> c = 10**3
+>>> print("a=",a, "b=",b, "c=",c)
 a= 3 b= 1 c= 1000
 ```
 
@@ -255,11 +255,11 @@ i=0.05, n=20, P=5000000, A=i*P*(1+i)**n/((1+i)**n-1)
 print "A=",A
 
 ```python
->>> i=0.05,
->>> n=20,
->>> P=5000000,
->>> A=i*P*(1+i)**n/((1+i)**n-1)
->>> print ("A=",A)
+>>> i = 0.05,
+>>> n = 20,
+>>> P = 5000000,
+>>> A = i*P*(1+i)**n/((1+i)**n-1)
+>>> print("A=",A)
 A= 401212.935953
 ```
 
@@ -291,13 +291,13 @@ Here are simple rules to define a function in Python.
 
 * The statement `return` means exiting a function, optionally passing back an expression to the caller. A return statement with no arguments is the same as return None.
 
-e.g.9:
+Example 9:
 
 ```python
 # Here is the function definition
 >>> def printinfo(name, age): #printinfo is function name, name and age are parameters
->>>     print "Name: ", name #intented!
->>>     print "Age ", age
+>>>     print("Name: ", name） #intended!
+>>>     print("Age ", age）
 >>>     return;
 # Now you can call printinfo function
 >>> printinfo(age=18, name="yucan")
@@ -333,7 +333,7 @@ There are 3 ways to import a module, usually we use the first method, but you wi
 
 For example, `import numpy` is to import a module called numpy. (Generally, "import" is always written on the top to indicate readers what kind of module and functions you will use.) After you import the module, you can use `help(module)` to check out their documentations
 
-e.g.10:
+Example 10:
 
 ```python
 >>> import numpy
@@ -353,7 +353,7 @@ DESCRIPTION
       3. Linear Algebra, Fourier Transforms, Random Number Generation
     
     How to use the documentation
-    ----------------------------
+    
     ...
 ```
 
@@ -368,21 +368,21 @@ Basically, those are the modules that we might use in our daily study. You can g
 
 As you already know from the previous content that there are many functions in a module. We use `module name` +`.`+`function name` to call the specific functions in a module. If you don't know what are the functions in this module, you can use `help(module)` to search through their documentation or search in google to learn more.
 
-e.g.11:
+Example 11:
 
 ```python
 >>> import numpy
->>> print (numpy.pi)
+>>> print(numpy.pi)
 3.14159265359
 ```
 
 This example means you choose a function called "pi" from the module "numpy". You will get pi as 3.1415927. Therefore, whenever you want to call a function, you should check out which modules contain this function, then you use `.` notation to reference to the function, and input the parameter into `()`  after the function, after executing this command, you can get the results you want.
 
-e.g.12: use `sin` and `pi` function from `numpy` module
+Example 12: use `sin` and `pi` function from `numpy` module
 
 ```python
 >>> import numpy
->>> print (numpy.sin(numpy.pi/6))
+>>> print(numpy.sin(numpy.pi/6))
 0.5
 ```
 
@@ -396,9 +396,9 @@ Example:
 
 ```python
 >>> import numpy
->>> r=5
->>> area=r**2*numpy.pi
->>> print ("area=", area)
+>>> r = 5
+>>> area = r**2*numpy.pi
+>>> print("area=", area)
 area= 78.5398163397
 ```
 
@@ -475,25 +475,25 @@ Python has a built-in string class named "str" with many handy features, which a
 | str.split('delimiter')    | Returns a list of substrings separated by the given delimiter. 'a,b,c'.split(',') -> ['a', 'b', 'c']. As a convenient special case, str.split (with no arguments) splits on all whitespace chars. 'a b c'.split() -> ['a','b','c'] |
 | str.join(list)            | Joins the elements in the given list together using the string as the delimiter.The list elements will be joined by sequences. e.g. '---'.join(['a', 'b', 'c']) -> a---b---c                                                       |
 
-e.g.13.:
+Example 13:
 
 ```python
->>> test1= 'PYTHON'
+>>> test1 = 'PYTHON'
 >>> str.lower(test1)
 'python'
->>> test2= '\n python is fun \n'
+>>> test2 = '\n python is fun \n'
 >>> str.strip(test2)
 'python is fun'
->>> test3='python loves,\'you\''
+>>> test3 = 'python loves,\'you\''
 >>> test3.find('you')
 8 #returns the first character where 'you' begins
->>> test4='python loves,\'you\''
+>>> test4 = 'python loves,\'you\''
 >>> test4.replace('you','me')
 "python loves,'me'"
->>> test5='python loves you'
+>>> test5 = 'python loves you'
 >>> test5.split()
 ['python', 'loves', 'you']
->>> test6='python loves you, do you like it'
+>>> test6 = 'python loves you, do you like it'
 >>> test6.split(',')
 ['python loves you', ' do you like it']
 ```
@@ -510,7 +510,7 @@ Example:
 
 ```python
 >>> import random
->>> print (random.randrange(1,11))
+>>> print(random.randrange(1,11))
 Answer should be one of int numbers in 1 to 10
 ```
 
