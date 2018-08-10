@@ -26,27 +26,31 @@
             - [Step 2: import modules](#step-2-import-modules)
         - [How to find modules and packages we want](#how-to-find-modules-and-packages-we-want)
         - [How to call functions](#how-to-call-functions)
-            - [Exercise 3: Calculate the area of a circle](#exercise-3-calculate-the-area-of-a-circle)
-        - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
-            - [Scipy & Numpy](#scipy--numpy)
-                - [Basic functions: Arrays](#basic-functions-arrays)
-            - [Sys](#sys)
-                - [Basic function](#basic-function)
-            - [Str.*](#str)
-            - [Random](#random)
-                - [Exercise 5: Test random](#exercise-5-test-random)
+            - [`.` notation to reference to the functions](#-notation-to-reference-to-the-functions)
+            - [`()` notation to call function](#-notation-to-call-function)
+                - [Exercise 3: Calculate the area of a circle](#exercise-3-calculate-the-area-of-a-circle)
+    - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
+        - [Scipy & Numpy](#scipy--numpy)
+            - [Basic functions: Arrays](#basic-functions-arrays)
+        - [`str.*` functions](#str-functions)
+            - [Common functions](#common-functions)
+            - [Str.format()](#strformat)
+                - [Syntax and common functions](#syntax-and-common-functions)
+        - [Random](#random)
+            - [Exercise 5: Test random](#exercise-5-test-random)
     - [Challenge](#challenge)
     - [References](#references)
 
 <!-- /TOC -->
-In the previous chapter, We introduced the basic knowledge about terminal on Mac and how to navigate file system in Terminal, using shell, creating the first python script and execute it... In this chapter, we want to focus specifically on Python basics, including `variables`, basic `data types`, `arithmetic`, `functions` and several commonly used `modules` you need to know about to get up and going as a python developer. After this chapter, you can use python as your daily tool, at least to build a calculator to evaluate your business model or build up your start-up financial plan. You can check out [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) for a reference case study, about `Calculate Marketing Objective for Your Media Startup`. And you can also find more cases in our DNN website.
+In the previous chapter, We introduced the basic knowledge about terminal on Mac and how to navigate file system in Terminal, using shell, creating the first python script and execute it... In this chapter, we want to focus specifically on Python basics, including `variables`, basic `data types`, `arithmetic`, `functions` and several commonly used `modules` you need to know about to get up and going as a python developer. After this chapter, you can use python as your daily tool, at least to build a calculator to evaluate your business model or build up your start-up financial plan. You can check out [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) for a reference case study, about **Calculate Marketing Objective for Your Media Startup**. And you can also find more cases in our DNN website.
 
 Tip: search `python` to filter out the cases accomplished by 2017 MA students.
 
 ## Objective of this week
 
 * Understand python basics
-* Use python interactive environment to do simple tasks
+* Can use `help` to get inline documentation on new modules and functions
+* Become comfortable with Python interpreter -- the REPL pattern (Read-Evaluate-Print Loop)
 * Can use Python as a daily tool -- at least a powerful calculator
 
 ## Familiar with python interactive mode
@@ -250,7 +254,7 @@ Question: Calculate mortgage based on the following formula: (Assign "i" "P" "n"
 
 *[formula from wikipedia](https://en.wikipedia.org/wiki/Mortgage_loan), you can check out what each variable represents.*
 
-Example:
+Exercise:
 i=0.05, n=20, P=5000000, A=i*P*(1+i)**n/((1+i)**n-1)
 print "A=",A
 
@@ -298,7 +302,7 @@ Example 9:
 >>> def printinfo(name, age): #printinfo is function name, name and age are parameters
 >>>     print("Name: ", name） #intended!
 >>>     print("Age ", age）
->>>     return;
+>>>     return
 # Now you can call printinfo function
 >>> printinfo(age=18, name="yucan")
 Name:  yucan
@@ -366,7 +370,9 @@ Basically, those are the modules that we might use in our daily study. You can g
 
 ### How to call functions
 
-As you already know from the previous content that there are many functions in a module. We use `module name` +`.`+`function name` to call the specific functions in a module. If you don't know what are the functions in this module, you can use `help(module)` to search through their documentation or search in google to learn more.
+#### `.` notation to reference to the functions
+
+As you already know from the previous content that there are many functions in a module. We use `module name` +`.`+`function name` to reference to one specific function in a module. If you don't know what are the functions in this module, you can use `help(module)` to search through their documentation or search in google to learn more.
 
 Example 11:
 
@@ -376,7 +382,11 @@ Example 11:
 3.14159265359
 ```
 
-This example means you choose a function called "pi" from the module "numpy". You will get pi as 3.1415927. Therefore, whenever you want to call a function, you should check out which modules contain this function, then you use `.` notation to reference to the function, and input the parameter into `()`  after the function, after executing this command, you can get the results you want.
+This example means you choose a function called "pi" from the module `numpy`. You will get pi as 3.1415927. Therefore, whenever you want to call a function, you should check out which modules contain this function, then you use `.` notation to reference to the function.
+
+#### `()` notation to call function
+
+After we reference to one function, usually we have to input the parameters to call the function. we use `()`after the function to call the function, after executing this command, you can get the results you want.
 
 Example 12: use `sin` and `pi` function from `numpy` module
 
@@ -388,7 +398,7 @@ Example 12: use `sin` and `pi` function from `numpy` module
 
 ![Call python function](assets/python-call-module-function.jpg)
 
-#### Exercise 3: Calculate the area of a circle
+##### Exercise 3: Calculate the area of a circle
 
 Q: Calculate the area of a circle, and assign specific radius by yourself.
 
@@ -402,13 +412,13 @@ Example:
 area= 78.5398163397
 ```
 
-### Common modules and functions you should know in chapter 2
+## Common modules and functions you should know in chapter 2
 
-#### Scipy & Numpy
+### Scipy & Numpy
 
 >[SciPy](https://www.scipy.org/) (pronounced “Sigh Pie”) is a Python-based ecosystem of open-source software for mathematics, science, and engineering. Which contains some most wildly used packages including `NumPy`,`Matplotlib`,`pandas`. [NumPy](http://www.numpy.org/) is the fundamental package for scientific computing with Python. It provides a high-performance multidimensional array object, and tools for working with these arrays.
 
-##### Basic functions: Arrays
+#### Basic functions: Arrays
 
 A numpy array is a grid of values, all of the same type, and is indexed by a tuple of non-negative integers. The number of dimensions is the `rank` of the array; the `shape` of an array is a tuple of integers giving the size of the array along each dimension.
 
@@ -436,33 +446,9 @@ numpy.ndarray
 
 You can check out more functions in scipy's [tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html)
 
-#### Sys
+### `str.*` functions
 
-The sys module provides an access point to the Python environment. You can find the command line arguments, the import path settings, the standard input, output and error stream and many more. Using `help(sys)` to see more valuable detail information.
-
-##### Basic function
-
-You can create a new file `ex1.py` to get better understanding for sys. the codes and interpretations are fallowing. After saving the file, run it on terminal.
-
-```python
-import sys   #Command line parameters used when calling Python
-results = sys.argv[0]  #argv[0] is the file name
-print(results)
-print(sys.version)  #Version of the Python interpreter
-print(sys.path)  #Directories in which Python looks for modules
-sys.exit()  #Exit Python altogether
-```
-
-Results:
-
-```
-ex1.py
-3.6.3 (v3.6.3:2c5fed86e0, Oct  3 2017, 00:32:08)
-[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)]
-['/Users/xuyucan/Desktop', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python36.zip', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/lib-dynload', '/Users/xuyucan/Library/Python/3.6/lib/python/site-packages', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages']
-```
-
-#### Str.*
+#### Common functions
 
 Python has a built-in string class named "str" with many handy features, which allow us to easily make modifications to strings in Python. Here are some of the most common string methods:
 
@@ -479,10 +465,10 @@ Example 13:
 
 ```python
 >>> test1 = 'PYTHON'
->>> str.lower(test1)
+>>> test1.lower()
 'python'
 >>> test2 = '\n python is fun \n'
->>> str.strip(test2)
+>>> test2.strip()
 'python is fun'
 >>> test3 = 'python loves,\'you\''
 >>> test3.find('you')
@@ -498,11 +484,118 @@ Example 13:
 ['python loves you', ' do you like it']
 ```
 
-#### Random
+#### Str.format() 
+
+`String.format()` perform as a string formatting operation, which provides the ability to do complex variable substitutions and value formatting, and great flexibility over the output of the string in a way that is easier to read, write and maintain than just using plain old concatenation.
+
+##### Syntax and common functions
+
+1. Accessing arguments by position.
+
+```python
+>>> '{0}, {1}, {2}'.format('a', 'b', 'c')
+'a, b, c'
+>>> '{}, {}, {}'.format('a', 'b', 'c')  # this method works only with the same number of {} and parameters
+>>> '{2}, {1}, {0}'.format('a', 'b', 'c')
+'c, b, a'
+>>> '{2}, {1}, {0}'.format(*'abc')      # unpacking argument sequence
+'c, b, a'
+>>> '{0}{1}{0}'.format('abra', 'cad')   # arguments' indices can be repeated
+'abracadabra'
+```
+
+2. Accessing arguments by name.
+
+```python
+>>> '{name},{age}'.format(age=18,name='xyc')
+'xyc,18'
+```
+
+3. Accessing arguments’ attributes.
+
+```python
+>>> class Person:  
+...     def __init__(self,name,age):  
+...         self.name,self.age = name,age  
+...     def __str__(self):  
+...         return 'My name is {self.name}, and I‘m {self.age} years old'.format(self=self)
+...
+>>> str(Person('xyc',18))
+'My name is xyc, and I‘m 18 old'
+```
+
+4. Accessing arguments’ items by locations.
+
+```python
+>>> coord = (3, 5)
+>>> 'X: {0[0]};  Y: {0[1]}'.format(coord)
+'X: 3;  Y: 5'
+```
+
+5. Replacing %s and %r.
+
+```python
+>>> "I just called to say: {!r}; I just called to say: {!s}".format('I love you', 'How much I care')
+"I just called to say: 'I love you'; I just called to say: How much I care"
+```
+
+6. Aligning the text and specifying a width
+
+```python
+>>> '{:<30}'.format('left aligned')
+'left aligned                  '
+>>> '{:>30}'.format('right aligned')
+'                 right aligned'
+>>> '{:^30}'.format('centered')
+'           centered           '
+>>> '{:*^30}'.format('centered')  # use '*' as a fill char
+'***********centered***********'
+```
+
+7. Replacing %+f, %-f, and % f and specifying a sign
+
+```python
+>>> '{:+f}; {:+f}'.format(3.14, -3.14)  # show it always
+'+3.140000; -3.140000'
+>>> '{: f}; {: f}'.format(3.14, -3.14)  # show a space for positive numbers
+' 3.140000; -3.140000'
+>>> '{:-f}; {:-f}'.format(3.14, -3.14)  # show only the minus -- same as '{:f}; {:f}'
+'3.140000; -3.140000'
+```
+
+8. Truncating long strings to a specific number of characters.
+
+```python
+>>> '{:.4}'.format('telephone')
+'tele'
+```
+
+9. Format numbers
+
+    * `'d'` - Decimal Integer. Outputs the number in base 10, and number ahead of `f` means the specific width you want to keep.
+
+    ```python
+    >>> '{:d}'.format(42)
+    '42'
+    >>> '{:4d}'.format(42) 
+    '  42'
+    ```
+
+    * `'f'` - Fixed-point notation. Displays the number as a fixed-point number. The default precision is 6, and number ahead of `f` means how many decimals you want to keep.
+
+    ```python
+    >>> '{:06.2f}'.format(3.141592653589793)
+    '003.14'
+    >>> '{:05.4f}'.format(3.141592653589793)
+    '3.1416'
+
+For more `string` operations, you can check out in [python docs](https://docs.python.org/3/library/string.html#formatstrings).
+
+### Random
 
 This module implements pseudo-random number generators for various distributions. There are many useful and simple functions, like `random.randrange()`,`random.shuffle()`and `random.sample()`. You can check out their [documentation](https://docs.python.org/3/library/random.html) to learn the details.
 
-##### Exercise 5: Test random
+#### Exercise 5: Test random
 
 Q: Randomly select a number from 1 to 10
 
@@ -516,10 +609,20 @@ Answer should be one of int numbers in 1 to 10
 
 ## Challenge
 
-* Build a mortgage calculator - given principal P, interest rate r and load period n, calculated the amortized monthly payment A
-* Calculate the area of a circle given its radius r
-* Given the length of hypotenuse of a right triangle, calculate the length of its legs. You may want to get values like $$sin(\frac{\pi}{6})$$ via numpy.pi and numpy.sin
-* Generate 10 random numbers. (it is OK to run your script 10 times)
+A group of HKBU students decided to found up a news website. Basically, their business model is to provide the content to their consumers, and they can make money by charging the subscription fee for exclusive content and ads revenues.
+
+The following are their cost and business plan:
+
+* Content cost 70000 yuan in the first month
+* Other cost like labor cost and server cost is 30000 yuan
+* 10% of website visitors expected to become our subscribers a month
+* Subscription fee is 15 yuan/person a month
+* Ad revenue = 0.8 yuan/person a month
+* When the number of visitors is larger than 50,000, with one more increment, it will cost us 0.001 yuan more for the cost of cloud computing.
+
+Please build a calculator to estimate their revenues. When the number of visitors is equal to 20,000, 40,000 and 60,000, calculate our net income respectively.
+
+This is just a basic model, you can definitely change the parameters to find more interesting stories. Like how to modify your price strategy to get more subscribers and make more money.
 
 ## References
 
