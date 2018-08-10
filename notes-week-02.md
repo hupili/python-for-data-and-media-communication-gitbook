@@ -1,10 +1,16 @@
 # Chapter 2: Use Python as a daily tool
+
+<div id="toc">
+
 <!-- TOC -->
 
 - [Chapter 2: Use Python as a daily tool](#chapter-2-use-python-as-a-daily-tool)
     - [Objective of this week](#objective-of-this-week)
     - [Familiar with python interactive mode](#familiar-with-python-interactive-mode)
-        - [Deference between two modes](#deference-between-two-modes)
+        - [Python interpreter](#python-interpreter)
+        - [Invoking the Interpreter](#invoking-the-interpreter)
+        - [Python has two basic modes: script and interactive](#python-has-two-basic-modes-script-and-interactive)
+        - [Differences between two modes](#differences-between-two-modes)
         - [Enter and exit interactive mode](#enter-and-exit-interactive-mode)
     - [Variables and assignment](#variables-and-assignment)
     - [Basic data types](#basic-data-types)
@@ -42,6 +48,9 @@
     - [References](#references)
 
 <!-- /TOC -->
+
+</div>
+
 In the previous chapter, We introduced the basic knowledge about terminal on Mac and how to navigate file system in Terminal, using shell, creating the first python script and execute it... In this chapter, we want to focus specifically on Python basics, including `variables`, basic `data types`, `arithmetic`, `functions` and several commonly used `modules` you need to know about to get up and going as a python developer. After this chapter, you can use python as your daily tool, at least to build a calculator to evaluate your business model or build up your start-up financial plan. You can check out [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) for a reference case study, about **Calculate Marketing Objective for Your Media Startup**. And you can also find more cases in our DNN website.
 
 Tip: search `python` to filter out the cases accomplished by 2017 MA students.
@@ -55,19 +64,42 @@ Tip: search `python` to filter out the cases accomplished by 2017 MA students.
 
 ## Familiar with python interactive mode
 
-Python has two basic modes: script and interactive.  
-`The script mode` is the normal mode where the scripted and finished .py files are run in the Python interpreter.  
-`The interactive mode` is a command line shell which gives immediate feedback for each statement.
+### Python interpreter
 
-### Deference between two modes
+>By default, Python source files are treated as encoded in UTF-8. But the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, your editor must recognize that the file is UTF-8, and it must use a font that supports all the characters in the file.
 
-* A `.py` file can only be executed in script mode.
+### Invoking the Interpreter
+
+Typing the command `python` or `python3` on your terminal.
+After that, you will see `>>>` notation which indicates you that you have already entered the interactive mode and the interpreter is waiting for your input. For instance:
+
+```python
+$ python3
+>>> hello
+hello
+>>> 1 + 2
+3
+>>> a = 0
+>>> if a<1:
+>>>    print('true')
+true
+```
+
+### Python has two basic modes: script and interactive
+
+1. `The script mode` is the normal mode where the scripted and finished .py files are run in the Python interpreter.
+
+2. `The interactive mode` is a command line shell which gives immediate feedback for each statement.
+
+### Differences between two modes
+
+* A `.py` file can only be executed in script mode, using `python3` + `filename.py` to run the file.
 * In interactive mode, you can only enter one line and execute one line each time, while in script mode, you can execute all the code in the file at once by running the .py file directly.
 * The interactive mode is primarily used to debug the code and testing.
 
 ### Enter and exit interactive mode
 
-When you are in script mode, you can type `python` or `python 3` to enter the interactive mode. **(In our course, we use python 3)**. The notation `>>>` means that you have already entered interactive mode. And type`control + d` to exit from interactive mode.  
+When you are in script mode, you can type `python` or `python 3` to enter the interactive mode. **(In our course, we use python 3)**. And type `control + d` to exit from interactive mode.  
 
 ## Variables and assignment
 
@@ -80,7 +112,7 @@ Example 1:
 >>> print(a)
 ```
 
-"a" is variable, so you give it a definition that a equals 1+2, and print a you will get 3 in terminal.
+"a" is variable, so you give it a definition that equals to 1+2, and print 'a', you will get 3 in terminal.
 
 Example 2:
 
@@ -90,15 +122,16 @@ Example 2:
 apple
 ```
 
-It means you define fruit1 as apple, so you will get apple in terminal.
-**Notes** You should use `''` to hold apple, or the terminal will think apple is another variables. You can't assign variables to other variables.``
+It means you define variable "fruit1"  as apple, so you will get apple in terminal.
+
+**Note** You should use `''` to hold apple, or the terminal will think apple is another variables. You can't assign variables to other variables.
 
 Example 3:
 
 ```python
 >>> a = 'hello'
 >>> b = 'world'
->>> c = a +' '+ b
+>>> c = a +' '+ b  #the blank space in `` will be shown on the results
 >>> print(c)
 hello world
 ```
@@ -107,7 +140,7 @@ a, b, c are all variables, and you can do calculation like normal numbers.
 
 ## Basic data types
 
-In fact,there are so many different kinds of data you can use to define the variables. Different data types are totally different.
+In fact, there are so many different kinds of data you can use to define the variables. Different data types are totally different.
 Following are some basic data types.
 
 ### Int
@@ -144,7 +177,7 @@ The bool() method converts a value to Boolean (True or False), using the standar
 
 It's not mandatory to pass a value to `bool()`. If you do not pass a value, `bool()` returns False. In general use, bool() takes a single parameter value.
 
-The following values are considered false in Python:
+The following values are considered `false` in Python:
 
 * None
 * False
@@ -153,7 +186,7 @@ The following values are considered false in Python:
 * Empty mapping. For example, {}
 * Objects of Classes which has __bool()__ or __len()__ method which returns 0 or False
 
-All other values except these values are considered true.
+All other values except these values are considered `true`.
 
 Example 6:
 
@@ -180,7 +213,7 @@ Loving you is True
 
 ### Str
 
-* `str` means string, a sequence of characters, like quiet, asdf, HK_NY and so on.
+* `Str` means string, a sequence of characters, like quiet, asdf, HK_NY and so on.
 * Strings can be created by enclosing characters inside a single quote or double quotes, like `''`,`""`. Even triple quotes can be used in Python but generally used to represent multi-line strings and doc-strings.
 
 **Note**: what if there is a `""` in your line, how do you print this string line?
@@ -200,7 +233,7 @@ What does `\"` means?, let's talk about this more.
 
 >According to wikipedia, An [escape character](https://en.wikipedia.org/wiki/Escape_character) is a character which invokes an alternative interpretation on subsequent characters in a character sequence.
 
-So basically when you need to use special characters in a string, you should use escape character. Usually, we uses the \ (backslash) as an escape character for. The following are the commonly used examples.
+Python has its own rules and grammar. Like if you need to use special character `''` in a string, you should use escape character. Because python regards `''` as sign of a string, if you use `''` inside of the string, it will cause invalid syntax error. Usually, we uses the \ (backslash) as an escape character for. The following are the commonly used examples.
 
 * `\'` means single quote
 * `\"` means double quote
@@ -248,21 +281,21 @@ a= 3 b= 1 c= 1000
 
 #### Exercise 2: Calculate a mortgage
 
-Question: Calculate mortgage based on the following formula: (Assign "i" "P" "n" specific numbers by yourself.)
+Question: Calculate mortgage based on the following formula: (Assign "r" "P" "n" specific numbers by yourself.)
 
 ![Mortgage loan formula](assets/mortgage-loan-formula.png)
 
 *[formula from wikipedia](https://en.wikipedia.org/wiki/Mortgage_loan), you can check out what each variable represents.*
 
 Exercise:
-i=0.05, n=20, P=5000000, A=i*P*(1+i)**n/((1+i)**n-1)
+r=0.05, n=20, P=5000000, A=r*P*(1+r)**n/((1+r)**n-1)
 print "A=",A
 
 ```python
->>> i = 0.05,
+>>> r = 0.05,
 >>> n = 20,
 >>> P = 5000000,
->>> A = i*P*(1+i)**n/((1+i)**n-1)
+>>> A = r*P*(1+r)**n/((1+r)**n-1)
 >>> print("A=",A)
 A= 401212.935953
 ```
@@ -283,7 +316,7 @@ A package is a collection of Python modules, a directory of Python modules conta
 
 A function is a block of organized, reusable code that is used to perform a single, related action. Functions provide better modularity for your application and a high degree of code reusing.
 
-As you already know, Python gives you many built-in functions like `print()`, etc. but you can also create your own functions. These functions are called user-defined functions.
+As you already know, Python gives you many built-in functions like `print()`, etc. You can also create your own functions, which we will talk later, and these functions are called user-defined functions.
 
 Here are simple rules to define a function in Python.
 
@@ -294,6 +327,10 @@ Here are simple rules to define a function in Python.
 * The code block within every function starts with a colon (:) and is indented.
 
 * The statement `return` means exiting a function, optionally passing back an expression to the caller. A return statement with no arguments is the same as return None.
+
+How to understand the relationship between `functions`, `parameters` and `return` ?
+
+It's like assigning tasks to a worker. So function is the worker you hired, parameters are the raw materials you give to the worker. But the worker at this stage still don't know what product to make, you need to tell him. Return is just like the command you tell the worker what to make, and he will return the product that you want. (A analogy from a student, its pretty much like what those three things like).
 
 Example 9:
 
@@ -313,12 +350,12 @@ Age  18
 
 #### Step 1: pip install modules
 
-There're some preparations you need to do before you import or use modules. You need install firstly.
+There're some preparations you need to do before you import or use modules. You need to install firstly.
 You can either install from the official website of the package or use other third party tools, like `pip`, which we recommend.
 
 Pip is a function of the Python Packaging Authority ([PyPA](https://www.pypa.io/en/latest/)), which is a working group that maintains many of the relevant projects in Python packaging. `pip` is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4. You can type `python --version` to check out current version. If you are the older versions, please check out [here](https://pip.pypa.io/en/stable/installing/) to install and upgrade `pip`.
 
-**Notes** If you use python 3, please use pip3 to install.
+**Note** If you use python 3, please use `pip3` to install.
 
 * To install the latest version of “SomeProject”: type `pip3 install 'SomeProject'` in your terminal.
 * To install a specific version: `pip3 install 'SomeProject==1.4'`
@@ -365,14 +402,14 @@ After you learn what you want in their documentations, you can press `control + 
 
 ### How to find modules and packages we want
 
-![Essential modules](assets/python-essential-modules.png)
+![Python essential modules](assets/python-essential-modules.png)
 Basically, those are the modules that we might use in our daily study. You can get to know more modules by googling your demand or create a new `issue` in [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues) to ask for help.
 
 ### How to call functions
 
 #### `.` notation to reference to the functions
 
-As you already know from the previous content that there are many functions in a module. We use `module name` +`.`+`function name` to reference to one specific function in a module. If you don't know what are the functions in this module, you can use `help(module)` to search through their documentation or search in google to learn more.
+As you already know from the previous content that there are many functions in a module. We use `module name` +`.`+`function name` to reference to one specific function in a module. If you don't know what are the functions in this module, you can use `help(module)` to search through their documentation.
 
 Example 11:
 
@@ -386,9 +423,9 @@ This example means you choose a function called "pi" from the module `numpy`. Yo
 
 #### `()` notation to call function
 
-After we reference to one function, usually we have to input the parameters to call the function. we use `()`after the function to call the function, after executing this command, you can get the results you want.
+After we reference to one function, usually we have to input the parameters to call the function. we use `('parameters')` after the function to call the function, after executing this command, you can get the results you want.
 
-Example 12: use `sin` and `pi` function from `numpy` module
+Example 12: Use `sin` and `pi` function from `numpy` module
 
 ```python
 >>> import numpy
@@ -416,7 +453,7 @@ area= 78.5398163397
 
 ### Scipy & Numpy
 
->[SciPy](https://www.scipy.org/) (pronounced “Sigh Pie”) is a Python-based ecosystem of open-source software for mathematics, science, and engineering. Which contains some most wildly used packages including `NumPy`,`Matplotlib`,`pandas`. [NumPy](http://www.numpy.org/) is the fundamental package for scientific computing with Python. It provides a high-performance multidimensional array object, and tools for working with these arrays.
+>[SciPy](https://www.scipy.org/) (pronounced “Sigh Pie”) is a Python-based ecosystem of open-source software for mathematics, science, and engineering. Which contains some most wildly used packages including `NumPy`, `Matplotlib`, `pandas`. [NumPy](http://www.numpy.org/) is the fundamental package for scientific computing with Python. It provides a high-performance multidimensional array object, and tools for working with these arrays.
 
 #### Basic functions: Arrays
 
@@ -426,13 +463,12 @@ We can initialize numpy arrays from nested Python lists, and access elements usi
 
 ```python
 >>> import numpy as np
-
 >>> a = np.array([1, 2, 3])   # Create a rank 1 array
 >>> print(type(a))
 numpy.ndarray
->>> print(a.shape)
+>>> print(a.shape)   # how many elements
 (3,)
->>> print(a[0], a[1], a[2])
+>>> print(a[0], a[1], a[2]) # index elements
 1 2 3
 >>> a[0] = 5                  # Change an element of the array
 >>> print(a)
@@ -484,7 +520,7 @@ Example 13:
 ['python loves you', ' do you like it']
 ```
 
-#### Str.format() 
+#### Str.format()
 
 `String.format()` perform as a string formatting operation, which provides the ability to do complex variable substitutions and value formatting, and great flexibility over the output of the string in a way that is easier to read, write and maintain than just using plain old concatenation.
 
@@ -521,7 +557,7 @@ Example 13:
 ...         return 'My name is {self.name}, and I‘m {self.age} years old'.format(self=self)
 ...
 >>> str(Person('xyc',18))
-'My name is xyc, and I‘m 18 old'
+'My name is xyc, and I‘m 18 years old'
 ```
 
 4. Accessing arguments’ items by locations.
@@ -572,12 +608,12 @@ Example 13:
 
 9. Format numbers
 
-    * `'d'` - Decimal Integer. Outputs the number in base 10, and number ahead of `f` means the specific width you want to keep.
+    * `'d'` - Decimal Integer. Outputs the number in base 10, and number ahead of `d` means the specific width you want to keep.
 
     ```python
     >>> '{:d}'.format(42)
     '42'
-    >>> '{:4d}'.format(42) 
+    >>> '{:4d}'.format(42)
     '  42'
     ```
 
@@ -586,20 +622,18 @@ Example 13:
     ```python
     >>> '{:06.2f}'.format(3.141592653589793)
     '003.14'
-    >>> '{:05.4f}'.format(3.141592653589793)
+    >>> '{:06.4f}'.format(3.141592653589793)
     '3.1416'
 
 For more `string` operations, you can check out in [python docs](https://docs.python.org/3/library/string.html#formatstrings).
 
 ### Random
 
-This module implements pseudo-random number generators for various distributions. There are many useful and simple functions, like `random.randrange()`,`random.shuffle()`and `random.sample()`. You can check out their [documentation](https://docs.python.org/3/library/random.html) to learn the details.
+This module implements pseudo-random number generators for various distributions. There are many useful and simple functions, like `random.randrange()`, `random.shuffle()`and  `random.sample()`. You can check out their [documentation](https://docs.python.org/3/library/random.html) to learn the details.
 
 #### Exercise 5: Test random
 
 Q: Randomly select a number from 1 to 10
-
-Example:
 
 ```python
 >>> import random
@@ -626,9 +660,9 @@ This is just a basic model, you can definitely change the parameters to find mor
 
 ## References
 
-* [Chapter 1, 2, 3 of official Python 2 tutorial](https://docs.python.org/2/tutorial/), you can check out the python basics tutorial in chapter 1-3.
+* [Chapter 1, 2, 3 of official Python 2 tutorial](https://docs.python.org/2/tutorial/), About introduction to Python.
+* [Python doc modules](https://docs.python.org/3/tutorial/modules.html) About modules, functions and packages.
 * [Python format string](https://pyformat.info/). They introduce some most common use-cases covered by the old and new style string formatting API with practical examples.
-* [Python doc modules](https://docs.python.org/3/tutorial/modules.html)
 
 ------
 
