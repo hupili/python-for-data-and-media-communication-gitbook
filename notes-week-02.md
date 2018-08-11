@@ -12,6 +12,7 @@
         - [Python has two basic modes: script and interactive](#python-has-two-basic-modes-script-and-interactive)
         - [Differences between two modes](#differences-between-two-modes)
         - [Enter and exit interactive mode](#enter-and-exit-interactive-mode)
+        - [Execute an existing script interactively](#execute-an-existing-script-interactively)
     - [Variables and assignment](#variables-and-assignment)
     - [Basic data types](#basic-data-types)
         - [Int](#int)
@@ -38,14 +39,10 @@
     - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
         - [Scipy & Numpy](#scipy--numpy)
             - [Basic functions: Arrays](#basic-functions-arrays)
-        - [`str.*` functions](#str-functions)
+        - [String functions (`str.*`)](#string-functions-str)
             - [Common functions](#common-functions)
             - [Str.format()](#strformat)
                 - [Syntax and common functions](#syntax-and-common-functions)
-        - [Random](#random)
-            - [Exercise 5: Test random](#exercise-5-test-random)
-    - [Challenge](#challenge)
-    - [References](#references)
 
 <!-- /TOC -->
 
@@ -85,9 +82,11 @@ hello
 true
 ```
 
+<!-- TODO: it is too early to show "if". They don't know indentation at this stage. Please use only flat expressions. -->
+
 ### Python has two basic modes: script and interactive
 
-1. `The script mode` is the normal mode where the scripted and finished .py files are run in the Python interpreter.
+1. `The script mode` is the normal mode where the scripted and finished `.py` files are run in the Python interpreter.
 
 2. `The interactive mode` is a command line shell which gives immediate feedback for each statement.
 
@@ -100,6 +99,14 @@ true
 ### Enter and exit interactive mode
 
 When you are in script mode, you can type `python` or `python 3` to enter the interactive mode. **(In our course, we use python 3)**. And type `control + d` to exit from interactive mode.  
+
+### Execute an existing script interactively
+
+Sometimes, you have an existing script, maybe from past works or from others. You want to execute this script first but stays in the Python interpreter after that. In this way, the state of the interpreter, e.g. all the variables, will be fully preserved for your further exploration. One can use the `-i` option. The command line pattern is as follows:
+
+```bash
+python -i myscript.py
+```
 
 ## Variables and assignment
 
@@ -444,7 +451,7 @@ Example:
 ```python
 >>> import numpy
 >>> r = 5
->>> area = r**2*numpy.pi
+>>> area = r**2 * numpy.pi
 >>> print("area=", area)
 area= 78.5398163397
 ```
@@ -482,7 +489,7 @@ numpy.ndarray
 
 You can check out more functions in scipy's [tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html)
 
-### `str.*` functions
+### String functions (`str.*`)
 
 #### Common functions
 
@@ -520,9 +527,13 @@ Example 13:
 ['python loves you', ' do you like it']
 ```
 
-#### Str.format()
+#### String interpolation by `%`
 
-`String.format()` perform as a string formatting operation, which provides the ability to do complex variable substitutions and value formatting, and great flexibility over the output of the string in a way that is easier to read, write and maintain than just using plain old concatenation.
+<!-- TODO: show the old style `%`, which is an operator, instead of a function -->
+
+#### str.format()
+
+`str.format()` perform as a string formatting operation, which provides the ability to do complex variable substitutions and value formatting, and great flexibility over the output of the string in a way that is easier to read, write and maintain than just using plain old concatenation.
 
 ##### Syntax and common functions
 
@@ -540,6 +551,8 @@ Example 13:
 'abracadabra'
 ```
 
+Note: `.format(*'abc')` is equivalent to `.format(*['a', 'b', 'c'])`, and further equivalent to `.format('a', 'b', 'c')`. This is called argument unpack. You can revisit this example after learning the next chapter about compound structures.
+
 2. Accessing arguments by name.
 
 ```python
@@ -549,7 +562,7 @@ Example 13:
 
 3. Accessing arguments’ attributes.
 
-```python
+<!-- ```python
 >>> class Person:  
 ...     def __init__(self,name,age):  
 ...         self.name,self.age = name,age  
@@ -558,7 +571,9 @@ Example 13:
 ...
 >>> str(Person('xyc',18))
 'My name is xyc, and I‘m 18 years old'
-```
+``` -->
+
+<!-- TODO: This eaxmple complicated the current chapter. Please stay "flat" in this chapter. Also, we are not ready for class/ object yet. -->
 
 4. Accessing arguments’ items by locations.
 
@@ -575,6 +590,8 @@ Example 13:
 "I just called to say: 'I love you'; I just called to say: How much I care"
 ```
 
+<!-- TODO: 5. Not suitable for mainbody of the discussion; can move into FAQ -->
+
 6. Aligning the text and specifying a width
 
 ```python
@@ -587,6 +604,7 @@ Example 13:
 >>> '{:*^30}'.format('centered')  # use '*' as a fill char
 '***********centered***********'
 ```
+
 
 7. Replacing %+f, %-f, and % f and specifying a sign
 
@@ -625,6 +643,11 @@ Example 13:
     >>> '{:06.4f}'.format(3.141592653589793)
     '3.1416'
 
+<!-- TODO: 
+Missing "named placeholder" style. This method is handy and used frequently:
+'{first} {last}'.format(first='Hodor', last='Hodor!')
+ -->
+
 For more `string` operations, you can check out in [python docs](https://docs.python.org/3/library/string.html#formatstrings).
 
 ### Random
@@ -632,6 +655,8 @@ For more `string` operations, you can check out in [python docs](https://docs.py
 This module implements pseudo-random number generators for various distributions. There are many useful and simple functions, like `random.randrange()`, `random.shuffle()`and  `random.sample()`. You can check out their [documentation](https://docs.python.org/3/library/random.html) to learn the details.
 
 #### Exercise 5: Test random
+
+<!-- TODO: number the exercise as one "Example" -->
 
 Q: Randomly select a number from 1 to 10
 
@@ -641,7 +666,9 @@ Q: Randomly select a number from 1 to 10
 Answer should be one of int numbers in 1 to 10
 ```
 
-## Challenge
+## Exercises and Challenges
+
+### Design and calculate a media business model
 
 A group of HKBU students decided to found up a news website. Basically, their business model is to provide the content to their consumers, and they can make money by charging the subscription fee for exclusive content and ads revenues.
 
@@ -653,6 +680,8 @@ The following are their cost and business plan:
 * Subscription fee is 15 yuan/person a month
 * Ad revenue = 0.8 yuan/person a month
 * When the number of visitors is larger than 50,000, with one more increment, it will cost us 0.001 yuan more for the cost of cloud computing.
+
+<!-- TODO: use "dollar" in examples/ exercises by default -->
 
 Please build a calculator to estimate their revenues. When the number of visitors is equal to 20,000, 40,000 and 60,000, calculate our net income respectively.
 

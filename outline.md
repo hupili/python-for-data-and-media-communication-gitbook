@@ -56,7 +56,7 @@ Python language introduction:
 * Arithmetic:
   * `+`, `-`, `*`, `/`, `//`, `%`, `**`
   * `math`, `numpy` \(may need `pip`\)
-* Use functions and modules: 
+* Use functions and modules:
   * `import` (and `import ... from ...`)
   * `.` notation to reference to member variable/ method
   * `()` notation to call function
