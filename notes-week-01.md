@@ -15,10 +15,13 @@
         - [Directory: Where you are](#directory-where-you-are)
         - [Create/delete/rename files and folders](#createdeleterename-files-and-folders)
         - [Get inline help in the command line](#get-inline-help-in-the-command-line)
+            - [The `man` command](#the-man-command)
+            - [Basic syntax](#basic-syntax)
     - [Edit and execute python file](#edit-and-execute-python-file)
         - [Text editor](#text-editor)
         - [Install python 3](#install-python-3)
-    - [Check Python version](#check-python-version)
+        - [Modify the `ex1.py` file by a text editor](#modify-the-ex1py-file-by-a-text-editor)
+        - [Execute .py file](#execute-py-file)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References and Further Readings](#references-and-further-readings)
 
@@ -143,7 +146,104 @@ then cd to `big_data` folder, create a new python file `ex1.py`, rename it as `e
 
 ### Get inline help in the command line
 
-> TODO: The `man` command
+#### The `man` command
+
+`man` - format and display the on-line manual pages, its helpful to get help and explanation from the official manual. It can be used to **display manual pages**, **search for occurrences of specific text**, and other useful functions.
+
+If you specify section, man only looks in that section of the manual.  name  is  normally the  name of the manual page, which is typically the name of a command, function, or file.
+
+#### Basic syntax
+
+`man` + command name to check out the documentation, and typr `q` to exit. The following are several common use and examples:
+
+* Display the usage of commands, like `ls`
+
+```bash
+$ man ls
+
+LS(1)                     BSD General Commands Manual                    LS(1)
+
+NAME
+     ls -- list directory contents
+
+SYNOPSIS
+     ls [-ABCFGHLOPRSTUW@abcdefghiklmnopqrstuwx1] [file ...]
+
+DESCRIPTION
+     For each operand that names a file of a type other than directory, ls
+     displays its name as well as any requested, associated information.  For
+     each operand that names a file of type directory, ls displays the names
+     of files contained within that directory, as well as any requested, asso-
+     ciated information.
+
+     If no operands are given, the contents of the current directory are dis-
+     played.  If more than one operand is given, non-directory operands are
+     displayed first; directory and non-directory operands are sorted sepa-
+     rately and in lexicographical order.
+
+     The following options are available:
+
+     -@      Display extended attribute keys and sizes in long (-l) output.
+
+     -1      (The numeric digit ``one''.)  Force output to be one entry per
+             line.  This is the default when output is not to a terminal.
+    ...
+```
+
+* List all chapters and their file path:  `-aw`
+
+```bash
+$ man -aw ls
+/usr/share/man/man1/ls.1
+$ man -aw printf
+/usr/share/man/man1/printf.1
+/usr/share/man/man3/printf.3
+```
+
+* Display the certain section of `printf`:  man + int + printf
+
+```bash
+$ man 3 printf
+
+PRINTF(3)                BSD Library Functions Manual                PRINTF(3)
+
+NAME
+     printf, fprintf, sprintf, snprintf, asprintf, dprintf, vprintf, vfprintf,
+     vsprintf, vsnprintf, vasprintf, vdprintf -- formatted output conversion
+
+LIBRARY
+     Standard C Library (libc, -lc)
+
+SYNOPSIS
+     #include <stdio.h>
+
+     int
+     printf(const char * restrict format, ...);
+
+     int
+     fprintf(FILE * restrict stream, const char * restrict format, ...);
+     ...
+```
+
+* Display all the section of `printf`:  `-a`
+
+```bash
+man -a printf
+```
+
+* Search online manuals that contain the keyword: `-k`
+
+```bash
+man -k printf
+```
+
+* Search for files, whose name contain specified keywords: `-f`
+
+```bash
+man -k print
+```
+
+For more functions, you can type `man man` on terminal to see more.
 
 ## Edit and execute python file
 
@@ -154,30 +254,30 @@ We recommend two text editors, [sublime](https://www.sublimetext.com/) and [visu
 
 ### Install python 3
 
-Python is a popular programming language that is widely used by beginners and longtime developers alike. Meanwhile, its the language that we learn in this course to scrape, clean, analyze, and visualize data.  And there are basically 2 main versions of python. Python 2 and 3. But in this course, we base our discussions and exercises on Python 3, you can check out the [difference between python 2 and 3](/python-2-vs-python-3.md) and the instruction for [installation of python 3](/setup-environment.md) in related materials in our gitbook *(if you have already set up the python 3, just ignore it)*.
+Python is a popular programming language that is widely used by beginners and longtime developers alike. Meanwhile, its the language that we learn in this course to scrape, clean, analyze, and visualize data.  And there are basically 2 main versions of python. Python 2 and 3. You can check the version using following command on your terminal:
 
-* Modify the `ex1.py` file by a text editor.
+```bash
+python --version
+```
 
-  `print` is a python language, which means print, or show the things that written in the files in the terminal. eg:`print ("hello")` on sublime to print the string hello.
+In this course, we base our discussions and exercises on Python 3, you can check out the [difference between python 2 and 3](/python-2-vs-python-3.md) and the instruction for [installation of python 3](/setup-environment.md) in related materials in our gitbook *(if you have already set up the python 3, just ignore it)*.
+
+### Modify the `ex1.py` file by a text editor
+
+ `print` is a python language, which means print, or show the things that written in the files in the terminal. eg:`print ("hello")` on sublime to print the string hello.
 
 ![Chapter1-sublime](/assets/sublime-interface.png)
 
-* Press **Command+s** to save the file as "ex1.py" on desktop.
+Press **Command+s** to save the file as "ex1.py" on desktop.
 
-* Execute .py file. `python ex1.py` on terminal to execute the file.
+### Execute .py file
+
+ `python ex1.py` on terminal to execute the file.
 
   ```bash
   desktop xuyucan$ python ex1.py
   hello
   ```
-
-## Check Python version
-
-Note that your default Python version may be 2 or 3 dependig on the system, the installed package and execution environemnt. You can check the version using following command:
-
-```shell
-python --version
-```
 
 If the output is "2.x", you will need to try `python3`. For example, when you execute Python script, you need to type `python3 myscript.py` when our book uses `python myscript.py`.
 
