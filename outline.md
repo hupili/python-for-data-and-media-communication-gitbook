@@ -269,6 +269,7 @@ Additional notes:
 
 > * Understand the theory and common tricks of visualisation.
 > * Can plot charts using various visualisation libraries.
+> * Can plot maps.
 > * Understand the concept of "reproducibility" and can use GitHub repo plus Jupyter notebook to create such reports.
 
 Libraries:
