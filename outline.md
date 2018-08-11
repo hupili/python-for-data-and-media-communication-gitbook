@@ -170,7 +170,7 @@ Further readings:
 * Use `beautifulsoup` to [scrape Twitter timeline content](http://www.lyonwj.com/2017/11/12/scraping-russian-twitter-trolls-python-neo4j/) from [Wayback machine](http://archive.org/web/). A good example of investigative journalism, by William Lyon from [neo4j](https://neo4j.com/).
 
 
-## Week 5 - Web Scraping
+## Week 5 - Web Scraping Basics
 
 **Objective**:
 
@@ -208,8 +208,21 @@ Further reading:
 * Study Regular Expression and `re` library in Python
 * See how [reproducibility is improved](https://www.nature.com/articles/d41586-018-01322-9) with Jupyter notebook and other tools \(not only Python\).
 
+## Week 6 - Advanced Web Scraping
 
-## Week 6 - Table manipulation and 1-D analysis
+**Objective**:
+
+> * Bypass anti-crawler by modifying user-agent
+> * Handle dynamic page with headless browser
+> * Handle login with headless browser
+> * Case studies on different websites
+
+Cases: 
+
+* <https://github.com/hupili/python-for-data-and-media-communication/tree/master/scraper-examples>
+* <https://github.com/data-projects-archive>
+
+## Week 7 - Table manipulation and 1-D analysis
 
 **Objective**:
 
@@ -247,7 +260,20 @@ Additional notes:
 
 * You need to finish [Dataprep](dataprep.md) before analysis. That is, we start with structured data. Preparing the structured and cleaned data has no common schema. We have pointers in [Dataprep](dataprep.md) for your own reading.
 
-## Week 7 - Text analysis
+## Week 8 - Visualisation, presentation and reproducible reports
+
+**Objective**
+
+> * Understand the theory and common tricks of visualisation.
+> * Can plot charts using various visualisation libraries.
+> * Understand the concept of "reproducibility" and can use GitHub repo plus Jupyter notebook to create such reports.
+
+Libraries:
+
+* `py-plotly`
+* `pyecharts`
+
+## Week 9 - Text analysis
 
 **Objective**:
 
@@ -283,7 +309,7 @@ Datasets to work on:
 * [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) -- The 200,000 deleted Twitter messages posted by Russian's troll accounts. Around 50M, in CSV format.
 * [Hillary Clinton email archive from WikiLeaks](https://www.wikileaks.org/clinton-emails/emailid/20000) There are the plain text and parsed data but you may need to run a scraper to get the data first.
 
-## Week 8 - Time series
+## Week 10 - Time series
 
 > * Understand the principle of timestamp and datetime format
 > * Master basic computation on datetime values
@@ -308,7 +334,7 @@ Datasets:
 * [NBC Russian Troll on Twitter dataset](https://www.nbcnews.com/tech/social-media/now-available-more-200-000-deleted-russian-troll-tweets-n844731) \(used last week\)
 * [Twitter Data](https://github.com/kestrel614/HKODD17-Trump/tree/master/data) of the [Donald & Ivanka Trump analysis](https://initiumlab.com/blog/20170329-trump-and-ivanka/) -- reproduce the charts.
 
-## Week 9 - Graph theory and social network analysis
+## Week 11 - Graph theory and social network analysis
 
 **Objective**:
 
@@ -337,10 +363,18 @@ References:
 * 大家都叫我老杨, [推特上有多少「新五毛」？](http://blog.yesmryang.net/wumao-twitter/). The analysis is done in R but the dataset and topic is interesting to look at.
 * Some books for further reading: <http://www.socilab.com/#books>
 
+## Week 12 - 2D analysis
 
-## Week 10 - 2D analysis and more on visualisations
+**Objective**
 
-## Week 11 - High-dimensional analysis
+> * Understand correlation and can calculate correlation
+> * Can articulate correlation and causality
+
+----------
+
+Following are advanced topics for your own reading. We do not discuss those topics due to lack of regular class hours.
+
+## Week 13 - High-dimensional analysis
 
 **Objective**:
 
@@ -364,23 +398,13 @@ References:
 * [HK Legco 2012 - 2016 dataset](https://github.com/hupili/hhba2016-hk-legco-dataset-2012-2016) from Initium Media, 2016
 * [HK Legco voting analysis](https://github.com/hupili/legcohk/blob/master/LegCoHK.ipynb) with PCA, an early version, 2014.
 
----
+## Week 14 - Clustering
 
-Following are TBC topics
+## Week 15 - Classification
 
----
+## Week 16 - Regression
 
-## Week 10 - Machine learning: clustering, classification and regression
-
-**Objective**:
-
-> * \(TODO\）
-
-## Week 12 - Project presentation
-
-**Objective**:
-
-> Be able to efficiently **sell** your work after so many heavy duty hard works!
+## Week 17 - Recommender System
 
 ## Open topics
 
@@ -388,6 +412,3 @@ Those topics may be discussed if there is plenty Q/A time left in certain week. 
 
 * Cloud \(AWS\)
 * Deep learning
-
-
-
