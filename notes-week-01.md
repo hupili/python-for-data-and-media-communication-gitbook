@@ -16,7 +16,7 @@
         - [Create/delete/rename files and folders](#createdeleterename-files-and-folders)
         - [Get inline help in the command line](#get-inline-help-in-the-command-line)
             - [The `man` command](#the-man-command)
-            - [Basic syntax](#basic-syntax)
+            - [Basic usage](#basic-usage)
     - [Edit and execute python file](#edit-and-execute-python-file)
         - [Text editor](#text-editor)
         - [Install python 3](#install-python-3)
@@ -152,9 +152,21 @@ then cd to `big_data` folder, create a new python file `ex1.py`, rename it as `e
 
 If you specify section, man only looks in that section of the manual.  name  is  normally the  name of the manual page, which is typically the name of a command, function, or file.
 
-#### Basic syntax
+#### Basic usage
 
-`man` + command name to check out the documentation, and typr `q` to exit. The following are several common use and examples:
+Enter the manual page of any shell command:
+
+```shell
+man {command-name}
+```
+
+Frequent hotkeys in manual page window:
+
+* Use `j` and `k` to move the page down/ up by one line.
+* Use `ctrl+d` and `ctrl+u` to move down/ up by one-half screen.
+* Use `q` to exit (return to shell prompt).
+
+Following are several common use and examples:
 
 * Display the usage of commands, like `ls`
 
