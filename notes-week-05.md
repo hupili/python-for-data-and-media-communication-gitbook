@@ -282,11 +282,10 @@ with open('eggs.csv', 'w') as f:
 
 * `writer.writerow([])` means add information in row. It can be wrote like this `s.writerow(['Spam', '1', '2', '3'])`
 
+## Exercises and Challenges
 
+Some scrapers and the output dataset from our past students:
 
-
-
-
-
-
-
+* [HK Carpark price data](https://github.com/XIAO-Chao/hkbu-big-data-media/tree/master/homework2)
+* [Qidian](https://github.com/DaisyZhongDai/hkbu-big-data-media/tree/master/homework2)
+* [CTrip scenic point data](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2)
