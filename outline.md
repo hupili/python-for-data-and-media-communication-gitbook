@@ -335,6 +335,7 @@ References:
 * [數據新聞﹕政商網絡系列（下）（文：陳電鋸）](https://news.mingpao.com/ins/%E3%80%90%E6%95%B8%E6%93%9A%E6%96%B0%E8%81%9E%E3%80%91%E6%94%BF%E5%95%86%E7%B6%B2%E7%B5%A1%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%8B%EF%BC%89%E3%80%80%EF%BC%88%E6%96%87%EF%BC%9A%E9%99%B3%E9%9B%BB%E9%8B%B8%EF%BC%89/web_tc/article/20150831/s00022/1441006491105) -- articulation via centrality
 * [Clustering Game of Thrones](https://datascienceplus.com/network-analysis-of-game-of-thrones/) -- application of community detection
 * 大家都叫我老杨, [推特上有多少「新五毛」？](http://blog.yesmryang.net/wumao-twitter/). The analysis is done in R but the dataset and topic is interesting to look at.
+* Some books for further reading: <http://www.socilab.com/#books>
 
 
 ## Week 10 - 2D analysis and more on visualisations
