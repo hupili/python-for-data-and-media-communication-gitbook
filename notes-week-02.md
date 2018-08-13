@@ -77,12 +77,7 @@ hello
 >>> 1 + 2
 3
 >>> a = 0
->>> if a<1:
->>>    print('true')
-true
 ```
-
-<!-- TODO: it is too early to show "if". They don't know indentation at this stage. Please use only flat expressions. -->
 
 ### Python has two basic modes: script and interactive
 
