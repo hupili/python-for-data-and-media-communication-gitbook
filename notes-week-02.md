@@ -1,5 +1,58 @@
 # Chapter 2: Use Python as a daily tool
 
+<div id="toc">
+
+<!-- TOC -->
+
+- [Chapter 2: Use Python as a daily tool](#chapter-2-use-python-as-a-daily-tool)
+    - [Objective of this week](#objective-of-this-week)
+    - [Familiar with python interactive mode](#familiar-with-python-interactive-mode)
+        - [Python interpreter](#python-interpreter)
+        - [Invoking the Interpreter](#invoking-the-interpreter)
+        - [Python has two basic modes: script and interactive](#python-has-two-basic-modes-script-and-interactive)
+        - [Differences between two modes](#differences-between-two-modes)
+        - [Enter and exit interactive mode](#enter-and-exit-interactive-mode)
+        - [Execute an existing script interactively](#execute-an-existing-script-interactively)
+    - [Variables and assignment](#variables-and-assignment)
+    - [Basic data types](#basic-data-types)
+        - [Int](#int)
+        - [Float](#float)
+        - [Bool](#bool)
+        - [Str](#str)
+        - [Escape character](#escape-character)
+    - [Arithmetic](#arithmetic)
+        - [Basic rules](#basic-rules)
+            - [Exercise 1: Simple calculation](#exercise-1-simple-calculation)
+            - [Exercise 2: Calculate a mortgage](#exercise-2-calculate-a-mortgage)
+    - [Modules, functions and packages](#modules-functions-and-packages)
+        - [Modules](#modules)
+        - [Packages](#packages)
+        - [Functions](#functions)
+        - [How to use modules](#how-to-use-modules)
+            - [Step 1: pip install modules](#step-1-pip-install-modules)
+            - [Step 2: import modules](#step-2-import-modules)
+        - [How to find modules and packages we want](#how-to-find-modules-and-packages-we-want)
+        - [How to call functions](#how-to-call-functions)
+            - [`.` notation to reference to the functions](#-notation-to-reference-to-the-functions)
+            - [`()` notation to call function](#-notation-to-call-function)
+                - [Exercise 3: Calculate the area of a circle](#exercise-3-calculate-the-area-of-a-circle)
+    - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
+        - [Scipy & Numpy](#scipy--numpy)
+            - [Basic functions: Arrays](#basic-functions-arrays)
+        - [String functions (`str.*`)](#string-functions-str)
+            - [Common functions](#common-functions)
+            - [String interpolation by `%`](#string-interpolation-by)
+            - [str.format()](#strformat)
+                - [Syntax and common functions](#syntax-and-common-functions)
+        - [Random](#random)
+    - [Exercises and Challenges](#exercises-and-challenges)
+        - [Design and calculate a media business model](#design-and-calculate-a-media-business-model)
+    - [References](#references)
+
+<!-- /TOC -->
+
+</div>
+
 In the previous chapter, We introduced the basic knowledge about terminal on Mac and how to navigate file system in Terminal, using shell, creating the first python script and execute it... In this chapter, we want to focus specifically on Python basics, including `variables`, basic `data types`, `arithmetic`, `functions` and several commonly used `modules` you need to know about to get up and going as a python developer. After this chapter, you can use python as your daily tool, at least to build a calculator to evaluate your business model or build up your start-up financial plan. You can check out [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) for a reference case study, about **Calculate Marketing Objective for Your Media Startup**. And you can also find more cases in our DNN website.
 
 Tip: search `python` to filter out the cases accomplished by 2017 MA students.
@@ -511,7 +564,7 @@ one is 1
 
 ##### Syntax and common functions
 
-1. Accessing arguments by position.
+* Accessing arguments by position.
 
 ```python
 >>> '{0}, {1}, {2}'.format('a', 'b', 'c')
@@ -527,14 +580,14 @@ one is 1
 
 Note: `.format(*'abc')` is equivalent to `.format(*['a', 'b', 'c'])`, and further equivalent to `.format('a', 'b', 'c')`. This is called argument unpack. You can revisit this example after learning the next chapter about compound structures.
 
-2. Accessing arguments by name.
+* Accessing arguments by name.
 
 ```python
 >>> '{name},{age}'.format(age=18,name='xyc')
 'xyc,18'
 ```
 
-3. Accessing arguments’ attributes.
+* Accessing arguments’ attributes.
 
 ```python
 >>> person = {"name": "xyc", "age": "18"}
@@ -542,7 +595,7 @@ Note: `.format(*'abc')` is equivalent to `.format(*['a', 'b', 'c'])`, and furthe
 person_name: xyc, person_age: 18
 ```
 
-4. Accessing arguments’ items by locations.
+* Accessing arguments’ items by locations.
 
 ```python
 >>> coord = (3, 5)
@@ -550,14 +603,14 @@ person_name: xyc, person_age: 18
 'X: 3;  Y: 5'
 ```
 
-5. Replacing %s and %r. It's like `%` way, please see to Examples 14.
+* Replacing %s and %r. It's like `%` way, please see to Examples 14.
 
 ```python
 >>> "Hello: {!r}; This is: {!s}".format('World', 'Python')
 "Hello: 'World'; This is: Python"
 ```
 
-6. Named placeholders
+* Named placeholders
 
 `.format()` also accepts keyword arguments. One can replaces string with arguments passed in function.
 
@@ -567,7 +620,7 @@ person_name: xyc, person_age: 18
 'Hello World!'
 ```
 
-7. Aligning the text and specifying a width
+* Aligning the text and specifying a width
 
 ```python
 >>> '{:<30}'.format('left aligned')
@@ -580,7 +633,7 @@ person_name: xyc, person_age: 18
 '***********centered***********'
 ```
 
-8. Replacing %+f, %-f, and % f and specifying a sign
+* Replacing %+f, %-f, and % f and specifying a sign
 
 ```python
 >>> '{:+f}; {:+f}'.format(3.14, -3.14)  # show it always
@@ -591,16 +644,16 @@ person_name: xyc, person_age: 18
 '3.140000; -3.140000'
 ```
 
-9. Truncating long strings to a specific number of characters.
+* Truncating long strings to a specific number of characters.
 
 ```python
 >>> '{:.4}'.format('telephone')
 'tele'
 ```
 
-10. Format numbers
-
-    * `'d'` - Decimal Integer. Outputs the number in base 10, and number ahead of `d` means the specific width you want to keep.
+* Format numbers
+  
+  * `'d'` - Decimal Integer. Outputs the number in base 10, and number ahead of `d` means the specific width you want to keep.
 
     ```python
     >>> '{:d}'.format(42)
@@ -609,7 +662,7 @@ person_name: xyc, person_age: 18
     '  42'
     ```
 
-    * `'f'` - Fixed-point notation. Displays the number as a fixed-point number. The default precision is 6, and number ahead of `f` means how many decimals you want to keep.
+  * `'f'` - Fixed-point notation. Displays the number as a fixed-point number. The default precision is 6, and number ahead of `f` means how many decimals you want to keep.
 
     ```python
     >>> '{:06.2f}'.format(3.141592653589793)
