@@ -35,18 +35,16 @@
         - [How to call functions](#how-to-call-functions)
             - [`.` notation to reference to the functions](#-notation-to-reference-to-the-functions)
             - [`()` notation to call function](#-notation-to-call-function)
-                - [Exercise 3: Calculate the area of a circle](#exercise-3-calculate-the-area-of-a-circle)
+            - [Exercise 3: Calculate the area of a circle](#exercise-3-calculate-the-area-of-a-circle)
     - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
         - [Scipy & Numpy](#scipy--numpy)
             - [Basic functions: Arrays](#basic-functions-arrays)
         - [String functions (`str.*`)](#string-functions-str)
             - [Common functions](#common-functions)
-            - [String interpolation by `%`](#string-interpolation-by)
-            - [str.format()](#strformat)
-                - [Syntax and common functions](#syntax-and-common-functions)
+            - [Python’s classical percent sign string interpolation](#pythons-classical-percent-sign-string-interpolation)
+            - [Str.format()](#strformat)
         - [Random](#random)
     - [Exercises and Challenges](#exercises-and-challenges)
-        - [Design and calculate a media business model](#design-and-calculate-a-media-business-model)
     - [References](#references)
 
 <!-- /TOC -->
@@ -442,7 +440,7 @@ Example 12: Use `sin` and `pi` function from `numpy` module
 
 ![Call python function](assets/python-call-module-function.jpg)
 
-##### Exercise 3: Calculate the area of a circle
+#### Exercise 3: Calculate the area of a circle
 
 Q: Calculate the area of a circle, and assign specific radius by yourself.
 
@@ -527,7 +525,7 @@ Example 13:
 ['python loves you', ' do you like it']
 ```
 
-#### String interpolation by `%`
+#### Python’s classical percent sign string interpolation
 
 Before `str.format()`  was introduced, using `%` to do **simple string interpolation** can be very easily. Use it if the order of your arguments is not likely to change and you only have very few elements you want to concatenate.
 
@@ -558,11 +556,11 @@ Also, if we want to replace the integer, use `d%`.
 one is 1
 ```
 
-#### str.format()
+#### Str.format()
 
 `str.format()` perform as a string formatting operation, which provides the ability to do complex variable substitutions and value formatting, and great flexibility over the output of the string in a way that is easier to read, write and maintain than just using plain old concatenation.
 
-##### Syntax and common functions
+**Syntax and common functions:**
 
 * Accessing arguments by position.
 
@@ -688,7 +686,7 @@ Answer should be one of int numbers in 1 to 10
 
 ## Exercises and Challenges
 
-### Design and calculate a media business model
+**Design and calculate a media business model:**
 
 A group of HKBU students decided to found up a news website. Basically, their business model is to provide the content to their consumers, and they can make money by charging the subscription fee for exclusive content and ads revenues.
 
