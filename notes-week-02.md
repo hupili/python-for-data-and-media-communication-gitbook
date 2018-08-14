@@ -1,53 +1,5 @@
 # Chapter 2: Use Python as a daily tool
 
-<div id="toc">
-
-<!-- TOC -->
-
-- [Chapter 2: Use Python as a daily tool](#chapter-2-use-python-as-a-daily-tool)
-    - [Objective of this week](#objective-of-this-week)
-    - [Familiar with python interactive mode](#familiar-with-python-interactive-mode)
-        - [Python interpreter](#python-interpreter)
-        - [Invoking the Interpreter](#invoking-the-interpreter)
-        - [Python has two basic modes: script and interactive](#python-has-two-basic-modes-script-and-interactive)
-        - [Differences between two modes](#differences-between-two-modes)
-        - [Enter and exit interactive mode](#enter-and-exit-interactive-mode)
-        - [Execute an existing script interactively](#execute-an-existing-script-interactively)
-    - [Variables and assignment](#variables-and-assignment)
-    - [Basic data types](#basic-data-types)
-        - [Int](#int)
-        - [Float](#float)
-        - [Bool](#bool)
-        - [Str](#str)
-        - [Escape character](#escape-character)
-    - [Arithmetic](#arithmetic)
-        - [Basic rules](#basic-rules)
-            - [Exercise 1: Simple calculation](#exercise-1-simple-calculation)
-            - [Exercise 2: Calculate a mortgage](#exercise-2-calculate-a-mortgage)
-    - [Modules, functions and packages](#modules-functions-and-packages)
-        - [Modules](#modules)
-        - [Packages](#packages)
-        - [Functions](#functions)
-        - [How to use modules](#how-to-use-modules)
-            - [Step 1: pip install modules](#step-1-pip-install-modules)
-            - [Step 2: import modules](#step-2-import-modules)
-        - [How to find modules and packages we want](#how-to-find-modules-and-packages-we-want)
-        - [How to call functions](#how-to-call-functions)
-            - [`.` notation to reference to the functions](#-notation-to-reference-to-the-functions)
-            - [`()` notation to call function](#-notation-to-call-function)
-                - [Exercise 3: Calculate the area of a circle](#exercise-3-calculate-the-area-of-a-circle)
-    - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
-        - [Scipy & Numpy](#scipy--numpy)
-            - [Basic functions: Arrays](#basic-functions-arrays)
-        - [String functions (`str.*`)](#string-functions-str)
-            - [Common functions](#common-functions)
-            - [Str.format()](#strformat)
-                - [Syntax and common functions](#syntax-and-common-functions)
-
-<!-- /TOC -->
-
-</div>
-
 In the previous chapter, We introduced the basic knowledge about terminal on Mac and how to navigate file system in Terminal, using shell, creating the first python script and execute it... In this chapter, we want to focus specifically on Python basics, including `variables`, basic `data types`, `arithmetic`, `functions` and several commonly used `modules` you need to know about to get up and going as a python developer. After this chapter, you can use python as your daily tool, at least to build a calculator to evaluate your business model or build up your start-up financial plan. You can check out [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) for a reference case study, about **Calculate Marketing Objective for Your Media Startup**. And you can also find more cases in our DNN website.
 
 Tip: search `python` to filter out the cases accomplished by 2017 MA students.
@@ -524,7 +476,34 @@ Example 13:
 
 #### String interpolation by `%`
 
-<!-- TODO: show the old style `%`, which is an operator, instead of a function -->
+Before `str.format()`  was introduced, using `%` to do **simple string interpolation** can be very easily. Use it if the order of your arguments is not likely to change and you only have very few elements you want to concatenate.
+
+Example 14:
+
+```python
+>>> print("%s %s" %('Hello','World'))
+Hello World
+```
+
+In above example, `s%` means its a string. We used two `%s` string format specifier to tell Python where to substitute the value, and using 'Hello' and 'World' to replace those two strings. `%` between two parts basically means a command to call the replace actions.
+
+If we want to make multiple substitutions in a single string, and as the % operator only takes one argument, we need to wrap the right-hand side in a tuple as shown in the example below.
+
+Example 15:
+
+```python
+>>> name = 'world'
+>>> program ='python'
+>>> print('Hello %s! This is %s.'%(name,program))
+Hello world! This is python.
+```
+
+Also, if we want to replace the integer, use `d%`.
+
+```python
+>>> print 'one is %d'%1
+one is 1
+```
 
 #### str.format()
 
@@ -557,18 +536,11 @@ Note: `.format(*'abc')` is equivalent to `.format(*['a', 'b', 'c'])`, and furthe
 
 3. Accessing arguments’ attributes.
 
-<!-- ```python
->>> class Person:  
-...     def __init__(self,name,age):  
-...         self.name,self.age = name,age  
-...     def __str__(self):  
-...         return 'My name is {self.name}, and I‘m {self.age} years old'.format(self=self)
-...
->>> str(Person('xyc',18))
-'My name is xyc, and I‘m 18 years old'
-``` -->
-
-<!-- TODO: This eaxmple complicated the current chapter. Please stay "flat" in this chapter. Also, we are not ready for class/ object yet. -->
+```python
+>>> person = {"name": "xyc", "age": "18"}
+>>> print("person_name: {name}, person_age: {age}".format(**person))
+person_name: xyc, person_age: 18
+```
 
 4. Accessing arguments’ items by locations.
 
@@ -578,16 +550,24 @@ Note: `.format(*'abc')` is equivalent to `.format(*['a', 'b', 'c'])`, and furthe
 'X: 3;  Y: 5'
 ```
 
-5. Replacing %s and %r.
+5. Replacing %s and %r. It's like `%` way, please see to Examples 14.
 
 ```python
->>> "I just called to say: {!r}; I just called to say: {!s}".format('I love you', 'How much I care')
-"I just called to say: 'I love you'; I just called to say: How much I care"
+>>> "Hello: {!r}; This is: {!s}".format('World', 'Python')
+"Hello: 'World'; This is: Python"
 ```
 
-<!-- TODO: 5. Not suitable for mainbody of the discussion; can move into FAQ -->
+6. Named placeholders
 
-6. Aligning the text and specifying a width
+`.format()` also accepts keyword arguments. One can replaces string with arguments passed in function.
+
+```python
+>>> data = {'first': 'Hello', 'last': 'World!'}
+>>> '{first} {last}'.format(first='Hello', last='World!')
+'Hello World!'
+```
+
+7. Aligning the text and specifying a width
 
 ```python
 >>> '{:<30}'.format('left aligned')
@@ -600,8 +580,7 @@ Note: `.format(*'abc')` is equivalent to `.format(*['a', 'b', 'c'])`, and furthe
 '***********centered***********'
 ```
 
-
-7. Replacing %+f, %-f, and % f and specifying a sign
+8. Replacing %+f, %-f, and % f and specifying a sign
 
 ```python
 >>> '{:+f}; {:+f}'.format(3.14, -3.14)  # show it always
@@ -612,14 +591,14 @@ Note: `.format(*'abc')` is equivalent to `.format(*['a', 'b', 'c'])`, and furthe
 '3.140000; -3.140000'
 ```
 
-8. Truncating long strings to a specific number of characters.
+9. Truncating long strings to a specific number of characters.
 
 ```python
 >>> '{:.4}'.format('telephone')
 'tele'
 ```
 
-9. Format numbers
+10. Format numbers
 
     * `'d'` - Decimal Integer. Outputs the number in base 10, and number ahead of `d` means the specific width you want to keep.
 
@@ -638,20 +617,13 @@ Note: `.format(*'abc')` is equivalent to `.format(*['a', 'b', 'c'])`, and furthe
     >>> '{:06.4f}'.format(3.141592653589793)
     '3.1416'
 
-<!-- TODO: 
-Missing "named placeholder" style. This method is handy and used frequently:
-'{first} {last}'.format(first='Hodor', last='Hodor!')
- -->
-
 For more `string` operations, you can check out in [python docs](https://docs.python.org/3/library/string.html#formatstrings).
 
 ### Random
 
 This module implements pseudo-random number generators for various distributions. There are many useful and simple functions, like `random.randrange()`, `random.shuffle()`and  `random.sample()`. You can check out their [documentation](https://docs.python.org/3/library/random.html) to learn the details.
 
-#### Exercise 5: Test random
-
-<!-- TODO: number the exercise as one "Example" -->
+Examples 16: Test random
 
 Q: Randomly select a number from 1 to 10
 
@@ -669,14 +641,12 @@ A group of HKBU students decided to found up a news website. Basically, their bu
 
 The following are their cost and business plan:
 
-* Content cost 70000 yuan in the first month
-* Other cost like labor cost and server cost is 30000 yuan
+* Content cost 70000 dollars in the first month
+* Other cost like labor cost and server cost is 30000 dollars
 * 10% of website visitors expected to become our subscribers a month
-* Subscription fee is 15 yuan/person a month
-* Ad revenue = 0.8 yuan/person a month
-* When the number of visitors is larger than 50,000, with one more increment, it will cost us 0.001 yuan more for the cost of cloud computing.
-
-<!-- TODO: use "dollar" in examples/ exercises by default -->
+* Subscription fee is 15 dollars/person a month
+* Ad revenue = 0.8 dollars/person a month
+* When the number of visitors is larger than 50,000, with one more increment, it will cost us 0.001 dollars more for the cost of cloud computing.
 
 Please build a calculator to estimate their revenues. When the number of visitors is equal to 20,000, 40,000 and 60,000, calculate our net income respectively.
 
