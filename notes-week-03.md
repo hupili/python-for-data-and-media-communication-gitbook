@@ -1,42 +1,300 @@
 # Week 3 Python for anything
 
-### 1. Use "Help"
 
-In the Terminal of your computer. You can type `>>> help` for any instruction for using Python functions.  
-** Notes:**
+## Objective
 
-* Type 'q' to quit help; 
-* Type 'j' to view up; 
+* Master the composite data type [] and {} in Python
+* Master the control logics in Python, especially if and for
+* Further understand the different roles of text editor and interpreter. Be comfortable writing batch codes in .py file and execute in Shell environment.
+* [O] Understand Python engineering
+
+## Use "Help" more to learn by yourself
+
+In the Terminal of your computer, use `help` for any instruction for using Python functions.  
+
+**Note**
+
+* Type 'q' to quit help;
+* Type 'j' to view up;
 * Type 'k' to view down
 
-> _Example1_: If you want to know how to use 'numpy'. Type`>>>help()`  and then type `numpy` , then you can get the information about numpy as follow:
+Example 1: If you want to know how to use 'numpy'. Type`>>>help()`  and then type `numpy` , then you can get the information about numpy as follow:
 
-    Help on package numpy:
+```python
+>>> import(numpy)
+>>> help(numpy)
+Help on package numpy:
 
-    NAME
-        numpy
+NAME
+    numpy
 
-    FILE
-        /Library/Python/2.7/site-packages/numpy-override/numpy/__init__.py
+FILE
+    /Library/Python/2.7/site-packages/numpy-override/numpy/__init__.py
 
-    DESCRIPTION
-        NumPy
-        =====
+DESCRIPTION
+    NumPy
+    =====
 
-        Provides
-          1. An array object of arbitrary homogeneous items
-          2. Fast mathematical operations over arrays
-          3. Linear Algebra, Fourier Transforms, Random Number Generation
+    Provides
+        1. An array object of arbitrary homogeneous items
+        2. Fast mathematical operations over arrays
+        3. Linear Algebra, Fourier Transforms, Random Number Generation
 
-        How to use the documentation
-        ----------------------------
-        Documentation is available in two forms: docstrings provided
-        with the code, and a loose standing reference guide, available from
-        `the NumPy homepage <http://www.scipy.org>`_.
+    How to use the documentation
+    ----------------------------
+    Documentation is available in two forms: docstrings provided
+    with the code, and a loose standing reference guide, available from
+    `the NumPy homepage <http://www.scipy.org>`_.
 
-    :
+:
+```
 
-An alternative way is to type `help(numpy)` directly.
+## Bool and comparisons
+
+### Comparison Operators
+
+In programming, comparison operators are used to compare values and evaluate down to a single Boolean value of either True or False. The following are the common comparison operators:
+
+| Operators| Meaning                  |
+|----------|--------------------------|
+| `==`     | Equal to                 |
+| `!=`     | Not equal to             |
+| `<`      | Less than                |
+| `>`      | Greater than             |
+| `<=`     | Less than or equal to    |
+| `>=`     | Greater than or equal to |
+
+### Str comparison
+
+Strings can also be used with Boolean operators. They are case-sensitive. And you can use `str.()`functions to convert to upper- or lower-case letters.
+
+Example 2:
+
+```python
+>>> Name1 = 'YUCAN'
+>>> Name2 = 'yucan'
+>>> Name3 = Name2.upper()
+>>> print("Name1 == Name2: ", Name1 == Name2)
+('Name1 == Name2: ', False)
+>>> print("Name1 == Name3: ", Name1 == Name3)
+('Name1 == Name3: ', True)
+```
+
+### Int comparison
+
+Example 3:
+
+```python
+>>> x = 4
+>>> y = 6
+
+>>> print("x == y:", x == y)
+('x == y:', False)
+>>> print("x != y:", x != y)
+('x != y:', True)
+>>> print("x < y:", x < y)
+('x < y:', True)
+>>> print("x > y:", x > y)
+('x > y:', False)
+>>> print("x <= y:", x <= y)
+('x <= y:', True)
+>>> print("x >= y:", x >= y)
+('x >= y:', False)
+```
+
+## Composite data types
+
+Here are some common composite data types:
+
+| Type   | Values                                     | Python Implementation |
+|--------|--------------------------------------------|-----------------------|
+| Array  | Mutable object containing other values     | list or []            |
+| Union  | Contains values that can be multiple types | dict or {}            |
+| Record | Immutable object containing other values   | tuple or ()           |
+
+### List []
+
+List is an ordered sequence of items. It is one of the most used datatype in Python and is very flexible. All the items in a list do not need to be of the same type.
+
+Declaring a list is pretty simple. Items separated by commas are enclosed within brackets `[]`.
+
+Example 4:
+
+```python
+>>> a = [0, 6.6, 'python']
+```
+
+#### Common features
+
+1. Each element in the sequence is ordered and can be indexed. The first index is 0 and the second index is 1
+2. Lists can be added and multiplied
+3. One can add or remove elements into list
+4. One can check whether one elements is in the list
+5. One can slice the list
+
+Example 5:
+
+```python
+>>> list1 = ['Hello', 'Python', 2018, 814]
+>>> list2 = [1, 2, 3, 4, 5, 6, 7 ]
+>>> print "list1[0]: ", list1[0] #first value in list1
+list1[0]:  Hello
+>>> print "list2[1:5]: ", list2[1:5] #second value to sixth value
+list2[1:5]:  [2, 3, 4, 5]
+>>> list1 + list2  
+['Hello', 'Python', 2018, 814, 1, 2, 3, 4, 5, 6, 7]
+>>> list1*2  #duplicate
+['Hello', 'Python', 2018, 814, 'Hello', 'Python', 2018, 814]
+>>> 2018 in list1  #check whether 2018 is in list1
+true
+>>> list2[3:] #slice list2 from index3 value to last value
+[4, 5, 6, 7]
+>>> list2[:2] #slice list2 from 1st to second value
+[1, 2]
+```
+
+#### List functions
+
+| Functions | Description                           |
+|-----------|---------------------------------------|
+| len(list) | Number of list elements               |
+| max(list) | The maximum value in the list         |
+| min(list) | The minimum value in the list element |
+
+Example 6:
+
+```python
+>>> list2 = [1, 2, 3, 4, 5, 6, 7 ]
+>>> len(list2)
+7
+>>> max(list2)
+7
+>>> min(list2)
+1
+```
+
+#### List methods
+
+| Methods   | Description                                                                  |
+|-----------|------------------------------------------------------------------------------|
+| append()  | Adds an element at the end of the list                                       |
+| count()   | Returns the number of elements with the specified value                      |
+| extend()  | Add the elements of a list (or any iterable), to the end of the current list |
+| index()   | Returns the index of the first element with the specified value              |
+| insert()  | Adds an element at the specified position                                    |
+| pop()     | Removes the element at the specified position                                |
+| remove()  | Removes the first item with the specified value                              |
+| reverse() | Reverses the order of the list                                               |
+| sort()    | Sorts the list                                                               |
+
+Example 7:
+
+```python
+>>> list1 = ['Hello', 'Python', 2018, 814]
+>>> list1.append(2049) #append() takes exactly one argument
+>>> print(list1)
+['Hello', 'Python', 2018, 814, 2049]
+>>> list2 = [23, 2018, 814, 2049,2018]
+>>> list2.count(2018)
+>>> print(list2)
+2
+>>> list1.extend(list2)
+>>> print("Extended List : ", list1)
+Extended List : ['Hello', 'Python', 2018, 814, 2049, 23, 2018, 814, 2049, 2018]
+>>> print("Index for python : ", list1.index('Python'))
+1
+>>> print("Index for 2018 : ", list1.index(2018)) #find the first position of the indexed value
+2
+>>> list1.insert(3, 2009) #list.insert(index, obj),insert value 2009 in the index3
+>>> print("New List : ", list1)
+New List :  ['Hello', 'Python', 2018, 814, 2049, 23, 2018, 814, 2049, 2018]
+>>> list1.pop(2) #delete index2 value and return this value
+>>> print('List now : ',list1)
+List now :  ['Hello', 'Python', 814, 2049, 23, 2018, 814, 2049, 2018]
+>>> list1.remove('Hello') #remove certain value
+>>> print('List now : ',list1)
+List now :  ['Python', 814, 2049, 23, 2018, 814, 2049, 2018]
+>>> list1.reverse()
+>>> print('reverse list : ',list1)
+reverse list :  [2018, 2049, 814, 2018, 23, 2049, 814, 'Python']
+>>> vowels = ['e', 'a', 'u', 'o', 'i']
+>>> vowels.sort() #reverse = True(descending), reverse = False(ascending, if no parameters in(), they will return default value, ascending)
+>>> print('vowels ascending : ',vowels)
+vowels ascending :  ['a', 'e', 'i', 'o', 'u']
+>>> vowels.sort(reverse = True)
+>>> print('vowels descending : ',vowels)
+vowels descending :  ['u', 'o', 'i', 'e', 'a']
+```
+
+### Dict {}
+
+A dictionary is a collection which is unordered, changeable and indexed. In Python dictionaries are written with curly brackets`{}`, and they have keys and values, like `d = {key1 : value1, key2 : value2 }`.
+
+Example 8:
+
+```python
+>>> dict1 = {
+...  "apple": "green",
+...  "banana": "yellow",
+...  "cherry": "red"
+...}
+>>> print(dict1)
+{'apple': 'green', 'banana': 'yellow', 'cherry': 'red'}
+```
+
+#### Common features
+
+1. One can Access the values in the dict by `key`
+2. Change dictionary by adding/deleting/updating key and values
+
+Example 9:
+
+```python
+>>> person_dict = {'Chico': 24, 'Ivy': 20, 'Ri': 29}
+>>> print('Chico : ',person_dict['Chico'])
+Chico :  24
+>>> person_dict['Ri'] = 19
+>>> print('Ri : ',person_dict['Ri'])
+Ri :  19
+>>> person_dict['Frank'] = 31
+>>> print('Frank : ',person_dict['Frank'])
+Frank :  31
+>>> del person_dict['Ivy'] #delete
+>>> print('New_dict :',person_dict)
+New_dict : {'Chico': 24, 'Ri': 19, 'Frank': 31}
+```
+
+#### Dict functions
+
+| Functions | Description                           |
+|-----------|---------------------------------------|
+| len(dict) | Number of dict elements,which is the total number of keys               |
+| str(dict) | Output dictionary as a string         |
+
+Example 10:
+
+```python
+>>> person_dict = {'Chico': 24, 'Ri': 19, 'Frank': 31}
+>>> len(person_dict)
+3
+>>> print("To String : %s" % str(person_dict))
+To String : {'Chico': 24, 'Ri': 19, 'Frank': 31}
+```
+
+#### Dict methods
+
+| Methods    | Description                                               |
+|------------|-----------------------------------------------------------|
+| fromkeys() | creates dictionary from given sequence                    |
+| get()      | Returns value of the key                                  |
+| items()    | Returns view of dictionary's (key, value) pair            |
+| keys()     | Returns view object of all keys                           |
+| get(key)   | Return the key value you get, default=None                |
+| has_key()  | Return bool value by checking whether the key is in dict  |
+| popitem()  | Returns & removes element from dictionary                 |
+| pop()      | Returns & removes element having given key                |
+| values()   | Returns view of all values in dictionary                  |
+| update()   | Updates the Dictionary                                    |
 
 ## 2. Use "If-else Statement"
 
