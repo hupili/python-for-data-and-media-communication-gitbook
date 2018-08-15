@@ -336,108 +336,224 @@ Value : dict_values(['Chico', '23'])
 new_dict : {'Name': 'Chico', 'Age': '23', 'Gender': 'Male'}
 ```
 
-## 2. Use "If-else Statement"
+### Tuple ()
 
-_**If-else statement**_ is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. Take the case that group1 made as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline］）) ）
+A tuple is similar to a list, except that the elements of the tuple cannot be modified. The function and method of a tuple is similar to list, therefore we are not discussing more.
 
-> _Example_ _1:_  We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=1000+0.1×（number\_of\_users -10000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
+Example 12:
 
-```
-number_of_users = 100000
-if number_of_users < 50000:
-    cost = 10000
-else: # number_of_users >= 50000
-    cost = 10000 + 0.1 * (number_of_users - 10000)
-print (cost)
+```python
+>>> tup = (1, 2, 3, 4, 5 )
+>>> print("tup[0]: ", tup[0])
+tup[0]:  1
 ```
 
-then you will get the cost in the terminal as `19000.0`
+## Control flows
 
-> _Example_ 2: If we add one condition. when the number of users is less than 50,000, cost is 10，000.  If then number is equal to or more than 50,000. Then there are other two situations:1. when  50,000≤the number of user&lt;100,000, the cost= 10000+0.1×\(number\_of\_\_\_users -10000\); 2. when the number of user ≥10,000,  cost=10000 + 5000 + 0.1 \* \(number\_of\_users - 10000\). The actual number of users we have now is 90,000. The if-else statement will be as fellow:
+A control flow is a block of programming that analyses variables and chooses a direction in which to go based on given parameters. In python, all codes and statements are faithfully executed in exact top-down order. But what if you want to change the flow?
 
+For example, you want the program to take some decisions and do different things depending on different situations, such as printing 'True' or 'False' depending on the different comparison and test?
+
+Under such circumstances, using control flow statements will help you manipulate data better. There are several control flow statements we will learn in this chapter.
+
+### If-else Statement
+
+`If-else statement` is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. 
+
+**Syntax**
+
+```python
+if ...:   #close with an ':'
+    print(sth)  #indented
+elif ...: # elif = else if
+    print(sth)
+else:
+    print(sth)
 ```
-number_of_users = 90000
-if number_of_users < 50000:
-    cost = 10000
-else: # number_of_users >= 50000
-   if number_of_users<100000:
-       cost=10000+0.1*(number_of_users-10000)
-   else:
-       cost = 10000 + 5000+ 0.1 * (number_of_users - 10000)
-print (cost)
+
+Take the case that we talk about chapter 2 as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline)
+
+> Example 13: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=1000+0.1×（number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
+
+```python
+>>> number_of_users = 100000
+>>> if number_of_users <= 50000:
+>>>    cost = 10000
+>>> else: # number_of_users > 50000
+>>>    cost = 10000 + 0.1 * (number_of_users - 50000)
+>>> print (cost)
+15000.0
 ```
 
-it will print `18000.0`
+> Example 14: If there is two charge plans when the number of users is more than 50,000. 
+>1. when  50,000≤the number of user≤100,000, the cost= 10000+0.1×(number_of_users -50,000); 
+>2. when the number of user ≥100,000, the cost=10,000 + 0.1×(100,000 -50,000) + 0.2 * (number_of_users - 100,000).
 
-### 3. Use "For loop"/ "For Statement"
+The actual number of users we have now is 120,000. The if-else statement will be as fellow:
 
-_**For loops\(For Statement\)**_ has the ability to iterate over the items of any sequence, such as a list or a string.
+```python
+>>> number_of_users = 120000
+>>> if number_of_users <= 50000:
+>>>    cost = 10000
+>>> elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
+>>>    cost=10000+0.1*(number_of_users-50000)
+>>> else: # number_of_users > 100000
+>>>    cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
+>>> print(cost)
+21000.0
+```
+
+### While loop
+
+We can execute a set of statements in while loop as long as a condition is true.
+
+**Syntax**
+
+```python
+while ...:   #close with an ':'
+    print(sth)  #indented
+    if ...: # you can insert `if` in `while`
+        print(sth)
+```
+
+Example 15
+
+```python
+>>> i = 1
+>>> while i < 6:
+>>>     i = i + 1
+>>>     print(i)
+2
+3
+4
+5
+6
+```
+
+Example 16
+
+```python
+>>> i = 1
+>>> while i < 6:
+>>>     print(i)
+>>>     i = i + 1
+>>>     if i == 3:
+>>>         break #we will talk this later
+1
+2
+```
+
+### For loop
+
+For loops(For Statement) has the ability to iterate over the items of any sequence, such as a list or a string.
+
+**Syntax**
+
+```python
+for x in y:   #close with an ':'
+    print(sth)  #indented
+    if ...: # you can insert `if` in `for` loop
+        print(sth)
+```
 
 **1. Use "for statement" to pick up string/number from a list.**
 
-> \_Example1: \_you want to list every integer from 1 to 10.
+Example 17: List every integer from 1 to 10.
 
-```
-for i in range(1,10):
-    print(i)
-```
-
-It will print `1,2,3,4,5,6,7,8,9`
-
-> \_Example2: \_you want to list the square of every integer from 1 to 10.
->
-> ```
-> for i in range(1,10):
->     print(i**2)
-> ```
-
-it will print`1,4,9,16,25,36,49,64,81`
-
-> \_Example3: \_you want to list number from numbers and string.
-
-```
-for number in [1, 5, 2, 'fun']: #(a list)
-    print(number)
+```python
+>>> for i in range(1,11):
+>>>    print(i)
+It will print '1,2,3,4,5,6,7,8,9,10'
 ```
 
-it will print `1,5,2`
+**Note**: The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default).`(1,10)` means values from 1 to 11 (but not including 6)
+
+Example 18: Square of every integer from 1 to 10.
+
+```python
+>>> for i in range(1,11):
+>>>    print(i**2)
+it will print'1,4,9,16,25,36,49,64,81,100'
+```
 
 **2. Use for loop to calculate.**
 
-> \_Example1: \_you want to calculate the number of plussing from 1 to 100.
->
-> ```
-> total = 0
-> for i in range(1, 101): # numbers which are >=1 and <101 
->     total = total + i
-> print (total)
-> ```
->
-> it will print`5050`
+Example 19: Calculate the number of pulsing from 1 to 100.
 
-### 4. Use "for statement" and "if-else statement" together
+```python
+>>> total = 0
+>>> for i in range(1, 101): # numbers which are >=1 and <101
+>>>    total = total + i
+>>> print (total)
+5050
+ ```
 
-> _Example1: _ Like the example we used before. If we want to know the breakeven point of number of users, and we find that breakeven point of subscribed users is among 110,000 and 210,000, when the actual number of users we have is 190,000.
+### 4. Use `for statement` and `if-else statement` together
 
+Example 20: Like the example we used [before](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline). Find that break-even point of subscribed users to make profit >=0.
+
+```python
+>>> Fixed_Cost = 30000
+>>> Content_Cost = 70000
+>>> num = float(input('please input your estimate number of subscribers:')) #input a estimated number
+>>>for i in range(0,int(num)):
+>>>	Revenue = (1*i) + (0.1*15*i)
+>>>	if i < 50000:
+>>>		Total_Cost = Fixed_Cost + Content_Cost
+>>>	else:
+>>>		Total_Cost = Fixed_Cost + Content_Cost + 0.1 * (i - 50000)
+>>>	Net_Income = Revenue - Total_Cost
+>>>	if Net_Income >= 0:
+>>>		print('subscribers= ',i)
+>>>		break		
+>>> if Net_Income < 0:
+>>>	    print('Net_Income=', Net_Income) #the max value return by your input
+'break-even' subscribers=  40000
 ```
-number_of_users = 190000
-for number_of_users in range(110000, 210000):
-    if number_of_users < 50000:
-        cost = 10000
-    else: # number_of_users >= 50000
-        if number_of_users < 100000:
-            cost = 10000 + 0.1 * (number_of_users - 50000)
-        else: 
-            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
-    revenue = 0.1 * number_of_users
-    profit = revenue - cost
-    if profit >= 0:
-        break
-print(profit)
-print(number_of_users)
+
+### `Break` & `Continue` statement
+
+#### Break
+
+Stop the loop even if the while condition is true.
+
+Example 21:
+
+```python
+>>> i = 1
+>>> while i < 9:
+>>>     print(i)
+>>>     if i == 5:
+>>>         break
+>>>     i = i + 1
+1
+2
+3
+4
+5 #stop the loop
 ```
 
-it will print `0.0` and `200000`
+#### Continue
+
+Stop the current iteration, skip certain value, and continue with the next.
+
+Example 22:
+
+```python
+>>> i = 1
+>>> while i < 9:
+>>>     i = i + 1
+>>>     if i == 5:
+>>>         continue
+>>>     print(i)
+2
+3
+4 #number 5 is missing, while the loop continues
+6
+7
+8
+9
+```
 
 ### 5. Use "Def function"
 
