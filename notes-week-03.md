@@ -386,7 +386,7 @@ Take the case that we talk about chapter 2 as an example. \(The full version of 
 ```
 
 > Example 14: If there is two charge plans when the number of users is more than 50,000. 
->1. when  50,000≤the number of user≤100,000, the cost= 10000+0.1×(number_of_users -50,000); 
+>1. when  50,000≤the number of user≤100,000, the cost= 10000+0.1×(number_of_users -50,000);
 >2. when the number of user ≥100,000, the cost=10,000 + 0.1×(100,000 -50,000) + 0.2 * (number_of_users - 100,000).
 
 The actual number of users we have now is 120,000. The if-else statement will be as fellow:
@@ -416,7 +416,7 @@ while ...:   #close with an ':'
         print(sth)
 ```
 
-Example 15
+Example 15:
 
 ```python
 >>> i = 1
@@ -430,7 +430,7 @@ Example 15
 6
 ```
 
-Example 16
+Example 16:
 
 ```python
 >>> i = 1
@@ -555,79 +555,63 @@ Example 22:
 9
 ```
 
-### 5. Use "Def function"
+### `Def` function
+
+A function is a block of code which only runs when it is called. You can call this function by passing parameters into a function. Then the function can return data as a result.
+
+**Syntax**
+
+```python
+>>> def function_name(parameters): #define function
+>>>     control flow #use control flow
+>>>     return  #return to default or specified value
+>>> function_name("parameter1") #call the function
+
+```
 
 **Notes:**
 
-* Keyword `def`\(means definite\) marks the start of function header.
+* Keyword `def` (means definite) marks the start of function header.
 * A function name to uniquely identify it.
-* Parameters \(arguments\) through which we pass values to a function. They are optional.
-* A colon \(:\) to mark the end of function header.
+* Parameters (arguments) are optional, through which we pass values to a function.
+* A colon `:` to mark the end of function header.
 * Describe what the function does.
-* Statements must have same indentation level \(usually 4 spaces\).
+* Statements must have same indentation level (usually click `tab` on your keyboard to indent).
 * An optional `return` statement to return a value from the function.
+* when you find you are using a function again and again. you can use "def statement"to duplicate the logic.  
+* Type "Tab“to move the section rightwards. Type"tab"+"Shift" to move the section leftwards.
 
-* Use when you find you are using a function again and again. you can use "def statement"to duplicate the logic.  
-  Type "Tab“to move the section rightwards. Type"tab"+"Shift" to move the section leftwards.
+> Example 23: based on the example we talk about above.  Build a def function to calculate the profits when you give different number of users.
+>1. when  50,000≤the number of user≤100,000, the cost= 10000+0.1×(number_of_users -50,000);
+>2. when the number of user ≥100,000, the cost=10,000 + 0.1×(100,000 -50,000) + 0.2 * (number_of_users - 100,000).
 
-> _Example1: _ If we want to calculate the profits, the cost is 10,000 when user is less than 50,000, or when the number is not less than 50000 and also less than 100,000, the cost=10000+0.1×\(number of users -50000\), or the cost= 10000 + 5000 + 0.05×\(number\_of\_users - 100000\) When the numbers of users are 100,1000 and 10,000 respectively.
-
+```python
+>>> def calculate_profit(number_of_users):
+>>>     if number_of_users < 50000:
+>>>        cost = 10000
+>>>     elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
+>>>         cost=10000+0.1*(number_of_users-50000)
+>>>     else: # number_of_users > 100000
+>>>         cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
+>>>     revenue = 0.1 * number_of_users
+>>>     profit = revenue - cost
+>>>     return profit
+>>> print(calculate_profit(100))
+-9990.0
 ```
-def calculate_profit(number_of_users):
-    if number_of_users < 50000:
-        cost = 10000
-    else: # number_of_users >= 50000
-        if number_of_users < 100000:
-            cost = 10000 + 0.1 * (number_of_users - 50000)
-        else: 
-            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
-    revenue = 0.1 * number_of_users
-    profit = revenue - cost
-    return profit
-print(calculate_profit(100))
-```
-
-it will print `-9990.0`
 
 The advantage of using "def" is that you can recall the function again and again.
 
+```python
+>>> print(calculate_profit(100))
+>>> print(calculate_profit(1000))
+>>> print(calculate_profit(10000))
+>>> print(calculate_profit(100000))
+-9990.0
+-9900.0
+-9000.0
+-5000.0
 ```
-def calculate_profit(number_of_users):
-    if number_of_users < 50000:
-        cost = 10000
-    else: # number_of_users >= 50000
-        if number_of_users < 100000:
-            cost = 10000 + 0.1 * (number_of_users - 50000)
-        else: 
-            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
-    revenue = 0.1 * number_of_users
-    profit = revenue - cost
-    return profit
-    print(calculate_profit(100))
-```
-
-it will print `-9990.0`
-
-```
-def calculate_profit(number_of_users):
-    if number_of_users < 50000:
-        cost = 10000
-    else: # number_of_users >= 50000
-        if number_of_users < 100000:
-            cost = 10000 + 0.1 * (number_of_users - 50000)
-        else: 
-            cost = 10000 + 5000 + 0.05 * (number_of_users - 100000)
-    revenue = 0.1 * number_of_users
-    profit = revenue - cost
-    return profit
-
-print(calculate_profit(100))
-print(calculate_profit(1000))
-print(calculate_profit(10000))
-print(calculate_profit(100000))
-```
-
-It will print `-9990`,`-9900`,`-9000`,`-5000` at a time.
 
 ### 6. Use "Import Statement"
 
