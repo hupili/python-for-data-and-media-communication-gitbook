@@ -600,6 +600,8 @@ A function is a block of code which only runs when it is called. You can call th
 -9990.0
 ```
 
+**Note:** For the later exercise, using interactive mode is inconvenient, please write down the codes in text editor and save it as a `.py` file, so that you can just execute the file once to get the answer. If you forget how to do this, please reder to [chapter 2]
+
 The advantage of using "def" is that you can recall the function again and again.
 
 ```python
@@ -613,27 +615,106 @@ The advantage of using "def" is that you can recall the function again and again
 -5000.0
 ```
 
-### 6. Use "Import Statement"
+### Try and expect
 
-**Notes:**
+For most errors, the Python interpreter will issue an exception. In fact, in many cases, we need to control the code that may generate exceptions. In python, error and exception handling allows us to continue our program if an exception occurs.
 
-* To use any package in your code, you must first make it accessible. You have to import it. You can't use anything in Python before it is defined.
+The try statement works as follows.
 
-> _Example1:_ You want to pick up students randomly from a list named 1 to 6.
+1. the try statement between the try and except (keywords) is executed.
+2. If no exception occurs, the except clause is skipped and execution of the try statement is finished.
+3. If an exception occurs during execution of the try clause, and its type matches the exception named after the except keyword, the except clause will be executed, **and the execution continues after the try statement.**
+4. If an exception occurs which does not match the exception named in the except clause, it is passed on to outer try statements; if no handler is found, it is an unhandled exception and execution stops.
 
+Example 23:
+
+```python
+>>> try:
+>>>     print("Hello World")
+>>> except:
+>>>     print("This is an error message!")
 ```
-import random
-students = [1, 2, 3 ,4, 5, 6] # l=[ , , ,]
-print (students)
-random.shuffle(students)
-print (students)
+
+Example 24:
+
+```python
+>>>while True:
+>>>     try:
+>>>         x = int(input("Please enter a number: ")) #input a int and non-int to test
+>>>         break
+>>>     except ValueError:
+>>>         print("Oops!  That was no valid number.  Try again...")
 ```
 
-it will print
+**Exception errors**
 
+There are several common exception errors
+
+* IOError. If the file cannot be opened.
+
+* ImportError. If python cannot find the module
+
+* ValueError. Raised when a operation or function receives an argument that has the right type but an inappropriate value
+
+* KeyboardInterrupt. Raised when the user hits the interrupt key (normally Control-C or Delete)
+
+## Class and objects
+
+Class is a collection used to describe objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class.
+
+### create a class - the `__init__()` function
+
+All classes have a function called `__init__()`, which is always executed when the class is being initiated. Therefore the `__init__()` function is used to assign values to object properties, or other operations that are necessary to do when the object is being created.
+
+Example 25: Build a animal class.
+
+```python
+>>> class Animal(): #class + class name to give a statement
+... def __init__(self, name): #self refer to class itself, its default.
+...     self.name = name  #all objects in this class has name
+>>> a = Animal("dog")  #give a new object, an animal named dog
+>>> print(a.name)
+dog
 ```
-[1, 2, 3, 4, 5, 6]
-[2, 4, 1, 3, 5, 6]
+
+Example 26:
+
+```python
+>>> class Person():  #build a person class
+...     def __init__(self,name,age): #those objects has name and age
+...         self.name,self.age = name,age  
+...     def __str__(self):  # def a certain return
+...         return 'My name is {self.name}, and I‘m {self.age} years old'.format(self=self) #review the format.() function
+...
+>>> str(Person('xyc',18))
+'My name is xyc, and I‘m 18 years old'
+```
+
+Example 27:
+
+```python
+>>> class Account:
+...    def __init__(self, number, name):
+...        self.number = number
+...        self.name = name
+...        self.balance = 0
+        
+...    def deposit(self, amount):  
+...        if amount <= 0:
+...            raise ValueError('must be positive')
+...        self.balance += amount
+        
+...    def withdraw(self, amount):
+...        if amount <= self.balance:
+...            self.balance -= amount
+...        else:
+...            raise RuntimeError('balance not enough')
+...
+>>> acct1 = Account('123–456–789', 'Chico') #open an account
+>>> acct1.deposit(500)
+>>> acct1.withdraw(100)
+>>> print(acct1.balance)
+400
 ```
 
 ## Exercise
