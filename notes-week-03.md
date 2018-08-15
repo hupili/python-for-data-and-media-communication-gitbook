@@ -195,14 +195,14 @@ Example 7:
 >>> print(list1)
 ['Hello', 'Python', 2018, 814, 2049]
 >>> list2 = [23, 2018, 814, 2049,2018]
->>> list2.count(2018)
+>>> list2.count(2018) #count numbers of 2018
 >>> print(list2)
 2
->>> list1.extend(list2)
+>>> list1.extend(list2) #add list2 into list1
 >>> print("Extended List : ", list1)
 Extended List : ['Hello', 'Python', 2018, 814, 2049, 23, 2018, 814, 2049, 2018]
 >>> print("Index for python : ", list1.index('Python'))
-1
+1 #index value 'Python'
 >>> print("Index for 2018 : ", list1.index(2018)) #find the first position of the indexed value
 2
 >>> list1.insert(3, 2009) #list.insert(index, obj),insert value 2009 in the index3
@@ -214,7 +214,7 @@ List now :  ['Hello', 'Python', 814, 2049, 23, 2018, 814, 2049, 2018]
 >>> list1.remove('Hello') #remove certain value
 >>> print('List now : ',list1)
 List now :  ['Python', 814, 2049, 23, 2018, 814, 2049, 2018]
->>> list1.reverse()
+>>> list1.reverse() #reverse list
 >>> print('reverse list : ',list1)
 reverse list :  [2018, 2049, 814, 2018, 23, 2049, 814, 'Python']
 >>> vowels = ['e', 'a', 'u', 'o', 'i']
@@ -251,12 +251,12 @@ Example 9:
 
 ```python
 >>> person_dict = {'Chico': 24, 'Ivy': 20, 'Ri': 29}
->>> print('Chico : ',person_dict['Chico'])
+>>> print('Chico : ',person_dict['Chico']) #access values
 Chico :  24
 >>> person_dict['Ri'] = 19
 >>> print('Ri : ',person_dict['Ri'])
 Ri :  19
->>> person_dict['Frank'] = 31
+>>> person_dict['Frank'] = 31 #update value
 >>> print('Frank : ',person_dict['Frank'])
 Frank :  31
 >>> del person_dict['Ivy'] #delete
@@ -286,15 +286,55 @@ To String : {'Chico': 24, 'Ri': 19, 'Frank': 31}
 | Methods    | Description                                               |
 |------------|-----------------------------------------------------------|
 | fromkeys() | creates dictionary from given sequence                    |
-| get()      | Returns value of the key                                  |
+| get()      | Returns value of the key, default=None                               |
 | items()    | Returns view of dictionary's (key, value) pair            |
 | keys()     | Returns view object of all keys                           |
-| get(key)   | Return the key value you get, default=None                |
-| has_key()  | Return bool value by checking whether the key is in dict  |
-| popitem()  | Returns & removes element from dictionary                 |
+| __contains__(key) | Return bool value by checking whether the key is in dict  |
 | pop()      | Returns & removes element having given key                |
 | values()   | Returns view of all values in dictionary                  |
 | update()   | Updates the Dictionary                                    |
+
+Example 11:
+
+```python
+>>> seq = ['Chico', 'Ivy', 'Ri']
+>>> dict = dict.fromkeys(seq)  #fromkeys()
+>>> print("New_dict : %s" % str(dict))
+New_dict : {'Chico': None, 'Ivy': None, 'Ri': None}
+>>> dict = dict.fromkeys(seq, 'A+') #give all keys value A+
+>>> print("New_dict : %s" % str(dict))
+New_dict : {'Chico': 'A+', 'Ivy': 'A+', 'Ri': 'A+'}
+>>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("Age : %s" % dict.get('Age')) #get key value
+Age : 23
+>>> print("Gender : %s" % dict.get('Gender'))
+Gender : Male #if you get a wrong key, it will return None
+>>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("dict_values : %s" % dict.items()) #view dict's items
+dict_values : dict_items([('Name', 'Chico'), ('Gender', 'Male'), ('Age', '23')]) #return a tuple
+>>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("dict_keys : %s" % dict.keys()) #view all keys
+dict_keys : dict_keys(['Name', 'Gender', 'Age'])
+>>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("has_key : %s" % dict.__contains__('Age')) #two '_', check out keys
+has_key : True
+>>> print("has_key : %s" % dict.__contains__('School'))
+has_key : False
+>>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> pop_value = dict.pop('Gender') #drop out key
+>>> print(pop_value)
+Male
+>>> print(dict)
+{'Name': 'Chico', 'Age': '23'}
+>>> dict = {'Name': 'Chico', 'Age': '23'}
+>>> print("Value : %s" % dict.values()) #get all values
+Value : dict_values(['Chico', '23'])
+>>> dict1 = {'Name': 'Chico', 'Age': '23'}
+>>> dict2 = {'Gender':'Male'}
+>>> dict1.update(dict2) #update dict2 in dict1
+>>> print('new_dict : %s' % dict1)
+new_dict : {'Name': 'Chico', 'Age': '23', 'Gender': 'Male'}
+```
 
 ## 2. Use "If-else Statement"
 
