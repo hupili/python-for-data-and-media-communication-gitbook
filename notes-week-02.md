@@ -51,9 +51,7 @@
 
 </div>
 
-In the previous chapter, We introduced the basic knowledge about terminal on Mac and how to navigate file system in Terminal, using shell, creating the first python script and execute it... In this chapter, we want to focus specifically on Python basics, including `variables`, basic `data types`, `arithmetic`, `functions` and several commonly used `modules` you need to know about to get up and going as a python developer. After this chapter, you can use python as your daily tool, at least to build a calculator to evaluate your business model or build up your start-up financial plan. You can check out [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) for a reference case study, about **Calculate Marketing Objective for Your Media Startup**. And you can also find more cases in our DNN website.
-
-Tip: search `python` to filter out the cases accomplished by 2017 MA students.
+In the previous chapter, We introduced the basic knowledge about terminal on Mac and how to navigate file system in Terminal, using shell, creating the first python script and execute it... In this chapter, we want to focus on Python basics, including _variables_, basic _data types_, _arithmetic_, _functions_ and several commonly used _modules_. After this chapter, you can use python as your daily tool, at least in form of a powerful calculator.
 
 ## Objective of this week
 
@@ -688,20 +686,28 @@ Answer should be one of int numbers in 1 to 10
 
 **Design and calculate a media business model:**
 
-A group of HKBU students decided to found up a news website. Basically, their business model is to provide the content to their consumers, and they can make money by charging the subscription fee for exclusive content and ads revenues.
+A group of HKBU students decided to found up a news website. Basically, their business model is to provide the content to their consumers, and earn money by a combination of subscription fee and advertising fee.
 
-The following are their cost and business plan:
+The following are the cost and revenue component in their business plan: (per month)
 
-* Content cost 70000 dollars in the first month
-* Other cost like labor cost and server cost is 30000 dollars
-* 10% of website visitors expected to become our subscribers a month
-* Subscription fee is 15 dollars/person a month
-* Ad revenue = 0.8 dollars/person a month
-* When the number of visitors is larger than 50,000, with one more increment, it will cost us 0.001 dollars more for the cost of cloud computing.
+- Major cost:
+  - Content cost `70,000` dollars
+  - Other cost like labor cost and server cost is `30,000` dollars
+  - Server cost: `50,000`
+- Revenue:
+  - 10% of website monthly **visitors** are expected to become the **subscribers**
+  - Subscription fee is `15` dollar/**subscriber** a month
+  - Ad revenue = `0.8` dollar/**visitor** a month
 
-Please build a calculator to estimate their revenues. When the number of visitors is equal to 20,000, 40,000 and 60,000, calculate our net income respectively.
+Please build a calculator to estimate their revenues, given the number of monthly visitors as an variable `visitor`. Show the net income when `visitor` equals `20,000`, `40,000` and `60,000`, respectively.
 
-This is just a basic model, you can definitely change the parameters to find more interesting stories. Like how to modify your price strategy to get more subscribers and make more money.
+Further challenges:
+
+- Explore how the net income changes when the number of visitors changes
+- Explore how the prameters of content cost, per user subscription fee and per user Ad revenue influences net income.
+- (optional) Assume a more practical situation. The company invest `50,000` in IT infrastructure as fixed assets. The infrastructure can support daily office use and support up to `50,000` monthly visitors. When the number of monthly visitors becomes larger than `50,000`, the company need to switch to cloud services, in order by by computing powers on demand. The excess amount incurs a cost of `0.001` dollar per user.
+
+**SPOILER**: The reference solution and variations can be found in [Calculate Marketing Objective for Your Media Startup](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/), a blog post from our past students. Note that it uses more complex logics like `if` and `for`, which will be detailed in [Chapter 3](notes-week-03.md).
 
 ## References
 
