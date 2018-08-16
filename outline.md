@@ -60,7 +60,7 @@ Python language introduction:
   * `import` (and `import ... from ...`)
   * `.` notation to reference to member variable/ method
   * `()` notation to call function
-* Common modules
+* Common modules and functions
   * `str.*` functions
     * String templating 1: `str.format`
     * String templating 2: `format_str % (var1, var2, ...)`

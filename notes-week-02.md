@@ -127,7 +127,7 @@ apple
 
 It means you define variable "fruit1"  as apple, so you will get apple in terminal.
 
-**Note** You should use `''` to hold apple, or the terminal will think apple is another variables. You can't assign variables to other variables.
+**Note** You should use `''`, or `""`, to wrap `apple`, or the terminal will think apple is another variables. You can't assign variables to other variables.
 
 Example 3:
 
@@ -146,9 +146,9 @@ a, b, c are all variables, and you can do calculation like normal numbers.
 In fact, there are so many different kinds of data you can use to define the variables. Different data types are totally different.
 Following are some basic data types.
 
-### Int
+### Integer: `int`
 
-`int` means integer, like 7, 8, 9 and so on. those numbers are integer.
+`int` means integer, like 7, 8, 9. We deal with intergers in our work for most of the time.
 
 Example 4:
 
@@ -160,9 +160,9 @@ Example 4:
 
 `int()` is a function, which converts the number in `()` to an integer.
 
-### Float
+### Floating point (real number): `float`
 
-`float` means a number with decimal, like 2.1, 3.8, 5.6 and so on.
+`float` means a number with decimal, like 2.1, 3.8, 5.6 and so on. It was initially called "float" because of the way computer handles very big/ very small real numbers is by [Floating point arithmetics](https://en.wikipedia.org/wiki/Floating-point_arithmetic).
 
 Example 5:
 
@@ -174,9 +174,11 @@ Example 5:
 
 `float()` means you converts the number/integer in `()` to a decimal.
 
-### Bool
+You will find most of our daily arithmetic operations apply to `int` and `float`, like `+`, `-`, `*`, `/`. We will show you basic arithmetics after explaining basic data types.
 
-The bool() method converts a value to Boolean (True or False), using the standard truth testing procedure.
+### Boolean: `bool`
+
+The `bool()` method converts a value to Boolean (True or False), using the standard truth testing procedure.
 
 It's not mandatory to pass a value to `bool()`. If you do not pass a value, `bool()` returns False. In general use, bool() takes a single parameter value.
 
@@ -214,7 +216,9 @@ True is True
 Loving you is True
 ```
 
-### Str
+You can apply **boolean logic** on bool type of values using operators like `and`, `or` and `not`. We will explain more in [Chapter 3](notes-week-03.md) when we discuss program flow management via conditional branches and loops.
+
+### String: `str`
 
 * `Str` means string, a sequence of characters, like quiet, asdf, HK_NY and so on.
 * Strings can be created by enclosing characters inside a single quote or double quotes, like `''`,`""`. Even triple quotes can be used in Python but generally used to represent multi-line strings and doc-strings.
@@ -232,9 +236,9 @@ Xiao Ming says "I don't feel well today"
 
 What does `\"` means?, let's talk about this more.
 
-### Escape character
+### Escape character in strings
 
->According to wikipedia, An [escape character](https://en.wikipedia.org/wiki/Escape_character) is a character which invokes an alternative interpretation on subsequent characters in a character sequence.
+An [escape character](https://en.wikipedia.org/wiki/Escape_character) is "a character which invokes an alternative interpretation on subsequent characters in a character sequence".
 
 Python has its own rules and grammar. Like if you need to use special character `''` in a string, you should use escape character. Because python regards `''` as sign of a string, if you use `''` inside of the string, it will cause invalid syntax error. Usually, we uses the \ (backslash) as an escape character for. The following are the commonly used examples.
 
@@ -272,8 +276,6 @@ today
 
 #### Exercise 1: Simple calculation
 
-a=10//3, b=10%3, c=10**3, print a, b, c.
-
 ```python
 >>> a = 10//3
 >>> b = 10%3
@@ -290,10 +292,6 @@ Question: Calculate mortgage based on the following formula: (Assign "r" "P" "n"
 
 *[formula from wikipedia](https://en.wikipedia.org/wiki/Mortgage_loan), you can check out what each variable represents.*
 
-Exercise:
-r=0.05, n=20, P=5000000, A=r*P*(1+r)**n/((1+r)**n-1)
-print "A=",A
-
 ```python
 >>> r = 0.05,
 >>> n = 20,
@@ -305,21 +303,15 @@ A= 401212.935953
 
 ## Modules, functions and packages
 
-### Modules
-
-In programming, a module is a piece of software that has a specific functionality. For example, when playing a chess game, one module would be responsible for the game logic, and another module would be responsible for drawing the game on the screen. Each module is a different file, which can be edited separately. There are diverse modules on the Internet,like [numpy](http://www.numpy.org/), [scipy](https://www.scipy.org/) and [geopy](https://geopy.readthedocs.io/en/stable/) so on.
-Different modules contains different functions relating to modules' features.
-
-### Packages
-
-A package is a collection of Python modules, a directory of Python modules containing an additional `__init__.py` file, to distinguish a package from a directory that just happens to contain a bunch of Python scripts. Packages can be nested to any depth, provided that the corresponding directories contain their own `__init__.py` file. For example, you can see that [python twitter](http://python-twitter.readthedocs.io/en/latest/index.html) is a package with a `__init__.py` file.
-![Python twitter package](assets/python-twitter-package.png)
-
 ### Functions
 
-A function is a block of organized, reusable code that is used to perform a single, related action. Functions provide better modularity for your application and a high degree of code reusing.
+Function is a fundamental building block in Python that includes certain codes that can be re-used. A function takes input in form of "arguments" and gives corresponding output. For example, `print()` is a built-in function, which takes input of a sequence of arguments, representing values to be print. `print()` consumes those arguments, turn them into `str` format, and write the output onto your screen. `int()` is another built-in function, which takes an arbitrary value as input and output a corresponding integer.
 
-As you already know, Python gives you many built-in functions like `print()`, etc. You can also create your own functions, which we will talk later, and these functions are called user-defined functions.
+Note the "function call" notation, i.e. `()` following the name of the function. When Python interpreter sees this notation, it will enter the body of the function and execute the codes there. When you find yourself doing something repeated in Python, you should consider to wrap those codes into a function, and use function calls with proper parameters at the place you want to use it. We will discuss this more on how to write and how to call one's own function in [Chapter 3](notes-week-03.md).
+
+<!-- 
+
+You can also create your own functions, which we will talk later, and these functions are called user-defined functions.
 
 Here are simple rules to define a function in Python.
 
@@ -347,7 +339,29 @@ Example 9:
 >>> printinfo(age=18, name="yucan")
 Name:  yucan
 Age  18
-```
+``` 
+
+-->
+
+### Modules
+
+<!-- In programming, a module is a piece of software that can be reused. For example, when playing a chess game, one module would be responsible for the game logic, and another module would be responsible for drawing the game on the screen. Each module is a different file, which can be edited separately. There are diverse modules on the Internet,like 
+
+Some examples are like [numpy](http://www.numpy.org/), [scipy](https://www.scipy.org/) and [geopy](https://geopy.readthedocs.io/en/stable/). -->
+
+Module is a higher level building block in Python that includes certain _function_ and can be reused. Some examples are like [numpy](http://www.numpy.org/), [scipy](https://www.scipy.org/) and [geopy](https://geopy.readthedocs.io/en/stable/). Those modules extend basic Python functions, so that you can easily finish complex tasks, like compute the matrix multiplication and get distance between two cities. Otherwise, you need to write hundreds of lines of codes, in order to get it done.
+
+### Packages
+
+A package is a collection of Python modules. It can be single `.py` file or a folder structure of `.py` files. Without worrying about the internal layouts, the way of using package is similar of using module. We will use the two terms interchangeably the future discussions.
+
+<!-- A package is a collection of Python modules, a directory of Python modules containing an additional `__init__.py` file, to distinguish a package from a directory that just happens to contain a bunch of Python scripts. Packages can be nested to any depth, provided that the corresponding directories contain their own `__init__.py` file. For example, you can see that [python twitter](http://python-twitter.readthedocs.io/en/latest/index.html) is a package with a `__init__.py` file.
+![Python twitter package](assets/python-twitter-package.png)
+
+NOTE: We do not care the internal structure of package at this point.
+ -->
+
+ <!-- TODO: Last review marker, Pili -->
 
 ### How to use modules
 
