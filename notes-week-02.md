@@ -15,25 +15,25 @@
         - [Execute an existing script interactively](#execute-an-existing-script-interactively)
     - [Variables and assignment](#variables-and-assignment)
     - [Basic data types](#basic-data-types)
-        - [Int](#int)
-        - [Float](#float)
-        - [Bool](#bool)
-        - [Str](#str)
-        - [Escape character](#escape-character)
+        - [Integer: `int`](#integer-int)
+        - [Floating point (real number): `float`](#floating-point-real-number-float)
+        - [Boolean: `bool`](#boolean-bool)
+        - [String: `str`](#string-str)
+        - [Escape character in strings](#escape-character-in-strings)
     - [Arithmetic](#arithmetic)
         - [Basic rules](#basic-rules)
             - [Exercise 1: Simple calculation](#exercise-1-simple-calculation)
             - [Exercise 2: Calculate a mortgage](#exercise-2-calculate-a-mortgage)
     - [Modules, functions and packages](#modules-functions-and-packages)
+        - [Functions](#functions)
         - [Modules](#modules)
         - [Packages](#packages)
-        - [Functions](#functions)
         - [How to use modules](#how-to-use-modules)
             - [Step 1: pip install modules](#step-1-pip-install-modules)
             - [Step 2: import modules](#step-2-import-modules)
         - [How to find modules and packages we want](#how-to-find-modules-and-packages-we-want)
         - [How to call functions](#how-to-call-functions)
-            - [`.` notation to reference to the functions](#-notation-to-reference-to-the-functions)
+            - [`.` notation to reference to the member](#-notation-to-reference-to-the-member)
             - [`()` notation to call function](#-notation-to-call-function)
             - [Exercise 3: Calculate the area of a circle](#exercise-3-calculate-the-area-of-a-circle)
     - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
@@ -41,7 +41,7 @@
             - [Basic functions: Arrays](#basic-functions-arrays)
         - [String functions (`str.*`)](#string-functions-str)
             - [Common functions](#common-functions)
-            - [Python’s classical percent sign string interpolation](#pythons-classical-percent-sign-string-interpolation)
+            - [Python’s classical percent-sign string interpolation](#pythons-classical-percent-sign-string-interpolation)
             - [Str.format()](#strformat)
         - [Random](#random)
     - [Exercises and Challenges](#exercises-and-challenges)
@@ -322,9 +322,7 @@ Module is a higher level building block in Python that includes certain _functio
 
 ### Packages
 
-A package is a collection of Python modules. It can be single `.py` file or a folder structure of `.py` files. Without worrying about the internal layouts, the way of using package is similar of using module. We will use the two terms interchangeably the future discussions.
-
- <!-- TODO: Last review marker, Pili -->
+A package is a collection of Python modules. It can be single `.py` file or a folder structure of `.py` files. Without worrying about the internal layouts, the way of using package is similar of using module. We will use the two terms interchangeably future discussions.
 
 ### How to use modules
 
@@ -387,11 +385,11 @@ Basically, those are the modules that we might use in our daily study. You can g
 
 ### How to call functions
 
-#### `.` notation to reference to the functions
+#### `.` notation to reference to the member
 
-As you already know from the previous content that there are many functions in a module. We use `module name` +`.`+`function name` to reference to one specific function in a module. If you don't know what are the functions in this module, you can use `help(module)` to search through their documentation.
+A member of a module can be a function or a variable. As you already know from the previous content that there are many functions in a module. We use `module name` +`.`+`member name` to reference to one member in a module.  If you don't know what are the members in this module, you can use `help(module)` to load help documentation, or use `dir(module)` to checkout the available members.
 
-Example 11:
+Example 11: Get the constant Pi
 
 ```python
 >>> import numpy
@@ -500,14 +498,14 @@ Example 13:
 ['python loves you', ' do you like it']
 ```
 
-#### Python’s classical percent sign string interpolation
+#### Python’s classical percent-sign string interpolation
 
 Before `str.format()`  was introduced, using `%` to do **simple string interpolation** can be very easily. Use it if the order of your arguments is not likely to change and you only have very few elements you want to concatenate.
 
 Example 14:
 
 ```python
->>> print("%s %s" %('Hello','World'))
+>>> print("%s %s" % ('Hello', 'World'))
 Hello World
 ```
 
