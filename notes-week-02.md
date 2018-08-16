@@ -64,7 +64,14 @@ In the previous chapter, We introduced the basic knowledge about terminal on Mac
 
 ### Python interpreter
 
->By default, Python source files are treated as encoded in UTF-8. But the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, your editor must recognize that the file is UTF-8, and it must use a font that supports all the characters in the file.
+>An interpreter is a program that reads and executes code. This includes source code, pre-compiled code, and scripts. Basically, the Python interpreter is the application that runs your python script.
+
+By default, Python source files are treated as encoded in UTF-8. But the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, python interpreter will recognize that the file is UTF-8, and support all the characters in the file.
+
+What the interpreter does in a nutshell:
+
+1. Read the script line by line and converts that script into python byte code.
+2. The interpreter then executes the file instruction by instruction, it is at this stage errors are created if your code generates such errors.
 
 ### Invoking the Interpreter
 
@@ -309,57 +316,13 @@ Function is a fundamental building block in Python that includes certain codes t
 
 Note the "function call" notation, i.e. `()` following the name of the function. When Python interpreter sees this notation, it will enter the body of the function and execute the codes there. When you find yourself doing something repeated in Python, you should consider to wrap those codes into a function, and use function calls with proper parameters at the place you want to use it. We will discuss this more on how to write and how to call one's own function in [Chapter 3](notes-week-03.md).
 
-<!-- 
-
-You can also create your own functions, which we will talk later, and these functions are called user-defined functions.
-
-Here are simple rules to define a function in Python.
-
-* Function blocks begin with the keyword def followed by the function name and parentheses `()`.
-
-* Any input parameters or arguments should be placed within these parentheses.
-
-* The code block within every function starts with a colon (:) and is indented.
-
-* The statement `return` means exiting a function, optionally passing back an expression to the caller. A return statement with no arguments is the same as return None.
-
-How to understand the relationship between `functions`, `parameters` and `return` ?
-
-It's like assigning tasks to a worker. So function is the worker you hired, parameters are the raw materials you give to the worker. But the worker at this stage still don't know what product to make, you need to tell him. Return is just like the command you tell the worker what to make, and he will return the product that you want. (A analogy from a student, its pretty much like what those three things like).
-
-Example 9:
-
-```python
-# Here is the function definition
->>> def printinfo(name, age): #printinfo is function name, name and age are parameters
->>>     print("Name: ", name） #intended!
->>>     print("Age ", age）
->>>     return
-# Now you can call printinfo function
->>> printinfo(age=18, name="yucan")
-Name:  yucan
-Age  18
-``` 
-
--->
-
 ### Modules
-
-<!-- In programming, a module is a piece of software that can be reused. For example, when playing a chess game, one module would be responsible for the game logic, and another module would be responsible for drawing the game on the screen. Each module is a different file, which can be edited separately. There are diverse modules on the Internet,like 
-
-Some examples are like [numpy](http://www.numpy.org/), [scipy](https://www.scipy.org/) and [geopy](https://geopy.readthedocs.io/en/stable/). -->
 
 Module is a higher level building block in Python that includes certain _function_ and can be reused. Some examples are like [numpy](http://www.numpy.org/), [scipy](https://www.scipy.org/) and [geopy](https://geopy.readthedocs.io/en/stable/). Those modules extend basic Python functions, so that you can easily finish complex tasks, like compute the matrix multiplication and get distance between two cities. Otherwise, you need to write hundreds of lines of codes, in order to get it done.
 
 ### Packages
 
 A package is a collection of Python modules. It can be single `.py` file or a folder structure of `.py` files. Without worrying about the internal layouts, the way of using package is similar of using module. We will use the two terms interchangeably the future discussions.
-
-<!-- A package is a collection of Python modules, a directory of Python modules containing an additional `__init__.py` file, to distinguish a package from a directory that just happens to contain a bunch of Python scripts. Packages can be nested to any depth, provided that the corresponding directories contain their own `__init__.py` file. For example, you can see that [python twitter](http://python-twitter.readthedocs.io/en/latest/index.html) is a package with a `__init__.py` file.
-![Python twitter package](assets/python-twitter-package.png)
-
-NOTE: We do not care the internal structure of package at this point.
- -->
 
  <!-- TODO: Last review marker, Pili -->
 
