@@ -66,7 +66,7 @@ In the previous chapter, We introduced the basic knowledge about terminal on Mac
 
 >An interpreter is a program that reads and executes code. This includes source code, pre-compiled code, and scripts. Basically, the Python interpreter is the application that runs your python script.
 
-By default, Python source files are treated as encoded in UTF-8. But the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, python interpreter will recognize that the file is UTF-8, and support all the characters in the file.
+By default, Python source files are treated as encoded in UTF-8. But the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, python interpreter will recognize that the file is UTF-8, and support all the characters in the file.
 
 What the interpreter does in a nutshell:
 
@@ -670,7 +670,7 @@ The following are the cost and revenue component in their business plan: (per mo
   - Other cost like labor cost and server cost is `30000` dollars
   - Server cost: `50000`
 - Revenue:
-  - 10% of website monthly **visitors** are expected to become the **subscribers**
+  - 10% of website monthly **visitors** are expected to become the **subscribers**
   - Subscription fee is `15` dollar/**subscriber** a month
   - Ad revenue = `0.8` dollar/**visitor** a month
 
