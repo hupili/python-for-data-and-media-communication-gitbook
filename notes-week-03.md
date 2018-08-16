@@ -1,5 +1,51 @@
 # Week 3 Python for anything
 
+<div id="toc">
+
+<!-- TOC -->
+
+- [Week 3 Python for anything](#week-3-python-for-anything)
+    - [Objective](#objective)
+    - [Use "Help" more to learn by yourself](#use-help-more-to-learn-by-yourself)
+    - [Bool and comparisons](#bool-and-comparisons)
+        - [Comparison operators](#comparison-operators)
+        - [Str comparison](#str-comparison)
+        - [Int comparison](#int-comparison)
+    - [Composite data types](#composite-data-types)
+        - [List []](#list-)
+            - [Common features](#common-features)
+            - [List functions](#list-functions)
+            - [List methods](#list-methods)
+        - [Dict {}](#dict-)
+            - [Common features](#common-features-1)
+            - [Dict functions](#dict-functions)
+            - [Dict methods](#dict-methods)
+        - [Tuple ()](#tuple-)
+    - [Control flows](#control-flows)
+        - [If-else Statement](#if-else-statement)
+        - [While loop](#while-loop)
+        - [For loop](#for-loop)
+            - [Use for statement to pick up values](#use-for-statement-to-pick-up-values)
+            - [Use for loop to calculate](#use-for-loop-to-calculate)
+            - [Use for and if statement together](#use-for-and-if-statement-together)
+        - [Break and Continue statement](#break-and-continue-statement)
+            - [Break statement](#break-statement)
+            - [Continue statement](#continue-statement)
+        - [Def function](#def-function)
+    - [Errors and Exceptions](#errors-and-exceptions)
+        - [Try and except](#try-and-except)
+        - [Raising errors](#raising-errors)
+        - [Exception error types](#exception-error-types)
+    - [Class and objects](#class-and-objects)
+        - [Create a class, the init() function](#create-a-class-the-init-function)
+    - [Challenges](#challenges)
+    - [References](#references)
+
+<!-- /TOC -->
+
+</div>
+
+Previously, We learn Python basics including data types, arithmetic, functions and several commonly used modules, with which help, you can build a calculator to do some simple case analysis. This week, we will step further to learn composite data types, the function and method of how to use them. Meanwhile, we will touch hands on the basic control flows to better understand the logic behind the coding works. After that, you can create some functions by your own so that you can use Python to do more.
 
 ## Objective
 
@@ -18,7 +64,7 @@ In the Terminal of your computer, use `help` for any instruction for using Pytho
 * Type 'j' to view up;
 * Type 'k' to view down
 
-Example 1: If you want to know how to use 'numpy'. Type`>>>help()`  and then type `numpy` , then you can get the information about numpy as follow:
+Example 1: If you want to know how to use 'numpy'. Type `help(numpy)` to learn more, you can get the information as follow:
 
 ```python
 >>> import(numpy)
@@ -41,17 +87,12 @@ DESCRIPTION
         3. Linear Algebra, Fourier Transforms, Random Number Generation
 
     How to use the documentation
-    ----------------------------
-    Documentation is available in two forms: docstrings provided
-    with the code, and a loose standing reference guide, available from
-    `the NumPy homepage <http://www.scipy.org>`_.
-
-:
+    ...
 ```
 
 ## Bool and comparisons
 
-### Comparison Operators
+### Comparison operators
 
 In programming, comparison operators are used to compare values and evaluate down to a single Boolean value of either True or False. The following are the common comparison operators:
 
@@ -289,7 +330,7 @@ To String : {'Chico': 24, 'Ri': 19, 'Frank': 31}
 | get()      | Returns value of the key, default=None                               |
 | items()    | Returns view of dictionary's (key, value) pair            |
 | keys()     | Returns view object of all keys                           |
-| __contains__(key) | Return bool value by checking whether the key is in dict  |
+| contains(key) | Return bool value by checking whether the key is in dict  |
 | pop()      | Returns & removes element having given key                |
 | values()   | Returns view of all values in dictionary                  |
 | update()   | Updates the Dictionary                                    |
@@ -360,8 +401,6 @@ Under such circumstances, using control flow statements will help you manipulate
 
 `If-else statement` is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. 
 
-**Syntax**
-
 ```python
 if ...:   #close with an ':'
     print(sth)  #indented
@@ -371,16 +410,16 @@ else:
     print(sth)
 ```
 
-Take the case that we talk about chapter 2 as an example. \(The full version of the case is here：[https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline)
+Take the case that we talk about chapter 2 as an example. \(The full version of the case is [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/)
 
-> Example 13: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=1000+0.1×（number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
+> Example 13: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=1000+0.1×(number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
 
 ```python
 >>> number_of_users = 100000
 >>> if number_of_users <= 50000:
->>>    cost = 10000
+...    cost = 10000
 >>> else: # number_of_users > 50000
->>>    cost = 10000 + 0.1 * (number_of_users - 50000)
+...    cost = 10000 + 0.1 * (number_of_users - 50000)
 >>> print (cost)
 15000.0
 ```
@@ -394,11 +433,11 @@ The actual number of users we have now is 120,000. The if-else statement will be
 ```python
 >>> number_of_users = 120000
 >>> if number_of_users <= 50000:
->>>    cost = 10000
+...    cost = 10000
 >>> elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
->>>    cost=10000+0.1*(number_of_users-50000)
+...    cost=10000+0.1*(number_of_users-50000)
 >>> else: # number_of_users > 100000
->>>    cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
+...    cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
 >>> print(cost)
 21000.0
 ```
@@ -406,8 +445,6 @@ The actual number of users we have now is 120,000. The if-else statement will be
 ### While loop
 
 We can execute a set of statements in while loop as long as a condition is true.
-
-**Syntax**
 
 ```python
 while ...:   #close with an ':'
@@ -445,9 +482,7 @@ Example 16:
 
 ### For loop
 
-For loops(For Statement) has the ability to iterate over the items of any sequence, such as a list or a string.
-
-**Syntax**
+For loop(For Statement) has the ability to iterate over the items of any sequence, such as a list or a string.
 
 ```python
 for x in y:   #close with an ':'
@@ -456,7 +491,7 @@ for x in y:   #close with an ':'
         print(sth)
 ```
 
-**1. Use "for statement" to pick up string/number from a list.**
+#### Use for statement to pick up values
 
 Example 17: List every integer from 1 to 10.
 
@@ -476,7 +511,7 @@ Example 18: Square of every integer from 1 to 10.
 it will print'1,4,9,16,25,36,49,64,81,100'
 ```
 
-**2. Use for loop to calculate.**
+#### Use for loop to calculate
 
 Example 19: Calculate the number of pulsing from 1 to 100.
 
@@ -486,34 +521,36 @@ Example 19: Calculate the number of pulsing from 1 to 100.
 >>>    total = total + i
 >>> print (total)
 5050
- ```
+```
 
-### 4. Use `for statement` and `if-else statement` together
+#### Use for and if statement together
 
-Example 20: Like the example we used [before](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/?from=timeline). Find that break-even point of subscribed users to make profit >=0.
+Example 20:
+
+ Like the [example](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) we used before. Find that break-even point of subscribed users to make profit.
 
 ```python
 >>> Fixed_Cost = 30000
 >>> Content_Cost = 70000
 >>> num = float(input('please input your estimate number of subscribers:')) #input a estimated number
->>>for i in range(0,int(num)):
->>>	Revenue = (1*i) + (0.1*15*i)
->>>	if i < 50000:
->>>		Total_Cost = Fixed_Cost + Content_Cost
->>>	else:
->>>		Total_Cost = Fixed_Cost + Content_Cost + 0.1 * (i - 50000)
->>>	Net_Income = Revenue - Total_Cost
->>>	if Net_Income >= 0:
->>>		print('subscribers= ',i)
->>>		break		
->>> if Net_Income < 0:
->>>	    print('Net_Income=', Net_Income) #the max value return by your input
-'break-even' subscribers=  40000
+>>> for i in range(0,int(num)):
+...     Revenue = (1*i) + (0.1*15*i)
+...     if i < 50000:
+...         Total_Cost = Fixed_Cost + Content_Cost
+...     else:
+...         Total_Cost = Fixed_Cost + Content_Cost + 0.1 * (i - 50000)
+... Net_Income = Revenue - Total_Cost
+...     if Net_Income >= 0:
+...         print('subscribers= ',i)
+...         break
+...     if Net_Income < 0:
+...         print('Net_Income=', Net_Income) #the max value return by your input
+subscribers=  40000
 ```
 
-### `Break` & `Continue` statement
+### Break and Continue statement
 
-#### Break
+#### Break statement
 
 Stop the loop even if the while condition is true.
 
@@ -533,7 +570,7 @@ Example 21:
 5 #stop the loop
 ```
 
-#### Continue
+#### Continue statement
 
 Stop the current iteration, skip certain value, and continue with the next.
 
@@ -555,11 +592,9 @@ Example 22:
 9
 ```
 
-### `Def` function
+### Def function
 
 A function is a block of code which only runs when it is called. You can call this function by passing parameters into a function. Then the function can return data as a result.
-
-**Syntax**
 
 ```python
 >>> def function_name(parameters): #define function
@@ -569,7 +604,7 @@ A function is a block of code which only runs when it is called. You can call th
 
 ```
 
-**Notes:**
+**How `def` function works**
 
 * Keyword `def` (means definite) marks the start of function header.
 * A function name to uniquely identify it.
@@ -600,7 +635,7 @@ A function is a block of code which only runs when it is called. You can call th
 -9990.0
 ```
 
-**Note:** For the later exercise, using interactive mode is inconvenient, please write down the codes in text editor and save it as a `.py` file, so that you can just execute the file once to get the answer. If you forget how to do this, please reder to [chapter 2]
+**Note:** For the later exercise, using interactive mode is inconvenient, please write down the codes in text editor and save it as a `.py` file, so that you can just execute the file once to get the answer. If you forget how to do this, please refer to [chapter 2](/notes-week-02.md).
 
 The advantage of using "def" is that you can recall the function again and again.
 
@@ -615,7 +650,9 @@ The advantage of using "def" is that you can recall the function again and again
 -5000.0
 ```
 
-### Try and expect
+## Errors and Exceptions
+
+### Try and except
 
 For most errors, the Python interpreter will issue an exception. In fact, in many cases, we need to control the code that may generate exceptions. In python, error and exception handling allows us to continue our program if an exception occurs.
 
@@ -646,9 +683,24 @@ Example 24:
 >>>         print("Oops!  That was no valid number.  Try again...")
 ```
 
-**Exception errors**
+### Raising errors
 
-There are several common exception errors
+The `raise` statement allows you to force a specified exception to occur. It can be used in following `try` and `if`.
+
+Example 25:
+
+```python
+>>> inputValue=input("please input a int :")
+>>> if type(inputValue)!=type(1): # '!=' means not equal
+...    raise ValueError
+... else:
+...    print inputValue
+... #you can input a 2 and 2.2 to test.
+```
+
+### Exception error types
+
+There are several common exception errors:
 
 * IOError. If the file cannot be opened.
 
@@ -662,11 +714,11 @@ There are several common exception errors
 
 Class is a collection used to describe objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class.
 
-### create a class - the `__init__()` function
+### Create a class, the init() function
 
 All classes have a function called `__init__()`, which is always executed when the class is being initiated. Therefore the `__init__()` function is used to assign values to object properties, or other operations that are necessary to do when the object is being created.
 
-Example 25: Build a animal class.
+Example 25: Create a animal class.
 
 ```python
 >>> class Animal(): #class + class name to give a statement
@@ -677,17 +729,17 @@ Example 25: Build a animal class.
 dog
 ```
 
-Example 26:
+Example 26: Create a person class and give new object
 
 ```python
 >>> class Person():  #build a person class
 ...     def __init__(self,name,age): #those objects has name and age
 ...         self.name,self.age = name,age  
 ...     def __str__(self):  # def a certain return
-...         return 'My name is {self.name}, and I‘m {self.age} years old'.format(self=self) #review the format.() function
+...         return 'My name is {self.name}, and I'm {self.age} years old'.format(self=self) #review the format.() function
 ...
->>> str(Person('xyc',18))
-'My name is xyc, and I‘m 18 years old'
+>>> str(Person('xyc',18)) #call the function by passing parameters in the function
+'My name is xyc, and I'm 18 years old'
 ```
 
 Example 27:
@@ -717,65 +769,20 @@ Example 27:
 400
 ```
 
-## Exercise
+## Challenges
 
-**Q: Distances among cities:**
+* Distances among cities:
+    1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.
+    2. Use list and for loop to handle multiple cities  
+    3. Use function to increase the reusability
 
-Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance.
+* Divide HW1 groups randomly: (case contribution).
+    1. Get the list of student IDs from the lecturer.
+    2. Generate the grouping randomly
 
-* "Great-circle distance" is the academic name you use to search for the formula.  
-* Use list and for loop to handle multiple cities  
-* Use function to increase the reusability
+* Solve the "media business model" calculator.
 
-** A:** \(One possible solution\)
+## References
 
-```
-# -*- coding: utf-8 -*-
-
-import math
-
-cities = [
-    { 'lat': 40.785091, 'lon': -73.968285, 'name': 'New York' },
-    { 'lat': -123.12073750000002, 'lon': 49.2827291, 'name': 'Vancouver' },
-    { 'lat': 59.336559, 'lon': 18.062660, 'name': 'Stockholm' },
-    { 'lat': -34.603722, 'lon': -58.381592, 'name': 'Buenos Aires' },
-    { 'lat': -31.953512, 'lon': 115.857048, 'name': 'Perth' }
-]
-
-def distance(lat1, lon1, lat2, lon2):
-    r = 6371.009
-
-    lat1 = math.radians(lat1)
-    lon1 = math.radians(lon1)
-    lat2 = math.radians(lat2)
-    lon2 = math.radians(lon2)
-    londelta = lon2 - lon1
-
-    a = math.pow(math.cos(lat2) * math.sin(londelta), 2) + math.pow(math.cos(lat1) * math.sin(lat2) - math.sin(lat1) * math.cos(lat2) * math.cos(londelta), 2)
-    b = math.sin(lat1) * math.sin(lat2) + math.cos(lat1) * math.cos(lat2) * math.cos(londelta)
-    angle = math.atan2(math.sqrt(a), b)
-
-    return angle * r
-
-def distanceToHK(city):
-    hk = { 'lat': 22.286394, 'lon': 114.149139 }
-    di = distance(city['lat'], city['lon'], hk['lat'], hk['lon'])
-    print ("Distance from %s to Hong Kong is %f KM." % (city['name'], di))
-
-if __name__ == '__main__':
-    for city in cities:
-        distanceToHK(city)
-```
-
-it will print
-
-```
-Distance from New York to Hong Kong is 12951.815192 KM.
-Distance from Vancouver to Hong Kong is 13584.132126 KM.
-Distance from Stockholm to Hong Kong is 8224.867416 KM.
-Distance from Buenos Aires to Hong Kong is 18464.264219 KM.
-Distance from Perth to Hong Kong is 6033.948760 KM.
-```
-
-
-
+* Chapter 4, 5, 6, 8, 9 of official Python 3 [tutorial](https://docs.python.org/3/tutorial/)
+* Another [tutorial](http://www.runoob.com/python/python-object.html) with many examples (Chinese)
