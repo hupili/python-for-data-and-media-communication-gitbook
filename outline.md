@@ -162,7 +162,7 @@ Challenges:
 * Implement a basic version of first automated writer - QuakeBot from LA Times
   * Get data from USGS API
   * Print a story to the screen using string templating/ string interpolation
-  * [Related article](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732)
+  * See [here](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732) for an introduction of the bot. See [here](https://www.theregister.co.uk/2017/06/22/la_times_bot_spreads_fake_news/) for an incident and think how to avoid it?
 
 Exercise:
 
