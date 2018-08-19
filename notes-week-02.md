@@ -667,19 +667,19 @@ The following are the cost and revenue component in their business plan: (per mo
 
 - Major cost:
   - Content cost `70000` dollars
-  - Other cost like labor cost and server cost is `30000` dollars
+  - Other cost like labor cost is `30000` dollars
   - Server cost: `50000`
 - Revenue:
   - 10% of website monthly **visitors** are expected to become the **subscribers**
   - Subscription fee is `15` dollar/**subscriber** a month
   - Ad revenue = `0.8` dollar/**visitor** a month
 
-Please build a calculator to estimate their revenues, given the number of monthly visitors as an variable `visitor`. Show the net income when `visitor` equals `20000`, `40000` and `60000`, respectively.
+Please build a calculator to estimate their revenues, given the number of monthly visitors as an variable `visitor`. Show the net income when `visitor` equals `40000`, `60000` and `80000`, respectively.
 
 Further challenges:
 
 - Explore how the net income changes when the number of visitors changes
-- Explore how the prameters of content cost, per user subscription fee and per user Ad revenue influences net income.
+- Explore how the parameters of content cost, per user subscription fee and per user Ad revenue influences net income.
 - (optional) Assume a more practical situation. The company invest `50000` in IT infrastructure as fixed assets. The infrastructure can support daily office use and support up to `50000` monthly visitors. When the number of monthly visitors becomes larger than `50000`, the company need to switch to cloud services, in order by by computing powers on demand. The excess amount incurs a cost of `0.001` dollar per user.
 
 **SPOILER**: The reference solution and variations can be found in [Calculate Marketing Objective for Your Media Startup](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/), a blog post from our past students. Note that it uses more complex logics like `if` and `for`, which will be detailed in [Chapter 3](notes-week-03.md).
