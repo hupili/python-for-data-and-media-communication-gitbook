@@ -145,7 +145,7 @@ The brief of Application Programming Interface (API):
 Modules:
 
 * Handle HTTP request/ response: `requests`
-* Serialiser: `json` and `csv`
+* Serialiser: `json` (`.loads`, `.dumps`) and `csv`
 
 Challenges:
 
