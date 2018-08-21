@@ -377,7 +377,7 @@ Example 11: All examples are corresponding to the list methods stated above.
 
 ```python
 >>> seq = ['Chico', 'Ivy', 'Ri']
->>> dict = dict.fromkeys(seq)  #fromkeys()
+>>> dict = dict.fromkeys(seq)  #get/create keys from the list
 >>> print("New_dict : %s" % str(dict))
 New_dict : {'Chico': None, 'Ivy': None, 'Ri': None}
 >>> dict = dict.fromkeys(seq, 'A+') #give all keys value A+
@@ -462,6 +462,8 @@ elif ...: # elif = else if
 else:
     print(sth)
 ```
+
+**Note:** All function definitions or condition comparisons should end with a `:`, and all the content in those functions and conditions need to be indented. you can just indent with clicking `tab`.
 
 Take the case that we talk about chapter 2 as an example. \(The full version of the case is [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/)
 
@@ -573,13 +575,13 @@ Example 17: List every integer from 1 to 10.
 It will print '1,2,3,4,5,6,7,8,9,10'
 ```
 
-**Note**: The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default).`(1,10)` means values from 1 to 11 (but not including 6)
+**Note**: The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default).`(1,11)` means values from 1 to 10 (not including 11)
 
 Example 18: Square of every integer from 1 to 10.
 
 ```python
 >>> for i in range(1,11):
->>>    print(i**2)
+>>>    print(i**2) #or i*i
 it will print'1,4,9,16,25,36,49,64,81,100'
 ```
 
@@ -808,11 +810,43 @@ Example 26: Create a person class and give new object
 ...     def __init__(self,name,age): #those objects has name and age
 ...         self.name,self.age = name,age  
 ...     def __str__(self):  # def a certain return
-...         return 'My name is {self.name}, and I'm {self.age} years old'.format(self=self) #review the format.() function
+...         return 'My name is {self.name}, and I\'m {self.age} years old'.format(self=self) #review the format.() function
 ...
 >>> str(Person('xyc',18)) #call the function by passing parameters in the function
-'My name is xyc, and I'm 18 years old'
+My name is xyc, and I'm 18 years old
 ```
+
+**Note:** In the example above,
+`return 'My name is {self.name}, and I\'m {self.age} years old'.format(self=self)`
+
+is equal to
+
+`return 'My name is {0}, and I‘m {1} years old'.format(self.name,self.age)`
+
+So, what does this(self=self) means?
+
+```python
+def __str__(self):
+        return 'My name is {self.name}, and I\'m {self.age} years old'.format(self=self)
+```
+
+The first self in self=self refers to what the format function will change in your string. For example, it could also be
+
+```python
+def __str__(self):
+    return 'My name is {obj.name}, and I\'m {obj.age} years old'.format(obj=self)
+```
+
+The right-hand side self in self=self refers to the actual value that will be input. In this case, the object passed as argument. In other words, it could be written as
+
+```python
+def __str__(obj):
+        return 'My name is {self.name}, and I\'m {self.age} years old'.format(self=obj)
+```
+
+**Now why to use self?**
+
+It is just a convention used in python programming. Python passes to its instance methods automatically an object that is a pointer to itself. Can also check [this question](https://stackoverflow.com/questions/2709821/what-is-the-purpose-of-self) for further info.
 
 Example 27:
 
