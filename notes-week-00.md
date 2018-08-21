@@ -292,6 +292,12 @@ Checkout the working [CNAME](https://github.com/hkbu-jour2106/hkbu-jour2106.gith
 
 Checkout [this article](https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml) for how DNS works.
 
+## [O] Collaboration on GitHub
+
+### The workflow Fork repo, modify code and send pull Request
+
+> TODO
+
 ## Exercises and Challenges
 
 - [Data Projects Archive](https://github.com/data-projects-archive) is the archive for our student data projects from various related courses. Try to navigate those repositories (repo) and:
