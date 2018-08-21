@@ -8,6 +8,7 @@
     - [Objective](#objective)
     - [Use "Help" more to learn by yourself](#use-help-more-to-learn-by-yourself)
     - [Bool and comparisons](#bool-and-comparisons)
+        - [Logic operators](#logic-operators)
         - [Comparison operators](#comparison-operators)
         - [Str comparison](#str-comparison)
         - [Int comparison](#int-comparison)
@@ -94,6 +95,27 @@ DESCRIPTION
 
 ## Bool and comparisons
 
+### Logic operators
+
+The logical operators in Python (`and`, `or`, `not`) are often used in the if, if…else, and if…elif statements. They enable you to make multiple comparisons inside a single statement, such as to determine whether a value is within a certain range.
+
+| Operators | What it means                 | What it looks like  |
+|-----------|-------------------------------|---------|
+| and       |True if both are true          | x and y |
+| or        |True if at least one is true   | x or y  |
+| not       |True only if false             | not x   |
+
+Example 2:
+
+```python
+print((6 > 5) and (2 < 4))  # Its true when both expressions are True
+True
+print((8 == 8) or (6 != 6)) # Its true when one expression is True
+True
+print(not(3 <= 1))          # Its true when the original expression is False
+True
+```
+
 ### Comparison operators
 
 In programming, comparison operators are used to compare values and evaluate down to a single Boolean value of either True or False. The following are the common comparison operators:
@@ -111,7 +133,7 @@ In programming, comparison operators are used to compare values and evaluate dow
 
 Strings can also be used with Boolean operators. They are case-sensitive. And you can use `str.()`functions to convert to upper- or lower-case letters.
 
-Example 2:
+Example 3:
 
 ```python
 >>> Name1 = 'YUCAN'
@@ -125,7 +147,7 @@ Example 2:
 
 ### Int comparison
 
-Example 3:
+Example 4:
 
 ```python
 >>> x = 4
@@ -161,7 +183,7 @@ List is an ordered sequence of items. It is one of the most used datatype in Pyt
 
 Declaring a list is pretty simple. Items separated by commas are enclosed within brackets `[]`.
 
-Example 4:
+Example 5:
 
 ```python
 >>> a = [0, 6.6, 'python']
@@ -184,7 +206,7 @@ Example 4:
         Index   [0]   [1]   [2]    [3]    [4]
 ```
 
-Example 5:
+Example 6:
 
 ```python
 >>> list1 = ['Hello', 'Python', 2018, 814]
@@ -213,7 +235,7 @@ true
 | max(list) | The maximum value in the list         |
 | min(list) | The minimum value in the list element |
 
-Example 6:
+Example 7:
 
 ```python
 >>> list2 = [1, 2, 3, 4, 5, 6, 7 ]
@@ -239,7 +261,7 @@ Example 6:
 | reverse() | Reverses the order of the list                                               |
 | sort()    | Sorts the list                                                               |
 
-Example 7: All examples are corresponding to the list methods stated above.
+Example 8: All examples are corresponding to the list methods stated above.
 
 ```python
 >>> list1 = ['Hello', 'Python', 2018, 814]
@@ -309,7 +331,7 @@ vowels descending :  ['u', 'o', 'i', 'e', 'a']
 
 A dictionary is a collection which is disordered, changeable and indexed. In Python dictionaries are written with curly brackets`{}`, and they have keys and values, like `d = {key1 : value1, key2 : value2 }`.
 
-Example 8:
+Example 9:
 
 ```python
 >>> dict1 = {
@@ -326,7 +348,7 @@ Example 8:
 1. One can Access the values in the dict by `key`
 2. Change dictionary by adding/deleting/updating key and values
 
-Example 9:
+Example 10:
 
 ```python
 >>> person_dict = {'Chico': 24, 'Ivy': 20, 'Ri': 29}
@@ -350,7 +372,7 @@ New_dict : {'Chico': 24, 'Ri': 19, 'Frank': 31}
 | len(dict) | Number of dict elements,which is the total number of keys               |
 | str(dict) | Output dictionary as a string         |
 
-Example 10:
+Example 11:
 
 ```python
 >>> person_dict = {'Chico': 24, 'Ri': 19, 'Frank': 31}
@@ -373,7 +395,7 @@ To String : {'Chico': 24, 'Ri': 19, 'Frank': 31} #it's a string, not the same as
 | values()   | Returns view of all values in dictionary                  |
 | update()   | Updates the Dictionary                                    |
 
-Example 11: All examples are corresponding to the list methods stated above.
+Example 12: All examples are corresponding to the list methods stated above.
 
 ```python
 >>> seq = ['Chico', 'Ivy', 'Ri']
@@ -434,7 +456,7 @@ new_dict : {'Name': 'Chico', 'Age': '23', 'Gender': 'Male'}
 
 A tuple is similar to a list, except that the elements of the tuple cannot be modified. The function and method of a tuple is similar to list, therefore we are not discussing more.
 
-Example 12:
+Example 13:
 
 ```python
 >>> tup = (1, 2, 3, 4, 5 )
@@ -467,7 +489,7 @@ else:
 
 Take the case that we talk about chapter 2 as an example. \(The full version of the case is [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/)
 
-> Example 13: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=10000+0.1×(number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
+> Example 14: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=10000+0.1×(number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
 
 ```python
 >>> number_of_users = 100000
@@ -479,7 +501,7 @@ Take the case that we talk about chapter 2 as an example. \(The full version of 
 15000.0
 ```
 
-> Example 14: If there is two charge plans when the number of users is more than 50,000. 
+> Example 15: If there is two charge plans when the number of users is more than 50,000.
 >1. when  50,000≤the number of user≤100,000, the cost= 10000+0.1×(number_of_users -50,000);
 >2. when the number of user ≥100,000, the cost=10,000 + 0.1×(100,000 -50,000) + 0.2 * (number_of_users - 100,000).
 >3. The actual number of users we have now is 120,000. 
@@ -518,6 +540,7 @@ Python has two primitive loop commands:
 We can execute a set of statements in while loop as long as a condition is true.
 
 **Syntax**
+
 ```python
 while ...:   #close with an ':'
     print(sth)  #indented
@@ -525,7 +548,7 @@ while ...:   #close with an ':'
         print(sth)
 ```
 
-Example 15:
+Example 16:
 
 ```python
 >>> i = 1
@@ -539,7 +562,7 @@ Example 15:
 6
 ```
 
-Example 16:
+Example 17:
 
 ```python
 >>> i = 1
@@ -567,7 +590,7 @@ for x in y:   #close with an ':'
 
 ##### Use for statement to pick up values
 
-Example 17: List every integer from 1 to 10.
+Example 18: List every integer from 1 to 10.
 
 ```python
 >>> for i in range(1,11):
@@ -577,7 +600,7 @@ It will print '1,2,3,4,5,6,7,8,9,10'
 
 **Note**: The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default).`(1,11)` means values from 1 to 10 (not including 11)
 
-Example 18: Square of every integer from 1 to 10.
+Example 19: Square of every integer from 1 to 10.
 
 ```python
 >>> for i in range(1,11):
@@ -587,7 +610,7 @@ it will print'1,4,9,16,25,36,49,64,81,100'
 
 ##### Use for loop to calculate
 
-Example 19: Calculate the number of pulsing from 1 to 100.
+Example 20: Calculate the number of pulsing from 1 to 100.
 
 ```python
 >>> total = 0
@@ -599,7 +622,7 @@ Example 19: Calculate the number of pulsing from 1 to 100.
 
 ##### Use for and if statement together
 
-Example 20:
+Example 21:
 
  Like the [example](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) we used before. Find that break-even point of subscribed users to make profit.
 
@@ -628,7 +651,7 @@ subscribers=  40000
 
 Stop the loop even if the while condition is true.
 
-Example 21:
+Example 22:
 
 ```python
 >>> i = 1
@@ -648,7 +671,7 @@ Example 21:
 
 Stop the current iteration, skip certain value, and continue with the next.
 
-Example 22:
+Example 23:
 
 ```python
 >>> i = 1
@@ -690,21 +713,21 @@ A function is a block of code which only runs when it is called. You can call th
 * when you find you are using a function again and again. you can use "def statement"to duplicate the logic.  
 * Type "Tab“to move the section rightwards. Type"tab"+"Shift" to move the section leftwards.
 
-> Example 23: based on the example we talk about above.  Build a def function to calculate the profits when you give different number of users.
+> Example 24: based on the example we talk about above.  Build a def function to calculate the profits when you give different number of users.
 >1. when  50,000≤the number of user≤100,000, the cost= 10000+0.1×(number_of_users -50,000);
 >2. when the number of user ≥100,000, the cost=10,000 + 0.1×(100,000 -50,000) + 0.2 * (number_of_users - 100,000).
 
 ```python
 >>> def calculate_profit(number_of_users):
->>>     if number_of_users < 50000:
->>>        cost = 10000
->>>     elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
->>>         cost=10000+0.1*(number_of_users-50000)
->>>     else: # number_of_users > 100000
->>>         cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
->>>     revenue = 0.1 * number_of_users
->>>     profit = revenue - cost
->>>     return profit
+...     if number_of_users < 50000:
+...        cost = 10000
+...     elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
+...         cost=10000+0.1*(number_of_users-50000)
+...     else: # number_of_users > 100000
+...         cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
+...     revenue = 0.1 * number_of_users
+...     profit = revenue - cost
+...     return profit
 >>> print(calculate_profit(100))
 -9990.0
 ```
@@ -737,7 +760,7 @@ The try statement works as follows.
 3. If an exception occurs during execution of the try clause, and its type matches the exception named after the except keyword, the except clause will be executed, **and the execution continues after the try statement.**
 4. If an exception occurs which does not match the exception named in the except clause, it is passed on to outer try statements; if no handler is found, it is an unhandled exception and execution stops.
 
-Example 23:
+Example 25:
 
 ```python
 >>> try:
@@ -746,7 +769,7 @@ Example 23:
 >>>     print("This is an error message!")
 ```
 
-Example 24:
+Example 26:
 
 ```python
 >>>while True:
@@ -761,7 +784,7 @@ Example 24:
 
 The `raise` statement allows you to force a specified exception to occur. It can be used in following `try` and `if`.
 
-Example 25:
+Example 27:
 
 ```python
 >>> inputValue=input("please input a int :")
@@ -792,7 +815,7 @@ Class is a collection used to describe objects with the same properties and meth
 
 All classes have a function called `__init__()`, which is always executed when the class is being initiated. Therefore the `__init__()` function is used to assign values to object properties, or other operations that are necessary to do when the object is being created.
 
-Example 25: Create a animal class.
+Example 28: Create a animal class.
 
 ```python
 >>> class Animal(): #class + class name to give a statement
@@ -803,7 +826,7 @@ Example 25: Create a animal class.
 dog
 ```
 
-Example 26: Create a person class and give new object
+Example 29: Create a person class and give new object
 
 ```python
 >>> class Person():  #build a person class
@@ -848,7 +871,7 @@ def __str__(obj):
 
 It is just a convention used in python programming. Python passes to its instance methods automatically an object that is a pointer to itself. Can also check [this question](https://stackoverflow.com/questions/2709821/what-is-the-purpose-of-self) for further info.
 
-Example 27:
+Example 30:
 
 ```python
 >>> class Account:
