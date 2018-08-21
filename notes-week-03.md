@@ -175,6 +175,15 @@ Example 4:
 4. One can check whether one elements is in the list
 5. One can slice the list
 
+**Note:** `Index` is like the position of one element in the whole list or object, which used to access this element.
+
+```python
+        String  ‘H     e     l      l      o'
+        Index   [0]   [1]   [2]    [3]    [4]
+        List    ['a', 'b',  'c',   'd',   'e']
+        Index   [0]   [1]   [2]    [3]    [4]
+```
+
 Example 5:
 
 ```python
@@ -298,7 +307,7 @@ vowels descending :  ['u', 'o', 'i', 'e', 'a']
 
 ### Dict {}
 
-A dictionary is a collection which is unordered, changeable and indexed. In Python dictionaries are written with curly brackets`{}`, and they have keys and values, like `d = {key1 : value1, key2 : value2 }`.
+A dictionary is a collection which is disordered, changeable and indexed. In Python dictionaries are written with curly brackets`{}`, and they have keys and values, like `d = {key1 : value1, key2 : value2 }`.
 
 Example 8:
 
@@ -348,7 +357,7 @@ Example 10:
 >>> len(person_dict)
 3
 >>> print("To String : %s" % str(person_dict))
-To String : {'Chico': 24, 'Ri': 19, 'Frank': 31}
+To String : {'Chico': 24, 'Ri': 19, 'Frank': 31} #it's a string, not the same as original dict
 ```
 
 #### Dict methods
