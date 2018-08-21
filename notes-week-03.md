@@ -230,42 +230,69 @@ Example 6:
 | reverse() | Reverses the order of the list                                               |
 | sort()    | Sorts the list                                                               |
 
-Example 7:
+Example 7: All examples are corresponding to the list methods stated above.
 
 ```python
 >>> list1 = ['Hello', 'Python', 2018, 814]
 >>> list1.append(2049) #append() takes exactly one argument
 >>> print(list1)
 ['Hello', 'Python', 2018, 814, 2049]
+```
+
+```python
 >>> list2 = [23, 2018, 814, 2049,2018]
 >>> list2.count(2018) #count numbers of 2018
 >>> print(list2)
 2
+```
+
+```python
 >>> list1.extend(list2) #add list2 into list1
 >>> print("Extended List : ", list1)
-Extended List : ['Hello', 'Python', 2018, 814, 2049, 23, 2018, 814, 2049, 2018]
+Extended List : ['Hello', 'Python', 2018, 814, 23, 2018, 814, 2049, 2018]
+```
+
+```python
 >>> print("Index for python : ", list1.index('Python'))
 1 #index value 'Python'
 >>> print("Index for 2018 : ", list1.index(2018)) #find the first position of the indexed value
 2
->>> list1.insert(3, 2009) #list.insert(index, obj),insert value 2009 in the index3
->>> print("New List : ", list1)
-New List :  ['Hello', 'Python', 2018, 814, 2049, 23, 2018, 814, 2049, 2018]
->>> list1.pop(2) #delete index2 value and return this value
->>> print('List now : ',list1)
-List now :  ['Hello', 'Python', 814, 2049, 23, 2018, 814, 2049, 2018]
->>> list1.remove('Hello') #remove certain value
->>> print('List now : ',list1)
-List now :  ['Python', 814, 2049, 23, 2018, 814, 2049, 2018]
->>> list1.reverse() #reverse list
->>> print('reverse list : ',list1)
-reverse list :  [2018, 2049, 814, 2018, 23, 2049, 814, 'Python']
+```
+
+```python
+>>> list = ['Hello', 'Python', 2018, 814, 23, 2018, 814, 2049, 2018]
+>>> list.insert(3, 2009) #list.insert(index, object),insert value 2009 in the index3
+>>> print("New List : ", list)
+New List :  ['Hello', 'Python', 2018, 2009, 814, 23, 2018, 814, 2049, 2018]
+```
+
+```python
+>>> list = ['Hello', 'Python', 2018, 2009, 814, 23, 2018, 814, 2049, 2018]
+>>> list.pop(2) #delete index2 value and return this value
+>>> print('List now : ',list)
+List now :  ['Hello', 'Python', 2009, 814, 23, 2018, 814, 2049, 2018]
+>>> list.remove('Hello') #remove certain value
+>>> print('List now : ',list)
+List now :  ['Python', 2009, 814, 23, 2018, 814, 2049, 2018]
+```
+
+```python
+>>> list = ['Python', 2009, 814, 23, 2018, 814, 2049, 2018]
+>>> list.reverse() #reverse list
+>>> print('reverse list : ',list)
+reverse list :  [2018, 2049, 814, 2018, 23, 814, 2009, 'Python']
+```
+
+```python
 >>> vowels = ['e', 'a', 'u', 'o', 'i']
 >>> vowels.sort() #reverse = True(descending), reverse = False(ascending, if no parameters in(), they will return default value, ascending)
->>> print('vowels ascending : ',vowels)
+>>> vowels
+['a', 'e', 'i', 'o', 'u']
+>>> vowels = ['e', 'a', 'u', 'o', 'i']
+>>> print('vowels ascending : ',vowels) # sort by ascending
 vowels ascending :  ['a', 'e', 'i', 'o', 'u']
 >>> vowels.sort(reverse = True)
->>> print('vowels descending : ',vowels)
+>>> print('vowels descending : ',vowels) # sort by descending
 vowels descending :  ['u', 'o', 'i', 'e', 'a']
 ```
 
@@ -302,7 +329,7 @@ Ri :  19
 >>> person_dict['Frank'] = 31 #update value
 >>> print('Frank : ',person_dict['Frank'])
 Frank :  31
->>> del person_dict['Ivy'] #delete
+>>> del person_dict['Ivy'] #delete key
 >>> print('New_dict :',person_dict)
 New_dict : {'Chico': 24, 'Ri': 19, 'Frank': 31}
 ```
@@ -337,7 +364,7 @@ To String : {'Chico': 24, 'Ri': 19, 'Frank': 31}
 | values()   | Returns view of all values in dictionary                  |
 | update()   | Updates the Dictionary                                    |
 
-Example 11:
+Example 11: All examples are corresponding to the list methods stated above.
 
 ```python
 >>> seq = ['Chico', 'Ivy', 'Ri']
@@ -347,14 +374,23 @@ New_dict : {'Chico': None, 'Ivy': None, 'Ri': None}
 >>> dict = dict.fromkeys(seq, 'A+') #give all keys value A+
 >>> print("New_dict : %s" % str(dict))
 New_dict : {'Chico': 'A+', 'Ivy': 'A+', 'Ri': 'A+'}
+```
+
+```python
 >>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
 >>> print("Age : %s" % dict.get('Age')) #get key value
 Age : 23
 >>> print("Gender : %s" % dict.get('Gender'))
 Gender : Male #if you get a wrong key, it will return None
+```
+
+```python
 >>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
 >>> print("dict_values : %s" % dict.items()) #view dict's items
 dict_values : dict_items([('Name', 'Chico'), ('Gender', 'Male'), ('Age', '23')]) #return a tuple
+```
+
+```python
 >>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
 >>> print("dict_keys : %s" % dict.keys()) #view all keys
 dict_keys : dict_keys(['Name', 'Gender', 'Age'])
@@ -369,11 +405,17 @@ has_key : False
 Male
 >>> print(dict)
 {'Name': 'Chico', 'Age': '23'}
+```
+
+```python
 >>> dict = {'Name': 'Chico', 'Age': '23'}
 >>> print("Value : %s" % dict.values()) #get all values
 Value : dict_values(['Chico', '23'])
 >>> dict1 = {'Name': 'Chico', 'Age': '23'}
 >>> dict2 = {'Gender':'Male'}
+```
+
+```python
 >>> dict1.update(dict2) #update dict2 in dict1
 >>> print('new_dict : %s' % dict1)
 new_dict : {'Name': 'Chico', 'Age': '23', 'Gender': 'Male'}
@@ -445,7 +487,6 @@ The if-else statement will be as fellow:
 21000.0
 ```
 
-
 ### Python loop
 
 Python has two primitive loop commands:  
@@ -459,7 +500,7 @@ Python has two primitive loop commands:
 
 2. For Loops allow you to run through the loop many times you'd like it to run through the problem such as `for i in range(0,100)`, this will continually increase i until that condition returns false(>100), you can replace 10 with other numbers and variables, like `for name in name_list`, means that you want to loop the whole name_list to run through the problem. And it will quit once the condition is no longer being met.
 
-3. Generally speaking, if you want to use loop to do conditional comparison, `while` loops is work for you, if you want to loop every elements of a whole list, `for` is better. 
+3. Generally speaking, if you want to use loop to do conditional comparison, `while` loops is work for you, if you want to loop every elements of a whole list, `for` is better.
 
 #### While loop
 
