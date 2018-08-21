@@ -23,11 +23,13 @@
         - [Tuple ()](#tuple-)
     - [Control flows](#control-flows)
         - [If-else Statement](#if-else-statement)
-        - [While loop](#while-loop)
-        - [For loop](#for-loop)
-            - [Use for statement to pick up values](#use-for-statement-to-pick-up-values)
-            - [Use for loop to calculate](#use-for-loop-to-calculate)
-            - [Use for and if statement together](#use-for-and-if-statement-together)
+        - [Python loop](#python-loop)
+            - [Difference between for loops and while loops](#difference-between-for-loops-and-while-loops)
+            - [While loop](#while-loop)
+            - [For loop](#for-loop)
+                - [Use for statement to pick up values](#use-for-statement-to-pick-up-values)
+                - [Use for loop to calculate](#use-for-loop-to-calculate)
+                - [Use for and if statement together](#use-for-and-if-statement-together)
         - [Break and Continue statement](#break-and-continue-statement)
             - [Break statement](#break-statement)
             - [Continue statement](#continue-statement)
@@ -412,7 +414,7 @@ else:
 
 Take the case that we talk about chapter 2 as an example. \(The full version of the case is [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/)
 
-> Example 13: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=1000+0.1×(number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
+> Example 13: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=10000+0.1×(number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
 
 ```python
 >>> number_of_users = 100000
@@ -427,8 +429,9 @@ Take the case that we talk about chapter 2 as an example. \(The full version of 
 > Example 14: If there is two charge plans when the number of users is more than 50,000. 
 >1. when  50,000≤the number of user≤100,000, the cost= 10000+0.1×(number_of_users -50,000);
 >2. when the number of user ≥100,000, the cost=10,000 + 0.1×(100,000 -50,000) + 0.2 * (number_of_users - 100,000).
+>3. The actual number of users we have now is 120,000. 
 
-The actual number of users we have now is 120,000. The if-else statement will be as fellow:
+The if-else statement will be as fellow:
 
 ```python
 >>> number_of_users = 120000
@@ -442,10 +445,27 @@ The actual number of users we have now is 120,000. The if-else statement will be
 21000.0
 ```
 
-### While loop
+
+### Python loop
+
+Python has two primitive loop commands:  
+
+1. `while loops`
+2. `for loops`
+
+#### Difference between for loops and while loops
+
+1. While Loops allow you put a condition in it, like `while i<10`, and it will stop when the condition no longer being meet( i >= 10). you can also substitute in a boolean(true/false) for 10 as well as many other types of variables.
+
+2. For Loops allow you to run through the loop many times you'd like it to run through the problem such as `for i in range(0,100)`, this will continually increase i until that condition returns false(>100), you can replace 10 with other numbers and variables, like `for name in name_list`, means that you want to loop the whole name_list to run through the problem. And it will quit once the condition is no longer being met.
+
+3. Generally speaking, if you want to use loop to do conditional comparison, `while` loops is work for you, if you want to loop every elements of a whole list, `for` is better. 
+
+#### While loop
 
 We can execute a set of statements in while loop as long as a condition is true.
 
+**Syntax**
 ```python
 while ...:   #close with an ':'
     print(sth)  #indented
@@ -480,9 +500,11 @@ Example 16:
 2
 ```
 
-### For loop
+#### For loop
 
 For loop(For Statement) has the ability to iterate over the items of any sequence, such as a list or a string.
+
+**Syntax** 
 
 ```python
 for x in y:   #close with an ':'
@@ -491,7 +513,7 @@ for x in y:   #close with an ':'
         print(sth)
 ```
 
-#### Use for statement to pick up values
+##### Use for statement to pick up values
 
 Example 17: List every integer from 1 to 10.
 
@@ -511,7 +533,7 @@ Example 18: Square of every integer from 1 to 10.
 it will print'1,4,9,16,25,36,49,64,81,100'
 ```
 
-#### Use for loop to calculate
+##### Use for loop to calculate
 
 Example 19: Calculate the number of pulsing from 1 to 100.
 
@@ -523,7 +545,7 @@ Example 19: Calculate the number of pulsing from 1 to 100.
 5050
 ```
 
-#### Use for and if statement together
+##### Use for and if statement together
 
 Example 20:
 
