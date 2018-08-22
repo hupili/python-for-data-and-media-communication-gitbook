@@ -1,21 +1,37 @@
-# Week 04
+# JSON and API
 
-# Learn to use Jupyter
-"cell" and "kernel" to make it more efficient
+## Objective
 
-* cell
- 
- `run cell` run step by step
- `run  all above` to run and check the previous steps of coding.
-* kernel
+* Learn to use Jupyter notebook. All demos following this week will be conducted in Jupyter notebook.
+* Understand API/ JSON and can retrieve data from online databases (twitter, GitHub, weibo, douban, ...)
+* Understand basic file format like json and csv.
+    * Be able to comfortably navigate through compound structures like {} and [].
+    * Be able to comfortably use (multiple layer of) for-loop to re-format data.
+    * Be able to use serialisers to handle input/ output to files.
 
-  `kernel` is a tool for interactive input and output record all the things you did from the beginning.By clicing`restart`, you can give a variable another value.
-  
-  example:
+The brief of Application Programming Interface (API):
 
-    step 1 : `a=1` you give a a value,which equals to 1.
-    step 2 : click`restart` you clear the value of a, which means a is not defined any more.
-    step 3 : `print(a)`then you will find that the a is not defined, thus there is an error.
+Operate in client-and-server mode.
+Client does not have to download the full volume of data from server. Only use the data on demand.
+Server can handle intensive computations that not available by client.
+Server can send updated data upon request.
+
+
+## Learn to use Jupyter Notebook
+
+### Installing the Jupyter Notebook
+
+Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook.
+![](/assets/jupyter-notebook-example.png)
+
+### Basic usage
+
+1. click `new` to create a new python 3 notebook
+2. write codes like you usually do in text editors, and press `shift`+`return` to run the code. It will return the results or errors under the cell.
+3. use `! pip3 install module_name` to install modules in jupyter notebook.
+4. in front of every cell, there is an `in [ ]` sign, the number in `[]` means the sequences of cells, and if there is `*` in `[]`, means that this cell is still running, you can either wait it finish or click `stop` under the `kernel` to exit from the running,pressing `I` twice will also do the trick.
+5. cell. `run cell` run step by step. `run all above` to run and check the previous steps of coding.
+6. kernel. `kernel` is a tool for interactive input and output all the things you did from the beginning. By clicking`restart`, you can give a variable another value.
 
 # csv
 ### Introduction
