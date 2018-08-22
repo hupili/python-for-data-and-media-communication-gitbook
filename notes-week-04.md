@@ -16,13 +16,12 @@ Client does not have to download the full volume of data from server. Only use t
 Server can handle intensive computations that not available by client.
 Server can send updated data upon request.
 
-
 ## Learn to use Jupyter Notebook
 
 ### Installing the Jupyter Notebook
 
 Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook.
-![](/assets/jupyter-notebook-example.png)
+![jupyter notebook example](/assets/jupyter-notebook-example.png)
 
 ### Basic usage
 
@@ -33,33 +32,73 @@ Please see to our [tutorial](/module-jupyter.md) of how to install and enter jup
 5. cell. `run cell` run step by step. `run all above` to run and check the previous steps of coding.
 6. kernel. `kernel` is a tool for interactive input and output all the things you did from the beginning. By clicking`restart`, you can give a variable another value.
 
-# csv
-### Introduction
-csv is an inside function in python, which is easy to read and write, You don't need to pip install csv in terminal. Just import csv before using it.
-* example:
-```
-with open('NAME.csv','w',newline='') as f:      
-    myWriter=csv.writer(f)  
-    myWriter.writerow([7,'g'])  
-    myWriter.writerow([8,'h'])  
-    myList=[[1,2,3],[4,5,6]]  
-    myWriter.writerows(myList)  
-```   
-The output will be a NAME.csv, whose contents are following:
-![](/assets/Screen Shot 2018-03-07 at 7.26.06 pm.png)
+## CSV
 
+The CSV (Comma Separated Values) format is the most common import and export format for spreadsheets and databases,just like `xlsx` file, which is used for storing your data and make it easy to read and write. You don't need to pip install csv in terminal. Just import csv before using it.
+
+The csv has two basic functions: `reader` and `writer` .objects read and write.
+
+### csv.reader
+
+Return a reader object which will iterate over lines in the given csv file. Each row read from the csv file is returned as a list of strings. No automatic data type conversion is performed.
+
+Suppose we have a csv file, `name_list.csv`, the content is as follows:
+
+| name  | id   | gender | location | phone|
+|-------|------|--------|----------|------|
+| Chico | 1742 |    M   |  KLN     |  3344|
+| Ri    | 1743 |    F   |  LOS     |  5168|
+| Ivy   | 1655 |    F   |   MK     |  7323|
+
+How to read this csv?
+
+```python
+>>> import csv
+... with open('name_list.csv', newline='') as f: # open csv
+...     rows = csv.reader(f) # read CSV
+...     for row in rows: #loop every row
+...
+>>>         print(row)
+['name', 'id', 'gender', 'location', 'phone']
+['Chico', '1742', 'M', 'KLN', '3344']
+['Ri', '1743', 'F', 'LOS', '5168']
+['Ivy', '1655', 'F', 'MK', '7323']
+['', '', '', '', '']
+```
+
+**Note:**
 
 * `with open(...) as f` means you give f a definition, which stands for opening the file. In the example,`f` can be changed by any words you like. It just means you rename the step of the opening.
 
-* `open()` means open the file. If there is no such file, it will create a new one. If there is a existing one, writer function will clear all the previous content and then  write the new content.
-
-* `w` means write. By the way, if you want to read the file, you can input`r`,representing "read".
+* `open()` means open the file. If there is no such file, it will create a new one. If there is a existing one, writer function will clear all the previous content and then write the new content.
 
 * `newline=' '` is one of the certain structure, which is used to avoid blank line.
 
+### csv.writer
+
+Return a writer object responsible for converting the user’s data into delimited strings. Csvfile can be any object with a write() method. If csvfile is a file object, it should be opened with `newline=''`.
+
+How to write a csv?
+
+```python
+with open('NAME.csv','w',newline='') as f:
+... mywriter=csv.writer(f)  #writer is the function to write something
+... mywriter.writerow(['Chico','Male'])  #you can just use writer.writerow()
+... mywriter.writerow(['Ri','Female'])  
+... mylist=[['KLN',1742,3344],['Los',1743,5168]]  
+... mywriter.writerows(mylist)  
+```  
+
+The output will be a NAME.csv, whose content is like this:
+![write a csv](/assets/csv-write-a-csv.png)
+
+**Note:**
+
+* `w` means write. By the way, if you want to read the file, you can input`r`,representing "read".
+
 * `csv.writer()` means to write something in the NAME.csv file.
 
-* `writerow()` means wirte one row and then another row. The input should be list type.
+* `writerow()` means write one row and then another row. The input should be list type. `writerows()` means they will write row after row until loop all the elements from a list.
 
 
 ### Writerow vs Writerows: exercise
