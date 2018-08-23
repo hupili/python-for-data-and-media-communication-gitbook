@@ -39,6 +39,7 @@
     - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
         - [Scipy & Numpy](#scipy--numpy)
             - [Basic functions: Arrays](#basic-functions-arrays)
+            - [About index in data types](#about-index-in-data-types)
         - [String functions (`str.*`)](#string-functions-str)
             - [Common functions](#common-functions)
             - [Python’s classical percent-sign string interpolation](#pythons-classical-percent-sign-string-interpolation)
@@ -453,12 +454,25 @@ numpy.ndarray
 [5, 2, 3]
 >>> b = np.array([[1,2,3],[4,5,6]])    # Create a rank 2 array
 >>> print(b.shape)
-(2, 3)
+(2, 3) #the first number means how many elements in this array, in this case, this array has two elements - two lists. The second number means how many sub-elements in each elements. In this case, there are 3 values in each list. So, it's like a layer nesting.
 >>> print(b[0, 0], b[0, 1], b[1, 0])
-1 2 4
+1 2 4 #you can access values by their index. Similarly, the first number is to index elements in this array, the second number is to index the sub-elements in each elements.
 ```
 
-You can check out more functions in scipy's [tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html)
+#### About index in data types
+
+Simply, `Index` is like the position of one element in the whole list or object, which used to access this element. The index of first element is `0` and increases by integer. The following are examples may help you better understand this.
+
+```
+    String  ‘H     e     l      l      o'
+    Index   [0]   [1]   [2]    [3]    [4]
+    List    ['a', 'b',  'c',   'd',   'e']
+    Index   [0]   [1]   [2]    [3]    [4]
+```
+
+In list ['a', 'b', 'c', 'd', 'e'], list[0]='a', 0 is the index of 'a' in this list, similarly use in array. We will use more in chapter 3 so that you can get more familiar with this issue.
+
+In addition, you can check out more array functions in scipy's [tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html).
 
 ### String functions (`str.*`)
 
