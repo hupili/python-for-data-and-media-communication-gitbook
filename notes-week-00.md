@@ -35,6 +35,8 @@
             - [Step 2. Point domain name to GitHub](#step-2-point-domain-name-to-github)
             - [Step 3. Point GitHub repo to domain name](#step-3-point-github-repo-to-domain-name)
             - [The principle further explained](#the-principle-further-explained)
+        - [[O] Collaboration on GitHub](#o-collaboration-on-github)
+        - [The workflow Fork repo, modify code and send pull Request](#the-workflow-fork-repo-modify-code-and-send-pull-request)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References and further reading](#references-and-further-reading)
 
@@ -81,8 +83,6 @@ You can sign up in [GitHub](https://github.com/). Pick a nice name, then you can
 
 -- Here is the explanation by GitHub.
 
-<!-- Markdown is a way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images, and creating lists are just a few of the things we can do with Markdown. Mostly, Markdown is just regular text with a few non-alphabetic characters thrown in, like `#` or `*`. -->
-
 Markdown is an easy-to-read and easy-to-write markup language. Computer programming language usually needs to be compiled or interpreted or rendered in order to get readable result from the source code. Markdown syntax is design in a way that makes it readable in both rendered (HTML) format or source code format. The conventional extension for a markdown file is `.md` and the content is just plain text.
 
 As a beginner, one needs to master those syntax:
@@ -101,6 +101,18 @@ Here are some readings to get you started with markdown:
 - Go to the issue tracker (introduced in next section) and "edit" any message. See how markdown works in the discussion thread.
 - The official document of [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) from GitHub.
 - Another good introduction of use of markdown [Markdown Syntax](https://github.com/younghz/Markdown) (in Chinese)
+
+[O] Insert a internal link between different sections in different chapters
+
+Example: I want to insert a link in chapter 2 `array` section which connect to one of the example of chapter 3.
+
+```
+[chapter 2](/notes-week-02.md#python-has-two-basic-modes-script-and-interactive
+```
+
+- `[chapter 2]` is the text you want to insert a link.
+- `/notes-week-02.md` is the file path you want to connect to.
+- `python-has-two-basic-modes-script-and-interactive` is the header of specific section you want to connect to. You can get this by lower all the letters of the header and connect them with `-`,and do not forget to use `#` ahead of the header.
 
 ### Use GitHub issue tracker as a discussion forum
 
@@ -292,7 +304,7 @@ Checkout the working [CNAME](https://github.com/hkbu-jour2106/hkbu-jour2106.gith
 
 Checkout [this article](https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml) for how DNS works.
 
-## [O] Collaboration on GitHub
+### [O] Collaboration on GitHub
 
 ### The workflow Fork repo, modify code and send pull Request
 
