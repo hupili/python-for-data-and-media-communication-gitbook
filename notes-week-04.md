@@ -50,7 +50,7 @@ Suppose we have a csv file, `name_list.csv`, the content is as follows:
 | Ri    | 1743 |    F   |  LOS     |  5168|
 | Ivy   | 1655 |    F   |   MK     |  7323|
 
-How to read this csv?
+Example 1: How to read this csv?
 
 ```python
 import csv
@@ -81,7 +81,7 @@ Answer:
 
 Return a writer object responsible for converting the user’s data into delimited strings. Csvfile can be any object with a write() method. If csvfile is a file object, it should be opened with `newline=''`.
 
-How to write a csv?
+Example 2: How to write a csv?
 
 ```python
 with open('NAME.csv','w',newline='') as f:
@@ -139,7 +139,141 @@ with open('test2.csv','w') as f:
 ![CSV write rows2](/assets/csv-write-rows-2.png)
 There are 3 items, or 3 lists, therefore it will output 3 rows. And inside each row, there are different items,So it will write each item in one cell.
 
+## Json
 
+>JSON (JavaScript Object Notation) is a lightweight data interchange format inspired by JavaScript object literal syntax.
+
+* JSON is a syntax for storing and exchanging data.
+* JSON is text, written with JavaScript object notation.
+
+**What does json looks like?**
+
+Example 3:
+
+```json
+{
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "hobbies": ["running", "sky diving", "singing"],
+    "age": 35,
+    "children": [
+        {
+            "firstName": "Alice",
+            "age": 6
+        },
+        {
+            "firstName": "Bob",
+            "age": 8
+        }
+    ]
+}
+```
+
+**Why to use json?**
+
+The advantages of json:
+
+1. The data size is small. Compared with XML(another) file type to store and exchange data, JSON is small in size and faster in passing.
+2. The transmission speed is fast. JSON is much faster than XML.
+3. Data format is simple, easy to read and write, and the format is compressed.
+4. Easy to use with python, Json is a form of `k-v` structure.
+
+In simple terms, json is a dict, which has keys, each key corresponds to a value. The middle is separated by `:` , the outermost is surrounded by `{}`, and the different key-value pairs are separated by `,`. Example like this
+
+```python
+
+{'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+```
+
+If there is a case where a Key corresponds to multiple values, use [] to include all the corresponding values.
+
+```python
+{'key1': ['v11', 'v12', 'v13'], 'key2': 'v22'}
+```
+
+Now you can go back to have a look of example 3, test yourself whether you have understand the json structure.
+
+### Json functions
+
+#### json.dump: Convert from Python to JSON
+
+**Syntax**
+
+```python
+json.dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding="utf-8", default=None, sort_keys=False, **kw)
+```
+
+Don't be panic, we do not have to use those all parameters. Basically, you need to know those two.
+
+1. If sort_keys is true (default: False), then the output of dictionaries will be sorted by key.
+2. If ensure_ascii is true (the default), the output is guaranteed to have all incoming non-ASCII characters escaped like Chinese. If ensure_ascii is false, these characters will be output as-is.
+
+Example 4:
+
+```python
+import json
+
+data = {
+    'name' : 'ACME',
+    'shares' : 100,
+    'price' : 542.23
+}
+
+json_str = json.dumps(data)
+json_str
+```
+
+```
+Answer: '{"name": "ACME", "shares": 100, "price": 542.23}'
+```
+
+#### json.load: Convert from JSON to Python
+
+**Syntax**
+
+```python
+json.load(fp, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+```
+
+one thing you need to know - `parse_constant`, if specified, will be called with one of the following strings: '-Infinity', 'Infinity', 'NaN'. This can be used to raise an exception if invalid JSON numbers are encountered.
+
+Example 5:
+
+```python
+import json
+with open("json_test") as f:
+     result=json.load(f)
+result
+```
+
+```python
+Answer:
+{'dataset': {'test': {'data_set': 'test',
+   'layout_x': 'tensor',
+   'type': 'mnist'},
+  'train': {'data_set': 'train', 'layout_x': 'tensor', 'type': 'mnist'}},
+}
+```
+
+If you try to check the json decoded data, it is often difficult to know its structure by simple printing, especially when the data is nested deeply or contains a large number of fields. To solve this problem, you can use the `pprint()` function instead of the normal `print()` function. After you understand its structure, you can use `class['key']` to access the items.
+
+```python
+import json
+import pprint
+with open("json_test") as f:
+     result=json.load(f)
+pprint.pprint(result)
+```
+
+```python
+{'dataset': {'test': {'data_set': 'test',
+                      'layout_x': 'tensor',
+                      'type': 'mnist'},
+             'train': {'data_set': 'train',
+                       'layout_x': 'tensor',
+                       'type': 'mnist'}}}
+
+```
 
 # List and dictionary
 
