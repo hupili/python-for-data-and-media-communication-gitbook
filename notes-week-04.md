@@ -53,12 +53,15 @@ Suppose we have a csv file, `name_list.csv`, the content is as follows:
 How to read this csv?
 
 ```python
->>> import csv
-... with open('name_list.csv', newline='') as f: # open csv
-...     rows = csv.reader(f) # read CSV
-...     for row in rows: #loop every row
-...
->>>         print(row)
+import csv
+with open('name_list.csv', newline='') as f: # open csv
+    rows = csv.reader(f) # read CSV
+    for row in rows: #loop every row
+        print(row)
+```
+
+```
+Answer:
 ['name', 'id', 'gender', 'location', 'phone']
 ['Chico', '1742', 'M', 'KLN', '3344']
 ['Ri', '1743', 'F', 'LOS', '5168']
@@ -82,11 +85,11 @@ How to write a csv?
 
 ```python
 with open('NAME.csv','w',newline='') as f:
-... mywriter=csv.writer(f)  #writer is the function to write something
-... mywriter.writerow(['Chico','Male'])  #you can just use writer.writerow()
-... mywriter.writerow(['Ri','Female'])  
-... mylist=[['KLN',1742,3344],['Los',1743,5168]]  
-... mywriter.writerows(mylist)  
+    mywriter=csv.writer(f)  #writer is the function to write something
+    mywriter.writerow(['Chico','Male'])  #you can just use writer.writerow()
+    mywriter.writerow(['Ri','Female'])  
+    mylist=[['KLN',1742,3344],['Los',1743,5168]]  
+    mywriter.writerows(mylist)  
 ```  
 
 The output will be a NAME.csv, whose content is like this:
@@ -100,49 +103,42 @@ The output will be a NAME.csv, whose content is like this:
 
 * `writerow()` means write one row and then another row. The input should be list type. `writerows()` means they will write row after row until loop all the elements from a list.
 
+* arguments in `writerow()` should be a list, because `csv` function treat a row as a list, therefore you should use`[]` to wrap up the argument.
 
-### Writerow vs Writerows: exercise
+### Exercise
 
-##### 1. Write "hello" in A1 in the excel table 
-##### Try: fail 
-```
+1. Writerow ['hello','python'] in A1 in the csv table
+
+```python
 import csv
-with open('NAME.csv','w') as f:   
-	myWriter=csv.writer(f)
-	myWriter.writerows('hello')
-``` 
-![](/assets/Screen Shot 2018-03-07 at 8.18.06 pm.png)
+with open('hello.csv','w') as f:
+    mywriter=csv.writer(f)
+    mywriter.writerow(['hello','python']) #writerow('hello','python') won't work, you should put it in a list. Every item of the list will be write in a cell of the table.
+```
 
-##### Try: succeed
+2. Writerows
 
- you should put it in a list.Every item of the list will be write in a cell of the table.
+```python
+import csv
+with open('test1.csv','w') as f:
+    mywriter=csv.writer(f)
+    mywriter.writerows(['spam','1','22','333'])
 ```
-	myWrite.writerow(['hello'])
-```
-![](/assets/Screen Shot 2018-03-07 at 8.19.02 pm.png)
 
-##### 2. Write 2 rows
+![CSV write rows](/assets/csv-write-rows.png)
 
-* If you want to write 2 rows:
-```
-	myWriter.writerow(['spam','1','2','3'])
-	myWriter.writerow(['spam2','11','22','33'])
-```
-![](/assets/Screen Shot 2018-03-07 at 8.21.08 pm.png)
+**Note:** `writerows()` means write all the rows in one time. It writes every item of the list into a row. Like we said, csv.writerow function treat a row as a list, for which it will regard the first row 'spam' as a list of items with 4 characters, or 4 strings. Then it is put in 4 columns. But if there are lists inside of list,`writerows()` function will recognize the word 'spam', following are examples:
 
-* Writerows example 1:
+```python
+import csv
+with open('test2.csv','w') as f:
+    mywriter=csv.writer(f)
+    mywriter.writerows([['spam','1'],['22','333'],['OK','Good']])
 ```
-myWriter.writerows(['spam','1','2','3'])
-```
-![](/assets/Screen Shot 2018-03-07 at 8.36.30 pm.png)
-`writerows()` means write all the rows in one time. It writes every item of the list into a row. Every item has a row. As 'spam' has 4 characters, or 4 strings, it can't understand the word. Then it is put in 4 columns.
 
-* Writerow example 2:
-```
-myWriter.writerows([['spam','1'],['2','3'],['OK']) 
-```
-![](/assets/Screen Shot 2018-03-07 at 9.26.19 pm.png)
-There are 3 items, or 3 lists, in the list. So there will be 3 rows. Every list is a row. 
+![CSV write rows2](/assets/csv-write-rows-2.png)
+There are 3 items, or 3 lists, therefore it will output 3 rows. And inside each row, there are different items,So it will write each item in one cell.
+
 
 
 # List and dictionary
