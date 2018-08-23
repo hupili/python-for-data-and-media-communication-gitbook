@@ -108,11 +108,11 @@ The logical operators in Python (`and`, `or`, `not`) are often used in the if, i
 Example 2:
 
 ```python
-print((6 > 5) and (2 < 4))  # Its true when both expressions are True
+>>> print((6 > 5) and (2 < 4))  # Its true when both expressions are True
 True
-print((8 == 8) or (6 != 6)) # Its true when one expression is True
+>>> print((8 == 8) or (6 != 6)) # Its true when one expression is True
 True
-print(not(3 <= 1))          # Its true when the original expression is False
+>>> print(not(3 <= 1))          # Its true when the original expression is False
 True
 ```
 
@@ -197,14 +197,7 @@ Example 5:
 4. One can check whether one elements is in the list
 5. One can slice the list
 
-**Note:** `Index` is like the position of one element in the whole list or object, which used to access this element.
-
-```python
-        String  ‘H     e     l      l      o'
-        Index   [0]   [1]   [2]    [3]    [4]
-        List    ['a', 'b',  'c',   'd',   'e']
-        Index   [0]   [1]   [2]    [3]    [4]
-```
+**Note:** We talk about `index` in chapter 2, for those who forget how it works, please refer to [here](/notes-week-02.md#about-index-in-data-types)
 
 Example 6:
 
@@ -472,9 +465,11 @@ For example, you want the program to take some decisions and do different things
 
 Under such circumstances, using control flow statements will help you manipulate data better. There are several control flow statements we will learn in this chapter.
 
+**NOTE:** In `control flows` chapter, we will encounter a lot of `indentations` when handling if/for/while/def/class. It is hard and inconvenient to type in Python shell, so please write down the codes in text editor and save it as a `.py` file, so that you can just execute the file once to get the answer. If you forget how to do this, please refer to [chapter 2](/notes-week-02.md#python-has-two-basic-modes-script-and-interactive).
+
 ### If-else Statement
 
-`If-else statement` is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false. 
+`If-else statement` is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false.
 
 ```python
 if ...:   #close with an ':'
@@ -487,18 +482,21 @@ else:
 
 **Note:** All function definitions or condition comparisons should end with a `:`, and all the content in those functions and conditions need to be indented. you can just indent with clicking `tab`.
 
-Take the case that we talk about chapter 2 as an example. \(The full version of the case is [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/)
+Take the case that we talk about chapter 2 as an example. (The full version of the case is [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/)
 
 > Example 14: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=10000+0.1×(number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
 
 ```python
->>> number_of_users = 100000
->>> if number_of_users <= 50000:
-...    cost = 10000
->>> else: # number_of_users > 50000
-...    cost = 10000 + 0.1 * (number_of_users - 50000)
->>> print (cost)
-15000.0
+number_of_users = 100000
+if number_of_users <= 50000:
+    cost = 10000
+else: # number_of_users > 50000
+    cost = 10000 + 0.1 * (number_of_users - 50000)
+print (cost)
+```
+
+```
+Answer: 15000.0
 ```
 
 > Example 15: If there is two charge plans when the number of users is more than 50,000.
@@ -509,15 +507,18 @@ Take the case that we talk about chapter 2 as an example. \(The full version of 
 The if-else statement will be as fellow:
 
 ```python
->>> number_of_users = 120000
->>> if number_of_users <= 50000:
-...    cost = 10000
->>> elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
-...    cost=10000+0.1*(number_of_users-50000)
->>> else: # number_of_users > 100000
-...    cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
->>> print(cost)
-21000.0
+number_of_users = 120000
+if number_of_users <= 50000:
+    cost = 10000
+elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
+    cost=10000+0.1*(number_of_users-50000)
+else: # number_of_users > 100000
+    cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
+print(cost)
+```
+
+```
+Answer:21000.0
 ```
 
 ### Python loop
@@ -551,10 +552,14 @@ while ...:   #close with an ':'
 Example 16:
 
 ```python
->>> i = 1
->>> while i < 6:
->>>     i = i + 1
->>>     print(i)
+i = 1
+while i < 6:
+    i = i + 1
+    print(i)
+```
+
+```
+Answer:
 2
 3
 4
@@ -565,12 +570,16 @@ Example 16:
 Example 17:
 
 ```python
->>> i = 1
->>> while i < 6:
->>>     print(i)
->>>     i = i + 1
->>>     if i == 3:
->>>         break #we will talk this later
+i = 1
+while i < 6:
+    print(i)
+    i = i + 1
+    if i == 3:
+        break #we will talk this later
+```
+
+```
+Answer:
 1
 2
 ```
@@ -593,9 +602,12 @@ for x in y:   #close with an ':'
 Example 18: List every integer from 1 to 10.
 
 ```python
->>> for i in range(1,11):
->>>    print(i)
-It will print '1,2,3,4,5,6,7,8,9,10'
+for i in range(1,11):
+    print(i)
+```
+
+```
+Answer: '1,2,3,4,5,6,7,8,9,10'
 ```
 
 **Note**: The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default).`(1,11)` means values from 1 to 10 (not including 11)
@@ -603,9 +615,12 @@ It will print '1,2,3,4,5,6,7,8,9,10'
 Example 19: Square of every integer from 1 to 10.
 
 ```python
->>> for i in range(1,11):
->>>    print(i**2) #or i*i
-it will print'1,4,9,16,25,36,49,64,81,100'
+for i in range(1,11):
+    print(i**2) #or i*i
+```
+
+```
+Answer: '1,4,9,16,25,36,49,64,81,100'
 ```
 
 ##### Use for loop to calculate
@@ -613,11 +628,14 @@ it will print'1,4,9,16,25,36,49,64,81,100'
 Example 20: Calculate the number of pulsing from 1 to 100.
 
 ```python
->>> total = 0
->>> for i in range(1, 101): # numbers which are >=1 and <101
->>>    total = total + i
->>> print (total)
-5050
+total = 0
+    for i in range(1, 101): # numbers which are >=1 and <101
+        total = total + i
+print (total)
+```
+
+```
+Answer: 5050
 ```
 
 ##### Use for and if statement together
@@ -627,22 +645,35 @@ Example 21:
  Like the [example](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) we used before. Find that break-even point of subscribed users to make profit.
 
 ```python
->>> Fixed_Cost = 30000
->>> Content_Cost = 70000
->>> num = float(input('please input your estimate number of subscribers:')) #input a estimated number
->>> for i in range(0,int(num)):
-...     Revenue = (1*i) + (0.1*15*i)
-...     if i < 50000:
-...         Total_Cost = Fixed_Cost + Content_Cost
-...     else:
-...         Total_Cost = Fixed_Cost + Content_Cost + 0.1 * (i - 50000)
-... Net_Income = Revenue - Total_Cost
-...     if Net_Income >= 0:
-...         print('subscribers= ',i)
-...         break
-...     if Net_Income < 0:
-...         print('Net_Income=', Net_Income) #the max value return by your input
-subscribers=  40000
+# coding: utf-8
+
+Fixed_Cost = 30000
+Content_Cost = 70000
+
+member_ff = 15
+convert_rate = 0.1
+ad_revenue_each_person = 1
+
+num = float(input('please input your estimate number of subscribers:')) #input a estimated number
+for i in range(0,int(num)):
+    if i < 50000:
+        Total_Cost = Fixed_Cost + Content_Cost
+    else:
+        Total_Cost = Fixed_Cost + Content_Cost + 0.1 * (i - 50000)
+
+    Revenue = (1*i) + (0.1*15*i)
+    Net_Income = Revenue - Total_Cost
+
+    if Net_Income >= 0:
+        print('subscribers= ',i)
+        break
+
+if Net_Income < 0:
+    print('Net_Income=', Net_Income) #the max value return by your in
+```
+
+```
+Answer: subscribers= 40000
 ```
 
 ### Break and Continue statement
@@ -654,12 +685,16 @@ Stop the loop even if the while condition is true.
 Example 22:
 
 ```python
->>> i = 1
->>> while i < 9:
->>>     print(i)
->>>     if i == 5:
->>>         break
->>>     i = i + 1
+i = 1
+while i < 9:
+    print(i)
+    if i == 5:
+        break
+        i = i + 1
+```
+
+```
+Answer:
 1
 2
 3
@@ -674,12 +709,16 @@ Stop the current iteration, skip certain value, and continue with the next.
 Example 23:
 
 ```python
->>> i = 1
->>> while i < 9:
->>>     i = i + 1
->>>     if i == 5:
->>>         continue
->>>     print(i)
+i = 1
+while i < 9:
+    i = i + 1
+    if i == 5:
+        continue
+    print(i)
+```
+
+```
+Answer:
 2
 3
 4 #number 5 is missing, while the loop continues
@@ -694,11 +733,11 @@ Example 23:
 A function is a block of code which only runs when it is called. You can call this function by passing parameters into a function. Then the function can return data as a result.
 
 ```python
->>> def function_name(parameters): #define function
->>>     control flow #use control flow
->>>     return  #return to default or specified value
->>> function_name("parameter1") #call the function
+def function_name(parameters): #define function
+    control flow #use control flow
+    return  #return to default or specified value
 
+function_name("parameter1") #call the function
 ```
 
 **How `def` function works**
@@ -718,29 +757,35 @@ A function is a block of code which only runs when it is called. You can call th
 >2. when the number of user ≥100,000, the cost=10,000 + 0.1×(100,000 -50,000) + 0.2 * (number_of_users - 100,000).
 
 ```python
->>> def calculate_profit(number_of_users):
-...     if number_of_users < 50000:
-...        cost = 10000
-...     elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
-...         cost=10000+0.1*(number_of_users-50000)
-...     else: # number_of_users > 100000
-...         cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
-...     revenue = 0.1 * number_of_users
-...     profit = revenue - cost
-...     return profit
->>> print(calculate_profit(100))
--9990.0
+def calculate_profit(number_of_users):
+    if number_of_users < 50000:
+        cost = 10000
+    elif number_of_users <= 100000: # 500000 <= number_of_users <= 100000
+        cost=10000+0.1*(number_of_users-50000)
+    else: # number_of_users > 100000
+        cost = 10000 + 0.1*(number_of_users-50000) + 0.2 * (number_of_users - 100000)
+    revenue = 0.1 * number_of_users
+    profit = revenue - cost
+    return profit
+
+print(calculate_profit(100))
 ```
 
-**Note:** For the later exercise, using interactive mode is inconvenient, please write down the codes in text editor and save it as a `.py` file, so that you can just execute the file once to get the answer. If you forget how to do this, please refer to [chapter 2](/notes-week-02.md).
+```
+Answer: -9990.0
+```
 
-The advantage of using "def" is that you can recall the function again and again.
+The advantage of using "def" is that you can recall the function again and again. Just change the parameter. For example:
 
 ```python
->>> print(calculate_profit(100))
->>> print(calculate_profit(1000))
->>> print(calculate_profit(10000))
->>> print(calculate_profit(100000))
+print(calculate_profit(100))
+print(calculate_profit(1000))
+print(calculate_profit(10000))
+print(calculate_profit(100000))
+```
+
+```
+Answers:
 -9990.0
 -9900.0
 -9000.0
@@ -763,21 +808,21 @@ The try statement works as follows.
 Example 25:
 
 ```python
->>> try:
->>>     print("Hello World")
->>> except:
->>>     print("This is an error message!")
+try:
+        print("Hello World")
+except:
+        print("This is an error message!")
 ```
 
 Example 26:
 
 ```python
->>>while True:
->>>     try:
->>>         x = int(input("Please enter a number: ")) #input a int and non-int to test
->>>         break
->>>     except ValueError:
->>>         print("Oops!  That was no valid number.  Try again...")
+while True:
+    try:
+        x = int(input("Please enter a number: ")) #input a int and non-int to test
+        break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
 ```
 
 ### Raising errors
@@ -787,12 +832,12 @@ The `raise` statement allows you to force a specified exception to occur. It can
 Example 27:
 
 ```python
->>> inputValue=input("please input a int :")
->>> if type(inputValue)!=type(1): # '!=' means not equal
-...    raise ValueError
-... else:
-...    print inputValue
-... #you can input a 2 and 2.2 to test.
+inputValue = input("please input a int :")
+if type(inputValue)!=type(1): # '!=' means not equal
+    raise ValueError
+else:
+    print inputValue
+#you can input a 2 and 2.2 to test.
 ```
 
 ### Exception error types
@@ -818,25 +863,32 @@ All classes have a function called `__init__()`, which is always executed when t
 Example 28: Create a animal class.
 
 ```python
->>> class Animal(): #class + class name to give a statement
-... def __init__(self, name): #self refer to class itself, its default.
-...     self.name = name  #all objects in this class has name
->>> a = Animal("dog")  #give a new object, an animal named dog
->>> print(a.name)
-dog
+class Animal(): #class + class name to give a statement
+    def __init__(self, name): #self refer to class itself, its default.
+        self.name = name  #all objects in this class has name
+
+a = Animal("dog")  #give a new object, an animal named dog
+print(a.name)
+```
+
+```
+Answer: dog
 ```
 
 Example 29: Create a person class and give new object
 
 ```python
->>> class Person():  #build a person class
-...     def __init__(self,name,age): #those objects has name and age
-...         self.name,self.age = name,age  
-...     def __str__(self):  # def a certain return
-...         return 'My name is {self.name}, and I\'m {self.age} years old'.format(self=self) #review the format.() function
-...
->>> str(Person('xyc',18)) #call the function by passing parameters in the function
-My name is xyc, and I'm 18 years old
+class Person():  #build a person class
+    def __init__(self,name,age): #those objects has name and age
+        self.name,self.age = name,age  
+    def __str__(self):  # def a certain return
+        return 'My name is {self.name}, and I\'m {self.age} years old'.format(self=self) #review the format.() function
+
+str(Person('xyc',18)) #call the function by passing parameters in the function
+```
+
+```
+Answer: My name is xyc, and I'm 18 years old
 ```
 
 **Note:** In the example above,
@@ -874,28 +926,31 @@ It is just a convention used in python programming. Python passes to its instanc
 Example 30:
 
 ```python
->>> class Account:
-...    def __init__(self, number, name):
-...        self.number = number
-...        self.name = name
-...        self.balance = 0
-        
-...    def deposit(self, amount):  
-...        if amount <= 0:
-...            raise ValueError('must be positive')
-...        self.balance += amount
-        
-...    def withdraw(self, amount):
-...        if amount <= self.balance:
-...            self.balance -= amount
-...        else:
-...            raise RuntimeError('balance not enough')
-...
->>> acct1 = Account('123–456–789', 'Chico') #open an account
->>> acct1.deposit(500)
->>> acct1.withdraw(100)
->>> print(acct1.balance)
-400
+class Account:
+    def __init__(self, number, name):
+        self.number = number
+        self.name = name
+        self.balance = 0
+
+    def deposit(self, amount):  
+        if amount <= 0:
+            raise ValueError('must be positive')
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+        else:
+            raise RuntimeError('balance not enough')
+
+acct1 = Account('123–456–789', 'Chico') #open an account
+acct1.deposit(500)
+acct1.withdraw(100)
+print(acct1.balance)
+```
+
+```
+Answer: 400
 ```
 
 ## Challenges
