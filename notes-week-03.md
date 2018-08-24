@@ -1085,7 +1085,11 @@ while True:
     time.sleep(1000) # to avoid too frequent poll of external resources
 ```
 
+Once you execute this script, a lot of messages will be output to the screen non-stop. You can terminate the script, or technical "interrupt" the script by pressing `control+c` if you are in a Terminal/ shell environment. Always keep this hotkey in your mind. It is life saving sometime when you go deeper into the journey. For example, your web scraper may have bug and consumes extremely large amount of network data when you execute the script. You don't have to wait till the end of scraping. Just use `control+c` to end the program. Note:
 
+- It is a convention for shell environment, so you can also terminate other Unix/ Linux commands in this way.
+- You can also terminate a for-loop using the same method.
+- You can also terminate a function call that does not respond after a while using the same method.
 
 ## [O] Python Engeering
 
