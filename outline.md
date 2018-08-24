@@ -1,5 +1,35 @@
 # Course Outline
 
+<div id="toc">
+
+<!-- TOC -->
+
+- [Course Outline](#course-outline)
+    - [Week 0 - GitHub](#week-0---github)
+    - [Week 1 - Hands-on the Terminal](#week-1---hands-on-the-terminal)
+    - [Week 2 - Use Python as a daily tool](#week-2---use-python-as-a-daily-tool)
+    - [Week 3 - Python for anything](#week-3---python-for-anything)
+    - [Week 4 - JSON and API](#week-4---json-and-api)
+    - [Week 5 - Web Scraping Basics](#week-5---web-scraping-basics)
+    - [Week 6 - Advanced Web Scraping](#week-6---advanced-web-scraping)
+    - [Week 7 - Table manipulation and 1-D analysis](#week-7---table-manipulation-and-1-d-analysis)
+    - [Week 8 - Visualisation, presentation and reproducible reports](#week-8---visualisation-presentation-and-reproducible-reports)
+    - [Week 9 - Text analysis](#week-9---text-analysis)
+    - [Week 10 - Time series](#week-10---time-series)
+    - [Week 11 - Graph theory and social network analysis](#week-11---graph-theory-and-social-network-analysis)
+    - [Week 12 - 2D analysis](#week-12---2d-analysis)
+    - [Week 13 - High-dimensional analysis](#week-13---high-dimensional-analysis)
+    - [Week 14 - Clustering](#week-14---clustering)
+    - [Week 15 - Classification](#week-15---classification)
+    - [Week 16 - Regression](#week-16---regression)
+    - [Week 17 - Recommender System](#week-17---recommender-system)
+    - [Open topics](#open-topics)
+
+<!-- /TOC -->
+
+</div>
+
+
 ## Week 0 - GitHub
 
 **Objective**
