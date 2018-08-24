@@ -1071,11 +1071,21 @@ for element in input_list:
 Sometimes, you want your program to work infinitely: wait for certain input; take action and wait again. This is a common pattern in system design. For example, a web server constantly takes "HTTP request" from client software (e.g. web browser) and send "HTTP response" to the client. You don't want the server to stop just after serving one HTTP request. Similarly, imaging you are going to write a Python script that monitors No. 8 Typhoon signal and post a Twitter when [HKO](http://www.hko.gov.hk/detail.htm) issues the warning (Ah! "Artificial Intelligence"! Robot!). You don't want the program to exit after posting one message. Instead you want to program to keep working until you terminate it/ interrupt it. A common pattern is as follows.
 
 ```python
+import time
+i = 0
 while True:
+    print('Entering a new round of loop')
+    
     # Do something useful here
+    print('Working hard! This is the %d-th time' % i)
     ...
+
+    print('Leaving a new round of loop')
+    i = i + 1 # Count the number iterations
     time.sleep(1000) # to avoid too frequent poll of external resources
 ```
+
+
 
 ## [O] Python Engeering
 
