@@ -310,3 +310,96 @@ If you want to return pictures and files, use `r.content`, it will return the bi
 
 ### API
 
+Application Program Interfaces, or APIs, are commonly used to retrieve data from remote websites. Sites like Twitter, Douban and even government websites all offer certain data through their APIs. To use an API, you make a request to a remote web server, and retrieve the data you need.
+
+#### Why use api
+
+Compared with other ways like download directly, APIs are useful in the following cases:
+
+* The data is changing quickly. It doesn't need you to re-download it every minute - this will take a lot of bandwidth, and be pretty slow, the data we get through api is always up to date (unless you specify).
+* Usually, the data sets return from APIs are usually can be directly convert to csv or json, which is more structural and clean, you don't need to spend a lot of time to clean and find the data compared with request from `.html`.
+* You can filter the data you want instead of download a large of data set.
+
+Generally, different websites have different APIs methods to request the data. For example, the APIs of [USGS](https://earthquake.usgs.gov/fdsnws/event/1/) and [Douban](https://developers.douban.com/wiki/?title=api_v2) is a url, and you can change some parameters in the url to get the different data. While, the twitter api is a set of tokens and keys, you can call different functions to get different data.
+
+So, in the following example, we'll be querying a simple API to retrieve data about the last 100 years' earthquakes that happen in Taiwan.
+
+Step 1: Find it's API, and read it's documentation
+
+API link : https://earthquake.usgs.gov/fdsnws/event/1/
+
+Step 2: Set arguments and functions we want use
+
+Functions:
+
+* `query?`
+* `count?`
+
+Arguments:
+
+* Start time: 1918-08-24
+* End time: 2018-08-24
+* Minlatitude: 21.890
+* Minlongitude: 119.300
+* Maxlatitude: 25.320
+* Maxlongitude: 122.030
+
+You can get 4 location parameters from [worldatlas](https://www.worldatlas.com/as/tw/where-is-taiwan.html)
+
+Step 3: Create the API We want
+
+```python
+import requests
+import csv
+
+api_url = 'https://earthquake.usgs.gov/fdsnws/event/1/'
+api_method = 'query?'
+api_method_2 = 'count?'
+api_format = 'format=geojson'
+api_starttime = '1918-02-21'
+api_endtime = '2018-02-21'
+api_minlatitude = '21.890'
+api_minlongitude = '119.300'
+api_maxlatitude = '25.320'
+api_maxlongitude = '122.030'
+
+url = api_url + api_method + api_format + '&' + 'starttime=' + api_starttime + '&' + 'endtime=' + api_endtime + '&' + 'minlatitude=' + api_minlatitude + '&' + 'maxlatitude=' + api_maxlatitude +  '&' +'minlongitude=' + api_minlongitude + '&' + 'maxlongitude=' + api_maxlongitude
+#prepare for calling query function
+
+url_2 = api_url + api_method_2 + api_format + '&' + 'starttime=' + api_starttime + '&' + 'endtime=' + api_endtime + '&' + 'minlatitude=' + api_minlatitude + '&' + 'maxlatitude=' + api_maxlatitude +  '&' +'minlongitude=' + api_minlongitude + '&' + 'maxlongitude=' + api_maxlongitude
+#prepare for calling count function
+```
+
+Step 4: Requests content
+
+```python
+response = requests.get(url)
+response_2 = requests.get(url_2)
+
+data = response.json() #convert to json
+count = response_2.json()
+print(count) #print count results
+print(data) # print all data
+```
+
+Step 5:  Select the key values we want
+
+```python
+place = []
+mag = []
+time = []
+for i in range(0,len(data['features'])):
+    mag.append(data['features'][i]['properties']['mag']) # find magnitude of the earthquake
+    place.append(data['features'][i]['properties']['place']) # find location
+    time.append(data['features'][i]['properties']['time']) # find time
+```
+
+Step 6: Write data into csv
+
+``` python
+with open('taiwan_earthquake.csv','w',newline='') as f:
+    writer = csv.writer(f)
+    header = ['place','mag','time']
+    writer.writerow(header)
+    writer.writerows(zip(place,mag,time))
+```
