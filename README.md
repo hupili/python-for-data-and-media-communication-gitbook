@@ -10,17 +10,17 @@ This is the text book for HKBU's COMM7780/JOUR7280 courses. The course COMM7780/
 ## Weekly Notes
 
 * [Notes: Week 00 - GitHub and markdown](notes-week-00.md)
-* [Notes: Week 01 - Terminal, shell and first code](notes-week-01.md)
-* [Notes: Week 02 - Python basics](notes-week-02.md)
-* [Notes: Week 03 - Python data structure and control flow](notes-week-03.md)
-* [Notes: Week 04 - API, JSON and CSV](notes-week-04.md)
-* [Notes: Week 05 - Web scraping](notes-week-05.md)
-* [Notes: Week 06](notes-week-06.md)
-* [Notes: Week 07](notes-week-07.md)
-* [Notes: Week 08](notes-week-08.md)
-* [Notes: Week 09](notes-week-09.md)
-* [Notes: Week 10](notes-week-10.md)
-* [Notes: Week 11](notes-week-11.md)
+* [Notes: Week 01 - Kickoff: Terminal, shell and "hello world"](notes-week-01.md)
+* [Notes: Week 02 - Python as a powerful caculator: basics and arithmetics](notes-week-02.md)
+* [Notes: Week 03 - Python for everything: Data structure, control flow and code reuse](notes-week-03.md)
+* [Notes: Week 04 - Get structured data: CSV, JSON and API](notes-week-04.md)
+* [Notes: Week 05 - Get semi-structured data: Web scraping](notes-week-05.md)
+* [Notes: Week 06 - Advanced scraping: browser emulation, anti-crawler and other nitty gritties](notes-week-06.md)
+* [Notes: Week 07 - Work with table: data cleaning and pre-processing](notes-week-07.md)
+* [Notes: Week 08 - Work with table: 1D analysis](notes-week-08.md)
+* [Notes: Week 09 - Present findings: data visualization and reproducible report](notes-week-09.md)
+* [Notes: Week 10 - Handle special data type: text, graph, time series, geographical](notes-week-10.md)
+* [Notes: Week 11 - Machine learning primer: clustering, classification, regression](notes-week-11.md)
 
 ## General FAQs
 

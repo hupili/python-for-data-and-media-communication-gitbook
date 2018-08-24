@@ -1,4 +1,36 @@
-# JSON and API
+# Get structured data: CSV, JSON and API
+
+<div id="toc">
+
+<!-- TOC -->
+
+- [Get structured data: CSV, JSON and API](#get-structured-data-csv-json-and-api)
+    - [Objective](#objective)
+    - [Learn to use Jupyter Notebook](#learn-to-use-jupyter-notebook)
+        - [Installing the Jupyter Notebook](#installing-the-jupyter-notebook)
+        - [Basic usage](#basic-usage)
+    - [File operation](#file-operation)
+    - [CSV](#csv)
+        - [csv.reader](#csvreader)
+        - [csv.writer](#csvwriter)
+        - [Exercise](#exercise)
+    - [JSON](#json)
+        - [Json functions](#json-functions)
+            - [json.dump: Convert from Python to JSON](#jsondump-convert-from-python-to-json)
+            - [json.load: Convert from JSON to Python](#jsonload-convert-from-json-to-python)
+    - [Requests](#requests)
+        - [Make a Request](#make-a-request)
+        - [Response Content](#response-content)
+    - [API](#api)
+        - [Why use api](#why-use-api)
+        - [Use API via HTTP request/ response](#use-api-via-http-request-response)
+        - [Use API via function calls to other modules/ packages](#use-api-via-function-calls-to-other-modules-packages)
+    - [Exercises and Challenges](#exercises-and-challenges)
+
+<!-- /TOC -->
+
+</div>
+
 
 ## Objective
 
@@ -20,6 +52,8 @@ Server can send updated data upon request.
 
 ### Installing the Jupyter Notebook
 
+<!-- TODO: Outline the steps here; you don't have to repeat but need to try best to make the text self-contained; experienced readers and read-through and understand what to do; inexperienced readers can rough understand the steps and go to the FAQ page for details. -->
+
 Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook.
 ![jupyter notebook example](/assets/jupyter-notebook-example.png)
 
@@ -31,6 +65,10 @@ Please see to our [tutorial](/module-jupyter.md) of how to install and enter jup
 4. in front of every cell, there is an `in [ ]` sign, the number in `[]` means the sequences of cells, and if there is `*` in `[]`, means that this cell is still running, you can either wait it finish or click `stop` under the `kernel` to exit from the running,pressing `I` twice will also do the trick.
 5. cell. `run cell` run step by step. `run all above` to run and check the previous steps of coding.
 6. kernel. `kernel` is a tool for interactive input and output all the things you did from the beginning. By clicking`restart`, you can give a variable another value.
+
+## File operation
+
+<!-- TODO: how read/ write/ append a file in Python; with "open" and "with"/ "as" syntax -->
 
 ## CSV
 
@@ -92,18 +130,19 @@ with open('NAME.csv','w',newline='') as f:
     mywriter.writerows(mylist)  
 ```  
 
+<!-- TODO: show "writerows" in another example. Don't mix the data if they belong to two tables/ datasets. We don't just give examples for technical aspects. We also need to present BCP by default, so the readers get used "the right pattern" in first touch. Or it is hard to correct one's first impression later. -->
+
 The output will be a NAME.csv, whose content is like this:
 ![write a csv](/assets/csv-write-a-csv.png)
 
 **Note:**
 
 * `w` means write. By the way, if you want to read the file, you can input`r`,representing "read".
-
 * `csv.writer()` means to write something in the NAME.csv file.
-
 * `writerow()` means write one row and then another row. The input should be list type. `writerows()` means they will write row after row until loop all the elements from a list.
-
 * arguments in `writerow()` should be a list, because `csv` function treat a row as a list, therefore you should use`[]` to wrap up the argument.
+
+<!-- TODO: Note there is no blank line if those bullet points belong to the same list. Observe the different rendered content with/ without blank lines -->
 
 ### Exercise
 
@@ -139,7 +178,9 @@ with open('test2.csv','w') as f:
 ![CSV write rows2](/assets/csv-write-rows-2.png)
 There are 3 items, or 3 lists, therefore it will output 3 rows. And inside each row, there are different items,So it will write each item in one cell.
 
-## Json
+<!-- TODO: This section is good. There are some common mis-use of this library. Some roots from the mis-conception of "str" and "list". So they use writerows in incorrect way. Please see if you can find some of the cases and include here. I think Xiao Chao helped to solve many such cases from students -->
+
+## JSON
 
 >JSON (JavaScript Object Notation) is a lightweight data interchange format inspired by JavaScript object literal syntax.
 
@@ -195,6 +236,8 @@ Now you can go back to have a look of example 3, test yourself whether you have 
 
 ### Json functions
 
+<!-- TODO: write in formal way: "JSON". Same for other places -->
+
 #### json.dump: Convert from Python to JSON
 
 **Syntax**
@@ -246,6 +289,8 @@ with open("json_test") as f:
 result
 ```
 
+<!-- TODO: you need to give the content of the file if used in example. -->
+
 ```python
 Answer:
 {'dataset': {'test': {'data_set': 'test',
@@ -275,11 +320,13 @@ pprint.pprint(result)
 
 ```
 
-### Requests
+<!-- TODO: a high level restructure: use json.loads/ json.dumps for primary examples. This is to convert between Python internal data structure and "JSON string". If one wants to output the JSON string to a file, he simply write() the string with an open()-ed file. You can note that json.load/ json.dump are corresponding shortcuts -->
+
+## Requests
 
 Requests are the primary module we use to crawl website and get the content.
 
-#### Make a Request
+### Make a Request
 
 Making a request is easy. First of all, import the `requests` module. Usually, we use `requests.get` to make a request for data.
 
@@ -308,11 +355,11 @@ If you want to return json, use `r.json`
 
 If you want to return pictures and files, use `r.content`, it will return the binary data.
 
-### API
+## API
 
 Application Program Interfaces, or APIs, are commonly used to retrieve data from remote websites. Sites like Twitter, Douban and even government websites all offer certain data through their APIs. To use an API, you make a request to a remote web server, and retrieve the data you need.
 
-#### Why use api
+### Why use api
 
 Compared with other ways like download directly, APIs are useful in the following cases:
 
@@ -321,6 +368,8 @@ Compared with other ways like download directly, APIs are useful in the followin
 * You can filter the data you want instead of download a large of data set.
 
 Generally, different websites have different APIs methods to request the data. For example, the APIs of [USGS](https://earthquake.usgs.gov/fdsnws/event/1/) and [Douban](https://developers.douban.com/wiki/?title=api_v2) is a url, and you can change some parameters in the url to get the different data. While, the twitter api is a set of tokens and keys, you can call different functions to get different data.
+
+### Use API via HTTP request/ response
 
 So, in the following example, we'll be querying a simple API to retrieve data about the last 100 years' earthquakes that happen in Taiwan.
 
@@ -403,3 +452,28 @@ with open('taiwan_earthquake.csv','w',newline='') as f:
     writer.writerow(header)
     writer.writerows(zip(place,mag,time))
 ```
+
+### Use API via function calls to other modules/ packages
+
+<!-- TODO: The Python twitter example -->
+
+## Exercises and Challenges
+
+<!-- TODO: one exercise one subsection; try to describe some concrete tasks based on the API -->
+
+* Taiwan had an earthquake in early Feb. Let's discuss this issue:
+  * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/). Checkout the [API description](https://earthquake.usgs.gov/fdsnws/event/1/). The `count` and `query` API are useful.
+  * Search on Twitter and collect user's discussions about this topic. See if there is any findings. You can approach from the human interface [here](https://twitter.com/search?q=%23台湾地震) \(hard mode\) or use [python-twitter](https://github.com/bear/python-twitter) module \(need to register developer and obtain API key\).
+* Retrieve and analyse the recent movie. Douban's API will be helpful here.
+  * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
+  * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
+* Use Google Map API to retrieve geo-locaitons and canonical names: e.g. [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university)
+* Lookup real estate properties on HK gov open data portal. e.g. the [dataset page](https://data.gov.hk/en-data/dataset/centaline-centanetod-ccipropertyinfo/resource/4d3d7289-9d84-4f31-bf7e-a515d00d5328), the [API result](https://api.data.gov.hk/v1/filter?q=%7B%22resource%22%3A%22http%3A%2F%2Fhk.centanet.com%2Fopendata%2FCCI%2520Estate%2520for%2520Opendata.csv%22%2C%22section%22%3A1%2C%22format%22%3A%22json%22%2C%22sorts%22%3A%5B%5B9%2C%22desc%22%5D%5D%7D)
+* blockchain.info provides a set of [API](https://www.blockchain.com/api) for one to retrieve information related with bitcoin transactions. Pick one wallet address, check its UTXO sets and sum up the values to get the total balance in this wallet.
+* [A free crypocurrency API](https://min-api.cryptocompare.com/) for you to retrieve and study historical exchange rates.
+* Implement a basic version of first automated writer - QuakeBot from LA Times
+  * Get data from USGS API
+  * Print a story to the screen using string templating/ string interpolation
+  * See [here](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732) for an introduction of the bot. See [here](https://www.theregister.co.uk/2017/06/22/la_times_bot_spreads_fake_news/) for an incident and think how to avoid it?
+
+  
