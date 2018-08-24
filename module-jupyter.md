@@ -1,42 +1,47 @@
 # Jupyter notebook
 
-It is suggested to enter virtual environment before using Jupyter notebook.
+It is suggested to enter virtual environment before using Jupyter notebook. Because in the following study, we may need to install some packages and modules in Jupyter notebook. It's necessary to keep those files in the same path, so Jupyter can source the modules when you want to use.
 
 ## Virtual environment
 
 Create virtual environment:
 
-```
-pyvenv venv
+```bash
+$ pyvenv venv
 ```
 
 Enter virtual environment:
 
-```
-source venv/bin/activate
+```bash
+$ source venv/bin/activate
 ```
 
-When you see `(venv)` appear in front of your command line prompt, that means the you are in the virtual environment. Always check this prefix to make sure you are working in the right environment. You can use `deactive` command to exit current virtual environment.
-
-If you want to quit the virtual environment, you can use "Control+C".
+When you see `(venv)` appear in front of your command line prompt, that means the you are in the virtual environment. Always check this prefix to make sure you are working in the right environment. You can use `deactivate` command to exit current virtual environment.
 
 ## Jupyter notebook
 
 Now you can install and enter Jupyter notebook.
 
-Install Jupyter notebook: \(you only need to do this once for every virtual environment\)
+Install Jupyter notebook: **(you only need to do this once for every virtual environment)**
 
-```
-pip3 install jupyter
+```bash
+$ pip3 install jupyter
 ```
 
 Run Jupyter notebook as:
 
-```
-jupyter notebook
+```bash
+$ jupyter notebook
 ```
 
 By default the notebook will be available at [http://localhost:8888/tree](http://localhost:8888/tree)
+
+So, next time when you use your jupyter notebook, you just need to type following commands in your terminal
+
+```bash
+$ source venv/bin/activate
+$ jupyter notebook
+```
 
 ## Runtime troubleshooting guide
 
@@ -53,4 +58,3 @@ You can download this [requirement.txt](https://github.com/hupili/python-for-dat
 ```
 pip install -r requirements.txt
 ```
-

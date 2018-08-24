@@ -39,6 +39,7 @@
     - [Common modules and functions you should know in chapter 2](#common-modules-and-functions-you-should-know-in-chapter-2)
         - [Scipy & Numpy](#scipy--numpy)
             - [Basic functions: Arrays](#basic-functions-arrays)
+            - [About index in data types](#about-index-in-data-types)
         - [String functions (`str.*`)](#string-functions-str)
             - [Common functions](#common-functions)
             - [Python’s classical percent-sign string interpolation](#pythons-classical-percent-sign-string-interpolation)
@@ -453,12 +454,25 @@ numpy.ndarray
 [5, 2, 3]
 >>> b = np.array([[1,2,3],[4,5,6]])    # Create a rank 2 array
 >>> print(b.shape)
-(2, 3)
+(2, 3) #the first number means how many elements in this array, in this case, this array has two elements - two lists. The second number means how many sub-elements in each elements. In this case, there are 3 values in each list. So, it's like a layer nesting.
 >>> print(b[0, 0], b[0, 1], b[1, 0])
-1 2 4
+1 2 4 #you can access values by their index. Similarly, the first number is to index elements in this array, the second number is to index the sub-elements in each elements.
 ```
 
-You can check out more functions in scipy's [tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html)
+#### About index in data types
+
+Simply, `Index` is like the position of one element in the whole list or object, which used to access this element. The index of first element is `0` and increases by integer. The following are examples may help you better understand this.
+
+```
+    String  ‘H     e     l      l      o'
+    Index   [0]   [1]   [2]    [3]    [4]
+    List    ['a', 'b',  'c',   'd',   'e']
+    Index   [0]   [1]   [2]    [3]    [4]
+```
+
+In list ['a', 'b', 'c', 'd', 'e'], list[0]='a', 0 is the index of 'a' in this list, similarly use in array. We will use more in chapter 3 so that you can get more familiar with this issue.
+
+In addition, you can check out more array functions in scipy's [tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html).
 
 ### String functions (`str.*`)
 
@@ -667,19 +681,19 @@ The following are the cost and revenue component in their business plan: (per mo
 
 - Major cost:
   - Content cost `70000` dollars
-  - Other cost like labor cost and server cost is `30000` dollars
+  - Other cost like labor cost is `30000` dollars
   - Server cost: `50000`
 - Revenue:
   - 10% of website monthly **visitors** are expected to become the **subscribers**
   - Subscription fee is `15` dollar/**subscriber** a month
   - Ad revenue = `0.8` dollar/**visitor** a month
 
-Please build a calculator to estimate their revenues, given the number of monthly visitors as an variable `visitor`. Show the net income when `visitor` equals `20000`, `40000` and `60000`, respectively.
+Please build a calculator to estimate their revenues, given the number of monthly visitors as an variable `visitor`. Show the net income when `visitor` equals `40000`, `60000` and `80000`, respectively.
 
 Further challenges:
 
 - Explore how the net income changes when the number of visitors changes
-- Explore how the prameters of content cost, per user subscription fee and per user Ad revenue influences net income.
+- Explore how the parameters of content cost, per user subscription fee and per user Ad revenue influences net income.
 - (optional) Assume a more practical situation. The company invest `50000` in IT infrastructure as fixed assets. The infrastructure can support daily office use and support up to `50000` monthly visitors. When the number of monthly visitors becomes larger than `50000`, the company need to switch to cloud services, in order by by computing powers on demand. The excess amount incurs a cost of `0.001` dollar per user.
 
 **SPOILER**: The reference solution and variations can be found in [Calculate Marketing Objective for Your Media Startup](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/), a blog post from our past students. Note that it uses more complex logics like `if` and `for`, which will be detailed in [Chapter 3](notes-week-03.md).
