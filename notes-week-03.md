@@ -43,6 +43,7 @@
         - [Create a class, the init() function](#create-a-class-the-init-function)
     - [Common coding patterns](#common-coding-patterns)
         - [Representing a dataset](#representing-a-dataset)
+        - [Handled repeated works](#handled-repeated-works)
     - [[O] Python Engeering](#o-python-engeering)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References](#references)
@@ -1022,6 +1023,36 @@ There are several common ways to represent a dataset:
 - Dict-of-dict
   
   This format is seen less frequently but one has no problem understand it. Note that `dict` can be thought of a powerful version of `list`, by assigning index to keys and elements to values. You will find the syntax to refer the same element from original list and this new dict the same. The minor difference is that the keys of `dict` is not ordered but the indices of a `list` are ordered. Without bothering with details, one can convert list into dict with this shortcut: `dict(zip(range(len(mylist)), mylist))`.
+
+### Handled repeated works
+
+As a beginner, the best approach to problem solving is "bottom-up". We will show you a lot of this approach during lectures and class demos. You need to pay attention how the instructor solves a problem, instead of focusing on the final code block that solves the problem. That is, **process is more important than result**. In this quasi text book, we note a common pattern here.
+
+You will meet a lot of repeated works in programming. For example, downloading all the PDFs from a website, add the scores of selected students by 1, change the format of a whole dataset. Saving repeat manual work is one core advantage of programming. However, before you try to touch all the input elements, you need to solve the case for one element. Make sure you test different scenarios and find it work before proceed. Then you can wrap the logics into a function and invoke following pattern:
+
+```python
+def select(element):
+    if condition: # change "condition" to True if you want to select every element
+        return True
+    else:
+        return False
+
+def handle(element):
+    # Do something with element
+    result = ...
+    return result
+
+input_list = [...] # Put the repeated problems into this list
+output_list = [] # output list is empty at the beginning
+
+for element in input_list:
+    if select(input):
+        result = handle(element)
+        output_list.append(result)
+```
+
+`for` loop is your best friend to handle repeated works where the problem size is predefined.
+
 
 
 ## [O] Python Engeering
