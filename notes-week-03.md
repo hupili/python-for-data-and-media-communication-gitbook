@@ -41,7 +41,10 @@
         - [Exception error types](#exception-error-types)
     - [Class and objects](#class-and-objects)
         - [Create a class, the init() function](#create-a-class-the-init-function)
-    - [Challenges](#challenges)
+    - [Common coding patterns](#common-coding-patterns)
+        - [Representing a dataset](#representing-a-dataset)
+    - [[O] Python Engeering](#o-python-engeering)
+    - [Exercises and Challenges](#exercises-and-challenges)
     - [References](#references)
 
 <!-- /TOC -->
@@ -953,7 +956,77 @@ print(acct1.balance)
 Answer: 400
 ```
 
-## Challenges
+## Common coding patterns
+
+### Representing a dataset
+
+A usual dataset can be think of as a table composed of rows and columns. One row is one **data point**/ sample/ response. One column is one **feature**/ variable/ property/ dimension. You may see different terms from different literature and problem domain. In our discussion the **strong** term will be used but other terms are also used interchangeably sometimes, especially when discussing with external references.
+
+There are several common ways to represent a dataset:
+
+- List-of-list/ 2D array/ Matrix
+
+  ```python
+  dataset = [
+      [f_11, f_12, ... f_1m], # 1st data point
+      [f_21, f_22, ... f_2m], # 2nd data point
+      ...
+      [f_n1, f_n2, ... f_nm]  # nth data point
+  ]
+  ```
+
+  One advantage of this notation is its compact representation of a lot of data. Another advantage is its natural fit into scientific computation, especially machine learning routines, because many such routines rely on a matrix  structure. The disadvantage is the lack of "variable names", or "headers" in a table representation. You need to maintain such information outside this matrix structure.
+  
+- List-of-dict/ list of records/ records
+
+  ```python
+  dataset = [
+      {
+          "feature1": value_11,
+          "feature2": value_12,
+          ...
+          "featurem": value_1m,
+      }, # 1st data point
+      {
+          "feature1": value_21,
+          "feature2": value_22,
+          ...
+          "featurem": value_2m,
+      }, # 2nd data point
+      ...
+      {
+          "feature1": value_n1,
+          "feature2": value_n2,
+          ...
+          "featurem": value_nm,
+      }, # nth data point
+  ]
+  ```
+
+  One can readily see the advantage of this representation compared with the previous one is its high readability. Although Python's grammar is flexible, there are certain meaning implied by list and dict. For a **list**, the elements should be of the same nature. Or say, they are the same category of objects. You can put "apple" and "orange" in the same list if the list intends to hold a series of fruits. A counter-example, which looks unnatural, is `["apple", "orange", 2018, "Sept", "University"]`. As to a **dict**, the keys are usually of different nature. One key usually describes certain aspect of an element; All the keys when put together completely describe one element. Once you understand the nature of list and dict, you feel the second way of dataset representation straightforward: Every element of outer layer list is one data point; Every key of inner dict is one variable; The value of variable `v` and data point `i` can be referenced by `dataset[i]["v"]`.
+
+  This way of data representation is most commonly found in many data APIs (See chapter 4). The advantage is that we do not need another structure to store table header. However, this is also the disadvantage -- the table header/ dict keys are repeated as many times as number of data points, making data transfer rather inefficient.
+
+- Dict-of-list/ series/ column-first representation
+
+  ```python
+  dataset = {
+      "feature1": [value_11, value_12, ... value_1m],
+      "feature2": [value_21, value_22, ... value_2m],
+      ...
+      "featurem": [value_n1, value_n2, ... value_nm],
+  }
+  ```
+
+  This representation gives a good trade-off between the previous two representations. The format also has a famous name called "column-based representation", which is common in numeric computation software/ statistics software like MATLAB and R. You will also find this representation an easy fit into visualisation libraries. For example, `matplotlib.pyplot.plot(dataset["feature1"], dataset["feature2"])` works smoothly.
+- Dict-of-dict
+  
+  This format is seen less frequently but one has no problem understand it. Note that `dict` can be thought of a powerful version of `list`, by assigning index to keys and elements to values. You will find the syntax to refer the same element from original list and this new dict the same. The minor difference is that the keys of `dict` is not ordered but the indices of a `list` are ordered. Without bothering with details, one can convert list into dict with this shortcut: `dict(zip(range(len(mylist)), mylist))`.
+
+
+## [O] Python Engeering
+
+## Exercises and Challenges
 
 * Distances among cities:
     1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.
