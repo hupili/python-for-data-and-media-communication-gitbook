@@ -500,8 +500,10 @@ else: # number_of_users > 50000
 print (cost)
 ```
 
+Output:
+
 ```
-Answer: 15000.0
+15000.0
 ```
 
 > Example 15: If there is two charge plans when the number of users is more than 50,000.
@@ -522,8 +524,10 @@ else: # number_of_users > 100000
 print(cost)
 ```
 
+Output:
+
 ```
-Answer:21000.0
+21000.0
 ```
 
 ### Python loop
@@ -563,8 +567,9 @@ while i < 6:
     print(i)
 ```
 
+Output:
+
 ```
-Answer:
 2
 3
 4
@@ -583,8 +588,9 @@ while i < 6:
         break #we will talk this later
 ```
 
+Output:
+
 ```
-Answer:
 1
 2
 ```
@@ -611,8 +617,19 @@ for i in range(1,11):
     print(i)
 ```
 
+Output:
+
 ```
-Answer: '1,2,3,4,5,6,7,8,9,10'
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 **Note**: The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default).`(1,11)` means values from 1 to 10 (not including 11)
