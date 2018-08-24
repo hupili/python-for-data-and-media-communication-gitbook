@@ -44,6 +44,7 @@
     - [Common coding patterns](#common-coding-patterns)
         - [Representing a dataset](#representing-a-dataset)
         - [Handled repeated works](#handled-repeated-works)
+        - [Infinite loop (daemon)](#infinite-loop-daemon)
     - [[O] Python Engeering](#o-python-engeering)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References](#references)
@@ -1028,7 +1029,7 @@ There are several common ways to represent a dataset:
 
 As a beginner, the best approach to problem solving is "bottom-up". We will show you a lot of this approach during lectures and class demos. You need to pay attention how the instructor solves a problem, instead of focusing on the final code block that solves the problem. That is, **process is more important than result**. In this quasi text book, we note a common pattern here.
 
-You will meet a lot of repeated works in programming. For example, downloading all the PDFs from a website, add the scores of selected students by 1, change the format of a whole dataset. Saving repeat manual work is one core advantage of programming. However, before you try to touch all the input elements, you need to solve the case for one element. Make sure you test different scenarios and find it work before proceed. Then you can wrap the logics into a function and invoke following pattern:
+You will meet a lot of repeated works in programming. For example, downloading all the PDFs from a website, add the scores of selected students by 1, change the format of a whole dataset. Saving repeat manual work is one core advantage of programming. However, before you try to touch all the input elements, you need to solve the case for one element. Make sure you test different scenarios and find it work before proceed. Then you can wrap the logics into a function and invoke following pattern.
 
 ```python
 def select(element):
@@ -1053,7 +1054,16 @@ for element in input_list:
 
 `for` loop is your best friend to handle repeated works where the problem size is predefined.
 
+### Infinite loop (daemon)
 
+Sometimes, you want your program to work infinitely: wait for certain input; take action and wait again. This is a common pattern in system design. For example, a web server constantly takes "HTTP request" from client software (e.g. web browser) and send "HTTP response" to the client. You don't want the server to stop just after serving one HTTP request. Similarly, imaging you are going to write a Python script that monitors No. 8 Typhoon signal and post a Twitter when [HKO](http://www.hko.gov.hk/detail.htm) issues the warning (Ah! "Artificial Intelligence"! Robot!). You don't want the program to exit after posting one message. Instead you want to program to keep working until you terminate it/ interrupt it. A common pattern is as follows.
+
+```python
+while True:
+    # Do something useful here
+    ...
+    time.sleep(1000) # to avoid too frequent poll of external resources
+```
 
 ## [O] Python Engeering
 
