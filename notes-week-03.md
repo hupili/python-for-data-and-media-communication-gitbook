@@ -327,7 +327,7 @@ vowels descending :  ['u', 'o', 'i', 'e', 'a']
 
 ### Dict {}
 
-A dictionary is a collection which is disordered, changeable and indexed. In Python dictionaries are written with curly brackets`{}`, and they have keys and values, like `d = {key1 : value1, key2 : value2 }`.
+A dictionary is a collection which is disordered, changeable and indexed. In Python dictionaries are written with curly brackets`{}`, and they have keys and values, like `d = {key1 : value1, key2 : value2}`.
 
 Example 9:
 
@@ -641,8 +641,10 @@ for i in range(1,11):
     print(i**2) #or i*i
 ```
 
+Output:
+
 ```
-Answer: '1,4,9,16,25,36,49,64,81,100'
+'1,4,9,16,25,36,49,64,81,100'
 ```
 
 ##### Use for loop to calculate
@@ -656,8 +658,10 @@ total = 0
 print (total)
 ```
 
+Output:
+
 ```
-Answer: 5050
+5050
 ```
 
 ##### Use for and if statement together
@@ -694,8 +698,10 @@ if Net_Income < 0:
     print('Net_Income=', Net_Income) #the max value return by your in
 ```
 
+Output:
+
 ```
-Answer: subscribers= 40000
+subscribers= 40000
 ```
 
 ### Break and Continue statement
@@ -715,8 +721,9 @@ while i < 9:
         i = i + 1
 ```
 
+Output:
+
 ```
-Answer:
 1
 2
 3
@@ -739,8 +746,9 @@ while i < 9:
     print(i)
 ```
 
+Output:
+
 ```
-Answer:
 2
 3
 4 #number 5 is missing, while the loop continues
@@ -793,8 +801,10 @@ def calculate_profit(number_of_users):
 print(calculate_profit(100))
 ```
 
+Output:
+
 ```
-Answer: -9990.0
+-9990.0
 ```
 
 The advantage of using "def" is that you can recall the function again and again. Just change the parameter. For example:
@@ -806,8 +816,9 @@ print(calculate_profit(10000))
 print(calculate_profit(100000))
 ```
 
+Output:
+
 ```
-Answers:
 -9990.0
 -9900.0
 -9000.0
@@ -866,7 +877,7 @@ else:
 
 There are several common exception errors:
 
-* IOError. If the file cannot be opened.
+* IOError. If the file cannot be opened
 
 * ImportError. If python cannot find the module
 
@@ -893,8 +904,10 @@ a = Animal("dog")  #give a new object, an animal named dog
 print(a.name)
 ```
 
+Output:
+
 ```
-Answer: dog
+dog
 ```
 
 Example 29: Create a person class and give new object
@@ -909,8 +922,10 @@ class Person():  #build a person class
 str(Person('xyc',18)) #call the function by passing parameters in the function
 ```
 
+Output:
+
 ```
-Answer: My name is xyc, and I'm 18 years old
+My name is xyc, and I'm 18 years old
 ```
 
 **Note:** In the example above,
@@ -971,8 +986,10 @@ acct1.withdraw(100)
 print(acct1.balance)
 ```
 
+Output
+
 ```
-Answer: 400
+400
 ```
 
 ## Common coding patterns
@@ -994,7 +1011,7 @@ There are several common ways to represent a dataset:
   ]
   ```
 
-  One advantage of this notation is its compact representation of a lot of data. Another advantage is its natural fit into scientific computation, especially machine learning routines, because many such routines rely on a matrix  structure. The disadvantage is the lack of "variable names", or "headers" in a table representation. You need to maintain such information outside this matrix structure.
+  One advantage of this notation is its compact representation of a lot of data. Another advantage is its natural fit into scientific computation, especially machine learning routines, because many such routines rely on a matrix structure. The disadvantage is the lack of "variable names", or "headers" in a table representation. You need to maintain such information outside this matrix structure.
   
 - List-of-dict/ list of records/ records
 
