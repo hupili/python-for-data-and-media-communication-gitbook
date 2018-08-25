@@ -45,12 +45,14 @@
         - [Representing a dataset](#representing-a-dataset)
         - [Handled repeated works](#handled-repeated-works)
         - [Infinite loop (daemon)](#infinite-loop-daemon)
-    - [[O] Python Engeering](#o-python-engeering)
+    - [[O] Python Engineering](#o-python-engineering)
         - [Write code in professional style](#write-code-in-professional-style)
         - [File structure for a project](#file-structure-for-a-project)
         - [Object Oriented Programming](#object-oriented-programming)
         - [Inside a Python module](#inside-a-python-module)
     - [Exercises and Challenges](#exercises-and-challenges)
+        - [Distances among cities](#distances-among-cities)
+        - [Divide HW1 groups randomly: (case contribution)](#divide-hw1-groups-randomly-case-contribution)
     - [References](#references)
 
 <!-- /TOC -->
@@ -1129,7 +1131,7 @@ Once you execute this script, a lot of messages will be output to the screen non
 - You can also terminate a for-loop using the same method.
 - You can also terminate a function call that does not respond after a while using the same method.
 
-## [O] Python Engeering
+## [O] Python Engineering
 
 *This section is under development and it is optional*. Interested readers can do some self study based the following pointers.
 
@@ -1155,16 +1157,32 @@ Python community has this famous style guide called [PEP8](https://www.python.or
 
 ## Exercises and Challenges
 
-* Distances among cities:
-    1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance. "Great-circle distance" is the academic name you use to search for the formula.
-    2. Use list and for loop to handle multiple cities  
-    3. Use function to increase the reusability
+### Distances among cities
 
-* Divide HW1 groups randomly: (case contribution).
-    1. Get the list of student IDs from the lecturer.
-    2. Generate the grouping randomly
+1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance.
+2. You can find "Great-circle distance" formula [here](https://en.wikipedia.org/wiki/Great-circle_distance).
+3. Use list and for loop to handle multiple cities.
+4. Use function to increase the reusability.
+5. Modules you need: [math](https://docs.python.org/3/library/math.html), you may need to use trigonometric functions.
 
-* Solve the "media business model" calculator.
+### Divide HW1 groups randomly: (case contribution)
+
+1. You can get the students' Ids and cases from the file `chapter3-exercise.csv` in the `assets` folder.
+2. Generate the grouping randomly, each team has 5 students and need be randomly distributed one case from 10 over all.
+3. The Output need to seem like this:
+
+```
+Group 1
+Student ID1
+Student ID2
+Student ID3
+Student ID4
+Student ID5
+Assigned case n
+===============
+Group 2
+...
+```
 
 ## References
 
