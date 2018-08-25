@@ -979,7 +979,7 @@ Answer: 400
 
 ### Representing a dataset
 
-A usual dataset can be think of as a table composed of rows and columns. One row is one **data point**/ sample/ response. One column is one **feature**/ variable/ property/ dimension. You may see different terms from different literature and problem domain. In our discussion the **strong** term will be used but other terms are also used interchangeably sometimes, especially when discussing with external references.
+A usual dataset can be think of as a table composed of rows and columns. One row is one **data point**/ sample/ response/ observation/ record/ entry/ object. One column is one **feature**/ variable/ property/ dimension. You may see different terms from different literature and problem domain. In our discussion the **strong** term will be used but other terms are also used interchangeably sometimes, especially when discussing with external references.
 
 There are several common ways to represent a dataset:
 
