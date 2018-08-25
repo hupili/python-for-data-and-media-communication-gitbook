@@ -24,15 +24,16 @@ pip3 install --user lxml
 ### Tips of usage:
 
 ##### Q1: How to quit the last steps's situation?
-![](/assets/Screen Shot 2018-02-13 at 5.40.27 pm.png)
+
+![](assets/to-do-uncategorized-screenshots/Screen-Shot-2018-02-13-at-5.40.27-pm.png)
 
 A:
 The answer is in the picture: control+C. \( Pay attention to the text. \)Then you will get the following picture.Please input `y` in 5 seconds.
 
-![](/assets/Screen Shot 2018-02-13 at 1.06.35 pm.png)
+![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.06.35 pm.png)
 
 ##### Q2:How to quit from virtual environment?
-![](/assets/Screen Shot 2018-02-13 at 1.09.51 pm.png)
+![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.09.51 pm.png)
 A: input `deactivate`
 
 ##### Tab & type & help & print
@@ -62,7 +63,7 @@ str
 
 
 ### Open a new file
-![](/assets/Screen Shot 2018-02-13 at 1.17.50 pm.png)
+![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.17.50 pm.png)
 * `shift+return` to run the code.
 
 
@@ -76,7 +77,7 @@ str
 4. Extract page-level features
 
 ### Html JS css
-![](/assets/Screen Shot 2018-02-13 at 1.12.33 pm.png)
+![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.12.33 pm.png)
 
 * HTML is a machine language of web page. Writing something in HTML means to create a web page.It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag.
 * css and JS are other languages, which is used to describe the style of the web page,such as the characters' style and colour.
@@ -85,8 +86,8 @@ str
 
 * It is suggested to use 'Chrome' as our browser.
 * In Chrome, `option+command+i` to open the Chrome develop console.
-* Click the upper left corner of the console,![](/assets/Screen Shot 2018-02-13 at 1.15.32 pm.png)and you will find that by moving the mouse in the web, you can see the part in console.
-* eg:![](/assets/Screen Shot 2018-02-13 at 3.41.56 pm.png)
+* Click the upper left corner of the console,![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.15.32 pm.png)and you will find that by moving the mouse in the web, you can see the part in console.
+* eg:![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 3.41.56 pm.png)
 
 
 # 3.Scraper
@@ -155,12 +156,12 @@ mydate = mypage.find('time').text.strip()
 ### Get author \(Important\)
 ##### Try 1:fail
 `myauthor = mypage.find('span')`
-![](/assets/Screen Shot 2018-02-13 at 5.44.54 pm.png)
+![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 5.44.54 pm.png)
 
 * It is not what we want, as there are too many 'span'.So check how many span there, and find the difference between those tags. `command+f` to open the search bar in console,and input 'span'.You can see, there are more than 2 'span'.
 
 `myspans = mypage.find_all('span')`
-![](/assets/Screen Shot 2018-02-13 at 5.48.09 pm.png)
+![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 5.48.09 pm.png)
 * `find_all` means output all the items it finds.
 * `find` means only output the first one.
 
@@ -170,7 +171,7 @@ mydate = mypage.find('time').text.strip()
 
 ##### Try 2:succeed to find all the authors
 
-> ![](/assets/Screen Shot 2018-02-13 at 2.41.09 pm.png)
+> ![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 2.41.09 pm.png)
 
 * In the HTML, we can find that authors upper tag is 'td'. But there are too many td. And it is difficult to be specific.
 
