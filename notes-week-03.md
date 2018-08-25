@@ -46,6 +46,7 @@
         - [Handled repeated works](#handled-repeated-works)
         - [Infinite loop (daemon)](#infinite-loop-daemon)
     - [[O] Python Engeering](#o-python-engeering)
+        - [Writing professional code](#writing-professional-code)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References](#references)
 
@@ -1109,6 +1110,12 @@ Once you execute this script, a lot of messages will be output to the screen non
 - You can also terminate a function call that does not respond after a while using the same method.
 
 ## [O] Python Engeering
+
+### Writing professional code
+
+"Style Guide" is a kind of popular documentation in programming world. There are usually multiple ways to do one thing in programming world but some ways are apparently better. Writing code in a common style helps the readers to quickly understand the content and is less error prone. Python's traditional philosophy is that *there is one and only one way to do the right thing*.
+
+Python community has this famous style guide called [PEP8](https://www.python.org/dev/peps/pep-0008/). You can automate this process by using the `pep8` executable (can be installed via `pip`). Another common reference is the [Google Python style guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md)
 
 ## Exercises and Challenges
 
