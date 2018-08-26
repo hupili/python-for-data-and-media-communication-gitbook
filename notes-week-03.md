@@ -1008,7 +1008,7 @@ There are several common exception errors:
 * `ValueError`. Raised when a operation or function receives an argument that has the right type but an inappropriate value
 * `KeyboardInterrupt`. Raised when the user hits the interrupt key (normally Control-C or Delete)
 
-For the full list, please see the official documentation on [exceptions](https://docs.python.org/3/library/exceptions.html).
+Note that "Exception" is in fact `class` in Python. Python has many built-in exceptions that are groupped in a hierachy known as inheritance/ derivation. The benefit is that, the outmost layer of codes can catch a broader exception while inner layer of codes can raise a narrower/ more specific exception at the same time. For the full list of built-in exceptions, please see the official documentation on [exceptions](https://docs.python.org/3/library/exceptions.html).
 
 ## Common coding patterns
 
