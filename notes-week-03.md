@@ -14,11 +14,11 @@
         - [Int comparison](#int-comparison)
     - [Composite data types](#composite-data-types)
         - [List []](#list-)
-            - [Common features](#common-features)
+            - [Common features of list](#common-features-of-list)
             - [List functions](#list-functions)
             - [List methods](#list-methods)
         - [Dict {}](#dict-)
-            - [Common features](#common-features-1)
+            - [Common features of dict](#common-features-of-dict)
             - [Dict functions](#dict-functions)
             - [Dict methods](#dict-methods)
         - [Tuple ()](#tuple-)
@@ -34,16 +34,17 @@
         - [Break and Continue statement](#break-and-continue-statement)
             - [Break statement](#break-statement)
             - [Continue statement](#continue-statement)
-        - [Def function](#def-function)
+        - [Define a custom function](#define-a-custom-function)
     - [Errors and Exceptions](#errors-and-exceptions)
         - [Try and except](#try-and-except)
         - [Raising errors](#raising-errors)
         - [Exception error types](#exception-error-types)
     - [Class and objects](#class-and-objects)
         - [Create a class, the init() function](#create-a-class-the-init-function)
+        - [[O] Class inheritance](#o-class-inheritance)
     - [Common coding patterns](#common-coding-patterns)
         - [Representing a dataset](#representing-a-dataset)
-        - [Handled repeated works](#handled-repeated-works)
+        - [Handle repeated works](#handle-repeated-works)
         - [Infinite loop (daemon)](#infinite-loop-daemon)
     - [[O] Python Engineering](#o-python-engineering)
         - [Write code in professional style](#write-code-in-professional-style)
@@ -52,6 +53,7 @@
         - [Inside a Python module](#inside-a-python-module)
     - [Exercises and Challenges](#exercises-and-challenges)
         - [Distances among cities](#distances-among-cities)
+            - [Extended exercise of geo distance](#extended-exercise-of-geo-distance)
         - [Divide HW1 groups randomly: (case contribution)](#divide-hw1-groups-randomly-case-contribution)
     - [References](#references)
 
@@ -75,8 +77,8 @@ In the Terminal of your computer, use `help` for any instruction for using Pytho
 **Note**
 
 * Type 'q' to quit help;
-* Type 'j' to view up;
-* Type 'k' to view down
+* Type 'j' to scroll down;
+* Type 'k' to scroll up.
 
 Example 1: If you want to know how to use 'numpy'. Type `help(numpy)` to learn more, you can get the information as follow:
 
@@ -200,7 +202,7 @@ Example 5:
 >>> a = [0, 6.6, 'python']
 ```
 
-#### Common features
+#### Common features of list
 
 1. Each element in the sequence is ordered and can be indexed. The first index is 0 and the second index is 1
 2. Lists can be added and multiplied
@@ -347,7 +349,7 @@ Example 9:
 {'apple': 'green', 'banana': 'yellow', 'cherry': 'red'}
 ```
 
-#### Common features
+#### Common features of dict
 
 1. One can Access the values in the dict by `key`
 2. Change dictionary by adding/deleting/updating key and values
@@ -517,7 +519,7 @@ Output:
 >2. when the number of user ≥100,000, the cost=10,000 + 0.1×(100,000 -50,000) + 0.2 * (number_of_users - 100,000).
 >3. The actual number of users we have now is 120,000. 
 
-The if-else statement will be as fellow:
+The if-else statement will be as follows:
 
 ```python
 number_of_users = 120000
@@ -625,7 +627,7 @@ for i in range(1,11):
 
 Output:
 
-```
+```text
 1
 2
 3
@@ -653,6 +655,9 @@ Output:
 '1,4,9,16,25,36,49,64,81,100'
 ```
 
+<!-- TODO: check the above output -->
+
+
 ##### Use for loop to calculate
 
 Example 20: Calculate the number of pulsing from 1 to 100.
@@ -661,7 +666,7 @@ Example 20: Calculate the number of pulsing from 1 to 100.
 total = 0
     for i in range(1, 101): # numbers which are >=1 and <101
         total = total + i
-print (total)
+print(total)
 ```
 
 Output:
@@ -764,7 +769,7 @@ Output:
 9
 ```
 
-### Def function
+### Define a custom function
 
 A function is a block of code which only runs when it is called. You can call this function by passing parameters into a function. Then the function can return data as a result.
 
@@ -776,7 +781,7 @@ def function_name(parameters): #define function
 function_name("parameter1") #call the function
 ```
 
-**How `def` function works**
+**How `def` works**
 
 * Keyword `def` (means definite) marks the start of function header.
 * A function name to uniquely identify it.
@@ -883,17 +888,16 @@ else:
 
 There are several common exception errors:
 
-* IOError. If the file cannot be opened
+* `IOError`. If the file cannot be opened
+* `ImportError`. If python cannot find the module
+* `ValueError`. Raised when a operation or function receives an argument that has the right type but an inappropriate value
+* `KeyboardInterrupt`. Raised when the user hits the interrupt key (normally Control-C or Delete)
 
-* ImportError. If python cannot find the module
-
-* ValueError. Raised when a operation or function receives an argument that has the right type but an inappropriate value
-
-* KeyboardInterrupt. Raised when the user hits the interrupt key (normally Control-C or Delete)
+For the full list, please see the official documentation on [exceptions](https://docs.python.org/3/library/exceptions.html).
 
 ## Class and objects
 
-Class is a collection used to describe objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class.
+Class is an abstraction that describes certain objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class. The process creating an object from a class is called "instantiation" and is usually invoked by the "construct function" of a class. In Python, this function is called `__init__()`. The higher level concept is called "[Object Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)", which appears in nearly all modern programming languages. Think of it as a way to model our real world. We will discuss OOP a bit later. This section is a quik peek into the basics -- `class` and `object`.
 
 ### Create a class, the init() function
 
@@ -998,6 +1002,12 @@ Output
 400
 ```
 
+### [O] Class inheritance
+
+"Class" is more than a group of common features, i.e. member variable and member functions. The real power of class comes when you get into the OOP world. The first step is to understand [class inheritance](https://docs.python.org/3/tutorial/classes.html#inheritance).
+
+Now that you have the keyword, please try to search online to understand the syntax and grammar. Then follow some concrete examples to see how class inheritance can be used in real project. Our class does not emphasize OOP, so details are omitted here. Our core objective is to master the basics of Python and use it to collect, analyse and visualise data, in order to tell good stories. Most of the programs you will need to write during the class look "flat", i.e. we do not expect many layers of modules/ functions/ classes. However, when you build a large project, the OOP design patterns can make one more efficient, less error prone and easier to collaborate.
+
 ## Common coding patterns
 
 ### Representing a dataset
@@ -1065,7 +1075,7 @@ There are several common ways to represent a dataset:
   
   This format is seen less frequently but one has no problem understand it. Note that `dict` can be thought of a powerful version of `list`, by assigning index to keys and elements to values. You will find the syntax to refer the same element from original list and this new dict the same. The minor difference is that the keys of `dict` is not ordered but the indices of a `list` are ordered. Without bothering with details, one can convert list into dict with this shortcut: `dict(zip(range(len(mylist)), mylist))`.
 
-### Handled repeated works
+### Handle repeated works
 
 As a beginner, the best approach to problem solving is "bottom-up". We will show you a lot of this approach during lectures and class demos. You need to pay attention how the instructor solves a problem, instead of focusing on the final code block that solves the problem. That is, **process is more important than result**. In this quasi text book, we note a common pattern here.
 
@@ -1165,9 +1175,13 @@ Python community has this famous style guide called [PEP8](https://www.python.or
 4. Use function to increase the reusability.
 5. Modules you need: [math](https://docs.python.org/3/library/math.html), you may need to use trigonometric functions.
 
+#### Extended exercise of geo distance
+
+There is a package called `geopy`. It can automatically search the geo-locations in terms of longitude and latitude based on the location names. Further more, it can directly compute the distance between two geolocations, without requiring to write the formula all by one's own.
+
 ### Divide HW1 groups randomly: (case contribution)
 
-1. You can get the students' Ids and cases from the file `chapter3-exercise.csv` in the `assets` folder.
+1. You can get the students' IDs and cases from the file [assets/chapter3-exercise.csv](assets/chapter3-exercise.csv).
 2. Generate the grouping randomly, each team has 5 students and need be randomly distributed one case from 10 over all.
 3. The Output need to seem like this:
 
