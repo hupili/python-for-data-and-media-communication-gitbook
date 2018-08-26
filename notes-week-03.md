@@ -1183,9 +1183,45 @@ There is a package called `geopy`. It can automatically search the geo-locations
 
 1. You can get the students' IDs and cases from the file [assets/chapter3-exercise.csv](assets/chapter3-exercise.csv).
 2. Generate the grouping randomly, each team has 5 students and need be randomly distributed one case from 10 over all.
-3. The Output need to seem like this:
 
+Sample input (part of your initial `.py` script):
+
+```python
+student_list = [
+    (18421111, "case1"),
+    (18421112, "case2"),
+    (18421113, "case3"),
+    (18421114, "case4"),
+    (18421115, "case5"),
+    (18421116, "case6"),
+    18421121,
+    18421122,
+    18421123,
+    18421124,
+    18421125,
+    18421126,
+    18421127,
+    18421128,
+    18421129,
+    18421130,
+    18421131,
+    18421132,
+    18421133,
+    18421134,
+    18421135,
+    18421136,
+    18421137,
+    18421138,
+    18421139,
+    18421140
+    ]
+
+# Write your code here
 ```
+
+Sample output (`print` to the screen):
+
+```text
 Group 1
 Student ID1
 Student ID2
