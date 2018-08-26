@@ -35,17 +35,18 @@
             - [Break statement](#break-statement)
             - [Continue statement](#continue-statement)
         - [Define a custom function](#define-a-custom-function)
+    - [Class and objects](#class-and-objects)
+        - [Create a class, the init() function](#create-a-class-the-init-function)
+        - [[O] Class inheritance](#o-class-inheritance)
     - [Errors and Exceptions](#errors-and-exceptions)
         - [Try and except](#try-and-except)
         - [Raising errors](#raising-errors)
         - [Exception error types](#exception-error-types)
-    - [Class and objects](#class-and-objects)
-        - [Create a class, the init() function](#create-a-class-the-init-function)
-        - [[O] Class inheritance](#o-class-inheritance)
     - [Common coding patterns](#common-coding-patterns)
         - [Representing a dataset](#representing-a-dataset)
         - [Handle repeated works](#handle-repeated-works)
         - [Infinite loop (daemon)](#infinite-loop-daemon)
+        - [if..else; OR try..except](#ifelse-or-tryexcept)
     - [[O] Python Engineering](#o-python-engineering)
         - [Write code in professional style](#write-code-in-professional-style)
         - [File structure for a project](#file-structure-for-a-project)
@@ -836,65 +837,6 @@ Output:
 -5000.0
 ```
 
-## Errors and Exceptions
-
-### Try and except
-
-For most errors, the Python interpreter will issue an exception. In fact, in many cases, we need to control the code that may generate exceptions. In python, error and exception handling allows us to continue our program if an exception occurs.
-
-The try statement works as follows.
-
-1. the try statement between the try and except (keywords) is executed.
-2. If no exception occurs, the except clause is skipped and execution of the try statement is finished.
-3. If an exception occurs during execution of the try clause, and its type matches the exception named after the except keyword, the except clause will be executed, **and the execution continues after the try statement.**
-4. If an exception occurs which does not match the exception named in the except clause, it is passed on to outer try statements; if no handler is found, it is an unhandled exception and execution stops.
-
-Example 25:
-
-```python
-try:
-        print("Hello World")
-except:
-        print("This is an error message!")
-```
-
-Example 26:
-
-```python
-while True:
-    try:
-        x = int(input("Please enter a number: ")) #input a int and non-int to test
-        break
-    except ValueError:
-        print("Oops!  That was no valid number.  Try again...")
-```
-
-### Raising errors
-
-The `raise` statement allows you to force a specified exception to occur. It can be used in following `try` and `if`.
-
-Example 27:
-
-```python
-inputValue = input("please input a int :")
-if type(inputValue)!=type(1): # '!=' means not equal
-    raise ValueError
-else:
-    print inputValue
-#you can input a 2 and 2.2 to test.
-```
-
-### Exception error types
-
-There are several common exception errors:
-
-* `IOError`. If the file cannot be opened
-* `ImportError`. If python cannot find the module
-* `ValueError`. Raised when a operation or function receives an argument that has the right type but an inappropriate value
-* `KeyboardInterrupt`. Raised when the user hits the interrupt key (normally Control-C or Delete)
-
-For the full list, please see the official documentation on [exceptions](https://docs.python.org/3/library/exceptions.html).
-
 ## Class and objects
 
 Class is an abstraction that describes certain objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class. The process creating an object from a class is called "instantiation" and is usually invoked by the "construct function" of a class. In Python, this function is called `__init__()`. The higher level concept is called "[Object Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)", which appears in nearly all modern programming languages. Think of it as a way to model our real world. We will discuss OOP a bit later. This section is a quik peek into the basics -- `class` and `object`.
@@ -1007,6 +949,66 @@ Output
 "Class" is more than a group of common features, i.e. member variable and member functions. The real power of class comes when you get into the OOP world. The first step is to understand [class inheritance](https://docs.python.org/3/tutorial/classes.html#inheritance).
 
 Now that you have the keyword, please try to search online to understand the syntax and grammar. Then follow some concrete examples to see how class inheritance can be used in real project. Our class does not emphasize OOP, so details are omitted here. Our core objective is to master the basics of Python and use it to collect, analyse and visualise data, in order to tell good stories. Most of the programs you will need to write during the class look "flat", i.e. we do not expect many layers of modules/ functions/ classes. However, when you build a large project, the OOP design patterns can make one more efficient, less error prone and easier to collaborate.
+
+
+## Errors and Exceptions
+
+### Try and except
+
+For most errors, the Python interpreter will issue an exception. In fact, in many cases, we need to control the code that may generate exceptions. In python, error and exception handling allows us to continue our program if an exception occurs.
+
+The try statement works as follows.
+
+1. the try statement between the try and except (keywords) is executed.
+2. If no exception occurs, the except clause is skipped and execution of the try statement is finished.
+3. If an exception occurs during execution of the try clause, and its type matches the exception named after the except keyword, the except clause will be executed, **and the execution continues after the try statement.**
+4. If an exception occurs which does not match the exception named in the except clause, it is passed on to outer try statements; if no handler is found, it is an unhandled exception and execution stops.
+
+Example 25:
+
+```python
+try:
+        print("Hello World")
+except:
+        print("This is an error message!")
+```
+
+Example 26:
+
+```python
+while True:
+    try:
+        x = int(input("Please enter a number: ")) #input a int and non-int to test
+        break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
+```
+
+### Raising errors
+
+The `raise` statement allows you to force a specified exception to occur. It can be used in following `try` and `if`.
+
+Example 27:
+
+```python
+inputValue = input("please input a int :")
+if type(inputValue)!=type(1): # '!=' means not equal
+    raise ValueError
+else:
+    print inputValue
+#you can input a 2 and 2.2 to test.
+```
+
+### Exception error types
+
+There are several common exception errors:
+
+* `IOError`. If the file cannot be opened
+* `ImportError`. If python cannot find the module
+* `ValueError`. Raised when a operation or function receives an argument that has the right type but an inappropriate value
+* `KeyboardInterrupt`. Raised when the user hits the interrupt key (normally Control-C or Delete)
+
+For the full list, please see the official documentation on [exceptions](https://docs.python.org/3/library/exceptions.html).
 
 ## Common coding patterns
 
@@ -1125,7 +1127,7 @@ import time
 i = 0
 while True:
     print('Entering a new round of loop')
-    
+
     # Do something useful here
     print('Working hard! This is the %d-th time' % i)
     ...
@@ -1140,6 +1142,34 @@ Once you execute this script, a lot of messages will be output to the screen non
 - It is a convention for shell environment, so you can also terminate other Unix/ Linux commands in this way.
 - You can also terminate a for-loop using the same method.
 - You can also terminate a function call that does not respond after a while using the same method.
+
+### if..else; OR try..except
+
+Consider a common problem in programming: given number of students as `n` and number of books as `m`, calculate how many books each student can get. The answer seems straightforward: `m / n`.
+
+However, there is a glitch: `n` can be `0` and the mathematical meanining of division is undefined in this case. We need to determine whether `n` is equal to `0` before the calculation. If so, we simply output a warning message like "can not divide books among 0 students". Here are two ways to implement this:
+
+if..else pattern:
+
+```python
+if n > 0:
+    result = m / n
+    print(result)
+else:
+    print("can not divide books among 0 students")
+```
+
+try..except pattern:
+
+```python
+try:
+    result = m / n
+    print(result)
+except ZeroDivisionError:
+    print("can not divide books among 0 students")
+```
+
+Some advocates of `try..except` in Python community tend to abuse `try` in all places where `if` was used. The code is usually shorter with the help of `try..except` structure, especially when you are in a large project with many layers of function calls. The downside is that, it is difficult to find which `except` finally handles the error, because 1) `except` selects certain `Exception` it is interested in; 2) `except` can further `raise` the `Exception` if it can not handle it. In order to make the error handling explicit, you resort to the `if..else` pattern but tend to write longer ("verbose" in programming jargon) codes, especially when there are many layeres of function calls.
 
 ## [O] Python Engineering
 
