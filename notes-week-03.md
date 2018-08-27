@@ -58,6 +58,7 @@
         - [Distances among cities](#distances-among-cities)
             - [Extended exercise of geo distance](#extended-exercise-of-geo-distance)
         - [Divide HW1 groups randomly: (case contribution)](#divide-hw1-groups-randomly-case-contribution)
+            - [Hint for group assignment challenge](#hint-for-group-assignment-challenge)
     - [References](#references)
 
 <!-- /TOC -->
@@ -1312,6 +1313,15 @@ Assigned case n
 Group 2
 ...
 ```
+
+#### Hint for group assignment challenge
+
+Following hints can help you think the algorithm but you do not have to use all the hints at the same time:
+
+- Consider a multiple loop
+- `random.shuffle()` or `random.choice()` can be useful
+- This is essentially a "mapping problem" and one powerful data structure designed for this type of problem is `dict`. You can use case as key and `list` of students as value.
+- Always watch out for boundary conditions in programming: does your code still work when the number of students can not be divided by number of cases? Say 10 students, 3 cases.
 
 ## References
 
