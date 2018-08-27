@@ -49,6 +49,7 @@
         - [if..else; OR try..except](#ifelse-or-tryexcept)
     - [[O] Python Engineering](#o-python-engineering)
         - [Write code in professional style](#write-code-in-professional-style)
+        - [A word on syntactical sugar](#a-word-on-syntactical-sugar)
         - [File structure for a project](#file-structure-for-a-project)
         - [Object Oriented Programming](#object-oriented-programming)
         - [Inside a Python module](#inside-a-python-module)
@@ -1180,6 +1181,25 @@ Some advocates of `try..except` in Python community tend to abuse `try` in all p
 "Style Guide" is a kind of popular documentation in programming world. There are usually multiple ways to do one thing in programming world but some ways are apparently better. Writing code in a common style helps the readers to quickly understand the content and is less error prone. Python's traditional philosophy is that *there is one and only one way to do the right thing*.
 
 Python community has this famous style guide called [PEP8](https://www.python.org/dev/peps/pep-0008/). You can automate this process by using the `pep8` executable (can be installed via `pip`). Another common reference is the [Google Python style guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md)
+
+### A word on syntactical sugar
+
+Avoid syntactical sugars like
+
+```python
+b = a if a > 0 else 0
+```
+
+The full and "stupid" format is favoured for beginners. Consider the following style:
+
+```python
+if a > 0:
+    b = a
+else:
+    b = 0
+```
+
+The readability of code is very important. It is a good practice to create less barrier for future readers, of which one may be yourself. 
 
 ### File structure for a project
 
