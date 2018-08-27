@@ -668,8 +668,14 @@ Q: Randomly select a number from 1 to 10
 ```python
 >>> import random
 >>> print(random.randrange(1,11))
-Answer should be one of int numbers in 1 to 10
+5
 ```
+
+where `5` is one random int numbers between 1 and 10. It may be different in your execution.
+
+<!-- TODO: Note how to present random outcome in your notes. Just give examples and say it is random. -->
+
+<!-- TODO: random.random(); random.randint(); random.choice(); random.shuffle() -->
 
 ## Exercises and Challenges
 
