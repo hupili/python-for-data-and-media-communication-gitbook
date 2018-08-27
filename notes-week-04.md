@@ -52,9 +52,40 @@ Server can send updated data upon request.
 
 ### Installing the Jupyter Notebook
 
-<!-- TODO: Outline the steps here; you don't have to repeat but need to try best to make the text self-contained; experienced readers and read-through and understand what to do; inexperienced readers can rough understand the steps and go to the FAQ page for details. -->
+If it's the first time you use jupyter notebook, you need create a virtual environment first. Please follow the 4 steps to correctly use jupyter notebook.
 
-Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook.
+Step 1: Create virtual environment
+
+```bash
+pyvenv venv
+```
+
+Step 2: Enter virtual environment
+
+```bash
+source venv/bin/activate
+```
+
+Step 3: Install Jupyter notebook
+
+```bash
+pip3 install jupyter
+```
+
+Step 4: Enter Jupyter notebook
+
+```bash
+jupyter notebook
+```
+
+Then, next time, you can just type the following command to open jupyter notebook
+
+```bash
+source venv/bin/activate
+jupyter notebook
+```
+
+For details, Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook.
 ![jupyter notebook example](/assets/jupyter-notebook-example.png)
 
 ### Basic usage
