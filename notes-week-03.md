@@ -511,7 +511,7 @@ print (cost)
 
 Output:
 
-```
+```text
 15000.0
 ```
 
@@ -535,7 +535,7 @@ print(cost)
 
 Output:
 
-```
+```text
 21000.0
 ```
 
@@ -576,9 +576,9 @@ while i < 6:
     print(i)
 ```
 
-Output:
+Output:
 
-```
+```text
 2
 3
 4
@@ -599,7 +599,7 @@ while i < 6:
 
 Output:
 
-```
+```text
 1
 2
 ```
@@ -652,7 +652,7 @@ for i in range(1,11):
 
 Output:
 
-```
+```text
 '1,4,9,16,25,36,49,64,81,100'
 ```
 
@@ -672,7 +672,7 @@ print(total)
 
 Output:
 
-```
+```text
 5050
 ```
 
@@ -712,7 +712,7 @@ if Net_Income < 0:
 
 Output:
 
-```
+```text
 subscribers= 40000
 ```
 
@@ -735,7 +735,7 @@ while i < 9:
 
 Output:
 
-```
+```text
 1
 2
 3
@@ -760,7 +760,7 @@ while i < 9:
 
 Output:
 
-```
+```text
 2
 3
 4 #number 5 is missing, while the loop continues
@@ -813,9 +813,9 @@ def calculate_profit(number_of_users):
 print(calculate_profit(100))
 ```
 
-Output:
+Output:
 
-```
+```text
 -9990.0
 ```
 
@@ -830,7 +830,7 @@ print(calculate_profit(100000))
 
 Output:
 
-```
+```text
 -9990.0
 -9900.0
 -9000.0
@@ -858,7 +858,7 @@ print(a.name)
 
 Output:
 
-```
+```text
 dog
 ```
 
@@ -876,7 +876,7 @@ str(Person('xyc',18)) #call the function by passing parameters in the function
 
 Output:
 
-```
+```text
 My name is xyc, and I'm 18 years old
 ```
 
@@ -938,9 +938,9 @@ acct1.withdraw(100)
 print(acct1.balance)
 ```
 
-Output
+Output:
 
-```
+```text
 400
 ```
 
