@@ -301,9 +301,9 @@ Question: Calculate mortgage based on the following formula: (Assign "r" "P" "n"
 *[formula from wikipedia](https://en.wikipedia.org/wiki/Mortgage_loan), you can check out what each variable represents.*
 
 ```python
->>> r = 0.05,
->>> n = 20,
->>> P = 5000000,
+>>> r = 0.05
+>>> n = 20
+>>> P = 5000000
 >>> A = r*P*(1+r)**n/((1+r)**n-1)
 >>> print("A=",A)
 A= 401212.935953
