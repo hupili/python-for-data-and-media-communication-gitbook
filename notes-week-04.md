@@ -10,6 +10,9 @@
         - [Installing the Jupyter Notebook](#installing-the-jupyter-notebook)
         - [Basic usage](#basic-usage)
     - [File operation](#file-operation)
+        - [write a file](#write-a-file)
+        - [Read a file](#read-a-file)
+        - [Append ()](#append-)
     - [CSV](#csv)
         - [csv.reader](#csvreader)
         - [csv.writer](#csvwriter)
@@ -98,6 +101,52 @@ For details, Please see to our [tutorial](/module-jupyter.md) of how to install 
 6. kernel. `kernel` is a tool for interactive input and output all the things you did from the beginning. By clicking`restart`, you can give a variable another value.
 
 ## File operation
+
+### write a file
+
+Step 1: Create the file
+
+```python
+f = open("test.txt","w")
+```
+
+* You can write different kind of files by changing file name, like `name.txt`,`name.json`,`name.json`. But different file has different ways to write and read.
+* ‘w' means write.
+
+Step 2: Write content
+
+```python
+f.write('python tutorial')
+f.close()
+```
+
+* f.close() to close the writing, this will close the instance of the file test.csv stored.
+
+### Read a file
+
+You also need to open the file first and then read the content.
+
+**Syntax:**
+
+```python
+f = open("test.txt", "r+")
+contents=f.read() #read all
+content =f.read(6) #read first 6 characters
+```
+
+* ‘r' means read. 'r+' means it will read from the beginning, if you want to print certain part of the string, you should use this method.
+
+### Append ()
+
+The append function is used to append to the file instead of overwriting it. To append to an existing file, simply open the file in append mode ("a")
+
+**Syntax:**
+
+```python
+h = open("Hello.txt", "a")
+write("Hello World again")
+h.close
+```
 
 <!-- TODO: how read/ write/ append a file in Python; with "open" and "with"/ "as" syntax -->
 
