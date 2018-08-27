@@ -47,6 +47,7 @@
         - [Handle repeated works](#handle-repeated-works)
         - [Infinite loop (daemon)](#infinite-loop-daemon)
         - [if..else; OR try..except](#ifelse-or-tryexcept)
+        - [Multiple loop](#multiple-loop)
     - [[O] Python Engineering](#o-python-engineering)
         - [Write code in professional style](#write-code-in-professional-style)
         - [A word on syntactical sugar](#a-word-on-syntactical-sugar)
@@ -1171,6 +1172,34 @@ except ZeroDivisionError:
 ```
 
 Some advocates of `try..except` in Python community tend to abuse `try` in all places where `if` was used. The code is usually shorter with the help of `try..except` structure, especially when you are in a large project with many layers of function calls. The downside is that, it is difficult to find which `except` finally handles the error, because 1) `except` selects certain `Exception` it is interested in; 2) `except` can further `raise` the `Exception` if it can not handle it. In order to make the error handling explicit, you resort to the `if..else` pattern but tend to write longer ("verbose" in programming jargon) codes, especially when there are many layeres of function calls.
+
+### Multiple loop
+
+Suppose you are a matchmaker and want every PR firm to get in touch with every journalist. Following constructs are given:
+
+```python
+def touch(PR, journalist):
+    # .... this function simply let a single `PR` firm get in touch with a single `journalist`
+    pass
+
+PR_list = [
+    #...
+]
+
+journalist_list = [
+    #...
+]
+```
+
+Now you can use a multiple loop to call each possible pair of combinations:
+
+```python
+for p in PR_list:
+    for j in journalist_list:
+        touch(p, j)
+```
+
+Python is flexible. Codes are organised into "blocks" seen as a chunk of codes with the same indentation level. We already see expressions that creates code blocks like `for`, `if`, `def` and `with`. Blocks can be nested into larger blocks so that one can built more complex logics.
 
 ## [O] Python Engineering
 
