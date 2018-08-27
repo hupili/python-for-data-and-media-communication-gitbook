@@ -1211,39 +1211,39 @@ There is a package called `geopy`. It can automatically search the geo-locations
 
 ### Divide HW1 groups randomly: (case contribution)
 
-1. You can get the students' IDs and cases from the file [assets/chapter3-exercise.csv](assets/chapter3-exercise.csv).
+1. You can get the students' IDs from the file [chapter3-exercise-student-list.csv](assets/chapter3-exercise-student-list.csv) and cases from the file [chapter3-exercise-case-list.csv](assets/chapter3-exercise-case-list.csv).
 2. Generate the grouping randomly, each team has 5 students and need be randomly distributed one case from 10 over all.
 
 Sample input (part of your initial `.py` script):
 
 ```python
-student_list = [
-    (18421111, "case1"),
-    (18421112, "case2"),
-    (18421113, "case3"),
-    (18421114, "case4"),
-    (18421115, "case5"),
-    (18421116, "case6"),
+    student_list =[
+    18421111,
+    18421112,
+    18421113,
+    18421114,
+    18421115,
+    18421116,
+    18421117,
+    18421118,
+    18421119,
+    18421120,
     18421121,
     18421122,
-    18421123,
-    18421124,
-    18421125,
-    18421126,
-    18421127,
-    18421128,
-    18421129,
-    18421130,
-    18421131,
-    18421132,
-    18421133,
-    18421134,
-    18421135,
-    18421136,
-    18421137,
-    18421138,
-    18421139,
-    18421140
+    ...
+    18421160
+    ]
+    case_list =[
+    'case1 - build a calculator to evaluate your business model',
+    'case2 - build a automatic earthquake robot to broadcast the new earthquake',
+    'case3 - evaluate social media performance of a luxury brand',
+    'case4 - study movie blockbuster \'Dying to Survive\'',
+    'case5 - invest your money like the Internet giant, Tencent',
+    'case6 - where are the 200,000 inferior vaccines flowing?',
+    'case7 - study classics, Who control the discourse power in \'Dream of the Red Chamber\'',
+    'case8 - research about Didi-driver crimes in China',
+    'case9 - \'Me too\' analysis',
+    'case10 - what is hip-hop in china?'
     ]
 
 # Write your code here
@@ -1253,11 +1253,11 @@ Sample output (`print` to the screen):
 
 ```text
 Group 1
-Student ID1
-Student ID2
-Student ID3
-Student ID4
-Student ID5
+Student ID ID1
+Student ID ID2
+Student ID ID3
+Student ID ID4
+Student ID ID5
 Assigned case n
 ===============
 Group 2

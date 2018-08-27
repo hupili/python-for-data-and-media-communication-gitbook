@@ -30,10 +30,11 @@ pip3 install --user lxml
 A:
 The answer is in the picture: control+C. \( Pay attention to the text. \)Then you will get the following picture.Please input `y` in 5 seconds.
 
-![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.06.35 pm.png)
+![](assets/to-do-uncategorized-screenshots/Screen-Shot-2018-02-13-at-1.06.35-pm.png)
 
 ##### Q2:How to quit from virtual environment?
-![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.09.51 pm.png)
+![](assets/to-do-uncategorized-screenshots/Screen-Shot-2018-02-13-at-1.09.51-pm.png)
+
 A: input `deactivate`
 
 ##### Tab & type & help & print
