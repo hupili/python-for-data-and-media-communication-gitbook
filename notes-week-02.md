@@ -45,6 +45,12 @@
             - [Python’s classical percent-sign string interpolation](#pythons-classical-percent-sign-string-interpolation)
             - [Str.format()](#strformat)
         - [Random](#random)
+            - [random.random()](#randomrandom)
+            - [random.randint(a,b)](#randomrandintab)
+            - [random.choice(seq)](#randomchoiceseq)
+            - [random.choices(population, weights=None, *, cum_weights=None, k=1)](#randomchoicespopulation-weightsnone--cum_weightsnone-k1)
+            - [random.shuffle(list)](#randomshufflelist)
+            - [random.sample(population, k)](#randomsamplepopulation-k)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References](#references)
 
@@ -659,23 +665,73 @@ For more `string` operations, you can check out in [python docs](https://docs.py
 
 ### Random
 
-This module implements pseudo-random number generators for various distributions. There are many useful and simple functions, like `random.randrange()`, `random.shuffle()`and  `random.sample()`. You can check out their [documentation](https://docs.python.org/3/library/random.html) to learn the details.
+This module implements pseudo-random number generators for various distributions. There are many useful and simple functions,like `random.shuffle()`,`random.random()`  `random.sample()`. You can check out their [documentation](https://docs.python.org/3/library/random.html) to learn the details.
 
-Examples 16: Test random
+#### random.random()
 
-Q: Randomly select a number from 1 to 10
+Return the next random floating point number in the range [0.0, 1.0).
 
 ```python
 >>> import random
->>> print(random.randrange(1,11))
-5
+>>> random.random()
+0.9897798657708502 #random floating number in [0.0,1.0]
 ```
 
-where `5` is one random int numbers between 1 and 10. It may be different in your execution.
+#### random.randint(a,b)
 
-<!-- TODO: Note how to present random outcome in your notes. Just give examples and say it is random. -->
+Return a random integer N and a <= N <= b. Alias for randrange(a, b+1).
 
-<!-- TODO: random.random(); random.randint(); random.choice(); random.shuffle() -->
+```python
+>>> import random
+>>> list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.randint(2,7)
+5 #one random number >=2 and <=7
+```
+
+#### random.choice(seq)
+
+Return a random element from the non-empty sequence seq. If seq is empty, raises IndexError.
+
+```python
+>>> import random
+>>> list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.choice(list)
+6 #one random number of the list
+```
+
+#### random.choices(population, weights=None, *, cum_weights=None, k=1)
+
+Return a random sub-seq from the non-empty sequence seq.
+
+```python
+>>> import random
+>>> list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.choices(list,k=3)
+[5, 6, 8] #return k random number of the list
+```
+
+#### random.shuffle(list)
+
+Return a list that randomly sort the sequence of all elements.
+
+```python
+>>> import random
+>>> list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.shuffle(list)
+>>> print(list)
+[7, 1, 2, 8, 6, 3, 4, 10, 9, 5] #randomly sort
+```
+
+#### random.sample(population, k)
+
+Return a k length list of unique elements chosen from the population sequence or set. Used for random sampling without replacement.
+
+```python
+>>> import random
+>>> list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.sample(list,4)
+[5, 10, 6, 1] #random sample 4 elements
+```
 
 ## Exercises and Challenges
 
