@@ -16,6 +16,8 @@
     - [CSV](#csv)
         - [csv.reader](#csvreader)
         - [csv.writer](#csvwriter)
+            - [writerow](#writerow)
+            - [writerows](#writerows)
         - [Exercise](#exercise)
     - [JSON](#json)
         - [Json functions](#json-functions)
@@ -148,8 +150,6 @@ write("Hello World again")
 h.close
 ```
 
-<!-- TODO: how read/ write/ append a file in Python; with "open" and "with"/ "as" syntax -->
-
 ## CSV
 
 The CSV (Comma Separated Values) format is the most common import and export format for spreadsheets and databases,just like `xlsx` file, which is used for storing your data and make it easy to read and write. You don't need to pip install csv in terminal. Just import csv before using it.
@@ -201,19 +201,18 @@ Return a writer object responsible for converting the user’s data into delimit
 
 Example 2: How to write a csv?
 
+#### writerow
+
 ```python
-with open('NAME.csv','w',newline='') as f:
+import csv
+with open('name.csv','w',newline='') as f:
     mywriter=csv.writer(f)  #writer is the function to write something
     mywriter.writerow(['Chico','Male'])  #you can just use writer.writerow()
-    mywriter.writerow(['Ri','Female'])  
-    mylist=[['KLN',1742,3344],['Los',1743,5168]]  
-    mywriter.writerows(mylist)  
-```  
+    mywriter.writerow(['Ri','Female']) #write anoter row  
+```
 
-<!-- TODO: show "writerows" in another example. Don't mix the data if they belong to two tables/ datasets. We don't just give examples for technical aspects. We also need to present BCP by default, so the readers get used "the right pattern" in first touch. Or it is hard to correct one's first impression later. -->
-
-The output will be a NAME.csv, whose content is like this:
-![write a csv](/assets/csv-write-a-csv.png)
+Output:
+![write row](/assets/csv-writer-writerow.png)
 
 **Note:**
 
@@ -221,6 +220,54 @@ The output will be a NAME.csv, whose content is like this:
 * `csv.writer()` means to write something in the NAME.csv file.
 * `writerow()` means write one row and then another row. The input should be list type. `writerows()` means they will write row after row until loop all the elements from a list.
 * arguments in `writerow()` should be a list, because `csv` function treat a row as a list, therefore you should use`[]` to wrap up the argument.
+
+#### writerows
+
+**Method 1:**
+
+```python
+import csv
+mylist=[['KLN',1742,3344],['Los',1743,5168]]  
+with open('location.csv','w',newline='') as f:
+    mywriter=csv.writer(f) 
+    mywriter.writerows(mylist) #if there are sub-list in the list
+```
+
+Output:
+![write rows m1](/assets/csv-writer-writerows-m1.png)
+
+**Method 2:**
+
+```python
+import csv
+number_list = [11,22,33,44,55,66]
+with open('number.csv','w',newline='') as f:
+    mywriter=csv.writer(f)
+    mywriter.writerows([[number] for number in number_list]) # equal to a for loop
+```
+
+Output:
+
+![write rows m2](/assets/csv-writer-writerows-m2.png)
+
+**Method 3:**
+
+```python
+student_list = ['Chico','Ri','Ken','Aaliyah','Voodoo']
+with open('student.csv','w',newline='') as f:
+    writer=csv.writer(f)
+    for i in range(0,len(student_list)):
+        writer.writerow(student_list[i])
+```
+
+Output:
+
+![write rows m3](/assets/csv-writer-writerows-m3.png)
+
+I guess you already find what's wrong here. So how to avoid spilt characters of a string into different cells?
+
+Try change `writer=csv.writer(f)` to `writer=csv.writer(f,delimiter=' ')`, see what will happen.
+
 
 <!-- TODO: Note there is no blank line if those bullet points belong to the same list. Observe the different rendered content with/ without blank lines -->
 
