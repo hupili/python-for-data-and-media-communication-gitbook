@@ -160,7 +160,7 @@ The CSV has two basic functions: `reader` and `writer` .objects read and write.
 
 Return a reader object which will iterate over lines in the given CSV file. Each row read from the CSV file is returned as a list of strings. No automatic data type conversion is performed.
 
-Suppose we have a CSV file, `name_list.csv`, you can download it [here](assets/chapter3-example-name_list.csv). The content is as follows:
+Suppose we have a CSV file, `name_list.csv`, you can download it [here](assets/chapter4-example-name_list.csv). The content is as follows:
 
 | name  | id   | gender | location | phone|
 |-------|------|--------|----------|------|
@@ -172,7 +172,7 @@ Example 1: How to read this CSV?
 
 ```python
 import csv
-with open('chapter3-example-name_list.csv','r') as f: # open CSV
+with open('chapter4-example-name_list.csv','r') as f: # open CSV
     rows = csv.reader(f) # read CSV
     for row in rows: #loop every row
         print(row)
@@ -189,9 +189,9 @@ Output:
 
 **Note:**
 
-* `with open(...) as f` means you give f a definition, which stands for opening the file. In the example,`f` can be changed by any words you like. It just means you rename the step of the opening. It's equal to `f = open('chapter3-example-name_list.csv',mode='r')`.
+* `with open(...) as f` means you give f a definition, which stands for opening the file. In the example,`f` can be changed by any words you like. It just means you rename the step of the opening. It's equal to `f = open('chapter4-example-name_list.csv',mode='r')`.
 * `open()` means open the file. If there is no such file, it will create a new one. If there is a existing one, writer function will clear all the previous content and then write the new content.
-* You can see that in the beginning of the output, there is an encoding issue. `U+FEFF` is the byte order mark, or BOM, and is used to tell the difference between big- and little-endian UTF-16 encoding. To omit BOM, just add a encoding line in the `with....open` command, as `with open('chapter3-example-name_list.csv',encoding='utf-8-sig') as f:`. Further reading about this [issue](https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string).
+* You can see that in the beginning of the output, there is an encoding issue. `U+FEFF` is the byte order mark, or BOM, and is used to tell the difference between big- and little-endian UTF-16 encoding. To omit BOM, just add a encoding line in the `with....open` command, as `with open('chapter4-example-name_list.csv',encoding='utf-8-sig') as f:`. Further reading about this [issue](https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string).
 
 ### csv.writer
 
@@ -387,24 +387,22 @@ json.load(fp, cls=None, object_hook=None, parse_float=None, parse_int=None, pars
 
 one thing you need to know - `parse_constant`, if specified, will be called with one of the following strings: '-Infinity', 'Infinity', 'NaN'. This can be used to raise an exception if invalid JSON numbers are encountered.
 
-Example 5:
+Example 5: load a JSON file, you can find it [here](assets/chapter4-json_test.json).
 
 ```python
 import json
-with open("json_test") as f:
+with open("chapter4-json_test.json","r") as f:
      result=json.load(f)
 result
 ```
 
-<!-- TODO: you need to give the content of the file if used in example. -->
+Output:
 
 ```python
-Answer:
 {'dataset': {'test': {'data_set': 'test',
    'layout_x': 'tensor',
    'type': 'mnist'},
-  'train': {'data_set': 'train', 'layout_x': 'tensor', 'type': 'mnist'}},
-}
+  'train': {'data_set': 'train', 'layout_x': 'tensor', 'type': 'mnist'}}}
 ```
 
 If you try to check the JSON decoded data, it is often difficult to know its structure by simple printing, especially when the data is nested deeply or contains a large number of fields. To solve this problem, you can use the `pprint()` function instead of the normal `print()` function. After you understand its structure, you can use `class['key']` to access the items.
