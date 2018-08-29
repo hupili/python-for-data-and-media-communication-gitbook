@@ -10,14 +10,14 @@
         - [Installing the Jupyter Notebook](#installing-the-jupyter-notebook)
         - [Basic usage](#basic-usage)
     - [File operation](#file-operation)
-        - [write a file](#write-a-file)
+        - [Write a file](#write-a-file)
         - [Read a file](#read-a-file)
         - [Append ()](#append-)
     - [CSV](#csv)
         - [csv.reader](#csvreader)
         - [csv.writer](#csvwriter)
-            - [writerow](#writerow)
-            - [writerows](#writerows)
+            - [Write row](#write-row)
+            - [Write rows](#write-rows)
         - [Exercise](#exercise)
     - [JSON](#json)
         - [JSON functions](#json-functions)
@@ -42,7 +42,7 @@
 
 * Learn to use Jupyter notebook. All demos following this week will be conducted in Jupyter notebook.
 * Understand API/ JSON and can retrieve data from online databases (twitter, GitHub, weibo, douban, ...)
-* Understand basic file format like JSON and CSV.
+* Understand basic file format like JSON and CSV.
     * Be able to comfortably navigate through compound structures like {} and [].
     * Be able to comfortably use (multiple layer of) for-loop to re-format data.
     * Be able to use serialisers to handle input/ output to files.
@@ -92,6 +92,7 @@ jupyter notebook
 ```
 
 For details, Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook.
+
 ![jupyter notebook example](/assets/jupyter-notebook-example.png)
 
 ### Basic usage
@@ -105,7 +106,7 @@ For details, Please see to our [tutorial](/module-jupyter.md) of how to install 
 
 ## File operation
 
-### write a file
+### Write a file
 
 Step 1: Create the file
 
@@ -200,7 +201,7 @@ Return a writer object responsible for converting the user’s data into delimit
 
 Example 2: How to write a CSV file?
 
-#### writerow
+#### Write row
 
 ```python
 import csv
@@ -220,7 +221,7 @@ Output:
 * `writerow()` means write one row and then another row. The input should be list type. `writerows()` means they will write row after row until loop all the elements from a list.
 * arguments in `writerow()` should be a list, because `csv` function treat a row as a list, therefore you should use`[]` to wrap up the argument.
 
-#### writerows
+#### Write rows
 
 **Method 1:**
 
@@ -269,7 +270,7 @@ Try change `writer=csv.writer(f)` to `writer=csv.writer(f,delimiter=' ')`, see w
 
 ### Exercise
 
-1. Writerow ['hello','python'] in A1 in the CSV file
+1. Write row ['hello','python'] in A1 in the CSV file
 
 ```python
 import csv
@@ -440,7 +441,7 @@ Output:
 
 #### json.load & json dump
 
-Actually, if we want to convert between json file with python object. We can directly use `json.load` & `json.dump`. The difference between `loads` and `load` or `dumps` and `dump` is that you can get the string by using `-s` method. And sometimes, we need those strings to do other things instead of justing writing into files.
+Actually, if we want to convert between json file with python object. We can directly use `json.load` & `json.dump`. The difference between `loads` and `load` or `dumps` and `dump` is that you can get the string by using `-s` method. And sometimes, we need those strings to do other things instead of justing writing into files.
 
 Example 6: Converting between JSON file and Python object
 
