@@ -229,7 +229,7 @@ Output:
 import csv
 mylist=[['KLN',1742,3344],['Los',1743,5168]]  
 with open('location.csv','w',newline='') as f:
-    mywriter=csv.writer(f) 
+    mywriter=csv.writer(f)
     mywriter.writerows(mylist) #if there are sub-list in the list
 ```
 
@@ -264,12 +264,9 @@ Output:
 
 ![write rows m3](/assets/csv-writer-writerows-m3.png)
 
-I guess you already find what's wrong here. So how to avoid spilt characters of a string into different cells?
+**Note:** I guess you already find what's wrong here.  `writerows()` means write all the rows in one time. It writes every item of the list into a row. Like we said, csv.writerow function treat a row as a list, for which it will regard the first row 'Chico' as a list of items with 5 characters, or 5 strings. Then it is put in 5 cells. So how to avoid spilt characters of a string into different cells?
 
 Try change `writer=csv.writer(f)` to `writer=csv.writer(f,delimiter=' ')`, see what will happen.
-
-
-<!-- TODO: Note there is no blank line if those bullet points belong to the same list. Observe the different rendered content with/ without blank lines -->
 
 ### Exercise
 
@@ -282,18 +279,7 @@ with open('hello.csv','w') as f:
     mywriter.writerow(['hello','python']) #writerow('hello','python') won't work, you should put it in a list. Every item of the list will be write in a cell of the table.
 ```
 
-2. Writerows
-
-```python
-import csv
-with open('test1.csv','w') as f:
-    mywriter=csv.writer(f)
-    mywriter.writerows(['spam','1','22','333'])
-```
-
-![CSV write rows](/assets/csv-write-rows.png)
-
-**Note:** `writerows()` means write all the rows in one time. It writes every item of the list into a row. Like we said, csv.writerow function treat a row as a list, for which it will regard the first row 'spam' as a list of items with 4 characters, or 4 strings. Then it is put in 4 columns. But if there are lists inside of list,`writerows()` function will recognize the word 'spam', following are examples:
+2. Use writerows to write [['spam','1'],['22','333'],['OK','Good']] in the csv table
 
 ```python
 import csv
@@ -305,7 +291,7 @@ with open('test2.csv','w') as f:
 ![CSV write rows2](/assets/csv-write-rows-2.png)
 There are 3 items, or 3 lists, therefore it will output 3 rows. And inside each row, there are different items,So it will write each item in one cell.
 
-<!-- TODO: This section is good. There are some common mis-use of this library. Some roots from the mis-conception of "str" and "list". So they use writerows in incorrect way. Please see if you can find some of the cases and include here. I think Xiao Chao helped to solve many such cases from students -->
+
 
 ## JSON
 
