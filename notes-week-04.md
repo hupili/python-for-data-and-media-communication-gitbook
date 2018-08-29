@@ -20,7 +20,7 @@
             - [writerows](#writerows)
         - [Exercise](#exercise)
     - [JSON](#json)
-        - [Json functions](#json-functions)
+        - [JSON functions](#json-functions)
             - [json.dump: Convert from Python to JSON](#jsondump-convert-from-python-to-json)
             - [json.load: Convert from JSON to Python](#jsonload-convert-from-json-to-python)
     - [Requests](#requests)
@@ -41,7 +41,7 @@
 
 * Learn to use Jupyter notebook. All demos following this week will be conducted in Jupyter notebook.
 * Understand API/ JSON and can retrieve data from online databases (twitter, GitHub, weibo, douban, ...)
-* Understand basic file format like json and csv.
+* Understand basic file format like JSON and CSV.
     * Be able to comfortably navigate through compound structures like {} and [].
     * Be able to comfortably use (multiple layer of) for-loop to re-format data.
     * Be able to use serialisers to handle input/ output to files.
@@ -122,7 +122,7 @@ f.write('python tutorial')
 f.close()
 ```
 
-* f.close() to close the writing, this will close the instance of the file test.csv stored.
+* f.close() to close the writing, this will close the instance of the file test.txt stored.
 
 ### Read a file
 
@@ -152,15 +152,15 @@ h.close
 
 ## CSV
 
-The CSV (Comma Separated Values) format is the most common import and export format for spreadsheets and databases,just like `xlsx` file, which is used for storing your data and make it easy to read and write. You don't need to pip install csv in terminal. Just import csv before using it.
+The CSV (Comma Separated Values) format is the most common import and export format for spreadsheets and databases,just like `xlsx` file, which is used for storing your data and make it easy to read and write. You don't need to pip3 install csv. Just `import csv` before using it.
 
-The csv has two basic functions: `reader` and `writer` .objects read and write.
+The CSV has two basic functions: `reader` and `writer` .objects read and write.
 
 ### csv.reader
 
-Return a reader object which will iterate over lines in the given csv file. Each row read from the csv file is returned as a list of strings. No automatic data type conversion is performed.
+Return a reader object which will iterate over lines in the given CSV file. Each row read from the CSV file is returned as a list of strings. No automatic data type conversion is performed.
 
-Suppose we have a csv file, `name_list.csv`, the content is as follows:
+Suppose we have a CSV file, `name_list.csv`, you can download it [here](assets/chapter3-example-name_list.csv). The content is as follows:
 
 | name  | id   | gender | location | phone|
 |-------|------|--------|----------|------|
@@ -168,38 +168,36 @@ Suppose we have a csv file, `name_list.csv`, the content is as follows:
 | Ri    | 1743 |    F   |  LOS     |  5168|
 | Ivy   | 1655 |    F   |   MK     |  7323|
 
-Example 1: How to read this csv?
+Example 1: How to read this CSV?
 
 ```python
 import csv
-with open('name_list.csv', newline='') as f: # open csv
+with open('chapter3-example-name_list.csv','r') as f: # open CSV
     rows = csv.reader(f) # read CSV
     for row in rows: #loop every row
         print(row)
 ```
 
-```
-Answer:
-['name', 'id', 'gender', 'location', 'phone']
+Output:
+
+```text
+['\ufeffname', 'id', 'gender', 'location', 'phone']
 ['Chico', '1742', 'M', 'KLN', '3344']
 ['Ri', '1743', 'F', 'LOS', '5168']
 ['Ivy', '1655', 'F', 'MK', '7323']
-['', '', '', '', '']
 ```
 
 **Note:**
 
-* `with open(...) as f` means you give f a definition, which stands for opening the file. In the example,`f` can be changed by any words you like. It just means you rename the step of the opening.
-
+* `with open(...) as f` means you give f a definition, which stands for opening the file. In the example,`f` can be changed by any words you like. It just means you rename the step of the opening. It's equal to `f = open('chapter3-example-name_list.csv',mode='r')`.
 * `open()` means open the file. If there is no such file, it will create a new one. If there is a existing one, writer function will clear all the previous content and then write the new content.
-
-* `newline=' '` is one of the certain structure, which is used to avoid blank line.
+* You can see that in the beginning of the output, there is an encoding issue. `U+FEFF` is the byte order mark, or BOM, and is used to tell the difference between big- and little-endian UTF-16 encoding. To omit BOM, just add a encoding line in the `with....open` command, as `with open('chapter3-example-name_list.csv',encoding='utf-8-sig') as f:`. Further reading about this [issue](https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string).
 
 ### csv.writer
 
-Return a writer object responsible for converting the user’s data into delimited strings. Csvfile can be any object with a write() method. If csvfile is a file object, it should be opened with `newline=''`.
+Return a writer object responsible for converting the user’s data into delimited strings. CSV file can be any object with a write() method. If CSV file is a file object, it should be opened with `newline=''`. If `newline=''` is not specified, newlines embedded inside quoted fields will not be interpreted correctly, It should always be safe to specify newline='', since the csv module does its own (universal) newline handling.
 
-Example 2: How to write a csv?
+Example 2: How to write a CSV file?
 
 #### writerow
 
@@ -208,7 +206,7 @@ import csv
 with open('name.csv','w',newline='') as f:
     mywriter=csv.writer(f)  #writer is the function to write something
     mywriter.writerow(['Chico','Male'])  #you can just use writer.writerow()
-    mywriter.writerow(['Ri','Female']) #write anoter row  
+    mywriter.writerow(['Ri','Female']) #write another row  
 ```
 
 Output:
@@ -217,7 +215,7 @@ Output:
 **Note:**
 
 * `w` means write. By the way, if you want to read the file, you can input`r`,representing "read".
-* `csv.writer()` means to write something in the NAME.csv file.
+* `csv.writer()` means to write something in the name.csv file.
 * `writerow()` means write one row and then another row. The input should be list type. `writerows()` means they will write row after row until loop all the elements from a list.
 * arguments in `writerow()` should be a list, because `csv` function treat a row as a list, therefore you should use`[]` to wrap up the argument.
 
@@ -270,7 +268,7 @@ Try change `writer=csv.writer(f)` to `writer=csv.writer(f,delimiter=' ')`, see w
 
 ### Exercise
 
-1. Writerow ['hello','python'] in A1 in the csv table
+1. Writerow ['hello','python'] in A1 in the CSV file
 
 ```python
 import csv
@@ -279,19 +277,17 @@ with open('hello.csv','w') as f:
     mywriter.writerow(['hello','python']) #writerow('hello','python') won't work, you should put it in a list. Every item of the list will be write in a cell of the table.
 ```
 
-2. Use writerows to write [['spam','1'],['22','333'],['OK','Good']] in the csv table
+2. Use writerows to write [['spam','1'],['22','333'],['OK','Good']] in the CSV file
 
 ```python
 import csv
-with open('test2.csv','w') as f:
+with open('test.csv','w') as f:
     mywriter=csv.writer(f)
     mywriter.writerows([['spam','1'],['22','333'],['OK','Good']])
 ```
 
 ![CSV write rows2](/assets/csv-write-rows-2.png)
 There are 3 items, or 3 lists, therefore it will output 3 rows. And inside each row, there are different items,So it will write each item in one cell.
-
-
 
 ## JSON
 
@@ -300,7 +296,7 @@ There are 3 items, or 3 lists, therefore it will output 3 rows. And inside each 
 * JSON is a syntax for storing and exchanging data.
 * JSON is text, written with JavaScript object notation.
 
-**What does json looks like?**
+**What does JSON looks like?**
 
 Example 3:
 
@@ -323,16 +319,16 @@ Example 3:
 }
 ```
 
-**Why to use json?**
+**Why to use JSON?**
 
-The advantages of json:
+The advantages of JSON:
 
 1. The data size is small. Compared with XML(another) file type to store and exchange data, JSON is small in size and faster in passing.
 2. The transmission speed is fast. JSON is much faster than XML.
 3. Data format is simple, easy to read and write, and the format is compressed.
-4. Easy to use with python, Json is a form of `k-v` structure.
+4. Easy to use with python, JSON is a form of `k-v` structure.
 
-In simple terms, json is a dict, which has keys, each key corresponds to a value. The middle is separated by `:` , the outermost is surrounded by `{}`, and the different key-value pairs are separated by `,`. Example like this
+In simple terms, JSON is a dict, which has keys, each key corresponds to a value. The middle is separated by `:` , the outermost is surrounded by `{}`, and the different key-value pairs are separated by `,`. Example like this
 
 ```python
 
@@ -345,11 +341,9 @@ If there is a case where a Key corresponds to multiple values, use [] to include
 {'key1': ['v11', 'v12', 'v13'], 'key2': 'v22'}
 ```
 
-Now you can go back to have a look of example 3, test yourself whether you have understand the json structure.
+Now you can go back to have a look of example 3, test yourself whether you have understand the JSON structure.
 
-### Json functions
-
-<!-- TODO: write in formal way: "JSON". Same for other places -->
+### JSON functions
 
 #### json.dump: Convert from Python to JSON
 
@@ -413,7 +407,7 @@ Answer:
 }
 ```
 
-If you try to check the json decoded data, it is often difficult to know its structure by simple printing, especially when the data is nested deeply or contains a large number of fields. To solve this problem, you can use the `pprint()` function instead of the normal `print()` function. After you understand its structure, you can use `class['key']` to access the items.
+If you try to check the JSON decoded data, it is often difficult to know its structure by simple printing, especially when the data is nested deeply or contains a large number of fields. To solve this problem, you can use the `pprint()` function instead of the normal `print()` function. After you understand its structure, you can use `class['key']` to access the items.
 
 ```python
 import json
@@ -464,7 +458,7 @@ r.content
 
 If you want to return text data, use `r.text`.(Use mostly)
 
-If you want to return json, use `r.json`
+If you want to return JSON, use `r.json`
 
 If you want to return pictures and files, use `r.content`, it will return the binary data.
 
@@ -477,7 +471,7 @@ Application Program Interfaces, or APIs, are commonly used to retrieve data from
 Compared with other ways like download directly, APIs are useful in the following cases:
 
 * The data is changing quickly. It doesn't need you to re-download it every minute - this will take a lot of bandwidth, and be pretty slow, the data we get through api is always up to date (unless you specify).
-* Usually, the data sets return from APIs are usually can be directly convert to csv or json, which is more structural and clean, you don't need to spend a lot of time to clean and find the data compared with request from `.html`.
+* Usually, the data sets return from APIs are usually can be directly convert to CSV or JSON, which is more structural and clean, you don't need to spend a lot of time to clean and find the data compared with request from `.html`.
 * You can filter the data you want instead of download a large of data set.
 
 Generally, different websites have different APIs methods to request the data. For example, the APIs of [USGS](https://earthquake.usgs.gov/fdsnws/event/1/) and [Douban](https://developers.douban.com/wiki/?title=api_v2) is a url, and you can change some parameters in the url to get the different data. While, the twitter api is a set of tokens and keys, you can call different functions to get different data.
@@ -538,7 +532,7 @@ Step 4: Requests content
 response = requests.get(url)
 response_2 = requests.get(url_2)
 
-data = response.json() #convert to json
+data = response.json() #convert to JSON
 count = response_2.json()
 print(count) #print count results
 print(data) # print all data
@@ -556,7 +550,7 @@ for i in range(0,len(data['features'])):
     time.append(data['features'][i]['properties']['time']) # find time
 ```
 
-Step 6: Write data into csv
+Step 6: Write data into CSV file
 
 ``` python
 with open('taiwan_earthquake.csv','w',newline='') as f:
