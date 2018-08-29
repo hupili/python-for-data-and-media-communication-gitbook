@@ -581,27 +581,28 @@ print(count) #print count results
 print(data) # print all data
 ```
 
-Step 5:  Select the key values we want
+Step 5:  Select the key values we want: mag, place and time, and write it in the csv file
 
 ```python
-place = []
-mag = []
-time = []
-for i in range(0,len(data['features'])):
-    mag.append(data['features'][i]['properties']['mag']) # find magnitude of the earthquake
-    place.append(data['features'][i]['properties']['place']) # find location
-    time.append(data['features'][i]['properties']['time']) # find time
-```
-
-Step 6: Write data into CSV file
-
-``` python
-with open('taiwan_earthquake.csv','w',newline='') as f:
+with open('TTT.csv','w',newline='') as f:
     writer = csv.writer(f)
     header = ['place','mag','time']
     writer.writerow(header)
-    writer.writerows(zip(place,mag,time))
+
+    for i in range(0,len(data['features'])):
+        writer.writerow([data['features'][i]['properties']['place'],data['features'][i]['properties']['mag'],data['features'][i]['properties']['time']])
+
+    f.close()
+
+    # data['features'][i]['properties']['mag'] means to find all magnitude of the earthquake
+    # data['features'][i]['properties']['place'] # find all location
+    # data['features'][i]['properties']['time'] # find all time
 ```
+
+Output:
+
+![Taiwan Earthquake Data](assets/taiwan-earthquake-data.png)
+Quiz: You can see that the time is not what we want. Can you convert them to UTC time(Universal Time Coordinated).
 
 ### Use API via function calls to other modules/ packages
 
@@ -673,9 +674,6 @@ Output:
 
 <!-- TODO: one exercise one subsection; try to describe some concrete tasks based on the API -->
 
-* Taiwan had an earthquake in early Feb. Let's discuss this issue:
-  * Search for the earthquake instances around Taiwan in recent 100 years and analyse the occurrences of earthquakes. You can refer to the same database used [here](https://dnnsociety.org/2017/09/02/map-of-sichuan-earthquake-in-d3/). Checkout the [API description](https://earthquake.usgs.gov/fdsnws/event/1/). The `count` and `query` API are useful.
-  * Search on Twitter and collect user's discussions about this topic. See if there is any findings. You can approach from the human interface [here](https://twitter.com/search?q=%23台湾地震) \(hard mode\) or use [python-twitter](https://github.com/bear/python-twitter) module \(need to register developer and obtain API key\).
 * Retrieve and analyse the recent movie. Douban's API will be helpful here.
   * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
   * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
@@ -687,5 +685,3 @@ Output:
   * Get data from USGS API
   * Print a story to the screen using string templating/ string interpolation
   * See [here](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732) for an introduction of the bot. See [here](https://www.theregister.co.uk/2017/06/22/la_times_bot_spreads_fake_news/) for an incident and think how to avoid it?
-
-  
