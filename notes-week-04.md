@@ -560,7 +560,69 @@ with open('taiwan_earthquake.csv','w',newline='') as f:
 
 ### Use API via function calls to other modules/ packages
 
-<!-- TODO: The Python twitter example -->
+Another API method that is worthy to introduce is using the keys and token they give to you, through which you can use the function they build to get the data. But a shortcoming about this method is there is very limit the amount of data you can get. The organizations with a large database are very strict about this. In this example, we will also use Taiwan example, to scrape users tweets under the keyword of 'Taiwan earthquake'.
+
+Step 1: Check out `python-twitter` and install it
+
+[Python twitter](https://python-twitter.readthedocs.io/en/latest/) is a library which provides a pure Python interface for the Twitter API. It works with Python 2.7+ and Python 3.
+
+As usual, we use Jupyter Notebook to do exercise and pip way to install
+
+```python
+!pip install python-twitter
+```
+
+Step 2: Getting your application tokens
+
+In order to use the python-twitter API client, you first need to acquire a set of application tokens. These will be your `consumer_key` and `consumer_secret`, which get passed to  `twitter.Api()` when starting your application. Please refer to the [documentation](https://python-twitter.readthedocs.io/en/latest/getting_started.html) and apply your own key.
+
+```python
+import twitter
+import csv
+api = twitter.Api(consumer_key='ORknl7hYEl3GHjbwb5zFjOWhc',
+                  consumer_secret='c5pH0qVLwv4AAe9fkuEMWM9SN6sSkNZwiZz9eeuynHox4w8ImF',
+                  access_token_key='3144235205-4fUWr9uVLXu2z1fI9Jk8SG6VXIH8ZlTg3naG6QZ',
+                  access_token_secret='Ubn5BIfMN2dg6UoRpFAz43A33JA0BrmBI5oDsyXynz92v')
+```
+
+Step 3: Find the correct function to call
+
+There are many functions to accomplish different demands. If you want to get status from one given twitter ID, `api.GetUserTimeline` is the right one. As for our example, we should use `api.GetSearch` to get the comments. Then change the parameters we want. For more functions, please see [here](https://python-twitter.readthedocs.io/en/latest/twitter.html#module-twitter.api).
+
+```python
+results = api.GetSearch(term='taiwan earthquake',
+        raw_query=None, 
+        geocode=None, 
+        since_id=None, 
+        max_id=None, 
+        until='2018-08-28', 
+        since='2018-01-01', 
+        count=100, #maximum you can get
+        lang='en', 
+        locale=None, 
+        result_type='mixed', 
+        include_entities=None, 
+        return_json=False)
+len(results) #check how many statues you get
+type(results) # check the data type
+```
+
+Step 4: Take out the value we want and write it to CSV file
+
+```python
+with open('earthquake_comments.csv','w') as f:
+    writer = csv.writer(f)
+    header = ['Names','IDs','Time','Comments']
+    writer.writerow(header)
+    for i in range(0,len(results)):
+        writer.writerow([results[i].user.screen_name,
+        results[i].id,
+        results[i].created_at,
+        results[i].text])
+```
+
+Output:
+![Earthquake comments](assets/chapter4-earthquake-comments.png)
 
 ## Exercises and Challenges
 
