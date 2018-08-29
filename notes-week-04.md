@@ -21,8 +21,9 @@
         - [Exercise](#exercise)
     - [JSON](#json)
         - [JSON functions](#json-functions)
-            - [json.dump: Convert from Python to JSON](#jsondump-convert-from-python-to-json)
-            - [json.load: Convert from JSON to Python](#jsonload-convert-from-json-to-python)
+            - [json.dumps: Serialize object to a JSON formatted str](#jsondumps-serialize-object-to-a-json-formatted-str)
+            - [json.loads: Deserialize JSON str to a Python object](#jsonloads-deserialize-json-str-to-a-python-object)
+            - [json.load & json dump](#jsonload--json-dump)
     - [Requests](#requests)
         - [Make a Request](#make-a-request)
         - [Response Content](#response-content)
@@ -345,7 +346,7 @@ Now you can go back to have a look of example 3, test yourself whether you have 
 
 ### JSON functions
 
-#### json.dump: Convert from Python to JSON
+#### json.dumps: Serialize object to a JSON formatted str
 
 **Syntax**
 
@@ -358,7 +359,9 @@ Don't be panic, we do not have to use those all parameters. Basically, you need 
 1. If sort_keys is true (default: False), then the output of dictionaries will be sorted by key.
 2. If ensure_ascii is true (the default), the output is guaranteed to have all incoming non-ASCII characters escaped like Chinese. If ensure_ascii is false, these characters will be output as-is.
 
-Example 4:
+Example 4: Convert Python object data into JSON file
+
+Step 1: convert Python object to a JSON formatted string
 
 ```python
 import json
@@ -368,31 +371,61 @@ data = {
     'shares' : 100,
     'price' : 542.23
 }
-
 json_str = json.dumps(data)
 json_str
 ```
 
-```
-Answer: '{"name": "ACME", "shares": 100, "price": 542.23}'
+Output:
+
+```txt
+'{"name": "ACME", "shares": 100, "price": 542.23}'
 ```
 
-#### json.load: Convert from JSON to Python
+Step 2: write JSON formatted string into JSON file.
+
+```python
+with open('json_data.json', "w") as f:
+    f.write(json_str)
+    f.close()
+```
+
+Output: Open the json_data file, it will show as following
+
+```txt
+{"name": "ACME", "shares": 100, "price": 542.23}
+```
+
+#### json.loads: Deserialize JSON str to a Python object
 
 **Syntax**
 
 ```python
-json.load(fp, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+json.loads(s, *, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
 ```
 
 one thing you need to know - `parse_constant`, if specified, will be called with one of the following strings: '-Infinity', 'Infinity', 'NaN'. This can be used to raise an exception if invalid JSON numbers are encountered.
 
 Example 5: load a JSON file, you can find it [here](assets/chapter4-json_test.json).
 
+Step 1: read the JSON file, converting to JSON formatted string
+
 ```python
 import json
 with open("chapter4-json_test.json","r") as f:
-     result=json.load(f)
+    json_str=f.read()
+json_str
+```
+
+Output:
+
+```text
+'{\n"dataset":{\n    "train": {"type": "mnist", "data_set": "train", "layout_x": "tensor"},\n    "test": {"type": "mnist", "data_set": "test", "layout_x": "tensor"}\n}\n}\n'
+```
+
+Step 2: convert JSON formatted string to Python object
+
+```python
+    result=json.loads(json_str)
 result
 ```
 
@@ -405,27 +438,39 @@ Output:
   'train': {'data_set': 'train', 'layout_x': 'tensor', 'type': 'mnist'}}}
 ```
 
-If you try to check the JSON decoded data, it is often difficult to know its structure by simple printing, especially when the data is nested deeply or contains a large number of fields. To solve this problem, you can use the `pprint()` function instead of the normal `print()` function. After you understand its structure, you can use `class['key']` to access the items.
+#### json.load & json dump
+
+Actually, if we want to convert between json file with python object. We can directly use `json.load` & `json.dump`. The difference between `loads` and `load` or `dumps` and `dump` is that you can get the string by using `-s` method. And sometimes, we need those strings to do other things instead of justing writing into files.
+
+Example 6: Converting between JSON file and Python object
 
 ```python
-import json
-import pprint
-with open("json_test") as f:
-     result=json.load(f)
-pprint.pprint(result)
+stu = {
+    "age": 20,
+    "score": 88,
+    "name": "Bob"
+}
+with open('stu.json', 'w') as f:
+    f.dump(stu, f) #converting Python object to JSON file
+```
+
+Open the stu.json file, it will output like:
+
+```text
+{"age": 20, "score": 88, "name": "Bob"}
 ```
 
 ```python
-{'dataset': {'test': {'data_set': 'test',
-                      'layout_x': 'tensor',
-                      'type': 'mnist'},
-             'train': {'data_set': 'train',
-                       'layout_x': 'tensor',
-                       'type': 'mnist'}}}
-
+with open('stu.json', 'w') as f:
+     data = json.load(f) #converting JSON file to Python object
+data
 ```
 
-<!-- TODO: a high level restructure: use json.loads/ json.dumps for primary examples. This is to convert between Python internal data structure and "JSON string". If one wants to output the JSON string to a file, he simply write() the string with an open()-ed file. You can note that json.load/ json.dump are corresponding shortcuts -->
+Output:
+
+```text
+{"age": 20, "score": 88, "name": "Bob"}
+```
 
 ## Requests
 
