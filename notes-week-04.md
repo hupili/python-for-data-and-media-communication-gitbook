@@ -678,11 +678,11 @@ Output:
 * Retrieve and analyse the recent movie. Douban's API will be helpful here.
   * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
   * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
-* Use Google Map API to retrieve geo-locaitons and canonical names: e.g. [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university)
-* Lookup real estate properties on HK gov open data portal. e.g. the [dataset page](https://data.gov.hk/en-data/dataset/centaline-centanetod-ccipropertyinfo/resource/4d3d7289-9d84-4f31-bf7e-a515d00d5328), the [API result](https://api.data.gov.hk/v1/filter?q=%7B%22resource%22%3A%22http%3A%2F%2Fhk.centanet.com%2Fopendata%2FCCI%2520Estate%2520for%2520Opendata.csv%22%2C%22section%22%3A1%2C%22format%22%3A%22json%22%2C%22sorts%22%3A%5B%5B9%2C%22desc%22%5D%5D%7D)
+* Use Google Map API to retrieve geo-locaitons and canonical names of `Lan Kwai Fong`. Retrieve a JSON like [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university).
+* Lookup real estate properties on HK gov open data portal. e.g. the [dataset page](https://data.gov.hk/en-data/dataset/centaline-centanetod-ccipropertyinfo/resource/4d3d7289-9d84-4f31-bf7e-a515d00d5328). Retrieve the data that `scp_mktc` contains '九龍' from year 2000 up to now. API results like [this](assets/data-gov-hk-API-results).
 * blockchain.info provides a set of [API](https://www.blockchain.com/api) for one to retrieve information related with bitcoin transactions. Pick one wallet address, check its UTXO sets and sum up the values to get the total balance in this wallet.
 * [A free crypocurrency API](https://min-api.cryptocompare.com/) for you to retrieve and study historical exchange rates.
-* Implement a basic version of first automated writer - QuakeBot from LA Times
-  * Get data from USGS API
-  * Print a story to the screen using string templating/ string interpolation
+* Implement a basic version of first automated writer - QuakeBot from LA Times.
+  * Get real-time data of earthquakes in `America` from USGS API
+  * Print a story to the screen include place, time, magnitude, using string templating/ string interpolation
   * See [here](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732) for an introduction of the bot. See [here](https://www.theregister.co.uk/2017/06/22/la_times_bot_spreads_fake_news/) for an incident and think how to avoid it?
