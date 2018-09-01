@@ -361,9 +361,9 @@ Don't be panic, we do not have to use those all parameters. Basically, you need 
 1. If sort_keys is true (default: False), then the output of dictionaries will be sorted by key.
 2. If ensure_ascii is true (the default), the output is guaranteed to have all incoming non-ASCII characters escaped like Chinese. If ensure_ascii is false, these characters will be output as-is.
 
-Example 4: Convert Python object data into JSON file
+Example 4: Convert Python object data into JSON string
 
-Step 1: convert Python object to a JSON formatted string
+<!-- Step 1: convert Python object to a JSON formatted string -->
 
 ```python
 import json
@@ -383,7 +383,7 @@ Output:
 '{"name": "ACME", "shares": 100, "price": 542.23}'
 ```
 
-Step 2: write JSON formatted string into JSON file.
+If you want to save the JSON string to a file, so that others can re-use this file, you can use `open()` with the `.write()` function to achieve that.
 
 ```python
 with open('json_data.json', "w") as f:
@@ -391,7 +391,11 @@ with open('json_data.json', "w") as f:
     f.close()
 ```
 
-Output: Open the json_data file, it will show as following
+**TIP:** In **Jupyter notebook**, you can write shell commands after `!`. `cat` is essentially a shell command that reads the content of a file and output to the screen. It is a common way to check if the output (to a file) is intended. In [notes-week-01.md](notes-week-01.md), we have learned some useful commands like `cd`, `pwd` and `ls`. Those can all be used here. Also recall how we install new Python modules in a Jupyter notebook: `!pip install <package-name>`.
+
+```shell
+!cat json_data.json
+```
 
 ```txt
 {"name": "ACME", "shares": 100, "price": 542.23}
@@ -405,11 +409,29 @@ Output: Open the json_data file, it will show as following
 json.loads(s, *, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
 ```
 
-one thing you need to know - `parse_constant`, if specified, will be called with one of the following strings: '-Infinity', 'Infinity', 'NaN'. This can be used to raise an exception if invalid JSON numbers are encountered.
+<!-- one thing you need to know - `parse_constant`, if specified, will be called with one of the following strings: '-Infinity', 'Infinity', 'NaN'. This can be used to raise an exception if invalid JSON numbers are encountered. -->
 
-Example 5: load a JSON file, you can find it [here](assets/chapter4-json_test.json).
+Example 5: Parse JSON string to Python internal data structure.
 
-Step 1: read the JSON file, converting to JSON formatted string
+```python
+json_str = '''
+{
+    "dataset": {
+        "train": { "type": "mnist", "data_set": "train", "layout_x": "tensor" },
+        "test": { "type": "mnist", "data_set": "test", "layout_x": "tensor" }
+    }
+}
+'''
+
+import json
+result = json.loads(json_str)
+```
+
+**TIP**: when you write a large chunk of data in Python, this "multi-line string", "block string literal", or "verbatim" is very useful. It helps you to reserve all the foramt like indentations in the data. This feature appears in nearly all programming languages and the official name is [HEREDOC](https://en.wikipedia.org/wiki/Here_document#Python).
+
+In the above example, you can `.read()` the `json_str` from a file instead of using HEREDOC. Try it yourself.
+
+<!-- Step 1: read the JSON file, converting to JSON formatted string
 
 ```python
 import json
@@ -429,9 +451,9 @@ Step 2: convert JSON formatted string to Python object
 ```python
     result=json.loads(json_str)
 result
-```
+``` -->
 
-Output:
+Output: the content (string representation) of `result`
 
 ```python
 {'dataset': {'test': {'data_set': 'test',
