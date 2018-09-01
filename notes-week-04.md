@@ -38,11 +38,13 @@
         - [[O] Real Estate property in Hong Kong (via government open data portal API)](#o-real-estate-property-in-hong-kong-via-government-open-data-portal-api)
         - [[O] Blockchain - chain data and exchange data](#o-blockchain---chain-data-and-exchange-data)
         - [[O] Automatic earthquake writer](#o-automatic-earthquake-writer)
+    - [References](#references)
 
 <!-- /TOC -->
 
 </div>
 
+Previously, we learned composite data types, and the basic control flows. This week, we will learns how to get data, convert data and save data. Before we step into scraping from the HTML, we will introduce a more convenient method - API. From this week on, you are gradually entering the door of "big data", the API allows you to get more types and a larger bass of data at the same time. After this week, you can use API method to request data from open data websites and social media platforms. And even create an automatic writing robot on Twitter.
 
 ## Objective
 
@@ -368,8 +370,6 @@ Don't be panic, we do not have to use those all parameters. Basically, you need 
 
 Example 4: Convert Python object data into JSON string
 
-<!-- Step 1: convert Python object to a JSON formatted string -->
-
 ```python
 import json
 
@@ -414,8 +414,6 @@ with open('json_data.json', "w") as f:
 json.loads(s, *, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
 ```
 
-<!-- one thing you need to know - `parse_constant`, if specified, will be called with one of the following strings: '-Infinity', 'Infinity', 'NaN'. This can be used to raise an exception if invalid JSON numbers are encountered. -->
-
 Example 5: Parse JSON string to Python internal data structure.
 
 ```python
@@ -432,31 +430,9 @@ import json
 result = json.loads(json_str)
 ```
 
-**TIP**: when you write a large chunk of data in Python, this "multi-line string", "block string literal", or "verbatim" is very useful. It helps you to reserve all the foramt like indentations in the data. This feature appears in nearly all programming languages and the official name is [HEREDOC](https://en.wikipedia.org/wiki/Here_document#Python).
+**TIP**: when you write a large chunk of data in Python, this "multi-line string", "block string literal", or "verbatim" is very useful. It helps you to reserve all the format like indentations in the data. This feature appears in nearly all programming languages and the official name is [HEREDOC](https://en.wikipedia.org/wiki/Here_document#Python).
 
 In the above example, you can `.read()` the `json_str` from a file instead of using HEREDOC. Try it yourself.
-
-<!-- Step 1: read the JSON file, converting to JSON formatted string
-
-```python
-import json
-with open("chapter4-json_test.json","r") as f:
-    json_str=f.read()
-json_str
-```
-
-Output:
-
-```text
-'{\n"dataset":{\n    "train": {"type": "mnist", "data_set": "train", "layout_x": "tensor"},\n    "test": {"type": "mnist", "data_set": "test", "layout_x": "tensor"}\n}\n}\n'
-```
-
-Step 2: convert JSON formatted string to Python object
-
-```python
-    result=json.loads(json_str)
-result
-``` -->
 
 Output: the content (string representation) of `result`
 
@@ -654,10 +630,7 @@ In order to use the python-twitter API client, you first need to acquire a set o
 ```python
 import twitter
 import csv
-api = twitter.Api(consumer_key='ORknl7hYEl3GHjbwb5zFjOWhc',
-                  consumer_secret='c5pH0qVLwv4AAe9fkuEMWM9SN6sSkNZwiZz9eeuynHox4w8ImF',
-                  access_token_key='3144235205-4fUWr9uVLXu2z1fI9Jk8SG6VXIH8ZlTg3naG6QZ',
-                  access_token_secret='Ubn5BIfMN2dg6UoRpFAz43A33JA0BrmBI5oDsyXynz92v')
+api = twitter.Api(consumer_key) #please pass your own api key
 ```
 
 Step 3: Find the correct function to call
@@ -701,7 +674,7 @@ Output:
 
 ## [O] Bonus: your first automatic writing robot on Twitter
 
-Although our focus in this chapter is to get data from different sources via API, some of the APIs are more than that. For example, you can use the `python-twitter` module to post a status to Twitter. Now that you already know string templating (`%` and `str.format`) and how to post a Twitter status, you can combine them as your first _automatic writing robot_!
+Although our focus in this chapter is to get data from different sources via API, some of the APIs are more than that. For example, you can use the `python-twitter` module to post a status to Twitter. Now that you already know how to template string (`%` and `str.format`) and how to post a Twitter status, you can combine them as your first _automatic writing robot_!
 
 Here are some examples of such robots:
 
@@ -743,5 +716,13 @@ Lookup real estate properties on HK gov open data portal, e.g. the [dataset page
 
 * Implement a basic version of first automated writer - QuakeBot from LA Times.
   * Get real-time data of earthquakes in `America` from USGS API
-  * Print a story to the screen include place, time, magnitude, using string templating/ string interpolation
+  * Print a story to the screen include place, time, magnitude, using template string / string interpolation
   * See [here](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732) for an introduction of the bot. See [here](https://www.theregister.co.uk/2017/06/22/la_times_bot_spreads_fake_news/) for an incident and think how to avoid it?
+
+## References
+
+* Python official doc about [json](https://docs.python.org/3/library/json.html)
+
+------
+
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)

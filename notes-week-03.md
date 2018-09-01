@@ -1329,3 +1329,7 @@ Following hints can help you think the algorithm but you do not have to use all 
 
 * Chapter 4, 5, 6, 8, 9 of official Python 3 [tutorial](https://docs.python.org/3/tutorial/)
 * Another [tutorial](http://www.runoob.com/python/python-object.html) with many examples (Chinese)
+
+------
+
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
