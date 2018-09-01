@@ -1,6 +1,34 @@
-# Week 05
+# Week 05 - Get semi-structured data: Web scraping
 
-# 1. Jupyter notebook
+<div id="toc">
+
+<!-- TOC -->
+
+- [Week 05 - Get semi-structured data: Web scraping](#week-05---get-semi-structured-data-web-scraping)
+    - [Jupyter notebook](#jupyter-notebook)
+        - [Tnstall modules in terminal](#tnstall-modules-in-terminal)
+        - [Start venv](#start-venv)
+        - [Tips of usage](#tips-of-usage)
+            - [Q1: How to quit the last steps's situation?](#q1-how-to-quit-the-last-stepss-situation)
+            - [Q2:How to quit from virtual environment?](#q2how-to-quit-from-virtual-environment)
+        - [Tab & type & help & print](#tab--type--help--print)
+        - [Open a new file](#open-a-new-file)
+    - [Knowledge about HTML](#knowledge-about-html)
+        - [The process of search engines\(like Baidu\)'s work](#the-process-of-search-engines\like-baidu\s-work)
+        - [Html JS css](#html-js-css)
+        - [Chrome Develop Console](#chrome-develop-console)
+    - [Scraper](#scraper)
+        - [Import modules](#import-modules)
+        - [Requests + .text](#requests--text)
+        - [BeautifulSoup](#beautifulsoup)
+        - [Find + strip\(\) to get title](#find--strip\\-to-get-title)
+        - [Get date](#get-date)
+
+<!-- /TOC -->
+
+</div>
+
+## Jupyter notebook
 
 * 1.As we have downloaded python2 and python3, there are some conflicts to run some programs when we import modules.
 * 2.We can debug step by step.It is convenient when we are writing a complicated coding.
@@ -21,23 +49,23 @@ pip3 install --user lxml
 * Then you will see a page [http://localhost:8888/tree](http://localhost:8888/tree). \(As long as you are in the virtual environment, you can go to this link to write code.\)
 * A directory named 'venv' is on your desktop now. The files you put here can be run in the virtual environment by jupyter.
 
-### Tips of usage:
+### Tips of usage
 
-##### Q1: How to quit the last steps's situation?
+#### Q1: How to quit the last steps's situation?
 
-![](assets/to-do-uncategorized-screenshots/Screen-Shot-2018-02-13-at-5.40.27-pm.png)
+![](assets/to-do-uncategorized-screenshots/no1.png)
 
 A:
 The answer is in the picture: control+C. \( Pay attention to the text. \)Then you will get the following picture.Please input `y` in 5 seconds.
 
-![](assets/to-do-uncategorized-screenshots/Screen-Shot-2018-02-13-at-1.06.35-pm.png)
+![](assets/to-do-uncategorized-screenshots/no9.png)
 
-##### Q2:How to quit from virtual environment?
-![](assets/to-do-uncategorized-screenshots/Screen-Shot-2018-02-13-at-1.09.51-pm.png)
+#### Q2:How to quit from virtual environment?
+![](assets/to-do-uncategorized-screenshots/no2.png)
 
 A: input `deactivate`
 
-##### Tab & type & help & print
+### Tab & type & help & print
 There are some useful tips for you.
 
 * tab
@@ -64,11 +92,11 @@ str
 
 
 ### Open a new file
-![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.17.50 pm.png)
+![](assets/to-do-uncategorized-screenshots/no3.png)
 * `shift+return` to run the code.
 
 
-# 2.Knowledge about HTML
+## Knowledge about HTML
 
 ### The process of search engines\(like Baidu\)'s work
 
@@ -78,7 +106,7 @@ str
 4. Extract page-level features
 
 ### Html JS css
-![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.12.33 pm.png)
+![](assets/to-do-uncategorized-screenshots/no4.png)
 
 * HTML is a machine language of web page. Writing something in HTML means to create a web page.It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag.
 * css and JS are other languages, which is used to describe the style of the web page,such as the characters' style and colour.
@@ -87,11 +115,12 @@ str
 
 * It is suggested to use 'Chrome' as our browser.
 * In Chrome, `option+command+i` to open the Chrome develop console.
-* Click the upper left corner of the console,![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 1.15.32 pm.png)and you will find that by moving the mouse in the web, you can see the part in console.
-* eg:![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 3.41.56 pm.png)
+* Click the upper left corner of the console, and you will find that by moving the mouse in the web, you can see the part in console.
+* eg:![](assets/to-do-uncategorized-screenshots/no5.png)
 
 
-# 3.Scraper
+## Scraper
+
 ### Import modules
 ```
 import requests
@@ -157,12 +186,12 @@ mydate = mypage.find('time').text.strip()
 ### Get author \(Important\)
 ##### Try 1:fail
 `myauthor = mypage.find('span')`
-![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 5.44.54 pm.png)
+![](assets/to-do-uncategorized-screenshots/no6.png)
 
 * It is not what we want, as there are too many 'span'.So check how many span there, and find the difference between those tags. `command+f` to open the search bar in console,and input 'span'.You can see, there are more than 2 'span'.
 
 `myspans = mypage.find_all('span')`
-![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 5.48.09 pm.png)
+![](assets/to-do-uncategorized-screenshots/no7.png)
 * `find_all` means output all the items it finds.
 * `find` means only output the first one.
 
@@ -172,7 +201,7 @@ mydate = mypage.find('time').text.strip()
 
 ##### Try 2:succeed to find all the authors
 
-> ![](assets/to-do-uncategorized-screenshots/Screen Shot 2018-02-13 at 2.41.09 pm.png)
+![](assets/to-do-uncategorized-screenshots/no8.png)
 
 * In the HTML, we can find that authors upper tag is 'td'. But there are too many td. And it is difficult to be specific.
 
@@ -189,7 +218,7 @@ mydate = mypage.find('time').text.strip()
 
 
 `mytr` 
->```
+```
 <tr class="post__authors">
 <td>.......</td>
 <td>
@@ -200,10 +229,10 @@ mydate = mypage.find('time').text.strip()
 ```
 
 `mytr.find_all('span')`
->`[<span>Li Yiming</span>, <span>Li Yuqiong</span>]`
+`[<span>Li Yiming</span>, <span>Li Yuqiong</span>]`
 
 
-##### Try to output those authors.
+### Try to output those authors.
 ```
 authors = []
 for myspan in mytr.find_all('span'):
@@ -291,3 +320,7 @@ Some scrapers and the output dataset from our past students:
 * [HK Carpark price data](https://github.com/XIAO-Chao/hkbu-big-data-media/tree/master/homework2)
 * [Qidian](https://github.com/DaisyZhongDai/hkbu-big-data-media/tree/master/homework2)
 * [CTrip scenic point data](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2)
+
+------
+
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)

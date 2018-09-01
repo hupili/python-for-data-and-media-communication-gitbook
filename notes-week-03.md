@@ -1,10 +1,10 @@
-# Week 3 Python for anything
+# Week 03 - Python for anything
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 3 Python for anything](#week-3-python-for-anything)
+- [Week 03 - Python for anything](#week-03---python-for-anything)
     - [Objective](#objective)
     - [Use "Help" more to learn by yourself](#use-help-more-to-learn-by-yourself)
     - [Bool and comparisons](#bool-and-comparisons)

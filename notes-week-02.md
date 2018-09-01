@@ -1,10 +1,10 @@
-# Chapter 2: Use Python as a daily tool
+# Week 02 - Use Python as a daily tool
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Chapter 2: Use Python as a daily tool](#chapter-2-use-python-as-a-daily-tool)
+- [Week 02 - Use Python as a daily tool](#week-02---use-python-as-a-daily-tool)
     - [Objective of this week](#objective-of-this-week)
     - [Familiar with python interactive mode](#familiar-with-python-interactive-mode)
         - [Python interpreter](#python-interpreter)

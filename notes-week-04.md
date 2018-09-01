@@ -1,10 +1,10 @@
-# Get structured data: CSV, JSON and API
+# Week 04 - Get structured data: CSV, JSON and API
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Get structured data: CSV, JSON and API](#get-structured-data-csv-json-and-api)
+- [Week 04 - Get structured data: CSV, JSON and API](#week-04---get-structured-data-csv-json-and-api)
     - [Objective](#objective)
     - [Learn to use Jupyter Notebook](#learn-to-use-jupyter-notebook)
         - [Installing the Jupyter Notebook](#installing-the-jupyter-notebook)

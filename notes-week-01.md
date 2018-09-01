@@ -1,10 +1,10 @@
-# Chapter 1: Hands-on the Terminal
+# Week 01 - Hands-on the Terminal
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Chapter 1: Hands-on the Terminal](#chapter-1-hands-on-the-terminal)
+- [Week 01 - Hands-on the Terminal](#week-01---hands-on-the-terminal)
     - [Objective of this week](#objective-of-this-week)
     - [About terminal on Mac](#about-terminal-on-mac)
         - [What is terminal on Mac？](#what-is-terminal-on-mac)
