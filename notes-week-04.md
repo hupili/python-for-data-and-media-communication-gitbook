@@ -33,6 +33,11 @@
         - [Use API via function calls to other modules/ packages](#use-api-via-function-calls-to-other-modules-packages)
     - [[O] Bonus: your first automatic writing robot on Twitter](#o-bonus-your-first-automatic-writing-robot-on-twitter)
     - [Exercises and Challenges](#exercises-and-challenges)
+        - [Douban API](#douban-api)
+        - [Google Map API](#google-map-api)
+        - [Real Estate property in Hong Kong (via government open data portal API)](#real-estate-property-in-hong-kong-via-government-open-data-portal-api)
+        - [Blockchain - chain data and exchange data](#blockchain---chain-data-and-exchange-data)
+        - [Automatic earthquake writer](#automatic-earthquake-writer)
 
 <!-- /TOC -->
 
@@ -707,13 +712,28 @@ Here are some examples of such robots:
 
 <!-- TODO: one exercise one subsection; try to describe some concrete tasks based on the API -->
 
+### Douban API
+
 * Retrieve and analyse the recent movie. Douban's API will be helpful here.
   * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
   * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
+
+
+### Google Map API
+
 * Use Google Map API to retrieve geo-locaitons and canonical names of `Lan Kwai Fong`. Retrieve a JSON like [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university).
+
+### Real Estate property in Hong Kong (via government open data portal API)
+
 * Lookup real estate properties on HK gov open data portal. e.g. the [dataset page](https://data.gov.hk/en-data/dataset/centaline-centanetod-ccipropertyinfo/resource/4d3d7289-9d84-4f31-bf7e-a515d00d5328). Retrieve the data that `scp_mktc` contains '九龍' from year 2000 up to now. API results like [this](assets/data-gov-hk-API-results).
+
+### Blockchain - chain data and exchange data
+
 * blockchain.info provides a set of [API](https://www.blockchain.com/api) for one to retrieve information related with bitcoin transactions. Pick one wallet address, check its UTXO sets and sum up the values to get the total balance in this wallet.
 * [A free crypocurrency API](https://min-api.cryptocompare.com/) for you to retrieve and study historical exchange rates.
+
+### Automatic earthquake writer
+
 * Implement a basic version of first automated writer - QuakeBot from LA Times.
   * Get real-time data of earthquakes in `America` from USGS API
   * Print a story to the screen include place, time, magnitude, using string templating/ string interpolation
