@@ -35,9 +35,9 @@
     - [Exercises and Challenges](#exercises-and-challenges)
         - [Douban API](#douban-api)
         - [Google Map API](#google-map-api)
-        - [Real Estate property in Hong Kong (via government open data portal API)](#real-estate-property-in-hong-kong-via-government-open-data-portal-api)
-        - [Blockchain - chain data and exchange data](#blockchain---chain-data-and-exchange-data)
-        - [Automatic earthquake writer](#automatic-earthquake-writer)
+        - [[O] Real Estate property in Hong Kong (via government open data portal API)](#o-real-estate-property-in-hong-kong-via-government-open-data-portal-api)
+        - [[O] Blockchain - chain data and exchange data](#o-blockchain---chain-data-and-exchange-data)
+        - [[O] Automatic earthquake writer](#o-automatic-earthquake-writer)
 
 <!-- /TOC -->
 
@@ -710,29 +710,36 @@ Here are some examples of such robots:
 
 ## Exercises and Challenges
 
-<!-- TODO: one exercise one subsection; try to describe some concrete tasks based on the API -->
-
 ### Douban API
 
-* Retrieve and analyse the recent movie. Douban's API will be helpful here.
-  * [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
-  * [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
+Retrieve and analyse the recent movie. Douban's API will be helpful here:
 
+- [API sample for Recent movies](https://api.douban.com/v2/movie/in_theaters)
+- [API sample for movie details](https://api.douban.com/v2/movie/subject/26942674)
+
+Try to store the recent movie data into a CSV for future analysis. One example header could be:
+
+```csv
+title,director,year,cast,description,region
+```
 
 ### Google Map API
 
-* Use Google Map API to retrieve geo-locaitons and canonical names of `Lan Kwai Fong`. Retrieve a JSON like [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university).
+Retrieve a JSON response from Google Map API. Here is an example: [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university).
 
-### Real Estate property in Hong Kong (via government open data portal API)
+Once you know how to use `requests` and `json` to get the interested coordinates data, you can revisit the [city distance challenge](notes-week-03.md#distances-among-cities) from last chapter. Then you have a fully automated solution.
 
-* Lookup real estate properties on HK gov open data portal. e.g. the [dataset page](https://data.gov.hk/en-data/dataset/centaline-centanetod-ccipropertyinfo/resource/4d3d7289-9d84-4f31-bf7e-a515d00d5328). Retrieve the data that `scp_mktc` contains '九龍' from year 2000 up to now. API results like [this](assets/data-gov-hk-API-results).
+### [O] Real Estate property in Hong Kong (via government open data portal API)
 
-### Blockchain - chain data and exchange data
+Lookup real estate properties on HK gov open data portal, e.g. the [dataset page](https://data.gov.hk/en-data/dataset/centaline-centanetod-ccipropertyinfo/resource/4d3d7289-9d84-4f31-bf7e-a515d00d5328). Retrieve the data that `scp_mktc` contains '九龍' from year 2000 up to now. API result is like [this](assets/data-gov-hk-API-results).
 
-* blockchain.info provides a set of [API](https://www.blockchain.com/api) for one to retrieve information related with bitcoin transactions. Pick one wallet address, check its UTXO sets and sum up the values to get the total balance in this wallet.
-* [A free crypocurrency API](https://min-api.cryptocompare.com/) for you to retrieve and study historical exchange rates.
+### [O] Blockchain - chain data and exchange data
 
-### Automatic earthquake writer
+<blockchain.info> provides a set of [API](https://www.blockchain.com/api) for one to retrieve information related with bitcoin transactions. Pick one wallet address, check its UTXO sets and sum up the values to get the total balance in this wallet.
+
+[A free crypocurrency API](https://min-api.cryptocompare.com/) for you to retrieve and study historical exchange rates. We are interested in bitcoin price. Try to get the exchange rate day-by-day of `BTC/USDT` pair in recent years and store them in a file.
+
+### [O] Automatic earthquake writer
 
 * Implement a basic version of first automated writer - QuakeBot from LA Times.
   * Get real-time data of earthquakes in `America` from USGS API

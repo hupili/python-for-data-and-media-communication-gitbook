@@ -1255,6 +1255,8 @@ The readability of code is very important. It is a good practice to create less 
 4. Use function to increase the reusability.
 5. Modules you need: [math](https://docs.python.org/3/library/math.html), you may need to use trigonometric functions.
 
+**NOTE:** Our objective of the whole course is to get you onboard a new tool -- Python. You should use the tool but not be constrained by this tool. When you get stuck with a challenge, try to use your way, combining non-Python methods, to solve it and then interate for better solution. For example, one key question for this exercise is to get the geolocations of the cities in terms of longitudes and latitudes. Only with those coordinates, you can fit them into the great-circle distance formula. You can do this by searching Google, Google Map or Widipedia as a start. After you have a basic version, try to think of automatic ways, in case there are a large number of interested cities in our real challenge, which makes the manual searching method infeasible.
+
 #### Extended exercise of geo distance
 
 There is a package called `geopy`. It can automatically search the geo-locations in terms of longitude and latitude based on the location names. Further more, it can directly compute the distance between two geolocations, without requiring to write the formula all by one's own.
