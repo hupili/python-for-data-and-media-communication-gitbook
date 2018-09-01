@@ -31,6 +31,7 @@
         - [Why use api](#why-use-api)
         - [Use API via HTTP request/ response](#use-api-via-http-request-response)
         - [Use API via function calls to other modules/ packages](#use-api-via-function-calls-to-other-modules-packages)
+    - [[O] Bonus: your first automatic writing robot on Twitter](#o-bonus-your-first-automatic-writing-robot-on-twitter)
     - [Exercises and Challenges](#exercises-and-challenges)
 
 <!-- /TOC -->
@@ -670,6 +671,15 @@ with open('earthquake_comments.csv','w') as f:
 
 Output:
 ![Earthquake comments](assets/chapter4-earthquake-comments.png)
+
+## [O] Bonus: your first automatic writing robot on Twitter
+
+Although our focus in this chapter is to get data from different sources via API, some of the APIs are more than that. For example, you can use the `python-twitter` module to post a status to Twitter. Now that you already know string templating (`%` and `str.format`) and how to post a Twitter status, you can combine them as your first _automatic writing robot_!
+
+Here are some examples of such robots:
+
+- A robot that summarises Initium Media articles and post status upon new release. You can find [source code](https://github.com/hupili/summary-bot/blob/master/bot.py), or see it [in action](https://twitter.com/summary_bot).
+- [EQBOT](http://eqbot.com/) gets earthquake updates in an interested region and post to Twitter when there is a new earthquake. The bot is reproduced by our TA as [@nandobreaux](https://twitter.com/nandobreaux), whose source codes are in this [notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/w5-api-json/earthquake_robot.ipynb).
 
 ## Exercises and Challenges
 
