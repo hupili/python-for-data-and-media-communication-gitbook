@@ -1,6 +1,6 @@
 {
-"dataset":{
-    "train": {"type": "mnist", "data_set": "train", "layout_x": "tensor"},
-    "test": {"type": "mnist", "data_set": "test", "layout_x": "tensor"}
-}
+    "dataset": {
+        "train": { "type": "mnist", "data_set": "train", "layout_x": "tensor" },
+        "test": { "type": "mnist", "data_set": "test", "layout_x": "tensor" }
+    }
 }
