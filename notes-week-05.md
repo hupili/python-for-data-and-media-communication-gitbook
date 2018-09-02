@@ -312,6 +312,16 @@ with open('eggs.csv', 'w') as f:
 
 * `writer.writerow([])` means add information in row. It can be wrote like this `s.writerow(['Spam', '1', '2', '3'])`
 
+## Scraper pattern
+
+### Data structure
+
+"list-of-dict" structure is preferred. We also organise our code in this way:
+
+- First (outer) layer is `list` -- iterate the data items we are interested in.
+- Second (inner) layer is `dict` -- extract the features/ properties of a single data item.
+
+Checkout the [imdb.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb)
 
 ## [O] Crawler
 
