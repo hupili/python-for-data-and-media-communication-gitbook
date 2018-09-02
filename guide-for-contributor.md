@@ -8,6 +8,8 @@
     - [Table of Contents (TOC)](#table-of-contents-toc)
     - [Link whenever possible](#link-whenever-possible)
         - [Link to GitHub comments](#link-to-github-comments)
+        - [Link to resources in this repo](#link-to-resources-in-this-repo)
+        - [Link to other repos](#link-to-other-repos)
     - [Editing environment](#editing-environment)
 
 <!-- /TOC -->
@@ -106,6 +108,15 @@ For example, when explaining how the discussion forum works on GitHub, one do no
 ### Link to GitHub comments
 
 Click the date and get a full URL including the [URI fragment](https://en.wikipedia.org/wiki/Fragment_identifier). Read more on [Stack Overflow](https://stackoverflow.com/questions/25163598/how-do-i-reference-a-specific-issue-comment-on-github/25169132).
+
+### Link to resources in this repo
+
+Use relative links so that moving/ renaming this repo does not break the links. One is example is the [README.md](README.md) file.
+
+### Link to other repos
+
+Other repos are usually out of your control. The GitHub web page by default show you the latest content. However, "the latest" will be changed later. To ensure future readers can see exactly what you see, you can use PermaLink to GitHub, i.e. a link that includes a commit hash (see more on [notes-week-00.md](notes-week-00.md)), which will be resolved to exactly the same version no matter when the future visitors come. You can press `y` so the URL in the browser address bar is changed to PermaLink. See [official explanation](https://help.github.com/articles/getting-permanent-links-to-files/#press-y-to-permalink-to-a-file-in-a-specific-commit).
+
 
 ## Editing environment
 
