@@ -8,6 +8,7 @@
     - [Table of Contents (TOC)](#table-of-contents-toc)
     - [Link whenever possible](#link-whenever-possible)
         - [Link to GitHub comments](#link-to-github-comments)
+    - [Editing environment](#editing-environment)
 
 <!-- /TOC -->
 
@@ -105,3 +106,11 @@ For example, when explaining how the discussion forum works on GitHub, one do no
 ### Link to GitHub comments
 
 Click the date and get a full URL including the [URI fragment](https://en.wikipedia.org/wiki/Fragment_identifier). Read more on [Stack Overflow](https://stackoverflow.com/questions/25163598/how-do-i-reference-a-specific-issue-comment-on-github/25169132).
+
+## Editing environment
+
+We suggest to use [VSCode](https://code.visualstudio.com/) with the following extensions:
+
+* `Markdown Preview Enhanced` -- See how it works [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/2#issuecomment-406834118)
+* `markdownlint` -- See how it works [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/2#issuecomment-408606441)
+* `Markdown TOC` by AlanWalk -- See more instructions in the current document, [this section](#table-of-contents-toc)
