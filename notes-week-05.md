@@ -23,6 +23,20 @@
         - [BeautifulSoup](#beautifulsoup)
         - [Find + strip\(\) to get title](#find--strip\\-to-get-title)
         - [Get date](#get-date)
+        - [Get author \(Important\)](#get-author-\important\)
+                - [Try 1:fail](#try-1fail)
+                - [Try 2:succeed to find all the authors](#try-2succeed-to-find-all-the-authors)
+        - [Try to output those authors.](#try-to-output-those-authors)
+        - [Def to scraper more articles](#def-to-scraper-more-articles)
+        - ["For" loop to scraper more articles](#for-loop-to-scraper-more-articles)
+        - [Write .csv](#write-csv)
+    - [Scraper pattern](#scraper-pattern)
+        - [Data structure](#data-structure)
+    - [[O] Crawler](#o-crawler)
+        - [Crawler is not necessary in most of your cases](#crawler-is-not-necessary-in-most-of-your-cases)
+        - [scrapy](#scrapy)
+        - [scrapy-cluster](#scrapy-cluster)
+    - [Exercises and Challenges](#exercises-and-challenges)
 
 <!-- /TOC -->
 
@@ -172,7 +186,8 @@ mytitle.strip()
 * You can `help(str.strip)` to see the usage of strip.
 
 ### Get date
->```
+
+```html
 <time itemprop="dateCreated" datetime="2017-03-29T....." content="2017-03-29">
                   2017-03-29
                 </time>
