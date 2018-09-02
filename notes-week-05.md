@@ -6,7 +6,7 @@
 
 - [Week 05 - Get semi-structured data: Web scraping](#week-05---get-semi-structured-data-web-scraping)
     - [Jupyter notebook](#jupyter-notebook)
-        - [Tnstall modules in terminal](#tnstall-modules-in-terminal)
+        - [Install modules in terminal](#install-modules-in-terminal)
         - [Start venv](#start-venv)
         - [Tips of usage](#tips-of-usage)
             - [Q1: How to quit the last steps's situation?](#q1-how-to-quit-the-last-stepss-situation)
@@ -23,6 +23,20 @@
         - [BeautifulSoup](#beautifulsoup)
         - [Find + strip\(\) to get title](#find--strip\\-to-get-title)
         - [Get date](#get-date)
+        - [Get author \(Important\)](#get-author-\important\)
+                - [Try 1:fail](#try-1fail)
+                - [Try 2:succeed to find all the authors](#try-2succeed-to-find-all-the-authors)
+        - [Try to output those authors.](#try-to-output-those-authors)
+        - [Def to scraper more articles](#def-to-scraper-more-articles)
+        - ["For" loop to scraper more articles](#for-loop-to-scraper-more-articles)
+        - [Write .csv](#write-csv)
+    - [Scraper pattern](#scraper-pattern)
+        - [Data structure](#data-structure)
+    - [[O] Crawler](#o-crawler)
+        - [Crawler is not necessary in most of your cases](#crawler-is-not-necessary-in-most-of-your-cases)
+        - [scrapy](#scrapy)
+        - [scrapy-cluster](#scrapy-cluster)
+    - [Exercises and Challenges](#exercises-and-challenges)
 
 <!-- /TOC -->
 
@@ -35,7 +49,7 @@
 
 So it is suggested to enter virtual environment before using Jupyter notebook.
 
-### Tnstall modules in terminal
+### Install modules in terminal
 
 ```
 pip3 install --user requests
@@ -89,7 +103,6 @@ str
 
 * `print` step by step to check where is the error.
 \(In Jupyter, you can just input the variables without the function of print.\)
-
 
 ### Open a new file
 ![](assets/to-do-uncategorized-screenshots/no3.png)
@@ -173,7 +186,8 @@ mytitle.strip()
 * You can `help(str.strip)` to see the usage of strip.
 
 ### Get date
->```
+
+```html
 <time itemprop="dateCreated" datetime="2017-03-29T....." content="2017-03-29">
                   2017-03-29
                 </time>
@@ -312,6 +326,48 @@ with open('eggs.csv', 'w') as f:
 * `csv.writer` means edit a csv file.
 
 * `writer.writerow([])` means add information in row. It can be wrote like this `s.writerow(['Spam', '1', '2', '3'])`
+
+## Scraper pattern
+
+### Data structure
+
+"list-of-dict" structure is preferred. We also organise our code in this way:
+
+- First (outer) layer is `list` -- iterate the data items we are interested in.
+- Second (inner) layer is `dict` -- extract the features/ properties of a single data item.
+
+Checkout the [imdb.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb)
+
+## [O] Crawler
+
+A crawler is essentially a super module of scraper. When talking about "scraper", we mainly focus on retrieving and parsing a single document, be it an HTML, PDF, or image. Most of the time, we deal with HTML documents. "crawler" can follow the hyperlinks in a document, scrape documents pointed by those hyperlinks, and find new hyperlinks -- thus crawling.
+
+Crawler is an essential building block for a search engine. Think of how Google and Baidu can reach the whole WWW-world without knowing where it is, or how large it is. It all starts by giving a set of "seed pages", and let the crawler expand the horizon by following the links on the pages.
+
+### Crawler is not necessary in most of your cases
+
+As a beginner of programmatic data collection, you often find crawler is non-necessary. The major reason is that in our use case, the "crawling zone" is bounded, namely there is a systematic way to specify where to crawl and how to crawl. In such scenario, you only need to focus on "scraper" part. Once you can handle one page, you can systematically generate other pages, or rules/ operation sequences to find other pages. Here are some examples of common generators:
+
+- Find pages to scrape from a "hub page" -- e.g. find links to news articles from a list page, and then scrape each page from the list.
+- Manipuate page id parameter in URL -- e.g. a forum/ a Wordpress blog site.
+- Start from a seed page and continuously click "Next Page" -- e.g. search engine results. [notes-week-06.md](notes-week-06.md) will explain in details how to emulate browser in a programmatic way.
+
+### scrapy
+
+[scrapy](https://scrapy.org/) is the most commonly used crawler framework in Python. Given this framework, you only need to write a `parse` function, which basically does two jobs:
+
+1. Emit "data item" found in the current page
+2. Emit "page item" that `scrapy` framework needs to follow.
+
+Note the keyword `yield` when you try this framework. This is called "Generator" -- a common construct in most modern programming languages. You have already used generator for many times throughout this class. We don't mention it to avoid possible confusion. Interested readers can find a simple tutorial [here](https://www.liaoxuefeng.com/wikipage/00138681965108490cb4c13182e472f8d87830f13be6e88000).
+
+### scrapy-cluster
+
+[scrapy-cluster](https://github.com/istresearch/scrapy-cluster) is a distributed crawling framework, that uses [Docker](https://www.docker.com/) container technology to easily and horizontally scale out with your task size. It is a super module of `scrapy`. The layering is a follows:
+
+1. `parse()` function in `scrapy` -- This is essentially a "Scraper" -- single page, parsing
+2. `scrapy` -- This is essentially **one** "Crawler" -- The emited data items and page items are within one crawling topic.
+3. `scrapy-cluster` -- This is essentially a (distributed) cluster of **multiple** Crawlers. Those crawlers can have different topics, priorities, scheduling options, etc.
 
 ## Exercises and Challenges
 

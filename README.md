@@ -17,7 +17,7 @@ This is the text book for HKBU's COMM7780/JOUR7280 courses. The course COMM7780/
 * [Notes: Week 05 - Get semi-structured data: Web scraping](notes-week-05.md)
 * [Notes: Week 06 - Advanced scraping: browser emulation, anti-crawler and other nitty gritties](notes-week-06.md)
 * [Notes: Week 07 - Work with table: data cleaning and pre-processing](notes-week-07.md)
-* [Notes: Week 08 - Work with table: 1D analysis](notes-week-08.md)
+* [Notes: Week 08 - Work with table: 1D analysis and 2D analysis](notes-week-08.md)
 * [Notes: Week 09 - Present findings: data visualization and reproducible report](notes-week-09.md)
 * [Notes: Week 10 - Handle special data type: text, graph, time series, geographical](notes-week-10.md)
 * [Notes: Week 11 - Machine learning primer: clustering, classification, regression](notes-week-11.md)

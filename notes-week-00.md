@@ -37,6 +37,8 @@
             - [The principle further explained](#the-principle-further-explained)
         - [[O] Collaboration on GitHub](#o-collaboration-on-github)
         - [The workflow Fork repo, modify code and send pull Request](#the-workflow-fork-repo-modify-code-and-send-pull-request)
+    - [A first journey into the open source world](#a-first-journey-into-the-open-source-world)
+        - [Common licenses](#common-licenses)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References and further reading](#references-and-further-reading)
 
@@ -309,6 +311,25 @@ Checkout [this article](https://www.verisign.com/en_US/website-presence/online/h
 ### The workflow Fork repo, modify code and send pull Request
 
 > TODO
+
+## A first journey into the open source world
+
+GitHub adopts a "sharing first" principle in its community. Whatever content you create *publicly* on GitHub is available for other GitHub users to view and reuse *within GitHub's functionality*. Some respectful and caucious users may not feel comfortable to work on derivatives of your work in other channels. You can grant them such permissions via some common open source license.
+
+### Common licenses
+
+The short take-away for 
+
+- GPL -- You can use the content freely, but your derivative work based on a GPL licensed project is required to be open source.
+- MIT -- Do whatever you want. You are obligated to provide attribution with your code or binary \(e.g. say "this project uses code that is MIT licensed" -- with a copy of the license and copyright of the author of the open source code\).
+- Creative Commons -- There are several levels. CC0 is least restricted. It is basically "Public Domain". You can use other levels of CC or combinations of CC keywords to specify the usage rights. For example, this repo is licensed under "CC-BY-NC-ND", meaning:
+  - BY: attribute to the author when you use
+  - NC: non-commercial use only
+  - ND: no derivatives -- you can share but can only share in its original format.
+
+Of course, the non granted rights are always negotiable with the authors who own the content. The spirit of open source is to cater to the greater good, while protect the authorship. There is a flow chart for you to decide what license you should choose.
+
+![](assets/to-do-uncategorized-screenshots/no115.png)
 
 ## Exercises and Challenges
 
