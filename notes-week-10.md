@@ -38,7 +38,6 @@
             - [Pandas plotting](#pandas-plotting)
     - [Time series](#time-series)
     - [Graph](#graph)
-    - [Common license](#common-license)
     - [Basic preparations](#basic-preparations)
         - [Pip install all the modules by one step](#pip-install-all-the-modules-by-one-step)
         - [Jupyter display to show the picture](#jupyter-display-to-show-the-picture)
@@ -582,7 +581,6 @@ df['text'].apply[check_names].value_counts()[True]
 
 * Pandas can be more powerful than excel.First of all,let's start from the excel function.
 
-
 ## Time series
 
 **TODO**: Organise concept notes here.
@@ -591,15 +589,6 @@ At present, you can refer to those
 [notebooks from S18 class](https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/w8-datetime).
 
 ## Graph
-
-## Common license
-
-* GPL=use freely. But your work based on GPL is required to open source.
-* GNU=general public license 
-* MIT=do whatever you want. You are obligated to provide attribution with your code or binary \(e.g. say "this project uses code that is MIT licensed" -- with a copy of the license and copyright of the author of the open source code\).
-* There are 2 pictures for reference.  
-
-![](assets/to-do-uncategorized-screenshots/no115.png)
 
 ## Basic preparations
 
