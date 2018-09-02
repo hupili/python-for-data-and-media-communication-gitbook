@@ -60,7 +60,7 @@ This course is tailor made for communication background students and imposes no 
 
 Figure last updated: 20180803
 
-![Course structure](/assets/course-structure.png)
+![Course structure](assets/course-structure.png)
 Here is a brief map about what we are going to learn in the first semester. For more details, please refer to our [course outline](outline.md).
 
 ## Introduction & Objectives
@@ -120,19 +120,19 @@ The GitHub issue has a lot of features, but overall it looks like a lightweight 
 
 [Example 1](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/2#issue-342975310): Set a to-do list for your teammates, once they finished the quest you pull, they can just tick to show the progress.
 
-![Issues pull request](/assets/github-issues-to-pull-request.png)  
+![Issues pull request](assets/github-issues-to-pull-request.png)  
 
 [Example 2](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/2#issuecomment-407719706): Discuss with your team members to track the working process.
 
-![Issues discussion](/assets/github-issues-as-discussion-channel.png)
+![Issues discussion](assets/github-issues-as-discussion-channel.png)
 
 ### Learn other's code from commit history
 
-![Git commit history](/assets/git-commit-history.png)  
+![Git commit history](assets/git-commit-history.png)  
 
 You can see the latest update time and a brief summary of every piece of work in one's repository.  
 
-![Git commit details](/assets/git-commit-details.png)
+![Git commit details](assets/git-commit-details.png)
 
 By clicking one of the files, and its commits, you can see the details of the improvements and changes they recently made, and you can learn from their work.
 
@@ -154,9 +154,9 @@ You can check out our [tutorial](/module-jupyter.md) for how to install Jupyter 
 
 [Nbviewer](http://nbviewer.jupyter.org/) creates a simple way to view and share Jupyter Notebooks. You just need to copy the link of one Jupyter notebook and paste in Nbviewer. Click [here](https://github.com/jupyter/nbviewer) to know more about Nbviwer,to see what formats they support to present notebooks to the user.  
 Here is an example, you can find one Jupyter notebook from github, and copy the link, paste into the Nbviwer.
-![Jupyter notebook link](/assets/jupyter-notebook-link.jpg)
+![Jupyter notebook link](assets/jupyter-notebook-link.jpg)
 
-![Nbviewer interface](/assets/nbviewer-interface.png)
+![Nbviewer interface](assets/nbviewer-interface.png)
 
 #### Why do we need to preview Jupyter notebook on Nbviewer?
 
@@ -174,22 +174,22 @@ Talking about this function, GitHub is like a cloud disk, which is similar to Go
 
 #### Create your first repository
 
-![Github create new repository](/assets/github-create-new-repo.png)
+![Github create new repository](assets/github-create-new-repo.png)
 After you log in GitHub desktop, click `create new repository`, give a name you like and choose the local path you want(but keep in mind where they are).
 
 #### Create a file in this repository
 
-![Text editor to load file](/assets/text-editor-load-file.png)
+![Text editor to load file](assets/text-editor-load-file.png)
 Drag the repository/folder you created into the text editor, in this case, I use *visual studio code*.  
-![Text editor to rite a file](/assets/text-editor-write-new-file.png)
+![Text editor to rite a file](assets/text-editor-write-new-file.png)
 Under the example repository, create your first file `hello github.md`, write an H1 line `Let's try out github`, and save it.
 
 #### Publish your repository to GitHub
 
-![Publish repository](/assets/github-publish-your-repo.png)
+![Publish repository](assets/github-publish-your-repo.png)
 After creating your first file, open GitHub desktop, you can see the changes you did before. Give a description of this changes in [1], then commit to master in [2],(this step is like that you confirm the changes). After that, you can click [3] and [4] to publish your repo.
 
-![Web find the file](/assets/github-web-find-repo.png)
+![Web find the file](assets/github-web-find-repo.png)
 Open the GitHub website, find your new repo, click the repo and check out the files in this repo, whether it keeps the same pace with your local file.
 
 #### Re-edit your file and synchronize codes between two ends
@@ -198,7 +198,7 @@ You can re-edited the files and codes both in GitHub website and in local text e
 
 - If you edit in the website, after you save the file, click the `fetch origin`. Then the change you commit in the website will synchronize into your local repo.
 
-![Git fetch origin](/assets/git-fetch-origin.png)
+![Git fetch origin](assets/git-fetch-origin.png)
 
 - If you edit in a local text editor, it's pretty much the same. You give a description, commit to mater, and then `fetch origin`. Then the change you commit in a local repo will synchronize into your GitHub site.
 
@@ -211,7 +211,7 @@ GitHub Pages are websites for you and your projects. It helps you turn your GitH
 #### Step 1. Create a repository
 
 Head over to GitHub and create a new repository named `username.github.io`, where username is your username on GitHub.  
-![Web create new repo](/assets/github-web-create-new-repo.png)
+![Web create new repo](assets/github-web-create-new-repo.png)
 *Note: If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.*
 
 #### Step 2. Clone the repository
@@ -220,13 +220,13 @@ There are basically two ways to clone the repository. Use terminal with codes or
 
 Click the "Set up in Desktop" button. When the GitHub desktop app opens, save the project.
 
-![Clone repo](/assets/github-clone-repo-to-local.png)
+![Clone repo](assets/github-clone-repo-to-local.png)
 
 #### Step 3. Create an index file
 
 Basically, index.html is the default file served by the web server. So it is equivalent to visit example.com and example.com/index.html. Naming your file as index.html can lead to this more concise notation in browser's address bar and in communication campaigns -- the naming in the world of web is usually the shorter the better. More explanations are [here](https://en.wikipedia.org/wiki/Webserver_directory_index).
 
-![Html default](/assets/html-default.png)
+![Html default](assets/html-default.png)
 
 Grab your favorite text editor and add an index.html file to your project. You can copy this example in your html.
 
@@ -246,9 +246,9 @@ Grab your favorite text editor and add an index.html file to your project. You c
 #### Step 4. Commit & publish
 
 Change to your GitHub desktop, commit your changes, and press the publish/push button.
-![Git commit/publish](/assets/git-commit-and-publish.png)
+![Git commit/publish](assets/git-commit-and-publish.png)
 
-Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world.
+Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world. For example, you can put your own CV, your portfolio, your essay of learning Python etc into html. For example, I build a simple introduction/CV for myself, you can check out here: https://chicoxyc.github.io/ .
 
 ### [O] Add sub-path to your GitHub hosted domain
 
