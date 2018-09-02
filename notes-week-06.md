@@ -5,188 +5,56 @@
 <!-- TOC -->
 
 - [Week 06 - Advanced scraping: browser emulation, anti-crawler and other nitty gritty](#week-06---advanced-scraping-browser-emulation-anti-crawler-and-other-nitty-gritty)
-    - [Preperations Before Data Analysis](#preperations-before-data-analysis)
-    - [Use "Pandas" to do Data Analysis](#use-pandas-to-do-data-analysis)
-        - [Step1: Save csv file](#step1-save-csv-file)
-        - [Step2: Read csv file](#step2-read-csv-file)
-        - [Step3: Select data from csv](#step3-select-data-from-csv)
+    - [Anti-crawling](#anti-crawling)
+        - [User agent](#user-agent)
+        - [Rate throttling](#rate-throttling)
+    - [Common issues](#common-issues)
+        - [Encoding](#encoding)
+    - [Browser emulation](#browser-emulation)
+        - [Selenium](#selenium)
+        - [splinter](#splinter)
+    - [Analyse Network Traces](#analyse-network-traces)
+    - [Crawl mobile Apps](#crawl-mobile-apps)
 
 <!-- /TOC -->
 
 </div>
 
-## Preperations Before Data Analysis
+## Anti-crawling
 
-**Notes:**
+### User agent
 
-* Before learning, we will use jupyter notebook here, please enter venv environment first and enter into jupyter notebook.
-* install pandas, seaborn, matplotlib, requests, csv
+### Rate throttling
 
-  ```
-  pip install pandas
-  ```
+* Limit by IP
+* Limit by cookie/ access token
 
-  ```
-  pip install seaborn
-  ```
+## Common issues
 
-  ```
-  pip install matplotlib
-  ```
+### Encoding
 
-## Use "Pandas" to do Data Analysis
+[51job.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/51job.com.ipynb)
 
-> Example: Today, We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
+## Browser emulation
 
-### Step1: Save csv file
+### Selenium
 
-* Here is the link of csv life and the csv needs to be downloaded here.
+https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium
 
-  [https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas)
+[libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
 
-  ![](assets/to-do-uncategorized-screenshots/no10.png)
+### splinter
 
-* Click "raw" on the right upper corner.  
-  ![](assets/to-do-uncategorized-screenshots/no11.png)
+https://github.com/hupili/python-for-data-and-media-communication/tree/master/ww-splinter
 
-* You can see the raw csv file as below.   
-  ![](assets/to-do-uncategorized-screenshots/no12.png)
+## Analyse Network Traces
 
-* Click right and choose "save as"  
-  ![](assets/to-do-uncategorized-screenshots/no13.png)
+Open "Google Chrome Developer Console" by `command+option+i`. Check out the "Network" tab and use "XHR" filter to find potential packages. We are usually interested in `json` files or `xml` files sent over the line. Most dynamic web pages have predictable / enumerable internal API -- use HTTP request to get certain `json`/ `xml` files.
 
-* Then the csv file can be saved as csv\(comma-separated values\).  
-  ![](assets/to-do-uncategorized-screenshots/no14.png)
+Some websites render HTML at the backend and send them to the frontend in a dynamic way. You find the URL in address bar stays the same but the content is changed. You can also find the HTML files and their **real URL** via developer console. One such example is [xiachufang.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/xiachufang.com.ipynb).
 
-### Step2: Read csv file
+## Crawl mobile Apps
 
-* Put csv file into the same folder with venv.
-* `import pandas`
-* Read csv file 
-  `pandas.read_csv('openrice.csv')`
-* The output will be as below:
-  ![](assets/to-do-uncategorized-screenshots/no15.png)
-* If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
+**TODO**
 
-  ```
-  df = pandas.read_csv('openrice.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
-  ```
-
-  then the output will be like this:  
-  ![](assets/to-do-uncategorized-screenshots/no16.png)  
-  ** Notes:**
-
-* `df`is short for "dataframe", is used in as return value in pandas.
-
-### Step3: Select data from csv
-
-* If you want to the first 10 data from the csv file. then you can use
-
-  ```
-  df.head(10)
-  ```
-
-  the output will be as blow:  
-  ![](assets/to-do-uncategorized-screenshots/no17.png)
-
-* If you want to select one column. You can use dataframe as a dictionary, use a key to refer to certain value. For example, you want all the restaurant locations.You can type:
-
-  ```
-  df['location']
-  ```
-
-  Then the output will be as below \(the picture do not show all the locations due to the limited space\):  
-  ![](assets/to-do-uncategorized-screenshots/no18.png)
-
-** Step4: Analysis just one dimension**
-
-* One dimension is one column in a form.
-* You can use   
-  `df['location'].value_counts()`  
-  then the output will be as below, showing you how many likes each restaurant have got.  
-  ![](assets/to-do-uncategorized-screenshots/no19.png)
-* Then you may need to calculate certain dimension. For example, how many likes that each restaurant have got. First, you will get all "likes" column data as follow:  
-  ![](assets/to-do-uncategorized-screenshots/no20.png)  
-  then, you need to to know the mean, media, percentile, min,max number of this dimension as below:  
-  ![](assets/to-do-uncategorized-screenshots/no21.png)
-
-* If you want to know how many restaurants having likes is 558, or less than 60, then you can use filter function:  
-  `df[df['likes'] == 558]`  
-  `df[df['likes'] < 60]`
-
-  the output will be as below:  
-  ![](assets/to-do-uncategorized-screenshots/no22.png)
-
-* then you can put these filter data into a distribution, using  
-  `df['likes'].hist()`  
-  and you can get a distribution like below:  
-  ![](assets/to-do-uncategorized-screenshots/no23.png)
-
-* if you want to see change parameter, you can use  
-  `df['likes'].hist(bins=20)`  
-  ![](assets/to-do-uncategorized-screenshots/no24.png)
-
-**Step5: How to describe distribution **
-
-* After you get the distribution, you can do some analysis. Compare the distribution with mean, media numbers.
-  ![](assets/to-do-uncategorized-screenshots/no25.png)
-* If you need to compare price which is a interval.You need to pay special attention on numbers. Python recognize '$101-200'&lt;'$51-100' because Python only compare the  
-  numbers in sequence of each interval.
-
-  You need to convert each interval string into numbers, which means you need to choose a number to represent each interval to do comparison.  
-  Here, we use "mapping" function
-
-  ```
-  mapping = {
-    '$101-200': 200,
-    '$201-400': 400,
-    '$51-100': 100,
-    '$401-800': 800,
-    '$50以下': 50
-  }
-  ```
-
-* Now, you can use:
-
-  ```
-    original_string = '$60以下'
-    mapping.get(orignal_string, 0)
-    def cleaning(e):
-    return mapping.get(e, 0)
-    cleaning('$50以下')
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no26.png)
-
-* Then you can use the coding below to transfer intervals into numbers.
-
-  `df['price_num'].apply(cleaning)`
-
-  ![](assets/to-do-uncategorized-screenshots/no27.png)
-
-* If you want to select location of Mongkok.
-
-  ```
-    df1[
-       df1['location'] == '旺角'
-      ]
-  ```
-
-  the output will be:  
-  ![](assets/to-do-uncategorized-screenshots/no28.png)
-
-* If you want to select the seafood restaurants with price number less than 100.  
-  ![](assets/to-do-uncategorized-screenshots/no29.png)
-
-* If you want to sort price from high to low.
-
-  ```
-    df.sort_values(by='price_num', ascending=False)
-  ```
-
-  the output will be  
-  ![](assets/to-do-uncategorized-screenshots/no30.png)
-
-------
-
-If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
+"Charles proxy", "mitmproxy"
