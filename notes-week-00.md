@@ -279,6 +279,8 @@ Here is one way you can create a new branch on GitHub web UI:
 
 ![Create new branch on GitHub](assets/github-web-create-new-branch.png)
 
+**NOTE**: The content is served from `gh-pages` branch by default. You can [change this default settting](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/23).
+
 ### [O] Bind a custom domain name
 
 See it in action first:
