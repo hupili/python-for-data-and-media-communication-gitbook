@@ -5,19 +5,14 @@
 <!-- TOC -->
 
 - [Week 05 - Get semi-structured data: Web scraping](#week-05---get-semi-structured-data-web-scraping)
-    - [Jupyter notebook](#jupyter-notebook)
-        - [Install modules in terminal](#install-modules-in-terminal)
-        - [Start venv](#start-venv)
-        - [Tips of usage](#tips-of-usage)
-            - [Q1: How to quit the last steps's situation?](#q1-how-to-quit-the-last-stepss-situation)
-            - [Q2:How to quit from virtual environment?](#q2how-to-quit-from-virtual-environment)
-        - [Tab & type & help & print](#tab--type--help--print)
-        - [Open a new file](#open-a-new-file)
+    - [Use Jupyter notebook more](#use-jupyter-notebook-more)
     - [Knowledge about HTML](#knowledge-about-html)
-        - [The process of search engines\(like Baidu\)'s work](#the-process-of-search-engines\like-baidu\s-work)
-        - [Html JS css](#html-js-css)
-        - [Chrome Develop Console](#chrome-develop-console)
+        - [The working process of search engines like Google](#the-working-process-of-search-engines-like-google)
+        - [Chrome DevTools](#chrome-devtools)
+        - [How to use Chrome DevTools](#how-to-use-chrome-devtools)
+        - [HTML, JS, and CSS](#html-js-and-css)
     - [Scraper](#scraper)
+        - [Modules we will use this week](#modules-we-will-use-this-week)
         - [Import modules](#import-modules)
         - [Requests + .text](#requests--text)
         - [BeautifulSoup](#beautifulsoup)
@@ -42,97 +37,55 @@
 
 </div>
 
-## Jupyter notebook
+## Use Jupyter notebook more
 
-* 1.As we have downloaded python2 and python3, there are some conflicts to run some programs when we import modules.
-* 2.We can debug step by step.It is convenient when we are writing a complicated coding.
+1. We can debug step by step. It is convenient when we are writing a complicated coding.
+2. As we have downloaded python2 and python3, there are some conflicts to run some programs when we import modules. It is suggested to enter virtual environment before using Jupyter notebook, and install all modules in Jupyter notebook.
 
-So it is suggested to enter virtual environment before using Jupyter notebook.
-
-### Install modules in terminal
-
-```
-pip3 install --user requests
-pip3 install --user bs4
-pip3 install --user lxml
-```
-
-### Start venv
-[https://hupili.gitbooks.io/python-for-data-and-media-communication/content/module-jupyter.html](https://hupili.gitbooks.io/python-for-data-and-media-communication/content/module-jupyter.html)
-
-* Then you will see a page [http://localhost:8888/tree](http://localhost:8888/tree). \(As long as you are in the virtual environment, you can go to this link to write code.\)
-* A directory named 'venv' is on your desktop now. The files you put here can be run in the virtual environment by jupyter.
-
-### Tips of usage
-
-#### Q1: How to quit the last steps's situation?
-
-![](assets/to-do-uncategorized-screenshots/no1.png)
-
-A:
-The answer is in the picture: control+C. \( Pay attention to the text. \)Then you will get the following picture.Please input `y` in 5 seconds.
-
-![](assets/to-do-uncategorized-screenshots/no9.png)
-
-#### Q2:How to quit from virtual environment?
-![](assets/to-do-uncategorized-screenshots/no2.png)
-
-A: input `deactivate`
-
-### Tab & type & help & print
-There are some useful tips for you.
-
-* tab
-If we input the `mypage.t`, then `tab`, we will find there are other commands\(functions\),including tag\_name, text and so on.
-
-* `type` to check the object. It is very useful when we write complicated codings.
-eg:
-```
-a=1
-type(a)
-b="hello"
-type(b)
-```
-You will get:
-```
-int
-str
-```
-
-* `help(str.strip)` to know the details.
-
-* `print` step by step to check where is the error.
-\(In Jupyter, you can just input the variables without the function of print.\)
-
-### Open a new file
-![](assets/to-do-uncategorized-screenshots/no3.png)
-* `shift+return` to run the code.
-
+More useful notes and usage, please refer to here[Jupyter Module](module-jupyter.md).
 
 ## Knowledge about HTML
 
-### The process of search engines\(like Baidu\)'s work
+### The working process of search engines like Google
 
 1. Crawl web pages
 2. Store those web pages
 3. Build reverse index,which means making a relationship between the keyword and web page.
 4. Extract page-level features
 
-### Html JS css
-![](assets/to-do-uncategorized-screenshots/no4.png)
+For this week, we will simulate this working precess like how we crawl the web page and extract the features and data we want.
 
-* HTML is a machine language of web page. Writing something in HTML means to create a web page.It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag.
-* css and JS are other languages, which is used to describe the style of the web page,such as the characters' style and colour.
+### Chrome DevTools
 
-### Chrome Develop Console
+Chrome DevTools is a set of web developer tools built directly into the Google Chrome browser. For us, Chrome DevTools can help us better learn the basics of viewing and even changing a page's code, with what we can understand the structure of a webpage better, how a website store the data, present the information, and most importantly, how we locate/find those information we want and retrieve them into structural data to process further analysis.
 
-* It is suggested to use 'Chrome' as our browser.
-* In Chrome, `option+command+i` to open the Chrome develop console.
-* Click the upper left corner of the console, and you will find that by moving the mouse in the web, you can see the part in console.
-* eg:![](assets/to-do-uncategorized-screenshots/no5.png)
+### How to use Chrome DevTools
 
+1. Firstly, It is suggested to use 'Chrome' as our browser.
+2. In Chrome, `option+command+i` to open the Chrome developer console.
+3. Click the upper left corner of the console, you can select an element in the webpage to inspect it. You will see its source code by moving your cursor on to it.
+
+Eg: Check out the structure of a webpage, a project about tweets of Trump <https://initiumlab.com/blog/20170329-trump-and-ivanka/>. For example, moving your cursor to check out every `h2` headline.
+
+![Chrome DevTools](assets/wepage-usage-of-chrome-devtools.png)
+
+### HTML, JS, and CSS
+
+![HTML, JS and CSS](assets/html&js&css.png)
+
+* HTML is a machine language of web page. Writing something in HTML means to create a web page. It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag that wrap up content we want to present.
+* CSS stands for Cascading Style Sheets. CSS describes how HTML elements are to be displayed on screen, paper, or in other media.
+* JavaScript is the programming language of HTML and the Web, which is mainly used for image manipulation, form validation, and dynamic changes of content.
 
 ## Scraper
+
+### Modules we will use this week
+
+```text
+!pip3 install --user requests
+!pip3 install --user bs4
+!pip3 install --user lxml
+```
 
 ### Import modules
 ```
