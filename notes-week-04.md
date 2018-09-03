@@ -188,6 +188,10 @@ with open('chapter4-example-name_list.csv','r') as f: # open CSV
         print(row)
 ```
 
+Note: **If you download the csv, you should copy the csv file in the folder where your venv folder are. Usually, it's in the user path. All the files you write and read should in this folder.**
+
+![Find your file](assets/jupyter-where-your-files-are.png)
+
 Output:
 
 ```text
@@ -483,7 +487,7 @@ Requests are the primary module we use to crawl website and get the content.
 
 ### Make a Request
 
-Making a request is easy. First of all, import the `requests` module. Usually, we use `requests.get` to make a request for data.
+Making a request is easy. First of all, please use `pip` to install requests before import. Then import the `requests` module. Usually, we use `requests.get` to make a request for data.
 
 ```python
 import requests
