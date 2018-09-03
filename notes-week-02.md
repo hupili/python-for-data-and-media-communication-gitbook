@@ -215,7 +215,7 @@ Example 6:
 [] is False
 >>> test = [0]
 >>> print(test,'is',bool(test))
-[0] is False
+[0] is True
 >>> test = 0.0
 >>> print(test,'is',bool(test))
 0.0 is False
