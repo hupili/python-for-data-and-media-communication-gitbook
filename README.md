@@ -24,6 +24,7 @@ This is the text book for HKBU's COMM7780/JOUR7280 courses. The course COMM7780/
 
 ## General FAQs
 
+* [Course Admin](course-admin.md)
 * [Setup Python Environment on Windows and MAC](setup-environment.md)
 * [Shell](shell.md)
 * [Python Language Basics](python-language-basics.md)
