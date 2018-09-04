@@ -117,27 +117,39 @@ data = BeautifulSoup(html_str,"html.parser") #pay attention to it's syntax
 ```
 
 Output: After parsing, you can see that the data is more structural, and we can further get/find the data by using `control flows` and manipulating of `[]` and `{}`.
+
 ![HTML After Parsing](assets/html-after-parsing.png)
 
 Basically, parser function is the most used of `BeatutifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
 ### Find data
 
-#### Find + strip\(\) to get title
->`h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1
-`
+#### Find title
 
-* Open the console, by moving the mouse you can find title is in `<h1........</h1>`.(see the above 'html' part.)
+Open the chrome devtool, by moving the mouse on the headline, you can find title is in `<h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1>`.
 
+![HTML Headline](assets/html-headline.png)
+
+
+```python
+import requests 
+from bs4 import BeautifulSoup
+r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
+html_str = r.text
+data = BeautifulSoup(html_str,"html.parser")
+myh1 = mypage.find('h1') # we use tag and attributes to extract the data we want. Type(myh1) you can see that `myh1` is bs4.element.Tag
+mytitle = myh1.text #turn bs4.element.Tag into text
+mytitle.strip() # remove the character specified at the beginning and end of the string
 ```
-myh1 = mypage.find('h1')
-mytitle = myh1.text
-mytitle.strip()
-```
 
-* `find` to find what we want, and output the first item.
-* `find_all` means output all we find. 
-* `strip()`means delete the meaningless coding.
+Output: You can learn the logic and function of each step.
+![HTML Find Attributes](assets/html-find-attributes.png)
+
+**Note:**
+
+* `find` to find what we want, and output the first item. Like if there are 10 h1, they will return the first one.
+* `find_all` return a list of all the values we want. Like if there are 10 h1, they will return a list that contain all those h1. **A list means that we can use for loop to further filter**.
+* `strip()`means delete the meaningless character at the beginning and end of the string.
 * You can `help(str.strip)` to see the usage of strip.
 
 #### Get date
