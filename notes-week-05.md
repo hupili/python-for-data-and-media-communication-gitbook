@@ -12,10 +12,7 @@
         - [How to use Chrome DevTools](#how-to-use-chrome-devtools)
         - [HTML, JS, and CSS](#html-js-and-css)
     - [Scraper](#scraper)
-        - [Modules we will use this week](#modules-we-will-use-this-week)
-        - [Import modules](#import-modules)
-        - [Requests + .text](#requests--text)
-        - [BeautifulSoup](#beautifulsoup)
+        - [New module: BeautifulSoup](#new-module-beautifulsoup)
         - [Find + strip\(\) to get title](#find--strip\\-to-get-title)
         - [Get date](#get-date)
         - [Get author \(Important\)](#get-author-\important\)
@@ -79,47 +76,49 @@ Eg: Check out the structure of a webpage, a project about tweets of Trump <https
 
 ## Scraper
 
-### Modules we will use this week
+### New module: BeautifulSoup
+
+>`bs4` is the abbreviation of BeautifulSoup4. Beautiful Soup is a Python library for pulling data out of HTML and XML files.
+
+In other words, BeautifulSoup parse the html content you request into structural data so that we can easily find the element we want.
+
+Install BeautifulSoup
 
 ```text
-!pip3 install --user requests
 !pip3 install --user bs4
-!pip3 install --user lxml
 ```
 
-### Import modules
-```
-import requests
-import bs4
-import csv
-```
-* `requests` is a module containing diverse functions relating to the web page.
+Import the module
 
-* `bs4` is the abbreviation of BeautifulSoup4.It is used to analyse web page.
-
-### Requests + .text
+```text
+from bs4 import BeautifulSoup
 ```
-r = requests.get('http://initiumlab.com/blog/20170329-trump-and-ivanka/'
-r.text
+
+Eg1: Use BeatutifulSoup to parse <https://initiumlab.com/blog/20170329-trump-and-ivanka/>
+
+```python
+import requests #week o4 request module
+from bs4 import BeautifulSoup #pay attention to its syntax
+r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
+#print resp you will get <Response [200]> means request successful
+html_str = r.text #get the content of the request
 ```
-It can be wrote in one line.
 
-`r = requests.get('http://initiumlab.com/blog/20170329-trump-and-ivanka/').text`
-
-* Store the web as `r`, `get` means try to get response of that web page.
+* Store the web as `r`, `get()` means try to get response of that web page, passing url string in to `()`.
 
 * `text` means to show the text of the web page.
 
-### BeautifulSoup
-```
-from bs4 import BeautifulSoup
-mypage = BeautifulSoup(r.text)
-```
-* `BeautifulSoup` is to extract the web's content.
-It relies on certain engine to analyse. `lxml` is one of the engine. By default, it will choose the best engine.
+Output: This is before the parsing step, you can see that they are like a mess.
+![HTML Text](assets/html-text.png)
 
-* Warning is not an error. So no need to worry at this stage.
+```python
+data = BeautifulSoup(html_str,"html.parser") #pay attention to it's syntax
+```
 
+Output: After parsing, you can see that the data is more structural, and we can further get/find the data by using `control flows` and manipulating of `[]` and `{}`.
+![HTML After Parsing](assets/html-after-parsing.png)
+
+Basically, parser function is the most used of `BeatutifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
 ### Find + strip\(\) to get title
 >`h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1
