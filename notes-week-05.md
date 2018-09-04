@@ -13,14 +13,15 @@
         - [HTML, JS, and CSS](#html-js-and-css)
     - [Scraper](#scraper)
         - [New module: BeautifulSoup](#new-module-beautifulsoup)
-        - [Find + strip\(\) to get title](#find--strip\\-to-get-title)
-        - [Get date](#get-date)
-        - [Get author \(Important\)](#get-author-\important\)
+        - [Find data](#find-data)
+            - [Find + strip\(\) to get title](#find--strip\\-to-get-title)
+            - [Get date](#get-date)
+            - [Get author \(Important\)](#get-author-\important\)
                 - [Try 1:fail](#try-1fail)
                 - [Try 2:succeed to find all the authors](#try-2succeed-to-find-all-the-authors)
-        - [Try to output those authors.](#try-to-output-those-authors)
-        - [Def to scraper more articles](#def-to-scraper-more-articles)
-        - ["For" loop to scraper more articles](#for-loop-to-scraper-more-articles)
+            - [Try to output those authors.](#try-to-output-those-authors)
+            - [Def to scraper more articles](#def-to-scraper-more-articles)
+            - ["For" loop to scraper more articles](#for-loop-to-scraper-more-articles)
         - [Write .csv](#write-csv)
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
@@ -120,7 +121,9 @@ Output: After parsing, you can see that the data is more structural, and we can 
 
 Basically, parser function is the most used of `BeatutifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
-### Find + strip\(\) to get title
+### Find data
+
+#### Find + strip\(\) to get title
 >`h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1
 `
 
@@ -137,7 +140,7 @@ mytitle.strip()
 * `strip()`means delete the meaningless coding.
 * You can `help(str.strip)` to see the usage of strip.
 
-### Get date
+#### Get date
 
 ```html
 <time itemprop="dateCreated" datetime="2017-03-29T....." content="2017-03-29">
@@ -149,7 +152,8 @@ mytitle.strip()
 mydate = mypage.find('time').text.strip()
 ```
 
-### Get author \(Important\)
+#### Get author \(Important\)
+
 ##### Try 1:fail
 `myauthor = mypage.find('span')`
 ![](assets/to-do-uncategorized-screenshots/no6.png)
@@ -198,7 +202,7 @@ mydate = mypage.find('time').text.strip()
 `[<span>Li Yiming</span>, <span>Li Yuqiong</span>]`
 
 
-### Try to output those authors.
+#### Try to output those authors.
 ```
 authors = []
 for myspan in mytr.find_all('span'):
@@ -219,7 +223,7 @@ article = {
 * `{}` is a dictionary.The left of the colon is the key, or name. The right of the colon is the value of the key.
 
 
-### Def to scraper more articles                                                                       
+#### Def to scraper more articles                                                                       
 ```
 def scrape_one_page(url):
     r = requests.get(url).text
@@ -243,7 +247,7 @@ def scrape_one_page(url):
 `print(scrape_one_page('http://initiumlab.com/blog/20170401-data-news/'))`
 
 
-### "For" loop to scraper more articles
+#### "For" loop to scraper more articles
 ```
 urls = [
     'http://initiumlab.com/blog/20170407-open-data-hk/',
