@@ -14,11 +14,11 @@
     - [Scraper](#scraper)
         - [New module: BeautifulSoup](#new-module-beautifulsoup)
         - [Find data](#find-data)
-            - [Find + strip\(\) to get title](#find--strip\\-to-get-title)
+            - [Find title](#find-title)
             - [Get date](#get-date)
-            - [Get author \(Important\)](#get-author-\important\)
-                - [Try 1:fail](#try-1fail)
-                - [Try 2:succeed to find all the authors](#try-2succeed-to-find-all-the-authors)
+            - [Get author](#get-author)
+                - [Try 1: not a good way](#try-1-not-a-good-way)
+                - [Try 2: Best practice](#try-2-best-practice)
             - [Try to output those authors.](#try-to-output-those-authors)
             - [Def to scraper more articles](#def-to-scraper-more-articles)
             - ["For" loop to scraper more articles](#for-loop-to-scraper-more-articles)
@@ -126,10 +126,13 @@ Basically, parser function is the most used of `BeatutifulSoup` library for us, 
 
 #### Find title
 
-Open the chrome devtool, by moving the mouse on the headline, you can find title is in `<h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1>`.
+Open the chrome devtool, by moving the mouse on the headline, you can find title is in 
+
+```html
+<h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1>
+```
 
 ![HTML Headline](assets/html-headline.png)
-
 
 ```python
 import requests 
@@ -137,9 +140,9 @@ from bs4 import BeautifulSoup
 r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
 html_str = r.text
 data = BeautifulSoup(html_str,"html.parser")
-myh1 = mypage.find('h1') # we use tag and attributes to extract the data we want. Type(myh1) you can see that `myh1` is bs4.element.Tag
-mytitle = myh1.text #turn bs4.element.Tag into text
-mytitle.strip() # remove the character specified at the beginning and end of the string
+my_h1 = data.find('h1') # we use tag and attributes to extract the data we want. Type(myh1) you can see that `myh1` is bs4.element.Tag
+my_title = myh1.text #turn bs4.element.Tag into pure text
+my_title.strip() # remove the character specified at the beginning and end of the string
 ```
 
 Output: You can learn the logic and function of each step.
@@ -150,9 +153,12 @@ Output: You can learn the logic and function of each step.
 * `find` to find what we want, and output the first item. Like if there are 10 h1, they will return the first one.
 * `find_all` return a list of all the values we want. Like if there are 10 h1, they will return a list that contain all those h1. **A list means that we can use for loop to further filter**.
 * `strip()`means delete the meaningless character at the beginning and end of the string.
+* `HTML/bs4_tag.text` means turn bs4.element.Tag into pure text.
 * You can `help(str.strip)` to see the usage of strip.
 
 #### Get date
+
+In the same way we use to find the title, we can find that time tag as follows:
 
 ```html
 <time itemprop="dateCreated" datetime="2017-03-29T....." content="2017-03-29">
@@ -160,58 +166,90 @@ Output: You can learn the logic and function of each step.
                 </time>
 ```
 
-```
-mydate = mypage.find('time').text.strip()
-```
+Extract time value.
 
-#### Get author \(Important\)
-
-##### Try 1:fail
-`myauthor = mypage.find('span')`
-![](assets/to-do-uncategorized-screenshots/no6.png)
-
-* It is not what we want, as there are too many 'span'.So check how many span there, and find the difference between those tags. `command+f` to open the search bar in console,and input 'span'.You can see, there are more than 2 'span'.
-
-`myspans = mypage.find_all('span')`
-![](assets/to-do-uncategorized-screenshots/no7.png)
-* `find_all` means output all the items it finds.
-* `find` means only output the first one.
-
-* 'myspans' is a list. 
- `myspans[0]`means extract the first one in the list.
- `myspans[1]`means extract the second one in the list.
-
-##### Try 2:succeed to find all the authors
-
-![](assets/to-do-uncategorized-screenshots/no8.png)
-
-* In the HTML, we can find that authors upper tag is 'td'. But there are too many td. And it is difficult to be specific.
-
-* As 'tr' has class, which means more specific than 'td', so try to locate the more upper file: 'tr':
-
-`len(mypage.find_all('tr')`
->`5`
-
-* There are 5 tr. We have to narrow the area to search the 'span'.
-
-`mytr = mypage.find('tr', attrs={'class': 'post__authors'})`
-
-* `attrs`= attributes. You can add more detailed information about tr, which helps to locate the tr. 
-
-
-`mytr` 
-```
-<tr class="post__authors">
-<td>.......</td>
-<td>
-<span>Li Yiming</span>
-<span>Li Yuqiong</span>
-</td>
-</tr>
+```python
+my_date = data.find('time').text.strip()
 ```
 
-`mytr.find_all('span')`
-`[<span>Li Yiming</span>, <span>Li Yuqiong</span>]`
+Output:
+![HTML Text time](assets/html-text-time.png)
+
+#### Get author
+
+![HTML Get Authors](assets/html-find-authors.png)
+
+You can find that authors are in the span, so could we just use `find.span`to get the authors?
+
+##### Try 1: not a good way
+
+```python
+my_authors = data.find('span')
+```
+
+Output:
+
+```text
+<span>首頁</span>
+```
+
+It is not what we want, the reasonable guess is that there are many 'span'. So check how many span there, and find the difference between those tags. `command+f` to open the search bar in console,and input 'span'.You can see, there are more than 2 'span'. Therefore we should find all the span.
+
+```python
+my_spans = data.find_all('span')
+my_spans
+```
+
+Output:
+
+```text
+[<span>首頁</span>,
+ <span>文章</span>,
+ <span>專題</span>,
+ <span>活動</span>,
+ <span>職位</span>,
+ <span>團隊</span>,
+ <span>訂閱</span>,
+ <span>Li Yiming</span>,
+ <span>Li Yuqiong</span>,
+ <span class="tag">
+ ...
+ <span>香港北角英皇道 663 號泓富產業千禧廣場 1907 室</span>]
+```
+
+You can see that `find_all` returns a list and there are so many spans, and the authors are also in two of those spans. So how we get them? We use `index` to access them.
+
+```python
+authors = 
+author_1 = my_span[7].text
+author_2 = my_span[8].text
+authors.append(author_1) #append them into a list
+authors.append(author_2)
+```
+
+**Note: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, the list can not be texted.** 
+
+##### Try 2: Best practice
+
+![HTML Find Author 2](assets/html-find-authors2.png)
+
+* The logic here is if we can not specify one elements in the inner circle, we spread out to find the differentiate tag that only the element has.
+* In the HTML, we can find that authors upper tag is 'td'. But there are too many td. And it is difficult to be specific. So, we spread out.
+* Outer the `td` is the `tr` tag with a class named `post_authors`, you can find its the special tag only used to wrap authors, so try to locate and extract author names by tag: `tr`.
+
+```python
+my_authors = data.find('tr',attrs={'class':"post__authors"})
+#pay attention to its syntax, find('tag_name,attributes={'key':'value'})
+my_authors.text.strip()
+my_authors.text.strip().replace('\n',',')
+```
+
+Output:
+![HTML Find Authors2 Output](assets/html-find-authors2-output.png)
+
+* Syntax: find('tag_name,attributes={'key':'value'})
+* attrs = attributes. It contains more detailed information about about HTML tags, which helps to locate and identify the values better.
+* replace('a','b') means replace a as b. You can see that even after `strip()`, there is a `\n` in lines, in such circumstances, we can use replace to get off those characters.
 
 
 #### Try to output those authors.
