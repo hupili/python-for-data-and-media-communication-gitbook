@@ -21,6 +21,7 @@
                 - [Try 2: Best practice](#try-2-best-practice)
             - [Get tags](#get-tags)
             - [Def to scraper all articles of one page](#def-to-scraper-all-articles-of-one-page)
+            - [[O] Scrape all articles features of all pages](#o-scrape-all-articles-features-of-all-pages)
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
     - [[O] Crawler](#o-crawler)
@@ -133,7 +134,8 @@ Open the chrome devtool, by moving the mouse on the headline, you can find title
 ![HTML Headline](assets/html-headline.png)
 
 ```python
-import requests 
+import requests
+import csv
 from bs4 import BeautifulSoup
 r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
 html_str = r.text
@@ -336,12 +338,64 @@ Output:
 
 ![Initiumlab Articles CSV](assets/initiumlab-articles-csv.png)
 
+#### [O] Scrape all articles features of all pages
 
-<!-- * Create a function for future.
+Since we scrape one page of articles, can I scrape all articles of all pages? Of course! we just come from 0 to 1, next step is from 1 to n. But there are some difficulties on the way which might be a little bit difficult for us, but definitely we can solve this.
 
-* Following is an example of the function`scrape_one_page` 's usage:
-`print(scrape_one_page('http://initiumlab.com/blog/20170401-data-news/'))` -->
+```python
+import requests #week o4 request module
+from bs4 import BeautifulSoup #pay attention to its syntax
+import csv
 
+def scrape_one_article(article_url):  #scrape one articles features, which we've already done this
+    r = requests.get(article_url).text
+    data = BeautifulSoup(r,"html.parser")
+    my_title = data.find('h1').text.strip()
+    my_date = data.find('time').text.strip()
+    my_authors = data.find('tr',attrs={'class':'post__authors'}).text.strip().replace('\n',',')
+    my_tags = data.find('tr',attrs={'class':'post__tags'}).text.strip().replace(' ','').replace('\n\n\n\n\n','|')
+    my_url = article_url
+    return my_title,my_authors,my_date,my_tags,my_url
+
+def scrape_articles_urls_of_one_page(article_page_url): #scrape_articles_urls_of_one_page, its a little bit different from demo above because in the following pages(2-7), the articles' urls are different...
+    article_urls = []
+    r = requests.get(article_page_url).text
+    data = BeautifulSoup(r,"html.parser")
+    my_urls = data.find_all('a',attrs={'class':'post__title-link js-read-more'})
+    for my_url in my_urls:
+        url ='{0}blog{1}'.format('http://initiumlab.com/',my_url['href'].split('/blog')[-1]) #format urls. 
+        # Fail try 1 : use slice to cut off ../../..
+        # Fail try 2 : use blog instead of /blog to split. There are blog in the headline
+        #print(url)
+        article_urls.append(url)
+    return article_urls
+
+def scrape_all_pages(url):
+    articles=[]
+    for i in range(1,8):  #format all pages urls
+        if i == 1:
+            page_url = url
+        else:
+            page_url = '{url_initial}page/{number}/'.format(url_initial = url,number=i)
+            #print(page_url)
+
+        article_urls = scrape_articles_urls_of_one_page(page_url)
+        for article_url in article_urls:
+            articles.append(scrape_one_article(article_url))
+
+    return(articles)
+
+with open('initiumlab_articles.csv','w',newline='') as f:
+    all_articles = scrape_all_pages('http://initiumlab.com/blog/')
+    writer = csv.writer(f)
+    header = ['Titles','Authors','Dates','Tags','Url']
+    writer.writerow(header)
+    writer.writerows(all_articles)
+```
+
+Output will be like the following picture, and you can also find the csv file [here](assets/initiumlab_articles.csv).
+
+![Initiumlab Articles CSV2](assets/initiumlab-articles-csv2.png)
 
 <!-- #### "For" loop to scraper more articles
 ```
