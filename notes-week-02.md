@@ -506,7 +506,7 @@ Example 13:
 'python is fun'
 >>> test3 = 'python loves,\'you\''
 >>> test3.find('you')
-8 #returns the first character where 'you' begins
+14 #returns the first character where 'you' begins
 >>> test4 = 'python loves,\'you\''
 >>> test4.replace('you','me')
 "python loves,'me'"
