@@ -13,16 +13,13 @@
         - [HTML, JS, and CSS](#html-js-and-css)
     - [Scraper](#scraper)
         - [New module: BeautifulSoup](#new-module-beautifulsoup)
-        - [Find data](#find-data)
-            - [Find title](#find-title)
+        - [Get data](#get-data)
+            - [Get title](#get-title)
             - [Get date](#get-date)
             - [Get author](#get-author)
                 - [Try 1: not a good way](#try-1-not-a-good-way)
                 - [Try 2: Best practice](#try-2-best-practice)
-            - [Try to output those authors.](#try-to-output-those-authors)
-            - [Def to scraper more articles](#def-to-scraper-more-articles)
-            - ["For" loop to scraper more articles](#for-loop-to-scraper-more-articles)
-        - [Write .csv](#write-csv)
+            - [Def to scraper all articles of one page](#def-to-scraper-all-articles-of-one-page)
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
     - [[O] Crawler](#o-crawler)
@@ -122,9 +119,9 @@ Output: After parsing, you can see that the data is more structural, and we can 
 
 Basically, parser function is the most used of `BeatutifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
-### Find data
+### Get data
 
-#### Find title
+#### Get title
 
 Open the chrome devtool, by moving the mouse on the headline, you can find title is in 
 
@@ -251,53 +248,97 @@ Output:
 * attrs = attributes. It contains more detailed information about about HTML tags, which helps to locate and identify the values better.
 * replace('a','b') means replace a as b. You can see that even after `strip()`, there is a `\n` in lines, in such circumstances, we can use replace to get off those characters.
 
+#### Def to scraper all articles of one page
 
-#### Try to output those authors.
-```
-authors = []
-for myspan in mytr.find_all('span'):
-    authors.append(myspan.text)
-```
+If you want to scrape more articles, you will find there are some repeatable work and logic, so it's better for us to define a function to scrape more articles. Aside of this, all we need to do is find all articles url so that we can use a `for loop` to scrape more articles, right?
 
-* Create a new empty list called 'authors'. Then add the information in it.
+Step 1: Based on what we do in the above example, we can define a function like the following.
 
-* `list1.append()`means add the item into the list1.
-
-```
-article = {
-    'title': mytitle,
-    'authors': authors,
-    'date': mydate
-}
-```
-* `{}` is a dictionary.The left of the colon is the key, or name. The right of the colon is the value of the key.
-
-
-#### Def to scraper more articles                                                                       
-```
-def scrape_one_page(url):
+```python
+def scrape_one_article(article_url):
     r = requests.get(url).text
-    mypage = BeautifulSoup(r,'lxml')
-    mytitle = mypage.find('h1').text.strip()
-    mydate = mypage.find('time').text.strip()
-    mytr = mypage.find('tr', attrs={'class': 'post__authors'})
-    authors = []
-    for myspan in mytr.find('span'):
-        authors.append(myspan)
+    my_page = BeautifulSoup(r,"html.parser")
+    my_title = data.find('h1').text.strip()
+    my_date = data.find('time').text.strip()
+    my_authors = data.find('tr',attrs={'class':"post__authors"}).text.strip().replace('\n',',')
     article = {
-        'title': mytitle,
-        'authors': authors,
-        'date': mydate
+        'Title': my_title,
+        'Authors': my_authors,
+        'Date': my_date
     }
-    return article
+    return my_title,my_authors,my_date
 ```
-* Create a function for future.
+
+Step 2: Get all the urls of one page. You can click '文章' to get into the articles page.
+
+![Articles Page](assets/articles-page.png)
+
+![Articles Page Details](assets/articles-page-details.png)
+
+You can see that there are many articles in this page. So how can we scrape all the articles features including authors, dates, headlines? Firstly, we should get all urls of those articles. Therefore, we define another function to get those urls.
+
+```python
+def scrape_articles_urls_of_one_page(article_page_url): #scrape_articles_urls_of_one_page
+    article_urls = []
+    r = requests.get(article_page_url).text
+    data = BeautifulSoup(r,"html.parser")
+    my_urls = data.find_all('a',attrs={'class':'post__title-link js-read-more'}) #find the links
+
+    #quiz1: if you read the code of this page, most students will try to find ('a',attrs={'class':'post__title-link}) first and failed. Do you know why?
+    #quiz2: you will find that url can be extracted by my_url['href'], the results will be like this: '../blog/20160908-taipei-power-usage/', but the real one should be like this 'http://initiumlab.com/blog/20160908-taipei-power-usage/',
+    #so who do we format those links we want?
+
+    for my_url in my_urls:
+        url ='{0}{1}'.format('http://initiumlab.com',my_url['href'][2:]) #format urls
+        #print(url)
+        article_urls.append(url)
+
+    return article_urls
+scrape_articles_urls_of_one_page('http://initiumlab.com/blog/')
+```
+
+Output:
+
+```text
+['http://initiumlab.com/blog/20170407-open-data-hk/',
+ 'http://initiumlab.com/blog/20170401-data-news/',
+ 'http://initiumlab.com/blog/20170329-trump-and-ivanka/',
+ 'http://initiumlab.com/blog/20170324-hk-odd/',
+ 'http://initiumlab.com/blog/20170315-news-tool/',
+ 'http://initiumlab.com/blog/20170312-soma-post/',
+ 'http://initiumlab.com/blog/20170222-new-media/',
+ 'http://initiumlab.com/blog/20170113-Sharing-With-Friends-Versus-Strangers/',
+ 'http://initiumlab.com/blog/20161229-Facebook-App-Download-Conversion/',
+ 'http://initiumlab.com/blog/20160908-taipei-power-usage/']
+```
+
+After we get all the articles urls of one page, you can call the `scrape_one_article(article_url)` function to crape all the features of this page.
+
+```python
+articles = []
+article_urls = scrape_articles_urls_of_one_page('http://initiumlab.com/blog/') #scrape_articles_urls_of_page1
+for article_url in article_urls:
+    articles.append(scrape_one_article(article_url))
+
+with open('articles.csv','w',newline='') as f:
+    writer = csv.writer(f)
+    header = ['Titles','Authors','Dates']
+    writer.writerow(header)
+    writer.writerows(articles)
+```
+
+Output:
+
+![Initiumlab Articles CSV](assets/initiumlab-articles-csv.png)
+
+
+<!-- * Create a function for future.
 
 * Following is an example of the function`scrape_one_page` 's usage:
-`print(scrape_one_page('http://initiumlab.com/blog/20170401-data-news/'))`
+`print(scrape_one_page('http://initiumlab.com/blog/20170401-data-news/'))` -->
 
 
-#### "For" loop to scraper more articles
+<!-- #### "For" loop to scraper more articles
 ```
 urls = [
     'http://initiumlab.com/blog/20170407-open-data-hk/',
@@ -311,10 +352,10 @@ for url in urls:
     articles.append(article)
 print(articles)
 ```
-* Input a list of urls. Create an empty list called articles. For every urls' meaningful information, use the `scrape_one_page` function to extract.Then add those into the articles.
+* Input a list of urls. Create an empty list called articles. For every urls' meaningful information, use the `scrape_one_page` function to extract.Then add those into the articles. -->
 
 
-### Write .csv
+<!-- ### Write .csv
 ```
 with open('eggs.csv', 'w') as f:
     writer= csv.writer(f)
@@ -331,7 +372,7 @@ with open('eggs.csv', 'w') as f:
 
 * `csv.writer` means edit a csv file.
 
-* `writer.writerow([])` means add information in row. It can be wrote like this `s.writerow(['Spam', '1', '2', '3'])`
+* `writer.writerow([])` means add information in row. It can be wrote like this `s.writerow(['Spam', '1', '2', '3'])` -->
 
 ## Scraper pattern
 
