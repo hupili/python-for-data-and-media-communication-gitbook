@@ -20,7 +20,7 @@
                 - [Try 1: not a good way](#try-1-not-a-good-way)
                 - [Try 2: Best practice](#try-2-best-practice)
             - [Get tags](#get-tags)
-            - [Def to scraper all articles of one page](#def-to-scraper-all-articles-of-one-page)
+            - [Scrape all articles of one page](#scrape-all-articles-of-one-page)
             - [[O] Scrape all articles features of all pages](#o-scrape-all-articles-features-of-all-pages)
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
@@ -29,6 +29,7 @@
         - [scrapy](#scrapy)
         - [scrapy-cluster](#scrapy-cluster)
     - [Exercises and Challenges](#exercises-and-challenges)
+    - [Relative Readings](#relative-readings)
 
 <!-- /TOC -->
 
@@ -119,13 +120,13 @@ Output: After parsing, you can see that the data is more structural, and we can 
 
 ![HTML After Parsing](assets/html-after-parsing.png)
 
-Basically, parser function is the most used of `BeatutifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
+Basically, parser function is the most used of `BeautifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
 ### Get data
 
 #### Get title
 
-Open the chrome devtool, by moving the mouse on the headline, you can find title is in 
+Open the chrome devtools, by moving the mouse on the headline, you can find title is in:
 
 ```html
 <h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1>
@@ -146,6 +147,7 @@ my_title.strip() # remove the character specified at the beginning and end of th
 ```
 
 Output: You can learn the logic and function of each step.
+
 ![HTML Find Attributes](assets/html-find-attributes.png)
 
 **Note:**
@@ -166,7 +168,7 @@ In the same way we use to find the title, we can find that time tag as follows:
                 </time>
 ```
 
-Extract time value.
+Extract time value:
 
 ```python
 my_date = data.find('time').text.strip()
@@ -220,14 +222,14 @@ Output:
 You can see that `find_all` returns a list and there are so many spans, and the authors are also in two of those spans. So how we get them? We use `index` to access them.
 
 ```python
-authors = 
+authors = []
 author_1 = my_span[7].text
 author_2 = my_span[8].text
 authors.append(author_1) #append them into a list
 authors.append(author_2)
 ```
 
-**Note: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, the list can not be texted.** 
+**Note: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, the list can not be texted.**
 
 ##### Try 2: Best practice
 
@@ -258,7 +260,7 @@ my_tags = data.find('tr',attrs={'class':'post__tags'}).text.strip().replace(' ',
 #you can find that there are several blanks and escape characters in return my_tags. We can use replace to get off those meaningless characters.
 ```
 
-#### Def to scraper all articles of one page
+#### Scrape all articles of one page
 
 If you want to scrape more articles, you will find there are some repeatable work and logic, so it's better for us to define a function to scrape more articles. Aside of this, all we need to do is find all articles url so that we can use a `for loop` to scrape more articles, right?
 
@@ -397,42 +399,6 @@ Output will be like the following picture, and you can also find the csv file [h
 
 ![Initiumlab Articles CSV2](assets/initiumlab-articles-csv2.png)
 
-<!-- #### "For" loop to scraper more articles
-```
-urls = [
-    'http://initiumlab.com/blog/20170407-open-data-hk/',
-    'http://initiumlab.com/blog/20170401-data-news/',
-    'http://initiumlab.com/blog/20170329-trump-and-ivanka/'
-]
-
-articles= []
-for url in urls:
-    article= scrape_one_page(url)
-    articles.append(article)
-print(articles)
-```
-* Input a list of urls. Create an empty list called articles. For every urls' meaningful information, use the `scrape_one_page` function to extract.Then add those into the articles. -->
-
-
-<!-- ### Write .csv
-```
-with open('eggs.csv', 'w') as f:
-    writer= csv.writer(f)
-    for article in articles:
-        writer.writerow([
-            article['authors'],
-            article['date'],
-            article['title']
-        ])
-```
-* We can save those infornation with in different ways. `csv` is one of the types which can be easily opened and read.
-
-* `with open ('eggs.cdv','w') as f:` means create a file called 'eggs.csv'. 'w' is one of the way to open it, which is usually in default. 'as f' means that when we write f, it equals to open the file.
-
-* `csv.writer` means edit a csv file.
-
-* `writer.writerow([])` means add information in row. It can be wrote like this `s.writerow(['Spam', '1', '2', '3'])` -->
-
 ## Scraper pattern
 
 ### Data structure
@@ -455,7 +421,7 @@ Crawler is an essential building block for a search engine. Think of how Google 
 As a beginner of programmatic data collection, you often find crawler is non-necessary. The major reason is that in our use case, the "crawling zone" is bounded, namely there is a systematic way to specify where to crawl and how to crawl. In such scenario, you only need to focus on "scraper" part. Once you can handle one page, you can systematically generate other pages, or rules/ operation sequences to find other pages. Here are some examples of common generators:
 
 - Find pages to scrape from a "hub page" -- e.g. find links to news articles from a list page, and then scrape each page from the list.
-- Manipuate page id parameter in URL -- e.g. a forum/ a Wordpress blog site.
+- Manipulate page id parameter in URL -- e.g. a forum/ a Wordpress blog site.
 - Start from a seed page and continuously click "Next Page" -- e.g. search engine results. [notes-week-06.md](notes-week-06.md) will explain in details how to emulate browser in a programmatic way.
 
 ### scrapy
@@ -472,12 +438,19 @@ Note the keyword `yield` when you try this framework. This is called "Generator"
 [scrapy-cluster](https://github.com/istresearch/scrapy-cluster) is a distributed crawling framework, that uses [Docker](https://www.docker.com/) container technology to easily and horizontally scale out with your task size. It is a super module of `scrapy`. The layering is a follows:
 
 1. `parse()` function in `scrapy` -- This is essentially a "Scraper" -- single page, parsing
-2. `scrapy` -- This is essentially **one** "Crawler" -- The emited data items and page items are within one crawling topic.
+2. `scrapy` -- This is essentially **one** "Crawler" -- The emitted data items and page items are within one crawling topic.
 3. `scrapy-cluster` -- This is essentially a (distributed) cluster of **multiple** Crawlers. Those crawlers can have different topics, priorities, scheduling options, etc.
 
 ## Exercises and Challenges
 
-Some scrapers and the output dataset from our past students:
+* Scrape github users' history contributions. For example, scrape contributions of [Justin Myers](https://github.com/myersjustinc). We just need to know in different time, how many contributions he committed[1]. You can change the url parameters to get the contributions of different time[2]. Please save the results into csv like the following.
+
+    ![GitHub Contributions](assets/github-contributions.png)
+    ![Github Contribution Output](assets/github-contribution-output.png)
+
+## Relative Readings
+
+Some scrapers and the output dataset from our past students, you can learn some tricks and search for inspirations of your own project:
 
 * [HK Carpark price data](https://github.com/XIAO-Chao/hkbu-big-data-media/tree/master/homework2)
 * [Qidian](https://github.com/DaisyZhongDai/hkbu-big-data-media/tree/master/homework2)
