@@ -19,6 +19,7 @@
             - [Get author](#get-author)
                 - [Try 1: not a good way](#try-1-not-a-good-way)
                 - [Try 2: Best practice](#try-2-best-practice)
+            - [Get tags](#get-tags)
             - [Def to scraper all articles of one page](#def-to-scraper-all-articles-of-one-page)
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
@@ -248,6 +249,13 @@ Output:
 * attrs = attributes. It contains more detailed information about about HTML tags, which helps to locate and identify the values better.
 * replace('a','b') means replace a as b. You can see that even after `strip()`, there is a `\n` in lines, in such circumstances, we can use replace to get off those characters.
 
+#### Get tags
+
+```python
+my_tags = data.find('tr',attrs={'class':'post__tags'}).text.strip().replace(' ','').replace('\n\n\n\n\n','|')
+#you can find that there are several blanks and escape characters in return my_tags. We can use replace to get off those meaningless characters.
+```
+
 #### Def to scraper all articles of one page
 
 If you want to scrape more articles, you will find there are some repeatable work and logic, so it's better for us to define a function to scrape more articles. Aside of this, all we need to do is find all articles url so that we can use a `for loop` to scrape more articles, right?
@@ -261,12 +269,9 @@ def scrape_one_article(article_url):
     my_title = data.find('h1').text.strip()
     my_date = data.find('time').text.strip()
     my_authors = data.find('tr',attrs={'class':"post__authors"}).text.strip().replace('\n',',')
-    article = {
-        'Title': my_title,
-        'Authors': my_authors,
-        'Date': my_date
-    }
-    return my_title,my_authors,my_date
+    my_tags = data.find('tr',attrs={'class':'post__tags'}).text.strip().replace(' ','').replace('\n\n\n\n\n','|')
+    my_url = article_url
+    return my_title,my_authors,my_date,my_tags,my_url
 ```
 
 Step 2: Get all the urls of one page. You can click '文章' to get into the articles page.
