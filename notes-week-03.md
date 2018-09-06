@@ -668,8 +668,8 @@ Example 20: Calculate the number of pulsing from 1 to 100.
 
 ```python
 total = 0
-    for i in range(1, 101): # numbers which are >=1 and <101
-        total = total + i
+for i in range(1, 101): # numbers which are >=1 and <101
+    total = total + i
 print(total)
 ```
 
