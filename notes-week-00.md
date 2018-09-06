@@ -273,7 +273,8 @@ After you log in GitHub desktop, click `create new repository`, give a name you 
 #### Create a file in this repository
 
 ![Text editor to load file](assets/text-editor-load-file.png)
-Drag the repository/folder you created into the text editor, in this case, I use *visual studio code*.  
+Find the repository/folder you just created, you can click `open this repository in finder` to know its file path. After you find the folder, drag the repository/folder into the text editor, in this case, I use *visual studio code*.
+
 ![Text editor to rite a file](assets/text-editor-write-new-file.png)
 Under the example repository, create your first file `hello github.md`, write an H1 line `Let's try out github`, and save it.
 
