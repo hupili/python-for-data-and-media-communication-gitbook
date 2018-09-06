@@ -10,6 +10,14 @@
     - [Introduction & Objectives](#introduction--objectives)
     - [Getting-started on GitHub](#getting-started-on-github)
         - [Understand markdown](#understand-markdown)
+            - [Headings](#headings)
+            - [Listing](#listing)
+            - [Emphasis](#emphasis)
+            - [URL](#url)
+            - [Image](#image)
+            - [Inline code snippet](#inline-code-snippet)
+            - [Code block & Syntax Highlighting](#code-block--syntax-highlighting)
+            - [Quote](#quote)
         - [Use GitHub issue tracker as a discussion forum](#use-github-issue-tracker-as-a-discussion-forum)
         - [Learn other's code from commit history](#learn-others-code-from-commit-history)
         - [Preview a Jupyter notebook hosted on GitHub with Nbviewer](#preview-a-jupyter-notebook-hosted-on-github-with-nbviewer)
@@ -91,11 +99,94 @@ As a beginner, one needs to master those syntax:
 
 - Headings
 - Listing, ordered or unordered
+- Emphasis
 - URL
 - Image
 - Inline code snippet
-- Code block (verbatim)
+- Code block & Syntax Highlighting
 - Quote
+
+#### Headings
+
+```md
+# H1
+## H2
+###### H6
+```
+
+#### Listing
+
+Unordered:
+
+```md
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
+```
+
+Ordered:
+
+```md
+1. Item 1
+2. Item 2
+3. Item 3
+   1. Item 3a
+   2. Item 3b
+```
+
+#### Emphasis
+
+```md
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
+```
+
+#### URL
+
+```md
+[text](link) For example： [GitHub](http://github.com)
+```
+
+#### Image
+
+```md
+![Alt Text](url/file_path) For example:
+![Course Structure](assets/course-structure.png)
+```
+
+#### Inline code snippet
+
+```md
+`In line code here`
+```
+
+#### Code block & Syntax Highlighting
+
+1. Use '```' in the beginning and end of the code to build the code block.
+2. Add tag after the beginning '```' to highlighting the code, like python,text,md,javascript...
+
+```md
+    ```javascript
+    var s = "JavaScript syntax highlighting";
+    alert(s);
+    ```
+
+    ```python
+    s = "Python syntax highlighting"
+    print s
+    ```
+
+    ```
+    No language indicated, so no syntax highlighting.
+    But let's throw in a <b>tag</b>.
+    ```
+```
+
+#### Quote
+
+```text
+> Quotes here.
+```
 
 Here are some readings to get you started with markdown:
 
