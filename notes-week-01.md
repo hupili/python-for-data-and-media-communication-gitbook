@@ -17,6 +17,7 @@
         - [Get inline help in the command line](#get-inline-help-in-the-command-line)
             - [The `man` command](#the-man-command)
             - [Basic usage](#basic-usage)
+        - [[O] Command return and command output](#o-command-return-and-command-output)
     - [Edit and execute python file](#edit-and-execute-python-file)
         - [Text editor](#text-editor)
         - [Install python 3](#install-python-3)
@@ -256,6 +257,14 @@ man -k print
 ```
 
 For more functions, you can type `man man` on terminal to see more.
+
+### [O] Command return and command output
+
+- Return value: it is a convention for UNIX-like system/ program to return a value upon completion of execution. The return value indicates whether the program executes as expected. Usually, the return value is `0`, meaning the execution is successful. If the return value is non-zero, it means an error ocurred and you should go check the error code with the mannual. One can use this command to check the return value of *the very last* command `echo $?`.
+- Output: a command/ program can output information for the user. There are two output streams:
+  - `stdout` -- "standard output" -- This is usually useful data for further processing, e.g. as input to next command, for the users to comprehend. Later of this section, you will see the first Python coding using `print()`. This `print()` basically writes texts to `stdout`.
+  - `stderr` -- "standard error" -- This includes error information that can help the user to debug. By default, when you operate in a MAC Terminal, `stderr` and `stdout` are written to the same stream, so you can not distinguish them by eyesight. Interested readers can check [this discussion](https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file) to see how to divert the two streams.
+
 
 ## Edit and execute python file
 
