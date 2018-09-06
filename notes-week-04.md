@@ -536,7 +536,7 @@ Step 1: Find it's API, and read it's documentation
 
 API link : https://earthquake.usgs.gov/fdsnws/event/1/
 
-Different organizations and websites has their own rules of using API. For this earthquake api, you cannot just request all data from this original API link, you need to specify which region, what period of time you want. It's like declare what content/data you want to request. Then you can just pass those parameters following the original API link to request those data, you can click the above API link see their examples to learn more.
+Different organizations and websites have their own rules of using API. For this earthquake API, you cannot just request all data from this original API link, you need to specify which region, what period of time you want. It's like declare what content/data you want to request. Then you can just pass those parameters following the original API link to request those data, you can click the above API link see their examples to learn more.
 
 Step 2: Set arguments and functions we want use
 
@@ -587,8 +587,10 @@ If you just want to know how many earthquakes happen in the past 100 years, just
 ```python
 response = requests.get(count_url)
 data = response.json()
-print(data)
+data # equals to print(data)
 ```
+
+Note: **#in Jupyter Notebook you can omit 'print()' by directly using its name to print something**
 
 Output:
 
@@ -601,7 +603,7 @@ If you just want to get all data and extract key information, just use `query_ur
 ```python
 response = requests.get(query_url)
 data = response.json() #response JSON
-print(data) # print all data
+data # print all data
 ```
 
 Step 5:  Select the key values we want: mag, place and time, and write it in the csv file
