@@ -77,7 +77,7 @@ Pay attention to the text. Then you will get the following picture. Please input
 6. kernel. kernel is a tool for interactive input and output all the things you did from the beginning. By clicking `restart`, you can give a variable another value.
 7. `type()` more to check the object. It is very useful when we write complicated codings. Eg:a = 1, type(a)
 8. `help()` to know the details. Eg: help(str.strip)
-9. `print` step by step to check where the error is. (In Jupyter, you can just input the variables without the function of print.)
+9. `print` step by step to check where the error is. (In Jupyter, you can just input the variables without the function of print.) Like, type data in cell equals to print(data).
 
 ## Runtime troubleshooting guide
 
