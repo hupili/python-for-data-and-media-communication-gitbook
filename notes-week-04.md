@@ -536,6 +536,8 @@ Step 1: Find it's API, and read it's documentation
 
 API link : https://earthquake.usgs.gov/fdsnws/event/1/
 
+Different organizations and websites has their own rules of using API. For this earthquake api, you cannot just request all data from this original API link, you need to specify which region, what period of time you want. It's like declare what content/data you want to request. Then you can just pass those parameters following the original API link to request those data, you can click the above API link see their examples to learn more.
+
 Step 2: Set arguments and functions we want use
 
 Functions:
@@ -547,10 +549,10 @@ Arguments:
 
 * Start time: 1918-08-24
 * End time: 2018-08-24
-* Minlatitude: 21.890
-* Minlongitude: 119.300
-* Maxlatitude: 25.320
-* Maxlongitude: 122.030
+* Min latitude: 21.890
+* Min longitude: 119.300
+* Max latitude: 25.320
+* Max longitude: 122.030
 
 You can get 4 location parameters from [worldatlas](https://www.worldatlas.com/as/tw/where-is-taiwan.html)
 
@@ -565,32 +567,46 @@ api_method = 'query?'
 api_method_2 = 'count?'
 api_format = 'format=geojson'
 api_starttime = '1918-02-21'
-api_endtime = '2018-02-21'
+api_endtime = '2018-02-21' #if you want to return data up to now, just to omit the endtime
 api_minlatitude = '21.890'
 api_minlongitude = '119.300'
 api_maxlatitude = '25.320'
 api_maxlongitude = '122.030'
 
-url = api_url + api_method + api_format + '&' + 'starttime=' + api_starttime + '&' + 'endtime=' + api_endtime + '&' + 'minlatitude=' + api_minlatitude + '&' + 'maxlatitude=' + api_maxlatitude +  '&' +'minlongitude=' + api_minlongitude + '&' + 'maxlongitude=' + api_maxlongitude
+query_url ='{0}{1}{2}&starttime={3}&minlatitude={4}&maxlatitude={5}&minlongitude={6}&maxlongitude={7}'.format(api_url,api_method,api_format,api_starttime,api_minlatitude,api_maxlatitude,api_minlongitude,api_maxlongitude)
 #prepare for calling query function
 
-url_2 = api_url + api_method_2 + api_format + '&' + 'starttime=' + api_starttime + '&' + 'endtime=' + api_endtime + '&' + 'minlatitude=' + api_minlatitude + '&' + 'maxlatitude=' + api_maxlatitude +  '&' +'minlongitude=' + api_minlongitude + '&' + 'maxlongitude=' + api_maxlongitude
+count_url ='{0}{1}{2}&starttime={3}&minlatitude={4}&maxlatitude={5}&minlongitude={6}&maxlongitude={7}'.format(api_url,api_method_2,api_format,api_starttime,api_minlatitude,api_maxlatitude,api_minlongitude,api_maxlongitude)
 #prepare for calling count function
 ```
 
 Step 4: Requests content
 
-```python
-response = requests.get(url)
-response_2 = requests.get(url_2)
+If you just want to know how many earthquakes happen in the past 100 years, just use `count_url`, it will return how many data we get.
 
-data = response.json() #convert to JSON
-count = response_2.json()
-print(count) #print count results
+```python
+response = requests.get(count_url)
+data = response.json()
+print(data)
+```
+
+Output:
+
+```
+{'count': 3939, 'maxAllowed': 20000}
+```
+
+If you just want to get all data and extract key information, just use `query_url`.
+
+```python
+response = requests.get(query_url)
+data = response.json() #response JSON
 print(data) # print all data
 ```
 
 Step 5:  Select the key values we want: mag, place and time, and write it in the csv file
+
+You can check out the returned JSON, The outermost layer is a dict, and you will find all key information we want is in the key `features`, meanwhile, there are so many features. So firstly, we should extract all features by using `data['features']`, it will return a list of all features. And in the list, the information of every earthquake is in an dict. So we can further use keys to access its values.
 
 ```python
 with open('TTT.csv','w',newline='') as f:
