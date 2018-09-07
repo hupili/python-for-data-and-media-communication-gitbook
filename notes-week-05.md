@@ -60,7 +60,7 @@ Chrome DevTools is a set of web developer tools built directly into the Google C
 ### How to use Chrome DevTools
 
 1. Firstly, It is suggested to use 'Chrome' as our browser.
-2. In Chrome, `option+command+i` to open the Chrome developer console.
+2. In Chrome, `option+command+i` to open the Chrome DevTools,AKA. Chrome developer console.
 3. Click the upper left corner of the console, you can select an element in the webpage to inspect it. You will see its source code by moving your cursor on to it.
 
 Eg: Check out the structure of a webpage, a project about tweets of Trump <https://initiumlab.com/blog/20170329-trump-and-ivanka/>. For example, moving your cursor to check out every `h2` headline.
@@ -76,6 +76,14 @@ Eg: Check out the structure of a webpage, a project about tweets of Trump <https
 * JavaScript is the programming language of HTML and the Web, which is mainly used for image manipulation, form validation, and dynamic changes of content.
 
 ## Scraper
+
+Before we try to get data, here is the logic we should know.
+Basically, when we scrape a website, firstly we need to know the website.
+
+1. Does the website provide its own API to get the data?
+2. If no, we will scrape the data from it's html.
+3. All data or information is stored in the html tags. Tag names are settled by the website creators, which always appears as pairs. So, all we need to do is to find the tags that contains our required data. For example, the article titles are usually in `h1`, and texts are usually in `p`. You can find those tags by using Chrome DevTools, which we talked about this at the beginning of the chapter.
+4. After we find the data and the tags, we write code to get them(using `control flows`), clean them(`manipulating strings`,`strip()`,`replace()`...), and store them into files(`CSV`,`JSON`).
 
 ### New module: BeautifulSoup
 
