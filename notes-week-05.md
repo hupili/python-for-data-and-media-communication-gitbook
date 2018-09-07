@@ -12,7 +12,10 @@
         - [How to use Chrome DevTools](#how-to-use-chrome-devtools)
         - [HTML, JS, and CSS](#html-js-and-css)
     - [Scraper](#scraper)
+        - [Basic logic](#basic-logic)
         - [New module: BeautifulSoup](#new-module-beautifulsoup)
+            - [Use BeautifulSoup parser](#use-beautifulsoup-parser)
+            - [Find data: find.() and find_all()](#find-data-find-and-find_all)
         - [Get data](#get-data)
             - [Get title](#get-title)
             - [Get date](#get-date)
@@ -71,11 +74,13 @@ Eg: Check out the structure of a webpage, a project about tweets of Trump <https
 
 ![HTML, JS and CSS](assets/html&js&css.png)
 
-* HTML is a machine language of web page. Writing something in HTML means to create a web page. It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag that wrap up content we want to present.
+* HTML is a machine language of web page. Writing something in HTML means to create a web page. It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag that wrap up content we want to present. Like `<p>` content `</p>`.
 * CSS stands for Cascading Style Sheets. CSS describes how HTML elements are to be displayed on screen, paper, or in other media.
 * JavaScript is the programming language of HTML and the Web, which is mainly used for image manipulation, form validation, and dynamic changes of content.
 
 ## Scraper
+
+### Basic logic
 
 Before we try to get data, here is the logic we should know.
 Basically, when we scrape a website, firstly we need to know the website.
@@ -103,7 +108,11 @@ Import the module
 from bs4 import BeautifulSoup
 ```
 
-Eg1: Use BeatutifulSoup to parse <https://initiumlab.com/blog/20170329-trump-and-ivanka/>
+#### Use BeautifulSoup parser
+
+BeautifulSoup parser can convert the results we request into structural data so that we can easily find the data we want.
+
+Eg: <https://initiumlab.com/blog/20170329-trump-and-ivanka/>
 
 ```python
 import requests #week o4 request module
@@ -114,7 +123,6 @@ html_str = r.text #get the content of the request
 ```
 
 * Store the web as `r`, `get()` means try to get response of that web page, passing url string in to `()`.
-
 * `text` means to show the text of the web page.
 
 Output: This is before the parsing step, you can see that they are like a mess.
@@ -128,7 +136,68 @@ Output: After parsing, you can see that the data is more structural, and we can 
 
 ![HTML After Parsing](assets/html-after-parsing.png)
 
-Basically, parser function is the most used of `BeautifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
+#### Find data: find.() and find_all()
+
+* `find` to find what we want, and output the first item. Like if there are 10 h1, they will return the first one.
+* `find_all` return a list of all the values we want. Like if there are 10 h1, they will return a list that contain all those h1. **A list means that we can use for loop to further filter**.
+
+Example:
+
+html_doc is as following:
+
+```python
+html_doc = """
+<html><head><title>The Dormouse's story</title></head>
+<body>
+<p class="title"><b>The Dormouse's story</b></p>
+
+<p class="story">Once upon a time there were three little sisters; and their names were
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
+<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+and they lived at the bottom of a well.</p>
+
+<p class="story">...</p>
+"""
+
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(html_doc, 'html.parser')
+my_a = soup.find('a') #find a
+my_a
+```
+
+Output:
+
+```text
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>
+```
+
+```python
+my_a = soup.find_all('a') #find all a
+my_a
+```
+
+Output:
+
+```text
+[<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>,
+ <a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>,
+ <a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>]
+```
+
+```python
+my_a = soup.find('a',attrs={'id':'link3'}) #find link3
+```
+
+Note: **You can see that in tag a, there are some attributes, like class, id. we can find those attributes specifically by writing it as `soup.find('tag_name',attrs={'attributes':'values'})`**
+
+Output:
+
+```text
+<a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>
+```
+
+Basically, parser and find functions are the most used of `BeautifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
 ### Get data
 
@@ -160,8 +229,6 @@ Output: You can learn the logic and function of each step.
 
 **Note:**
 
-* `find` to find what we want, and output the first item. Like if there are 10 h1, they will return the first one.
-* `find_all` return a list of all the values we want. Like if there are 10 h1, they will return a list that contain all those h1. **A list means that we can use for loop to further filter**.
 * `strip()`means delete the meaningless character at the beginning and end of the string.
 * `HTML/bs4_tag.text` means turn bs4.element.Tag into pure text.
 * You can `help(str.strip)` to see the usage of strip.
