@@ -141,8 +141,8 @@ from bs4 import BeautifulSoup
 r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
 html_str = r.text
 data = BeautifulSoup(html_str,"html.parser")
-my_h1 = data.find('h1') # we use tag and attributes to extract the data we want. Type(myh1) you can see that `myh1` is bs4.element.Tag
-my_title = myh1.text #turn bs4.element.Tag into pure text
+my_h1 = data.find('h1') # we use tag and attributes to extract the data we want. Type(my_h1) you can see that `my_h1` is bs4.element.Tag
+my_title = my_h1.text #turn bs4.element.Tag into pure text
 my_title.strip() # remove the character specified at the beginning and end of the string
 ```
 
@@ -157,6 +157,7 @@ Output: You can learn the logic and function of each step.
 * `strip()`means delete the meaningless character at the beginning and end of the string.
 * `HTML/bs4_tag.text` means turn bs4.element.Tag into pure text.
 * You can `help(str.strip)` to see the usage of strip.
+* `Type(sth)` is to print what is the format of sth. It's useful because you should know what's the data it return to further extract the value we want. Like, if it is a list, we should first use index to access its value. Similarly, if it is a dict, we should use keys to access its value.
 
 #### Get date
 
@@ -294,6 +295,7 @@ def scrape_articles_urls_of_one_page(article_page_url): #scrape_articles_urls_of
     my_urls = data.find_all('a',attrs={'class':'post__title-link js-read-more'}) #find the links
 
     #quiz1: if you read the code of this page, most students will try to find ('a',attrs={'class':'post__title-link}) first and failed. Do you know why?
+
     #quiz2: you will find that url can be extracted by my_url['href'], the results will be like this: '../blog/20160908-taipei-power-usage/', but the real one should be like this 'http://initiumlab.com/blog/20160908-taipei-power-usage/',
     #so who do we format those links we want?
 
