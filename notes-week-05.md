@@ -189,7 +189,7 @@ Output:
 my_a = soup.find('a',attrs={'id':'link3'}) #find link3
 ```
 
-Note: **You can see that in tag a, there are some attributes, like class, id. we can find those attributes specifically by writing it as `soup.find('tag_name',attrs={'attributes':'values'})`**
+Note: **You can see that in tag a, there are some attributes, like class, id. Those attributes are used to distinguish this tag from other similar tags, especially when there are many tags in the html page. So, if you want to locate or find sth. more precisely. You can find those attributes specifically by writing it as `soup.find('tag_name',attrs={'attributes':'values'})`**
 
 Output:
 
@@ -197,7 +197,7 @@ Output:
 <a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>
 ```
 
-Basically, parser and find functions are the most used of `BeautifulSoup` library for us, if you want to know more about this, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
+Basically, parser and find functions are the most used of `BeautifulSoup` library for us, if you want to know more functions and syntax of using it, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
 ### Get data
 
