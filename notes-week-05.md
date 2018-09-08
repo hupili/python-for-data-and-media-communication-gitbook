@@ -21,7 +21,8 @@
             - [Get date](#get-date)
             - [Get author](#get-author)
                 - [Try 1: not a good way](#try-1-not-a-good-way)
-                - [Try 2: Best practice](#try-2-best-practice)
+                - [Try 2: Best common practice](#try-2-best-common-practice)
+                - [Try 3: Text-split way](#try-3-text-split-way)
             - [Get tags](#get-tags)
             - [Scrape all articles of one page](#scrape-all-articles-of-one-page)
             - [[O] Scrape all articles features of all pages](#o-scrape-all-articles-features-of-all-pages)
@@ -232,7 +233,7 @@ Output: You can learn the logic and function of each step.
 * `strip()`means delete the meaningless character at the beginning and end of the string.
 * `HTML/bs4_tag.text` means turn bs4.element.Tag into pure text.
 * You can `help(str.strip)` to see the usage of strip.
-* `Type(sth)` is to print what is the format of sth. It's useful because you should know what's the data it return to further extract the value we want. Like, if it is a list, we should first use index to access its value. Similarly, if it is a dict, we should use keys to access its value.
+* `type(sth)` is to print what is the format of sth. It's useful because you should know what's the data it return to further extract the value we want. Like, if it is a list, we should first use index to access its value. Similarly, if it is a dict, we should use keys to access its value.
 
 #### Get date
 
@@ -307,27 +308,43 @@ authors.append(author_2)
 
 **Note: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, the list can not be texted.**
 
-##### Try 2: Best practice
+##### Try 2: Best common practice
 
 ![HTML Find Author 2](assets/html-find-authors2.png)
 
 * The logic here is if we can not specify one elements in the inner circle, we spread out to find the differentiate tag that only the element has.
 * In the HTML, we can find that authors upper tag is 'td'. But there are too many td. And it is difficult to be specific. So, we spread out.
-* Outer the `td` is the `tr` tag with a class named `post_authors`, you can find its the special tag only used to wrap authors, so try to locate and extract author names by tag: `tr`.
+* Outer the `td` is the `tr` tag with a class named `post_authors`, you can find its the special tag only used to wrap authors, so try to locate and extract author names by tag: `tr`. Once we find the `tr`, we wan further find td, then find all `span` in `td`, thats what we want.
 
 ```python
-my_authors = data.find('tr',attrs={'class':"post__authors"})
+my_authors = []
+post_authors = data.find('tr',attrs={'class':"post__authors"})
 #pay attention to its syntax, find('tag_name,attributes={'key':'value'})
-my_authors.text.strip()
-my_authors.text.strip().replace('\n',',')
+my_td = post_authors.find_all('td')
+my_span = my_td[1].find_all('span')
+for span in my_span:
+    my_authors.append(span.text)
+my_authors
 ```
 
 Output:
-![HTML Find Authors2 Output](assets/html-find-authors2-output.png)
 
-* Syntax: find('tag_name,attributes={'key':'value'})
+```text
+['Li Yiming', 'Li Yuqiong']
+```
+
+##### Try 3: Text-split way
+
+```python
+my_authors = data.find('tr',attrs={'class':"post__authors"}).text.strip().replace('\n',',') #after .text, we got the author names with several characters, we can further use strip and replace to omit those meaning less characters.
+```
+
+Output:
+![HTML Find Authors2 Output](assets/html-find-authors2-output.png)
+
+* Syntax: `find('tag_name,attributes={'key':'value'})`
 * attrs = attributes. It contains more detailed information about about HTML tags, which helps to locate and identify the values better.
-* replace('a','b') means replace a as b. You can see that even after `strip()`, there is a `\n` in lines, in such circumstances, we can use replace to get off those characters.
+* `replace('a','b')` means replace a as b. You can see that even after `strip()`, there is a `\n` in lines, in such circumstances, we can use replace to get off those characters.
 
 #### Get tags
 
