@@ -994,12 +994,9 @@ The `raise` statement allows you to force a specified exception to occur. It can
 Example 27:
 
 ```python
-inputValue = input("please input a int :")
-if type(inputValue)!=type(1): # '!=' means not equal
-    raise ValueError
-else:
-    print inputValue
-#you can input a 2 and 2.2 to test.
+x = 5
+if x < 10:
+    raise ValueError('x should not be less than 10!')
 ```
 
 ### Exception error types
