@@ -752,6 +752,10 @@ The following are the cost and revenue component in their business plan: (per mo
 
 Please build a calculator to estimate their revenues, given the number of monthly visitors as an variable `visitor`. Show the net income when `visitor` equals `40000`, `60000` and `80000`, respectively.
 
+Functions you need to use:
+
+`input()` function. Please refer to [here](https://docs.python.org/3/library/functions.html#input) for it's documentation.
+
 Further challenges:
 
 - Explore how the net income changes when the number of visitors changes
