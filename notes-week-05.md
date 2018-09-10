@@ -22,9 +22,9 @@
             - [Get title](#get-title)
             - [Get date](#get-date)
             - [Get author](#get-author)
-                - [Try 1: not a good way](#try-1-not-a-good-way)
-                - [Try 2: Best common practice](#try-2-best-common-practice)
-                - [Try 3: Text-split way](#try-3-text-split-way)
+                - [Method 1: Failed because of lack of specificity](#method-1-failed-because-of-lack-of-specificity)
+                - [Method 2: Best Current Practice (BCP) -- multiple layers of element lookup (find)](#method-2-best-current-practice-bcp----multiple-layers-of-element-lookup-find)
+                - [Method 3: Parse authors by spliting a larger text](#method-3-parse-authors-by-spliting-a-larger-text)
             - [Get tags](#get-tags)
             - [Scrape all articles of one page](#scrape-all-articles-of-one-page)
             - [[O] Scrape all articles features of all pages](#o-scrape-all-articles-features-of-all-pages)
@@ -37,7 +37,11 @@
         - [scrapy](#scrapy)
         - [scrapy-cluster](#scrapy-cluster)
     - [Exercises and Challenges](#exercises-and-challenges)
-    - [Relative Readings](#relative-readings)
+        - [Scrape github users' contribution frequency](#scrape-github-users-contribution-frequency)
+            - [Furtehr challenge1: more users](#furtehr-challenge1-more-users)
+            - [Further challenge2: detailed activities](#further-challenge2-detailed-activities)
+        - [[O] Some past scraping ideas](#o-some-past-scraping-ideas)
+    - [Related Readings](#related-readings)
 
 <!-- /TOC -->
 
@@ -115,6 +119,8 @@ In this way, one can build a complex structure of pages. The inner tags are call
 
 ![an illustration of HTML tree structure](assets/html-tree-structure.png)
 (an illustration of HTML tree structure)
+
+For the ease of discussion, we also call "HTML tag" as "HTML element" or "HTML node" interchangeably.
 
 ## Scraper
 
@@ -297,7 +303,7 @@ Output:
 
 You can find that authors are in the span, so could we just use `find.span`to get the authors?
 
-##### Try 1: not a good way
+##### Method 1: Failed because of lack of specificity
 
 ```python
 my_authors = data.find('span')
@@ -343,9 +349,13 @@ authors.append(author_1) #append them into a list
 authors.append(author_2)
 ```
 
-**Note: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, the list can not be texted.**
+**Note**: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, the list can not be texted.
 
-##### Try 2: Best common practice
+<!-- TODO: what does it mean by "can not be texted"? Please use conventional language and not invent new terms. Does it mean "can not be converted to text easily"? -->
+
+**TIP**: "specificity" issue is quite common in writing scraper. There are usually many ways, and usually easy, to find the element(s) we are interested in. One needs to work hard to ensure, the scraper does not pollute the result by other elements that we are **not interested** in.
+
+##### Method 2: Best Current Practice (BCP) -- multiple layers of element lookup (find)
 
 ![HTML Find Author 2](assets/html-find-authors2.png)
 
@@ -370,7 +380,7 @@ Output:
 ['Li Yiming', 'Li Yuqiong']
 ```
 
-##### Try 3: Text-split way
+##### Method 3: Parse authors by spliting a larger text
 
 ```python
 my_authors = data.find('tr',attrs={'class':"post__authors"}).text.strip().replace('\n',',') #after .text, we got the author names with several characters, we can further use strip and replace to omit those meaning less characters.
@@ -382,6 +392,10 @@ Output:
 * Syntax: `find('tag_name,attributes={'key':'value'})`
 * attrs = attributes. It contains more detailed information about about HTML tags, which helps to locate and identify the values better.
 * `replace('a','b')` means replace a as b. You can see that even after `strip()`, there is a `\n` in lines, in such circumstances, we can use replace to get off those characters.
+
+**TIP**: Please compare this method to the previous method. The best practice is to refrain from text processing if possible, especially in the upstream (earlier stage) of data processing pipeline. Method 3 looks simplier by a glance but Method 2 is more stable, especially in the long run, when more people join force to maintain one set of codes. The major drawback of splitting text is that the delimiter (`\n` here) may also appear as part of the text content. It is unlikely the case in our current example but have caused trouble to many students in other scenarios.
+
+<!-- TODO: @Yucan, pleas note the above texts to explain the design choice. We need not only tell the readers what to do but also why we do it in this way. Sometimes my comments in the discussion thread is useful for students to better master the concepts. Please recall and see if there are other texts to incorporate into the notes (also other chapters). -->
 
 #### Get tags
 
@@ -474,6 +488,8 @@ Output:
 #### [O] Scrape all articles features of all pages
 
 Since we scrape one page of articles, can I scrape all articles of all pages? Of course! we just come from 0 to 1, next step is from 1 to n. But there are some difficulties on the way which might be a little bit difficult for us, but definitely we can solve this.
+
+<!-- TODO: Please use a bulleting point list to summarise potential challenges. This gives people an idea, especially experienced readers a quick overview. -->
 
 ```python
 import requests #week o4 request module
@@ -586,18 +602,40 @@ Note the keyword `yield` when you try this framework. This is called "Generator"
 
 ## Exercises and Challenges
 
-* Scrape github users' history contributions. For example, scrape contributions of [Justin Myers](https://github.com/myersjustinc). We just need to know in different time, how many contributions he committed[1]. You can change the url parameters to get the contributions of different time[2]. Please save the results into csv like the following.
+### Scrape github users' contribution frequency
 
-    ![GitHub Contributions](assets/github-contributions.png)
-    ![Github Contribution Output](assets/github-contribution-output.png)
+Scrape contributions of [Justin Myers](https://github.com/myersjustinc). We just need to know in different time, how many contributions he committed (1). You can change the url parameters to get the contributions of different time (2). 
 
-## Relative Readings
+![GitHub Contributions](assets/github-contributions.png)
 
-Some scrapers and the output dataset from our past students, you can learn some tricks and search for inspirations of your own project:
+Please save the results into csv like the following.
 
-* [HK Carpark price data](https://github.com/XIAO-Chao/hkbu-big-data-media/tree/master/homework2)
-* [Qidian](https://github.com/DaisyZhongDai/hkbu-big-data-media/tree/master/homework2)
-* [CTrip scenic point data](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2)
+![Github Contribution Output](assets/github-contribution-output.png)
+
+#### Furtehr challenge1: more users
+
+Given a list of users, scrape all of their contribution frequency and store accordingly with the user identifier.
+
+#### Further challenge2: detailed activities
+
+Below the contribution calendar, there is a list of detailed activities. Can you further scrape those activities? You may need to design a good table structure to store the data.
+
+### [O] Some past scraping ideas
+
+Please find some past scraping ideas from this [blog post](https://dnnsociety.org/2018/03/10/some-scraping-targets-and-ideas/). Please note that not all the ideas can be easily tackled. You may need the knwoledge from next week or knowledge byond this course. Feel free to raise questions in the issue tracker so that we can help you for troubleshooting. More importanty, we can help you evaluate the difficulty before you get started. There may be several categories:
+
+1. Use week 5 to solve it
+2. Use week 5+6 to solve it
+3. Add a bit over this course to solve it
+4. Out of reach
+
+## Related Readings
+
+Here are some scrapers and the output dataset from our past students, you can learn some tricks and search for inspirations of your own project:
+
+- [HK Carpark price data](https://github.com/XIAO-Chao/hkbu-big-data-media/tree/master/homework2)
+- [Qidian](https://github.com/DaisyZhongDai/hkbu-big-data-media/tree/master/homework2)
+- [CTrip scenic point data](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2)
 
 ------
 
