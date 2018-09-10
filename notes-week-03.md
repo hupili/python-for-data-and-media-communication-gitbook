@@ -53,6 +53,7 @@
         - [A word on syntactical sugar](#a-word-on-syntactical-sugar)
         - [File structure for a project](#file-structure-for-a-project)
         - [Object Oriented Programming](#object-oriented-programming)
+        - [Top-down or Bottom-up?](#top-down-or-bottom-up)
         - [Inside a Python module](#inside-a-python-module)
     - [Exercises and Challenges](#exercises-and-challenges)
         - [Distances among cities](#distances-among-cities)
@@ -1226,7 +1227,8 @@ else:
     b = 0
 ```
 
-The readability of code is very important. It is a good practice to create less barrier for future readers, of which one may be yourself. 
+The readability of code is very important. It is a good practice to create less barrier for future readers, of which one may be yourself.
+
 
 ### File structure for a project
 
@@ -1237,6 +1239,12 @@ The readability of code is very important. It is a good practice to create less 
 ### Object Oriented Programming
 
 **TODO**
+
+### Top-down or Bottom-up?
+
+As a beginner, you are suggested to adopt a bottom-up approach and Python's flexibility/ simplicity is well suited for this approach.
+
+When you become more senior and when you gradually take up architectural roles, you will more likely to work using a top-down approach. Common tools are like concept design, flow chart, sequence diagram, Object Oriented Design (OOD) and E-R graph.
 
 ### Inside a Python module
 
