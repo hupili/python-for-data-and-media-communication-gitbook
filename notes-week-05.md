@@ -39,7 +39,7 @@
         - [scrapy-cluster](#scrapy-cluster)
     - [Exercises and Challenges](#exercises-and-challenges)
         - [Scrape github users' contribution frequency](#scrape-github-users-contribution-frequency)
-            - [Furtehr challenge1: more users](#furtehr-challenge1-more-users)
+            - [Further challenge1: more users](#further-challenge1-more-users)
             - [Further challenge2: detailed activities](#further-challenge2-detailed-activities)
         - [[O] Some past scraping ideas](#o-some-past-scraping-ideas)
     - [Related Readings](#related-readings)
@@ -350,9 +350,7 @@ authors.append(author_1) #append them into a list
 authors.append(author_2)
 ```
 
-**Note**: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, the list can not be texted.
-
-<!-- TODO: what does it mean by "can not be texted"? Please use conventional language and not invent new terms. Does it mean "can not be converted to text easily"? -->
+**Note**: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, if you use `().text` function in a list of elements, it will raise error, the list has no attribute 'text', which means it cannot be converted to text directly in this way.
 
 **TIP**: "specificity" issue is quite common in writing scraper. There are usually many ways, and usually easy, to find the element(s) we are interested in. One needs to work hard to ensure, the scraper does not pollute the result by other elements that we are **not interested** in.
 
@@ -394,9 +392,7 @@ Output:
 * attrs = attributes. It contains more detailed information about about HTML tags, which helps to locate and identify the values better.
 * `replace('a','b')` means replace a as b. You can see that even after `strip()`, there is a `\n` in lines, in such circumstances, we can use replace to get off those characters.
 
-**TIP**: Please compare this method to the previous method. The best practice is to refrain from text processing if possible, especially in the upstream (earlier stage) of data processing pipeline. Method 3 looks simplier by a glance but Method 2 is more stable, especially in the long run, when more people join force to maintain one set of codes. The major drawback of splitting text is that the delimiter (`\n` here) may also appear as part of the text content. It is unlikely the case in our current example but have caused trouble to many students in other scenarios.
-
-<!-- TODO: @Yucan, pleas note the above texts to explain the design choice. We need not only tell the readers what to do but also why we do it in this way. Sometimes my comments in the discussion thread is useful for students to better master the concepts. Please recall and see if there are other texts to incorporate into the notes (also other chapters). -->
+**TIP**: Please compare this method to the previous method. The best practice is to refrain from text processing if possible, especially in the upstream (earlier stage) of data processing pipeline. Method 3 looks simpler by a glance but Method 2 is more stable, especially in the long run, when more people join force to maintain one set of codes. The major drawback of splitting text is that the delimiter (`\n` here) may also appear as part of the text content. It is unlikely the case in our current example but have caused trouble to many students in other scenarios.
 
 #### Get tags
 
@@ -490,7 +486,11 @@ Output:
 
 Since we scrape one page of articles, can I scrape all articles of all pages? Of course! we just come from 0 to 1, next step is from 1 to n. But there are some difficulties on the way which might be a little bit difficult for us, but definitely we can solve this.
 
-<!-- TODO: Please use a bulleting point list to summarise potential challenges. This gives people an idea, especially experienced readers a quick overview. -->
+Potential challenges：
+
+* Scrape articles urls from different pages. Because the format of articles urls changes in different pages, plus the articles urls are not directly what we want, which need us further construct those urls.
+* Format all pages urls.
+* Get straight/understanding with 3 layers structure.
 
 ```python
 import requests #week o4 request module
@@ -513,7 +513,7 @@ def scrape_articles_urls_of_one_page(article_page_url): #scrape_articles_urls_of
     data = BeautifulSoup(r,"html.parser")
     my_urls = data.find_all('a',attrs={'class':'post__title-link js-read-more'})
     for my_url in my_urls:
-        url ='{0}blog{1}'.format('http://initiumlab.com/',my_url['href'].split('/blog')[-1]) #format urls. 
+        url ='{0}blog{1}'.format('http://initiumlab.com/',my_url['href'].split('/blog')[-1]) #format urls.
         # Fail try 1 : use slice to cut off ../../..
         # Fail try 2 : use blog instead of /blog to split. There are blog in the headline
         #print(url)
@@ -562,7 +562,7 @@ Checkout the [imdb.com example](https://github.com/hupili/python-for-data-and-me
 
 You may have noticed one way of scraping called "text processing". Common string functions in Python are like `strip()`, `split()`, `find()`, `replace()`, `str[begin:end]`. The advantage of text processing is its simplicity and you can write intuitive codes. The disadvantage of text processing is that it is error prone. Never the less, handling text is one important technique in data analysis pipeline.
 
-Interested readers can further study [Regular Expression](https://docs.python.org/3/library/re.html) (RegEx, regex, `re`) in Python. It is a powerful way for pattern matching and pattern subsitution. The learning curve of regex is sharp so we omit the discussion in this chapter. We *might* revisit this concept and given an introduction in the text process chapter.
+Interested readers can further study [Regular Expression](https://docs.python.org/3/library/re.html) (RegEx, regex, `re`) in Python. It is a powerful way for pattern matching and pattern substitution. The learning curve of regex is sharp so we omit the discussion in this chapter. We *might* revisit this concept and given an introduction in the text process chapter.
 
 ## [O] Crawler
 
@@ -611,7 +611,7 @@ Note the keyword `yield` when you try this framework. This is called "Generator"
 
 ### Scrape github users' contribution frequency
 
-Scrape contributions of [Justin Myers](https://github.com/myersjustinc). We just need to know in different time, how many contributions he committed (1). You can change the url parameters to get the contributions of different time (2). 
+Scrape contributions of [Justin Myers](https://github.com/myersjustinc). We just need to know in different time, how many contributions he committed (1). You can change the url parameters to get the contributions of different time (2).
 
 ![GitHub Contributions](assets/github-contributions.png)
 
@@ -619,7 +619,7 @@ Please save the results into csv like the following.
 
 ![Github Contribution Output](assets/github-contribution-output.png)
 
-#### Furtehr challenge1: more users
+#### Further challenge1: more users
 
 Given a list of users, scrape all of their contribution frequency and store accordingly with the user identifier.
 
@@ -629,7 +629,7 @@ Below the contribution calendar, there is a list of detailed activities. Can you
 
 ### [O] Some past scraping ideas
 
-Please find some past scraping ideas from this [blog post](https://dnnsociety.org/2018/03/10/some-scraping-targets-and-ideas/). Please note that not all the ideas can be easily tackled. You may need the knwoledge from next week or knowledge byond this course. Feel free to raise questions in the issue tracker so that we can help you for troubleshooting. More importanty, we can help you evaluate the difficulty before you get started. There may be several categories:
+Please find some past scraping ideas from this [blog post](https://dnnsociety.org/2018/03/10/some-scraping-targets-and-ideas/). Please note that not all the ideas can be easily tackled. You may need the knowledge from next week or knowledge beyond this course. Feel free to raise questions in the issue tracker so that we can help you for troubleshooting. More importantly, we can help you evaluate the difficulty before you get started. There may be several categories:
 
 1. Use week 5 to solve it
 2. Use week 5+6 to solve it
