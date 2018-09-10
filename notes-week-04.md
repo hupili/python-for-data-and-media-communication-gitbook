@@ -7,7 +7,8 @@
 - [Week 04 - Get structured data: CSV, JSON and API](#week-04---get-structured-data-csv-json-and-api)
     - [Objective](#objective)
     - [Learn to use Jupyter Notebook](#learn-to-use-jupyter-notebook)
-        - [Installing the Jupyter Notebook](#installing-the-jupyter-notebook)
+        - [Virtual environment](#virtual-environment)
+        - [Setup virtualenv and install Jupyter Notebook](#setup-virtualenv-and-install-jupyter-notebook)
         - [Basic usage](#basic-usage)
     - [File operation](#file-operation)
         - [Write a file](#write-a-file)
@@ -64,7 +65,24 @@ Server can send updated data upon request.
 
 ## Learn to use Jupyter Notebook
 
-### Installing the Jupyter Notebook
+Jupyter notebook is originally called "IPython notebook" (interactive Python notebook), thus having the `.ipynb` suffix/ extention name of the the Jupyter notebook file.
+
+It provides a web-based interface for you to interactively test and build Python codes. It is well suited for a bottom-up approach when buiding larger projects.
+
+### Virtual environment
+
+You will hear the term "environment" a lot of times when learning programming. It is a very broad term that refers to the context where the program is executed. The context can be time, operating system, current working folder, Python version, dependent module version, the status of system, the status of dependent components, ...
+
+**TIP**: Two pieces of codes can act differently if the environments are different. When you find someone else's codes work but the same thing does not work at your side, it is a problem of "environment". Trouble shooting highly depends on experience and we will see a lot during the semester.
+
+Python has a concept called virtual environment, "virtualenv" for short. You can use virtualenv to ensure the programs execute in the same environment. One common use case is to run Python2 and Python3 programs on the same computer. The system defaults to one of the major versions. However, you can use virtualenv to run some programs in Python2 and some programs in Python3. We also use virtualenv to ensure the dependent Python moduels are the same, whose version is usually specified in `requirements.txt`.
+
+There are two commands to setup virtualenv:
+
+* `virtualenv` -- old executable usually used in Python2.
+* `pyvenv` -- the default and recommended way of setting up virtualenv in Python3. The tools is shipped with Python3 installation.
+
+### Setup virtualenv and install Jupyter Notebook
 
 If it's the first time you use jupyter notebook, you need create a virtual environment first. Please follow the 4 steps to correctly use jupyter notebook.
 

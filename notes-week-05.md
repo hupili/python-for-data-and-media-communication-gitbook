@@ -5,7 +5,9 @@
 <!-- TOC -->
 
 - [Week 05 - Get semi-structured data: Web scraping](#week-05---get-semi-structured-data-web-scraping)
-    - [Use Jupyter notebook more](#use-jupyter-notebook-more)
+    - [A word on unified environment](#a-word-on-unified-environment)
+        - [virtualenv, Python3 and Python2](#virtualenv-python3-and-python2)
+        - [Jupyter notebook](#jupyter-notebook)
     - [Knowledge about HTML](#knowledge-about-html)
         - [The working process of search engines like Google](#the-working-process-of-search-engines-like-google)
         - [Chrome DevTools](#chrome-devtools)
@@ -39,12 +41,21 @@
 
 </div>
 
-## Use Jupyter notebook more
+## A word on unified environment
 
-1. We can debug step by step. It is convenient when we are writing a complicated coding.
-2. As we have downloaded python2 and python3, there are some conflicts to run some programs when we import modules. It is suggested to enter virtual environment before using Jupyter notebook, and install all modules in Jupyter notebook.
+### virtualenv, Python3 and Python2
 
-More useful notes and usage, please refer to here[Jupyter Module](module-jupyter.md).
+Python3 is the de facto standard in Python now (year 2018). The community spent [around 10 years](https://en.wikipedia.org/wiki/History_of_Python#Version_3) efforts before the widespread of Python3. The standard and interpreter core are out in the market for a very long time but many useful libraries were waiting to support Python3. People have maintained a [wall of shame](https://python3wos.appspot.com), which is later changed to "wall of superpowers", to track the progress of moving to Python3. It is all because Python3 is not a backward compatible upgrade to Python2. Past codes will break when we upgrade from Python2 to Python3.
+
+**TIP**: If you start a new project now, use Python3, *Python3*, **Python3**.
+
+However, in some places, especially older systems/ environments, you still have Python2, or dependencies on Python2. To make things uncluttered, please setup virtualenv and your Jupyter notebook in virtualenv.
+
+### Jupyter notebook
+
+Windows users and Mac OS X users suffer different environment setup problems in chapter 1-3. Starting from chapter 4, all our works will be based on virtualenv and Jupyter notebook. So everyone will see the same input/ output in the future. -- A big cheers! -- you have already passed through the most difficult part of the whole course.
+
+You can refer to [FQA on Jupyter](module-jupyter.md) for more information.
 
 ## Knowledge about HTML
 
