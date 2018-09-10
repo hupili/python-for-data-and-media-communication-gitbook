@@ -9,10 +9,10 @@
         - [virtualenv, Python3 and Python2](#virtualenv-python3-and-python2)
         - [Jupyter notebook](#jupyter-notebook)
     - [Knowledge about HTML](#knowledge-about-html)
-        - [The working process of search engines like Google](#the-working-process-of-search-engines-like-google)
         - [Chrome DevTools](#chrome-devtools)
         - [How to use Chrome DevTools](#how-to-use-chrome-devtools)
-        - [HTML, JS, and CSS](#html-js-and-css)
+        - [Frontend three: HTML, JS, and CSS](#frontend-three-html-js-and-css)
+        - [HTML](#html)
     - [Scraper](#scraper)
         - [Basic logic](#basic-logic)
         - [New module: BeautifulSoup](#new-module-beautifulsoup)
@@ -31,6 +31,8 @@
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
     - [[O] Crawler](#o-crawler)
+        - [Workflow of a search engine like Google](#workflow-of-a-search-engine-like-google)
+        - [Crawler is more than scraper](#crawler-is-more-than-scraper)
         - [Crawler is not necessary in most of your cases](#crawler-is-not-necessary-in-most-of-your-cases)
         - [scrapy](#scrapy)
         - [scrapy-cluster](#scrapy-cluster)
@@ -59,15 +61,6 @@ You can refer to [FQA on Jupyter](module-jupyter.md) for more information.
 
 ## Knowledge about HTML
 
-### The working process of search engines like Google
-
-1. Crawl web pages
-2. Store those web pages
-3. Build reverse index,which means making a relationship between the keyword and web page.
-4. Extract page-level features
-
-For this week, we will simulate this working precess like how we crawl the web page and extract the features and data we want.
-
 ### Chrome DevTools
 
 Chrome DevTools is a set of web developer tools built directly into the Google Chrome browser. For us, Chrome DevTools can help us better learn the basics of viewing and even changing a page's code, with what we can understand the structure of a webpage better, how a website store the data, present the information, and most importantly, how we locate/find those information we want and retrieve them into structural data to process further analysis.
@@ -75,20 +68,24 @@ Chrome DevTools is a set of web developer tools built directly into the Google C
 ### How to use Chrome DevTools
 
 1. Firstly, It is suggested to use 'Chrome' as our browser.
-2. In Chrome, `option+command+i` to open the Chrome DevTools,AKA. Chrome developer console.
+2. In Chrome, `option+command+i` to open the Chrome DevTools, a.k.a Chrome developer console.
 3. Click the upper left corner of the console, you can select an element in the webpage to inspect it. You will see its source code by moving your cursor on to it.
 
 Eg: Check out the structure of a webpage, a project about tweets of Trump <https://initiumlab.com/blog/20170329-trump-and-ivanka/>. For example, moving your cursor to check out every `h2` headline.
 
 ![Chrome DevTools](assets/wepage-usage-of-chrome-devtools.png)
 
-### HTML, JS, and CSS
+### Frontend three: HTML, JS, and CSS
 
 ![HTML, JS and CSS](assets/html&js&css.png)
 
 * HTML is a machine language of web page. Writing something in HTML means to create a web page. It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag that wrap up content we want to present. Like `<p>` content `</p>`.
 * CSS stands for Cascading Style Sheets. CSS describes how HTML elements are to be displayed on screen, paper, or in other media.
 * JavaScript is the programming language of HTML and the Web, which is mainly used for image manipulation, form validation, and dynamic changes of content.
+
+### HTML
+
+
 
 ## Scraper
 
@@ -516,6 +513,18 @@ Output will be like the following picture, and you can also find the csv file [h
 Checkout the [imdb.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb)
 
 ## [O] Crawler
+
+### Workflow of a search engine like Google
+
+A search engine mainly works in following way:
+
+1. Crawl web pages from the Internet
+2. Store those web pages in a distributed cluster
+3. Build reverse index, which is essentially a mapping from the term (keyword) to web pages
+4. Analyse the user query and use terms to recall candidate pages
+5. Rank the candidate pages according to their relevance, using many features including term level, page level and user level ones.
+
+### Crawler is more than scraper
 
 A crawler is essentially a super module of scraper. When talking about "scraper", we mainly focus on retrieving and parsing a single document, be it an HTML, PDF, or image. Most of the time, we deal with HTML documents. "crawler" can follow the hyperlinks in a document, scrape documents pointed by those hyperlinks, and find new hyperlinks -- thus crawling.
 
