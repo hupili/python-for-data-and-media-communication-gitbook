@@ -85,7 +85,36 @@ Eg: Check out the structure of a webpage, a project about tweets of Trump <https
 
 ### HTML
 
+HTML is a "declarative language", whereas Python is "imperative language" (in short, loose terms). The key difference here is that declarative language does not instruct the machine how to solve a problem/ present result in a step-by-step manner. Instead, it tells the machine what the desired output is and it is subject to the machine how to generate the output in its own ways.
 
+The whole web lives on HTML so you can find numerous free online resources for further study of HTML, e.g. [here](https://en.wikibooks.org/wiki/HyperText_Markup_Language). Our major objective here is not to teach one to write web pages (frontend development). We emphasize on understanding the HTML pages and parsing useful **structured** data out of the pages. Here are the core concepts on HTML:
+
+- It is a language based on tags. Common tags can be `p`, `h1`, `h2`, `h3`, `ul`, `ol`, `li`, `img`, `a`, ...
+- Tags come in paired and nested manners:
+  - Paired -- if you see `<p>`, there must be a `</p>` later on. The document looks like 
+
+  ```html
+  <p>
+    ... content is here ...
+  </p>
+  ```
+
+  - Nested -- imagine a list of shopping items on the page, and each item is an image link, that leads you to detailed page when clicked. The structure looks like
+
+  ```html
+  <ul>
+    <li>
+        <a href="link to the destination when click">
+            <img src="link to the thumbnail image">
+        </a>
+    </li>
+  <ul>
+  ```
+
+In this way, one can build a complex structure of pages. The inner tags are called "children" of the out tags. One can picture in mind that the HTML document is organised in **tree** like structure, where `<html></html>` is the "root" and every other tag is a "branch" who has child tag and parent tag. One may note that `img` tag does not come in pairs in above example. That is because you can not place any content inside `img`. It is a "leaf" and we don't enclose further tags inside it. Towards this end, we can give a shorthand omitting the closing tag `</img>`. It was once a good practice to make the tags come in paired format. Since the inception of HTML5, it was suggested to leave "leaf" tags the way it naturally should be -- i.e. no pairing closing tag and no content iside.
+
+![an illustration of HTML tree structure](assets/html-tree-structure.png)
+(an illustration of HTML tree structure)
 
 ## Scraper
 
