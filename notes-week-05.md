@@ -30,6 +30,7 @@
             - [[O] Scrape all articles features of all pages](#o-scrape-all-articles-features-of-all-pages)
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
+        - [[O] Scrape by text processing and regular expression](#o-scrape-by-text-processing-and-regular-expression)
     - [[O] Crawler](#o-crawler)
         - [Workflow of a search engine like Google](#workflow-of-a-search-engine-like-google)
         - [Crawler is more than scraper](#crawler-is-more-than-scraper)
@@ -556,6 +557,12 @@ Output will be like the following picture, and you can also find the csv file [h
 - Second (inner) layer is `dict` -- extract the features/ properties of a single data item.
 
 Checkout the [imdb.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb)
+
+### [O] Scrape by text processing and regular expression
+
+You may have noticed one way of scraping called "text processing". Common string functions in Python are like `strip()`, `split()`, `find()`, `replace()`, `str[begin:end]`. The advantage of text processing is its simplicity and you can write intuitive codes. The disadvantage of text processing is that it is error prone. Never the less, handling text is one important technique in data analysis pipeline.
+
+Interested readers can further study [Regular Expression](https://docs.python.org/3/library/re.html) (RegEx, regex, `re`) in Python. It is a powerful way for pattern matching and pattern subsitution. The learning curve of regex is sharp so we omit the discussion in this chapter. We *might* revisit this concept and given an introduction in the text process chapter.
 
 ## [O] Crawler
 
