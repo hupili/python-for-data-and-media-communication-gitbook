@@ -39,6 +39,7 @@
         - [[O] Real Estate property in Hong Kong (via government open data portal API)](#o-real-estate-property-in-hong-kong-via-government-open-data-portal-api)
         - [[O] Blockchain - chain data and exchange data](#o-blockchain---chain-data-and-exchange-data)
         - [[O] Automatic earthquake writer](#o-automatic-earthquake-writer)
+        - [[O] MailGun API](#o-mailgun-api)
     - [References](#references)
 
 <!-- /TOC -->
@@ -758,6 +759,10 @@ Lookup real estate properties on HK gov open data portal, e.g. the [dataset page
   * Get real-time data of earthquakes in `America` from USGS API
   * Print a story to the screen include place, time, magnitude, using template string / string interpolation
   * See [here](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732) for an introduction of the bot. See [here](https://www.theregister.co.uk/2017/06/22/la_times_bot_spreads_fake_news/) for an incident and think how to avoid it?
+
+### [O] MailGun API
+
+Try to send automatic emails using [MailGun](https://www.mailgun.com/). Imagine you want to maintain the relationship with thousands of customers. You have the name list with email addresses. You want to write an intimate email so that every mail looks like manually tailored for the recipient. However, it is very time consuming to do this manually. You come up with an idea based on string templating and MailGun API. MailGun is a commonly used service for receiving email and sending email. You can use string templating to format the customised message and then use MailGun to send them to the recipients.
 
 ## References
 
