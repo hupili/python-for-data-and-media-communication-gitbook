@@ -61,6 +61,7 @@
         - [Divide HW1 groups randomly: (case contribution)](#divide-hw1-groups-randomly-case-contribution)
             - [Hint for group assignment challenge](#hint-for-group-assignment-challenge)
         - [Automatic writer for financial report](#automatic-writer-for-financial-report)
+        - [Conversion between simplified Chinese and traditional Chinese](#conversion-between-simplified-chinese-and-traditional-chinese)
     - [References](#references)
 
 <!-- /TOC -->
@@ -1340,6 +1341,17 @@ You can approach in following ways:
 1. Use regular string templating. The `str.format` function can be useful, especially its keyword argument/ dictionary form.
 
 2. Use `jinja2`. It provides a more expressive templating environment. You can even write branching and looping logics in its template. `jinja2` is commonly used in web development but is not limited to that. With the help of `jinja2`, we can separate the concern: 1) frontend developer, or say "meta repoter", focuses on the presentation and language, i.e. how to embed the variables into the right place of the template; 2) backend develoepr, or say data supplier, focuses on data ingestion and data analysis. The bridge of the two worlds is a spreadsheet.
+
+### Conversion between simplified Chinese and traditional Chinese
+
+Write a function:
+
+* Input: `str` -- simplified Chinese
+* Output `str` -- traditional Chinese
+
+You can use a `dict` to maintain the mapping and use `for` loop to process every part of the paragraph.
+
+**TIP**: You can not build a complete converter, but you can still try and build part of it.
 
 ## References
 
