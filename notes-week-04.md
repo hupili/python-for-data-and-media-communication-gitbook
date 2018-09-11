@@ -764,6 +764,8 @@ Lookup real estate properties on HK gov open data portal, e.g. the [dataset page
 
 Try to send automatic emails using [MailGun](https://www.mailgun.com/). Imagine you want to maintain the relationship with thousands of customers. You have the name list with email addresses. You want to write an intimate email so that every mail looks like manually tailored for the recipient. However, it is very time consuming to do this manually. You come up with an idea based on string templating and MailGun API. MailGun is a commonly used service for receiving email and sending email. You can use string templating to format the customised message and then use MailGun to send them to the recipients.
 
+An example of using MailGun can be found in [this repo](https://github.com/hupili/mgcli).
+
 ## References
 
 * Python official doc about [json](https://docs.python.org/3/library/json.html)
