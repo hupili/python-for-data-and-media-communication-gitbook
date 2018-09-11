@@ -50,6 +50,9 @@
             - [random.shuffle(list)](#randomshufflelist)
             - [random.sample(population, k)](#randomsamplepopulation-k)
     - [Exercises and Challenges](#exercises-and-challenges)
+        - [Design and calculate a simple media business model](#design-and-calculate-a-simple-media-business-model)
+        - [Calculate how many SD card you need to bring](#calculate-how-many-sd-card-you-need-to-bring)
+        - [A simple model of media monitoring](#a-simple-model-of-media-monitoring)
     - [References](#references)
 
 <!-- /TOC -->
@@ -737,7 +740,7 @@ Return a k length list of unique elements chosen from the population sequence or
 
 ## Exercises and Challenges
 
-**Design and calculate a media business model:**
+### Design and calculate a simple media business model
 
 A group of HKBU students decided to found up a news website. Basically, their business model is to provide the content to their consumers, and earn money by a combination of subscription fee and advertising fee.
 
@@ -765,6 +768,33 @@ Further challenges:
 - (optional) Assume a more practical situation. The company invest `50000` in IT infrastructure as fixed assets. The infrastructure can support daily office use and support up to `50000` monthly visitors. When the number of monthly visitors becomes larger than `50000`, the company need to switch to cloud services, in order by by computing powers on demand. The excess amount incurs a cost of `0.001` dollar per user.
 
 **SPOILER**: The reference solution and variations can be found in [Calculate Marketing Objective for Your Media Startup](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/), a blog post from our past students. Note that it uses more complex logics like `if` and `for`, which will be detailed in [Chapter 3](notes-week-03.md).
+
+### Calculate how many SD card you need to bring
+
+Suppose you are working on a documentary. You know how many days of footage you are going to shoot. Since there is no Internet connection in the destination, you have to store the footages first. Please calculate how many SD cards you want to bring with you.
+
+### A simple model of media monitoring
+
+You are assigned the task of media monitoring. Your supervisor is intrested in whether certain keywords appear in one article. In this exercise, we make a simple monitoring service. Suppose you already downloaded [this article](https://www.bbc.com/news/business-45392816) somehow (see [notes-week-05.md](notes-week-05.md) and [notes-week-06.md](notes-week-06.md)). The content is stored in variable like this: (called "heredoc")
+
+```python
+article = '''
+The chief executive of Chinese online retailer JD.com, Liu Qiangdong, was briefly arrested in the US on accusations of criminal sexual conduct.
+
+Mr Liu, one of China's richest people, was arrested in Minneapolis shortly before midnight on Friday and released on Saturday afternoon.
+
+JD.com said Mr Liu, also known as Richard Liu, was falsely accused. Police say the investigation is open.
+
+JD.com, also known as Jingdong, has alliances with Tencent and Walmart.
+
+...
+'''
+```
+
+Tasks:
+
+- Try to use string function to identify if certan keywords appears in the above article
+- What if you want to monitor other articles?
 
 ## References
 
