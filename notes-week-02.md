@@ -9,10 +9,8 @@
     - [Familiar with python interactive mode](#familiar-with-python-interactive-mode)
         - [Python interpreter](#python-interpreter)
         - [Invoking the Interpreter](#invoking-the-interpreter)
-        - [Python has two basic modes: script and interactive](#python-has-two-basic-modes-script-and-interactive)
-        - [Differences between two modes](#differences-between-two-modes)
-        - [Enter and exit interactive mode](#enter-and-exit-interactive-mode)
-        - [Execute an existing script interactively](#execute-an-existing-script-interactively)
+        - [Two basic modes: script and interactive](#two-basic-modes-script-and-interactive)
+            - [Execute an existing script interactively](#execute-an-existing-script-interactively)
     - [Variables and assignment](#variables-and-assignment)
     - [Basic data types](#basic-data-types)
         - [Integer: `int`](#integer-int)
@@ -71,7 +69,7 @@ In the previous chapter, We introduced the basic knowledge about terminal on Mac
 
 ### Python interpreter
 
->An interpreter is a program that reads and executes code. This includes source code, pre-compiled code, and scripts. Basically, the Python interpreter is the application that runs your python script.
+> An interpreter is a program that reads and executes code. This includes source code, pre-compiled code, and scripts. Basically, the Python interpreter is the application that runs your python script.
 
 By default, Python source files are treated as encoded in UTF-8. But the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, python interpreter will recognize that the file is UTF-8, and support all the characters in the file.
 
@@ -94,23 +92,27 @@ hello
 >>> a = 0
 ```
 
-### Python has two basic modes: script and interactive
+Type `control + d`， or use `quit()` function to the interpreter.
+
+### Two basic modes: script and interactive
 
 1. `The script mode` is the normal mode where the scripted and finished `.py` files are run in the Python interpreter.
 
 2. `The interactive mode` is a command line shell which gives immediate feedback for each statement.
 
-### Differences between two modes
+Differences between two modes：
 
 * A `.py` file can only be executed in script mode, using `python3` + `filename.py` to run the file.
 * In interactive mode, you can only enter one line and execute one line each time, while in script mode, you can execute all the code in the file at once by running the .py file directly.
 * The interactive mode is primarily used to debug the code and testing.
 
-### Enter and exit interactive mode
+<!-- ### Enter and exit interactive mode -->
+<!-- When you are in script mode,  -->
+<!-- You can type `python` or `python3` to enter the interactive mode. **(In our course, we use python 3)**. Type `control + d` to exit from interactive mode.   -->
 
-When you are in script mode, you can type `python` or `python 3` to enter the interactive mode. **(In our course, we use python 3)**. And type `control + d` to exit from interactive mode.  
+<!-- TODO: seems redundant information. Commented out. Remove after review. -->
 
-### Execute an existing script interactively
+#### Execute an existing script interactively
 
 Sometimes, you have an existing script, maybe from past works or from others. You want to execute this script first but stays in the Python interpreter after that. In this way, the state of the interpreter, e.g. all the variables, will be fully preserved for your further exploration. One can use the `-i` option. The command line pattern is as follows:
 
