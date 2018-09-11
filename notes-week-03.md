@@ -60,6 +60,7 @@
             - [Extended exercise of geo distance](#extended-exercise-of-geo-distance)
         - [Divide HW1 groups randomly: (case contribution)](#divide-hw1-groups-randomly-case-contribution)
             - [Hint for group assignment challenge](#hint-for-group-assignment-challenge)
+        - [Automatic writer for financial report](#automatic-writer-for-financial-report)
     - [References](#references)
 
 <!-- /TOC -->
@@ -1329,6 +1330,16 @@ Following hints can help you think the algorithm but you do not have to use all 
 - `random.shuffle()` or `random.choice()` can be useful
 - This is essentially a "mapping problem" and one powerful data structure designed for this type of problem is `dict`. You can use case as key and `list` of students as value.
 - Always watch out for boundary conditions in programming: does your code still work when the number of students can not be divided by number of cases? Say 10 students, 3 cases.
+
+### Automatic writer for financial report
+
+Financial report usually possesses some apparent patterns. We can analyse the patterns and use string templating to perform automatic writing. Actually most of the "AI" based "robotic journalist" is no complex than string templating. After this chapter, you can even use conditional branches to plugin corresponding text. For example, when the value goes up, you say "increases by" and when the value goes down, you say "decreases". People who write this kind of template is called "meta reporter".
+
+You can approach in following ways:
+
+1. Use regular string templating. The `str.format` function can be useful, especially its keyword argument/ dictionary form.
+
+2. Use `jinja2`. It provides a more expressive templating environment. You can even write branching and looping logics in its template. `jinja2` is commonly used in web development but is not limited to that. With the help of `jinja2`, we can separate the concern: 1) frontend developer, or say "meta repoter", focuses on the presentation and language, i.e. how to embed the variables into the right place of the template; 2) backend develoepr, or say data supplier, focuses on data ingestion and data analysis. The bridge of the two worlds is a spreadsheet.
 
 ## References
 
