@@ -53,6 +53,7 @@
         - [Design and calculate a simple media business model](#design-and-calculate-a-simple-media-business-model)
         - [Calculate how many SD card you need to bring](#calculate-how-many-sd-card-you-need-to-bring)
         - [A simple model of media monitoring](#a-simple-model-of-media-monitoring)
+        - [Mark Six lottery machine](#mark-six-lottery-machine)
     - [References](#references)
 
 <!-- /TOC -->
@@ -795,6 +796,16 @@ Tasks:
 
 - Try to use string function to identify if certan keywords appears in the above article
 - What if you want to monitor other articles?
+
+### Mark Six lottery machine
+
+Mark Six (六合彩) is a famous game in Hong Kong. In this quiz, please write a lottery machine to simulate the Mark Six game. Requirements:
+
+- Create a repo called "mark-six", which includes a script called "lucky.py"
+- When the user executes "python3 lucky.py", it outputs the lottery result.
+- Create a "README.md" file to give an introduction of this project. You can include background information, program design rationale, pointers to your references, and sample output (from multiple executions).
+
+**TIP**: the module `random` helps here. You can revisit this exercise in week-03 to make improvements.
 
 ## References
 
