@@ -15,6 +15,8 @@
         - [splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
     - [Crawl mobile Apps](#crawl-mobile-apps)
+    - [Excercises and Challenges](#excercises-and-challenges)
+        - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
 
 <!-- /TOC -->
 
@@ -54,6 +56,16 @@ Open "Google Chrome Developer Console" by `command+option+i`. Check out the "Net
 Some websites render HTML at the backend and send them to the frontend in a dynamic way. You find the URL in address bar stays the same but the content is changed. You can also find the HTML files and their **real URL** via developer console. One such example is [xiachufang.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/xiachufang.com.ipynb).
 
 ## Crawl mobile Apps
+
+## Excercises and Challenges
+
+### In-bound marketing and SEO auditing
+
+Search Engine Optimization (SEO) is one common technique a digital marketer needs to master. Suppose you have led a team to conduct the optimization. Now it is time to audit the optimization result. One of the key function is to build scraper which can:
+
+* Input 1 is a search query, i.e. some keywords
+* Input 2 is a set of URLs from your own website
+* Output the ranks of each URL in the search result list
 
 **TODO**
 
