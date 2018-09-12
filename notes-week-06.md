@@ -14,6 +14,8 @@
         - [Why use Browser Emulation](#why-use-browser-emulation)
         - [Limitation](#limitation)
         - [Selenium](#selenium)
+            - [Downloading Python bindings for Selenium](#downloading-python-bindings-for-selenium)
+            - [Drivers](#drivers)
         - [splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
@@ -66,7 +68,41 @@ Selenium is a set of different software tools, each with a different approach to
 
 > Selenium Python bindings provides a simple API to write functional/acceptance tests using Selenium WebDriver. Through Selenium Python API you can access all functionalities of Selenium WebDriver in an intuitive way.
 
- You can visit [here](https://selenium-python.readthedocs.io/) to learn how to use those functions by yourself. In the following example, we will use CNN articles scraping case to elaborate the basic functions of it, and how to scrape a webpage that need our interaction.
+You can visit [here](https://selenium-python.readthedocs.io/) to learn how to use those functions by yourself. In the following example, we will use CNN articles scraping case to elaborate the basic functions of it, and how to scrape a webpage that need our interaction.
+
+#### Downloading Python bindings for Selenium
+
+```python
+!pip install selenium    #in Jupyter Notebook
+```
+
+```python
+from selenium import webdriver #import
+```
+
+#### Drivers
+
+Selenium requires a driver to interface with the chosen browser. Chrome, for example, requires Chromedriver, which needs to be installed before the below examples can be run.
+
+you can download different drivers for supported browsers in the following links:
+
+| Supported Browsers | Download Links                                                 |
+|--------------------|----------------------------------------------------------------|
+| Chrome             | https://sites.google.com/a/chromium.org/chromedriver/downloads |
+| Firefox            | https://github.com/mozilla/geckodriver/releases                |
+| Safari             | https://webkit.org/blog/6900/webdriver-support-in-safari-10/   |
+
+For windows users: please refer to [here](https://selenium-python.readthedocs.io/installation.html#detailed-instructions-for-windows-users) for instruction of download.
+
+**Note: Make sure it’s in your PATH, e. g. place it in /usr/bin or /usr/local/bin.** If it's not in the PATH, when you initiate the Chromedriver, it will raise error `Message: 'chromedriver' executable needs to be in PATH.`
+
+You can also solve this problem by specify the path of the Chromedriver, for example, if you just download in `Users/username/...`. You can still initiate it in this way, for my example:
+
+```python
+browser = webdriver.Chrome() #default to initiate webdriver, you can assign it with driver or browser or other things you like. If raise error, you can specify the file path like the following.
+browser = webdriver.Chrome('/users/xuyucan/chromedriver')
+```
+
 
 https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium
 
