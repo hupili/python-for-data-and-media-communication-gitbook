@@ -14,7 +14,8 @@
         - [Selenium](#selenium)
         - [splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
-    - [Crawl mobile Apps](#crawl-mobile-apps)
+    - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
+    - [[O] Other quick scraping/ crawling tricks](#o-other-quick-scraping-crawling-tricks)
     - [Excercises and Challenges](#excercises-and-challenges)
         - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
         - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
@@ -56,11 +57,19 @@ Open "Google Chrome Developer Console" by `command+option+i`. Check out the "Net
 
 Some websites render HTML at the backend and send them to the frontend in a dynamic way. You find the URL in address bar stays the same but the content is changed. You can also find the HTML files and their **real URL** via developer console. One such example is [xiachufang.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/xiachufang.com.ipynb).
 
-## Crawl mobile Apps
+## [O] Crawl mobile Apps
 
 **TODO**
 
 "Charles proxy", "mitmproxy"
+
+## [O] Other quick scraping/ crawling tricks
+
+In our class, we show you the very basic steps of scraping so that you know how it things happen in a sequential way. However, you don't have write codes for everything from scratch in real practice. People already made numerous tools and libraries that can help you do certain tasks quickly. Here are some examples related with course (Shell/ Python) for those who are interested:
+
+- Type `wget -r {url}`, where `{url}` is the URL of the website you want to crawl. After running this command, you can find all the web pages and their dependent resources are on your computer. You can fine tune the parameters to limit crawling scope, like number of hops or types of files. Use `man wget` to find out more.
+- There are many shell commands which can be combined to perform efficient text processing. [This article](https://github.com/hupili/agile-ir/blob/master/cases/case2-crawl-by-url-filling/index.md) shows how one can combine a few Shell commands to quickly download the Shakespeare works.
+- [This repo](https://github.com/hupili/agile-ir/blob/master/cases/case2-crawl-by-url-filling/index.md), originally a workshop given on PyConHK in 2015, shows you some handy tools and libraries in Python that allow one to scrape more with less codes. For example, you can use `readability` to extract the main body of an HTML page, without bothering with its page structure. For readers with frontend development background, `pyquery` is a handy library to allow you write jQuery like selectors to access HTML elements. `scraply` is a machine learning based library that can learn the labelled crawling target and generate corresponding rules; The user only needs to tell `scraply` what to crawl, instead of how to crawl.
 
 ## Excercises and Challenges
 
