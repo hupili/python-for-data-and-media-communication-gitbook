@@ -11,6 +11,8 @@
     - [Common issues](#common-issues)
         - [Encoding](#encoding)
     - [Browser emulation](#browser-emulation)
+        - [Why use Browser Emulation](#why-use-browser-emulation)
+        - [Limitation](#limitation)
         - [Selenium](#selenium)
         - [splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
@@ -40,6 +42,23 @@
 [51job.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/51job.com.ipynb)
 
 ## Browser emulation
+
+Primarily, Browser emulation or browser automation is used for automating web applications for testing purpose. Like when you build your web application, you want to simulate how many users your server can handle, and how the users act when they look into your website, how they open page, click, navigate and read the the page content.
+
+But browser emulation is certainly not limited to just that. For our course, we mainly use it to manipulate the
+browser, to interactively communicate with the website, locate the information and get the data we want.
+
+### Why use Browser Emulation
+
+1. Some of complicated website can't be directly scraped by static method. For example, some elements, especially page turning buttons/links in the webpage have embedded javascript codes, which need users certain actions to further loading the content.
+2. Browser Emulation way can handle some complicated scraping work like ones that need you login.
+3. Some webpages have strictly rules for anti-scraping. However, in browser emulation, we simulate users' behaviors, which is more camouflaged and not easy to discover, meaning that the limits is smaller than static scraping like `request`.
+
+In our course, we mainly introduce two libraries - `Selenium` and `Splinter` for browser emulation and dynamic scraping. Those packages are wildly used in this field. And their documentations are easy to read.
+
+### Limitation
+
+Each time, it need to load all the content of the webpage, the crawling speed is slow, therefore not suitable for scraping cases with a large load of data.
 
 ### Selenium
 
