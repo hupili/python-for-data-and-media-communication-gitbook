@@ -17,6 +17,7 @@
     - [Crawl mobile Apps](#crawl-mobile-apps)
     - [Excercises and Challenges](#excercises-and-challenges)
         - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
+        - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
 
 <!-- /TOC -->
 
@@ -57,6 +58,10 @@ Some websites render HTML at the backend and send them to the frontend in a dyna
 
 ## Crawl mobile Apps
 
+**TODO**
+
+"Charles proxy", "mitmproxy"
+
 ## Excercises and Challenges
 
 ### In-bound marketing and SEO auditing
@@ -67,6 +72,10 @@ Search Engine Optimization (SEO) is one common technique a digital marketer need
 * Input 2 is a set of URLs from your own website
 * Output the ranks of each URL in the search result list
 
-**TODO**
+### Crawl the legal case of China
 
-"Charles proxy", "mitmproxy"
+<http://wenshu.court.gov.cn> collects the legal cases in China. It supports advanced search options. One can emulate browser to download relevant documents on a certain area. Please try:
+
+- Give a keyword as input.
+- Download the documents of the first page, e.g. `.docx` files, onto local disk.
+- Organise an index of those documents into a `CSV` which may include "title", "court", "date", "document-path", and other fields if you deem useful.
