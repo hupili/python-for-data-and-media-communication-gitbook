@@ -16,6 +16,7 @@
         - [Selenium](#selenium)
             - [Downloading Python bindings for Selenium](#downloading-python-bindings-for-selenium)
             - [Drivers](#drivers)
+            - [Navigating](#navigating)
         - [splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
@@ -103,6 +104,25 @@ browser = webdriver.Chrome() #default to initiate webdriver, you can assign it w
 browser = webdriver.Chrome('/users/xuyucan/chromedriver')
 ```
 
+#### Navigating
+
+You can doing a lot of interactive things with the webpage with help of the selenium, like navigating to a link, searching, scrolling, clicking etc. In the following example, we will demo the basic usage of navigating.
+
+```python
+from selenium import webdriver
+browser = webdriver.Chrome('/users/xuyucan/chromedriver') #initiate webdriver
+browser.get('http://google.com/') #visit to google page
+element = browser.find_element_by_name("q") #Find the search box
+element.send_keys("github python for data and media communication gitbook") #search our openbook
+element.submit() #submit search action
+# you will find the webpage will automaticlly return the results you search
+link = browser.find_element_by_link_text('GitHub - hupili/python-for-data-and-media-communication-gitbook') #find our tutorial
+link.click() #click the link, enter our tutorial
+browser.execute_script("window.scrollTo(0,1200);") #scroll in the page, window.scrollTo(x,y), x means horizontal, y means vertical
+notes_links = browser.find_element_by_link_text('notes-week-06.md') #find link of notes 6
+notes_links.click() #click into notes 6
+#browser.close()
+```
 
 https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium
 
