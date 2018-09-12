@@ -110,12 +110,6 @@ Differences between two modes：
 * In interactive mode, you can only enter one line and execute one line each time, while in script mode, you can execute all the code in the file at once by running the .py file directly.
 * The interactive mode is primarily used to debug the code and testing.
 
-<!-- ### Enter and exit interactive mode -->
-<!-- When you are in script mode,  -->
-<!-- You can type `python` or `python3` to enter the interactive mode. **(In our course, we use python 3)**. Type `control + d` to exit from interactive mode.   -->
-
-<!-- TODO: seems redundant information. Commented out. Remove after review. -->
-
 #### Execute an existing script interactively
 
 Sometimes, you have an existing script, maybe from past works or from others. You want to execute this script first but stays in the Python interpreter after that. In this way, the state of the interpreter, e.g. all the variables, will be fully preserved for your further exploration. One can use the `-i` option. The command line pattern is as follows:
