@@ -163,7 +163,7 @@ Eg: <https://initiumlab.com/blog/20170329-trump-and-ivanka/>
 import requests #week o4 request module
 from bs4 import BeautifulSoup #pay attention to its syntax
 r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
-#print resp you will get <Response [200]> means request successful
+#print(r) you will get <Response [200]> means request successful
 html_str = r.text #get the content of the request
 ```
 
@@ -410,7 +410,7 @@ Step 1: Based on what we do in the above example, we can define a function like 
 ```python
 def scrape_one_article(article_url):
     r = requests.get(url).text
-    my_page = BeautifulSoup(r,"html.parser")
+    data = BeautifulSoup(r,"html.parser")
     my_title = data.find('h1').text.strip()
     my_date = data.find('time').text.strip()
     my_authors = data.find('tr',attrs={'class':"post__authors"}).text.strip().replace('\n',',')
