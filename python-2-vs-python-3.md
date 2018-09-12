@@ -6,17 +6,49 @@ Python 2 and Python 3 are mostly the same during our discussions. However there 
 
 ### syntax of print
 
-Python 2’s print statement has been replaced by the`print()`function, meaning that we have to wrap the object that we want to print in parantheses.
-
-Python 2 doesn’t have a problem with additional parantheses, but in contrast, Python 3 would raise a`SyntaxError`if we called the print function the Python 2-way without the parentheses.
-
-However, if we have multiple objects inside the parantheses, we will create a tuple, since`print`is a “statement” in Python 2, not a function call.
+> Python 2’s print statement has been replaced by the`print()`function, meaning that we have to wrap the object that we want to print in parantheses. Python 2 doesn’t have a problem with additional parantheses, but in contrast, Python 3 would raise a`SyntaxError`if we called the print function the Python 2-way without the parentheses. However, if we have multiple objects inside the parantheses, we will create a tuple, since`print`is a “statement” in Python 2, not a function call.
 
 ### str, bytes, encoding and decoding
 
-Python 2 has ASCII`str()`types, separate`unicode()`, but no`byte`type.
+> Python 2 has ASCII`str()`types, separate`unicode()`, but no`byte`type. Now, in Python 3, we finally have Unicode \(utf-8\)`str`ings, and 2 byte classes:`byte`and`bytearray`s.
 
-Now, in Python 3, we finally have Unicode \(utf-8\)`str`ings, and 2 byte classes:`byte`and`bytearray`s.
+Sometimes you need to convert between `bytes` and `str` (unicode string). You can use `bytes.decode()` or `str.encode()` for the conversion. Read more on the [official unicode support doc](https://docs.python.org/3.3/howto/unicode.html#python-s-unicode-support).
+
+### Division
+
+Python 2 interprets `/` as integer division, whereas Python 3 interprets it as decimal division. Here's the mapping:
+
+|                         | Python 2     | Python 3 |
+|-------------------------|--------------|----------|
+| Floating point division | `float(a)/b` | `a / b`  |
+| Integer division        | `a / b`      | `a // b` |
+| Division for remainder  | `%`          | `%`      |
+
+### Return iterable instead of list
+
+When you read tutorials online, one frequent confusion is your code returns iterable but the sample code returns a list. You need to call `next()` on a iterable to find the next element. This is an efficiency oriented design in Python3. Given the small amount of data we are handling in this course, you can use the "brute force" way to convert valid Python2 code into Python3. The common trick is to wrap previous codes by `list()`. For example, if `a = map(...)` works in Python2, you simply write `a = list(map(...))` and that works in Python3. Having another layer of list won't harm (in terms of grammar correctness).
+
+### Rounding to closest even number
+
+Python 3 rounds to the closest even number. This causes little difference in most of your program.
+
+```python
+%python3
+>>> round(16.5)
+16
+>>> round(17.5)
+18
+>>> round(15.5)
+16
+
+%python2
+>>> round(16.5)
+17.0
+>>> round(17.5)
+18.0
+>>> round(15.5)
+16.0
+```
 
 ## How to set up Python 2.7 and Python 3 at the same time on your Mac OSX?
 
