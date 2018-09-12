@@ -31,11 +31,13 @@
     - [API](#api)
         - [Why use api](#why-use-api)
         - [Use API via HTTP request/ response](#use-api-via-http-request-response)
+            - [Test API without using Python](#test-api-without-using-python)
         - [Use API via function calls to other modules/ packages](#use-api-via-function-calls-to-other-modules-packages)
     - [[O] Bonus: your first automatic writing robot on Twitter](#o-bonus-your-first-automatic-writing-robot-on-twitter)
     - [Exercises and Challenges](#exercises-and-challenges)
         - [Douban API](#douban-api)
         - [Google Map API](#google-map-api)
+        - [GitHub API](#github-api)
         - [[O] Real Estate property in Hong Kong (via government open data portal API)](#o-real-estate-property-in-hong-kong-via-government-open-data-portal-api)
         - [[O] Blockchain - chain data and exchange data](#o-blockchain---chain-data-and-exchange-data)
         - [[O] Automatic earthquake writer](#o-automatic-earthquake-writer)
@@ -650,6 +652,12 @@ Output:
 ![Taiwan Earthquake Data](assets/taiwan-earthquake-data.png)
 Quiz: You can see that the time is not what we want. Can you convert them to UTC time(Universal Time Coordinated).
 
+#### Test API without using Python
+
+Note that `requests.get(url)` basically sends an `GET` HTTP request to the server. You can achieve this without using Python. Your web browser, like Google Chrome, sends a lot of `GET` requests every day to the websites you visit. You can use `print(url)` to get the assembled final URL and copy-and-paste this URL into your browser address bar, to test the response from the server. Since most API returns JSON data structure, you can use the [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) extension in Google Chrome to get a better view and easier explore the response.
+
+<!-- TODO: @Yucan, please visit query_url in browser and take screenshot of JSONView result. Show them the JSONView result can be folded/ expanded (+/- signs) -->
+
 ### Use API via function calls to other modules/ packages
 
 Another API method that is worthy to introduce is using the keys and token they give to you, through which you can use the function they build to get the data. But a shortcoming about this method is there is very limit the amount of data you can get. The organizations with a large database are very strict about this. In this example, we will also use Taiwan example, to scrape users tweets under the keyword of 'Taiwan earthquake'.
@@ -742,6 +750,16 @@ title,director,year,cast,description,region
 Retrieve a JSON response from Google Map API. Here is an example: [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university).
 
 Once you know how to use `requests` and `json` to get the interested coordinates data, you can revisit the [city distance challenge](notes-week-03.md#distances-among-cities) from last chapter. Then you have a fully automated solution.
+
+### GitHub API
+
+GitHub provides very convenient/ developer friendly access to its pubic database via [its API](https://developer.github.com/v3/). For example, one can enumerate the people who have starred one repo by calling (HTTP request) the following API endpoint:
+
+```text
+https://api.github.com/repos/{username}/{reponame}/stargazers
+```
+
+For example, click [here](https://api.github.com/repos/hupili/python-for-data-and-media-communication-gitbook/stargazers) to see the API response that includes all users who have starred our open book repo.
 
 ### [O] Real Estate property in Hong Kong (via government open data portal API)
 
