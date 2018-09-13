@@ -481,7 +481,7 @@ stu = {
     "name": "Bob"
 }
 with open('stu.json', 'w') as f:
-    f.dump(stu, f) #converting Python object to JSON file
+    json.dump(stu, f) #converting Python object to JSON file
 ```
 
 Open the stu.json file, it will output like:
@@ -491,7 +491,7 @@ Open the stu.json file, it will output like:
 ```
 
 ```python
-with open('stu.json', 'w') as f:
+with open('stu.json', 'r') as f:
      data = json.load(f) #converting JSON file to Python object
 data
 ```
