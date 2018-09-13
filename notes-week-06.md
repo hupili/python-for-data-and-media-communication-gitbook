@@ -24,6 +24,7 @@
         - [Splinter](#splinter)
             - [Finding elements](#finding-elements)
                 - [Fundamental version: one page](#fundamental-version-one-page)
+                - [Advanced version: all pages](#advanced-version-all-pages)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
     - [[O] Other quick scraping/ crawling tricks](#o-other-quick-scraping-crawling-tricks)
@@ -245,8 +246,13 @@ for i in range (0,10): #change range to enlarge of data scale
     #print(next_page.get_attribute('href')) to see whether its iterated
 
 import pandas as pd #spoiler. pandas is the key module in the next chapter, you can check out chapter 7 for further information.
-pd.DataFrame(articles) #convert articles into dataframe
+df = pd.DataFrame(articles) #convert articles into dataframe
+df
 ```
+
+Output:
+
+![Selenium Articles Output2](assets/selenium-articles-output2.png)
 
 [libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
 
@@ -298,8 +304,7 @@ for block in browser.find_by_css('#summaryList_mixed .summaryBlock'):
     article['date'] = block.find_by_css('span.cnnDateStamp').text
     articles.append(article)
 
-import pandas as pd
-pd.DataFrame(articles)
+articles
 ```
 
 Output:
@@ -311,6 +316,49 @@ How to find its css? When you open chrome devtools, you can find the css in the 
 ![Find by css](assets/find_by_css.png)
 
 https://github.com/hupili/python-for-data-and-media-communication/tree/master/ww-splinter
+
+##### Advanced version: all pages
+
+```python
+url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+
+def get_articles_from_browser(b):
+    articles = []
+    for block in b.find_by_css('#summaryList_mixed .summaryBlock'):
+        article = {}
+        h = block.find_by_css('.cnnHeadline a')
+        article['headline'] = h.text
+        article['url'] = h['href']
+        article['date'] = block.find_by_css('span.cnnDateStamp').text
+        articles.append(article)
+    return articles
+
+# Launch the initial page#
+browser = Browser('chrome')
+browser.visit(url)
+time.sleep(2)
+
+all_page_articles  = []
+for i in range(50): #scrape 50 pages
+    time.sleep(0.5)
+    try:
+        new_articles = get_articles_from_browser(browser)
+        all_page_articles.extend(new_articles)
+        browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #scroll down
+        next_buttons = browser.find_by_css('.pagingLinks li.ends.next')
+        next_buttons[0].click() #splinter find_by return a list, therefore we need use index0 to access the next_button.
+    except Exception as e:
+        print(e)
+        print('Error on page %s' % i)
+
+import pandas as pd
+df = pd.DataFrame(all_page_articles)
+df
+```
+
+Output: There will be 500 rows.
+
+![Splinter Articles Output2](assets/splinter-articles-output2.png)
 
 ## Analyse Network Traces
 
