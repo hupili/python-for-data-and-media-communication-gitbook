@@ -108,7 +108,7 @@ For windows users: please refer to [here](https://selenium-python.readthedocs.io
 You can also solve this problem by specify the path of the Chromedriver, for example, if you just download in `Users/username/...`. You can still initiate it in this way, for my example:
 
 ```python
-browser = webdriver.Chrome() #default to initiate webdriver, you can assign it with driver or browser or other things you like. If raise error, you can specify the file path like the following.
+browser = webdriver.Chrome() #default to initiate webdriver, you can assign it with driver or browser or other things you like. If raise error, you can solve this problem by specifying the file path like the following.
 browser = webdriver.Chrome('/users/xuyucan/chromedriver')
 ```
 
@@ -215,22 +215,30 @@ Output:
 ```python
 from selenium import webdriver
 import time #mainly use its time sleep function
-browser = webdriver.Chrome('/users/xuyucan/chromedriver')
 
-articles = []
-browser.get('http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war')
-time.sleep(2) #sleep 2 second for each call action, if it's too frequently with no sleep time, its has high opportunity to be banned from the website.
-
-for i in range (0,10): #change range to enlarge of data scale
-    browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']")
-    for session in browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']"):
+def get_articles_from_browser(b):
+    articles = []
+    for session in b.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']"):
         article = {}
         article['headline'] = session.find_element_by_class_name("cnnHeadline").text #find headline
         article['date'] = session.find_element_by_class_name("cnnDateStamp").text #find date
-        url = session.find_element_by_xpath("./div[@class='cnnHeadline']/*[@href]")
-        article['url'] = url.get_attribute('href')
+        url = session.find_element_by_xpath("./div[@class='cnnHeadline']/*[@href]") #find url 
+        article['url'] = url.get_attribute('href') #get url attribute
         articles.append(article)
+    return articles
 
+
+url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser = webdriver.Chrome('/users/xuyucan/chromedriver')
+browser.get(url)
+time.sleep(2) #sleep 2 second for each call action, if it's too frequently with no sleep time, its has high opportunity to be banned from the website.
+
+all_page_articles = []
+for i in range(10):
+    time.sleep(0.5)
+    try:
+        new_articles = get_articles_from_browser(browser)
+        all_page_articles.extend(new_articles)
 #in the following, we need to emulate to click `next button` to turn pages.
 #try 1: just click link by default ... 
 #next_page = browser.find_element_by_link_text('Next').click()
@@ -240,11 +248,12 @@ for i in range (0,10): #change range to enlarge of data scale
 #error: In some page, the navigation bar has blocked the click button if you scroll down to the bottom
 #try 3: (document.body.scrollHeight - int) ...  
 #fail: can not be minus, but can be divided.
-    browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #test several numbers to choose a suitable one
-    next_page = browser.find_element_by_link_text('Next')
-    next_page.click()
-    i = i + 1
-    #print(next_page.get_attribute('href')) to see whether its iterated
+        browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);')#test several numbers to choose a suitable one
+        next_page = browser.find_element_by_link_text('Next')
+        next_page.click()
+    except Exception as e:
+        print(e)
+        print('Error on page %s' % i)
 
 import pandas as pd #spoiler. pandas is the key module in the next chapter, you can check out chapter 7 for further information.
 df = pd.DataFrame(articles) #convert articles into dataframe
