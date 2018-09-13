@@ -409,7 +409,7 @@ Step 1: Based on what we do in the above example, we can define a function like 
 
 ```python
 def scrape_one_article(article_url):
-    r = requests.get(url).text
+    r = requests.get(article_url).text
     data = BeautifulSoup(r,"html.parser")
     my_title = data.find('h1').text.strip()
     my_date = data.find('time').text.strip()
