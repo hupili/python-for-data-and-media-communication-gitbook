@@ -31,6 +31,7 @@
     - [Excercises and Challenges](#excercises-and-challenges)
         - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
         - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
+    - [Related Readings](#related-readings)
 
 <!-- /TOC -->
 
@@ -254,8 +255,6 @@ Output:
 
 ![Selenium Articles Output2](assets/selenium-articles-output2.png)
 
-[libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
-
 ### Splinter
 
 Splinter achieves pretty much the same results as Selenium does, though there might be a little difference in syntax. In the following, we will also use `splinter` method to demo the cnn example, you can compare it with `selenium` method, and choose one you like to practice more.
@@ -397,3 +396,14 @@ Search Engine Optimization (SEO) is one common technique a digital marketer need
 - Give a keyword as input.
 - Download the documents of the first page, e.g. `.docx` files, onto local disk.
 - Organise an index of those documents into a `CSV` which may include "title", "court", "date", "document-path", and other fields if you deem useful.
+
+## Related Readings
+
+- Dynamic loading and crawling exmaple: [libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
+- Social media crawling example: [Scrape a luxury brand with keyword in Weibo](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium/Weibo.ipynb)
+- Dynamic page crawling, with a matter of parsing page content: [Timeout](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-splinter/timeout.com.ipynb)
+- Dynamic crawling a static page with a matter of pagination: [Amazon Books](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-splinter/Amazon%20books.ipynb)
+
+------
+
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
