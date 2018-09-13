@@ -22,6 +22,8 @@
                 - [Fundamental: One page](#fundamental-one-page)
                 - [Advanced: All pages](#advanced-all-pages)
         - [Splinter](#splinter)
+            - [Finding elements](#finding-elements)
+                - [Fundamental version: one page](#fundamental-version-one-page)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
     - [[O] Other quick scraping/ crawling tricks](#o-other-quick-scraping-crawling-tricks)
@@ -271,6 +273,42 @@ time.sleep(2)
 ```
 
 ![Driver Path](assets/splinter-driver-path.png)
+
+#### Finding elements
+
+Splinter provides 6 methods for finding elements in the page, one for each selector type: `css`, `xpath`, `tag`, `name`, `id`, `value`, `text`. Each of these methods returns a list with the found elements. And you can use index to access each of them in the list. This method is different from `selenium` which provides with finding single element and list of elements. All in all, those two methods is very alike. You can check out [here](https://splinter.readthedocs.io/en/latest/api/driver-and-element-api.html#splinter.driver.DriverAPI.find_by_css) for Splinter doc about finding elements. In this case, we mainly use `find_by_css(css_selector)` method.
+
+##### Fundamental version: one page
+
+```python
+!pip3 install splinter  
+from splinter import Browser
+import time
+url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser = Browser('chrome')
+browser.visit(url)
+time.sleep(2)
+
+articles = []
+for block in browser.find_by_css('#summaryList_mixed .summaryBlock'):
+    article = {}
+    h = block.find_by_css('.cnnHeadline a')
+    article['headline'] = h.text
+    article['url'] = h['href']
+    article['date'] = block.find_by_css('span.cnnDateStamp').text
+    articles.append(article)
+
+import pandas as pd
+pd.DataFrame(articles)
+```
+
+Output:
+
+![Splinter articles output1](assets/splinter-articles-output1.png)
+
+How to find its css? When you open chrome devtools, you can find the css in the `style` console by corresponding to the elements in the webpage.
+
+![Find by css](assets/find_by_css.png)
 
 https://github.com/hupili/python-for-data-and-media-communication/tree/master/ww-splinter
 
