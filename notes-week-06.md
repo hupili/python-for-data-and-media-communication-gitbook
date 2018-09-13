@@ -21,7 +21,7 @@
             - [Example: CNN articles scraping](#example-cnn-articles-scraping)
                 - [Fundamental: One page](#fundamental-one-page)
                 - [Advanced: All pages](#advanced-all-pages)
-        - [splinter](#splinter)
+        - [Splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
     - [[O] Other quick scraping/ crawling tricks](#o-other-quick-scraping-crawling-tricks)
@@ -248,7 +248,29 @@ pd.DataFrame(articles) #convert articles into dataframe
 
 [libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
 
-### splinter
+### Splinter
+
+Splinter achieves pretty much the same results as Selenium does, though there might be a little difference in syntax. In the following, we will also use `splinter` method to demo the cnn example, you can compare it with `selenium` method, and choose one you like to practice more.
+
+```python
+!pip3 install splinter  
+from splinter import Browser
+import time
+url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser = Browser('chrome')
+browser.visit(url)
+time.sleep(2)
+```
+
+**Note:** If you get error `Message: 'chromedriver' executable needs to be in PATH.`. The PATH is the working path that your Jupyter Notebook running. You can check out where it is by the following command, and place the chromedriver you download into this folder.
+
+```python
+!echo $PATH
+!ls #add the first path returned from last step
+!open #add the first path returned from first step
+```
+
+![Driver Path](assets/splinter-driver-path.png)
 
 https://github.com/hupili/python-for-data-and-media-communication/tree/master/ww-splinter
 
