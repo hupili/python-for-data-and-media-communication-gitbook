@@ -18,6 +18,8 @@
             - [Drivers](#drivers)
             - [Navigating](#navigating)
             - [Locating Elements](#locating-elements)
+            - [Example: CNN articles scraping](#example-cnn-articles-scraping)
+                - [Fundamental: One page](#fundamental-one-page)
         - [splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
@@ -171,6 +173,37 @@ Path Expression examples:
 | //book              | Selects all book elements no matter where they are in the document               |
 | //@lang             | Selects all attributes that are named lang                                       |
 | //title[@lang='en'] | Selects all the title elements that have a "lang" attribute with a value of "en" |
+
+#### Example: CNN articles scraping
+
+The following is the link of search results by keyword `trade war`. We can scrape those articles title, time and url for further studying. The reason why we need use `selenium` is because the page turning links are embedded javascript codes, which cannot be extracted and use directly in `requests` way. Instead, we need to interact with the page, and do browser emulation.
+
+https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war
+
+##### Fundamental: One page
+
+```python
+!pip3 install selenium # if you installed before, just ignore
+from selenium import webdriver
+
+browser = webdriver.Chrome('/users/xuyucan/chromedriver')
+browser.get('http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war')
+
+browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']") #find all articles wrapped in the path of class='summaryBlock'
+articles = []
+for session in browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']"):
+    article = {}
+    article['headline'] = session.find_element_by_class_name("cnnHeadline").text #find headline
+    article['date'] = session.find_element_by_class_name("cnnDateStamp").text #find date
+    url = session.find_element_by_xpath("./div[@class='cnnHeadline']/*[@href]")  #can not directly get the href attributes, it will return 'url' as a selenium object: <selenium.webdriver.remote.webelement.WebElement (session="936716c8251394a2fddad1fa80b64d23", element="0.9458243256600611-16")>
+    article['url'] = url.get_attribute('href') #further get attributes from last step
+    articles.append(article)
+articles
+```
+
+Output:
+
+![Articles Output1](assets/selenium-articles-output1.png)
 
 https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium
 
