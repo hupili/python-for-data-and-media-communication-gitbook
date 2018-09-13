@@ -17,6 +17,7 @@
             - [Downloading Python bindings for Selenium](#downloading-python-bindings-for-selenium)
             - [Drivers](#drivers)
             - [Navigating](#navigating)
+            - [Locating Elements](#locating-elements)
         - [splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
@@ -123,6 +124,53 @@ notes_links = browser.find_element_by_link_text('notes-week-06.md') #find link o
 notes_links.click() #click into notes 6
 #browser.close()
 ```
+
+#### Locating Elements
+
+There are many ways to locate the elements. It's similar to the usage in `requests` method, just a simple `find...` sentence but more diverse.
+
+Selenium provides the following methods to locate elements in a page:
+
+* find_element_by_id
+* find_element_by_name
+* find_element_by_xpath
+* find_element_by_link_text
+* find_element_by_partial_link_text
+* find_element_by_tag_name
+* find_element_by_class_name
+* find_element_by_css_selector
+
+To find multiple elements (these methods will return a list):
+
+* find_elements_by_name
+* find_elements_by_xpath
+* find_elements_by_link_text
+* find_elements_by_partial_link_text
+* find_elements_by_tag_name
+* find_elements_by_class_name
+* find_elements_by_css_selector
+
+Except the `XPath` method, others are pretty much like we used before, just check out the html in Chrome Devtools, find the name, class, link, attributes etc. For instruction of the syntax, you can refer this [documentation](https://selenium-python.readthedocs.io/locating-elements.html).
+
+For `XPath` method, XPath uses path expressions to select nodes or node-sets in an XML document. The following are basic expression rules and expression path examples. For a more detailed usage, you can check out this [tutorial](https://www.w3schools.com/xml/xpath_syntax.asp).
+
+Basic expression rules:
+
+| Expression | Description                                                                                           |
+|------------|-------------------------------------------------------------------------------------------------------|
+| /          | Selects from the root node                                                                            |
+| //         | Selects nodes in the document from the current node that match the selection no matter where they are |
+| .          | Selects the parent of the current node                                                                |
+| @          | Selects attributes                                                                                    |
+
+Path Expression examples:
+
+| Path Expression     | Results                                                                          |
+|---------------------|----------------------------------------------------------------------------------|
+| /bookstore/book[1]  | Selects the first book element that is the child of the bookstore element.       |
+| //book              | Selects all book elements no matter where they are in the document               |
+| //@lang             | Selects all attributes that are named lang                                       |
+| //title[@lang='en'] | Selects all the title elements that have a "lang" attribute with a value of "en" |
 
 https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium
 
