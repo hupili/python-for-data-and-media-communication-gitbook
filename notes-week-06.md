@@ -20,6 +20,7 @@
             - [Locating Elements](#locating-elements)
             - [Example: CNN articles scraping](#example-cnn-articles-scraping)
                 - [Fundamental: One page](#fundamental-one-page)
+                - [Advanced: All pages](#advanced-all-pages)
         - [splinter](#splinter)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
@@ -205,7 +206,45 @@ Output:
 
 ![Articles Output1](assets/selenium-articles-output1.png)
 
-https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium
+##### Advanced: All pages
+
+```python
+from selenium import webdriver
+import time #mainly use its time sleep function
+browser = webdriver.Chrome('/users/xuyucan/chromedriver')
+
+articles = []
+browser.get('http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war')
+time.sleep(2) #sleep 2 second for each call action, if it's too frequently with no sleep time, its has high opportunity to be banned from the website.
+
+for i in range (0,10): #change range to enlarge of data scale
+    browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']")
+    for session in browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']"):
+        article = {}
+        article['headline'] = session.find_element_by_class_name("cnnHeadline").text #find headline
+        article['date'] = session.find_element_by_class_name("cnnDateStamp").text #find date
+        url = session.find_element_by_xpath("./div[@class='cnnHeadline']/*[@href]")
+        article['url'] = url.get_attribute('href')
+        articles.append(article)
+
+#in the following, we need to emulate to click `next button` to turn pages.
+#try 1: just click link by default ... 
+#next_page = browser.find_element_by_link_text('Next').click()
+#error: not clickable. After try several print() in the process,I found that, we need to scroll the window down till we can see the next button. Therefore you can see that selenium browser emulation method is really just like a human behavior.
+#try 2: scroll whole body down to the bottom...
+#browser.execute_script('window.scrollTo(0, document.body.scrollHeight);')
+#error: In some page, the navigation bar has blocked the click button if you scroll down to the bottom
+#try 3: (document.body.scrollHeight - int) ...  
+#fail: can not be minus, but can be divided.
+    browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #test several numbers to choose a suitable one
+    next_page = browser.find_element_by_link_text('Next')
+    next_page.click()
+    i = i + 1
+    #print(next_page.get_attribute('href')) to see whether its iterated
+
+import pandas as pd #spoiler. pandas is the key module in the next chapter, you can check out chapter 7 for further information.
+pd.DataFrame(articles) #convert articles into dataframe
+```
 
 [libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
 
