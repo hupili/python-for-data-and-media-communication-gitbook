@@ -409,7 +409,7 @@ Step 1: Based on what we do in the above example, we can define a function like 
 
 ```python
 def scrape_one_article(article_url):
-    r = requests.get(url).text
+    r = requests.get(article_url).text
     data = BeautifulSoup(r,"html.parser")
     my_title = data.find('h1').text.strip()
     my_date = data.find('time').text.strip()
@@ -434,7 +434,7 @@ def scrape_articles_urls_of_one_page(article_page_url): #scrape_articles_urls_of
     data = BeautifulSoup(r,"html.parser")
     my_urls = data.find_all('a',attrs={'class':'post__title-link js-read-more'}) #find the links
 
-    #quiz1: if you read the code of this page, most students will try to find ('a',attrs={'class':'post__title-link}) first and failed. Do you know why?
+    #quiz1: if you read the code of this page, most students will try to find ('a',attrs={'class':'post__title-link'}) first and failed. Do you know why?
 
     #quiz2: you will find that url can be extracted by my_url['href'], the results will be like this: '../blog/20160908-taipei-power-usage/', but the real one should be like this 'http://initiumlab.com/blog/20160908-taipei-power-usage/',
     #so who do we format those links we want?
