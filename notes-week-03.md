@@ -60,6 +60,7 @@
             - [Extended exercise of geo distance](#extended-exercise-of-geo-distance)
         - [Divide HW1 groups randomly: (case contribution)](#divide-hw1-groups-randomly-case-contribution)
             - [Hint for group assignment challenge](#hint-for-group-assignment-challenge)
+        - [Generate detailed mortgage schedule](#generate-detailed-mortgage-schedule)
         - [Automatic writer for financial report](#automatic-writer-for-financial-report)
         - [Conversion between simplified Chinese and traditional Chinese](#conversion-between-simplified-chinese-and-traditional-chinese)
     - [References](#references)
@@ -1331,6 +1332,41 @@ Following hints can help you think the algorithm but you do not have to use all 
 - `random.shuffle()` or `random.choice()` can be useful
 - This is essentially a "mapping problem" and one powerful data structure designed for this type of problem is `dict`. You can use case as key and `list` of students as value.
 - Always watch out for boundary conditions in programming: does your code still work when the number of students can not be divided by number of cases? Say 10 students, 3 cases.
+
+### Generate detailed mortgage schedule
+
+In [notes-week-02.md](notes-week-02.md), we made a mortgage calculator using the amortised formula from Wikipedia. Now that we have the monthly instalment number, we can further generate the mortgage schedule that a regular user is highly interested. A mortgage schedule is basically a table in which one row represents the status of a month. One row contains the following information: `month`, `instalment`, `interest in instalment`, `principal in instalment`,  `outstanding principal after this instalment`. The first 12 months are as follows. Try to print this table.
+
+```text
+Month	Instalment	Interest	Principal	Outstanding
+001	65995.57	41666.67	24328.91	9975671.09
+002	65995.57	41565.30	24430.28	9951240.82
+003	65995.57	41463.50	24532.07	9926708.74
+004	65995.57	41361.29	24634.29	9902074.46
+005	65995.57	41258.64	24736.93	9877337.53
+006	65995.57	41155.57	24840.00	9852497.53
+007	65995.57	41052.07	24943.50	9827554.02
+008	65995.57	40948.14	25047.43	9802506.59
+009	65995.57	40843.78	25151.80	9777354.80
+010	65995.57	40738.98	25256.60	9752098.20
+011	65995.57	40633.74	25361.83	9726736.37
+012	65995.57	40528.07	25467.51	9701268.86
+...
+```
+
+**Hint:** Use the floating point formatter to limit numbers to two digits. Use `{:03d}` to pad with extra zeros. In order for the table to look aligned, you may want to use `\t` as the delimiter. Actually, `\t` means `table` and is used to align texts to next table marker.
+
+The initial part of the program with parameter settings are as follows:
+
+```python
+r = 0.05 / 12
+n = 20 * 12
+P = 10000000
+A = P * (r * (1 + r) ** n) / ((1 + r) ** n - 1)
+print(A)
+outstanding = P
+m = 0
+```
 
 ### Automatic writer for financial report
 
