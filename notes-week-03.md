@@ -1368,6 +1368,26 @@ outstanding = P
 m = 0
 ```
 
+**Hint:** The key of this exercise is about calculating the schedule **all in Python**. Given week02's knowledge, you can calculate and print out the result line by line. After week03, you will be able to use a loop to repeat the procedure and saves some codes. Following is an example of how to calculate the mortgage status of first month.
+
+```python
+# Suppose we already have r, n, P, A
+
+# Initially
+outstanding = P
+
+# After the first month
+interest_in_instalment = r * outstanding
+principal_in_instalment = A - r * outstanding
+outstanding = outstanding - principal_in_instalment
+
+# Now try to print in our expected format
+print(...)
+
+# After the second month
+# Try to continue the process
+```
+
 ### Automatic writer for financial report
 
 Financial report usually possesses some apparent patterns. We can analyse the patterns and use string templating to perform automatic writing. Actually most of the "AI" based "robotic journalist" is no complex than string templating. After this chapter, you can even use conditional branches to plugin corresponding text. For example, when the value goes up, you say "increases by" and when the value goes down, you say "decreases". People who write this kind of template is called "meta reporter".
