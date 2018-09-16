@@ -61,6 +61,8 @@
         - [Divide HW1 groups randomly: (case contribution)](#divide-hw1-groups-randomly-case-contribution)
             - [Hint for group assignment challenge](#hint-for-group-assignment-challenge)
         - [Generate detailed mortgage schedule](#generate-detailed-mortgage-schedule)
+            - [Hint on table formatting](#hint-on-table-formatting)
+            - [Hint on math formula](#hint-on-math-formula)
         - [Automatic writer for financial report](#automatic-writer-for-financial-report)
         - [Conversion between simplified Chinese and traditional Chinese](#conversion-between-simplified-chinese-and-traditional-chinese)
     - [References](#references)
@@ -1354,6 +1356,8 @@ Month	Instalment	Interest	Principal	Outstanding
 ...
 ```
 
+#### Hint on table formatting
+
 **Hint:** Use the floating point formatter to limit numbers to two digits. Use `{:03d}` to pad with extra zeros. In order for the table to look aligned, you may want to use `\t` as the delimiter. Actually, `\t` means `table` and is used to align texts to next table marker.
 
 The initial part of the program with parameter settings are as follows:
@@ -1368,10 +1372,13 @@ outstanding = P
 m = 0
 ```
 
+#### Hint on math formula
+
 **Hint:** The key of this exercise is about calculating the schedule **all in Python**. Given week02's knowledge, you can calculate and print out the result line by line. After week03, you will be able to use a loop to repeat the procedure and saves some codes. Following is an example of how to calculate the mortgage status of first month.
 
 ```python
 # Suppose we already have r, n, P, A
+# value of A is "instalment" in our natural language
 
 # Initially
 outstanding = P
