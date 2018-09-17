@@ -55,6 +55,7 @@
         - [Object Oriented Programming](#object-oriented-programming)
         - [Top-down or Bottom-up?](#top-down-or-bottom-up)
         - [Inside a Python module](#inside-a-python-module)
+        - [Efficiency/ complexity](#efficiency-complexity)
     - [Exercises and Challenges](#exercises-and-challenges)
         - [Distances among cities](#distances-among-cities)
             - [Extended exercise of geo distance](#extended-exercise-of-geo-distance)
@@ -1254,6 +1255,12 @@ When you become more senior and when you gradually take up architectural roles, 
 ### Inside a Python module
 
 **TODO**
+
+### Efficiency/ complexity
+
+The computer science language of talking "efficiency" is "complexity". It usually refers to how the time needed to execute a program increase with the scale of problem size. It is a grand topic in algorithm design to talk about complexity. In our discussion, you may want to notice that the choice of data structure matters because their complexity is different. You don't have to master this from very beginning. Having this concept in mind allows you to sense the problem when it comes. Then you can more effectively ask for help.
+
+Here is [one example](https://github.com/hupili/python-for-data-and-media-communication/blob/master/jupyter-notebook/timeit.ipynb) to show you that `set` and `list` have drastically different efficiency on solving one problem.
 
 ## Exercises and Challenges
 
