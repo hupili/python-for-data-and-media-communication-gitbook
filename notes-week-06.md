@@ -416,7 +416,7 @@ Some websites render HTML at the backend and send them to the frontend in a dyna
 
 ## [O] Crawl mobile Apps
 
-With the explosion of mobile Apps, more and more data is shifted from the open web to mobile platform. The design principle of web and mobile are very different. When Tim Berners Lee initially designed the WWW, it was intended to be an open standard that every one can connect to. That is why, once the web server is up, you can use Chrome to access it whlie other users may use Firefox or even Python `requests`. There are many tools to emulate browser activities, so you can programmably do the same thing as if a regular user is surfing the Internet. Compare with the open web, mobile world is a closed eco system. It often requires heavy duty packet analysis, App decompilation, or App emulation, in order to get data behind the mobile Apps. "Packet analysis" is most close to our course and is elaborated below.
+With the explosion of mobile Apps, more and more data is shifted from the open web to mobile platform. The design principle of web and mobile are very different. When Tim Berners Lee initially designed the WWW, it was intended to be an open standard that every one can connect to. That is why, once the web server is up, you can use Chrome to access it whlie other users may use Firefox or even Python `requests`. There are many tools to emulate browser activities, so you can programmably do the same thing as if a regular user is surfing the Internet. Compare with the open web, mobile world is a closed eco system. It often requires heavy duty packet analysis, App decompilation, or App emulation, in order to get data behind the mobile Apps. "Packet analysis" is most close to our course and is elaborated below.
 
 ### Packet analysis
 
