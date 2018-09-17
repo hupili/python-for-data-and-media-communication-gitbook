@@ -1,6 +1,6 @@
 ## Class references
 
-* [Sample GitHub repo for homeworks](https://github.com/hupilidemo/hkbu-big-data-media)
+- [Sample GitHub repo for homeworks](https://github.com/hupilidemo/hkbu-big-data-media)
 
 ## Beginner exercises
 
@@ -10,8 +10,6 @@ DataCamp provides a good set of multiple choice questions to get you familiar wi
 
 ## Other resources
 
-* Artificial Intelligence in Python, by Prof. Ikhlaq Sidhu. Open source slides and Jupyter notebooks [https://github.com/ikhlaqsidhu/data-x](https://github.com/ikhlaqsidhu/data-x) . Also see more on: [https://data-x.blog](https://data-x.blog)
-* List of Python resources \(awesome-list style\): [Link](https://love2.io/@ayamefing/doc/awesome-python-cn/README.md) 
-
-
-
+- Artificial Intelligence in Python, by Prof. Ikhlaq Sidhu. Open source slides and Jupyter notebooks [https://github.com/ikhlaqsidhu/data-x](https://github.com/ikhlaqsidhu/data-x) . Also see more on: [https://data-x.blog](https://data-x.blog)
+- List of Python resources \(awesome-list style\): [Link](https://love2.io/@ayamefing/doc/awesome-python-cn/README.md) 
+- A Python data science book targeted for non-tech background reader. This is a suggested reading for those who master our weekly notes. [Link](https://bookdown.org/wshuyi/dive-into-data-science-practically/).

@@ -1,12 +1,13 @@
-# Week 06 - Advanced scraping: browser emulation, anti-crawler and other nitty gritty
+# Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 06 - Advanced scraping: browser emulation, anti-crawler and other nitty gritty](#week-06---advanced-scraping-browser-emulation-anti-crawler-and-other-nitty-gritty)
+- [Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty](#week-06---advanced-scraping-anti-crawler-browser-emulation-and-other-nitty-gritty)
     - [Anti-crawling](#anti-crawling)
         - [User agent](#user-agent)
+            - [[O] Test HTTP requests](#o-test-http-requests)
         - [Rate throttling](#rate-throttling)
     - [Common issues](#common-issues)
         - [Encoding](#encoding)
@@ -27,10 +28,15 @@
                 - [Advanced version: all pages](#advanced-version-all-pages)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
+        - [Packet analysis](#packet-analysis)
+            - [Example: Kwai (kuaishou)](#example-kwai-kuaishou)
+        - [App decompilation](#app-decompilation)
+        - [App emulation](#app-emulation)
     - [[O] Other quick scraping/ crawling tricks](#o-other-quick-scraping-crawling-tricks)
     - [Excercises and Challenges](#excercises-and-challenges)
         - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
         - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
+        - [[O] Crawl Weibo data and discover KOL](#o-crawl-weibo-data-and-discover-kol)
     - [Related Readings](#related-readings)
 
 <!-- /TOC -->
@@ -40,6 +46,40 @@
 ## Anti-crawling
 
 ### User agent
+
+The simplest way to prevent crawler access it to limit by user agent. "User agent" can be thought of synonym for "web browser". When you surft the Internet with a normal web browser, the server will know whether you use Chrome, Firefix, IE, or other browsers. Your browser give this information to the web server by a field called `user-agent` in the HTTP request headers. Similarly, `requests` is a like a web browser, for Python code, not for human. It also gives the `user-agent` to the web server and the default value is like `python-requests/*`. In this way, the server knows that the client is Python requests module, not a regular human user. One can by-pass this limit by modifying the user-agent string.
+
+```python
+r = requests.get(url,
+        headers = {
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'
+        }
+    )
+```
+
+Full code and demo can be found in [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/ff77a632e030fcaa392dac34086bf84e2a802b45/scraper-examples/Open%20Rice.ipynb).
+
+#### [O] Test HTTP requests
+
+[https://nghttp2.org/httpbin](https://nghttp2.org/httpbin) is a useful service to test HTTP requests. This service basically echos the content or certain parameters from your HTTP request. You can get better idea of what your tools send to the server via this service.
+
+Example: Check the user-agent of shell command `curl`:
+
+```bash
+%curl https://nghttp2.org/httpbin/user-agent
+{"user-agent":"curl/7.54.0"}
+```
+
+Example: Check the default user-agent of `requests`:
+
+```python
+>>> r = requests.get('https://nghttp2.org/httpbin/user-agent')
+>>> r.text
+'{"user-agent":"python-requests/2.19.1"}\n'
+>>> r = requests.get('https://nghttp2.org/httpbin/user-agent', headers={'user-agent': 'See, I modified the user agent!!'})
+>>> r.text
+'{"user-agent":"See, I modified the user agent!!"}\n'
+```
 
 ### Rate throttling
 
@@ -376,9 +416,97 @@ Some websites render HTML at the backend and send them to the frontend in a dyna
 
 ## [O] Crawl mobile Apps
 
-**TODO**
+With the explosion of mobile Apps, more and more data is shifted from the open web to mobile platform. The design principle of web and mobile are very different. When Tim Berners Lee initially designed the WWW, it was intended to be an open standard that every one can connect to. That is why, once the web server is up, you can use Chrome to access it whlie other users may use Firefox or even Python `requests`. There are many tools to emulate browser activities, so you can programmably do the same thing as if a regular user is surfing the Internet. Compare with the open web, mobile world is a closed eco system. It often requires heavy duty packet analysis, App decompilation, or App emulation, in order to get data behind the mobile Apps. "Packet analysis" is most close to our course and is elaborated below.
 
-"Charles proxy", "mitmproxy"
+### Packet analysis
+
+This section is very similar to earlier [Analyse Network Traces](#analyse-network-traces). The only difference is that we analyse the mobile App packet here.
+
+No matter how mysterious a mobile App seems to be, it has to talk to a server in order to get updated information. You can be assured that everything you see from your smart phone screen comes from either of the two channels:
+
+1. Embeded in the phone, i.e. in the operating system, or in the App when you initially install
+2. Loaded via the Internet upon certan user operation, e.g. App launch, swipe left, touch, ...
+
+Channel 1 is the topic of next section. Channel 2 is what we are going to tackle. The idea is to insert a sniffer between the App and the backend server. In this way, whatever conversation the App has with the server will pass the sniffer first. The sniffer is also called "man-in-the-middle (MITM)", and [a famous attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) is named after this. You may have also heard the term "proxy", which intercepts your original network packet, modify it somehow, and then send the packet to the destination. One can use proxy to bypass Internet censorship or use proxy to hide the original sender's address. Our key tool is a MITM proxy. Here are two common choices
+
+- "Charles proxy" -- Its GUI is very convenient for further packet analysis. It also has iOS and MAC clients. The software is not free though.
+- `mitmproxy` -- You can install it via `pip`. It is free and open source. It provides command line interface to help intercept and dump packets. Recent version also provides web interface to browse the sniffed packets.
+
+#### Example: Kwai (kuaishou)
+
+[Kuaishou](https://www.kuaishou.com/) is a popular video sharing platform originated from China. We analyse its international version, [kwai](http://www.kwai.com), and scrape the top players data.
+
+We'll omit the configuration of Charles Proxy on iOS and MAC, because there are numerous resources online and the interfaces are always changing. Once you finish configuration, do the following steps:
+
+- Start sniffing in Charles Proxy on iOS.
+- Open Kwai App.
+- Browse like a normal user. Note that the packet sniffer can only intercept the conversations that happened. So you want to trigger more actions.
+- Quit Kwai App.
+- Send sniffed packet traces to MAC for further analysis.
+
+There is no direct formula for packet analysis. We usually observe the request/ response sequence by time. For example, if you "pull down" to refresh the video list at 10th second, then the relevant packets are very likely to be sent around 10th second. You can find that data is obtained from an endpoint called `http://api.kwai.com/`. Specifically, the App sends HTTP requests to `http://api.kwai.com/rest/n/feed/hot` in order to obtain a list of hot videos. In our previous scraper examples, HTTP request is usually sent using the `GET` method. In the case of Kwai, `POST` is used. A complete `POST` request is composed of three parts:
+
+- headers -- send in HTTP protocol; users can not see
+- params -- usually appears as `?a=3&b=5` in browser bar; `a` and `b` here are called parameters
+- data -- the `POST` body; this is the main content to be consumed by the web server; based on this content, the server give correspondinge response.
+
+Charles Proxy's MAC software can help you to convert one HTTP request into the Python language, with the above three parts filled -- that is, give you the Python code that can **replay** one request. The variable configurations are as follows, with certain fields masked to preserve privacy:
+
+```python
+headers = {
+    'Host': 'api.kwai.com',
+    ...
+    'Accept': 'application/json',
+    'User-Agent': 'kwai-ios',
+    'Accept-Language': 'en-HK;q=1, zh-HK;q=0.9, zh-Hans-HK;q=0.8',
+}
+
+params = (
+    ('appver', '5.7.3.494'),
+    ...
+    ('c', 'a'),
+    ('ver', '5.7'),
+    ('sys', 'ios11.4'),
+    ('mod', 'iPhone10,3'),
+    ...
+)
+
+data = [
+  ...
+  ('coldStart', 'true'),
+  ('count', '20'),
+  ('country_code', 'hk'),
+  ('id', '13'),
+  ('language', 'en-HK;q=1, zh-HK;q=0.9, zh-Hans-HK;q=0.8'),
+  ('pv', 'false'),
+  ('refreshTimes', '0'),
+  ('sig', ...),
+  ('source', '1'),
+  ('type', '7'),
+]
+```
+
+Here's the request operation and its outcome:
+
+![Kwai's top user information](assets/kwai-top-users.png)
+
+<!-- ![](assets/kwai-app.png) -->
+
+Note the `pd.DataFrame` is a `pandas` object, which will be explained in [notes-week-07.md](notes-week-07.md).
+
+### App decompilation
+
+This means to "crack" the App. You need to first get the installation package of the App, analyse its structure, decompile it, and understand how this App talk with a server from its source code.
+
+Sophisticated App will embed certain cryptography routine in the App and authenticate itself with the server. Even if you successfully analysed the network packet, it is hard for you to come up with the correct authentication parameters. In order to understand how this authentication process is conducted, you may want to reverse engineer the App.
+
+Further discussion is omitted here because this part takes years of computer science background, especially in information security domain.
+
+### App emulation
+
+[Appium](http://appium.io/) is a frequently used automatic testing tool. You can use this tool to emulate user operations on mobile Apps and scrape the data from the screen.
+
+Actually, `selenium`, we introduced earlier in this chapter, was initially also an automatic testing tool for the web frontend. Then it became a bridge between the programmable user and web broser driver, which was used in a lot scraping works. When you find yourself stuck with data access because of non-human behavoiur (e.g. anti-crawling), you can try to search the keywords "emulation" or "auto testing", and can usually get some pointers to useful tools.
 
 ## [O] Other quick scraping/ crawling tricks
 
@@ -387,6 +515,7 @@ In our class, we show you the very basic steps of scraping so that you know how 
 - Type `wget -r {url}`, where `{url}` is the URL of the website you want to crawl. After running this command, you can find all the web pages and their dependent resources are on your computer. You can fine tune the parameters to limit crawling scope, like number of hops or types of files. Use `man wget` to find out more.
 - There are many shell commands which can be combined to perform efficient text processing. [This article](https://github.com/hupili/agile-ir/blob/master/cases/case2-crawl-by-url-filling/index.md) shows how one can combine a few Shell commands to quickly download the Shakespeare works.
 - [This repo](https://github.com/hupili/agile-ir/blob/master/cases/case2-crawl-by-url-filling/index.md), originally a workshop given on PyConHK in 2015, shows you some handy tools and libraries in Python that allow one to scrape more with less codes. For example, you can use `readability` to extract the main body of an HTML page, without bothering with its page structure. For readers with frontend development background, `pyquery` is a handy library to allow you write jQuery like selectors to access HTML elements. `scraply` is a machine learning based library that can learn the labelled crawling target and generate corresponding rules; The user only needs to tell `scraply` what to crawl, instead of how to crawl.
+* [Data Science at the Command Line](https://www.datascienceatthecommandline.com/chapter-3-obtaining-data.html) by Jeroen Janssens is a comprehensive and duly updated reference book for command line tools for data science. Its [Obtaining data](https://www.datascienceatthecommandline.com/chapter-3-obtaining-data.html) is a good further reading for those who are interested in more efficient data collection in Linux shell environment.
 
 ## Excercises and Challenges
 
@@ -405,6 +534,26 @@ Search Engine Optimization (SEO) is one common technique a digital marketer need
 - Give a keyword as input.
 - Download the documents of the first page, e.g. `.docx` files, onto local disk.
 - Organise an index of those documents into a `CSV` which may include "title", "court", "date", "document-path", and other fields if you deem useful.
+
+### [O] Crawl Weibo data and discover KOL
+
+Key Opinion Leader (KOL) is the goto person for targeted massive marketing. As a marketing specialist, you want to identify the KOLs in a certain area so that your team can reachout to them effectively. Before learning sophisticated graph mining algorithms, one can do the follow challenge to get some preliminary result:
+
+- Given an industry domain, identify `keywords`
+- For every `keyword in keywords`, scrape the search of related micro blogs.
+- Every piece of microblog may have following data structure:
+  ```python
+  microblog = {
+      'username': 'DATA HERE',
+      'datetime': 'DATA HERE',
+      'text': 'DATA HERE',
+      'num_like': 'DATA HERE',
+      'num_comment': 'DATA HERE',
+      'num_share': 'DATA HERE'
+  }
+  ```
+- A simple algorithm to find KOL is to count `num_like`, `num_comment`, `num_share` for each `username`.
+
 
 ## Related Readings
 
