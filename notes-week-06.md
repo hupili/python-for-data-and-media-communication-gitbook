@@ -31,6 +31,7 @@
     - [Excercises and Challenges](#excercises-and-challenges)
         - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
         - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
+        - [[O] Crawl Weibo data and discover KOL](#o-crawl-weibo-data-and-discover-kol)
     - [Related Readings](#related-readings)
 
 <!-- /TOC -->
@@ -406,6 +407,26 @@ Search Engine Optimization (SEO) is one common technique a digital marketer need
 - Give a keyword as input.
 - Download the documents of the first page, e.g. `.docx` files, onto local disk.
 - Organise an index of those documents into a `CSV` which may include "title", "court", "date", "document-path", and other fields if you deem useful.
+
+### [O] Crawl Weibo data and discover KOL
+
+Key Opinion Leader (KOL) is the goto person for targeted massive marketing. As a marketing specialist, you want to identify the KOLs in a certain area so that your team can reachout to them effectively. Before learning sophisticated graph mining algorithms, one can do the follow challenge to get some preliminary result:
+
+- Given an industry domain, identify `keywords`
+- For every `keyword in keywords`, scrape the search of related micro blogs.
+- Every piece of microblog may have following data structure:
+  ```python
+  microblog = {
+      'username': 'DATA HERE',
+      'datetime': 'DATA HERE',
+      'text': 'DATA HERE',
+      'num_like': 'DATA HERE',
+      'num_comment': 'DATA HERE',
+      'num_share': 'DATA HERE'
+  }
+  ```
+- A simple algorithm to find KOL is to count `num_like`, `num_comment`, `num_share` for each `username`.
+
 
 ## Related Readings
 
