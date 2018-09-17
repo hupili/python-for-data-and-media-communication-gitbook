@@ -178,17 +178,17 @@ Example 4:
 >>> y = 6
 
 >>> print("x == y:", x == y)
-('x == y:', False)
+x == y: False
 >>> print("x != y:", x != y)
-('x != y:', True)
+x != y: True
 >>> print("x < y:", x < y)
-('x < y:', True)
+x < y: True
 >>> print("x > y:", x > y)
-('x > y:', False)
+x > y: False
 >>> print("x <= y:", x <= y)
-('x <= y:', True)
+x <= y: True
 >>> print("x >= y:", x >= y)
-('x >= y:', False)
+x >= y: False
 ```
 
 ## Composite data types
@@ -228,9 +228,9 @@ Example 6:
 ```python
 >>> list1 = ['Hello', 'Python', 2018, 814]
 >>> list2 = [1, 2, 3, 4, 5, 6, 7 ]
->>> print "list1[0]: ", list1[0] #first value in list1
+>>> print ("list1[0]: ", list1[0]) #index[0] in list1
 list1[0]:  Hello
->>> print "list2[1:5]: ", list2[1:5] #second value to sixth value
+>>> print ("list2[1:5]: ", list2[1:5]) #index[1] to index[5] but does not include index5 value.
 list2[1:5]:  [2, 3, 4, 5]
 >>> list1 + list2  
 ['Hello', 'Python', 2018, 814, 1, 2, 3, 4, 5, 6, 7]
@@ -238,9 +238,9 @@ list2[1:5]:  [2, 3, 4, 5]
 ['Hello', 'Python', 2018, 814, 'Hello', 'Python', 2018, 814]
 >>> 2018 in list1  #check whether 2018 is in list1
 true
->>> list2[3:] #slice list2 from index3 value to last value
+>>> list2[3:] #slice list2 from index[3] value to last value
 [4, 5, 6, 7]
->>> list2[:2] #slice list2 from 1st to second value
+>>> list2[:2] #slice list2 from index[0] to index[2] but does not include index2 value
 [1, 2]
 ```
 
@@ -290,7 +290,6 @@ Example 8: All examples are corresponding to the list methods stated above.
 ```python
 >>> list2 = [23, 2018, 814, 2049,2018]
 >>> list2.count(2018) #count numbers of 2018
->>> print(list2)
 2
 ```
 
@@ -740,7 +739,7 @@ while i < 9:
     print(i)
     if i == 5:
         break
-        i = i + 1
+    i = i + 1
 ```
 
 Output:
