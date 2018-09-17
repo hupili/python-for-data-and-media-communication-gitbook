@@ -1,12 +1,13 @@
-# Week 06 - Advanced scraping: browser emulation, anti-crawler and other nitty gritty
+# Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 06 - Advanced scraping: browser emulation, anti-crawler and other nitty gritty](#week-06---advanced-scraping-browser-emulation-anti-crawler-and-other-nitty-gritty)
+- [Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty](#week-06---advanced-scraping-anti-crawler-browser-emulation-and-other-nitty-gritty)
     - [Anti-crawling](#anti-crawling)
         - [User agent](#user-agent)
+            - [[O] Test HTTP requests](#o-test-http-requests)
         - [Rate throttling](#rate-throttling)
     - [Common issues](#common-issues)
         - [Encoding](#encoding)
@@ -41,6 +42,40 @@
 ## Anti-crawling
 
 ### User agent
+
+The simplest way to prevent crawler access it to limit by user agent. "User agent" can be thought of synonym for "web browser". When you surft the Internet with a normal web browser, the server will know whether you use Chrome, Firefix, IE, or other browsers. Your browser give this information to the web server by a field called `user-agent` in the HTTP request headers. Similarly, `requests` is a like a web browser, for Python code, not for human. It also gives the `user-agent` to the web server and the default value is like `python-requests/*`. In this way, the server knows that the client is Python requests module, not a regular human user. One can by-pass this limit by modifying the user-agent string.
+
+```python
+r = requests.get(url,
+        headers = {
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'
+        }
+    )
+```
+
+Full code and demo can be found in [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/ff77a632e030fcaa392dac34086bf84e2a802b45/scraper-examples/Open%20Rice.ipynb).
+
+#### [O] Test HTTP requests
+
+[https://nghttp2.org/httpbin](https://nghttp2.org/httpbin) is a useful service to test HTTP requests. This service basically echos the content or certain parameters from your HTTP request. You can get better idea of what your tools send to the server via this service.
+
+Example: Check the user-agent of shell command `curl`:
+
+```bash
+%curl https://nghttp2.org/httpbin/user-agent
+{"user-agent":"curl/7.54.0"}
+```
+
+Example: Check the default user-agent of `requests`:
+
+```python
+>>> r = requests.get('https://nghttp2.org/httpbin/user-agent')
+>>> r.text
+'{"user-agent":"python-requests/2.19.1"}\n'
+>>> r = requests.get('https://nghttp2.org/httpbin/user-agent', headers={'user-agent': 'See, I modified the user agent!!'})
+>>> r.text
+'{"user-agent":"See, I modified the user agent!!"}\n'
+```
 
 ### Rate throttling
 
