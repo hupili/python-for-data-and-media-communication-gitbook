@@ -436,12 +436,12 @@ Channel 1 is the topic of next section. Channel 2 is what we are going to tackle
 
 [Kuaishou](https://www.kuaishou.com/) is a popular video sharing platform originated from China. We analyse its international version, [kwai](http://www.kwai.com), and scrape the top players data.
 
-We'll omit the configuration of Charles Proxy on iOS and MAC, because there are numerous resources online and the interfaces are always changing. Once you finish configuration, do the following steps:
+We'll omit the configuration of Charles Proxy on iOS and MAC, because there are numerous resources online and the interfaces are always changing. Once you finish configuration, do the following steps:
 
 - Start sniffing in Charles Proxy on iOS.
 - Open Kwai App.
 - Browse like a normal user. Note that the packet sniffer can only intercept the conversations that happened. So you want to trigger more actions.
-- Quit Kwai App.
+- Quit Kwai App.
 - Send sniffed packet traces to MAC for further analysis.
 
 There is no direct formula for packet analysis. We usually observe the request/ response sequence by time. For example, if you "pull down" to refresh the video list at 10th second, then the relevant packets are very likely to be sent around 10th second. You can find that data is obtained from an endpoint called `http://api.kwai.com/`. Specifically, the App sends HTTP requests to `http://api.kwai.com/rest/n/feed/hot` in order to obtain a list of hot videos. In our previous scraper examples, HTTP request is usually sent using the `GET` method. In the case of Kwai, `POST` is used. A complete `POST` request is composed of three parts:
@@ -492,7 +492,7 @@ Here's the request operation and its outcome:
 
 <!-- ![](assets/kwai-app.png) -->
 
-Note the `pd.DataFrame` is a `pandas` object, which will be explained in [notes-week-07.md](notes-week-07.md).
+Note the `pd.DataFrame` is a `pandas` object, which will be explained in [notes-week-07.md](notes-week-07.md).
 
 ### App decompilation
 
