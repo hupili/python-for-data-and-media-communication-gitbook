@@ -465,6 +465,8 @@ numpy.ndarray
 1 2 4 #you can access values by their index. Similarly, the first number is to index elements in this array, the second number is to index the sub-elements in each elements.
 ```
 
+**Note:** The text following by `#` is not the code. We can use notation `#` in the code blocks to give some explanations or instructions. It's a good habit especially when you collaborate with others, so that they can quickly understand what do you mean. It's very useful in the following study.
+
 #### About index in data types
 
 Simply, `Index` is like the position of one element in the whole list or object, which used to access this element. The index of first element is `0` and increases by integer. The following are examples may help you better understand this.
