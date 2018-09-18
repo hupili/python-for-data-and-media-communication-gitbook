@@ -26,6 +26,7 @@
             - [Finding elements](#finding-elements)
                 - [Fundamental version: one page](#fundamental-version-one-page)
                 - [Advanced version: all pages](#advanced-version-all-pages)
+        - [[O] Twitter example with browser emulation](#o-twitter-example-with-browser-emulation)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
         - [Packet analysis](#packet-analysis)
@@ -122,11 +123,11 @@ You can visit [here](https://selenium-python.readthedocs.io/) to learn how to us
 #### Downloading Python bindings for Selenium
 
 ```python
-!pip install selenium    #in Jupyter Notebook
+!pip install selenium   #in Jupyter Notebook
 ```
 
 ```python
-from selenium import webdriver #import
+from selenium import webdriver  #import
 ```
 
 #### Drivers
@@ -143,14 +144,22 @@ you can download different drivers for supported browsers in the following links
 
 For windows users: please refer to [here](https://selenium-python.readthedocs.io/installation.html#detailed-instructions-for-windows-users) for instruction of download.
 
-**Note: Make sure it’s in your PATH, e. g. place it in /usr/bin or /usr/local/bin.** If it's not in the PATH, when you initiate the Chromedriver, it will raise error `Message: 'chromedriver' executable needs to be in PATH.`
-
-You can also solve this problem by specify the path of the Chromedriver, for example, if you just download in `Users/username/...`. You can still initiate it in this way, for my example:
+After you download the webdriver, we can use the following command to initiate the webdriver.
 
 ```python
-browser = webdriver.Chrome() #default to initiate webdriver, you can assign it with driver or browser or other things you like. If raise error, you can solve this problem by specifying the file path like the following.
-browser = webdriver.Chrome('/users/xuyucan/chromedriver')
+browser = webdriver.Chrome() #default to initiate webdriver, you can assign it with driver or browser or other things you like.
 ```
+
+**Note:** Make sure it’s in your PATH. e. g. place it in `/usr/bin` or `/usr/local/bin`. If it's not in the PATH, when you initiate the Chromedriver, it will raise error `Message: 'chromedriver' executable needs to be in PATH.` If raise this error, you can solve this problem by putting dependency/chromedriver you download into PATH. The PATH here is the current working folder, where your Jupyter Notebook is running. You can check out where it is by the following command.
+
+```python
+!echo $PATH #you will get a set of paths and the first one is what we want. In the following example, it will be as:
+#/Library/Frameworks/Python.framework/Versions/3.6/bin
+!ls #add the first path returned from last step to list all files in the folder
+!open #add the first path returned from first step to open the path and put the chromedriver into the path
+```
+
+![Driver Path](assets/splinter-driver-path.png)
 
 #### Navigating
 
@@ -158,12 +167,12 @@ You can doing a lot of interactive things with the webpage with help of the sele
 
 ```python
 from selenium import webdriver
-browser = webdriver.Chrome('/users/xuyucan/chromedriver') #initiate webdriver
+browser = webdriver.Chrome() #initiate webdriver
 browser.get('http://google.com/') #visit to google page
 element = browser.find_element_by_name("q") #Find the search box
 element.send_keys("github python for data and media communication gitbook") #search our openbook
 element.submit() #submit search action
-# you will find the webpage will automaticlly return the results you search
+# you will find the webpage will automatically return the results you search
 link = browser.find_element_by_link_text('GitHub - hupili/python-for-data-and-media-communication-gitbook') #find our tutorial
 link.click() #click the link, enter our tutorial
 browser.execute_script("window.scrollTo(0,1200);") #scroll in the page, window.scrollTo(x,y), x means horizontal, y means vertical
@@ -231,7 +240,7 @@ https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Sea
 !pip3 install selenium # if you installed before, just ignore
 from selenium import webdriver
 
-browser = webdriver.Chrome('/users/xuyucan/chromedriver')
+browser = webdriver.Chrome()
 browser.get('http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war')
 
 browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']") #find all articles wrapped in the path of class='summaryBlock'
@@ -269,7 +278,7 @@ def get_articles_from_browser(b):
 
 
 url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
-browser = webdriver.Chrome('/users/xuyucan/chromedriver')
+browser = webdriver.Chrome()
 browser.get(url)
 time.sleep(2) #sleep 2 second for each call action, if it's too frequently with no sleep time, its has high opportunity to be banned from the website.
 
@@ -318,16 +327,6 @@ browser.visit(url)
 time.sleep(2)
 ```
 
-**Note:** If you get error `Message: 'chromedriver' executable needs to be in PATH.`. The PATH is the working path that your Jupyter Notebook is running. You can check out where it is by the following command, and place the chromedriver you download into this folder.
-
-```python
-!echo $PATH
-!ls #add the first path returned from last step
-!open #add the first path returned from first step
-```
-
-![Driver Path](assets/splinter-driver-path.png)
-
 #### Finding elements
 
 Splinter provides 6 methods for finding elements in the page, one for each selector type: `css`, `xpath`, `tag`, `name`, `id`, `value`, `text`. Each of these methods returns a list with the found elements. And you can use index to access each of them in the list. This method is different from `selenium` which provides with finding single element and list of elements. All in all, those two methods are very alike. You can check out [here](https://splinter.readthedocs.io/en/latest/api/driver-and-element-api.html#splinter.driver.DriverAPI.find_by_css) for Splinter doc about finding elements. In this case, we mainly use `find_by_css(css_selector)` method.
@@ -362,8 +361,6 @@ Output:
 How to find its css? When you open chrome devtools, you can find the css in the `style` console by corresponding to the elements in the webpage.
 
 ![Find by css](assets/find_by_css.png)
-
-https://github.com/hupili/python-for-data-and-media-communication/tree/master/ww-splinter
 
 ##### Advanced version: all pages
 
@@ -407,6 +404,22 @@ df
 Output: There will be 500 rows.
 
 ![Splinter Articles Output2](assets/splinter-articles-output2.png)
+
+### [O] Twitter example with browser emulation
+
+After we can handle browser emulation to find and extract data from a dynamic loading webpage, we can further apply this method to crawl some data from social media platforms, like the recent hot topic discussed right now on Twitter, to further analyze people's comments and opinions about certain events.
+The following are some pointers that may be useful for you to manipulate browser emulation with Twitter:
+
+1. First you need to Simulate the login process
+2. Do some navigating, searching, scrolling action to load more contents and tweets you want
+3. Extract tweets by different finding elements method
+
+Here are the common issues when scraping those social media platform:
+
+1. Here is strong limitation to the data you can get. For example, after the certain point, the browser window and not be scrolled and there is only a `back to top` button at the bottom of the page.
+2. The scraping results from webpage end may be different from the mobile end. For example, `https://twitter.com/` and `https://mobile.twitter.com/home`. Because Twitter has different regulations to different platforms.
+
+Here is the [sample codes]() we did with selenium browser emulation. We scrape tweets by keyword searching `Mangkhut`, the typhon that stroke Hong Kong and nearby region in 2018-09-16.
 
 ## Analyse Network Traces
 
