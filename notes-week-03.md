@@ -12,7 +12,7 @@
         - [Comparison operators](#comparison-operators)
         - [Str comparison](#str-comparison)
         - [Int comparison](#int-comparison)
-    - [Composite data types](#composite-data-types)
+    - [Composite data types (collection)](#composite-data-types-collection)
         - [List []](#list-)
             - [Common features of list](#common-features-of-list)
             - [List functions](#list-functions)
@@ -22,6 +22,7 @@
             - [Dict functions](#dict-functions)
             - [Dict methods](#dict-methods)
         - [Tuple ()](#tuple-)
+        - [[O] Copy collection objects](#o-copy-collection-objects)
     - [Control flows](#control-flows)
         - [If-else Statement](#if-else-statement)
         - [Python loop](#python-loop)
@@ -191,7 +192,7 @@ x <= y: True
 x >= y: False
 ```
 
-## Composite data types
+## Composite data types (collection)
 
 Here are some common composite data types:
 
@@ -478,6 +479,57 @@ Example 13:
 >>> tup = (1, 2, 3, 4, 5 )
 >>> print("tup[0]: ", tup[0])
 tup[0]:  1
+```
+
+### [O] Copy collection objects
+
+The assignment from one object to another object is essentially an assignment of "pointer". You can understand it as a reference to the object. This design is for efficiency purpose. Some non-intuitive behaviour to new learners may arise due to this design.
+
+We first try the simple object (data type):
+
+```python
+>>> a = 1
+>>> b = a # The key line of assignment
+>>> a
+1
+>>> b
+1
+>>> b = 'fffff'
+>>> b
+'fffff'
+>>> a # a is not changed
+1
+```
+
+Now let's test the `list` collection type:
+
+```python
+>>> a = [1, 2, 3]
+>>> b = a  # The key line of assignment
+>>> b
+[1, 2, 3]
+>>> b[2] = 'ffff'
+>>> b # b is changed as expected
+[1, 2, 'ffff']  
+>>> a # a is also changed
+[1, 2, 'ffff']
+```
+
+The solution is to use `copy.deepcopy` to create a copy, not just a reference.
+
+```python
+>>> import copy
+>>> a = [1, 2, 3]
+>>> a
+[1, 2, 3]
+>>> b = copy.deepcopy(a)
+>>> b
+[1, 2, 3]
+>>> b[2] = 'ffff'
+>>> b
+[1, 2, 'ffff']
+>>> a
+[1, 2, 3]
 ```
 
 ## Control flows
