@@ -5,64 +5,52 @@
 <!-- TOC -->
 
 - [Week 07 - Work with table: data cleaning and pre-processing](#week-07---work-with-table-data-cleaning-and-pre-processing)
-    - [Preperations Before Data Analysis](#preperations-before-data-analysis)
+    - [Objective](#objective)
+    - [Environment preparation](#environment-preparation)
     - [Use "Pandas" to do Data Analysis](#use-pandas-to-do-data-analysis)
         - [Step1: Save csv file](#step1-save-csv-file)
         - [Step2: Read csv file](#step2-read-csv-file)
         - [Step3: Select data from csv](#step3-select-data-from-csv)
+    - [References](#references)
 
 <!-- /TOC -->
 
 </div>
 
+## Objective
 
-**Objective**:
+- Master the basic of `pandas`
+- Can perform data cleaning and pre-processing via table manipulation
 
-> * Master the schema of "data-driven story telling": the crowd \(pattern\) and the outlier \(anomaly\)
-> * Can efficiently manipulate structured table formatted datasets
-> * Use `pandas` for basic calculation and plotting
+<!-- - Master the schema of "data-driven story telling": the crowd \(pattern\) and the outlier \(anomaly\)
+- Can efficiently manipulate structured table formatted datasets
+- Use `pandas` for basic calculation and plotting -->
 
-Modules:
+<!-- Modules:
 
 * `pandas`
-
+ -->
+ 
 Datasets to work on:
 
-* [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group 1
+* [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group1 of S18 session.
 
-References:
-
-* First two chapters \(i.e. before "3D"\) of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
-* [Exercise numpy](https://www.shiyanlou.com/courses/1090) on ShiYanLou
-* [Exercise pandas](https://www.shiyanlou.com/courses/1091) on ShiYanLou
 
 Additional notes:
 
 * You need to finish [Dataprep](dataprep.md) before analysis. That is, we start with structured data. Preparing the structured and cleaned data has no common schema. We have pointers in [Dataprep](dataprep.md) for your own reading.
 
-
 -------
 
 **TODO: following notes are scribed by S18 student helper. Need further organisation**
 
-## Preperations Before Data Analysis 
+## Environment preparation
 
-**Notes:**
+Install dependencies:
 
-* Before learning, we will use jupyter notebook here, please enter venv environment first and enter into jupyter notebook.
-* install pandas, seaborn, matplotlib, requests, csv
-
-  ```
-  pip install pandas
-  ```
-
-  ```
-  pip install seaborn
-  ```
-
-  ```
-  pip install matplotlib
-  ```
+```python
+pip install pandas, seaborn, matplotlib, requests, csv
+```
 
 ## Use "Pandas" to do Data Analysis
 
@@ -217,10 +205,13 @@ Additional notes:
   the output will be  
   ![](assets/to-do-uncategorized-screenshots/no30.png)
 
+
+## References
+
+* First two chapters \(i.e. before "3D"\) of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
+* [Exercise numpy](https://www.shiyanlou.com/courses/1090) on ShiYanLou
+* [Exercise pandas](https://www.shiyanlou.com/courses/1091) on ShiYanLou
+
 ------
 
 If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
-
--------
-
-
