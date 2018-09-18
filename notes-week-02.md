@@ -465,7 +465,9 @@ numpy.ndarray
 1 2 4 #you can access values by their index. Similarly, the first number is to index elements in this array, the second number is to index the sub-elements in each elements.
 ```
 
-**Note:** The text following by `#` is not the code. We can use notation `#` in the code blocks to give some explanations or instructions. It's a good habit especially when you collaborate with others, so that they can quickly understand what do you mean. It's very useful in the following study.
+**Note:** The text following by `#` is not the code, we call it comment. We can use `#` in ahead of text in the code blocks to comment out those text, which gives instruction to the system that this line is no need to execute. It's the explanations or instructions of the codes that tell others what you are doing so that they can quickly understand. Or even when you look back the codes later, you can quickly recall what you were doing. It's a good habit especially when you collaborate with others.
+
+You can directly add `#` ahead of the codes/text to comment out them. If you want to comment out multiple lines. You can select those lines and type `command+/` . And type `command+/` again to un-comment them.
 
 #### About index in data types
 
