@@ -26,6 +26,7 @@
             - [Finding elements](#finding-elements)
                 - [Fundamental version: one page](#fundamental-version-one-page)
                 - [Advanced version: all pages](#advanced-version-all-pages)
+        - [[O] Twitter example with browser emulation](#o-twitter-example-with-browser-emulation)
     - [Analyse Network Traces](#analyse-network-traces)
     - [[O] Crawl mobile Apps](#o-crawl-mobile-apps)
         - [Packet analysis](#packet-analysis)
@@ -403,6 +404,22 @@ df
 Output: There will be 500 rows.
 
 ![Splinter Articles Output2](assets/splinter-articles-output2.png)
+
+### [O] Twitter example with browser emulation
+
+After we can handle browser emulation to find and extract data from a dynamic loading webpage, we can further apply this method to crawl some data from social media platforms, like the recent hot topic discussed right now on Twitter, to further analyze people's comments and opinions about certain events.
+The following are some pointers that may be useful for you to manipulate browser emulation with Twitter:
+
+1. First you need to Simulate the login process
+2. Do some navigating, searching, scrolling action to load more contents and tweets you want
+3. Extract tweets by different finding elements method
+
+Here are the common issues when scraping those social media platform:
+
+1. Here is strong limitation to the data you can get. For example, after the certain point, the browser window and not be scrolled and there is only a `back to top` button at the bottom of the page.
+2. The scraping results from webpage end may be different from the mobile end. For example, `https://twitter.com/` and `https://mobile.twitter.com/home`. Because Twitter has different regulations to different platforms.
+
+Here is the [sample codes]() we did with selenium browser emulation. We scrape tweets by keyword searching `Mangkhut`, the typhon that stroke Hong Kong and nearby region in 2018-09-16.
 
 ## Analyse Network Traces
 
