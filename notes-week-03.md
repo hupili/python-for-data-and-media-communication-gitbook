@@ -34,8 +34,10 @@
         - [Break and Continue statement](#break-and-continue-statement)
             - [Break statement](#break-statement)
             - [Continue statement](#continue-statement)
-        - [Define a custom function](#define-a-custom-function)
-    - [Class and objects](#class-and-objects)
+    - [Function](#function)
+        - [Funciton definition (def)](#funciton-definition-def)
+        - [[O] Scope of variables in function](#o-scope-of-variables-in-function)
+    - [[O] Class and objects](#o-class-and-objects)
         - [Create a class, the init() function](#create-a-class-the-init-function)
         - [[O] Class inheritance](#o-class-inheritance)
     - [Errors and Exceptions](#errors-and-exceptions)
@@ -46,6 +48,7 @@
         - [Representing a dataset](#representing-a-dataset)
         - [Handle repeated works](#handle-repeated-works)
         - [Infinite loop (daemon)](#infinite-loop-daemon)
+        - [REPL](#repl)
         - [if..else; OR try..except](#ifelse-or-tryexcept)
         - [Multiple loop](#multiple-loop)
     - [[O] Python Engineering](#o-python-engineering)
@@ -779,7 +782,9 @@ Output:
 9
 ```
 
-### Define a custom function
+## Function
+
+### Funciton definition (def)
 
 A function is a block of code which only runs when it is called. You can call this function by passing parameters into a function. Then the function can return data as a result.
 
@@ -846,7 +851,61 @@ Output:
 -5000.0
 ```
 
-## Class and objects
+### [O] Scope of variables in function
+
+Try the following test program:
+
+```python
+a = 1
+print('(outside) a=', a)
+
+def change():
+    a = 2
+    print('(in change) a=', a)
+change()
+
+print('(outside) a=', a)
+```
+
+The result is:
+
+```shell
+%python3 test.py
+(outside) a= 1
+(in change) a= 2
+(outside) a= 1
+```
+
+One can see that the "same" variable `a` has different value inside and outside a function. The operation inside a function does not affect the outer variable `a`. This is a matter of "scope". Every variable, function, or more generally "token"/ "symbol" in Python has its scope of effectiveness. The inner function definition of `a` masks the definition outside `a`. In order to make the operation inside one function able to operate the variables outside, one can use `global` and `nonlocal` keywords. Please see more details from [this blog post](https://www.datacamp.com/community/tutorials/scope-of-variables-python). However, using global variable is not recommended because it makes the program hard to maintain when the size becomes large. There are many ways to work around. In the above example, we can use simply pass `a` into the function via argument list and use return statement to return the changed value:
+
+```python
+a = 1
+print('(outside) a=', a)
+
+def increase(a):
+    a = a + 1
+    print('(increase) a=', a)
+    return a
+
+a = increase(a)
+print('(outside) a=', a)
+
+a = increase(a)
+print('(outside) a=', a)
+```
+
+We change the simple assignment to addition to show the result of multiple execution. The output is:
+
+```python
+%python test.py
+(outside) a= 1
+(increase) a= 2
+(outside) a= 2
+(increase) a= 3
+(outside) a= 3
+```
+
+## [O] Class and objects
 
 Class is an abstraction that describes certain objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class. The process creating an object from a class is called "instantiation" and is usually invoked by the "construct function" of a class. In Python, this function is called `__init__()`. The higher level concept is called "[Object Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)", which appears in nearly all modern programming languages. Think of it as a way to model our real world. We will discuss OOP a bit later. This section is a quik peek into the basics -- `class` and `object`.
 
@@ -958,7 +1017,6 @@ Output:
 "Class" is more than a group of common features, i.e. member variable and member functions. The real power of class comes when you get into the OOP world. The first step is to understand [class inheritance](https://docs.python.org/3/tutorial/classes.html#inheritance).
 
 Now that you have the keyword, please try to search online to understand the syntax and grammar. Then follow some concrete examples to see how class inheritance can be used in real project. Our class does not emphasize OOP, so details are omitted here. Our core objective is to master the basics of Python and use it to collect, analyse and visualise data, in order to tell good stories. Most of the programs you will need to write during the class look "flat", i.e. we do not expect many layers of modules/ functions/ classes. However, when you build a large project, the OOP design patterns can make one more efficient, less error prone and easier to collaborate.
-
 
 ## Errors and Exceptions
 
@@ -1148,6 +1206,20 @@ Once you execute this script, a lot of messages will be output to the screen non
 - It is a convention for shell environment, so you can also terminate other Unix/ Linux commands in this way.
 - You can also terminate a for-loop using the same method.
 - You can also terminate a function call that does not respond after a while using the same method.
+
+### REPL
+
+Read-Evaluation-Print-Loop (REPL) is a common pattern similar to the daemon pattern above. Actually, you have already see several times such pattern in action. One is the system shell (inside Terminal), another is the Python shell (Python interactive environment). The shell environment allows you to continuously input commands; It then evaluate your input to calculate the result; then it goes back to get another line of input, a.k.a. "loop". A REPL in Python looks like this:
+
+```python
+while True:
+    user_input = input('Prompt message:')
+    if user_input == 'exit':
+        break
+    else:
+        output = evaluate(user_input)
+        print(output)
+```
 
 ### if..else; OR try..except
 
