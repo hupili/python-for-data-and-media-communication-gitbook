@@ -9,6 +9,9 @@
         - [User agent](#user-agent)
             - [[O] Test HTTP requests](#o-test-http-requests)
         - [Rate throttling](#rate-throttling)
+        - [Quota limiting](#quota-limiting)
+        - [Network interruption](#network-interruption)
+        - [Firewall](#firewall)
     - [Common issues](#common-issues)
         - [Encoding](#encoding)
     - [Browser emulation](#browser-emulation)
@@ -86,6 +89,14 @@ Example: Check the default user-agent of `requests`:
 
 * Limit by IP
 * Limit by cookie/ access token
+
+### Quota limiting
+
+<!-- TODO: Twitter API case? -->
+
+### Network interruption
+
+### Firewall
 
 ## Common issues
 
