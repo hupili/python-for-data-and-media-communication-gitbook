@@ -33,15 +33,15 @@
         - [Use API via HTTP request/ response](#use-api-via-http-request-response)
             - [Test API without using Python](#test-api-without-using-python)
         - [Use API via function calls to other modules/ packages](#use-api-via-function-calls-to-other-modules-packages)
-    - [[O] Bonus: your first automatic writing robot on Twitter](#o-bonus-your-first-automatic-writing-robot-on-twitter)
+    - [Bonus:   Bonus: your first automatic writing robot on Twitter](#bonus---bonus-your-first-automatic-writing-robot-on-twitter)
     - [Exercises and Challenges](#exercises-and-challenges)
         - [Douban API](#douban-api)
         - [Google Map API](#google-map-api)
         - [GitHub API](#github-api)
-        - [[O] Real Estate property in Hong Kong (via government open data portal API)](#o-real-estate-property-in-hong-kong-via-government-open-data-portal-api)
-        - [[O] Blockchain - chain data and exchange data](#o-blockchain---chain-data-and-exchange-data)
-        - [[O] Automatic earthquake writer](#o-automatic-earthquake-writer)
-        - [[O] MailGun API](#o-mailgun-api)
+        - [Bonus:   Real Estate property in Hong Kong (via government open data portal API)](#bonus---real-estate-property-in-hong-kong-via-government-open-data-portal-api)
+        - [Bonus:   Blockchain - chain data and exchange data](#bonus---blockchain---chain-data-and-exchange-data)
+        - [Bonus:   Automatic earthquake writer](#bonus---automatic-earthquake-writer)
+        - [Bonus:   MailGun API](#bonus---mailgun-api)
     - [References](#references)
 
 <!-- /TOC -->
@@ -721,7 +721,7 @@ with open('earthquake_comments.csv','w') as f:
 Output:
 ![Earthquake comments](assets/chapter4-earthquake-comments.png)
 
-## [O] Bonus: your first automatic writing robot on Twitter
+## Bonus:   Bonus: your first automatic writing robot on Twitter
 
 Although our focus in this chapter is to get data from different sources via API, some of the APIs are more than that. For example, you can use the `python-twitter` module to post a status to Twitter. Now that you already know how to template string (`%` and `str.format`) and how to post a Twitter status, you can combine them as your first _automatic writing robot_!
 
@@ -761,24 +761,24 @@ https://api.github.com/repos/{username}/{reponame}/stargazers
 
 For example, click [here](https://api.github.com/repos/hupili/python-for-data-and-media-communication-gitbook/stargazers) to see the API response that includes all users who have starred our open book repo.
 
-### [O] Real Estate property in Hong Kong (via government open data portal API)
+### Bonus:   Real Estate property in Hong Kong (via government open data portal API)
 
 Lookup real estate properties on HK gov open data portal, e.g. the [dataset page](https://data.gov.hk/en-data/dataset/centaline-centanetod-ccipropertyinfo/resource/4d3d7289-9d84-4f31-bf7e-a515d00d5328). Retrieve the data that `scp_mktc` contains '九龍' from year 2000 up to now. API result is like [this](assets/data-gov-hk-API-results).
 
-### [O] Blockchain - chain data and exchange data
+### Bonus:   Blockchain - chain data and exchange data
 
 <blockchain.info> provides a set of [API](https://www.blockchain.com/api) for one to retrieve information related with bitcoin transactions. Pick one wallet address, check its UTXO sets and sum up the values to get the total balance in this wallet.
 
 [A free crypocurrency API](https://min-api.cryptocompare.com/) for you to retrieve and study historical exchange rates. We are interested in bitcoin price. Try to get the exchange rate day-by-day of `BTC/USDT` pair in recent years and store them in a file.
 
-### [O] Automatic earthquake writer
+### Bonus:   Automatic earthquake writer
 
 * Implement a basic version of first automated writer - QuakeBot from LA Times.
   * Get real-time data of earthquakes in `America` from USGS API
   * Print a story to the screen include place, time, magnitude, using template string / string interpolation
   * See [here](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732) for an introduction of the bot. See [here](https://www.theregister.co.uk/2017/06/22/la_times_bot_spreads_fake_news/) for an incident and think how to avoid it?
 
-### [O] MailGun API
+### Bonus:   MailGun API
 
 Try to send automatic emails using [MailGun](https://www.mailgun.com/). Imagine you want to maintain the relationship with thousands of customers. You have the name list with email addresses. You want to write an intimate email so that every mail looks like manually tailored for the recipient. However, it is very time consuming to do this manually. You come up with an idea based on string templating and MailGun API. MailGun is a commonly used service for receiving email and sending email. You can use string templating to format the customised message and then use MailGun to send them to the recipients.
 

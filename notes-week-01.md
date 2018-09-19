@@ -17,7 +17,7 @@
         - [Get inline help in the command line](#get-inline-help-in-the-command-line)
             - [The `man` command](#the-man-command)
             - [Basic usage](#basic-usage)
-        - [[O] Command return and command output](#o-command-return-and-command-output)
+        - [Bonus:   Command return and command output](#bonus---command-return-and-command-output)
     - [Edit and execute python file](#edit-and-execute-python-file)
         - [Text editor](#text-editor)
         - [Install python 3](#install-python-3)
@@ -258,7 +258,7 @@ man -k print
 
 For more functions, you can type `man man` on terminal to see more.
 
-### [O] Command return and command output
+### Bonus:   Command return and command output
 
 - Return value: it is a convention for UNIX-like system/ program to return a value upon completion of execution. The return value indicates whether the program executes as expected. Usually, the return value is `0`, meaning the execution is successful. If the return value is non-zero, it means an error ocurred and you should go check the error code with the mannual. One can use this command to check the return value of *the very last* command `echo $?`.
 - Output: a command/ program can output information for the user. There are two output streams:

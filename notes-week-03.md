@@ -22,7 +22,7 @@
             - [Dict functions](#dict-functions)
             - [Dict methods](#dict-methods)
         - [Tuple ()](#tuple-)
-        - [[O] Copy collection objects](#o-copy-collection-objects)
+        - [Bonus:   Copy collection objects](#bonus---copy-collection-objects)
     - [Control flows](#control-flows)
         - [If-else Statement](#if-else-statement)
         - [Python loop](#python-loop)
@@ -37,10 +37,10 @@
             - [Continue statement](#continue-statement)
     - [Function](#function)
         - [Funciton definition (def)](#funciton-definition-def)
-        - [[O] Scope of variables in function](#o-scope-of-variables-in-function)
-    - [[O] Class and objects](#o-class-and-objects)
+        - [Bonus:   Scope of variables in function](#bonus---scope-of-variables-in-function)
+    - [Bonus:   Class and objects](#bonus---class-and-objects)
         - [Create a class, the init() function](#create-a-class-the-init-function)
-        - [[O] Class inheritance](#o-class-inheritance)
+        - [Bonus:   Class inheritance](#bonus---class-inheritance)
     - [Errors and Exceptions](#errors-and-exceptions)
         - [Try and except](#try-and-except)
         - [Raising errors](#raising-errors)
@@ -52,7 +52,7 @@
         - [REPL](#repl)
         - [if..else; OR try..except](#ifelse-or-tryexcept)
         - [Multiple loop](#multiple-loop)
-    - [[O] Python Engineering](#o-python-engineering)
+    - [Bonus:   Python Engineering](#bonus---python-engineering)
         - [Write code in professional style](#write-code-in-professional-style)
         - [A word on syntactical sugar](#a-word-on-syntactical-sugar)
         - [File structure for a project](#file-structure-for-a-project)
@@ -83,7 +83,7 @@ Previously, We learn Python basics including data types, arithmetic, functions a
 * Master the composite data type [] and {} in Python
 * Master the control logics in Python, especially if and for
 * Further understand the different roles of text editor and interpreter. Be comfortable writing batch codes in .py file and execute in Shell environment.
-* [O] Understand Python engineering
+* Bonus:   Understand Python engineering
 
 ## Use "Help" more to learn by yourself
 
@@ -484,7 +484,7 @@ Example 13:
 tup[0]:  1
 ```
 
-### [O] Copy collection objects
+### Bonus:   Copy collection objects
 
 The assignment from one object to another object is essentially an assignment of "pointer". You can understand it as a reference to the object. This design is for efficiency purpose. Some non-intuitive behaviour to new learners may arise due to this design.
 
@@ -903,7 +903,7 @@ Output:
 -5000.0
 ```
 
-### [O] Scope of variables in function
+### Bonus:   Scope of variables in function
 
 Try the following test program:
 
@@ -957,7 +957,7 @@ We change the simple assignment to addition to show the result of multiple execu
 (outside) a= 3
 ```
 
-## [O] Class and objects
+## Bonus:   Class and objects
 
 Class is an abstraction that describes certain objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class. The process creating an object from a class is called "instantiation" and is usually invoked by the "construct function" of a class. In Python, this function is called `__init__()`. The higher level concept is called "[Object Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)", which appears in nearly all modern programming languages. Think of it as a way to model our real world. We will discuss OOP a bit later. This section is a quik peek into the basics -- `class` and `object`.
 
@@ -1064,7 +1064,7 @@ Output:
 400
 ```
 
-### [O] Class inheritance
+### Bonus:   Class inheritance
 
 "Class" is more than a group of common features, i.e. member variable and member functions. The real power of class comes when you get into the OOP world. The first step is to understand [class inheritance](https://docs.python.org/3/tutorial/classes.html#inheritance).
 
@@ -1329,7 +1329,7 @@ for p in PR_list:
 
 Python is flexible. Codes are organised into "blocks" seen as a chunk of codes with the same indentation level. We already see expressions that creates code blocks like `for`, `if`, `def` and `with`. Blocks can be nested into larger blocks so that one can built more complex logics.
 
-## [O] Python Engineering
+## Bonus:   Python Engineering
 
 *This section is under development and it is optional*. Interested readers can do some self study based the following pointers.
 

@@ -18,7 +18,7 @@
         - [Filtering](#filtering)
         - [Sorting](#sorting)
     - [Export from `pandas`](#export-from-pandas)
-        - [[O] Python and Javascript in action](#o-python-and-javascript-in-action)
+        - [Bonus:   Python and Javascript in action](#bonus---python-and-javascript-in-action)
     - [Dataprep](#dataprep)
         - [Cleaning](#cleaning)
         - [Transformation](#transformation)
@@ -264,7 +264,7 @@ The common export formats are:
 
 <!-- TODO: workout the above export method -->
 
-### [O] Python and Javascript in action
+### Bonus:   Python and Javascript in action
 
 A very common workflow is to process data in Python and visualize data in Javascript. The last interactive chart in this [blog post](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/#%E8%AD%B0%E5%93%A1%E5%9B%9B%E5%B9%B4%E6%8A%95%E7%A5%A8%E5%82%BE%E5%90%91%E8%AE%8A%E5%8C%96) shows the political preference variation of HK legco members during the 2012-2016 term. The interactive chart is made by [echarts](https://ecomfe.github.io/echarts-doc/public/en/index.html), a popular Javascript library for interactive visualisation from Baidu. However, the data collection and heavy duty data analysis are done in Python. We conducted the analysis in Python and export the `pandas.DataFrame` into a `JSON` format that can be consumed by echarts. You can checkout the [JSON file here](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/echarts-option-legco-5.json).
 
