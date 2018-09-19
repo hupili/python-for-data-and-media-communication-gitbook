@@ -1,6 +1,10 @@
 # Python and Data Analysis for Communication Students
 
-This is the text book for HKBU's COMM7780/JOUR7280 courses. The course COMM7780/JOUR7280 "Big Data for Media and Communication" is setup for master students in the school of communication, Hong Kong Baptist University. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This GitBook collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining. Every week, one group of students will apply that week's knowledge into a real problem from their own domain. The solution is posted on [Data and News Society](https://dnnsociety.org/tag/comm7780-jour7280/).
+This is an open source text book for communication students to learn Python and data skills. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This open source book collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining.
+
+You can get started by reading [Week 00](notes-week-00.md) note. This note requires no background in programming or technology. It walks you through our learning environment so you know how to find learning materials and seek for help effectively. You are also welcome to contact the [Fall 2018 team](session-F2018.md) for any questions, suggestions or discussions. The best way to ask question is to [create an issue in this repo](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new). Our teaching team stands by and regularly checks the issue tracker.
+
+This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM7780/ JOUR7280 in HKBU.
 
 ## Overview
 
