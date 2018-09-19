@@ -37,13 +37,13 @@
             - [Step 2. Clone the repository](#step-2-clone-the-repository)
             - [Step 3. Create an index file](#step-3-create-an-index-file)
             - [Step 4. Commit & publish](#step-4-commit--publish)
-        - [Bonus:   Add sub-path to your GitHub hosted domain](#bonus---add-sub-path-to-your-github-hosted-domain)
-        - [Bonus:   Bind a custom domain name](#bonus---bind-a-custom-domain-name)
+        - [Bonus: Add sub-path to your GitHub hosted domain](#bonus-add-sub-path-to-your-github-hosted-domain)
+        - [Bonus: Bind a custom domain name](#bonus-bind-a-custom-domain-name)
             - [Step 1. Purchase domain](#step-1-purchase-domain)
             - [Step 2. Point domain name to GitHub](#step-2-point-domain-name-to-github)
             - [Step 3. Point GitHub repo to domain name](#step-3-point-github-repo-to-domain-name)
             - [The principle further explained](#the-principle-further-explained)
-        - [Bonus:   Collaboration on GitHub](#bonus---collaboration-on-github)
+        - [Bonus: Collaboration on GitHub](#bonus-collaboration-on-github)
         - [The workflow Fork repo, modify code and send pull Request](#the-workflow-fork-repo-modify-code-and-send-pull-request)
     - [A first journey into the open source world](#a-first-journey-into-the-open-source-world)
         - [Common licenses](#common-licenses)
@@ -195,7 +195,7 @@ Here are some readings to get you started with markdown:
 - The official document of [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) from GitHub.
 - Another good introduction of use of markdown [Markdown Syntax](https://github.com/younghz/Markdown) (in Chinese)
 
-Bonus:   Insert a internal link between different sections in different chapters
+Bonus: Insert a internal link between different sections in different chapters
 
 Example: I want to insert a link in chapter 2 `array` section which connect to one of the example of chapter 3.
 
@@ -344,7 +344,7 @@ Change to your GitHub desktop, commit your changes, and press the publish/push b
 
 Then you can go to your webpage with `https://username.github.io`. Change username to yours and see what is happening. During further study, you will use GitHub pages to do more, to share and show anything you want with the world. For example, you can put your own CV, your portfolio, your essay of learning Python etc into html. For example, I build a simple introduction/CV for myself, you can check out here: https://chicoxyc.github.io/ .
 
-### Bonus:   Add sub-path to your GitHub hosted domain
+### Bonus: Add sub-path to your GitHub hosted domain
 
 By default, every user gets a secondary domain name at `username.github.io` where `username` is your GitHub username and `username.github.io` is also the repo name. It is of practical interest to add a sub-path to your domain for many reasons:
 
@@ -373,7 +373,7 @@ Here is one way you can create a new branch on GitHub web UI:
 
 **NOTE**: The content is served from `gh-pages` branch by default. You can [change this default settting](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/23).
 
-### Bonus:   Bind a custom domain name
+### Bonus: Bind a custom domain name
 
 See it in action first:
 
@@ -400,7 +400,7 @@ Checkout the working [CNAME](https://github.com/hkbu-jour2106/hkbu-jour2106.gith
 
 Checkout [this article](https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml) for how DNS works.
 
-### Bonus:   Collaboration on GitHub
+### Bonus: Collaboration on GitHub
 
 ### The workflow Fork repo, modify code and send pull Request
 

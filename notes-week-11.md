@@ -9,7 +9,7 @@
     - [Clustering](#clustering)
     - [Classification](#classification)
     - [Regression](#regression)
-    - [Bonus:   Deep learning](#bonus---deep-learning)
+    - [Bonus: Deep learning](#bonus-deep-learning)
 
 <!-- /TOC -->
 
@@ -23,5 +23,5 @@
 
 ## Regression
 
-## Bonus:   Deep learning
+## Bonus: Deep learning
 

@@ -27,11 +27,11 @@
                 - [Method 3: Parse authors by spliting a larger text](#method-3-parse-authors-by-spliting-a-larger-text)
             - [Get tags](#get-tags)
             - [Scrape all articles of one page](#scrape-all-articles-of-one-page)
-            - [Bonus:   Scrape all articles features of all pages](#bonus---scrape-all-articles-features-of-all-pages)
+            - [Bonus: Scrape all articles features of all pages](#bonus-scrape-all-articles-features-of-all-pages)
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
-        - [Bonus:   Scrape by text processing and regular expression](#bonus---scrape-by-text-processing-and-regular-expression)
-    - [Bonus:   Crawler](#bonus---crawler)
+        - [Bonus: Scrape by text processing and regular expression](#bonus-scrape-by-text-processing-and-regular-expression)
+    - [Bonus: Crawler](#bonus-crawler)
         - [Workflow of a search engine like Google](#workflow-of-a-search-engine-like-google)
         - [Crawler is more than scraper](#crawler-is-more-than-scraper)
         - [Crawler is not necessary in most of your cases](#crawler-is-not-necessary-in-most-of-your-cases)
@@ -41,7 +41,7 @@
         - [Scrape github users' contribution frequency](#scrape-github-users-contribution-frequency)
             - [Further challenge1: more users](#further-challenge1-more-users)
             - [Further challenge2: detailed activities](#further-challenge2-detailed-activities)
-        - [Bonus:   Some past scraping ideas](#bonus---some-past-scraping-ideas)
+        - [Bonus: Some past scraping ideas](#bonus-some-past-scraping-ideas)
     - [Related Readings](#related-readings)
 
 <!-- /TOC -->
@@ -482,7 +482,7 @@ Output:
 
 ![Initiumlab Articles CSV](assets/initiumlab-articles-csv.png)
 
-#### Bonus:   Scrape all articles features of all pages
+#### Bonus: Scrape all articles features of all pages
 
 Since we scrape one page of articles, can I scrape all articles of all pages? Of course! we just come from 0 to 1, next step is from 1 to n. But there are some difficulties on the way which might be a little bit difficult for us, but definitely we can solve this.
 
@@ -558,13 +558,13 @@ Output will be like the following picture, and you can also find the csv file [h
 
 Checkout the [imdb.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb)
 
-### Bonus:   Scrape by text processing and regular expression
+### Bonus: Scrape by text processing and regular expression
 
 You may have noticed one way of scraping called "text processing". Common string functions in Python are like `strip()`, `split()`, `find()`, `replace()`, `str[begin:end]`. The advantage of text processing is its simplicity and you can write intuitive codes. The disadvantage of text processing is that it is error prone. Never the less, handling text is one important technique in data analysis pipeline.
 
 Interested readers can further study [Regular Expression](https://docs.python.org/3/library/re.html) (RegEx, regex, `re`) in Python. It is a powerful way for pattern matching and pattern substitution. The learning curve of regex is sharp so we omit the discussion in this chapter. We *might* revisit this concept and given an introduction in the text process chapter.
 
-## Bonus:   Crawler
+## Bonus: Crawler
 
 ### Workflow of a search engine like Google
 
@@ -627,7 +627,7 @@ Given a list of users, scrape all of their contribution frequency and store acco
 
 Below the contribution calendar, there is a list of detailed activities. Can you further scrape those activities? You may need to design a good table structure to store the data.
 
-### Bonus:   Some past scraping ideas
+### Bonus: Some past scraping ideas
 
 Please find some past scraping ideas from this [blog post](https://dnnsociety.org/2018/03/10/some-scraping-targets-and-ideas/). Please note that not all the ideas can be easily tackled. You may need the knowledge from next week or knowledge beyond this course. Feel free to raise questions in the issue tracker so that we can help you for troubleshooting. More importantly, we can help you evaluate the difficulty before you get started. There may be several categories:
 

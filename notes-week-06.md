@@ -7,7 +7,7 @@
 - [Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty](#week-06---advanced-scraping-anti-crawler-browser-emulation-and-other-nitty-gritty)
     - [Anti-crawling](#anti-crawling)
         - [User agent](#user-agent)
-            - [Bonus:   Test HTTP requests](#bonus---test-http-requests)
+            - [Bonus: Test HTTP requests](#bonus-test-http-requests)
         - [Rate throttling](#rate-throttling)
         - [Quota limiting](#quota-limiting)
         - [Network interruption](#network-interruption)
@@ -29,18 +29,18 @@
             - [Finding elements](#finding-elements)
                 - [Fundamental version: one page](#fundamental-version-one-page)
                 - [Advanced version: all pages](#advanced-version-all-pages)
-        - [Bonus:   Twitter example with browser emulation](#bonus---twitter-example-with-browser-emulation)
+        - [Bonus: Twitter example with browser emulation](#bonus-twitter-example-with-browser-emulation)
     - [Analyse Network Traces](#analyse-network-traces)
-    - [Bonus:   Crawl mobile Apps](#bonus---crawl-mobile-apps)
+    - [Bonus: Crawl mobile Apps](#bonus-crawl-mobile-apps)
         - [Packet analysis](#packet-analysis)
             - [Example: Kwai (kuaishou)](#example-kwai-kuaishou)
         - [App decompilation](#app-decompilation)
         - [App emulation](#app-emulation)
-    - [Bonus:   Other quick scraping/ crawling tricks](#bonus---other-quick-scraping-crawling-tricks)
+    - [Bonus: Other quick scraping/ crawling tricks](#bonus-other-quick-scraping-crawling-tricks)
     - [Exercises and Challenges](#exercises-and-challenges)
         - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
         - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
-        - [Bonus:   Crawl Weibo data and discover KOL](#bonus---crawl-weibo-data-and-discover-kol)
+        - [Bonus: Crawl Weibo data and discover KOL](#bonus-crawl-weibo-data-and-discover-kol)
     - [Related Readings](#related-readings)
 
 <!-- /TOC -->
@@ -63,7 +63,7 @@ r = requests.get(url,
 
 Full code and demo can be found in [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/ff77a632e030fcaa392dac34086bf84e2a802b45/scraper-examples/Open%20Rice.ipynb).
 
-#### Bonus:   Test HTTP requests
+#### Bonus: Test HTTP requests
 
 [https://nghttp2.org/httpbin](https://nghttp2.org/httpbin) is a useful service to test HTTP requests. This service basically echos the content or certain parameters from your HTTP request. You can get better idea of what your tools send to the server via this service.
 
@@ -416,7 +416,7 @@ Output: There will be 500 rows.
 
 ![Splinter Articles Output2](assets/splinter-articles-output2.png)
 
-### Bonus:   Twitter example with browser emulation
+### Bonus: Twitter example with browser emulation
 
 After we can handle browser emulation to find and extract data from a dynamic loading webpage, we can further apply this method to crawl some data from social media platforms, like the recent hot topic discussed right now on Twitter, to further analyze people's comments and opinions about certain events.
 The following are some pointers that may be useful for you to manipulate browser emulation with Twitter:
@@ -438,7 +438,7 @@ Open "Google Chrome Developer Console" by `command+option+i`. Check out the "Net
 
 Some websites render HTML at the backend and send them to the frontend in a dynamic way. You find the URL in address bar stays the same but the content is changed. You can also find the HTML files and their **real URL** via developer console. One such example is [xiachufang.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/xiachufang.com.ipynb).
 
-## Bonus:   Crawl mobile Apps
+## Bonus: Crawl mobile Apps
 
 With the explosion of mobile Apps, more and more data is shifted from the open web to mobile platform. The design principle of web and mobile are very different. When Tim Berners Lee initially designed the WWW, it was intended to be an open standard that every one can connect to. That is why, once the web server is up, you can use Chrome to access it while other users may use Firefox or even Python `requests`. There are many tools to emulate browser activities, so you can programmably do the same thing as if a regular user is surfing the Internet. Compare with the open web, mobile world is a closed eco system. It often requires heavy duty packet analysis, App decompilation, or App emulation, in order to get data behind the mobile Apps. "Packet analysis" is most close to our course and is elaborated below.
 
@@ -532,7 +532,7 @@ Further discussion is omitted here because this part takes years of computer sci
 
 Actually, `selenium`, we introduced earlier in this chapter, was initially also an automatic testing tool for the web frontend. Then it became a bridge between the programmable user and web browser driver, which was used in a lot scraping works. When you find yourself stuck with data access because of non-human behavoiur (e.g. anti-crawling), you can try to search the keywords "emulation" or "auto testing", and can usually get some pointers to useful tools.
 
-## Bonus:   Other quick scraping/ crawling tricks
+## Bonus: Other quick scraping/ crawling tricks
 
 In our class, we show you the very basic steps of scraping so that you know how it things happen in a sequential way. However, you don't have write codes for everything from scratch in real practice. People already made numerous tools and libraries that can help you do certain tasks quickly. Here are some examples related with course (Shell/ Python) for those who are interested:
 
@@ -559,7 +559,7 @@ Search Engine Optimization (SEO) is one common technique a digital marketer need
 - Download the documents of the first page, e.g. `.docx` files, onto local disk.
 - Organise an index of those documents into a `CSV` which may include "title", "court", "date", "document-path", and other fields if you deem useful.
 
-### Bonus:   Crawl Weibo data and discover KOL
+### Bonus: Crawl Weibo data and discover KOL
 
 Key Opinion Leader (KOL) is the goto person for targeted massive marketing. As a marketing specialist, you want to identify the KOLs in a certain area so that your team can reach out to them effectively. Before learning sophisticated graph mining algorithms, one can do the follow challenge to get some preliminary result:
 
