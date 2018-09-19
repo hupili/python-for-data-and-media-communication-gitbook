@@ -61,8 +61,6 @@
         - [Inside a Python module](#inside-a-python-module)
         - [Efficiency/ complexity](#efficiency-complexity)
     - [Exercises and Challenges](#exercises-and-challenges)
-        - [Distances among cities](#distances-among-cities)
-            - [Extended exercise of geo distance](#extended-exercise-of-geo-distance)
         - [Divide HW1 groups randomly: (case contribution)](#divide-hw1-groups-randomly-case-contribution)
             - [Hint for group assignment challenge](#hint-for-group-assignment-challenge)
         - [Generate detailed mortgage schedule](#generate-detailed-mortgage-schedule)
@@ -70,6 +68,8 @@
             - [Hint on math formula](#hint-on-math-formula)
         - [Automatic writer for financial report](#automatic-writer-for-financial-report)
         - [Conversion between simplified Chinese and traditional Chinese](#conversion-between-simplified-chinese-and-traditional-chinese)
+        - [Distances among cities](#distances-among-cities)
+            - [Extended exercise of geo distance](#extended-exercise-of-geo-distance)
     - [References](#references)
 
 <!-- /TOC -->
@@ -1358,7 +1358,6 @@ else:
 
 The readability of code is very important. It is a good practice to create less barrier for future readers, of which one may be yourself.
 
-
 ### File structure for a project
 
 **TODO**
@@ -1386,20 +1385,6 @@ The computer science language of talking "efficiency" is "complexity". It usuall
 Here is [one example](https://github.com/hupili/python-for-data-and-media-communication/blob/master/jupyter-notebook/timeit.ipynb) to show you that `set` and `list` have drastically different efficiency on solving one problem. (You will learn jupyter notebook in [notes-week-04.md](notes-week-04.md))
 
 ## Exercises and Challenges
-
-### Distances among cities
-
-1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance.
-2. You can find "Great-circle distance" formula [here](https://en.wikipedia.org/wiki/Great-circle_distance).
-3. Use list and for loop to handle multiple cities.
-4. Use function to increase the reusability.
-5. Modules you need: [math](https://docs.python.org/3/library/math.html), you may need to use trigonometric functions.
-
-**NOTE:** Our objective of the whole course is to get you onboard a new tool -- Python. You should use the tool but not be constrained by this tool. When you get stuck with a challenge, try to use your way, combining non-Python methods, to solve it and then interate for better solution. For example, one key question for this exercise is to get the geolocations of the cities in terms of longitudes and latitudes. Only with those coordinates, you can fit them into the great-circle distance formula. You can do this by searching Google, Google Map or Widipedia as a start. After you have a basic version, try to think of automatic ways, in case there are a large number of interested cities in our real challenge, which makes the manual searching method infeasible.
-
-#### Extended exercise of geo distance
-
-There is a package called `geopy`. It can automatically search the geo-locations in terms of longitude and latitude based on the location names. Further more, it can directly compute the distance between two geolocations, without requiring to write the formula all by one's own.
 
 ### Divide HW1 groups randomly: (case contribution)
 
@@ -1545,6 +1530,20 @@ Write a function:
 You can use a `dict` to maintain the mapping and use `for` loop to process every part of the paragraph.
 
 **TIP**: You can not build a complete converter, but you can still try and build part of it.
+
+### Distances among cities
+
+1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance.
+2. You can find "Great-circle distance" formula [here](https://en.wikipedia.org/wiki/Great-circle_distance).
+3. Use list and for loop to handle multiple cities.
+4. Use function to increase the reusability.
+5. Modules you need: [math](https://docs.python.org/3/library/math.html), you may need to use trigonometric functions.
+
+**NOTE:** Our objective of the whole course is to get you onboard a new tool -- Python. You should use the tool but not be constrained by this tool. When you get stuck with a challenge, try to use your way, combining non-Python methods, to solve it and then interate for better solution. For example, one key question for this exercise is to get the geolocations of the cities in terms of longitudes and latitudes. Only with those coordinates, you can fit them into the great-circle distance formula. You can do this by searching Google, Google Map or Widipedia as a start. After you have a basic version, try to think of automatic ways, in case there are a large number of interested cities in our real challenge, which makes the manual searching method infeasible.
+
+#### Extended exercise of geo distance
+
+There is a package called `geopy`. It can automatically search the geo-locations in terms of longitude and latitude based on the location names. Further more, it can directly compute the distance between two geolocations, without requiring to write the formula all by one's own.
 
 ## References
 
