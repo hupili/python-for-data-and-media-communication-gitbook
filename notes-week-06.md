@@ -34,7 +34,7 @@
         - [App decompilation](#app-decompilation)
         - [App emulation](#app-emulation)
     - [[O] Other quick scraping/ crawling tricks](#o-other-quick-scraping-crawling-tricks)
-    - [Excercises and Challenges](#excercises-and-challenges)
+    - [Exercises and Challenges](#exercises-and-challenges)
         - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
         - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
         - [[O] Crawl Weibo data and discover KOL](#o-crawl-weibo-data-and-discover-kol)
@@ -232,7 +232,7 @@ Path Expression examples:
 
 The following is the link of results returned by keyword searching of `trade war`. We can scrape those articles title, time and url for further studying. The reason why we need use `selenium` is because the page turning links are embedded javascript codes, which cannot be extracted and use directly in `requests` way. To solve that, we need to interact with the page, and do browser emulation.
 
-https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war
+<https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war>
 
 ##### Fundamental: One page
 
@@ -419,7 +419,7 @@ Here are the common issues when scraping those social media platform:
 1. Here is strong limitation to the data you can get. For example, after the certain point, the browser window and not be scrolled and there is only a `back to top` button at the bottom of the page.
 2. The scraping results from webpage end may be different from the mobile end. For example, `https://twitter.com/` and `https://mobile.twitter.com/home`. Because Twitter has different regulations to different platforms.
 
-Here is the [sample codes]() we did with selenium browser emulation. We scrape tweets by keyword searching `Mangkhut`, the typhon that stroke Hong Kong and nearby region in 2018-09-16.
+Here is the [sample codes](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/twitter_selenium/twitter_selenium.ipynb) we did with selenium browser emulation. We scrape tweets by keyword searching `Mangkhut`, the typhon that stroke Hong Kong and nearby region in 2018-09-16.
 
 ## Analyse Network Traces
 
@@ -429,7 +429,7 @@ Some websites render HTML at the backend and send them to the frontend in a dyna
 
 ## [O] Crawl mobile Apps
 
-With the explosion of mobile Apps, more and more data is shifted from the open web to mobile platform. The design principle of web and mobile are very different. When Tim Berners Lee initially designed the WWW, it was intended to be an open standard that every one can connect to. That is why, once the web server is up, you can use Chrome to access it whlie other users may use Firefox or even Python `requests`. There are many tools to emulate browser activities, so you can programmably do the same thing as if a regular user is surfing the Internet. Compare with the open web, mobile world is a closed eco system. It often requires heavy duty packet analysis, App decompilation, or App emulation, in order to get data behind the mobile Apps. "Packet analysis" is most close to our course and is elaborated below.
+With the explosion of mobile Apps, more and more data is shifted from the open web to mobile platform. The design principle of web and mobile are very different. When Tim Berners Lee initially designed the WWW, it was intended to be an open standard that every one can connect to. That is why, once the web server is up, you can use Chrome to access it while other users may use Firefox or even Python `requests`. There are many tools to emulate browser activities, so you can programmably do the same thing as if a regular user is surfing the Internet. Compare with the open web, mobile world is a closed eco system. It often requires heavy duty packet analysis, App decompilation, or App emulation, in order to get data behind the mobile Apps. "Packet analysis" is most close to our course and is elaborated below.
 
 ### Packet analysis
 
@@ -437,8 +437,8 @@ This section is very similar to earlier [Analyse Network Traces](#analyse-networ
 
 No matter how mysterious a mobile App seems to be, it has to talk to a server in order to get updated information. You can be assured that everything you see from your smart phone screen comes from either of the two channels:
 
-1. Embeded in the phone, i.e. in the operating system, or in the App when you initially install
-2. Loaded via the Internet upon certan user operation, e.g. App launch, swipe left, touch, ...
+1. Embedded in the phone, i.e. in the operating system, or in the App when you initially install
+2. Loaded via the Internet upon certain user operation, e.g. App launch, swipe left, touch, ...
 
 Channel 1 is the topic of next section. Channel 2 is what we are going to tackle. The idea is to insert a sniffer between the App and the backend server. In this way, whatever conversation the App has with the server will pass the sniffer first. The sniffer is also called "man-in-the-middle (MITM)", and [a famous attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) is named after this. You may have also heard the term "proxy", which intercepts your original network packet, modify it somehow, and then send the packet to the destination. One can use proxy to bypass Internet censorship or use proxy to hide the original sender's address. Our key tool is a MITM proxy. Here are two common choices
 
@@ -461,7 +461,7 @@ There is no direct formula for packet analysis. We usually observe the request/ 
 
 - headers -- send in HTTP protocol; users can not see
 - params -- usually appears as `?a=3&b=5` in browser bar; `a` and `b` here are called parameters
-- data -- the `POST` body; this is the main content to be consumed by the web server; based on this content, the server give correspondinge response.
+- data -- the `POST` body; this is the main content to be consumed by the web server; based on this content, the server give corresponding response.
 
 Charles Proxy's MAC software can help you to convert one HTTP request into the Python language, with the above three parts filled -- that is, give you the Python code that can **replay** one request. The variable configurations are as follows, with certain fields masked to preserve privacy:
 
@@ -519,7 +519,7 @@ Further discussion is omitted here because this part takes years of computer sci
 
 [Appium](http://appium.io/) is a frequently used automatic testing tool. You can use this tool to emulate user operations on mobile Apps and scrape the data from the screen.
 
-Actually, `selenium`, we introduced earlier in this chapter, was initially also an automatic testing tool for the web frontend. Then it became a bridge between the programmable user and web broser driver, which was used in a lot scraping works. When you find yourself stuck with data access because of non-human behavoiur (e.g. anti-crawling), you can try to search the keywords "emulation" or "auto testing", and can usually get some pointers to useful tools.
+Actually, `selenium`, we introduced earlier in this chapter, was initially also an automatic testing tool for the web frontend. Then it became a bridge between the programmable user and web browser driver, which was used in a lot scraping works. When you find yourself stuck with data access because of non-human behavoiur (e.g. anti-crawling), you can try to search the keywords "emulation" or "auto testing", and can usually get some pointers to useful tools.
 
 ## [O] Other quick scraping/ crawling tricks
 
@@ -528,17 +528,17 @@ In our class, we show you the very basic steps of scraping so that you know how 
 - Type `wget -r {url}`, where `{url}` is the URL of the website you want to crawl. After running this command, you can find all the web pages and their dependent resources are on your computer. You can fine tune the parameters to limit crawling scope, like number of hops or types of files. Use `man wget` to find out more.
 - There are many shell commands which can be combined to perform efficient text processing. [This article](https://github.com/hupili/agile-ir/blob/master/cases/case2-crawl-by-url-filling/index.md) shows how one can combine a few Shell commands to quickly download the Shakespeare works.
 - [This repo](https://github.com/hupili/agile-ir/blob/master/cases/case2-crawl-by-url-filling/index.md), originally a workshop given on PyConHK in 2015, shows you some handy tools and libraries in Python that allow one to scrape more with less codes. For example, you can use `readability` to extract the main body of an HTML page, without bothering with its page structure. For readers with frontend development background, `pyquery` is a handy library to allow you write jQuery like selectors to access HTML elements. `scraply` is a machine learning based library that can learn the labelled crawling target and generate corresponding rules; The user only needs to tell `scraply` what to crawl, instead of how to crawl.
-* [Data Science at the Command Line](https://www.datascienceatthecommandline.com/chapter-3-obtaining-data.html) by Jeroen Janssens is a comprehensive and duly updated reference book for command line tools for data science. Its [Obtaining data](https://www.datascienceatthecommandline.com/chapter-3-obtaining-data.html) is a good further reading for those who are interested in more efficient data collection in Linux shell environment.
+- [Data Science at the Command Line](https://www.datascienceatthecommandline.com/chapter-3-obtaining-data.html) by Jeroen Janssens is a comprehensive and duly updated reference book for command line tools for data science. Its [Obtaining data](https://www.datascienceatthecommandline.com/chapter-3-obtaining-data.html) is a good further reading for those who are interested in more efficient data collection in Linux shell environment.
 
-## Excercises and Challenges
+## Exercises and Challenges
 
 ### In-bound marketing and SEO auditing
 
 Search Engine Optimization (SEO) is one common technique a digital marketer needs to master. Suppose you have led a team to conduct the optimization. Now it is time to audit the optimization result. One of the key function is to build scraper which can:
 
-* Input 1 is a search query, i.e. some keywords
-* Input 2 is a set of URLs from your own website
-* Output the ranks of each URL in the search result list
+- Input 1 is a search query, i.e. some keywords
+- Input 2 is a set of URLs from your own website
+- Output the ranks of each URL in the search result list
 
 ### Crawl the legal case of China
 
@@ -550,11 +550,12 @@ Search Engine Optimization (SEO) is one common technique a digital marketer need
 
 ### [O] Crawl Weibo data and discover KOL
 
-Key Opinion Leader (KOL) is the goto person for targeted massive marketing. As a marketing specialist, you want to identify the KOLs in a certain area so that your team can reachout to them effectively. Before learning sophisticated graph mining algorithms, one can do the follow challenge to get some preliminary result:
+Key Opinion Leader (KOL) is the goto person for targeted massive marketing. As a marketing specialist, you want to identify the KOLs in a certain area so that your team can reach out to them effectively. Before learning sophisticated graph mining algorithms, one can do the follow challenge to get some preliminary result:
 
 - Given an industry domain, identify `keywords`
 - For every `keyword in keywords`, scrape the search of related micro blogs.
 - Every piece of microblog may have following data structure:
+
   ```python
   microblog = {
       'username': 'DATA HERE',
@@ -565,12 +566,12 @@ Key Opinion Leader (KOL) is the goto person for targeted massive marketing. As a
       'num_share': 'DATA HERE'
   }
   ```
-- A simple algorithm to find KOL is to count `num_like`, `num_comment`, `num_share` for each `username`.
 
+- A simple algorithm to find KOL is to count `num_like`, `num_comment`, `num_share` for each `username`.
 
 ## Related Readings
 
-- Dynamic loading and crawling exmaple: [libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
+- Dynamic loading and crawling example: [libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
 - Social media crawling example: [Scrape a luxury brand with keyword in Weibo](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium/Weibo.ipynb)
 - Dynamic page crawling, with a matter of parsing page content: [Timeout](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-splinter/timeout.com.ipynb)
 - Dynamic crawling a static page with a matter of pagination: [Amazon Books](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-splinter/Amazon%20books.ipynb)
