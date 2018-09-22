@@ -47,7 +47,13 @@
         - [The workflow Fork repo, modify code and send pull Request](#the-workflow-fork-repo-modify-code-and-send-pull-request)
     - [A first journey into the open source world](#a-first-journey-into-the-open-source-world)
         - [Common licenses](#common-licenses)
+        - [Ethics and Code of conduct](#ethics-and-code-of-conduct)
     - [Exercises and Challenges](#exercises-and-challenges)
+        - [Browse past student projects](#browse-past-student-projects)
+        - [Raise a question](#raise-a-question)
+        - [Participate in a discussion thread](#participate-in-a-discussion-thread)
+        - [Bonus: conduct a survey of related reading materials on GitHub](#bonus-conduct-a-survey-of-related-reading-materials-on-github)
+        - [Bonus: fork - modify - Pull Request (PR)](#bonus-fork---modify---pull-request-pr)
     - [References and further reading](#references-and-further-reading)
 
 <!-- /TOC -->
@@ -425,13 +431,41 @@ Of course, the non granted rights are always negotiable with the authors who own
 
 ![](assets/to-do-uncategorized-screenshots/no115.png)
 
+### Ethics and Code of conduct
+
+GitHub adopts a **"sharing first"** principle. In most cases, you can feel free to fork others project and drive the works within GitHub's eco-system. Even when the license is restrictive, you can still do so for study and research purpose, based on the commonly adopted **"fair use"** principle, under the condition that original authors are proper acknowledged.
+
+When you talk with people on GitHub, try to keep the message precise and concise. This is to save everyone's time. Besides, please refrain from irrelevant discussions or meaningless messages. [This article](https://www.pingwest.com/a/177413) from PingWest pointed out to some common mis-conducts on GitHub.
+
 ## Exercises and Challenges
+
+### Browse past student projects
 
 - [Data Projects Archive](https://github.com/data-projects-archive) is the archive for our student data projects from various related courses. Try to navigate those repositories (repo) and:
   - Find the presentation slides and final report (if available).
   - Find the code and data.
   - Check the commit history to roughly understand how the project evolves.
   - Challenge: before learning any programming or data analysis/ visualization skills, can you figure out the major steps of a data project by exploring Git?
+
+### Raise a question
+
+Go to the [issue tracker of this repo](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues) and create a new issue to ask for a question.
+
+### Participate in a discussion thread
+
+Find a meaningful discussion thread on issue tracker and join the discussion. Sometimes, students might share their solution if they find alternative ways than the ones given in our text book. Here is [one example thread](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/34).
+
+### Bonus: conduct a survey of related reading materials on GitHub
+
+Try out GitHub's search function. See if you can find other open courses, books, tutorials, sample codes, that are related with this course. Please note down your findings. A short description and information about difficulty/ relevance will help your future reference.
+
+### Bonus: fork - modify - Pull Request (PR)
+
+Following up the previous challenge, you may want to suggest new entries into our reading material list on [reading-materials.md](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/reading-materials.md#related-github-repos). Please operate in the following steps:
+
+- Fork the current repo
+- Modify the forked version (under your own name). You can do this all with in browser. Just enter the editor from GitHub website.
+- After you save (commit) the works, you can send a Pull Reequest (PR) to the current repo. Someone from our team will review the changes and merge/ close the PR.
 
 ## References and further reading
 
