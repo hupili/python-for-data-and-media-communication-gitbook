@@ -27,7 +27,7 @@
 - Jiawei DU, [@jasmine-dudu](https://github.com/jasmine-dudu)
 - Chao GAO, [@FLYSTEPHEN](https://github.com/FLYSTEPHEN)
 - Minyi GU, [@guminyi](https://github.com/guminyi)
-- Ting HUANG, [@trista520](https://github.com/trista520)
+- Ting HUANG, [@trista520](https://github.com/trista520)
 - Xin HUANG, [@Rita0719](https://github.com/Rita0719)
 - Yangming HUANG, [@Wong-Ming](https://github.com/Wong-Ming)
 - Huiqing LIN, [@18408532](https://github.com/18408532)
@@ -43,7 +43,7 @@
 
 - Wenshu HE, [@elusiveburglar](https://github.com/elusiveburglar)
 - Nixuan JIANG, [@maggie0114](https://github.com/maggie0114)
-- Weiqi JIANG, [@efncij](https://github.com/efncij)
+- Weiqi JIANG, [@efncij](https://github.com/efncij)
 - Mengyu LI, [@ClioLI](https://github.com/ClioLI)
 - Shengnan LI, [@Lsn-cecilia](https://github.com/Lsn-cecilia)
 - Yijie LI, [@Alana-LI](https://github.com/Alana-LI)
