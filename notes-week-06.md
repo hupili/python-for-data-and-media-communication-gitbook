@@ -41,6 +41,7 @@
         - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
         - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
         - [Bonus: Crawl Weibo data and discover KOL](#bonus-crawl-weibo-data-and-discover-kol)
+        - [Bonus: Cheat an online voting system](#bonus-cheat-an-online-voting-system)
     - [Related Readings](#related-readings)
 
 <!-- /TOC -->
@@ -579,6 +580,14 @@ Key Opinion Leader (KOL) is the goto person for targeted massive marketing. As a
   ```
 
 - A simple algorithm to find KOL is to count `num_like`, `num_comment`, `num_share` for each `username`.
+
+### Bonus: Cheat an online voting system
+
+Some people host competitions online and calculate the leaderboard based on web traffic, like page visits, number of clicks of "upvote" and so on. The system is very easy to cheat if it does not adopt CAPTCHA system. After this week, you can use Python to emulate user behaviour and cheat those systems. Here are some examples for your reference:
+
+- Increase Youtube page views by refreshing browser page [code](https://github.com/data-projects-archive/Python-examples/blob/3d4ee06249cf5697c72bae4e2732e814dde97dec/get_youtube_view.py)
+
+Please find another system/ another parameter from the system, which you can cheat using similar tricks.
 
 ## Related Readings
 
