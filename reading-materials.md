@@ -16,4 +16,6 @@ DataCamp provides a good set of multiple choice questions to get you familiar wi
 
 ## Related GitHub repos
 
+- [Project based learning for Python](https://github.com/tuvtran/project-based-learning/blob/master/README.md#python) -- a curated list by @tuvtran that includes practical projects you can make with Python. This repo is good for people who have mastered week00 - week04 of this open book.
+
 **TODO:** Feel free to propose your entry into this list
