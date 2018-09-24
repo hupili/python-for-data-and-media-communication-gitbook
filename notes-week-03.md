@@ -53,6 +53,7 @@
         - [REPL](#repl)
         - [if..else; OR try..except](#ifelse-or-tryexcept)
         - [Multiple loop](#multiple-loop)
+        - [Try sub-tasks and regroup success/ fail cases](#try-sub-tasks-and-regroup-success-fail-cases)
     - [Bonus: Python Engineering](#bonus-python-engineering)
         - [Write code in professional style](#write-code-in-professional-style)
         - [A word on syntactical sugar](#a-word-on-syntactical-sugar)
@@ -1338,6 +1339,34 @@ for p in PR_list:
 ```
 
 Python is flexible. Codes are organised into "blocks" seen as a chunk of codes with the same indentation level. We already see expressions that creates code blocks like `for`, `if`, `def` and `with`. Blocks can be nested into larger blocks so that one can built more complex logics.
+
+### Try sub-tasks and regroup success/ fail cases
+
+When you further dive into the programming journey, you will find codes easily raise errors. You can use `try...except` to catch the errors and treat them separately. A common pattern is to divide your task into many smaller sub-tasks, `try` each one and assemble the results. For example, when you scrape a list of webpages, some may succeed and some may fail. You don't want the whole program to crash upon one fail case. Following structure may help:
+
+```python
+tasks = [] # store all the components
+
+success = []
+fail = []
+for task in tasks:
+    try:
+        # do something with task
+        result = do_something_with(task)
+        success.append((task, result))
+    except Exception as e:
+        fail.append((task, e))
+
+for (task, result) in success:
+    # maybe you want to assemble the `result`s from successful tasks
+    pass
+
+for (task, e) in fail:
+    # analyse and handle the failed tasks
+    pass
+```
+
+In our web scraping example, `tasks` can be a list of URLs to scrape and `do_something_with` is the single page scraping function that takes a URL as input and return the scraped data items if successful. How to implement this `do_something_with` function is the topic of [notes-week-05.md](notes-week-05.md) but it is good to learn the basic idea here.
 
 ## Bonus: Python Engineering
 
