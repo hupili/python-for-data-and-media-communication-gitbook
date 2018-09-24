@@ -24,17 +24,18 @@
         - [Tuple ()](#tuple-)
         - [Bonus: Copy collection objects](#bonus-copy-collection-objects)
     - [Control flows](#control-flows)
-        - [If-else Statement](#if-else-statement)
-        - [Python loop](#python-loop)
-            - [Difference between for loops and while loops](#difference-between-for-loops-and-while-loops)
-            - [While loop](#while-loop)
+        - [Execute code selectively: If-else Statement](#execute-code-selectively-if-else-statement)
+        - [Repeat similar operations: loop](#repeat-similar-operations-loop)
             - [For loop](#for-loop)
                 - [Use for statement to pick up values](#use-for-statement-to-pick-up-values)
                 - [Use for loop to calculate](#use-for-loop-to-calculate)
-                - [Use for and if statement together](#use-for-and-if-statement-together)
+            - [While loop](#while-loop)
+            - [Difference between for loops and while loops](#difference-between-for-loops-and-while-loops)
         - [Break and Continue statement](#break-and-continue-statement)
             - [Break statement](#break-statement)
             - [Continue statement](#continue-statement)
+        - [Integrated example: for and if](#integrated-example-for-and-if)
+            - [Bonus: alternatives and more efficient calculation](#bonus-alternatives-and-more-efficient-calculation)
     - [Function](#function)
         - [Funciton definition (def)](#funciton-definition-def)
         - [Bonus: Scope of variables in function](#bonus-scope-of-variables-in-function)
@@ -545,9 +546,9 @@ Under such circumstances, using control flow statements will help you manipulate
 
 **NOTE:** In `control flows` chapter, we will encounter a lot of `indentations` when handling if/for/while/def/class. It is hard and inconvenient to type in Python shell, so please write down the codes in text editor and save it as a `.py` file, so that you can just execute the file once to get the answer. If you forget how to do this, please refer to [chapter 2](/notes-week-02.md#python-has-two-basic-modes-script-and-interactive).
 
-### If-else Statement
+### Execute code selectively: If-else Statement
 
-`If-else statement` is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false.
+`if...else` statement is used to conditionally execute a statement or a block of statements. Conditions can be true or false, execute one thing when the condition is true, something else when the condition is false.
 
 ```python
 if ...:   #close with an ':'
@@ -603,70 +604,12 @@ Output:
 21000.0
 ```
 
-### Python loop
+### Repeat similar operations: loop
 
-Python has two primitive loop commands:  
+<!-- Python has two primitive loop commands:  
 
 1. `while loops`
-2. `for loops`
-
-#### Difference between for loops and while loops
-
-1. While Loops allow you put a condition in it, like `while i<10`, and it will stop when the condition no longer being meet( i >= 10). you can also substitute in a boolean(true/false) for 10 as well as many other types of variables.
-
-2. For Loops allow you to run through the loop many times you'd like it to run through the problem such as `for i in range(0,100)`, this will continually increase i until that condition returns false(>100), you can replace 10 with other numbers and variables, like `for name in name_list`, means that you want to loop the whole name_list to run through the problem. And it will quit once the condition is no longer being met.
-
-3. Generally speaking, if you want to use loop to do conditional comparison, `while` loops is work for you, if you want to loop every elements of a whole list, `for` is better.
-
-#### While loop
-
-We can execute a set of statements in while loop as long as a condition is true.
-
-**Syntax**
-
-```python
-while ...:   #close with an ':'
-    print(sth)  #indented
-    if ...: # you can insert `if` in `while`
-        print(sth)
-```
-
-Example 16:
-
-```python
-i = 1
-while i < 6:
-    i = i + 1
-    print(i)
-```
-
-Output:
-
-```text
-2
-3
-4
-5
-6
-```
-
-Example 17:
-
-```python
-i = 1
-while i < 6:
-    print(i)
-    i = i + 1
-    if i == 3:
-        break #we will talk this later
-```
-
-Output:
-
-```text
-1
-2
-```
+2. `for loops` -->
 
 #### For loop
 
@@ -722,10 +665,9 @@ Output:
 
 <!-- TODO: check the above output -->
 
-
 ##### Use for loop to calculate
 
-Example 20: Calculate the number of pulsing from 1 to 100.
+Example 20: Calculate the summation from 1 to 100.
 
 ```python
 total = 0
@@ -740,45 +682,67 @@ Output:
 5050
 ```
 
-##### Use for and if statement together
+#### While loop
 
-Example 21:
+We can execute a set of statements in while loop as long as a condition is true.
 
- Like the [example](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) we used before. Find that break-even point of subscribed users to make profit.
+**Syntax**
 
 ```python
-# coding: utf-8
+while ...:   #close with an ':'
+    print(sth)  #indented
+    if ...: # you can insert `if` in `while`
+        print(sth)
+```
 
-Fixed_Cost = 30000
-Content_Cost = 70000
+Example 16:
 
-member_ff = 15
-convert_rate = 0.1
-ad_revenue_each_person = 1
-
-num = float(input('please input your estimate number of subscribers:')) #input a estimated number
-for i in range(0,int(num)):
-    if i < 50000:
-        Total_Cost = Fixed_Cost + Content_Cost
-    else:
-        Total_Cost = Fixed_Cost + Content_Cost + 0.1 * (i - 50000)
-
-    Revenue = (1*i) + (0.1*15*i)
-    Net_Income = Revenue - Total_Cost
-
-    if Net_Income >= 0:
-        print('subscribers= ',i)
-        break
-
-if Net_Income < 0:
-    print('Net_Income=', Net_Income) #the max value return by your in
+```python
+i = 1
+while i < 6:
+    i = i + 1
+    print(i)
 ```
 
 Output:
 
 ```text
-subscribers= 40000
+2
+3
+4
+5
+6
 ```
+
+Example 17:
+
+```python
+i = 1
+while i < 6:
+    print(i)
+    i = i + 1
+    if i == 3:
+        break #we will talk this later
+```
+
+Output:
+
+```text
+1
+2
+```
+
+#### Difference between for loops and while loops
+
+1. While Loops allow you put a condition in it, like `while i<10`, and it will stop when the condition no longer being meet( i >= 10). you can also substitute in a boolean(true/false) for 10 as well as many other types of variables.
+
+2. For Loops allow you to run through the loop many times you'd like it to run through the problem such as `for i in range(0,100)`, this will continually increase i until that condition returns false(>100), you can replace 10 with other numbers and variables, like `for name in name_list`, means that you want to loop the whole name_list to run through the problem. And it will quit once the condition is no longer being met.
+
+3. Generally speaking, if you want to use loop to do conditional comparison, `while` loops is work for you, if you want to loop every elements of a whole list, `for` is better.
+
+
+
+
 
 ### Break and Continue statement
 
@@ -833,6 +797,52 @@ Output:
 8
 9
 ```
+
+### Integrated example: for and if
+
+Example 21: Calculate the break-even point of the simple business model.
+
+ Like the [example](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/) we used before. Find that break-even point of subscribed users to make profit.
+
+```python
+# coding: utf-8
+
+Fixed_Cost = 30000
+Content_Cost = 70000
+
+member_ff = 15
+convert_rate = 0.1
+ad_revenue_each_person = 1
+
+num = float(input('please input your estimate number of subscribers:')) #input a estimated number
+for i in range(0,int(num)):
+    if i < 50000:
+        Total_Cost = Fixed_Cost + Content_Cost
+    else:
+        Total_Cost = Fixed_Cost + Content_Cost + 0.1 * (i - 50000)
+
+    Revenue = (1*i) + (0.1*15*i)
+    Net_Income = Revenue - Total_Cost
+
+    if Net_Income >= 0:
+        print('subscribers= ',i)
+        break
+
+if Net_Income < 0:
+    print('Net_Income=', Net_Income) #the max value return by your in
+```
+
+Output:
+
+```text
+subscribers= 40000
+```
+
+#### Bonus: alternatives and more efficient calculation
+
+Here is a challenge upon last example: Try to scale up the parameters by a uniform factor and test the efficiency of your program. For example, let `Fixed_Cost = 3000000` and `Content_Cost = 7000000`, the resulting number of subscribers will scale up by the same factor. However, it takes much more time for your program to run because the loop executes for more iterations. Can your program scale up 1000x, or 1000000x? If it takes very long to get the result, how do you think you can improve?
+
+The basic idea is to "jump" somehow, instead of increasing the number of subscribers by only `1` every time. You can jump by `100` or `1000` depending on the problem scale. A more efficient solution is the [bisection method](https://en.wikipedia.org/wiki/Bisection_method). See the discussions from our students on [Issue #34](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/34).
 
 ## Function
 
