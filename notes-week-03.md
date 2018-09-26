@@ -68,6 +68,9 @@
         - [Generate detailed mortgage schedule](#generate-detailed-mortgage-schedule)
             - [Hint on table formatting](#hint-on-table-formatting)
             - [Hint on math formula](#hint-on-math-formula)
+        - [Simple word frequency](#simple-word-frequency)
+            - [Bonus: pretty print in ordered format](#bonus-pretty-print-in-ordered-format)
+            - [Bonus: Use the Counter class](#bonus-use-the-counter-class)
         - [Automatic writer for financial report](#automatic-writer-for-financial-report)
         - [Conversion between simplified Chinese and traditional Chinese](#conversion-between-simplified-chinese-and-traditional-chinese)
         - [Distances among cities](#distances-among-cities)
@@ -1547,6 +1550,37 @@ print(...)
 
 # After the second month
 # Try to continue the process
+```
+
+### Simple word frequency
+
+Word frequency is a common routine used in text analysis. Given a piece of Enligh text, you can perform word frequency analysis in following steps:
+
+1. Use `str.split()` to get a `list` of blankspace separated words.
+2. Use a `dict()` in this structure: `{word: frequency}`, where key is the word and value is an integer.
+3. Loop over the `list` obtained in step 1 and use the accumulator in step 2 to count the frequencies.
+
+In the end, the `dict` is our answer.
+
+**HINT**: Before you accumulate in a dict like `ans[key] += 1`, you may want to check if the `key` actually exists in the `dict` by `key in ans` or `ans.contains(key)`.
+
+**QUIZ**: Does this procedure work with Chinese? If so, please give the code or pseudo code. If not, in which step it fails?
+
+#### Bonus: pretty print in ordered format
+
+The default print of `dict` has unreadable special chars like `{,},:`. Can you print the result in a ascii table like what we did in the mortgage schedule? Please rank the table from highest frequence to lowest frequency.
+
+#### Bonus: Use the Counter class
+
+```python
+>>> from collections import Counter
+>>> c = Counter()
+>>> c
+Counter()
+>>> type(c)
+<class 'collections.Counter'>
+>>> isinstance(c, dict)
+True
 ```
 
 ### Automatic writer for financial report
