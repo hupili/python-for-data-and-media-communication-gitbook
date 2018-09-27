@@ -972,6 +972,10 @@ for i in range(0, len(communities)):
 
 **TODO**
 
+References for geographical data:
+
+- Draw geo scatter plot via matplotlib: [England and Ireland seen from pub locations](http://ramiro.org/notebook/mapping-pubs/)
+
 
 ------
 
