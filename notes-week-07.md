@@ -16,6 +16,9 @@
             - [Select data with []](#select-data-with-)
             - [Select data with .loc](#select-data-with-loc)
         - [Basic statistics](#basic-statistics)
+            - [DataFrame.describe()](#dataframedescribe)
+            - [Count values of series](#count-values-of-series)
+            - [Plot a simple charts/histogram with data](#plot-a-simple-chartshistogram-with-data)
         - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
         - [Filtering](#filtering)
         - [Sorting](#sorting)
@@ -285,27 +288,89 @@ df.iloc[10:20]
 
 ### Basic statistics
 
-* One dimension is one column in a form.
-* You can use   
-  `df['location'].value_counts()`  
-  then the output will be as below, showing you how many likes each restaurant have got.  
-  ![](assets/to-do-uncategorized-screenshots/no19.png)
-* Then you may need to calculate certain dimension. For example, how many likes that each restaurant have got. First, you will get all "likes" column data as follow:  
-  ![](assets/to-do-uncategorized-screenshots/no20.png)  
-  then, you need to to know the mean, media, percentile, min,max number of this dimension as below:  
-  ![](assets/to-do-uncategorized-screenshots/no21.png)
+#### DataFrame.describe()
 
-* then you can put these filter data into a distribution, using  
-  `df['likes'].hist()`  
-  and you can get a distribution like below:  
-  ![](assets/to-do-uncategorized-screenshots/no23.png)
+Descriptive or summary statistics in python – pandas, can be obtained by using describe function. `describe()` function gives you a summary about the dataframe or certain series with the `mean`, `count`, `std` and `freq` values etc.
 
-* if you want to see change parameter, you can use  
-  `df['likes'].hist(bins=20)`  
-  ![](assets/to-do-uncategorized-screenshots/no24.png)
+Example:
 
+```python
+df.describe()
+        likes
+count	250.000000
+mean	190.116000
+std	96.398304
+min	46.000000
+25%	121.500000
+50%	162.500000
+75%	226.000000
+max	558.000000
 
-<!-- TODO: DataFrame.describe() -->
+df['style'].describe()
+count     250
+unique     20
+top        西式
+freq       49
+Name: style, dtype: object
+```
+
+<!-- Todo: update output -->
+
+#### Count values of series
+
+After we can select one column or row, we can do further calculation or analysis. One common usage is to count different values in one column.
+
+Example
+
+```python
+df['location'].value_counts()
+尖沙咀    53
+旺角     44
+銅鑼灣    43
+觀塘     20
+中環     10
+灣仔     10
+太子      8
+荃灣      7
+西環      6
+元朗      6
+...
+df['type'].value_counts()
+海鮮                   43
+火鍋                   36
+甜品/糖水               19
+烤肉                   12
+壽司/刺身               11
+日式放題                9
+咖啡店                  9
+薄餅                    9
+自助餐                  9
+```
+
+`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `尖沙咀` is the most popular places. We can do a filter that select all the restaurants in `尖沙咀` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
+
+#### Plot a simple charts/histogram with data
+
+After we got the results from our analysis, the key point is to visualize them so that we can have a better understanding of the results and get insights from them. By using `.hist()` function, We can plot a simple histogram to show the distribution and trend.
+
+Example:
+
+```python
+df['likes'].hist()
+```
+
+and you can get a distribution like below:  
+![](assets/to-do-uncategorized-screenshots/no23.png)
+
+You can change shape of the charts by changing the bins(basically, one bin means one column)
+
+```python
+df['likes'].hist(bins=20)
+```
+
+![](assets/to-do-uncategorized-screenshots/no24.png)
+
+<!-- Todo: update output -->
 
 ### Data cleaning and pre-processing
 
