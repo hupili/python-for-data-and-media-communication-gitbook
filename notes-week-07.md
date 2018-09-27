@@ -57,20 +57,25 @@ Tips about scraping Openrice:
 
 ### Python environment
 
-Please install dependencies in your virtual environment via following shell commands:
+Please install libraries/dependencies in your virtual environment:
 
 ```python
 pip install pandas, seaborn, matplotlib, requests, csv
 ```
 
-If you are already in Jupyter notebook, you can prefix the command with `!` in order to execute execute shell command in a Jupyter notebook cell.
+If you are already in Jupyter notebook, you can prefix the command with `!` in order to execute execute those commands in a Jupyter notebook cell.
+
+For conda users, you can install by following method:
+
+```python
+conda install pandas
+```
 
 ### Download data file from a GitHub repo
 
 > Example: Today, We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
 
-Here is the link of csv life and the csv needs to be downloaded here.
-
+Here is the link of csv file which can be downloaded here.
 [https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas)
 
 ![](assets/to-do-uncategorized-screenshots/no10.png)
@@ -93,9 +98,12 @@ Then the csv file can be saved as csv\(comma-separated values\).
 
 ## `pandas` introduction
 
+Pandas is an open source library providing easy-to-use data structures and data analysis tools for the Python programming language, enabling you to carry out your entire data analysis workflow in Python without having to switch to a more domain specific language like R. For easy and light weighed data analysis, pandas in our best choice.
+
 ### Load table (DataFrame) from local csv file
 
-* Put csv file into the same folder with venv.
+Put csv file into the same folder with Jupyter notebook. You can type `!pwd` to check out where it is and put the file in this path.
+
 * `import pandas`
 * Read csv file 
   `pandas.read_csv('openrice.csv')`
