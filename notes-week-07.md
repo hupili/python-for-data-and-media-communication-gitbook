@@ -13,6 +13,8 @@
         - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
         - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
         - [Select data](#select-data)
+            - [Select data with []](#select-data-with-)
+            - [Select data with .loc](#select-data-with-loc)
         - [Basic statistics](#basic-statistics)
         - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
         - [Filtering](#filtering)
@@ -199,30 +201,87 @@ import io
 import requests
 url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/pandas-examples/Group%201-Openrice/openrice.csv"
 s=requests.get(url).content
-c=pd.read_csv(io.StringIO(s.decode('utf-8')))
+df=pd.read_csv(io.StringIO(s.decode('utf-8')))
 ```
 
 ### Select data
 
-<!-- Select by rows or by columns -->
+First of all, every time we load a csv in Jupyter, always print the first several rows to have a overview what's look like. It's useful and necessary because sometimes the dataset can be really large, if you print the whole table, your browser might get crushed. We can use following command to check out the records here.
 
-* If you want to the first 10 data from the csv file. then you can use
+```python
+df.head() #displaying first 5 rows by default, you can pass the number in () to show more/less rows.
+```
 
-  ```
-  df.head(10)
-  ```
+the output will be as blow:  
+![](assets/to-do-uncategorized-screenshots/no17.png)
 
-  the output will be as blow:  
-  ![](assets/to-do-uncategorized-screenshots/no17.png)
+There are several ways to select data. We only focus on the most used ones. `[]`, `.loc` and `.iloc`. Collectively, they are called the indexers.
 
-* If you want to select one column. You can use dataframe as a dictionary, use a key to refer to certain value. For example, you want all the restaurant locations.You can type:
+#### Select data with []
 
-  ```
-  df['location']
-  ```
+`[]` method is mainly used for selecting single column and multiple columns. Basically, `[]` method treat the dataframe as a dict, using a key to refer to certain value. If you want to select one column of data, just simply put the name of the column in-between the brackets. For example, you want all the restaurant locations.You can type:
 
-  Then the output will be as below \(the picture do not show all the locations due to the limited space\):  
-  ![](assets/to-do-uncategorized-screenshots/no18.png)
+```python
+df['location']
+```
+
+Then the output will be as below \(the picture do not show all the locations due to the limited space\):  
+![](assets/to-do-uncategorized-screenshots/no18.png)
+
+You can find that the data type of the results returned is changed.  Using `type(df['location'])` to check out what it is. If you want to keep the it with the `dataframe`, you can write the above code as this: `df[['location']]`.
+
+To select multiple columns of the data, you can pass it a list of column names.
+
+```python
+df[['name','location','likes']]
+```
+
+The output will be like this:
+<!-- Todo: update data -->
+
+#### Select data with .loc
+
+The `.loc` indexer will return a single row/rows as a Series when given a single row `label`/`labels`, which is in index.
+
+Example:
+
+```python
+df = pd.DataFrame([[170, 60], [180, 82], [175, 70]],
+      index=['Ri', 'Frank', 'Tyler'],
+      columns=['height', 'weight'])
+df
+                height  weight
+Ri                170      60
+Frank             180      82
+Tyler             175      70
+```
+
+```python
+df.loc['Frank'] #select one row
+
+height    180
+weight     82
+Name: Frank, dtype: int64
+
+df.loc[['Frank', 'Tyler']]
+
+                height  weight
+Frank              180      82
+Tyler              175      70
+```
+
+Similarly, there is another function `.iloc`, which is purely integer-location based indexing for selection by position.
+
+Using the `openrice.csv` as an example:
+
+```python
+pandas.read_csv('openrice.csv')
+df.iloc[5]
+df.iloc[[5,10,15]]
+df.iloc[10:20]
+```
+
+<!-- Todo: update output -->
 
 ### Basic statistics
 
