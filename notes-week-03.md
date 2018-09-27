@@ -71,6 +71,7 @@
         - [Simple word frequency](#simple-word-frequency)
             - [Bonus: pretty print in ordered format](#bonus-pretty-print-in-ordered-format)
             - [Bonus: Use the Counter class](#bonus-use-the-counter-class)
+        - [Convert Hong Kong district names into a convenient data structure](#convert-hong-kong-district-names-into-a-convenient-data-structure)
         - [Automatic writer for financial report](#automatic-writer-for-financial-report)
         - [Conversion between simplified Chinese and traditional Chinese](#conversion-between-simplified-chinese-and-traditional-chinese)
         - [Distances among cities](#distances-among-cities)
@@ -1582,6 +1583,37 @@ Counter()
 >>> isinstance(c, dict)
 True
 ```
+
+### Convert Hong Kong district names into a convenient data structure
+
+Suppose we are building the profile information for Hong Kong's 18 districts. The data can be found on [wikipedia](https://en.wikipedia.org/wiki/Districts_of_Hong_Kong). It is in HTML's table format (or available as mediawiki notation). Both format is not easy for program to further process. Before we learn scraping in week-05 and week-06, we can still do some simple processing here. We copy and paste the table into our source code to generate a tab-separated-values (TSV). With a bit string processing, we can process this raw string of data into list-of-dict structure or dict-of-dict structure.
+
+You can start with the following code snippet:
+
+```python
+a = '''
+Central and Western	中西區	244,600	12.44	19,983.92	Hong Kong Island
+Eastern	東區	574,500	18.56	31,217.67	Hong Kong Island
+Southern	南區	269,200	38.85	6,962.68	Hong Kong Island
+Wan Chai	灣仔區	150,900	9.83	15,300.10	Hong Kong Island
+Sham Shui Po	深水埗區	390,600	9.35	41,529.41	Kowloon
+Kowloon City	九龍城區	405,400	10.02	40,194.70	Kowloon
+Kwun Tong	觀塘區	641,100	11.27	56,779.05	Kowloon
+Wong Tai Sin	黃大仙區	426,200	9.30	45,645.16	Kowloon
+Yau Tsim Mong	油尖旺區	318,100	6.99	44,864.09	Kowloon
+Islands	離島區	146,900	175.12	825.14	New Territories
+Kwai Tsing	葵青區	507,100	23.34	21,503.86	New Territories
+North	北區	310,800	136.61	2,220.19	New Territories
+Sai Kung	西貢區	448,600	129.65	3,460.08	New Territories
+Sha Tin	沙田區	648,200	68.71	9,433.85	New Territories
+Tai Po	大埔區	307,100	136.15	2,220.35	New Territories
+Tsuen Wan	荃灣區	303,600	61.71	4,887.38	New Territories
+Tuen Mun	屯門區	495,900	82.89	5,889.38	New Territories
+Yuen Long	元朗區	607,200	138.46	4,297.99	New Territories
+'''
+```
+
+Please try to workout a variable `d` for our future lookup. Given the english name as `name`, we can get the district's Chinese name via `d[name]['Chinese']` and population by `d[name]['Population']`.
 
 ### Automatic writer for financial report
 
