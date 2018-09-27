@@ -100,6 +100,70 @@ Then the csv file can be saved as csv\(comma-separated values\).
 
 Pandas is an open source library providing easy-to-use data structures and data analysis tools for the Python programming language, enabling you to carry out your entire data analysis workflow in Python without having to switch to a more domain specific language like R. For easy and light weighed data analysis, pandas in our best choice.
 
+There are two basic data structures:
+
+1. Series. A series is a one-dimensional object that can hold any data type such as integers, floats and strings. Simply, series is like a single column of a DataFrame.
+
+  Example:
+
+  ```python
+  import pandas as pd
+  x = pd.Series([1,0,2,8])
+  x
+  0    1
+  1    0
+  2    2
+  3    8
+  dtype: int64
+  ```
+
+  The first axis is referred to as the index. Also, we can define indexes for the data by our own way.
+
+  ```python
+  x = pd.Series([1,0,2,8], index=['a', 'b', 'c', 'd'])
+  x
+  a    1
+  b    0
+  c    2
+  d    8
+  dtype: int64
+  ```
+
+2. Dataframe. A DataFrame is a two dimensional object that can have columns with different types,dictionaries, lists, series etc... Dataframe is the primary pandas data structure.
+
+  ```python
+  avg_ocean_depth = pd.Series({
+                    'Arctic': 1205,
+                    'Atlantic': 3646,
+                    'Indian': 3741,
+                    'Pacific': 4080,
+                    'Southern': 3270
+  })
+  max_ocean_depth = pd.Series({
+                      'Arctic': 5567,
+                      'Atlantic': 8486,
+                      'Indian': 7906,
+                      'Pacific': 10803,
+                      'Southern': 7075
+  })
+  ocean_depths = pd.DataFrame({
+                      'Avg. Depth (m)': avg_ocean_depth,
+                      'Max. Depth (m)': max_ocean_depth
+  })
+  ocean_depths
+  ```
+
+  Output:
+
+  ```text
+            Avg. Depth (m)  Max. Depth (m)
+  Arctic              1205            5567
+  Atlantic            3646            8486
+  Indian              3741            7906
+  Pacific             4080           10803
+  Southern            3270            7075
+  ```
+
 ### Load table (DataFrame) from local csv file
 
 Put csv file into the same folder with Jupyter notebook. You can type `!pwd` to check out where it is and put the file in this path.
