@@ -104,26 +104,39 @@ Pandas is an open source library providing easy-to-use data structures and data 
 
 Put csv file into the same folder with Jupyter notebook. You can type `!pwd` to check out where it is and put the file in this path.
 
-* `import pandas`
-* Read csv file 
-  `pandas.read_csv('openrice.csv')`
-* The output will be as below:
-  ![](assets/to-do-uncategorized-screenshots/no15.png)
-* If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
+```python
+import pandas
+pandas.read_csv('openrice.csv')
+```
 
-  ```
-  df = pandas.read_csv('openrice.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
-  ```
+The output will be as below:
+![](assets/to-do-uncategorized-screenshots/no15.png)
 
-  then the output will be like this:  
-  ![](assets/to-do-uncategorized-screenshots/no16.png)  
-  ** Notes:**
+If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
 
-* `df`is short for "dataframe", is used in as return value in pandas.
+```python
+df = pandas.read_csv('openrice.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
+```
+
+then the output will be like this:  
+![](assets/to-do-uncategorized-screenshots/no16.png)
+
+**Notes:** `df`is short for "dataframe", which is used as return value in pandas.
 
 ### Load table (DataFrame) from a URL
 
-<!-- TODO: show that one can load CSV from GitHub directly -->
+We can load CSV from GitHub directly with the help of `requests` and `io.StringIO`. `io` module is used for dealing with various types of I/O (input/output). Due to the requirement that `pandas.read_csv` function needs a `file-like object` as the argument, we need to use `io.StringIO` to write and store those string, returned from the request, temporarily. Then we can read the csv in pandas.
+
+**Note:** We should use `raw data` url from github page instead of others.
+
+```python
+import pandas as pd
+import io
+import requests
+url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/pandas-examples/Group%201-Openrice/openrice.csv"
+s=requests.get(url).content
+c=pd.read_csv(io.StringIO(s.decode('utf-8')))
+```
 
 ### Select data
 
