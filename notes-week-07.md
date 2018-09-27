@@ -31,24 +31,23 @@
 
 ## Objective
 
-- Master the basic of `pandas`
-- Can perform data cleaning and pre-processing via table manipulation
-- Can use `pandas` as "Excel in Python"
-
-<!-- - Master the schema of "data-driven story telling": the crowd \(pattern\) and the outlier \(anomaly\)
+- Master the schema of "data-driven story telling" : the crowd \(pattern\) and the outlier \(anomaly\)
 - Can efficiently manipulate structured table formatted datasets
-- Use `pandas` for basic calculation and plotting -->
+- Use `pandas` for basic calculation and plotting
 
-<!-- Modules:
+Modules:
 
-* `pandas`
- -->
- 
+- `pandas`
+
 Datasets to work on:
 
-* [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group1 of S18 session.
+- [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group1 of S18 session.
 
-<!-- TODO: Scrape an updated version of this dataset from openrice. Take note here of the scraping parameters, e.g. type, time range, price range, etc. -->
+Tips about scraping Openrice:
+
+- We can use the search function, and change the criteria in the advanced search mode. Here is the initial search page of Openrice. <https://www.openrice.com/zh/hongkong/restaurants>
+- Follow up last step, you will get a url that contains the results return from your searching. Check out the url parameters, you will find that they have encoded those parameters into a set of IDs. One can get all of their coding information by scraping those data with browser emulation(`selenium` etc.)
+- In each searching returns, Openrice has a limit of display 17 pages data. We can create a multiple layer loop scraper to enlarge the data volume.
 
 -------
 
