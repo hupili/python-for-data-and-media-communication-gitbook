@@ -529,7 +529,7 @@ Further discussion is omitted here because this part takes years of computer sci
 
 ### App emulation
 
-[Appium](http://appium.io/) is a frequently used automatic testing tool. You can use this tool to emulate user operations on mobile Apps and scrape the data from the screen.
+[Appium](http://appium.io/) is a frequently used automatic testing tool. You can use this tool to emulate user operations on mobile Apps and scrape the data from the screen. For Android users, [Auto.js](https://github.com/hyb1996/Auto.js) is a convenient library that relies on accessibility features and does not require root access.
 
 Actually, `selenium`, we introduced earlier in this chapter, was initially also an automatic testing tool for the web frontend. Then it became a bridge between the programmable user and web browser driver, which was used in a lot scraping works. When you find yourself stuck with data access because of non-human behavoiur (e.g. anti-crawling), you can try to search the keywords "emulation" or "auto testing", and can usually get some pointers to useful tools.
 
