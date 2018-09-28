@@ -1,8 +1,8 @@
-# Frequently asked questions
+# Other Frequently Asked Questions
 
 <!-- TOC -->
 
-- [Frequently asked questions](#frequently-asked-questions)
+- [Other Frequently Asked Questions](#other-frequently-asked-questions)
     - [Github](#github)
         - [why we should preview Jupyter notebook on NBview? Are there any relationship with Github?](#why-we-should-preview-jupyter-notebook-on-nbview-are-there-any-relationship-with-github)
         - [What is index.html](#what-is-indexhtml)
