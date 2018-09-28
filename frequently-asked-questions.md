@@ -148,6 +148,8 @@ For some specify example solutions, you can refer to [here](https://stackoverflo
 
 ### How to apply twitter API key？
 
+Please see the applying experience of 2018 fall students [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/45). 
+
 ### https status code
 
 When you make a request to a website, there might be different status responded. Common examples here:
