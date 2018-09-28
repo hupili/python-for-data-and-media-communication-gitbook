@@ -8,26 +8,26 @@
         - [What is index.html](#what-is-indexhtml)
         - [How to change default branch for GitHub pages?](#how-to-change-default-branch-for-github-pages)
     - [Environment](#environment)
+        - [What is Terminal and what is shell](#what-is-terminal-and-what-is-shell)
         - [Install python3](#install-python3)
         - [Difference between python 2 and 3](#difference-between-python-2-and-3)
         - [Different shell commands in Win and Mac](#different-shell-commands-in-win-and-mac)
         - [Two basic modes of shell: script and interactive](#two-basic-modes-of-shell-script-and-interactive)
         - [Install Python3 on Windows and Set Environment](#install-python3-on-windows-and-set-environment)
+        - [Setup virtual venv and install Jupyter Notebook](#setup-virtual-venv-and-install-jupyter-notebook)
         - [Instructions of Installing Jupyter Notebook on Windows](#instructions-of-installing-jupyter-notebook-on-windows)
         - [pip install](#pip-install)
+        - [Install modules in venv, it's equivalent to install in Jupyter](#install-modules-in-venv-its-equivalent-to-install-in-jupyter)
     - [Frequently asked bugs](#frequently-asked-bugs)
         - [No such file or directory in jupyter or file xxx does not exist](#no-such-file-or-directory-in-jupyter-or-file-xxx-does-not-exist)
+        - [Expecting value: line 1 column 1 (char 0)](#expecting-value-line-1-column-1-char-0)
     - [Tricks & Hot key](#tricks--hot-key)
-    - [How to exit Python shell if entered accidentally](#how-to-exit-python-shell-if-entered-accidentally)
-    - [Invalid ASCII character problem when executing a script](#invalid-ascii-character-problem-when-executing-a-script)
-    - [MAC's TextEdit change quotes from ASCII character to unicode character (smart quotes)](#macs-textedit-change-quotes-from-ascii-character-to-unicode-character-smart-quotes)
+        - [Exit Python interactive mode](#exit-python-interactive-mode)
+    - [Encoding & Decoding](#encoding--decoding)
     - [Declare file encoding other than the default](#declare-file-encoding-other-than-the-default)
-    - [What is Terminal and what is shell](#what-is-terminal-and-what-is-shell)
-    - [With or without ".py" extension name?](#with-or-without-py-extension-name)
-    - [Check modules before enter PYVENV VENV](#check-modules-before-enter-pyvenv-venv)
-    - [I already install some module before executing the Jupyter, why is this happen?](#i-already-install-some-module-before-executing-the-jupyter-why-is-this-happen)
 
 <!-- /TOC -->
+
 ## Github
 
 ### why we should preview Jupyter notebook on NBview? Are there any relationship with Github?
@@ -44,13 +44,19 @@ please see [here](https://github.com/hupili/python-for-data-and-media-communicat
 
 ## Environment
 
+### What is Terminal and what is shell
+
+A terminal refers to a wrapper program which runs a shell.
+
+The shell is the program which actually `processes commands` and `returns output`.
+
 ### Install python3
 
 Please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/setup-environment.md)
 
 ### Difference between python 2 and 3
 
-please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/python-2-vs-python-3.md) 
+please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/python-2-vs-python-3.md)
 
 ### Different shell commands in Win and Mac
 
@@ -72,11 +78,19 @@ or
 
 Details please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/32).
 
+### Setup virtual venv and install Jupyter Notebook
+
+please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-04.md#setup-virtualenv-and-install-jupyter-notebook)
+
 ### Instructions of Installing Jupyter Notebook on Windows
 
 please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/30).
 
 ### pip install
+
+### Install modules in venv, it's equivalent to install in Jupyter
+
+If you are using Jupyter for the first time, you should create virtual environment first by `pyvenv venv`. Then enter the `venv` environment by typing `source venv/bin/activate`. This is the right place where you should install all the modules you will use, after that you can enter the Jupyter by command `jupyter notebook`. Once you finish your work, use `deactivate` to exit `venv` environment. Do remember, you just need to create virtual environment once, next time when you use Jupyter, just type`source venv/bin/activate` + `jupyter notebook` will work.
 
 ## Frequently asked bugs
 
@@ -84,72 +98,24 @@ please see [here](https://github.com/hupili/python-for-data-and-media-communicat
 
 If you download the csv from some where, and you want to import it in Jupyter notebook. you should put the csv file in the folder where your venv folder are first. Usually, it's in the user path. All the files you write and read should in this folder. Another method is to type `pwd` in Jupyter, it will return the path, where you should put the file in.
 
+### Expecting value: line 1 column 1 (char 0)
+
 ## Tricks & Hot key
 
-## How to exit Python shell if entered accidentally
+### Exit Python interactive mode
 
-Exit with a zero exit status: `quit()` or **Control-D** on Unix, **Control-Z** on Windows
+Exit with a zero exit status: `quit()`,`exit()` or `Control-D` on Mac, `Control-Z` on Windows.
 
-## Invalid ASCII character problem when executing a script
-
-Use **unicode\(\)** access to all registered Unicode codecs, then converted with **str\(\)**
-
-## MAC's TextEdit change quotes from ASCII character to unicode character (smart quotes)
-
-It is suggested to disable system wide smart quotes and smart dashes function. Read more [here](https://support.apple.com/kb/PH25635?viewlocale=en_GB&locale=en_GB).![](/assets/Screen Shot 2018-01-25 at 10.00.11 PM.png)
-
-![](/assets/Screen Shot 2018-01-24 at 6.57.18 PM.png)
+## Encoding & Decoding
 
 ## Declare file encoding other than the default
 
 To declare an encoding other than the default one, a special comment line should be added as the first line of the file. the syntax is as follows:
 
-`#-*-coding: encoding -*-`
+`# coding=-*-`
 
-where encoding is one of the valid codes supported by Python.
+For example, if you use `chinese` in your codes. It is better to declare the coding by writing the following as the first line in your source code file:
 
-For example, to declare that Windows-1252 encoding is to be used, the first line of your source code file should be:
+`# coding=utf-8` or `# -*- coding: utf-8 -*-`
 
-`#-*-coding: cp-1251-*-`
-
-One exception to the first line rule is when the source code starts with a UNIX"shebang" line. In this case, the encoding declaration should be added as the second line of the file. For example:
-
-`#!/user/bin/env python`
-
-`#-*-coding: cp-1251-*-`
-
-## What is Terminal and what is shell
-
-Terminal is a session which can receive and send input and output for command-line program.
-
-Shell is a program which is used for controlling and running programs.
-
-## With or without ".py" extension name?
-
-Without the extension name, Visual Studio Code can not highlight the code:![](/assets/no py..jpeg)After adding to the extension name, the interface become normal:![](/assets/with py..jpeg)
-
-## Check modules before enter PYVENV VENV
-
-PYVENV means setting up a new VENV environment, and it probably erases some modules you installed previously.
-
-So, if you have already entered ‘pyvenv venv’ before and deactivate, next time you use the same computer, you could enter ‘source venv/bin/activate’ to get into VENV environment, and ‘deactivate’ to exit VENV environment.
-
-In the lab, you probably will change the seat and computer, before you enter the ‘VENV’ and use the Jupyter, you could check in the terminal to check whether the module is on the computer:
-
-![](/assets/1.png)
-
-and to check this module again:
-
-![](/assets/2.png)
-
-It means you successfully installed this module.
-This situation is same to those modules: ‘requests’, ‘bs4’, etc.
-
-## I already install some module before executing the Jupyter, why is this happen?
-
-![](/assets/3.png)
-
-Maybe you enter ’pyvenv venv’ again before you enter ‘jupyter notebook’, try to enter the ‘venv’ environment by typing ‘source venv/bin/activate’.
-
-If it does not work, you could set up the ‘venv’ environment again by typing ’pyvenv venv’. Then install all the modules you will use before enter the ‘jupyter notebook’. Once you finish your work, use ‘deactivate’ to exit ‘venv’ environment. Do remember that you should use ‘source venv/bin/activate’ next time, not ‘pyvenv venv’.
-
+There might be other situations and encoding format, and its a case by case situation, if you encounter more situation, please free feel to open an issue.
