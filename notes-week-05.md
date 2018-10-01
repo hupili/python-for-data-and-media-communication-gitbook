@@ -30,6 +30,8 @@
             - [Bonus: Scrape all articles features of all pages](#bonus-scrape-all-articles-features-of-all-pages)
     - [Scraper pattern](#scraper-pattern)
         - [Data structure](#data-structure)
+        - [Item-first v.s. attribute first](#item-first-vs-attribute-first)
+        - [Deal with missing data in scraping](#deal-with-missing-data-in-scraping)
         - [Bonus: Scrape by text processing and regular expression](#bonus-scrape-by-text-processing-and-regular-expression)
     - [Bonus: Crawler](#bonus-crawler)
         - [Workflow of a search engine like Google](#workflow-of-a-search-engine-like-google)
@@ -556,7 +558,58 @@ Output will be like the following picture, and you can also find the csv file [h
 - First (outer) layer is `list` -- iterate the data items we are interested in.
 - Second (inner) layer is `dict` -- extract the features/ properties of a single data item.
 
-Checkout the [imdb.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb)
+[list-of-list](notes-week-03.md#representing-a-dataset) is one alternative to store the data. The advantage is compact representation of data entrires. Instead of having `{key1: value1, key2: value2, ..}`, we have `[value, value2, ...]`. The (insignificant) disadvantage is missing "table headers", or "column names" which appeared as keys in the list-of-dict representation. One can maintain this information outside `dataset`.
+
+The choice of data structure is closely related the workflow of your program. So, put it another words, it is a reflection of the thought process. Please checkout the [imdb.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb) for a complete example of this method.
+
+Also read the following section to compare the two different workflow
+
+### Item-first v.s. attribute first
+
+Item-first approach is adopted as best practice when you get started. Suppose we scrape the OpenRice website. Each item is a restaurant and fields include `title`, `like`, `location`, etc. Suppose we already have Beautifulsoup object in `mypage`. Following is the framework for item-first approacah:
+
+```python
+dataset = []
+myitems = mypage.find_all(???)
+for myitem in myitems:
+    title = myitem.find(???).???
+    like = myitem.find(???).???
+    location = myitem.find(???).???
+    ...
+    # the variables can be None to represent missing data
+    dataset.append([title, like, location, ...])
+...
+csv.writerows(dataset) # one line is enough for the output.
+```
+
+Attribute-first approach is not preferred, although sometimes the code seems simpler. We put the framework here for the completeness of discussion.
+
+```python
+titles = []
+likes = []
+locations = []
+...
+
+for e in mypage.find_all(???):
+    titles.append(e.???)
+for e in mypage.find_all(???):
+    likes.append(e.???)
+for e in mypage.find_all(???):
+    locations.append(e.???)
+...
+
+for i in range(len(titles)):
+    csv.writerow(titles[i], likes[i], locations[i], ...)
+
+# Or try this more compact method:
+# csv.writerows(zip(titles, likes, locations, ...))
+```
+
+### Deal with missing data in scraping
+
+One general guideline in data processing is to preserve as much original information as possible at the early stage of the pipeline. The downstream analysis programs can always decide how to deal with missing data. So instead of substituting the missing data with some "reasonable value", it is better to put `None` in that place. `None` will become empty cell in CSV and `null` in JSON to represent "empty". In later chapters, when we load the data via `pandas`, the data frame will put an `NaN` in that place, meaning "not a number". The `None`, `null`, `NaN`, or empty, are language specific way of treating missing data. No matter which way it adopts, leting the user know the data is missing is important.
+
+To further understand this **missing data is data** philosophy, one can simply mind experiment the "average" operation. When the data entry is marked as missing, we just skip this data. However, if someone substituted this missing data in upstream with some reasonable value, say "0", the output will be smaller -- "0" does not contribute to the numerator but having a valid data entry here contributes 1 more to the denominator.
 
 ### Bonus: Scrape by text processing and regular expression
 
