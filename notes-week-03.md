@@ -54,6 +54,7 @@
         - [if..else; OR try..except](#ifelse-or-tryexcept)
         - [Multiple loop](#multiple-loop)
         - [Try sub-tasks and regroup success/ fail cases](#try-sub-tasks-and-regroup-success-fail-cases)
+        - [Test and batch execution for repeated tasks](#test-and-batch-execution-for-repeated-tasks)
     - [Bonus: Python Engineering](#bonus-python-engineering)
         - [Write code in professional style](#write-code-in-professional-style)
         - [A word on syntactical sugar](#a-word-on-syntactical-sugar)
@@ -1371,6 +1372,33 @@ for (task, e) in fail:
 ```
 
 In our web scraping example, `tasks` can be a list of URLs to scrape and `do_something_with` is the single page scraping function that takes a URL as input and return the scraped data items if successful. How to implement this `do_something_with` function is the topic of [notes-week-05.md](notes-week-05.md) but it is good to learn the basic idea here.
+
+### Test and batch execution for repeated tasks
+
+Suppose you can handle all the tasks by:
+
+```python
+...
+for t in tasks:
+    o = handle(t)
+...
+```
+
+The size of `tasks` may be very large which takes days or months to run. Sometimes, you want to do some pilot testing before setting it at full scale. Or, you risk runing into errors after some heavy computation. In Python, we can use the list slicing syntax to cut down the task size and do not break the overall structure of the code. For example, if we want to test for the first 10 entries, we can:
+
+```python
+for t in tasks[:10]:
+    o = handle(t)
+```
+
+When we finish testing, we can comment out the list slicing part:
+
+```python
+for t in tasks: #[:10]:
+    o = handle(t)
+```
+
+Suppose you have 10 machines and 1000 tasks in `tasks`. You can copy the same code to all the machines and slice `tasks[i * 100: (i + 1) * 100]` for the i-th machine (i starts from 0).
 
 ## Bonus: Python Engineering
 

@@ -12,6 +12,7 @@
         - [Quota limiting](#quota-limiting)
         - [Network interruption](#network-interruption)
         - [Firewall](#firewall)
+        - [Bonus: client authentication](#bonus-client-authentication)
     - [Common issues](#common-issues)
         - [Encoding](#encoding)
     - [Browser emulation](#browser-emulation)
@@ -98,6 +99,12 @@ Example: Check the default user-agent of `requests`:
 ### Network interruption
 
 ### Firewall
+
+### Bonus: client authentication
+
+Checking user-agent is the first step to identify whether a client is a valid or not. This step is generally referred as "client authentication". The server checks if the request is sent from a legitimate client. Examples are like [client side signature](https://mp.weixin.qq.com/s/JhpGhQhXS_-FSVHfZyppOQ). However, the web is an open world. You can be assured that people can hide nothing if the data is already in your browser. Even if the web developers apply complex compuational logics to conduct client authentication, the client side authenticator code is available in your browser as Javascript. With some cryptography knowledge, one may be able to reverse engineer it.
+
+However, cracking the system is not the purpose. Our objective is to get data. Instead of cracking and traslating the logics into Python script, we had better re-use the Javascript scripts as-is. Or further more, we can run browser emulator to naturally trigger those logics, which may be a more direct solution. Browser emulator is one major topic introduced in this chapter.
 
 ## Common issues
 
