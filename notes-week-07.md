@@ -21,6 +21,7 @@
             - [Plot a simple charts/histogram with data](#plot-a-simple-chartshistogram-with-data)
         - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
             - [apply a function](#apply-a-function)
+            - [lambda: anonymous function](#lambda-anonymous-function)
         - [Filtering](#filtering)
         - [Sorting](#sorting)
     - [Export from `pandas`](#export-from-pandas)
@@ -453,6 +454,41 @@ df['price'].apply(cleaning) #clean the whole column
 ```
 
 ![Pandas Apply Cleaning](assets/pandas-apply-cleaning.png)
+
+#### lambda: anonymous function
+
+lambda also called as anonymous function, which doesn't have a specific name, only need one line to declare function. The usual syntax is as follows:
+
+```python
+lambda arguments : expression
+```
+
+There can be multiple arguments, and expression is the results it returns.
+
+For example:
+
+```python
+c = lambda x,y : x**2 + 4*y
+c(4,2)
+#24
+```
+
+x,y are arguments, and after the`:` is the results. This is equal to:
+
+```python
+def f(x,y):
+    return x**2 + 4*y
+f(4,2)
+```
+
+The advantages of `lambda`:
+
+- Using lambda omit the process of defining functions, which make the code more light.
+- We can save time by using lambda without thinking about naming the function
+- The power of lambda is better shown when you use them as an anonymous function inside another function.
+
+For example:
+
 
 ### Filtering
 
