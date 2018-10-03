@@ -20,6 +20,7 @@
             - [Count values of series](#count-values-of-series)
             - [Plot a simple charts/histogram with data](#plot-a-simple-chartshistogram-with-data)
         - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
+            - [apply a function](#apply-a-function)
         - [Filtering](#filtering)
         - [Sorting](#sorting)
     - [Export from `pandas`](#export-from-pandas)
@@ -414,45 +415,44 @@ df['likes'].hist(bins=20)
 
 ### Data cleaning and pre-processing
 
-Clean the data and convert price range to numeric values
+#### apply a function
 
-<!-- TODO: master the `apply` and `lambda` pattern -->
+In the process of analyzing, we will encounter a lot of data cleaning issues, like the missing values, NoneType values or other type of values that have side effects, which need us to build different functions to handle them or convert them. For example, the price in the `openrice` is a range of number which cannot be compared directly. We need firstly clean the data and convert price range to numeric values.
 
-* After you get the distribution, you can do some analysis. Compare the distribution with mean, media numbers.
-  ![](assets/to-do-uncategorized-screenshots/no25.png)
-* If you need to compare price which is a interval.You need to pay special attention on numbers. Python recognize '$101-200'&lt;'$51-100' because Python only compare the  
-  numbers in sequence of each interval.
+If you need to compare price which is a interval.You need to pay special attention on numbers. Otherwise,Python recognize '$101-200' < '$51-100' because Python only compare the first number in sequence of each interval.
 
-  You need to convert each interval string into numbers, which means you need to choose a number to represent each interval to do comparison.  
-  Here, we use "mapping" function
+You need to convert each interval string into numbers, which means you need to choose a number to represent each interval to do comparison. Here, we use `mapping` function:
 
-  ```
-  mapping = {
-    '$101-200': 200,
-    '$201-400': 400,
-    '$51-100': 100,
-    '$401-800': 800,
-    '$50以下': 50
-  }
-  ```
+```python
+mapping = {
+  '$101-200': 200,
+  '$201-400': 400,
+  '$51-100': 100,
+  '$401-800': 800,
+  '$50以下': 25
+}
+```
 
-* Now, you can use:
+Now, build a function to handle those data.
 
-  ```
-    original_string = '$60以下'
-    mapping.get(orignal_string, 0)
-    def cleaning(e):
-    return mapping.get(e, 0)
-    cleaning('$50以下')
-  ```
+```python
+original_string = '$60以下'
+mapping.get(original_string, 0)
+# if those string is in the mapping dict, it will return the paired value, otherwise, it will return the value you set, in this case, is the second parameter 0.
+def cleaning(e):
+  return mapping.get(e, 0)
+cleaning('$50以下')
+```
 
-  ![](assets/to-do-uncategorized-screenshots/no26.png)
+![Pandas Apply Function](assets/pandas-apply-function.png)
 
-* Then you can use the code below to transfer intervals into numbers.
+Then we can use `apply` function to do cleaning for the whole column. Basically, `<data>.apply(<function_name>)` means that pass those data one by one to call the function, which is equal to a `for` loop processing data.
 
-  `df['price_num'].apply(cleaning)`
+```python
+df['price'].apply(cleaning) #clean the whole column
+```
 
-  ![](assets/to-do-uncategorized-screenshots/no27.png)
+![Pandas Apply Cleaning](assets/pandas-apply-cleaning.png)
 
 ### Filtering
 
