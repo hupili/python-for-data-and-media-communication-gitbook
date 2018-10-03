@@ -46,17 +46,17 @@ Modules:
 
 Datasets to work on:
 
-- [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group1 of S18 session.
+- [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/sample.csv)
 
 Tips about scraping Openrice:
 
 - We can use the search function, and change the criteria in the advanced search mode. Here is the initial search page of Openrice. <https://www.openrice.com/zh/hongkong/restaurants>
 - Follow up last step, you will get a url that contains the results return from your searching. Check out the url parameters, you will find that they have encoded those parameters into a set of IDs. One can get all of their coding information by scraping those data with browser emulation(`selenium` etc.)
-- In each searching returns, Openrice has a limit of display 17 pages data. We can create a multiple layer loop scraper to enlarge the data volume.
+- In each searching returns, Openrice has a limit of displaying 17 pages data. We can create a multiple layer loop scraper to enlarge the data volume.
+
+In this chapter, we will not cover the specific scraping demo but basic usage of `pandas`. Interested students can refer to [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_urls-selenium.ipynb) for scraping process.
 
 -------
-
-**TODO: following notes are scribed by S18 student helper. Need further organisation**
 
 ## Preparation
 
@@ -80,26 +80,25 @@ conda install pandas
 
 > Example: Today, We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
 
-Here is the link of csv file which can be downloaded here.
-[https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas)
+Here is the link of csv file which can be downloaded [here](https://github.com/hupili/python-for-data-and-media-communication/tree/master/scraper-examples/open_rice).
 
-![](assets/to-do-uncategorized-screenshots/no10.png)
+![Pandas Csv Sample](assets/pandas-csv-sample.png)
 
 Click "raw" on the right upper corner.  
 
-![](assets/to-do-uncategorized-screenshots/no11.png)
+![Pandas Csv Raw](assets/pandas-csv-raw.png)
 
 You can see the raw csv file as below.
 
-![](assets/to-do-uncategorized-screenshots/no12.png)
+![Csv Raw Data](assets/csv-raw-data.png)
 
-Click right and choose "save as"  
+Right click(or `control`+click in Mac) and choose "save as"  
 
-![](assets/to-do-uncategorized-screenshots/no13.png)
+![Csv Save As](assets/csv-save-as.png)
 
-Then the csv file can be saved as csv\(comma-separated values\).  
+Then the csv file can be saved as csv(comma-separated values).  
 
-![](assets/to-do-uncategorized-screenshots/no14.png)
+![Csv Saved](assets/csv-saved.png)
 
 ## `pandas` introduction
 
@@ -175,22 +174,29 @@ Put csv file into the same folder with Jupyter notebook. You can type `!pwd` to 
 
 ```python
 import pandas
-pandas.read_csv('openrice.csv')
+pandas.read_csv('sample.csv')
 ```
 
 The output will be as below:
-![](assets/to-do-uncategorized-screenshots/no15.png)
+![Pandas Read Csv](assets/pandas-read-csv.png)
 
 If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
 
 ```python
-df = pandas.read_csv('openrice.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
+df = pandas.read_csv('sample.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
+# `df`is short for "dataframe", which is usually used as return value in pandas.
 ```
 
-then the output will be like this:  
-![](assets/to-do-uncategorized-screenshots/no16.png)
+**Quiz1** In this case, you can see that the headers ar wrong with the column location, price, country and likes. How to change the headers?
 
-**Notes:** `df`is short for "dataframe", which is used as return value in pandas.
+```python
+df.rename(columns={'location':'likes','price':'location','country':'price','style':'country','likes':'style'}, inplace=True)
+# change the wrong columns to the right ones
+```
+
+After change, the output will be as this:
+
+![Csv Header Change](assets/pandas-csv-header-change.png)
 
 ### Load table (DataFrame) from a URL
 
@@ -202,9 +208,10 @@ We can load CSV from GitHub directly with the help of `requests` and `io.StringI
 import pandas as pd
 import io
 import requests
-url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/pandas-examples/Group%201-Openrice/openrice.csv"
+url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/sample.csv"
 s=requests.get(url).content
 df=pd.read_csv(io.StringIO(s.decode('utf-8')))
+#df.rename(columns={'location':'likes','price':'location','country':'price','style':'country','likes':'style'}, inplace=True)
 ```
 
 ### Select data
@@ -216,7 +223,7 @@ df.head() #displaying first 5 rows by default, you can pass the number in () to 
 ```
 
 the output will be as blow:  
-![](assets/to-do-uncategorized-screenshots/no17.png)
+![Pandas Csv Read](assets/pandas-csv-head.png)
 
 There are several ways to select data. We only focus on the most used ones. `[]`, `.loc` and `.iloc`. Collectively, they are called the indexers.
 
@@ -228,10 +235,10 @@ There are several ways to select data. We only focus on the most used ones. `[]`
 df['location']
 ```
 
-Then the output will be as below \(the picture do not show all the locations due to the limited space\):  
-![](assets/to-do-uncategorized-screenshots/no18.png)
+Then the output will be as below:  
+![Pandas Select With []](assets/pandas-select-with-[].png)
 
-You can find that the data type of the results returned is changed.  Using `type(df['location'])` to check out what it is. If you want to keep the it with the `dataframe`, you can write the above code as this: `df[['location']]`.
+You can find that the data type of the results returned is changed. Using `type(df['location'])` to check out what it is. If you want to keep the it with the `dataframe`, you can write the above code as this: `df[['location']]`.
 
 To select multiple columns of the data, you can pass it a list of column names.
 
@@ -240,7 +247,8 @@ df[['name','location','likes']]
 ```
 
 The output will be like this:
-<!-- Todo: update data -->
+
+![Select Multiple Columns](assets/select-multiple-columns.png)
 
 #### Select data with .loc
 
@@ -278,13 +286,34 @@ Similarly, there is another function `.iloc`, which is purely integer-location b
 Using the `openrice.csv` as an example:
 
 ```python
-pandas.read_csv('openrice.csv')
+#read csv first, make sure the header is right
 df.iloc[5]
+```
+
+```text
+name             Day and Nite by Master Kama
+likes                                    462
+location                        旺角山東街50號1-2樓
+price                               $101-200
+country                                  日本菜
+style                                     海鮮
+review                              (595 食評)
+bookmark                               28151
+discount_info                  送 25里數 / 30積分
+Name: 5, dtype: object
+```
+
+```python
 df.iloc[[5,10,15]]
+```
+
+![Select Multiple Rows](assets/select-multiple-rows.png)
+
+```python
 df.iloc[10:20]
 ```
 
-<!-- Todo: update output -->
+![Select Slice List](assets/select-slice-list.png)
 
 ### Basic statistics
 
