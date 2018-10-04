@@ -38,6 +38,7 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 * [Resources](reading-materials.md)
 * [Guide for contributor](guide-for-contributor.md)
 * [GitHub](github.md)
+* [HTML](html.md)
 * [Other Frequently Asked Questions](frequently-asked-questions.md)
 
 ## Python Modules FAQs
