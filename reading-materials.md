@@ -5,6 +5,7 @@ Here is a curated list of reading materials to help one reinforce the knowledge 
 ## Class references
 
 - [Sample GitHub repo for homeworks](https://github.com/hupilidemo/hkbu-big-data-media)
+- [Application of data skills on media and communication problems](https://dnnsociety.org/tag/comm7780-jour7280/) -- contributed by spring 2017 students.
 
 ## Assistive tools
 
