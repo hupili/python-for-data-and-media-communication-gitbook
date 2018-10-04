@@ -216,7 +216,7 @@ Note: **If you download the csv, you should copy the csv file in the folder wher
 Output:
 
 ```text
-['\ufeffname', 'id', 'gender', 'location', 'phone']
+['name', 'id', 'gender', 'location', 'phone']
 ['Chico', '1742', 'M', 'KLN', '3344']
 ['Ri', '1743', 'F', 'LOS', '5168']
 ['Ivy', '1655', 'F', 'MK', '7323']

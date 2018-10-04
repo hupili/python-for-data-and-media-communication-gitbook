@@ -1,5 +1,21 @@
 # Encoding
 
+<!-- TOC -->
+
+- [Encoding](#encoding)
+    - [`u'\ufeff'`](#u\ufeff)
+    - [iconv](#iconv)
+    - [Encoding of Python script](#encoding-of-python-script)
+        - [Declare file encoding other than the default](#declare-file-encoding-other-than-the-default)
+
+<!-- /TOC -->
+
+## `u'\ufeff'`
+
+This is the Byte Order Mark in some encoding schemes. It is usually added by mistake or malformed software. You can remove this special character using `dos2unix filename.txt`. This command will modify the file in place.
+
+Read more [here](https://unix.stackexchange.com/questions/381230/how-can-i-remove-the-bom-from-a-utf-8-file)
+
 ## iconv
 
 `iconv` is a convenient command line tool to convert between two different file encodings. Suppose you have a `file.txt` which is GBK encoded and want to have UTF-8 version, you can use the following command.
