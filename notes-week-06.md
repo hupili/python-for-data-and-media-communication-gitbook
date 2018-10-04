@@ -9,12 +9,15 @@
         - [User agent](#user-agent)
             - [Bonus: Test HTTP requests](#bonus-test-http-requests)
         - [Rate throttling](#rate-throttling)
-        - [Quota limiting](#quota-limiting)
-        - [Network interruption](#network-interruption)
-        - [Firewall](#firewall)
+        - [Hide numeric incremental IDs](#hide-numeric-incremental-ids)
+        - [Bonus: Stateful page transition](#bonus-stateful-page-transition)
         - [Bonus: client authentication](#bonus-client-authentication)
     - [Common issues](#common-issues)
         - [Encoding](#encoding)
+        - [Network delay and jitter](#network-delay-and-jitter)
+        - [Network interruption](#network-interruption)
+        - [Firewall](#firewall)
+        - [Browser rendering delay](#browser-rendering-delay)
     - [Browser emulation](#browser-emulation)
         - [Why use Browser Emulation](#why-use-browser-emulation)
         - [Limitation](#limitation)
@@ -89,16 +92,25 @@ Example: Check the default user-agent of `requests`:
 
 ### Rate throttling
 
-* Limit by IP
-* Limit by cookie/ access token
+- Limit by IP
+- Limit by cookie/ access token
+- Limit by API quota per a unit time, usually implemented with a [leaky bucket algorithm](https://whatis.techtarget.com/definition/leaky-bucket-algorithm)
 
-### Quota limiting
+### Hide numeric incremental IDs
 
-<!-- TODO: Twitter API case? -->
+Scrapers usually return a list of objects. Sometimes the list can be enumerated given certain IDs. One common case is the use of `page=xxx` parameter in the URL. You can increment the page number and assemble valid URLs. Some carefully designed web service will try to hide this kind of incremental IDs, in order to prevent other's crawler accessing this information so easily. Nevertheless, you can analyse page structure in depth and find a way. The principle is that: as long as the user can see it, there is no way to ultimately hide it from a robot. The only thing website builder can do is to make the crawling less straightforward.
 
-### Network interruption
+### Bonus: Stateful page transition
 
-### Firewall
+Most early websites are designed in a _stateless_ manner. That is, the order how you visit those pages does not make a difference. For example, you can visit article 1 and jump to article 2. 
+
+On the contrary, some modern websites can be _stateful_. One common example is the requirement of login. You need to first visit the login page, before sending username/ password to the server. You need to have successfully sent the username/ password in order to access certain restricted resources.
+
+Imagine a social network for another _stateful_ example. As a regular user, you must first visit your own homepage to access friend list. Then you can access the profile page of a friend, after which you can visit a specific post.
+
+Websites can record the user activity log and enforce stateful transition. However, this design also consumes a lot of resources and is not commonly preferred. In some mission critcal sites, like banks, you may find stateful enforcement by certain token injected from the server side onto the current page.
+
+Again, nothing can be completely hidden if a regular user can access it. More efforts are needed.
 
 ### Bonus: client authentication
 
@@ -110,7 +122,28 @@ However, cracking the system is not the purpose. Our objective is to get data. I
 
 ### Encoding
 
-[51job.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/51job.com.ipynb)
+See [51job.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/51job.com.ipynb)
+
+### Network delay and jitter
+
+- Delay refers to the elapsed time used for the browser to receive the complete HTTP response since the first byte. Your code needs to consider potential delays especially under different network condition. Or the data you are trying to access may not be ready when your code tries to process. This is not a major problem when we use `requests` in last chapter, because `requests` is "blocking". That is, the whole HTTP response will be received before Python further executes the code. However, it may arise as a major problem in this chapter when we use browser emulator.
+- Jitter refers to the unstable/ unsteady delay. Sometimes the delay is large and some time it is small. You will find your usually working codes go wrong in some rare scenarios.
+
+To handle delay and jitter, the common strategy is to wait and test. You can use `time.sleep` to pause for some time before proceed. If there is a way to test the finishing condition, you had better test before move. For example, use `.find_element_by_xxx` to check if the intended element is already loaded. If not, wait further.
+
+### Network interruption
+
+Network can be interrupted in many ways, like sudden loss of wifi signal. When the network is interrupted, you may get partial data or corrupted data. Make sure to guard your parser codes with `try...except` block, handle the errors and print detailed log for further trouble shooting.
+
+### Firewall
+
+If you are behind firewalls, which is common in campus and enterprise networks, some automatic HTTP requests may be flagged and further stopped. There is no direct solution to this. When in doubt, try one alternative network (wifi, wired, 4G, ..) to see if things work.
+
+### Browser rendering delay
+
+When you use browser emulator, you also need to know that it takes time to render the whole page. You do not feel that because computer is very fast. Most of the loading and rendering could have happened in minisecond level. However, when you use automatic programs to browse and click, things become different. Your own program may be so fast that the dependent element/ data has not loaded when you try to access it.
+
+For example, `StaleElementReferenceException` and `IndexError` are quite common when using `selenium`. The error sometimes disappears when you execute the same script with the same parameter again. Or it is better to add some `time.sleep` between critical operations. For example, you want to wait the browser to load new content after triggering a click event on a button.
 
 ## Browser emulation
 
