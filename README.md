@@ -54,6 +54,8 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 * [Guide for contributor](guide-for-contributor.md)
 * [GitHub](github.md)
 * [HTML](html.md)
+* [Encoding](encoding.md)
+* [pip](pip.md)
 
 ### Python Modules FAQs
 
