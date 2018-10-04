@@ -20,6 +20,8 @@
             - [Count values of series](#count-values-of-series)
             - [Plot a simple charts/histogram with data](#plot-a-simple-chartshistogram-with-data)
         - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
+            - [apply a function](#apply-a-function)
+            - [lambda: anonymous function](#lambda-anonymous-function)
         - [Filtering](#filtering)
         - [Sorting](#sorting)
     - [Export from `pandas`](#export-from-pandas)
@@ -46,17 +48,17 @@ Modules:
 
 Datasets to work on:
 
-- [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas) contributed by group1 of S18 session.
+- [openrice.csv](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/sample.csv)
 
 Tips about scraping Openrice:
 
 - We can use the search function, and change the criteria in the advanced search mode. Here is the initial search page of Openrice. <https://www.openrice.com/zh/hongkong/restaurants>
 - Follow up last step, you will get a url that contains the results return from your searching. Check out the url parameters, you will find that they have encoded those parameters into a set of IDs. One can get all of their coding information by scraping those data with browser emulation(`selenium` etc.)
-- In each searching returns, Openrice has a limit of display 17 pages data. We can create a multiple layer loop scraper to enlarge the data volume.
+- In each searching returns, Openrice has a limit of displaying 17 pages data. We can create a multiple layer loop scraper to enlarge the data volume.
+
+In this chapter, we will not cover the specific scraping demo but basic usage of `pandas`. Interested students can refer to [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_urls-selenium.ipynb) for scraping process.
 
 -------
-
-**TODO: following notes are scribed by S18 student helper. Need further organisation**
 
 ## Preparation
 
@@ -80,26 +82,25 @@ conda install pandas
 
 > Example: Today, We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
 
-Here is the link of csv file which can be downloaded here.
-[https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas](https://github.com/hupili/python-for-data-and-media-communication/tree/master/w6-pandas)
+Here is the link of csv file which can be downloaded [here](https://github.com/hupili/python-for-data-and-media-communication/tree/master/scraper-examples/open_rice).
 
-![](assets/to-do-uncategorized-screenshots/no10.png)
+![Pandas Csv Sample](assets/pandas-csv-sample.png)
 
 Click "raw" on the right upper corner.  
 
-![](assets/to-do-uncategorized-screenshots/no11.png)
+![Pandas Csv Raw](assets/pandas-csv-raw.png)
 
 You can see the raw csv file as below.
 
-![](assets/to-do-uncategorized-screenshots/no12.png)
+![Csv Raw Data](assets/csv-raw-data.png)
 
-Click right and choose "save as"  
+Right click(or `control`+click in Mac) and choose "save as"  
 
-![](assets/to-do-uncategorized-screenshots/no13.png)
+![Csv Save As](assets/csv-save-as.png)
 
-Then the csv file can be saved as csv\(comma-separated values\).  
+Then the csv file can be saved as csv(comma-separated values).  
 
-![](assets/to-do-uncategorized-screenshots/no14.png)
+![Csv Saved](assets/csv-saved.png)
 
 ## `pandas` introduction
 
@@ -175,22 +176,29 @@ Put csv file into the same folder with Jupyter notebook. You can type `!pwd` to 
 
 ```python
 import pandas
-pandas.read_csv('openrice.csv')
+pandas.read_csv('sample.csv')
 ```
 
 The output will be as below:
-![](assets/to-do-uncategorized-screenshots/no15.png)
+![Pandas Read Csv](assets/pandas-read-csv.png)
 
 If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
 
 ```python
-df = pandas.read_csv('openrice.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
+df = pandas.read_csv('sample.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
+# `df`is short for "dataframe", which is usually used as return value in pandas.
 ```
 
-then the output will be like this:  
-![](assets/to-do-uncategorized-screenshots/no16.png)
+**Quiz1** In this case, you can see that the headers ar wrong with the column location, price, country and likes. How to change the headers?
 
-**Notes:** `df`is short for "dataframe", which is used as return value in pandas.
+```python
+df.rename(columns={'location':'likes','price':'location','country':'price','style':'country','likes':'style'}, inplace=True)
+# change the wrong columns to the right ones
+```
+
+After change, the output will be as this:
+
+![Csv Header Change](assets/pandas-csv-header-change.png)
 
 ### Load table (DataFrame) from a URL
 
@@ -202,9 +210,10 @@ We can load CSV from GitHub directly with the help of `requests` and `io.StringI
 import pandas as pd
 import io
 import requests
-url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/pandas-examples/Group%201-Openrice/openrice.csv"
+url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/sample.csv"
 s=requests.get(url).content
 df=pd.read_csv(io.StringIO(s.decode('utf-8')))
+#df.rename(columns={'location':'likes','price':'location','country':'price','style':'country','likes':'style'}, inplace=True)
 ```
 
 ### Select data
@@ -216,7 +225,7 @@ df.head() #displaying first 5 rows by default, you can pass the number in () to 
 ```
 
 the output will be as blow:  
-![](assets/to-do-uncategorized-screenshots/no17.png)
+![Pandas Csv Read](assets/pandas-csv-head.png)
 
 There are several ways to select data. We only focus on the most used ones. `[]`, `.loc` and `.iloc`. Collectively, they are called the indexers.
 
@@ -228,10 +237,10 @@ There are several ways to select data. We only focus on the most used ones. `[]`
 df['location']
 ```
 
-Then the output will be as below \(the picture do not show all the locations due to the limited space\):  
-![](assets/to-do-uncategorized-screenshots/no18.png)
+Then the output will be as below:  
+![Pandas Select With []](assets/pandas-select-with-[].png)
 
-You can find that the data type of the results returned is changed.  Using `type(df['location'])` to check out what it is. If you want to keep the it with the `dataframe`, you can write the above code as this: `df[['location']]`.
+You can find that the data type of the results returned is changed. Using `type(df['location'])` to check out what it is. If you want to keep the it with the `dataframe`, you can write the above code as this: `df[['location']]`.
 
 To select multiple columns of the data, you can pass it a list of column names.
 
@@ -240,7 +249,8 @@ df[['name','location','likes']]
 ```
 
 The output will be like this:
-<!-- Todo: update data -->
+
+![Select Multiple Columns](assets/select-multiple-columns.png)
 
 #### Select data with .loc
 
@@ -278,43 +288,64 @@ Similarly, there is another function `.iloc`, which is purely integer-location b
 Using the `openrice.csv` as an example:
 
 ```python
-pandas.read_csv('openrice.csv')
+#read csv first, make sure the header is right
 df.iloc[5]
+```
+
+```text
+name             Day and Nite by Master Kama
+likes                                    462
+location                        旺角山東街50號1-2樓
+price                               $101-200
+country                                  日本菜
+style                                     海鮮
+review                              (595 食評)
+bookmark                               28151
+discount_info                  送 25里數 / 30積分
+Name: 5, dtype: object
+```
+
+```python
 df.iloc[[5,10,15]]
+```
+
+![Select Multiple Rows](assets/select-multiple-rows.png)
+
+```python
 df.iloc[10:20]
 ```
 
-<!-- Todo: update output -->
+![Select Slice List](assets/select-slice-list.png)
 
 ### Basic statistics
 
 #### DataFrame.describe()
 
-Descriptive or summary statistics in python – pandas, can be obtained by using describe function. `describe()` function gives you a summary about the dataframe or certain series with the `mean`, `count`, `std` and `freq` values etc.
+Descriptive or summary statistics in python – pandas, can be obtained by using describe function. `describe()` function gives you a summary about the dataframe or certain series with the `mean`, `count`, `std` and `freq` values etc. Only the column with pure numbers can be described if you don't specify the column.
 
 Example:
 
 ```python
 df.describe()
-        likes
-count	250.000000
-mean	190.116000
-std	96.398304
-min	46.000000
-25%	121.500000
-50%	162.500000
-75%	226.000000
-max	558.000000
-
-df['style'].describe()
-count     250
-unique     20
-top        西式
-freq       49
-Name: style, dtype: object
+	likes	        bookmark
+count	244.000000	244.000000
+mean	249.094262	12596.356557
+std	112.075938	8567.647276
+min	66.000000	1430.000000
+25%	165.000000	6741.750000
+50%	215.500000	10755.500000
+75%	309.500000	15464.500000
+max	692.000000	52023.000000
 ```
 
-<!-- Todo: update output -->
+```python
+df['style'].describe()
+count     244
+unique     47
+top        火鍋
+freq       39
+Name: style, dtype: object
+```
 
 #### Count values of series
 
@@ -323,31 +354,44 @@ After we can select one column or row, we can do further calculation or analysis
 Example
 
 ```python
-df['location'].value_counts()
-尖沙咀    53
-旺角     44
-銅鑼灣    43
-觀塘     20
-中環     10
-灣仔     10
-太子      8
-荃灣      7
-西環      6
-元朗      6
-...
-df['type'].value_counts()
-海鮮                   43
-火鍋                   36
-甜品/糖水               19
-烤肉                   12
-壽司/刺身               11
-日式放題                9
-咖啡店                  9
-薄餅                    9
-自助餐                  9
+df['country'].value_counts()
 ```
 
-`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `尖沙咀` is the most popular places. We can do a filter that select all the restaurants in `尖沙咀` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
+```text
+西式         47
+日本菜        45
+意大利菜       26
+韓國菜        20
+粵菜 (廣東)    18
+港式         18
+多國菜        17
+泰國菜        10
+台灣菜        10
+西班牙菜       10
+...
+Name: country, dtype: int64
+```
+
+```python
+df['style'].value_counts()
+```
+
+```text
+火鍋                   39
+海鮮                   28
+甜品/糖水                24
+壽司/刺身                14
+日式放題                 11
+烤肉                   10
+自助餐                   9
+薄餅                    9
+咖啡店                   8
+All Day Breakfast     7
+...
+Name: style, dtype: int64
+```
+
+`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
 
 #### Plot a simple charts/histogram with data
 
@@ -360,7 +404,7 @@ df['likes'].hist()
 ```
 
 and you can get a distribution like below:  
-![](assets/to-do-uncategorized-screenshots/no23.png)
+![Openrice-Csv-Likes](assets/openrice-csv-likes.png)
 
 You can change shape of the charts by changing the bins(basically, one bin means one column)
 
@@ -368,51 +412,83 @@ You can change shape of the charts by changing the bins(basically, one bin means
 df['likes'].hist(bins=20)
 ```
 
-![](assets/to-do-uncategorized-screenshots/no24.png)
-
-<!-- Todo: update output -->
+![Openrice Csv Bins](assets/openrice-csv-bins.png)
 
 ### Data cleaning and pre-processing
 
-Clean the data and convert price range to numeric values
+#### apply a function
 
-<!-- TODO: master the `apply` and `lambda` pattern -->
+In the process of analyzing, we will encounter a lot of data cleaning issues, like the missing values, NoneType values or other type of values that have side effects, which need us to build different functions to handle them or convert them. For example, the price in the `openrice` is a range of number which cannot be compared directly. We need firstly clean the data and convert price range to numeric values.
 
-* After you get the distribution, you can do some analysis. Compare the distribution with mean, media numbers.
-  ![](assets/to-do-uncategorized-screenshots/no25.png)
-* If you need to compare price which is a interval.You need to pay special attention on numbers. Python recognize '$101-200'&lt;'$51-100' because Python only compare the  
-  numbers in sequence of each interval.
+If you need to compare price which is a interval.You need to pay special attention on numbers. Otherwise,Python recognize '$101-200' < '$51-100' because Python only compare the first number in sequence of each interval.
 
-  You need to convert each interval string into numbers, which means you need to choose a number to represent each interval to do comparison.  
-  Here, we use "mapping" function
+You need to convert each interval string into numbers, which means you need to choose a number to represent each interval to do comparison. Here, we use `mapping` function:
 
-  ```
-  mapping = {
-    '$101-200': 200,
-    '$201-400': 400,
-    '$51-100': 100,
-    '$401-800': 800,
-    '$50以下': 50
-  }
-  ```
+```python
+mapping = {
+  '$101-200': 200,
+  '$201-400': 400,
+  '$51-100': 100,
+  '$401-800': 800,
+  '$50以下': 25
+}
+```
 
-* Now, you can use:
+Now, build a function to handle those data.
 
-  ```
-    original_string = '$60以下'
-    mapping.get(orignal_string, 0)
-    def cleaning(e):
-    return mapping.get(e, 0)
-    cleaning('$50以下')
-  ```
+```python
+original_string = '$60以下'
+mapping.get(original_string, 0)
+# if those string is in the mapping dict, it will return the paired value, otherwise, it will return the value you set, in this case, is the second parameter 0.
+def cleaning(e):
+  return mapping.get(e, 0)
+cleaning('$50以下')
+```
 
-  ![](assets/to-do-uncategorized-screenshots/no26.png)
+![Pandas Apply Function](assets/pandas-apply-function.png)
 
-* Then you can use the code below to transfer intervals into numbers.
+Then we can use `apply` function to do cleaning for the whole column. Basically, `<data>.apply(<function_name>)` means that pass those data one by one to call the function, which is equal to a `for` loop processing data.
 
-  `df['price_num'].apply(cleaning)`
+```python
+df['price'].apply(cleaning) #clean the whole column
+```
 
-  ![](assets/to-do-uncategorized-screenshots/no27.png)
+![Pandas Apply Cleaning](assets/pandas-apply-cleaning.png)
+
+#### lambda: anonymous function
+
+lambda also called as anonymous function, which doesn't have a specific name, only need one line to declare function. The usual syntax is as follows:
+
+```python
+lambda arguments : expression
+```
+
+There can be multiple arguments, and expression is the results it returns.
+
+For example:
+
+```python
+c = lambda x,y : x**2 + 4*y
+c(4,2)
+#24
+```
+
+x,y are arguments, and after the`:` is the results. This is equal to:
+
+```python
+def f(x,y):
+    return x**2 + 4*y
+f(4,2)
+```
+
+The advantages of `lambda`:
+
+- Using lambda omit the process of defining functions, which make the code more light.
+- We can save time by using lambda without thinking about naming the function
+- The power of lambda is better shown when you use them as an anonymous function inside another function.
+
+For example:
+
 
 ### Filtering
 
