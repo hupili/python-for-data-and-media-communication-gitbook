@@ -1,4 +1,4 @@
-# Jupyter Module
+# Jupyter Notebook
 
 [Jupyter Notebook](http://jupyter.org/) is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. In our course, Jupyter notebook will be our daily tool to write, test, and sharing our codes and works. It's very useful for us to learn and make **reproducible works**. The good advantage of Jupyter notebook includes:
 
@@ -94,3 +94,9 @@ You can download this [requirement.txt](https://github.com/hupili/python-for-dat
 ```
 pip install -r requirements.txt
 ```
+
+## Windows
+
+### Instructions of Installing Jupyter Notebook on Windows
+
+please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/30).

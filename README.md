@@ -1,5 +1,18 @@
 # Python and Data Analysis for Communication Students
 
+<!-- TOC -->
+
+- [Python and Data Analysis for Communication Students](#python-and-data-analysis-for-communication-students)
+    - [Overview](#overview)
+    - [Weekly Notes](#weekly-notes)
+    - [FAQ Catalogue](#faq-catalogue)
+        - [General FAQs](#general-faqs)
+        - [Python Modules FAQs](#python-modules-faqs)
+        - [Other Uncategorized FAQs](#other-uncategorized-faqs)
+    - [License](#license)
+
+<!-- /TOC -->
+
 This is an open source text book for communication students to learn Python and data skills. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This open source book collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining.
 
 You can get started by reading [Week 00](notes-week-00.md) note. This note requires no background in programming or technology. It walks you through our learning environment so you know how to find learning materials and seek for help effectively. You are also welcome to contact the [Fall 2018 team](session-F2018.md) for any questions, suggestions or discussions. The best way to ask question is to [create an issue in this repo](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new). Our teaching team stands by and regularly checks the issue tracker.
@@ -26,7 +39,9 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 * [Notes: Week 10 - Handle special data type: text, graph, time series, geographical](notes-week-10.md)
 * [Notes: Week 11 - Machine learning primer: clustering, classification, regression](notes-week-11.md)
 
-## General FAQs
+## FAQ Catalogue
+
+### General FAQs
 
 * [Course Admin](course-admin.md)
 * [Setup Python Environment on Windows and MAC](setup-environment.md)
@@ -39,9 +54,8 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 * [Guide for contributor](guide-for-contributor.md)
 * [GitHub](github.md)
 * [HTML](html.md)
-* [Other Frequently Asked Questions](frequently-asked-questions.md)
 
-## Python Modules FAQs
+### Python Modules FAQs
 
 * [module: geopy](module-geopy.md)
 * [module: requests](module-requests.md)
@@ -55,6 +69,10 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 * [module: python-twitter](module-python-twitter.md)
 * [module: datetime](module-datetime.md)
 * [module: selenium](module-selenium.md)
+
+### Other Uncategorized FAQs
+
+* [Other Frequently Asked Questions](frequently-asked-questions.md)
 
 ------
 

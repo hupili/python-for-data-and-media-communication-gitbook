@@ -26,11 +26,21 @@ The Unix/ Linux world has a collection tools that nicely work together. However,
 * [https://pythonhosted.org/spyder/](https://pythonhosted.org/spyder/)   and  [https://conda.io/docs/user-guide/install/windows.html](https://conda.io/docs/user-guide/install/windows.html)  . Those are two integrated Python environments. It saves time installing dependencies.
 * Another shell like environment you can try on Windows: [https://github.com/bmatzelle/gow/wiki](https://github.com/bmatzelle/gow/wiki) . GOW is the rising star alternative to Cygwin 
 
+### Install Python3 on Windows and Set Environment
 
+This question is usually accompanied by another problem/error:
 
-## Other integrated environments
+```text
+不是内部或外部命令，也不是可运行的程序或批处理文件
+or
+‘python’ is not recognized as an internal or external command
+```
 
-* Anaconda: https://conda.io/docs/user-guide/install/download.html
-* Spyder: https://pythonhosted.org/spyder/installation.html
+Details please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/32).
 
+## Other integrated environments you can consider
 
+There exists some integrated environments that get you the full dependencies in one shot. You don't have to worry about the environment as a beginner. Those solutions are very easy to try so we do not repeat their own documentations here. Please find some choices as follows:
+
+- Anaconda: https://conda.io/docs/user-guide/install/download.html
+- Spyder: https://pythonhosted.org/spyder/installation.html

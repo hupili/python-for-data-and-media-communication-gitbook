@@ -1,5 +1,16 @@
 # GitHub
 
+<!-- TOC -->
+
+- [GitHub](#github)
+    - [Host open data sets on GitHub](#host-open-data-sets-on-github)
+    - [why we should preview Jupyter notebook on NBview? Are there any relationship with Github?](#why-we-should-preview-jupyter-notebook-on-nbview-are-there-any-relationship-with-github)
+    - [How to change default branch for GitHub pages?](#how-to-change-default-branch-for-github-pages)
+        - [gh-pages](#gh-pages)
+    - [What is index.html](#what-is-indexhtml)
+
+<!-- /TOC -->
+
 ## Host open data sets on GitHub
 
 Open datasets contains three parts:
@@ -23,3 +34,17 @@ The overall shape of an open dataset looks like this: (you are looking at the re
 See [homework2](https://github.com/hupilidemo/hkbu-big-data-media/tree/master/homework2) for a complete example.
 
 > Note: The "limitation" is an important section in your README file. For example, you may only be able to crawl 95% of the original dataset due to technical problems. Highlighting that in your description file is crucial for other people to base their analysis on your dataset. No dataset is ideal. Incomplete dataset is also valuable. The principle is **full reporting**. 
+
+## why we should preview Jupyter notebook on NBview? Are there any relationship with Github?
+
+One can directly preview a Python notebook on GitHub. However, GitHub prohibits Javascript execution for security reasons. If you have interactive chart, e.g. from `echart`, `plotly`, those will not render on GitHub. NBViewer supports javascript and it is the first free online tool to preview Python notebook, so we recommend it. For concrete examples of dynamic charts, @ChicoXYC can find one notebook from our project archive: https://github.com/data-projects-archive .
+
+## How to change default branch for GitHub pages?
+
+please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/23)
+
+### gh-pages
+
+## What is index.html
+
+Basically, index.html is the default file served by the web server. So it is equivalent to visit example.com and example.com/index.html. Naming your file as index.html can lead to this more concise notation in browser's address bar and in communication campaigns -- the naming in the world of web is usually the shorter the better. More explanations are [here](https://en.wikipedia.org/wiki/Webserver_directory_index) .

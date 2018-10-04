@@ -16,3 +16,14 @@ r = requests.get(url, headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Ma
 ```
 
 A more complete experiment can be found [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/w4-scraper/Open%20Rice.ipynb)
+
+## HTTP status code
+
+When you make a request to a website, there might be different status responded. Common examples here:
+
+- 200 OK
+- 400 Bad Request
+- 401 Unauthorized
+- 403 Forbidden
+
+For more examples, please refer to [here](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) .
