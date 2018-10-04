@@ -564,6 +564,7 @@ Here is a polluted dataset from original openrice scraped data. Please try to co
 
 The format:
 
+- Does this file use UTF-8 encoding? Checkout some common issues [about encoding](encoding.md). If not, are you able to convert it to the conventional UTF-8 encoding?
 - Does the input data table has valid column names? If not, how do you know the meaning of each column?
 - Does every row of the table have the same number of columns ("cells" more precisely)?
 - Is every element in a single column of the data type? Say all integers or all strings. Do you see a string mixed into to a column where you are supposed to see numbers?
