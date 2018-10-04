@@ -562,6 +562,15 @@ Here is a polluted dataset from original openrice scraped data. Please try to co
 
 ### Cleaning
 
+The format:
+
+- Does the input data table has valid column names? If not, how do you know the meaning of each column?
+- Does every row of the table have the same number of columns ("cells" more precisely)?
+- Is every element in a single column of the data type? Say all integers or all strings. Do you see a string mixed into to a column where you are supposed to see numbers?
+- How many missing values are in this table? Do missing values affect your analysis result? Do you want to fill the missing values (e.g. `DataFrame.fillna()`) somehow; Or do you want to remove the rows/ columns which contain missing values?
+
+The content:
+
 - Check the variable distribution. Is there any special value that only appears once or a few times? Will it be a typo?
 - Check the variable range. What is the common range of values in this variable? Is there any peculiar value?
 - Check the string length. Is there a super long cell? It may be because parsing error during scraping stage. Some data may mix up.
