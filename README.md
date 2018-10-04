@@ -41,6 +41,8 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 
 ## FAQ Catalogue
 
+You can search through our whole repo, including all the notes and FAQs using the built-in GitHub search function. For example, you can [search for "encoding"](https://github.com/hupili/python-for-data-and-media-communication-gitbook/search?q=encoding&unscoped_q=encoding).
+
 ### General FAQs
 
 * [Course Admin](course-admin.md)
