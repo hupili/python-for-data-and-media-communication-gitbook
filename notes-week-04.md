@@ -9,6 +9,7 @@
     - [Learn to use Jupyter Notebook](#learn-to-use-jupyter-notebook)
         - [Virtual environment](#virtual-environment)
         - [Setup virtualenv and install Jupyter Notebook](#setup-virtualenv-and-install-jupyter-notebook)
+        - [Setup jupyter environment in CVA517](#setup-jupyter-environment-in-cva517)
         - [Basic usage](#basic-usage)
     - [File operation](#file-operation)
         - [Write a file](#write-a-file)
@@ -87,7 +88,7 @@ There are two commands to setup virtualenv:
 
 ### Setup virtualenv and install Jupyter Notebook
 
-If it's the first time you use jupyter notebook, you need create a virtual environment first. Please follow the 4 steps to correctly use jupyter notebook.
+If it's the first time you use jupyter notebook, you need create a virtual environment first. The following are the usual path to setup jupyter environment. For users in CVA 517 LAB, please see [here](#setup-jupyter-environment-in-cva517).
 
 Step 1: Create virtual environment
 
@@ -113,6 +114,19 @@ Step 4: Enter Jupyter notebook
 jupyter notebook
 ```
 
+### Setup jupyter environment in CVA517
+
+Due to the jupyter and the python conflict, there are problems of installing jupyter by the usual way. Instead, the following will work. For more details explanation, please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/48).
+
+```bash
+pyvenv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip3 install jupyter
+pip3 install 'ipython ==6.5.0'
+pip3 install 'prompt-toolkit ==1.0.15'
+```
+
 Then, next time, you can just type the following command to open jupyter notebook
 
 ```bash
@@ -120,7 +134,7 @@ source venv/bin/activate
 jupyter notebook
 ```
 
-For details, Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook.
+For details, Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook. The following is what jupyter notebook will look like.
 
 ![jupyter notebook example](/assets/jupyter-notebook-example.png)
 

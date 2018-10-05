@@ -1,4 +1,24 @@
-# Jupyter Notebook
+# Jupyter
+
+<!-- TOC -->
+
+- [Jupyter](#jupyter)
+    - [Virtual environment](#virtual-environment)
+        - [Create virtual environment](#create-virtual-environment)
+        - [Enter virtual environment](#enter-virtual-environment)
+        - [Exit virtual environment](#exit-virtual-environment)
+    - [Jupyter Notebook](#jupyter-notebook)
+        - [Install Jupyter notebook](#install-jupyter-notebook)
+        - [Run Jupyter notebook](#run-jupyter-notebook)
+        - [Quit the Jupyter notebook](#quit-the-jupyter-notebook)
+        - [Set jupyter environment in CVA517](#set-jupyter-environment-in-cva517)
+    - [Basic usage](#basic-usage)
+    - [Runtime troubleshooting guide](#runtime-troubleshooting-guide)
+    - [Install frequently used dependencies](#install-frequently-used-dependencies)
+    - [Windows](#windows)
+        - [Instructions of Installing Jupyter Notebook on Windows](#instructions-of-installing-jupyter-notebook-on-windows)
+
+<!-- /TOC -->
 
 [Jupyter Notebook](http://jupyter.org/) is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. In our course, Jupyter notebook will be our daily tool to write, test, and sharing our codes and works. It's very useful for us to learn and make **reproducible works**. The good advantage of Jupyter notebook includes:
 
@@ -9,6 +29,8 @@
 It is suggested to enter virtual environment before using Jupyter notebook. Because in the following study, we may need to install some packages and modules in Jupyter notebook. It's necessary to keep those files in the same path, so Jupyter can source the modules when you want to use.
 
 ## Virtual environment
+
+The following are the usual path to setup jupyter environment. For users in CVA 517 LAB, please see [here](#set-jupyter-environment-in-cva517).
 
 ### Create virtual environment
 
@@ -22,7 +44,7 @@ pyvenv venv
 source venv/bin/activate
 ```
 
-When you see `(venv)` appear in front of your command line prompt, that means the you are in the virtual environment. Always check this prefix to make sure you are working in the right environment. 
+When you see `(venv)` appear in front of your command line prompt, that means the you are in the virtual environment. Always check this prefix to make sure you are working in the right environment.
 
 ### Exit virtual environment
 
@@ -65,7 +87,20 @@ $ control+C
 
 Pay attention to the text. Then you will get the following picture. Please input `y` in 5 seconds.
 
-![](assets/jupyter-quit-jupyter.png)
+![Jupyter Quit](assets/jupyter-quit-jupyter.png)
+
+### Set jupyter environment in CVA517
+
+Due to the jupyter and the python conflict, there are problems of installing jupyter by the usual way. Instead, the following will work. For more details explanation, please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/48).
+
+```bash
+pyvenv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip3 install jupyter
+pip3 install 'ipython ==6.5.0'
+pip3 install 'prompt-toolkit ==1.0.15'
+```
 
 ## Basic usage
 
@@ -91,7 +126,7 @@ You do not want to install and re-install dependencies every time. It is more co
 
 You can download this [requirement.txt](https://github.com/hupili/python-for-data-and-media-communication/blob/master/requirements.txt) and then run the following command (inside virtual environment)
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
@@ -100,3 +135,7 @@ pip install -r requirements.txt
 ### Instructions of Installing Jupyter Notebook on Windows
 
 please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/30).
+
+------
+
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
