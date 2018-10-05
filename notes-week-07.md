@@ -487,8 +487,16 @@ The advantages of `lambda`:
 - We can save time by using lambda without thinking about naming the function
 - The power of lambda is better shown when you use them as an anonymous function inside another function.
 
-For example:
+For example: Build a filter lambda function inside a function
 
+```python
+# Program to filter out only the even items from a list
+
+my_list = [1, 5, 4, 6, 8, 11, 3, 12,9,27,15,14,17]
+new_list = list(filter(lambda x: (x%3 == 0) , my_list))
+new_list
+# Output: [6, 3, 12, 9, 27, 15]
+```
 
 ### Filtering
 
