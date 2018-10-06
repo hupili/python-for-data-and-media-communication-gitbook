@@ -8,6 +8,7 @@
     - [How to change default branch for GitHub pages?](#how-to-change-default-branch-for-github-pages)
         - [gh-pages](#gh-pages)
     - [What is index.html](#what-is-indexhtml)
+    - [Any real world example of using GitHub issue tracker?](#any-real-world-example-of-using-github-issue-tracker)
 
 <!-- /TOC -->
 
@@ -48,3 +49,17 @@ please see [here](https://github.com/hupili/python-for-data-and-media-communicat
 ## What is index.html
 
 Basically, index.html is the default file served by the web server. So it is equivalent to visit example.com and example.com/index.html. Naming your file as index.html can lead to this more concise notation in browser's address bar and in communication campaigns -- the naming in the world of web is usually the shorter the better. More explanations are [here](https://en.wikipedia.org/wiki/Webserver_directory_index) .
+
+## Any real world example of using GitHub issue tracker?
+
+Use issue tracker as Q/A forum:
+
+- [Builder Book](https://github.com/builderbook/builderbook/issues)
+
+Use issue tracker as blog post backend:
+
+- [@fouber's blog](https://github.com/fouber/blog/issues), written in Chinese, from a senior frontend engineer.
+
+Use issue tracker as web comment store:
+
+- [gitalk](https://gitalk.github.io/). See the comment thread [here](https://github.com/gitalk/gitalk/issues/1)
