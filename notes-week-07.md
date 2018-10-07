@@ -185,7 +185,7 @@ The output will be as below:
 If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
 
 ```python
-df = pandas.read_csv('sample.csv', header=None, names=['name', 'location', 'price', 'style', 'type', 'likes'])
+df = pandas.read_csv('sample.csv', header=None, names=['name', 'location','price', 'style','country','type','likes','review','bookmark' 'discount_info'])
 # `df`is short for "dataframe", which is usually used as return value in pandas.
 ```
 
@@ -508,12 +508,27 @@ new_list
 - filter by strings
 - filter by more than two conditions -->
 
-* If you want to know how many restaurants having likes is 558, or less than 60, then you can use filter function:  
-  `df[df['likes'] == 558]`  
-  `df[df['likes'] < 60]`
+In the above example, we learned how to access to the columns, raws and multiple data in the dataframe. For further analysis, we need to do some filtering work to help us better finding the insights. For example, how to select the most expensive restaurants and the least likeable restaurants? Is there any correlation between likes and types?...
 
-  the output will be as below:  
-  ![](assets/to-do-uncategorized-screenshots/no22.png)
+For filtering, in pandas, we use the `df[ conditions ]` method. This is basically means, we first use `condition` to filter the data, and put it into data frame. For example, if you want to know how many restaurants having over 500 likes, and what are those restaurants.
+
+```python
+df['likes'] > 500 #this is a condition filtering restaurants that received more than 500 likes.
+```
+
+![Pandas Filtering](assets/pandas-filter-likes.png)
+
+The results returned is a series true or false, true means meeting the condition, while false is not.
+
+To get the information of those filtered restaurants, we use `df[]` outside of the `condition`.
+
+```python
+df[df['likes'] > 500]
+```
+
+![Pandas Filtering2](assets/pandas-filter-likes2.png)
+
+There are many ways to do filtering, the following are the common methods that are wildly used.
 
 * If you want to select location of Mongkok.
 
