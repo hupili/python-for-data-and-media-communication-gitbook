@@ -6,11 +6,11 @@ Python 2 and Python 3 are mostly the same during our discussions. However there 
 
 ### syntax of print
 
-> Python 2’s print statement has been replaced by the`print()`function, meaning that we have to wrap the object that we want to print in parantheses. Python 2 doesn’t have a problem with additional parantheses, but in contrast, Python 3 would raise a`SyntaxError`if we called the print function the Python 2-way without the parentheses. However, if we have multiple objects inside the parantheses, we will create a tuple, since`print`is a “statement” in Python 2, not a function call.
+> Python 2’s print statement has been replaced by the`print()`function, meaning that we have to wrap the object that we want to print in parentheses. Python 2 doesn’t have a problem with additional parentheses, but in contrast, Python 3 would raise a`SyntaxError`if we called the print function the Python 2-way without the parentheses. However, if we have multiple objects inside the parentheses, we will create a tuple, since`print`is a “statement” in Python 2, not a function call.
 
 ### str, bytes, encoding and decoding
 
-> Python 2 has ASCII`str()`types, separate`unicode()`, but no`byte`type. Now, in Python 3, we finally have Unicode \(utf-8\)`str`ings, and 2 byte classes:`byte`and`bytearray`s.
+> Python 2 has ASCII`str()`types, separate`unicode()`, but no`byte`type. Now, in Python 3, we finally have Unicode \(utf-8\)`str`, and 2 byte classes:`byte`and`bytearray`.
 
 Sometimes you need to convert between `bytes` and `str` (unicode string). You can use `bytes.decode()` or `str.encode()` for the conversion. Read more on the [official unicode support doc](https://docs.python.org/3.3/howto/unicode.html#python-s-unicode-support).
 

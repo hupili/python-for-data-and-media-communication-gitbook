@@ -18,7 +18,7 @@ Try `control+r` to conduct a search in command history.
 
 ### batch comment/ uncomment
 
-"command"+"/": make code selected become comment/uncomment
+`command+/` make code selected become comment/uncomment
 
 ### tab for auto completion
 
@@ -28,9 +28,9 @@ Try `control+r` to conduct a search in command history.
 
 This extension allows you to quickly run your code within VSCode by hitting `control+option+n`.
 
-![](/assets/Screen Shot 2018-02-12 at 10.59.38 AM.png)
+![VS Code Runner](assets/vs-code-runner.png)
 
-![](/assets/Screen Shot 2018-02-12 at 11.01.18 AM.png)
+![VS Code Runner2](assets/vs-code-runner2.png)
 
 This is equivalent by executing your code from the Terminal.
 
@@ -38,4 +38,10 @@ This is equivalent by executing your code from the Terminal.
 
 The `JSONView` extension can help to structure and highlight JSON. In this way, it is easier to read the JSON response from common APIs.
 
-![](/assets/Screen Shot 2018-02-21 at 9.22.17 PM.png)
+Before using JSONView:
+
+![Jsonview before](assets/jsonview-before.png)
+
+After using JSONView:
+
+![Jsonview after](assets/jsonview-after.png)

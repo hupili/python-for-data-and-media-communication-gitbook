@@ -61,8 +61,13 @@ After this chapter, I believe, we can apply what we learn to the most of `usual 
 
 ## Objective
 
-- Can use browser emulation to extract data from webpage
-- Understand common crawling issues and tricks to solve the problem
+- Bypass anti-crawler by modifying user-agent
+- Handle glitches: encoding, pagination, ...
+- Handle dynamic page with headless browser
+- Handle login with headless browser
+- Scrape social networks
+- Case studies on different websites
+- Further strengthen the list-of-dict data types; organise multi-layer loops/ item based parsing logics.
 
 ## Anti-crawling
 
