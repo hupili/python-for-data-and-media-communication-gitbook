@@ -5,6 +5,7 @@
 <!-- TOC -->
 
 - [Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty](#week-06---advanced-scraping-anti-crawler-browser-emulation-and-other-nitty-gritty)
+    - [Objective](#objective)
     - [Anti-crawling](#anti-crawling)
         - [User agent](#user-agent)
             - [Bonus: Test HTTP requests](#bonus-test-http-requests)
@@ -51,6 +52,17 @@
 <!-- /TOC -->
 
 </div>
+
+In this chapter, we will learn **advanced scraping**, which is scraping dynamic loading pages or some pages that need us interactively involved, the ones that we need emulate browsers to navigate and find elements.
+
+As you may have a clue due to its name, this chapter will be more demanding than previous chapters. We need spend more time to learn how to use those two complete new libraries - `selenium` and `splinter`. Which are similar but with a little bit difference. At the same time, we need learn more about `Frontend three`: HTML, JS, and CSS. And how to locate and find elements from them.
+
+After this chapter, I believe, we can apply what we learn to the most of `usual scraping cases`, most of websites, social media etc…Which will paves the way for further data analysis stage (interested students can talk to me or refer to chapter 7 for learning advanced).
+
+## Objective
+
+- Can use browser emulation to extract data from webpage
+- Understand common crawling issues and tricks to solve the problem
 
 ## Anti-crawling
 
