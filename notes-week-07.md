@@ -10,6 +10,8 @@
         - [Python environment](#python-environment)
         - [Download data file from a GitHub repo](#download-data-file-from-a-github-repo)
     - [`pandas` introduction](#pandas-introduction)
+        - [Pandas Series](#pandas-series)
+        - [Pandas Dataframe](#pandas-dataframe)
         - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
         - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
         - [Select data](#select-data)
@@ -20,7 +22,7 @@
             - [Count values of series](#count-values-of-series)
             - [Plot a simple charts/histogram with data](#plot-a-simple-chartshistogram-with-data)
         - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
-            - [apply a function](#apply-a-function)
+            - [Apply a function](#apply-a-function)
             - [lambda: anonymous function](#lambda-anonymous-function)
         - [Filtering](#filtering)
             - [Filter by numeric range](#filter-by-numeric-range)
@@ -76,10 +78,11 @@ In this chapter, we will not cover the specific scraping demo but basic usage of
 Please install libraries/dependencies in your virtual environment:
 
 ```python
-pip install pandas, seaborn, matplotlib, requests, csv
+pip install pandas, requests, csv
+# if you've already installed, just ignore
 ```
 
-If you are already in Jupyter notebook, you can prefix the command with `!` in order to execute execute those commands in a Jupyter notebook cell.
+If you install in Jupyter notebook, you can prefix the command with `!` in order to execute execute those commands in a Jupyter notebook cell.
 
 For conda users, you can install by following method:
 
@@ -89,7 +92,7 @@ conda install pandas
 
 ### Download data file from a GitHub repo
 
-> Example: Today, We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
+Example: We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
 
 Here is the link of csv file which can be downloaded [here](https://github.com/hupili/python-for-data-and-media-communication/tree/master/scraper-examples/open_rice).
 
@@ -117,9 +120,11 @@ Pandas is an open source library providing easy-to-use data structures and data 
 
 There are two basic data structures:
 
-1. Series. A series is a one-dimensional object that can hold any data type such as integers, floats and strings. Simply, series is like a single column of a DataFrame.
+### Pandas Series
 
-  Example:
+A series is a one-dimensional object that can hold any data type such as integers, floats and strings. Simply, series is like a single column of a DataFrame.
+
+  Example 2:
 
   ```python
   import pandas as pd
@@ -144,7 +149,11 @@ There are two basic data structures:
   dtype: int64
   ```
 
-2. Dataframe. A DataFrame is a two dimensional object that can have columns with different types,dictionaries, lists, series etc... Dataframe is the primary pandas data structure.
+### Pandas Dataframe
+
+A DataFrame is a two dimensional object that can have columns with different types,dictionaries, lists, series etc... Dataframe is the primary pandas data structure.
+
+Example 3:
 
   ```python
   avg_ocean_depth = pd.Series({
@@ -198,7 +207,7 @@ df = pandas.read_csv('sample.csv', header=None, names=['name', 'location','price
 # `df`is short for "dataframe", which is usually used as return value in pandas.
 ```
 
-**Quiz1** In this case, you can see that the headers ar wrong with the column location, price, country and likes. How to change the headers?
+**Quiz1** In this case, you can see that the headers ar wrong with the column location, price, country and likes. How to change the headers? - `rename` function.
 
 ```python
 df.rename(columns={'location':'likes','price':'location','country':'price','style':'country','likes':'style'}, inplace=True)
@@ -211,9 +220,9 @@ After change, the output will be as this:
 
 ### Load table (DataFrame) from a URL
 
-We can load CSV from GitHub directly with the help of `requests` and `io.StringIO`. `io` module is used for dealing with various types of I/O (input/output). Due to the requirement that `pandas.read_csv` function needs a `file-like object` as the argument, we need to use `io.StringIO` to write and store those string, returned from the request, temporarily. Then we can read the csv in pandas.
+We can also load CSV from GitHub directly with the help of `requests` and `io.StringIO`. `io` module is used for dealing with various types of I/O (input/output). Due to the requirement that `pandas.read_csv` function needs a `file-like object` as the argument, we need to use `io.StringIO` to write and store those string, returned from the request, temporarily. Then we can read the csv in pandas. Interested students can find more info about `io` module in [here](https://docs.python.org/3/library/io.html#text-i-o).
 
-**Note:** We should use `raw data` url from github page instead of others.
+**Note:** We should use `raw data` url from github page instead of preview url.
 
 ```python
 import pandas as pd
@@ -272,6 +281,9 @@ df = pd.DataFrame([[170, 60], [180, 82], [175, 70]],
       index=['Ri', 'Frank', 'Tyler'],
       columns=['height', 'weight'])
 df
+```
+
+```text
                 height  weight
 Ri                170      60
 Frank             180      82
@@ -280,13 +292,19 @@ Tyler             175      70
 
 ```python
 df.loc['Frank'] #select one row
+```
 
+```text
 height    180
 weight     82
 Name: Frank, dtype: int64
+```
 
+```python
 df.loc[['Frank', 'Tyler']]
+```
 
+```text
                 height  weight
 Frank              180      82
 Tyler              175      70
@@ -425,7 +443,7 @@ df['likes'].hist(bins=20)
 
 ### Data cleaning and pre-processing
 
-#### apply a function
+#### Apply a function
 
 In the process of analyzing, we will encounter a lot of data cleaning issues, like the missing values, NoneType values or other type of values that have side effects, which need us to build different functions to handle them or convert them. For example, the price in the `openrice` is a range of number which cannot be compared directly. We need firstly clean the data and convert price range to numeric values.
 
@@ -709,7 +727,7 @@ The content:
 
 - Convert text value to numeric value. e.g. convert price range text into a representative number that can be sorted.
 - Merge multiple categories. e.g. merge `港式` and `潮州菜` into `中式`. Sometimes, less categories help analysis. You may need some domain knowledge and trials and errors, in order to find good method of grouping.
-- Encoding, many times called "coding" in social science research, is the process of turning natural language data into numeric data. This is also a mantter of domain knowledge but you can try the method here. e.g. in order to study the relationship between price range and the income level of that district, we can encode 18 districts into three income class `high`, `medium` and `low`.
+- Encoding, many times called "coding" in social science research, is the process of turning natural language data into numeric data. This is also a matter of domain knowledge but you can try the method here. e.g. in order to study the relationship between price range and the income level of that district, we can encode 18 districts into three income class `high`, `medium` and `low`.
 
 ### Extraction
 
