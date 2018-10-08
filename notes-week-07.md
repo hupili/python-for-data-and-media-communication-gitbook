@@ -503,14 +503,6 @@ new_list
 
 ### Filtering
 
-<!-- TODO: the df[ condition ] pattern -->
-
-<!-- TODO:
-- filter by numeric range
-- filter by exact value
-- filter by strings
-- filter by more than two conditions -->
-
 In the above example, we learned how to access to the columns, raws and multiple data in the dataframe. For further analysis, we need to do some filtering work to help us better finding the insights. For example, how to select the most expensive restaurants and the least likeable restaurants? Is there any correlation between likes and types?...
 
 For filtering, in pandas, we use the `df[ conditions ]` method. This is basically means, we first use `condition` to filter the data, and put it into data frame. For example, if you want to know how many restaurants having over 500 likes, and what are those restaurants.
@@ -566,15 +558,14 @@ df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)
 
 ### Sorting
 
-* If you want to sort price from high to low.
+Sorting values by ascending and descending.
 
-  ```
-    df.sort_values(by='price_num', ascending=False)
-  ```
+```python
+df.sort_values(by='likes',ascending=False)
+```
 
-  the output will be  
-  ![](assets/to-do-uncategorized-screenshots/no30.png)
-
+The output will be:  
+![Pandas Sort Values](assets/pandas-sort-values.png)
 
 ## Export from `pandas`
 
