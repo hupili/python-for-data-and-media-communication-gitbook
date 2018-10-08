@@ -28,6 +28,9 @@
             - [Filter by more than two conditions](#filter-by-more-than-two-conditions)
         - [Sorting](#sorting)
     - [Export from `pandas`](#export-from-pandas)
+        - [to_csv](#to_csv)
+        - [to_dict](#to_dict)
+        - [to_json](#to_json)
         - [Bonus: Python and Javascript in action](#bonus-python-and-javascript-in-action)
     - [Dataprep](#dataprep)
         - [Cleaning](#cleaning)
@@ -580,7 +583,94 @@ The common export formats are:
 - `to_dict`
 - to JSON format
 
-<!-- TODO: workout the above export method -->
+### to_csv
+
+In pandas, dataframe to csv is very simple, just one line can work for this.
+
+```python
+df.to_csv('full_filename', encoding='utf-8', index=False)
+```
+
+You can pass other parameter if needed, for more information, you can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html) .
+
+### to_dict
+
+There are different output formats with `to_dict` method, which depends on what parameter you pass in. By default, it will return dict like {column -> {index -> value}}. List like method [{column -> value}, … , {column -> value}] is also wildly used. For example:
+
+```python
+df.to_dict()
+```
+
+Output:
+
+```text
+{'bookmark': {0: 50744,
+  1: 21136,
+  2: 27681,
+  ...
+  'country': {0: '西式',
+  1: '西式',
+  2: '韓國菜',
+  ...
+  'style': {0: '海鮮',
+  1: '酒',
+  2: '韓式炸雞',
+  ...}}
+```
+
+```python
+df.to_dict('records')
+```
+
+Output:
+
+```text
+[{'bookmark': 50744,
+  'country': '西式',
+  'discount_info': '網上訂座可享75折優惠',
+  'likes': 436.0,
+  'location': '尖沙咀金巴利道87-89號僑豐大厦地下1-2號舖',
+  'name': 'LAB EAT Restaurant & Bar',
+  'price': '$201-400',
+  'review': '(565 食評)',
+  'style': '海鮮'},
+  ...
+ {'bookmark': 21136,
+  'country': '西式',
+  'discount_info': '送 25里數 / 30積分',
+  'likes': 693.0,
+  'location': '尖沙咀北京道12A號太子集團中心6樓',
+  'name': 'Shine',
+  'price': '$201-400',
+  'review': '(777 食評)',
+  'style': '酒'}]
+```
+
+You can check out [here](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_dict.html) for more usage and methods.
+
+### to_json
+
+`to_json` method will convert the dataframe to a JSON string, and its like combination of above two methods. The difference is that json has a `orient` parameter, which determine the output format, whether `list like` or `dict like`. Besides, for a file path or object. If not specified, the result is returned as a string.
+
+```python
+df.to_json('full_file_name', orient='split',force_ascii=False) #then you can open the json file
+```
+
+```python
+df.to_json(orient='records',force_ascii=False) #you can change different orient method
+```
+
+Output:
+
+```text
+'[{"name":"LAB EAT Restaurant & Bar","location":"尖沙咀金巴利道87-89號僑豐大厦地下1-2號舖","price":"$201-400","country":"西式","style":"海鮮","likes":436.0,"review":"(565 食評)","bookmark":50744,"discount_info":"網上訂座可享75折優惠"},
+...
+{"name":"Shine","location":"尖沙咀北京道12A號太子集團中心6樓","price":"$201-400","country":"西式","style":"酒","likes":693.0,"review":"(777 食評)","bookmark":21136,"discount_info":"送 25里數 \\/ 30積分"}]'
+```
+
+You can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_json.html) for more usage and methods.
+
+After we get the json string, we also can use `json_dumps` and `json_loads` to convert between Python object and json file.
 
 ### Bonus: Python and Javascript in action
 
