@@ -23,6 +23,9 @@
             - [apply a function](#apply-a-function)
             - [lambda: anonymous function](#lambda-anonymous-function)
         - [Filtering](#filtering)
+            - [Filter by numeric range](#filter-by-numeric-range)
+            - [Filter by exact value](#filter-by-exact-value)
+            - [Filter by more than two conditions](#filter-by-more-than-two-conditions)
         - [Sorting](#sorting)
     - [Export from `pandas`](#export-from-pandas)
         - [Bonus: Python and Javascript in action](#bonus-python-and-javascript-in-action)
@@ -530,19 +533,36 @@ df[df['likes'] > 500]
 
 There are many ways to do filtering, the following are the common methods that are wildly used.
 
-* If you want to select location of Mongkok.
+#### Filter by numeric range
 
-  ```
-    df1[
-       df1['location'] == '旺角'
-      ]
-  ```
+If there is multiple conditions in filtering, we need to use `()` to include each condition. For example, filter the `bookmark` between 50000-60000.
 
-  the output will be:  
-  ![](assets/to-do-uncategorized-screenshots/no28.png)
+```python
+df[(df['bookmark'] < 60000) & (df['bookmark']>50000)]
+```
 
-* If you want to select the seafood restaurants with price number less than 100.  
-  ![](assets/to-do-uncategorized-screenshots/no29.png)
+![Pandas Filter Inrange](assets/pandas-filter-inrange.png)
+
+#### Filter by exact value
+
+You can filter the exact value by passing the specific numbers or strings. For example, we can select all Spanish restaurants.
+
+```python
+[df['country'] == '西班牙菜'] #use two == for comparison
+```
+
+the output will be:
+![Pandas Filter Value](assets/pandas-filter-value.png)
+
+#### Filter by more than two conditions
+
+As we discuss before, we can filter multiple conditions by using () to include each condition. For example, we can select some cost-effective restaurants for a friends gathering. Like, the `seafood restaurants` with price range in `$100-200` and likes `more than 300`.
+
+```python
+df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)]
+```
+
+![Pandas Filter Multiple](assets/pandas-filter-multiple.png)
 
 ### Sorting
 
