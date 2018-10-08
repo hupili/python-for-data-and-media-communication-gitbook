@@ -42,9 +42,12 @@
 
 </div>
 
+This week, we will step from data collecting process into analyzing process. We will learn a new module called pandas, with which, we can do tasks like data cleaning, pre-processing, filtering, and even simple visualizations.
+In this week, we will only cover some basic usage of pandas, advanced data analyzing and data manipulating will be touched in the following weeks, stay tuned.
+
 ## Objective
 
-- Master the schema of "data-driven story telling" : the crowd \(pattern\) and the outlier \(anomaly\)
+- Master the schema of data pre-processing: cleaning, transforming, extracting
 - Can efficiently manipulate structured table formatted datasets
 - Use `pandas` for basic calculation and plotting
 
