@@ -7,6 +7,7 @@
     - [Command not found](#command-not-found)
     - [Difference between Terminal and Shell](#difference-between-terminal-and-shell)
     - [Different shell commands in Win and Mac](#different-shell-commands-in-win-and-mac)
+    - [Verify your current working folder](#verify-your-current-working-folder)
 
 <!-- /TOC -->
 
@@ -27,3 +28,10 @@ Terminal is the (graphical) "window" you can see on your computer. It is the bri
 ## Different shell commands in Win and Mac
 
 please see [here](https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html)
+
+## Verify your current working folder
+
+Most of the path related errors are caused by wrong current working folder. One need to run the following two commands before starting other commands to verify the current working folder:
+
+- `pwd` -- prints the working directory. You can check the path name.
+- `ls` -- list directory. This shows the files in the current directory for your double check.
