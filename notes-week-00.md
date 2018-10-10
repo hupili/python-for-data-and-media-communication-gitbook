@@ -45,6 +45,9 @@
             - [The principle further explained](#the-principle-further-explained)
         - [Bonus: Collaboration on GitHub](#bonus-collaboration-on-github)
         - [The workflow Fork repo, modify code and send pull Request](#the-workflow-fork-repo-modify-code-and-send-pull-request)
+            - [Fork repo](#fork-repo)
+            - [Modify code](#modify-code)
+            - [Pull Request](#pull-request)
     - [A first journey into the open source world](#a-first-journey-into-the-open-source-world)
         - [Common licenses](#common-licenses)
         - [Ethics and Code of conduct](#ethics-and-code-of-conduct)
@@ -410,11 +413,33 @@ Checkout [this article](https://www.verisign.com/en_US/website-presence/online/h
 
 ### The workflow Fork repo, modify code and send pull Request
 
-> TODO
+#### Fork repo
+
+Simply speaking, `fork` means to get a `copy` of a repo to your own account so that you can have authority to modify the codes, change files.
+
+For example, one can fork a copy of our weekly notes [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook):
+
+![GitHub Repo Fork](assets/github-repo-fork.png)
+
+After you forked, visit to your profile, you can find there is an copy of the our openbook in your repos. You can also find the information of the upstream repository.
+
+![GitHub Repo Fork2](assets/github-repo-fork2.png)
+
+#### Modify code
+
+After you get the copy of one repo, you can clone to the local, and the following are all we've already learned, modify the codes by text editor or add your Jupyter notebooks, commit your changes, push it to the remote.
+
+#### Pull Request
+
+As we discussed, the forked repo is only a copy of the original, and in a collaborative projects, there might be many different forked repos, every part of the team modifies their codes and files separately. So how to merge those separate changes in to a complete one? `pull requests` is to solve the problem. After we pushed our changes to our repos. We can click pull request, give the summary of the request and commit. Basically, it tells the original repo owners that we want to merge our modified codes/files to the original repo. GitHub will automatically check whether your branch has conflicts with the original branch or not. If there is no conflict, the original owner can decide whether they accept your changes or not, if do, they will merge your changes into the original one. That's basically how we collaborate in GitHub.
+
+![Pull Requests](assets/github-pull-requests.png)
+
+![Pull Requests2](assets/github-pull-requests2.png)
 
 ## A first journey into the open source world
 
-GitHub adopts a "sharing first" principle in its community. Whatever content you create *publicly* on GitHub is available for other GitHub users to view and reuse *within GitHub's functionality*. Some respectful and caucious users may not feel comfortable to work on derivatives of your work in other channels. You can grant them such permissions via some common open source license.
+GitHub adopts a "sharing first" principle in its community. Whatever content you create *publicly* on GitHub is available for other GitHub users to view and reuse *within GitHub's functionality*. Some respectful and cautious users may not feel comfortable to work on derivatives of your work in other channels. You can grant them such permissions via some common open source license.
 
 ### Common licenses
 
@@ -429,7 +454,7 @@ The short take-away for
 
 Of course, the non granted rights are always negotiable with the authors who own the content. The spirit of open source is to cater to the greater good, while protect the authorship. There is a flow chart for you to decide what license you should choose.
 
-![](assets/to-do-uncategorized-screenshots/no115.png)
+![License Flow Chart](assets/license-flow-chart.png)
 
 ### Ethics and Code of conduct
 
@@ -465,7 +490,7 @@ Following up the previous challenge, you may want to suggest new entries into ou
 
 - Fork the current repo
 - Modify the forked version (under your own name). You can do this all with in browser. Just enter the editor from GitHub website.
-- After you save (commit) the works, you can send a Pull Reequest (PR) to the current repo. Someone from our team will review the changes and merge/ close the PR.
+- After you save (commit) the works, you can send a Pull Request (PR) to the current repo. Someone from our team will review the changes and merge/ close the PR.
 
 ## References and further reading
 
