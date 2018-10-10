@@ -437,6 +437,11 @@ As we discussed, the forked repo is only a copy of the original, and in a collab
 
 ![Pull Requests2](assets/github-pull-requests2.png)
 
+![Pull Requests3](assets/github-pull-requests3.png)
+
+The owner will decide whether accept your requests or not, if they merge the requests, the repo you want to merge will be updated.
+![Merge Requests](assets/github-merge-requests.png)
+
 ## A first journey into the open source world
 
 GitHub adopts a "sharing first" principle in its community. Whatever content you create *publicly* on GitHub is available for other GitHub users to view and reuse *within GitHub's functionality*. Some respectful and cautious users may not feel comfortable to work on derivatives of your work in other channels. You can grant them such permissions via some common open source license.
