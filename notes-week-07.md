@@ -15,12 +15,12 @@
         - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
         - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
         - [Select data](#select-data)
-            - [Select data with []](#select-data-with-)
-            - [Select data with .loc](#select-data-with-loc)
+            - [Select columns with []](#select-columns-with-)
+            - [Select rows with .loc and .iloc](#select-rows-with-loc-and-iloc)
         - [Basic statistics](#basic-statistics)
             - [DataFrame.describe()](#dataframedescribe)
             - [Count values of series](#count-values-of-series)
-            - [Plot a simple charts/histogram with data](#plot-a-simple-chartshistogram-with-data)
+            - [Plot a simple chart: histogram](#plot-a-simple-chart-histogram)
         - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
             - [Apply a function](#apply-a-function)
             - [lambda: anonymous function](#lambda-anonymous-function)
@@ -41,6 +41,7 @@
     - [References](#references)
 
 <!-- /TOC -->
+
 
 </div>
 
@@ -67,6 +68,8 @@ Tips about scraping Openrice:
 - Follow up last step, you will get a url that contains the results return from your searching. Check out the url parameters, you will find that they have encoded those parameters into a set of IDs. One can get all of their coding information by scraping those data with browser emulation(`selenium` etc.)
 - In each searching returns, Openrice has a limit of displaying 17 pages data. We can create a multiple layer loop scraper to enlarge the data volume.
 
+<!-- TODO: The tips can be move into the scraper notebook; the notebook itself is self explanary so we do not distract people's attention from the core content of this chapter -->
+
 In this chapter, we will not cover the specific scraping demo but basic usage of `pandas`. Interested students can refer to [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_urls-selenium.ipynb) for scraping process.
 
 -------
@@ -84,11 +87,13 @@ pip install pandas, requests, csv
 
 If you install in Jupyter notebook, you can prefix the command with `!` in order to execute execute those commands in a Jupyter notebook cell.
 
-For conda users, you can install by following method:
+<!-- For conda users, you can install by following method:
 
 ```python
 conda install pandas
-```
+``` -->
+
+<!-- TODO: We do not have to always accommodate conda users. Our suggested environment is the vanilla Python tools. This note can be moved into FAQ if someone asks. -->
 
 ### Download data file from a GitHub repo
 
@@ -114,6 +119,8 @@ Then the csv file can be saved as csv(comma-separated values).
 
 ![Csv Saved](assets/csv-saved.png)
 
+<!-- TODO: This can be moved into the GitHub FAQ. "How to download a file from GitHub web page". Here we only give a link to the data and link to this FAQ to keep the main focus. Actually, the how to download from GitHub page is a matter of computer literacy (using browser), not our programming/ data skill oriented class. We put in FAQ just in case someone asks. -->
+
 ## `pandas` introduction
 
 Pandas is an open source library providing easy-to-use data structures and data analysis tools for the Python programming language, enabling you to carry out your entire data analysis workflow in Python without having to switch to a more domain specific language like R. For easy and light weighed data analysis, pandas in our best choice.
@@ -123,6 +130,8 @@ There are two basic data structures:
 ### Pandas Series
 
 A series is a one-dimensional object that can hold any data type such as integers, floats and strings. Simply, series is like a single column of a DataFrame.
+
+<!-- TODO: check markdown formatitng. The two blanks before following blocks are not needed. Is there any particular reason for this format? -->
 
   Example 2:
 
@@ -148,6 +157,14 @@ A series is a one-dimensional object that can hold any data type such as integer
   d    8
   dtype: int64
   ```
+
+<!-- TODO: 
+   1. Show how to convert between list--series and dict--series; 
+   2. Try calling sort() and sum() on series to get quick stats;
+   3. Try to slice a Series as if you were using the list;
+   4. Try to reference to series element as if you were using a dict;
+   5. Try to appreciate the benefit brought by series -- by comparing it with list and dict;
+-->
 
 ### Pandas Dataframe
 
@@ -187,6 +204,8 @@ Example 3:
   Pacific             4080           10803
   Southern            3270            7075
   ```
+
+<!-- TODO: Use our own example. Important! -->
 
 ### Load table (DataFrame) from local csv file
 
@@ -247,7 +266,7 @@ the output will be as blow:
 
 There are several ways to select data. We only focus on the most used ones. `[]`, `.loc` and `.iloc`. Collectively, they are called the indexers.
 
-#### Select data with []
+#### Select columns with []
 
 `[]` method is mainly used for selecting single column and multiple columns. Basically, `[]` method treat the dataframe as a dict, using a key to refer to certain value. If you want to select one column of data, just simply put the name of the column in-between the brackets. For example, you want all the restaurant locations.You can type:
 
@@ -270,9 +289,11 @@ The output will be like this:
 
 ![Select Multiple Columns](assets/select-multiple-columns.png)
 
-#### Select data with .loc
+#### Select rows with .loc and .iloc
 
 The `.loc` indexer will return a single row/rows as a Series when given a single row `label`/`labels`, which is in index.
+
+<!-- TODO: the above writing is confusing. It returns DataFrame if multiple rows are selected. -->
 
 Example:
 
@@ -420,7 +441,7 @@ Name: style, dtype: int64
 
 `value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
 
-#### Plot a simple charts/histogram with data
+#### Plot a simple chart: histogram
 
 After we got the results from our analysis, the key point is to visualize them so that we can have a better understanding of the results and get insights from them. By using `.hist()` function, We can plot a simple histogram to show the distribution and trend.
 
@@ -578,11 +599,15 @@ As we discuss before, we can filter multiple conditions by using () to include e
 df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)]
 ```
 
+<!-- TODO: Do we have a section on operators like & | and ~ etc previously on Boolean logics? If not, please add that section. If so, please link from here to that section. We can make an analogy here. -->
+
 ![Pandas Filter Multiple](assets/pandas-filter-multiple.png)
 
 ### Sorting
 
 Sorting values by ascending and descending.
+
+<!-- TODO: wording improvement: "in ascending or descending order". Use standard English. -->
 
 ```python
 df.sort_values(by='likes',ascending=False)
