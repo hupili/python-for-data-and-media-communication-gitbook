@@ -4,7 +4,7 @@ Following are the **individual** assignments. You are welcome to discuss and wor
 
 ## Way to hand in assignments
 
-- Create an repo called `python-data-assignments`. (Pleas copy and paste to ensure the exact repo name; or we may not find your assignment)
+- Create a repo called `python-data-assignments`. (Please copy and paste to ensure the exact repo name, or we may not find your assignment)
 - Create one folder for each assignment, with names `assignment0`, `assignment1` and `assignment2`.
 - Put all the relevant files, including codes, docs and data (where applicable) into the per assignment folder. Refer to [notes-week-00.md](notes-week-00.md) for GitHub operations.
 
@@ -24,7 +24,7 @@ There are several news articles in the [assets/assignment0](assets/assignment0) 
 
 ### Bonus: Handle the stop words
 
-Your first result may containt a lot "stop words" -- the words that do not carry much meaning in our context. For example, "a" and "the" appear quite frequently in English but they do not give much information about the content. Having those high frequency words in our list is a distraction for further analysis. We can remove those stop words.
+Your first result may contain a lot "stop words" -- the words that do not carry much meaning in our context. For example, "a" and "the" appear quite frequently in English but they do not give much information about the content. Having those high-frequency words in our list is a distraction for further analysis. We can remove those stop words.
 
 Suppose you are given the stop words list:
 
@@ -33,7 +33,7 @@ Suppose you are given the stop words list:
 Here are the questions:
 
 1. Can you remove the stop words from above Terminal output, as well as the CSV file?
-2. Can you further enrish this `stop_words` list to make the output more meaningful?
+2. Can you further enrich this `stop_words` list to make the output more meaningful?
 
 ## Assignment 1 -- Data collection
 
