@@ -435,9 +435,11 @@ As we discussed, the forked repo is only a copy of the original, and in a collab
 
 ![Pull Requests](assets/github-pull-requests.png)
 
+![Pull Requests2](assets/github-pull-requests2.png)
+
 ## A first journey into the open source world
 
-GitHub adopts a "sharing first" principle in its community. Whatever content you create *publicly* on GitHub is available for other GitHub users to view and reuse *within GitHub's functionality*. Some respectful and caucious users may not feel comfortable to work on derivatives of your work in other channels. You can grant them such permissions via some common open source license.
+GitHub adopts a "sharing first" principle in its community. Whatever content you create *publicly* on GitHub is available for other GitHub users to view and reuse *within GitHub's functionality*. Some respectful and cautious users may not feel comfortable to work on derivatives of your work in other channels. You can grant them such permissions via some common open source license.
 
 ### Common licenses
 
@@ -452,7 +454,7 @@ The short take-away for
 
 Of course, the non granted rights are always negotiable with the authors who own the content. The spirit of open source is to cater to the greater good, while protect the authorship. There is a flow chart for you to decide what license you should choose.
 
-![](assets/to-do-uncategorized-screenshots/no115.png)
+![License Flow Chart](assets/license-flow-chart.png)
 
 ### Ethics and Code of conduct
 
@@ -488,7 +490,7 @@ Following up the previous challenge, you may want to suggest new entries into ou
 
 - Fork the current repo
 - Modify the forked version (under your own name). You can do this all with in browser. Just enter the editor from GitHub website.
-- After you save (commit) the works, you can send a Pull Reequest (PR) to the current repo. Someone from our team will review the changes and merge/ close the PR.
+- After you save (commit) the works, you can send a Pull Request (PR) to the current repo. Someone from our team will review the changes and merge/ close the PR.
 
 ## References and further reading
 
