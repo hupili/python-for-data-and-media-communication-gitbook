@@ -18,6 +18,7 @@
   - Wen XU, [@warrior960812](https://github.com/warrior960812)
   - Kaiwen XU, [@kaiwenxu94](https://github.com/kaiwenxu94)
   - Menghan ZHAI, [@Zmh951010](https://github.com/Zmh951010)
+  - Lan YAO, [@lullabymia](https://github.com/lullabymia)
 
 ## List of COMM7780 students
 
