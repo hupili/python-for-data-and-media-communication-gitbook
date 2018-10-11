@@ -17,10 +17,12 @@
             - [Common features of list](#common-features-of-list)
             - [List functions](#list-functions)
             - [List methods](#list-methods)
+            - [in operator on list](#in-operator-on-list)
         - [Dict {}](#dict-)
             - [Common features of dict](#common-features-of-dict)
             - [Dict functions](#dict-functions)
             - [Dict methods](#dict-methods)
+            - [in operator in dict](#in-operator-in-dict)
         - [Tuple ()](#tuple-)
         - [Bonus: Copy collection objects](#bonus-copy-collection-objects)
     - [Control flows](#control-flows)
@@ -37,7 +39,7 @@
         - [Integrated example: for and if](#integrated-example-for-and-if)
             - [Bonus: alternatives and more efficient calculation](#bonus-alternatives-and-more-efficient-calculation)
     - [Function](#function)
-        - [Funciton definition (def)](#funciton-definition-def)
+        - [Function definition (def)](#function-definition-def)
         - [Bonus: Scope of variables in function](#bonus-scope-of-variables-in-function)
     - [Bonus: Class and objects](#bonus-class-and-objects)
         - [Create a class, the init() function](#create-a-class-the-init-function)
@@ -354,6 +356,18 @@ vowels ascending :  ['a', 'e', 'i', 'o', 'u']
 vowels descending :  ['u', 'o', 'i', 'e', 'a']
 ```
 
+#### in operator on list
+
+`in` operator in list is useful for checking if there is a member in the list or a collection. For example:
+
+```python
+>>> my_list = ['chico', 419, 'Ri', 52, 0]
+>>> 'Ri' in my_list
+True
+>>> 55 in my_list
+False
+```
+
 ### Dict {}
 
 A dictionary is a collection which is disordered, changeable and indexed. In Python dictionaries are written with curly brackets`{}`, and they have keys and values, like `d = {key1 : value1, key2 : value2}`.
@@ -478,6 +492,18 @@ Value : dict_values(['Chico', '23'])
 >>> print('new_dict : %s' % dict1)
 new_dict : {'Name': 'Chico', 'Age': '23', 'Gender': 'Male'}
 ```
+
+#### in operator in dict
+
+Likewise, one can us `in` operator to check whether there is certain key in the dict. For example:
+
+```python
+>>> my_dict = {'Name': 'Chico', 'Gender': 'Male', 'Age': 23}
+>>> 23 in my_dict
+True
+```
+
+In dict, we can use `in` operator to do more, for example, we can build a dict to calculate the words frequency of an article(s), and store the value in the dict. You can refer to [this challenge](#simple-word-frequency) for further information.
 
 ### Tuple ()
 
@@ -612,11 +638,6 @@ Output:
 
 ### Repeat similar operations: loop
 
-<!-- Python has two primitive loop commands:  
-
-1. `while loops`
-2. `for loops` -->
-
 #### For loop
 
 For loop(For Statement) has the ability to iterate over the items of any sequence, such as a list or a string.
@@ -666,10 +687,8 @@ for i in range(1,11):
 Output:
 
 ```text
-'1,4,9,16,25,36,49,64,81,100'
+1,4,9,16,25,36,49,64,81,100
 ```
-
-<!-- TODO: check the above output -->
 
 ##### Use for loop to calculate
 
@@ -745,10 +764,6 @@ Output:
 2. For Loops allow you to run through the loop many times you'd like it to run through the problem such as `for i in range(0,100)`, this will continually increase i until that condition returns false(>100), you can replace 10 with other numbers and variables, like `for name in name_list`, means that you want to loop the whole name_list to run through the problem. And it will quit once the condition is no longer being met.
 
 3. Generally speaking, if you want to use loop to do conditional comparison, `while` loops is work for you, if you want to loop every elements of a whole list, `for` is better.
-
-
-
-
 
 ### Break and Continue statement
 
@@ -852,7 +867,7 @@ The basic idea is to "jump" somehow, instead of increasing the number of subscri
 
 ## Function
 
-### Funciton definition (def)
+### Function definition (def)
 
 A function is a block of code which only runs when it is called. You can call this function by passing parameters into a function. Then the function can return data as a result.
 
@@ -944,7 +959,7 @@ The result is:
 (outside) a= 1
 ```
 
-One can see that the "same" variable `a` has different value inside and outside a function. The operation inside a function does not affect the outer variable `a`. This is a matter of "scope". Every variable, function, or more generally "token"/ "symbol" in Python has its scope of effectiveness. The inner function definition of `a` masks the definition outside `a`. In order to make the operation inside one function able to operate the variables outside, one can use `global` and `nonlocal` keywords. Please see more details from [this blog post](https://www.datacamp.com/community/tutorials/scope-of-variables-python). However, using global variable is not recommended because it makes the program hard to maintain when the size becomes large. There are many ways to work around. In the above example, we can use simply pass `a` into the function via argument list and use return statement to return the changed value:
+One can see that the "same" variable `a` has different value inside and outside a function. The operation inside a function does not affect the outer variable `a`. This is a matter of "scope". Every variable, function, or more generally "token"/ "symbol" in Python has its scope of effectiveness. The inner function definition of `a` masks the definition outside `a`. In order to make the operation inside one function able to operate the variables outside, one can use `global` and `non-local` keywords. Please see more details from [this blog post](https://www.datacamp.com/community/tutorials/scope-of-variables-python). However, using global variable is not recommended because it makes the program hard to maintain when the size becomes large. There are many ways to work around. In the above example, we can use simply pass `a` into the function via argument list and use return statement to return the changed value:
 
 ```python
 a = 1
@@ -975,7 +990,7 @@ We change the simple assignment to addition to show the result of multiple execu
 
 ## Bonus: Class and objects
 
-Class is an abstraction that describes certain objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class. The process creating an object from a class is called "instantiation" and is usually invoked by the "construct function" of a class. In Python, this function is called `__init__()`. The higher level concept is called "[Object Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)", which appears in nearly all modern programming languages. Think of it as a way to model our real world. We will discuss OOP a bit later. This section is a quik peek into the basics -- `class` and `object`.
+Class is an abstraction that describes certain objects with the same properties and methods. It defines the properties and methods that are common to every object in the collection. An object is an instance of a class. The process creating an object from a class is called "instantiation" and is usually invoked by the "construct function" of a class. In Python, this function is called `__init__()`. The higher level concept is called "[Object Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)", which appears in nearly all modern programming languages. Think of it as a way to model our real world. We will discuss OOP a bit later. This section is a quick peek into the basics -- `class` and `object`.
 
 ### Create a class, the init() function
 
@@ -1140,7 +1155,7 @@ There are several common exception errors:
 * `ValueError`. Raised when a operation or function receives an argument that has the right type but an inappropriate value
 * `KeyboardInterrupt`. Raised when the user hits the interrupt key (normally Control-C or Delete)
 
-Note that "Exception" is in fact `class` in Python. Python has many built-in exceptions that are groupped in a hierachy known as inheritance/ derivation. The benefit is that, the outmost layer of codes can catch a broader exception while inner layer of codes can raise a narrower/ more specific exception at the same time. For the full list of built-in exceptions, please see the official documentation on [exceptions](https://docs.python.org/3/library/exceptions.html).
+Note that "Exception" is in fact `class` in Python. Python has many built-in exceptions that are grouped in a hierarchy known as inheritance/ derivation. The benefit is that, the outmost layer of codes can catch a broader exception while inner layer of codes can raise a narrower/ more specific exception at the same time. For the full list of built-in exceptions, please see the official documentation on [exceptions](https://docs.python.org/3/library/exceptions.html).
 
 ## Common coding patterns
 
@@ -1293,7 +1308,7 @@ while True:
 
 Consider a common problem in programming: given number of students as `n` and number of books as `m`, calculate how many books each student can get. The answer seems straightforward: `m / n`.
 
-However, there is a glitch: `n` can be `0` and the mathematical meanining of division is undefined in this case. We need to determine whether `n` is equal to `0` before the calculation. If so, we simply output a warning message like "can not divide books among 0 students". Here are two ways to implement this:
+However, there is a glitch: `n` can be `0` and the mathematical meaning of division is undefined in this case. We need to determine whether `n` is equal to `0` before the calculation. If so, we simply output a warning message like "can not divide books among 0 students". Here are two ways to implement this:
 
 if..else pattern:
 
@@ -1315,7 +1330,7 @@ except ZeroDivisionError:
     print("can not divide books among 0 students")
 ```
 
-Some advocates of `try..except` in Python community tend to abuse `try` in all places where `if` was used. The code is usually shorter with the help of `try..except` structure, especially when you are in a large project with many layers of function calls. The downside is that, it is difficult to find which `except` finally handles the error, because 1) `except` selects certain `Exception` it is interested in; 2) `except` can further `raise` the `Exception` if it can not handle it. In order to make the error handling explicit, you resort to the `if..else` pattern but tend to write longer ("verbose" in programming jargon) codes, especially when there are many layeres of function calls.
+Some advocates of `try..except` in Python community tend to abuse `try` in all places where `if` was used. The code is usually shorter with the help of `try..except` structure, especially when you are in a large project with many layers of function calls. The downside is that, it is difficult to find which `except` finally handles the error, because 1) `except` selects certain `Exception` it is interested in; 2) `except` can further `raise` the `Exception` if it can not handle it. In order to make the error handling explicit, you resort to the `if..else` pattern but tend to write longer ("verbose" in programming jargon) codes, especially when there are many layers of function calls.
 
 ### Multiple loop
 
@@ -1384,7 +1399,7 @@ for t in tasks:
 ...
 ```
 
-The size of `tasks` may be very large which takes days or months to run. Sometimes, you want to do some pilot testing before setting it at full scale. Or, you risk runing into errors after some heavy computation. In Python, we can use the list slicing syntax to cut down the task size and do not break the overall structure of the code. For example, if we want to test for the first 10 entries, we can:
+The size of `tasks` may be very large which takes days or months to run. Sometimes, you want to do some pilot testing before setting it at full scale. Or, you risk running into errors after some heavy computation. In Python, we can use the list slicing syntax to cut down the task size and do not break the overall structure of the code. For example, if we want to test for the first 10 entries, we can:
 
 ```python
 for t in tasks[:10]:
@@ -1583,9 +1598,9 @@ print(...)
 
 ### Simple word frequency
 
-Word frequency is a common routine used in text analysis. Given a piece of Enligh text, you can perform word frequency analysis in following steps:
+Word frequency is a common routine used in text analysis. Given a piece of English text, you can perform word frequency analysis in following steps:
 
-1. Use `str.split()` to get a `list` of blankspace separated words.
+1. Use `str.split()` to get a `list` of blank space separated words.
 2. Use a `dict()` in this structure: `{word: frequency}`, where key is the word and value is an integer.
 3. Loop over the `list` obtained in step 1 and use the accumulator in step 2 to count the frequencies.
 
@@ -1597,7 +1612,7 @@ In the end, the `dict` is our answer.
 
 #### Bonus: pretty print in ordered format
 
-The default print of `dict` has unreadable special chars like `{,},:`. Can you print the result in a ascii table like what we did in the mortgage schedule? Please rank the table from highest frequence to lowest frequency.
+The default print of `dict` has unreadable special chars like `{,},:`. Can you print the result in a ascii table like what we did in the mortgage schedule? Please rank the table from highest frequency to lowest frequency.
 
 #### Bonus: Use the Counter class
 
@@ -1651,7 +1666,7 @@ You can approach in following ways:
 
 1. Use regular string templating. The `str.format` function can be useful, especially its keyword argument/ dictionary form.
 
-2. Use `jinja2`. It provides a more expressive templating environment. You can even write branching and looping logics in its template. `jinja2` is commonly used in web development but is not limited to that. With the help of `jinja2`, we can separate the concern: 1) frontend developer, or say "meta repoter", focuses on the presentation and language, i.e. how to embed the variables into the right place of the template; 2) backend develoepr, or say data supplier, focuses on data ingestion and data analysis. The bridge of the two worlds is a spreadsheet.
+2. Use `jinja2`. It provides a more expressive templating environment. You can even write branching and looping logics in its template. `jinja2` is commonly used in web development but is not limited to that. With the help of `jinja2`, we can separate the concern: 1) frontend developer, or say "meta reporter", focuses on the presentation and language, i.e. how to embed the variables into the right place of the template; 2) backend developer, or say data supplier, focuses on data ingestion and data analysis. The bridge of the two worlds is a spreadsheet.
 
 ### Conversion between simplified Chinese and traditional Chinese
 
@@ -1672,11 +1687,11 @@ You can use a `dict` to maintain the mapping and use `for` loop to process every
 4. Use function to increase the reusability.
 5. Modules you need: [math](https://docs.python.org/3/library/math.html), you may need to use trigonometric functions.
 
-**NOTE:** Our objective of the whole course is to get you onboard a new tool -- Python. You should use the tool but not be constrained by this tool. When you get stuck with a challenge, try to use your way, combining non-Python methods, to solve it and then interate for better solution. For example, one key question for this exercise is to get the geolocations of the cities in terms of longitudes and latitudes. Only with those coordinates, you can fit them into the great-circle distance formula. You can do this by searching Google, Google Map or Widipedia as a start. After you have a basic version, try to think of automatic ways, in case there are a large number of interested cities in our real challenge, which makes the manual searching method infeasible.
+**NOTE:** Our objective of the whole course is to get you onboard a new tool -- Python. You should use the tool but not be constrained by this tool. When you get stuck with a challenge, try to use your way, combining non-Python methods, to solve it and then iterate for better solution. For example, one key question for this exercise is to get the geo-locations of the cities in terms of longitudes and latitudes. Only with those coordinates, you can fit them into the great-circle distance formula. You can do this by searching Google, Google Map or Wikipedia as a start. After you have a basic version, try to think of automatic ways, in case there are a large number of interested cities in our real challenge, which makes the manual searching method infeasible.
 
 #### Extended exercise of geo distance
 
-There is a package called `geopy`. It can automatically search the geo-locations in terms of longitude and latitude based on the location names. Further more, it can directly compute the distance between two geolocations, without requiring to write the formula all by one's own.
+There is a package called `geopy`. It can automatically search the geo-locations in terms of longitude and latitude based on the location names. Further more, it can directly compute the distance between two geo-locations, without requiring to write the formula all by one's own.
 
 ## References
 
