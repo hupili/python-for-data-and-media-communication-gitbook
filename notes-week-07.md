@@ -170,42 +170,35 @@ A series is a one-dimensional object that can hold any data type such as integer
 
 A DataFrame is a two dimensional object that can have columns with different types,dictionaries, lists, series etc... Dataframe is the primary pandas data structure.
 
-Example 3:
+Example 3: [2017 Hong Kong population](https://www.censtatd.gov.hk/hkstat/sub/sp150_tc.jsp?productCode=D5320189). There are several series, one can merge them to a dataframe.
 
-  ```python
-  avg_ocean_depth = pd.Series({
-                    'Arctic': 1205,
-                    'Atlantic': 3646,
-                    'Indian': 3741,
-                    'Pacific': 4080,
-                    'Southern': 3270
-  })
-  max_ocean_depth = pd.Series({
-                      'Arctic': 5567,
-                      'Atlantic': 8486,
-                      'Indian': 7906,
-                      'Pacific': 10803,
-                      'Southern': 7075
-  })
-  ocean_depths = pd.DataFrame({
-                      'Avg. Depth (m)': avg_ocean_depth,
-                      'Max. Depth (m)': max_ocean_depth
-  })
-  ocean_depths
-  ```
+```python
+land_area = pd.Series({
+                'Hong Kong Island': 79.92,
+                'Kowloon': 46.94,
+                'New Territories and Islands':954.69
+})
+mid_year_population = pd.Series({
+                'Hong Kong Island': 1248.5,
+                'Kowloon': 2256.1,
+                'New Territories and Islands':3886
+})
+population_density = pd.Series({
+                'Hong Kong Island': 15620,
+                'Kowloon': 48060,
+                'New Territories and Islands': 4070,
+})
+hongkong_population_distribution = pd.DataFrame({
+                    'Land Area (sq. km)': land_area,
+                    'Mid- year Population (\'000)': mid_year_population,
+                    'Population Density (Persons per sq. km)': population_density
+})
+hongkong_population_distribution
+```
 
-  Output:
+Output:
 
-  ```text
-            Avg. Depth (m)  Max. Depth (m)
-  Arctic              1205            5567
-  Atlantic            3646            8486
-  Indian              3741            7906
-  Pacific             4080           10803
-  Southern            3270            7075
-  ```
-
-<!-- TODO: Use our own example. Important! -->
+![Series to Df](assets/pandas-series-to-df.png)
 
 ### Load table (DataFrame) from local csv file
 
