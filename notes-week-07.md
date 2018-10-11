@@ -8,7 +8,6 @@
     - [Objective](#objective)
     - [Preparation](#preparation)
         - [Python environment](#python-environment)
-        - [Download data file from a GitHub repo](#download-data-file-from-a-github-repo)
     - [`pandas` introduction](#pandas-introduction)
         - [Pandas Series](#pandas-series)
         - [Pandas Dataframe](#pandas-dataframe)
@@ -79,40 +78,6 @@ pip install pandas, requests, csv
 
 If you install in Jupyter notebook, you can prefix the command with `!` in order to execute execute those commands in a Jupyter notebook cell.
 
-<!-- For conda users, you can install by following method:
-
-```python
-conda install pandas
-``` -->
-
-<!-- TODO: We do not have to always accommodate conda users. Our suggested environment is the vanilla Python tools. This note can be moved into FAQ if someone asks. -->
-
-### Download data file from a GitHub repo
-
-Example: We will use the data from Openrice as an example and do the restaurant analysis. Assuming that we have already got certain amount of data from Openrice and saved it into csv file.
-
-Here is the link of csv file which can be downloaded [here](https://github.com/hupili/python-for-data-and-media-communication/tree/master/scraper-examples/open_rice).
-
-![Pandas Csv Sample](assets/pandas-csv-sample.png)
-
-Click "raw" on the right upper corner.  
-
-![Pandas Csv Raw](assets/pandas-csv-raw.png)
-
-You can see the raw csv file as below.
-
-![Csv Raw Data](assets/csv-raw-data.png)
-
-Right click(or `control`+click in Mac) and choose "save as"  
-
-![Csv Save As](assets/csv-save-as.png)
-
-Then the csv file can be saved as csv(comma-separated values).  
-
-![Csv Saved](assets/csv-saved.png)
-
-<!-- TODO: This can be moved into the GitHub FAQ. "How to download a file from GitHub web page". Here we only give a link to the data and link to this FAQ to keep the main focus. Actually, the how to download from GitHub page is a matter of computer literacy (using browser), not our programming/ data skill oriented class. We put in FAQ just in case someone asks. -->
-
 ## `pandas` introduction
 
 Pandas is an open source library providing easy-to-use data structures and data analysis tools for the Python programming language, enabling you to carry out your entire data analysis workflow in Python without having to switch to a more domain specific language like R. For easy and light weighed data analysis, pandas in our best choice.
@@ -123,34 +88,32 @@ There are two basic data structures:
 
 A series is a one-dimensional object that can hold any data type such as integers, floats and strings. Simply, series is like a single column of a DataFrame.
 
-<!-- TODO: check markdown formatitng. The two blanks before following blocks are not needed. Is there any particular reason for this format? -->
+Example 1:
 
-  Example 2:
+```python
+import pandas as pd
+x = pd.Series([1,0,2,8])
+x
+0    1
+1    0
+2    2
+3    8
+dtype: int64
+```
 
-  ```python
-  import pandas as pd
-  x = pd.Series([1,0,2,8])
-  x
-  0    1
-  1    0
-  2    2
-  3    8
-  dtype: int64
-  ```
+The first axis is referred to as the index. Also, we can define indexes for the data by our own way.
 
-  The first axis is referred to as the index. Also, we can define indexes for the data by our own way.
+```python
+x = pd.Series([1,0,2,8], index=['a', 'b', 'c', 'd'])
+x
+a    1
+b    0
+c    2
+d    8
+dtype: int64
+```
 
-  ```python
-  x = pd.Series([1,0,2,8], index=['a', 'b', 'c', 'd'])
-  x
-  a    1
-  b    0
-  c    2
-  d    8
-  dtype: int64
-  ```
-
-<!-- TODO: 
+<!-- TODO:
    1. Show how to convert between list--series and dict--series; 
    2. Try calling sort() and sum() on series to get quick stats;
    3. Try to slice a Series as if you were using the list;
@@ -181,9 +144,9 @@ population_density = pd.Series({
                 'New Territories and Islands': 4070,
 })
 hongkong_population_distribution = pd.DataFrame({
-                    'Land Area (sq. km)': land_area,
-                    'Mid- year Population (\'000)': mid_year_population,
-                    'Population Density (Persons per sq. km)': population_density
+                'Land Area (sq. km)': land_area,
+                'Mid- year Population (\'000)': mid_year_population,
+                'Population Density (Persons per sq. km)': population_density
 })
 hongkong_population_distribution
 ```
@@ -276,16 +239,14 @@ The output will be like this:
 
 #### Select rows with .loc and .iloc
 
-The `.loc` indexer will return a single row/rows as a Series when given a single row `label`/`labels`, which is in index.
-
-<!-- TODO: the above writing is confusing. It returns DataFrame if multiple rows are selected. -->
+The `.loc` indexer will return a single row as a Series when given a single row `label`, and return DataFrame if multiple rows are selected.
 
 Example:
 
 ```python
 df = pd.DataFrame([[170, 60], [180, 82], [175, 70]],
-      index=['Ri', 'Frank', 'Tyler'],
-      columns=['height', 'weight'])
+    index=['Ri', 'Frank', 'Tyler'],
+    columns=['height', 'weight'])
 df
 ```
 
@@ -474,7 +435,7 @@ original_string = '$60以下'
 mapping.get(original_string, 0)
 # if those string is in the mapping dict, it will return the paired value, otherwise, it will return the value you set, in this case, is the second parameter 0.
 def cleaning(e):
-  return mapping.get(e, 0)
+    return mapping.get(e, 0)
 cleaning('$50以下')
 ```
 
@@ -584,15 +545,13 @@ As we discuss before, we can filter multiple conditions by using () to include e
 df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)]
 ```
 
-<!-- TODO: Do we have a section on operators like & | and ~ etc previously on Boolean logics? If not, please add that section. If so, please link from here to that section. We can make an analogy here. -->
-
 ![Pandas Filter Multiple](assets/pandas-filter-multiple.png)
+
+For how to manipulate multiple conditions, You may need to review the bool comparison logic in the Chapter 3 - [logic operators](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/78e8f08afdd84855295287ba19e360352fca373a/notes-week-03.md#logic-operators)
 
 ### Sorting
 
-Sorting values by ascending and descending.
-
-<!-- TODO: wording improvement: "in ascending or descending order". Use standard English. -->
+Sorting values in ascending or descending order.
 
 ```python
 df.sort_values(by='likes',ascending=False)
