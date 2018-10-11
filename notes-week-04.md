@@ -37,8 +37,9 @@
     - [Bonus: Your first automatic writing robot on Twitter](#bonus-your-first-automatic-writing-robot-on-twitter)
     - [Exercises and Challenges](#exercises-and-challenges)
         - [Douban API](#douban-api)
-        - [Google Map API](#google-map-api)
+        - [Yahoo Finance API](#yahoo-finance-api)
         - [GitHub API](#github-api)
+        - [Google Map API](#google-map-api)
         - [Bonus: Real Estate property in Hong Kong (via government open data portal API)](#bonus-real-estate-property-in-hong-kong-via-government-open-data-portal-api)
         - [Bonus: Blockchain - chain data and exchange data](#bonus-blockchain---chain-data-and-exchange-data)
         - [Bonus: Automatic earthquake writer](#bonus-automatic-earthquake-writer)
@@ -759,11 +760,9 @@ Try to store the recent movie data into a CSV for future analysis. One example h
 title,director,year,cast,description,region
 ```
 
-### Google Map API
+### Yahoo Finance API
 
-Retrieve a JSON response from Google Map API. Here is an example: [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university).
-
-Once you know how to use `requests` and `json` to get the interested coordinates data, you can revisit the [city distance challenge](notes-week-03.md#distances-among-cities) from last chapter. Then you have a fully automated solution.
+Yahoo Finance provides rich set of stocks API. You can get company information and quote information from the API. The API is originally designed for their internal use. People have done a lot of analysis on it and reverse engineered the parameters so you can easily play around it. Find some example use from [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/api-examples/Yahoo%20Finance%20API.ipynb).
 
 ### GitHub API
 
@@ -774,6 +773,12 @@ https://api.github.com/repos/{username}/{reponame}/stargazers
 ```
 
 For example, click [here](https://api.github.com/repos/hupili/python-for-data-and-media-communication-gitbook/stargazers) to see the API response that includes all users who have starred our open book repo.
+
+### Google Map API
+
+Retrieve a JSON response from Google Map API. Here is an example: [Get the location of HKBU](https://maps.googleapis.com/maps/api/geocode/json?address=hong%20kong%20baptist%20university).
+
+Once you know how to use `requests` and `json` to get the interested coordinates data, you can revisit the [city distance challenge](notes-week-03.md#distances-among-cities) from last chapter. Then you have a fully automated solution.
 
 ### Bonus: Real Estate property in Hong Kong (via government open data portal API)
 
