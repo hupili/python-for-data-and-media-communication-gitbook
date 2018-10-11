@@ -440,7 +440,10 @@ As we discussed, the forked repo is only a copy of the original, and in a collab
 ![Pull Requests3](assets/github-pull-requests3.png)
 
 The owner will decide whether accept your requests or not, if they merge the requests, the repo you want to merge will be updated.
+
 ![Merge Requests](assets/github-merge-requests.png)
+
+**NOTE**: The Pull Request is not an one-off effort. If your modification is sub optimal, the maintainer of the project may request further revisions. The discussion thread of a PR is used for this purpose. GitHub's PR system is very expressive. You can also comment on a specific line of a specific version (commit) if you want. When there is new version, the initiator does not have to create a new PR. As soon as the initiator pushes new commits to the original source branch, the updates will appear in the PR thread. See this workflow in action from [this example](https://github.com/hupili/python-for-data-and-media-communication/pull/11).
 
 ## A first journey into the open source world
 
