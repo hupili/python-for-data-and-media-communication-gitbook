@@ -39,6 +39,8 @@
         - [Douban API](#douban-api)
         - [Yahoo Finance API](#yahoo-finance-api)
         - [GitHub API](#github-api)
+        - [Twitter API](#twitter-api)
+        - [Wechat API](#wechat-api)
         - [Google Map API](#google-map-api)
         - [Bonus: Real Estate property in Hong Kong (via government open data portal API)](#bonus-real-estate-property-in-hong-kong-via-government-open-data-portal-api)
         - [Bonus: Blockchain - chain data and exchange data](#bonus-blockchain---chain-data-and-exchange-data)
@@ -760,6 +762,10 @@ Try to store the recent movie data into a CSV for future analysis. One example h
 title,director,year,cast,description,region
 ```
 
+Reference use cases:
+
+- [Hu Zizhe, COMM7780, S2018](https://github.com/hupili/python-for-data-and-media-communication/blob/b69f4a4d12dab58920a871e3e2aadf1a7f04d5ac/api-examples/week5_douban_huzizhe.py)
+
 ### Yahoo Finance API
 
 Yahoo Finance provides rich set of stocks API. You can get company information and quote information from the API. The API is originally designed for their internal use. People have done a lot of analysis on it and reverse engineered the parameters so you can easily play around it. Find some example use from [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/api-examples/Yahoo%20Finance%20API.ipynb).
@@ -773,6 +779,22 @@ https://api.github.com/repos/{username}/{reponame}/stargazers
 ```
 
 For example, click [here](https://api.github.com/repos/hupili/python-for-data-and-media-communication-gitbook/stargazers) to see the API response that includes all users who have starred our open book repo.
+
+### Twitter API
+
+Twitter provides official API to access its data and allows one to programmably post status updates on the platform. We have introduced the API and a Python package in previous sections. You can search for a certain keywords and get related tweets using this API.
+
+Reference use cases:
+
+- [XU Yucan, COMM7780, S2018](https://github.com/hupili/python-for-data-and-media-communication/blob/b69f4a4d12dab58920a871e3e2aadf1a7f04d5ac/api-examples/week5_taiwancomments_xuyucan.py)
+
+### Wechat API
+
+Wechat does not provide public API but its own web App has an internal HTTP API. People have done good analysis on it and built very convenient packages to retrieve data and post messages. [wechat-egonet](https://github.com/hupili/wechat-egonet) is a script based on the library called `itchat`. You can use it to get your friend list and chatrooms information.
+
+Reference use cases:
+
+- **pwords**, 2018, _个人微信群组关系网络图 (ego-network)_ [Link](https://mp.weixin.qq.com/s/DgAXmcR2kn3q2xjsEiwpJg)
 
 ### Google Map API
 
@@ -796,6 +818,10 @@ Lookup real estate properties on HK gov open data portal, e.g. the [dataset page
   * Get real-time data of earthquakes in `America` from USGS API
   * Print a story to the screen include place, time, magnitude, using template string / string interpolation
   * See [here](https://gizmodo.com/quakebot-an-algorithm-that-writes-the-news-about-earth-1547182732) for an introduction of the bot. See [here](https://www.theregister.co.uk/2017/06/22/la_times_bot_spreads_fake_news/) for an incident and think how to avoid it?
+
+Reference use cases:
+
+- [XU Yucan, COMM7780/JOUR7280, F2018](https://github.com/hupili/python-for-data-and-media-communication/blob/b69f4a4d12dab58920a871e3e2aadf1a7f04d5ac/api-examples/earthquake_robot.ipynb)
 
 ### Bonus: MailGun API
 
