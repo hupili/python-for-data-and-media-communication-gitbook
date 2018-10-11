@@ -43,7 +43,7 @@
             - [Step 2. Point domain name to GitHub](#step-2-point-domain-name-to-github)
             - [Step 3. Point GitHub repo to domain name](#step-3-point-github-repo-to-domain-name)
             - [The principle further explained](#the-principle-further-explained)
-        - [Bonus: Collaboration on GitHub](#bonus-collaboration-on-github)
+    - [Bonus: Collaboration on GitHub](#bonus-collaboration-on-github)
         - [The workflow Fork repo, modify code and send pull Request](#the-workflow-fork-repo-modify-code-and-send-pull-request)
             - [Fork repo](#fork-repo)
             - [Modify code](#modify-code)
@@ -409,7 +409,7 @@ Checkout the working [CNAME](https://github.com/hkbu-jour2106/hkbu-jour2106.gith
 
 Checkout [this article](https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml) for how DNS works.
 
-### Bonus: Collaboration on GitHub
+## Bonus: Collaboration on GitHub
 
 ### The workflow Fork repo, modify code and send pull Request
 
