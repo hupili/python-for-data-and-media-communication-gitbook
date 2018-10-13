@@ -15,7 +15,7 @@ Here is a curated list of reading materials to help one reinforce the knowledge 
 
 DataCamp provides a good set of multiple choice questions to get you familiar with the language: [Link](https://challenges.datacamp.com/practice/107)
 
-![](/assets/Screen Shot 2018-02-07 at 8.32.15 PM.png)
+![Data Camp](assets/datacamp.png)
 
 ## Online classes
 
