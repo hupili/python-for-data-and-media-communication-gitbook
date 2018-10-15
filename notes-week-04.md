@@ -673,7 +673,7 @@ Quiz: You can see that the time is not what we want. Can you convert them to UTC
 
 Note that `requests.get(url)` basically sends an `GET` HTTP request to the server. You can achieve this without using Python. Your web browser, like Google Chrome, sends a lot of `GET` requests every day to the websites you visit. You can use `print(url)` to get the assembled final URL and copy-and-paste this URL into your browser address bar, to test the response from the server. Since most API returns JSON data structure, you can use the [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) extension in Google Chrome to get a better view and easier explore the response.
 
-<!-- TODO: @Yucan, please visit query_url in browser and take screenshot of JSONView result. Show them the JSONView result can be folded/ expanded (+/- signs) -->
+![Jsonview Sample](assets/jsonview-sample.png)
 
 ### Use API via function calls to other modules/ packages
 
@@ -786,7 +786,7 @@ Twitter provides official API to access its data and allows one to programmably 
 
 Reference use cases:
 
-- [XU Yucan, COMM7780, S2018](https://github.com/hupili/python-for-data-and-media-communication/blob/b69f4a4d12dab58920a871e3e2aadf1a7f04d5ac/api-examples/week5_taiwancomments_xuyucan.py)
+- [XU Yucan, COMM7780, S2018](https://github.com/ChicoXYC/python-for-data-and-media-communication/blob/master/api-examples/Taiwan%20earthquake%20robot.ipynb)
 
 ### Wechat API
 
