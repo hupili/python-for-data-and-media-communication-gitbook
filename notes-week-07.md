@@ -10,6 +10,9 @@
         - [Python environment](#python-environment)
     - [`pandas` introduction](#pandas-introduction)
         - [Pandas Series](#pandas-series)
+        - [Convert between list/dict with series](#convert-between-listdict-with-series)
+            - [list<-->series](#list--series)
+            - [dict<-->series](#dict--series)
         - [Pandas Dataframe](#pandas-dataframe)
         - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
         - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
@@ -115,9 +118,61 @@ dtype: int64
 
 ### Convert between list/dict with series
 
+#### list<-->series
+
+Example:
+
+```python
+#import pandas as pd
+list = ['火鍋','海鮮','甜品/糖水','壽司/刺身','日式放題','烤肉','薄餅']
+list_series = pd.Series(list)
+list_series
+```
+
+```text
+0       火鍋
+1       海鮮
+2    甜品/糖水
+3    壽司/刺身
+4     日式放題
+5       烤肉
+6       薄餅
+dtype: object
+```
+
+Convert series back to list
+
+```python
+list_series.tolist()
+```
+
+#### dict<-->series
+
+Converting between dict and series is pretty much the same like converting between list and series.
+
+```python
+dict = {'火鍋':39,'海鮮':28,'甜品/糖水':24,'壽司/刺身':14,'日式放題':11,'烤肉':10,'薄餅':9}
+dict_series = pd.Series(dict)
+```
+
+```text
+火鍋       39
+海鮮       28
+甜品/糖水    24
+壽司/刺身    14
+日式放題     11
+烤肉       10
+薄餅        9
+dtype: int64
+```
+
+Convert series back to dict
+
+```python
+dict_series.to_dict()
+```
 
 <!-- TODO:
-   1. Show how to convert between list--series and dict--series; 
    2. Try calling sort() and sum() on series to get quick stats;
    3. Try to slice a Series as if you were using the list;
    4. Try to reference to series element as if you were using a dict;
