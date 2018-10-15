@@ -786,7 +786,7 @@ Twitter provides official API to access its data and allows one to programmably 
 
 Reference use cases:
 
-- [XU Yucan, COMM7780, S2018](https://github.com/ChicoXYC/python-for-data-and-media-communication/blob/master/api-examples/Taiwan%20earthquake%20robot.ipynb)
+- [XU Yucan, COMM7780, S2018](https://github.com/hupili/python-for-data-and-media-communication/blob/master/api-examples/week5_taiwancomments_xuyucan.py)
 
 ### Wechat API
 
@@ -821,7 +821,7 @@ Lookup real estate properties on HK gov open data portal, e.g. the [dataset page
 
 Reference use cases:
 
-- [XU Yucan, COMM7780/JOUR7280, F2018](https://github.com/hupili/python-for-data-and-media-communication/blob/b69f4a4d12dab58920a871e3e2aadf1a7f04d5ac/api-examples/earthquake_robot.ipynb)
+- [XU Yucan, COMM7780/JOUR7280, F2018](https://github.com/ChicoXYC/python-for-data-and-media-communication/blob/master/api-examples/Taiwan%20earthquake%20robot.ipynb)
 
 ### Bonus: MailGun API
 
