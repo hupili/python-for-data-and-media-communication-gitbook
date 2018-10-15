@@ -59,7 +59,7 @@ Modules:
 
 Datasets to work on:
 
-- [sample.csv](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/sample.csv)
+- [openrice_sample.csv](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv)
 
 In this chapter, we will not cover the specific scraping demo but basic usage of `pandas`. Interested students can refer to [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_urls-selenium.ipynb) for scraping process.
 
@@ -113,6 +113,9 @@ d    8
 dtype: int64
 ```
 
+### Convert between list/dict with series
+
+
 <!-- TODO:
    1. Show how to convert between list--series and dict--series; 
    2. Try calling sort() and sum() on series to get quick stats;
@@ -157,33 +160,24 @@ Output:
 
 ### Load table (DataFrame) from local csv file
 
+First of all, you need to download the csv file from [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv). For how to download the file, you can refer to [here](github.md#how-to-download-a-file-from-github-web-page).
+
 Put csv file into the same folder with Jupyter notebook. You can type `!pwd` to check out where it is and put the file in this path.
 
 ```python
 import pandas
-pandas.read_csv('sample.csv')
+pandas.read_csv('openrice_sample.csv')
 ```
 
 The output will be as below:
-![Pandas Read Csv](assets/pandas-read-csv.png)
+![Pandas Read Csv](assets/openrice-sample-csv.png)
 
 If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
 
 ```python
-df = pandas.read_csv('sample.csv', header=None, names=['name', 'location','price', 'style','country','type','likes','review','bookmark' 'discount_info'])
+df = pandas.read_csv('openrice_sample.csv', header=None, names=['name', 'location','price','country','type','likes','review','bookmark','discount_info'])
 # `df`is short for "dataframe", which is usually used as return value in pandas.
 ```
-
-**Quiz1** In this case, you can see that the headers ar wrong with the column location, price, country and likes. How to change the headers? - `rename` function.
-
-```python
-df.rename(columns={'location':'likes','price':'location','country':'price','style':'country','likes':'style'}, inplace=True)
-# change the wrong columns to the right ones
-```
-
-After change, the output will be as this:
-
-![Csv Header Change](assets/pandas-csv-header-change.png)
 
 ### Load table (DataFrame) from a URL
 
@@ -195,10 +189,9 @@ We can also load CSV from GitHub directly with the help of `requests` and `io.St
 import pandas as pd
 import io
 import requests
-url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/sample.csv"
+url="https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv"
 s=requests.get(url).content
 df=pd.read_csv(io.StringIO(s.decode('utf-8')))
-#df.rename(columns={'location':'likes','price':'location','country':'price','style':'country','likes':'style'}, inplace=True)
 ```
 
 ### Select data
