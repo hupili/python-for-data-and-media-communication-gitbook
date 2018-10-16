@@ -16,6 +16,7 @@
         - [Get quick stats of series](#get-quick-stats-of-series)
             - [Series.sort_values](#seriessort_values)
             - [Series.sum](#seriessum)
+            - [Slice series](#slice-series)
         - [Pandas Dataframe](#pandas-dataframe)
         - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
         - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
@@ -219,8 +220,25 @@ Output:
 135
 ```
 
+#### Slice series
+
+Slicing series is the same as slicing list, just give the index interval can work. Also take the above example:
+
+```python
+dict_series[:4]
+```
+
+Output:
+
+```text
+火鍋       39
+壽司/刺身    14
+甜品/糖水    24
+日式放題     11
+dtype: int64
+```
+
 <!-- TODO:
-   3. Try to slice a Series as if you were using the list;
    4. Try to reference to series element as if you were using a dict;
    5. Try to appreciate the benefit brought by series -- by comparing it with list and dict;
 -->
