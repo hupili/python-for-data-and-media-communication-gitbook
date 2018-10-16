@@ -17,6 +17,7 @@
             - [Series.sort_values](#seriessort_values)
             - [Series.sum](#seriessum)
             - [Slice series](#slice-series)
+            - [Reference to elements in series](#reference-to-elements-in-series)
         - [Pandas Dataframe](#pandas-dataframe)
         - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
         - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
@@ -236,6 +237,20 @@ Output:
 甜品/糖水    24
 日式放題     11
 dtype: int64
+```
+
+#### Reference to elements in series
+
+Reference to elements in series is pretty much the same as doing it in dict. each element in series is like the key in dict.
+
+```python
+dict_series['火鍋']
+```
+
+Output:
+
+```text
+39
 ```
 
 <!-- TODO:
