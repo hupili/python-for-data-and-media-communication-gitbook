@@ -14,6 +14,7 @@
         - [Message: 'chromedriver' executable needs to be in PATH](#message-chromedriver-executable-needs-to-be-in-path)
     - [Encoding & Decoding](#encoding--decoding)
         - [U+FEFF encoding issue](#ufeff-encoding-issue)
+        - [Csv writer newline](#csv-writer-newline)
         - [Expecting value: line 1 column 1 (char 0)](#expecting-value-line-1-column-1-char-0)
 
 <!-- /TOC -->
@@ -78,6 +79,10 @@ CSV Sample output:
 ```
 
 In some cases, the csv you read may have some encoding issue like the above.`U+FEFF` is the byte order mark, or BOM, and is used to tell the difference between big- and little-endian UTF-16 encoding. To omit BOM, just add a encoding line in the `with....open` command, as `with open('chapter4-example-name_list.csv',encoding='utf-8-sig') as f:`. Further reading about this [issue](https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string).
+
+### Csv writer newline
+
+For more explanation, please refer to the documentation on the [open function](https://docs.python.org/3/library/functions.html#open)
 
 ### Expecting value: line 1 column 1 (char 0)
 
