@@ -243,11 +243,10 @@ Output:
 
 * `with open(...) as f` means you give f a definition, which stands for opening the file. In the example,`f` can be changed by any words you like. It just means you rename the step of the opening. It's equal to `f = open('chapter4-example-name_list.csv',mode='r')`.
 * `open()` means open the file. If there is no such file, it will create a new one. If there is a existing one, writer function will clear all the previous content and then write the new content.
-* You can see that in the beginning of the output, there is an encoding issue. `U+FEFF` is the byte order mark, or BOM, and is used to tell the difference between big- and little-endian UTF-16 encoding. To omit BOM, just add a encoding line in the `with....open` command, as `with open('chapter4-example-name_list.csv',encoding='utf-8-sig') as f:`. Further reading about this [issue](https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string).
 
 ### csv.writer
 
-Return a writer object responsible for converting the user’s data into delimited strings. CSV file can be any object with a write() method. If CSV file is a file object, it should be opened with `newline=''`. If `newline=''` is not specified, newlines embedded inside quoted fields will not be interpreted correctly, It should always be safe to specify newline='', since the csv module does its own (universal) newline handling.
+Return a writer object responsible for converting the user’s data into delimited strings. CSV file can be any object with a write() method.
 
 Example 2: How to write a CSV file?
 
@@ -255,7 +254,7 @@ Example 2: How to write a CSV file?
 
 ```python
 import csv
-with open('name.csv','w',newline='') as f:
+with open('name.csv','w') as f:
     mywriter=csv.writer(f)  #writer is the function to write something
     mywriter.writerow(['Chico','Male'])  #you can just use writer.writerow()
     mywriter.writerow(['Ri','Female']) #write another row  
@@ -278,7 +277,7 @@ Output:
 ```python
 import csv
 mylist=[['KLN',1742,3344],['Los',1743,5168]]  
-with open('location.csv','w',newline='') as f:
+with open('location.csv','w') as f:
     mywriter=csv.writer(f)
     mywriter.writerows(mylist) #if there are sub-list in the list
 ```
@@ -291,7 +290,7 @@ Output:
 ```python
 import csv
 number_list = [11,22,33,44,55,66]
-with open('number.csv','w',newline='') as f:
+with open('number.csv','w',) as f:
     mywriter=csv.writer(f)
     mywriter.writerows([[number] for number in number_list]) # equal to a for loop
 ```
@@ -304,7 +303,7 @@ Output:
 
 ```python
 student_list = ['Chico','Ri','Ken','Aaliyah','Voodoo']
-with open('student.csv','w',newline='') as f:
+with open('student.csv','w',) as f:
     writer=csv.writer(f)
     for i in range(0,len(student_list)):
         writer.writerow(student_list[i])
@@ -649,7 +648,7 @@ Step 5:  Select the key values we want: mag, place and time, and write it in the
 You can check out the returned JSON, The outermost layer is a dict, and you will find all key information we want is in the key `features`, meanwhile, there are so many features. So firstly, we should extract all features by using `data['features']`, it will return a list of all features. And in the list, the information of every earthquake is in an dict. So we can further use keys to access its values.
 
 ```python
-with open('TTT.csv','w',newline='') as f:
+with open('TTT.csv','w') as f:
     writer = csv.writer(f)
     header = ['place','mag','time']
     writer.writerow(header)

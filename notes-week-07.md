@@ -13,6 +13,11 @@
         - [Convert between list/dict with series](#convert-between-listdict-with-series)
             - [list<-->series](#list--series)
             - [dict<-->series](#dict--series)
+        - [Get quick stats of series](#get-quick-stats-of-series)
+            - [Series.sort_values](#seriessort_values)
+            - [Series.sum](#seriessum)
+            - [Slice series](#slice-series)
+            - [Reference to elements in series](#reference-to-elements-in-series)
         - [Pandas Dataframe](#pandas-dataframe)
         - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
         - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
@@ -30,7 +35,6 @@
             - [Filter by numeric range](#filter-by-numeric-range)
             - [Filter by exact value](#filter-by-exact-value)
             - [Filter by more than two conditions](#filter-by-more-than-two-conditions)
-        - [Sorting](#sorting)
     - [Export from `pandas`](#export-from-pandas)
         - [to_csv](#to_csv)
         - [to_dict](#to_dict)
@@ -172,9 +176,84 @@ Convert series back to dict
 dict_series.to_dict()
 ```
 
+### Get quick stats of series
+
+#### Series.sort_values
+
+Sorting values in ascending or descending order.
+
+```python
+dict = {'火鍋':39,'壽司/刺身':14,'甜品/糖水':24,'日式放題':11,'薄餅':9,'烤肉':10,'海鮮':28}
+dict_series = pd.Series(dict)
+dict_series.sort_values(ascending=False)
+```
+
+Output:
+
+```text
+火鍋       39
+海鮮       28
+甜品/糖水    24
+壽司/刺身    14
+日式放題     11
+烤肉       10
+薄餅        9
+dtype: int64
+```
+
+**Note:** sort_values in dataframe is similar to which in series. You can sort by different columns like the example:
+
+```python
+df.sort_values(by='likes',ascending=False)
+```
+
+#### Series.sum
+
+Use the above dict_series as an example:
+
+```python
+dict_series.sum()
+```
+
+Output:
+
+```text
+135
+```
+
+#### Slice series
+
+Slicing series is the same as slicing list, just give the index interval can work. Also take the above example:
+
+```python
+dict_series[:4]
+```
+
+Output:
+
+```text
+火鍋       39
+壽司/刺身    14
+甜品/糖水    24
+日式放題     11
+dtype: int64
+```
+
+#### Reference to elements in series
+
+Reference to elements in series is pretty much the same as doing it in dict. each element in series is like the key in dict.
+
+```python
+dict_series['火鍋']
+```
+
+Output:
+
+```text
+39
+```
+
 <!-- TODO:
-   2. Try calling sort() and sum() on series to get quick stats;
-   3. Try to slice a Series as if you were using the list;
    4. Try to reference to series element as if you were using a dict;
    5. Try to appreciate the benefit brought by series -- by comparing it with list and dict;
 -->
@@ -596,17 +675,6 @@ df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)
 ![Pandas Filter Multiple](assets/pandas-filter-multiple.png)
 
 For how to manipulate multiple conditions, You may need to review the bool comparison logic in the Chapter 3 - [logic operators](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/78e8f08afdd84855295287ba19e360352fca373a/notes-week-03.md#logic-operators)
-
-### Sorting
-
-Sorting values in ascending or descending order.
-
-```python
-df.sort_values(by='likes',ascending=False)
-```
-
-The output will be:  
-![Pandas Sort Values](assets/pandas-sort-values.png)
 
 ## Export from `pandas`
 

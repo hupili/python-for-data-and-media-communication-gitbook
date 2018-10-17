@@ -13,6 +13,8 @@
         - [No such file or directory in jupyter or file xxx does not exist](#no-such-file-or-directory-in-jupyter-or-file-xxx-does-not-exist)
         - [Message: 'chromedriver' executable needs to be in PATH](#message-chromedriver-executable-needs-to-be-in-path)
     - [Encoding & Decoding](#encoding--decoding)
+        - [U+FEFF encoding issue](#ufeff-encoding-issue)
+        - [Csv writer newline](#csv-writer-newline)
         - [Expecting value: line 1 column 1 (char 0)](#expecting-value-line-1-column-1-char-0)
 
 <!-- /TOC -->
@@ -64,6 +66,23 @@ Please see [here](https://github.com/hupili/python-for-data-and-media-communicat
 <!-- TODO: module-selenium.md -->
 
 ## Encoding & Decoding
+
+### U+FEFF encoding issue
+
+CSV Sample output:
+
+```text
+['U+FEFF/name', 'id', 'gender', 'location', 'phone']
+['Chico', '1742', 'M', 'KLN', '3344']
+['Ri', '1743', 'F', 'LOS', '5168']
+['Ivy', '1655', 'F', 'MK', '7323']
+```
+
+In some cases, the csv you read may have some encoding issue like the above.`U+FEFF` is the byte order mark, or BOM, and is used to tell the difference between big- and little-endian UTF-16 encoding. To omit BOM, just add a encoding line in the `with....open` command, as `with open('chapter4-example-name_list.csv',encoding='utf-8-sig') as f:`. Further reading about this [issue](https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string).
+
+### Csv writer newline
+
+For more explanation, please refer to the documentation on the [open function](https://docs.python.org/3/library/functions.html#open)
 
 ### Expecting value: line 1 column 1 (char 0)
 
