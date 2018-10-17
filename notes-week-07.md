@@ -10,36 +10,37 @@
         - [Python environment](#python-environment)
     - [`pandas` introduction](#pandas-introduction)
         - [Pandas Series](#pandas-series)
-        - [Convert between list/dict with series](#convert-between-listdict-with-series)
-            - [list<-->series](#list--series)
-            - [dict<-->series](#dict--series)
-        - [Get quick stats of series](#get-quick-stats-of-series)
-            - [Series.sort_values](#seriessort_values)
-            - [Series.sum](#seriessum)
+            - [Convert between list/dict with series](#convert-between-listdict-with-series)
+                - [list<-->series](#list--series)
+                - [dict<-->series](#dict--series)
+            - [Get quick stats of series](#get-quick-stats-of-series)
+                - [Series.sort_values](#seriessort_values)
+                - [Series.sum](#seriessum)
             - [Slice series](#slice-series)
             - [Reference to elements in series](#reference-to-elements-in-series)
+            - [Benefits of using series](#benefits-of-using-series)
         - [Pandas Dataframe](#pandas-dataframe)
-        - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
-        - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
-        - [Select data](#select-data)
-            - [Select columns with []](#select-columns-with-)
-            - [Select rows with .loc and .iloc](#select-rows-with-loc-and-iloc)
-        - [Basic statistics](#basic-statistics)
-            - [DataFrame.describe()](#dataframedescribe)
-            - [Count values of series](#count-values-of-series)
-            - [Plot a simple chart: histogram](#plot-a-simple-chart-histogram)
-        - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
-            - [Apply a function](#apply-a-function)
-            - [lambda: anonymous function](#lambda-anonymous-function)
-        - [Filtering](#filtering)
-            - [Filter by numeric range](#filter-by-numeric-range)
-            - [Filter by exact value](#filter-by-exact-value)
-            - [Filter by more than two conditions](#filter-by-more-than-two-conditions)
-    - [Export from `pandas`](#export-from-pandas)
-        - [to_csv](#to_csv)
-        - [to_dict](#to_dict)
-        - [to_json](#to_json)
-        - [Bonus: Python and Javascript in action](#bonus-python-and-javascript-in-action)
+            - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
+            - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
+            - [Select data](#select-data)
+                - [Select columns with []](#select-columns-with-)
+                - [Select rows with .loc and .iloc](#select-rows-with-loc-and-iloc)
+            - [Basic statistics](#basic-statistics)
+                - [DataFrame.describe()](#dataframedescribe)
+                - [Count values of series](#count-values-of-series)
+                - [Plot a simple chart: histogram](#plot-a-simple-chart-histogram)
+            - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
+                - [Apply a function](#apply-a-function)
+                - [lambda: anonymous function](#lambda-anonymous-function)
+            - [Filtering](#filtering)
+                - [Filter by numeric range](#filter-by-numeric-range)
+                - [Filter by exact value](#filter-by-exact-value)
+                - [Filter by more than two conditions](#filter-by-more-than-two-conditions)
+        - [Export from `pandas`](#export-from-pandas)
+            - [to_csv](#to_csv)
+            - [to_dict](#to_dict)
+            - [to_json](#to_json)
+            - [Bonus: Python and Javascript in action](#bonus-python-and-javascript-in-action)
     - [Dataprep](#dataprep)
         - [Cleaning](#cleaning)
         - [Transformation](#transformation)
@@ -120,9 +121,9 @@ d    8
 dtype: int64
 ```
 
-### Convert between list/dict with series
+#### Convert between list/dict with series
 
-#### list<-->series
+##### list<-->series
 
 Example:
 
@@ -150,7 +151,7 @@ Convert series back to list
 list_series.tolist()
 ```
 
-#### dict<-->series
+##### dict<-->series
 
 Converting between dict and series is pretty much the same like converting between list and series.
 
@@ -176,9 +177,9 @@ Convert series back to dict
 dict_series.to_dict()
 ```
 
-### Get quick stats of series
+#### Get quick stats of series
 
-#### Series.sort_values
+##### Series.sort_values
 
 Sorting values in ascending or descending order.
 
@@ -207,7 +208,7 @@ dtype: int64
 df.sort_values(by='likes',ascending=False)
 ```
 
-#### Series.sum
+##### Series.sum
 
 Use the above dict_series as an example:
 
@@ -253,10 +254,14 @@ Output:
 39
 ```
 
-<!-- TODO:
-   4. Try to reference to series element as if you were using a dict;
-   5. Try to appreciate the benefit brought by series -- by comparing it with list and dict;
--->
+#### Benefits of using series
+
+* Compared with list and dict, in series, we can access to elements by the axis labels, which is like `index` way in list and by the elements name, which is like `key` way in dict. Therefore its more convenient than above two in this question.
+* Although they are both one dimensional dataset, series allows you to store list and dict values.
+* With more build-in functions in pandas and other libraries, series are more easily to be analyzed and used to do visualization.
+
+<!--Todo:
+    about Benefits of using series, whether the above is the advantage?-->
 
 ### Pandas Dataframe
 
@@ -292,7 +297,7 @@ Output:
 
 ![Series to Df](assets/pandas-series-to-df.png)
 
-### Load table (DataFrame) from local csv file
+#### Load table (DataFrame) from local csv file
 
 First of all, you need to download the csv file from [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv). For how to download the file, you can refer to [here](github.md#how-to-download-a-file-from-github-web-page).
 
@@ -313,7 +318,7 @@ df = pandas.read_csv('openrice_sample.csv', header=None, names=['name', 'locatio
 # `df`is short for "dataframe", which is usually used as return value in pandas.
 ```
 
-### Load table (DataFrame) from a URL
+#### Load table (DataFrame) from a URL
 
 We can also load CSV from GitHub directly with the help of `requests` and `io.StringIO`. `io` module is used for dealing with various types of I/O (input/output). Due to the requirement that `pandas.read_csv` function needs a `file-like object` as the argument, we need to use `io.StringIO` to write and store those string, returned from the request, temporarily. Then we can read the csv in pandas. Interested students can find more info about `io` module in [here](https://docs.python.org/3/library/io.html#text-i-o).
 
@@ -328,7 +333,7 @@ s=requests.get(url).content
 df=pd.read_csv(io.StringIO(s.decode('utf-8')))
 ```
 
-### Select data
+#### Select data
 
 First of all, every time we load a csv in Jupyter, always print the first several rows to have a overview what's look like. It's useful and necessary because sometimes the dataset can be really large, if you print the whole table, your browser might get crushed. We can use following command to check out the records here.
 
@@ -341,7 +346,7 @@ the output will be as blow:
 
 There are several ways to select data. We only focus on the most used ones. `[]`, `.loc` and `.iloc`. Collectively, they are called the indexers.
 
-#### Select columns with []
+##### Select columns with []
 
 `[]` method is mainly used for selecting single column and multiple columns. Basically, `[]` method treat the dataframe as a dict, using a key to refer to certain value. If you want to select one column of data, just simply put the name of the column in-between the brackets. For example, you want all the restaurant locations.You can type:
 
@@ -364,7 +369,7 @@ The output will be like this:
 
 ![Select Multiple Columns](assets/select-multiple-columns.png)
 
-#### Select rows with .loc and .iloc
+##### Select rows with .loc and .iloc
 
 The `.loc` indexer will return a single row as a Series when given a single row `label`, and return DataFrame if multiple rows are selected.
 
@@ -438,9 +443,9 @@ df.iloc[10:20]
 
 ![Select Slice List](assets/select-slice-list.png)
 
-### Basic statistics
+#### Basic statistics
 
-#### DataFrame.describe()
+##### DataFrame.describe()
 
 Descriptive or summary statistics in python – pandas, can be obtained by using describe function. `describe()` function gives you a summary about the dataframe or certain series with the `mean`, `count`, `std` and `freq` values etc. Only the column with pure numbers can be described if you don't specify the column.
 
@@ -468,7 +473,7 @@ freq       39
 Name: style, dtype: object
 ```
 
-#### Count values of series
+##### Count values of series
 
 After we can select one column or row, we can do further calculation or analysis. One common usage is to count different values in one column.
 
@@ -514,7 +519,7 @@ Name: style, dtype: int64
 
 `value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
 
-#### Plot a simple chart: histogram
+##### Plot a simple chart: histogram
 
 After we got the results from our analysis, the key point is to visualize them so that we can have a better understanding of the results and get insights from them. By using `.hist()` function, We can plot a simple histogram to show the distribution and trend.
 
@@ -535,9 +540,9 @@ df['likes'].hist(bins=20)
 
 ![Openrice Csv Bins](assets/openrice-csv-bins.png)
 
-### Data cleaning and pre-processing
+#### Data cleaning and pre-processing
 
-#### Apply a function
+##### Apply a function
 
 In the process of analyzing, we will encounter a lot of data cleaning issues, like the missing values, NoneType values or other type of values that have side effects, which need us to build different functions to handle them or convert them. For example, the price in the `openrice` is a range of number which cannot be compared directly. We need firstly clean the data and convert price range to numeric values.
 
@@ -576,7 +581,7 @@ df['price'].apply(cleaning) #clean the whole column
 
 ![Pandas Apply Cleaning](assets/pandas-apply-cleaning.png)
 
-#### lambda: anonymous function
+##### lambda: anonymous function
 
 lambda also called as anonymous function, which doesn't have a specific name, only need one line to declare function. The usual syntax is as follows:
 
@@ -619,7 +624,7 @@ new_list
 # Output: [6, 3, 12, 9, 27, 15]
 ```
 
-### Filtering
+#### Filtering
 
 In the above example, we learned how to access to the columns, raws and multiple data in the dataframe. For further analysis, we need to do some filtering work to help us better finding the insights. For example, how to select the most expensive restaurants and the least likeable restaurants? Is there any correlation between likes and types?...
 
@@ -643,7 +648,7 @@ df[df['likes'] > 500]
 
 There are many ways to do filtering, the following are the common methods that are wildly used.
 
-#### Filter by numeric range
+##### Filter by numeric range
 
 If there is multiple conditions in filtering, we need to use `()` to include each condition. For example, filter the `bookmark` between 50000-60000.
 
@@ -653,7 +658,7 @@ df[(df['bookmark'] < 60000) & (df['bookmark']>50000)]
 
 ![Pandas Filter Inrange](assets/pandas-filter-inrange.png)
 
-#### Filter by exact value
+##### Filter by exact value
 
 You can filter the exact value by passing the specific numbers or strings. For example, we can select all Spanish restaurants.
 
@@ -664,7 +669,7 @@ You can filter the exact value by passing the specific numbers or strings. For e
 the output will be:
 ![Pandas Filter Value](assets/pandas-filter-value.png)
 
-#### Filter by more than two conditions
+##### Filter by more than two conditions
 
 As we discuss before, we can filter multiple conditions by using () to include each condition. For example, we can select some cost-effective restaurants for a friends gathering. Like, the `seafood restaurants` with price range in `$100-200` and likes `more than 300`.
 
@@ -676,7 +681,7 @@ df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)
 
 For how to manipulate multiple conditions, You may need to review the bool comparison logic in the Chapter 3 - [logic operators](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/78e8f08afdd84855295287ba19e360352fca373a/notes-week-03.md#logic-operators)
 
-## Export from `pandas`
+### Export from `pandas`
 
 After you finish processing data in `pandas`, you may want to export it
 
@@ -689,7 +694,7 @@ The common export formats are:
 - `to_dict`
 - to JSON format
 
-### to_csv
+#### to_csv
 
 In pandas, dataframe to csv is very simple, just one line can work for this.
 
@@ -699,7 +704,7 @@ df.to_csv('full_filename', encoding='utf-8', index=False)
 
 You can pass other parameter if needed, for more information, you can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html) .
 
-### to_dict
+#### to_dict
 
 There are different output formats with `to_dict` method, which depends on what parameter you pass in. By default, it will return dict like {column -> {index -> value}}. List like method [{column -> value}, … , {column -> value}] is also wildly used. For example:
 
@@ -754,7 +759,7 @@ Output:
 
 You can check out [here](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_dict.html) for more usage and methods.
 
-### to_json
+#### to_json
 
 `to_json` method will convert the dataframe to a JSON string, and its like combination of above two methods. The difference is that json has a `orient` parameter, which determine the output format, whether `list like` or `dict like`. Besides, for a file path or object. If not specified, the result is returned as a string.
 
@@ -778,7 +783,7 @@ You can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/
 
 After we get the json string, we also can use `json_dumps` and `json_loads` to convert between Python object and json file.
 
-### Bonus: Python and Javascript in action
+#### Bonus: Python and Javascript in action
 
 A very common workflow is to process data in Python and visualize data in Javascript. The last interactive chart in this [blog post](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/#%E8%AD%B0%E5%93%A1%E5%9B%9B%E5%B9%B4%E6%8A%95%E7%A5%A8%E5%82%BE%E5%90%91%E8%AE%8A%E5%8C%96) shows the political preference variation of HK legco members during the 2012-2016 term. The interactive chart is made by [echarts](https://ecomfe.github.io/echarts-doc/public/en/index.html), a popular Javascript library for interactive visualisation from Baidu. However, the data collection and heavy duty data analysis are done in Python. We conducted the analysis in Python and export the `pandas.DataFrame` into a `JSON` format that can be consumed by echarts. You can checkout the [JSON file here](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/echarts-option-legco-5.json).
 
