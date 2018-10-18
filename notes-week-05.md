@@ -44,7 +44,13 @@
             - [Further challenge1: more users](#further-challenge1-more-users)
             - [Further challenge2: detailed activities](#further-challenge2-detailed-activities)
         - [Scrape the faculty list](#scrape-the-faculty-list)
-        - [Bonus: Some past scraping ideas](#bonus-some-past-scraping-ideas)
+        - [Scrape Haunted House in Hong Kong](#scrape-haunted-house-in-hong-kong)
+        - [Scrape Hacker News](#scrape-hacker-news)
+        - [Scrape Juejin](#scrape-juejin)
+            - [Bonus: Automatic trending topic detection and posting](#bonus-automatic-trending-topic-detection-and-posting)
+        - [Scrape Douban Top 250](#scrape-douban-top-250)
+        - [Scrape IMDB Top 250](#scrape-imdb-top-250)
+        - [Scrape opening journalist positions in the world](#scrape-opening-journalist-positions-in-the-world)
     - [Related Readings](#related-readings)
 
 <!-- /TOC -->
@@ -693,14 +699,38 @@ Try to scrape as more fields as possible, e.g. name, introduction, contact, etc.
 
 Note, scraping techniques demoed in this chapter may not be enough. You may need to do some text processing (`str` functions).
 
-### Bonus: Some past scraping ideas
+### Scrape Haunted House in Hong Kong
 
-Please find some past scraping ideas from this [blog post](https://dnnsociety.org/2018/03/10/some-scraping-targets-and-ideas/). Please note that not all the ideas can be easily tackled. You may need the knowledge from next week or knowledge beyond this course. Feel free to raise questions in the issue tracker so that we can help you for troubleshooting. More importantly, we can help you evaluate the difficulty before you get started. There may be several categories:
+https://www.squarefoot.com.hk/haunted/ – a list of haunted houses in Hong Kong. A group of DJ students last term [used scrapinghub.com to crawl the data](https://dnnsociety.org/2017/12/17/hk-residents-perception-on-haunted-house-keeps-conservative-2/). Now you can write Python codes with fine control. There are two more databases for you to cross-check https://news.gohome.com.hk/tc/category/haunted-house/haunted-house-article/ and  http://www.hkea.com.hk/UHousesServ
 
-1. Use week 5 to solve it
-2. Use week 5+6 to solve it
-3. Add a bit over this course to solve it
-4. Out of reach
+### Scrape Hacker News
+
+Hacker News is the world number 1 technology news crowd gathering service: https://news.ycombinator.com/ . One can sense the trend from those articles shared by mostly guru users. You can get post title, link, points (a.k.a. "likes") from the website.
+
+### Scrape Juejin
+
+https://juejin.im/ is the Chinese counterpart of Hacker News. One can check the difference of topic popularity between HN and juejin, in past 5-10 years, and answer the question: is China switching from a copycat role to a leading role in the technology world? There might be a difficulty when comparing topics because the two sites use difference languages.
+
+#### Bonus: Automatic trending topic detection and posting
+
+You can setup a robot to scrape HackerNews continuously. Once a topic gets enough points, that may be a trending one in the technology sphere. As an automated journalist, you may want to immediately post this to a Twitter account. For example, [this bot](https://twitter.com/newsyc50) tweets a Hacker News story once it reaches 50 points. There are other thresholds in this family.
+
+### Scrape Douban Top 250
+
+https://movie.douban.com/top250  . Maybe you already know a convenient way using API, this is still good exercise. Is there any difference between the data you scraped from web and the data you retrieved via API?
+
+### Scrape IMDB Top 250
+
+https://www.imdb.com/chart/top . Can you get as many fields as you can? Can you find any difference between the two lists? What are the implications of the differences?
+
+### Scrape opening journalist positions in the world
+
+The following online job list can be scraped with the knowledge in this chapter:
+
+- https://careers.journalists.org/jobs/10753217/graphics-journalist
+- https://www.indeed.com/q-Data-Journalism-Internship-jobs.html
+
+(Feel free to add to the list when you find new ones)
 
 ## Related Readings
 
@@ -709,6 +739,7 @@ Here are some scrapers and the output dataset from our past students, you can le
 - [HK Carpark price data](https://github.com/XIAO-Chao/hkbu-big-data-media/tree/master/homework2)
 - [Qidian](https://github.com/DaisyZhongDai/hkbu-big-data-media/tree/master/homework2)
 - [CTrip scenic point data](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2)
+- This [blog post](https://dnnsociety.org/2018/03/10/some-scraping-targets-and-ideas/) has some past scraping ideas. Some ideas are beyond this chapter. You can ask for an evaluation before start.
 
 ------
 
