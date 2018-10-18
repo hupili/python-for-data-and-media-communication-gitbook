@@ -729,6 +729,7 @@ The following online job list can be scraped with the knowledge in this chapter:
 
 - https://careers.journalists.org/jobs/10753217/graphics-journalist
 - https://www.indeed.com/q-Data-Journalism-Internship-jobs.html
+- https://hk.jobsdb.com/hk/search-jobs/data-journalist/1
 
 (Feel free to add to the list when you find new ones)
 
