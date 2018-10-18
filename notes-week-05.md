@@ -43,6 +43,7 @@
         - [Scrape github users' contribution frequency](#scrape-github-users-contribution-frequency)
             - [Further challenge1: more users](#further-challenge1-more-users)
             - [Further challenge2: detailed activities](#further-challenge2-detailed-activities)
+        - [Scrape the faculty list](#scrape-the-faculty-list)
         - [Bonus: Some past scraping ideas](#bonus-some-past-scraping-ideas)
     - [Related Readings](#related-readings)
 
@@ -679,6 +680,18 @@ Given a list of users, scrape all of their contribution frequency and store acco
 #### Further challenge2: detailed activities
 
 Below the contribution calendar, there is a list of detailed activities. Can you further scrape those activities? You may need to design a good table structure to store the data.
+
+### Scrape the faculty list
+
+Try to scrape as more fields as possible, e.g. name, introduction, contact, etc. Here are some potential scraping target for your choice:
+
+- http://www.jour.hkbu.edu.hk/faculty/
+- http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept.htm
+- http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept_academy_film.htm
+- http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept_communication_studies.htm
+- http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept_journalism.htm
+
+Note, scraping techniques demoed in this chapter may not be enough. You may need to do some text processing (`str` functions).
 
 ### Bonus: Some past scraping ideas
 
