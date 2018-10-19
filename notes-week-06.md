@@ -139,7 +139,16 @@ However, cracking the system is not the purpose. Our objective is to get data. I
 
 ### Encoding
 
-See [51job.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/51job.com.ipynb)
+Example 1: See [51job.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/51job.com.ipynb)
+
+Example 2: 
+
+```python
+r = requests.get('http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept.htm')
+r.encoding = 'utf-8'
+mypage = BeautifulSoup(r.text)
+mypage.find('td', {'class': 'personNameArea'}).text
+```
 
 ### Network delay and jitter
 

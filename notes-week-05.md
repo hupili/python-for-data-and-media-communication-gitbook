@@ -699,6 +699,15 @@ Try to scrape as more fields as possible, e.g. name, introduction, contact, etc.
 
 Note, scraping techniques demoed in this chapter may not be enough. You may need to do some text processing (`str` functions).
 
+Note, for the 2-5 URLs, you may suffer from encoding issue because the server side configuration has a problem. You can use the `r.encoding` to specify the right encoding. Following is a sample:
+
+```python
+r = requests.get('http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept.htm')
+r.encoding = 'utf-8' # Try what happens without this line
+mypage = BeautifulSoup(r.text)
+mypage.find('td', {'class': 'personNameArea'}).text
+```
+
 ### Scrape Haunted House in Hong Kong
 
 https://www.squarefoot.com.hk/haunted/ – a list of haunted houses in Hong Kong. A group of DJ students last term [used scrapinghub.com to crawl the data](https://dnnsociety.org/2017/12/17/hk-residents-perception-on-haunted-house-keeps-conservative-2/). Now you can write Python codes with fine control. There are two more databases for you to cross-check https://news.gohome.com.hk/tc/category/haunted-house/haunted-house-article/ and  http://www.hkea.com.hk/UHousesServ
