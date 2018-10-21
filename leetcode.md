@@ -7,6 +7,8 @@
     - [Control flow](#control-flow)
     - [String](#string)
     - [Algorithms](#algorithms)
+        - [Problem comprehension and simulation](#problem-comprehension-and-simulation)
+        - [Cummulative summation](#cummulative-summation)
 
 <!-- /TOC -->
 
@@ -42,4 +44,15 @@ You can win points by copy and pasting the above one-line solution to the input 
 
 Algorithm problems are usually integrated practice of all the above. We do not label the Python basics involved in the problems anymore.
 
+### Problem comprehension and simulation
+
+Those problems are "straightforward" in the view of algorithm engineers. They do not involve much algorithmic ideas. Once you fully understand the problem, you can use computer program to simulate the process as described by the problem. The simulation will get you the answer directly.
+
 - ★★★★★ [degree-of-an-array](https://leetcode.com/problems/degree-of-an-array) - requires good problem comprehension and problem conversion. Design staged solution once you can re-interpret the problem as: _among the most common numbers, find the one whose minimum index and maximum index are closest_.
+- ★★★★★ [long-pressed-name](https://leetcode.com/problems/long-pressed-name) - a very practical problem. First think how you compare two strings and then adapt the basic algorithm to this problem. Watch out for corner cases (boundary conditions).
+
+### Cummulative summation
+
+Cummulative summation (cumsum) is a common technique to save computation on a sequence of elements. Suppose we have a list of numbers in `A`. Let's denote cumsum of `A` as `C`, where `C[i] = sum(A[: i])`. After this pre processing, a range sum query can be answered by `sum(A[i: j]) = C[j - 1] - C[i - 1]`. The LHS (original sum) involves summation over a series of elements. The RHS (cumsum) involves only **a single subtraction**, thus more efficient.
+
+- ★★★★★★ [flip-string-to-monotone-increasing](https://leetcode.com/problems/flip-string-to-monotone-increasing) -- The key step is to find an index `i` such that `S[: i]` will be flipped into `0` and `S[i: ]` will be flipped into `1`. To efficiently compute how many flips are needed, we need to get cumsum of: 1) number of 1's on the left and 2) number of 0's on the right.
