@@ -526,6 +526,7 @@ After we got the results from our analysis, the key point is to visualize them s
 Example:
 
 ```python
+%matplotlib inline #this line is to solve the problem that histogram doesn't reveal.
 df['likes'].hist()
 ```
 
@@ -699,7 +700,7 @@ The common export formats are:
 In pandas, dataframe to csv is very simple, just one line can work for this.
 
 ```python
-df.to_csv('full_filename', encoding='utf-8', index=False)
+df.to_csv('full_filename', encoding='utf-8', index=False) #full_filename means you need to add the file format like openrice.csv .
 ```
 
 You can pass other parameter if needed, for more information, you can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html) .
