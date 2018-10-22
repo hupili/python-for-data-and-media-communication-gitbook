@@ -739,6 +739,10 @@ The following online job list can be scraped with the knowledge in this chapter:
 - https://careers.journalists.org/jobs/10753217/graphics-journalist
 - https://www.indeed.com/q-Data-Journalism-Internship-jobs.html
 - https://hk.jobsdb.com/hk/search-jobs/data-journalist/1
+- https://www.glassdoor.co.uk/Job/data-journalist-jobs-SRCH_KO0,15.htm
+- https://www.linkedin.com/jobs/search/?keywords=data%20journalism&location=%E5%85%A8%E7%90%83&locationId=OTHERS.worldwide
+
+**Note:** LinkedIn is dynamic and requires [selenium](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-06.md#selenium) in Chapter 6 to run. You need to work around the sign in page.
 
 (Feel free to add to the list when you find new ones)
 
