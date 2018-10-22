@@ -36,6 +36,7 @@ You can win points by copy and pasting the above one-line solution to the input 
 ## List
 
 - ★★★☆☆ [rotate-array](https://leetcode.com/problems/rotate-array/) - basic solution involves list slicing. Need to take care when `k` is larger than the list length. There are many alternative solutions that may require some logical thinking.
+- ★★★★☆ [pascals-triangle](https://leetcode.com/problems/pascals-triangle/) - Exercise the list-of-list structure. Try to find the pattern between each two rows.
 
 ## Control flow
 
