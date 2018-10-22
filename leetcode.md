@@ -4,6 +4,7 @@
 
 - [Leetcode](#leetcode)
     - [Getting started](#getting-started)
+    - [List](#list)
     - [Control flow](#control-flow)
     - [String](#string)
     - [Algorithms](#algorithms)
@@ -31,6 +32,10 @@ class Solution:
 ```
 
 You can win points by copy and pasting the above one-line solution to the input text box (select `Python3` as the language). As a matter of ethics, do not direclty copy and paste other's code in the future. Try to comprehend the solution and make your own. We use this example to help you quickly get an idea of what is an Online Juedge (OJ) and how it works. Leetcode problems follow the same format. There is a class called `Solution` and an entry point method/ function, in this case `reverseString`, to be called when the OJ evaluates your code. Your task is to fill in the body of this function. The function takes input data from argument list and gives answer using the `return` statement. You can use "Run Code" button and "Customise Testcase" to try different input values. Once you "Submit", the OJ will test different input dataset with your method and give evaluation results. Once you see "Accepted", you are successful.
+
+## List
+
+- ★★★☆☆ [rotate-array](https://leetcode.com/problems/rotate-array/) - basic solution involves list slicing. Need to take care when `k` is larger than the list length. There are many alternative solutions that may require some logical thinking.
 
 ## Control flow
 
