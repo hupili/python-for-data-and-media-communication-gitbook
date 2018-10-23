@@ -35,3 +35,25 @@ MAC user has a shortcut to install chromedriver in the path.
 ```shell
 brew cask install chromedriver
 ```
+
+## Find elements by Xpath
+
+For `XPath` method, XPath uses path expressions to select nodes or node-sets in an XML document. The following are basic expression rules and expression path examples. For a more detailed usage, you can check out this [tutorial](https://www.w3schools.com/xml/xpath_syntax.asp).
+
+Basic expression rules:
+
+| Expression | Description                                                                                           |
+|------------|-------------------------------------------------------------------------------------------------------|
+| /          | Selects from the root node                                                                            |
+| //         | Selects nodes in the document from the current node that match the selection no matter where they are |
+| .          | Selects the parent of the current node                                                                |
+| @          | Selects attributes                                                                                    |
+
+Path Expression examples:
+
+| Path Expression     | Results                                                                          |
+|---------------------|----------------------------------------------------------------------------------|
+| /bookstore/book[1]  | Selects the first book element that is the child of the bookstore element.       |
+| //book              | Selects all book elements no matter where they are in the document               |
+| //@lang             | Selects all attributes that are named lang                                       |
+| //title[@lang='en'] | Selects all the title elements that have a "lang" attribute with a value of "en" |
