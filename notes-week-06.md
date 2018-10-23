@@ -265,46 +265,18 @@ There are many ways to locate the elements. It's similar to the usage in `reques
 
 Selenium provides the following methods to locate elements in a page:
 
-* find_element_by_id
-* find_element_by_name
-* find_element_by_xpath
-* find_element_by_link_text
-* find_element_by_partial_link_text
-* find_element_by_tag_name
-* find_element_by_class_name
-* find_element_by_css_selector
+* find_element(s)_by_id
+* find_element(s)_by_name
+* find_element(s)_by_xpath
+* find_element(s)_by_link_text
+* find_element(s)_by_partial_link_text
+* find_element(s)_by_tag_name
+* find_element(s)_by_class_name
+* find_element(s)_by_css_selector
 
-To find multiple elements (these methods will return a list):
+For instruction of the syntax, you can refer this [documentation](https://selenium-python.readthedocs.io/locating-elements.html). In our notes, we mainly use `find_element(s)_by_css_selector` method, due to its easy expression and rich matchability.
 
-* find_elements_by_name
-* find_elements_by_xpath
-* find_elements_by_link_text
-* find_elements_by_partial_link_text
-* find_elements_by_tag_name
-* find_elements_by_class_name
-* find_elements_by_css_selector
-
-Except the `XPath` method, others are pretty much like we used before, just check out the html in Chrome Devtools, find the name, class, link, attributes etc. For instruction of the syntax, you can refer this [documentation](https://selenium-python.readthedocs.io/locating-elements.html).
-
-For `XPath` method, XPath uses path expressions to select nodes or node-sets in an XML document. The following are basic expression rules and expression path examples. For a more detailed usage, you can check out this [tutorial](https://www.w3schools.com/xml/xpath_syntax.asp).
-
-Basic expression rules:
-
-| Expression | Description                                                                                           |
-|------------|-------------------------------------------------------------------------------------------------------|
-| /          | Selects from the root node                                                                            |
-| //         | Selects nodes in the document from the current node that match the selection no matter where they are |
-| .          | Selects the parent of the current node                                                                |
-| @          | Selects attributes                                                                                    |
-
-Path Expression examples:
-
-| Path Expression     | Results                                                                          |
-|---------------------|----------------------------------------------------------------------------------|
-| /bookstore/book[1]  | Selects the first book element that is the child of the bookstore element.       |
-| //book              | Selects all book elements no matter where they are in the document               |
-| //@lang             | Selects all attributes that are named lang                                       |
-| //title[@lang='en'] | Selects all the title elements that have a "lang" attribute with a value of "en" |
+<!--Todo: CSS SELECTOR-->
 
 #### Example: CNN articles scraping
 
@@ -321,14 +293,13 @@ from selenium import webdriver
 browser = webdriver.Chrome()
 browser.get('http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war')
 
-browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']") #find all articles wrapped in the path of class='summaryBlock'
 articles = []
-for session in browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']"):
+for session in browser.find_elements_by_css_selector('#summaryList_mixed .summaryBlock'): #find all articles wrapped in the path of class='summaryBlock' under the id='summaryList_mixed' 
     article = {}
-    article['headline'] = session.find_element_by_class_name("cnnHeadline").text #find headline
-    article['date'] = session.find_element_by_class_name("cnnDateStamp").text #find date
-    url = session.find_element_by_xpath("./div[@class='cnnHeadline']/*[@href]")  #can not directly get the href attributes, it will return 'url' as a selenium object: <selenium.webdriver.remote.webelement.WebElement (session="936716c8251394a2fddad1fa80b64d23", element="0.9458243256600611-16")>
-    article['url'] = url.get_attribute('href') #further get attributes from last step
+    h = session.find_element_by_css_selector(".cnnHeadline a")
+    article['headline'] = h.text #find headline block
+    article['url'] = h.get_attribute('href') #get url attributes from headline block
+    article['date'] = session.find_element_by_css_selector("span.cnnDateStamp").text #find date
     articles.append(article)
 articles
 ```
@@ -345,13 +316,14 @@ import time #mainly use its time sleep function
 
 def get_articles_from_browser(b):
     articles = []
-    for session in b.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']"):
+    for session in browser.find_elements_by_css_selector('#summaryList_mixed .summaryBlock'): #find all articles wrapped in the path of class='summaryBlock' under the id='summaryList_mixed'
         article = {}
-        article['headline'] = session.find_element_by_class_name("cnnHeadline").text #find headline
-        article['date'] = session.find_element_by_class_name("cnnDateStamp").text #find date
-        url = session.find_element_by_xpath("./div[@class='cnnHeadline']/*[@href]") #find url 
-        article['url'] = url.get_attribute('href') #get url attribute
+        h = session.find_element_by_css_selector(".cnnHeadline a")
+        article['headline'] = h.text #find headline block
+        article['url'] = h.get_attribute('href') #get url attributes from headline block
+        article['date'] = session.find_element_by_css_selector("span.cnnDateStamp").text #find date
         articles.append(article)
+    
     return articles
 
 
@@ -367,7 +339,7 @@ for i in range(10):
         new_articles = get_articles_from_browser(browser)
         all_page_articles.extend(new_articles)
 #in the following, we need to emulate to click `next button` to turn pages.
-#try 1: just click link by default ... 
+#try 1: just click link by default ...
 #next_page = browser.find_element_by_link_text('Next').click()
 #error: not clickable. After try several print() in the process,I found that, we need to scroll the window down till we can see the next button. Therefore you can see that selenium browser emulation method is really just like a human behavior.
 #try 2: scroll whole body down to the bottom...
