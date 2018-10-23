@@ -241,7 +241,7 @@ browser = webdriver.Chrome() #default to initiate webdriver, you can assign it w
 
 #### Navigating
 
-You can doing a lot of interactive things with the webpage with help of the selenium, like navigating to a link, searching, scrolling, clicking etc. In the following example, we will demo the basic usage of navigating.
+You can do a lot of interactive things with the webpage with help of the selenium, like navigating to a link, searching, scrolling, clicking etc. In the following example, we will demo the basic usage of navigating.
 
 ```python
 from selenium import webdriver
@@ -251,7 +251,7 @@ element = browser.find_element_by_name("q") #Find the search box
 element.send_keys("github python for data and media communication gitbook") #search our openbook
 element.submit() #submit search action
 # you will find the webpage will automatically return the results you search
-link = browser.find_element_by_link_text('GitHub - hupili/python-for-data-and-media-communication-gitbook') #find our tutorial
+link = browser.find_element_by_partial_link_text('GitHub - hupili') #find our tutorial
 link.click() #click the link, enter our tutorial
 browser.execute_script("window.scrollTo(0,1200);") #scroll in the page, window.scrollTo(x,y), x means horizontal, y means vertical
 notes_links = browser.find_element_by_link_text('notes-week-06.md') #find link of notes 6
@@ -383,7 +383,7 @@ for i in range(10):
         print('Error on page %s' % i)
 
 import pandas as pd #spoiler. pandas is the key module in the next chapter, you can check out chapter 7 for further information.
-df = pd.DataFrame(articles) #convert articles into dataframe
+df = pd.DataFrame(all_page_articles) #convert articles into dataframe
 df
 ```
 
