@@ -814,6 +814,8 @@ The content:
 - Check the missing values. Are there empty cells? What is the reasonable default value to fill in those empty cells?
 - Check the above on a subset of data (filtering/ grouping). Does `50` looks like a regular price? Does `50` looks like a regular price within "seafood" category?
 
+Here is an exercise of how to handle common error while in data cleaning, please refer [here](https://github.com/ChicoXYC/python-for-data-and-media-communication/tree/master/pandas-examples/data%20cleaning%20exercise) for dataset and notebook.
+
 ### Transformation
 
 - Convert text value to numeric value. e.g. convert price range text into a representative number that can be sorted.
