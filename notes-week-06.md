@@ -27,6 +27,9 @@
             - [Drivers](#drivers)
             - [Navigating](#navigating)
             - [Locating Elements](#locating-elements)
+            - [Find_element(s)_by_css_selector](#find_elements_by_css_selector)
+                - [Locating elements by attribute](#locating-elements-by-attribute)
+                - [Locating Child Element](#locating-child-element)
             - [Example: CNN articles scraping](#example-cnn-articles-scraping)
                 - [Fundamental: One page](#fundamental-one-page)
                 - [Advanced: All pages](#advanced-all-pages)
@@ -276,7 +279,64 @@ Selenium provides the following methods to locate elements in a page:
 
 For instruction of the syntax, you can refer this [documentation](https://selenium-python.readthedocs.io/locating-elements.html). In our notes, we mainly use `find_element(s)_by_css_selector` method, due to its easy expression and rich matchability.
 
-<!--Todo: CSS SELECTOR-->
+#### Find_element(s)_by_css_selector
+
+##### Locating elements by attribute
+
+Eg:
+
+```html
+<div id="summaryList_mixed" class="summaryList" style="display: block;"></div>
+```
+
+```python
+css = element_name[<attribute_name>='<value>']
+```
+
+1. Select id. Use `#` notation to select the id:
+
+```python
+css="div#summaryList_mixed" or "#summaryList_mixed"
+```
+
+2. Select class. Use the `.` notation to select the class:
+
+```python
+css="div.summaryList" or just css=".summaryList"
+```
+
+3. Select multiple attributes:
+
+```python
+css="div[class='summaryList'] [style='display:block']"
+```
+
+##### Locating Child Element
+
+Eg:
+
+```html
+<div id="summaryList_mixed" class="summaryList" style="display: block;">
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+</div>
+```
+
+1. Locate all children
+
+```python
+css="div#summaryList_mixed .summaryBlock"
+```
+
+2. Locate the certain one with “nth-of-type”. The first one is "nth-of-type(1), and the last one is "last-child"
+
+```python
+css="div#summaryList_mixed .summaryBlock:nth-of-type(2)"
+```
+
+For more explanations and examples about css selector, here is a good [documentation](https://saucelabs.com/resources/articles/selenium-tips-css-selectors) you can refer to.
 
 #### Example: CNN articles scraping
 
