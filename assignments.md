@@ -72,6 +72,21 @@ Most of the time, one data set is not enough for you to make a thorough analysis
 
 ## Assignment 2 -- Data analysis, visualisation and presentation
 
+**NOTE**: this section is to be further specified. Please check back later.
+
+The core objective of this assignment is to make a **reproducible** and **data-driven** report in jupyter notebook, with pandas, matplotlib, seaborn, networkx, nltk, ...
+
+Requirements: 
+
+- Base on the dataset from Assignment 1. You can enrich it if necessary.
+- 3 story points
+- 2 types of charts
+- Notebook is legible: Put trial & error codes aside; adjust output
+- All auxiliary files, e.g. data, image, codes need to be stored in this folder.
+- The .ipynb notebook should be self-explainary. Make sure you can use https://nbviewer.jupyter.org to view it.
+
+**NOTE**: This is a mini story produced from data. The purpose of this assignemnt is to exercise workflow so don't dwell on the content too much if thing the story points are not compelling.
+
 ## Notes on Bonus Question
 
 Note: Solution to bonus questions will not contribute to regular grade and will not affect class wise curving. They will be used in the end as tie breaker or promote significant outperformers to next level of letter grade. In other words, working on bonus questions will not harm other's grade. It may help some continuous outperformers to gain one more layer of security, just in case they have bad luck with project or quiz. You are encouraged to take more bonus if you can.
