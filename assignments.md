@@ -2,7 +2,7 @@
 
 Following are the **individual** assignments. You are welcome to discuss and work in groups. In the end, everyone should do the assignment and submit an original version from oneself. Make reference where needed, if you used other's solution.
 
-## Way to hand in assignments
+## How to hand in assignments?
 
 - Create a repo called `python-data-assignments`. (Please copy and paste to ensure the exact repo name, or we may not find your assignment)
 - Create one folder for each assignment, with names `assignment0`, `assignment1` and `assignment2`.
@@ -43,10 +43,34 @@ To address following questions, you can choose to simply discuss the solution in
 - Can you further organise your code for future reuse? One example of reusable piece is the keyword extraction from one string. Another example is the keyword extraction from one file. You can consider to put those in functions.
 - There are two ways to approach the above problem: 1) assemble the content of all 5 files and extract keyword list for one string; 2) extract keyword-frequency list for all 5 files first and then merge the keyword-frequency (may need to sum the count for the same keyword). Which did you use? Which way is better? And Why?
 
-## Assignment 1 -- Data collection
+## Assignment 1 -- Data collection and ideation
+
+Deadline: **Nov 9, 2018 (Fri)**
+
+Collect your **original** data by one of the following two ways:
+
+- Scraping static website (requests + beautiful soup)
+- Scraping a dynamic website (selenium/ splinter)
+
+Requirement:
+
+- The dataset needs to contain more than **100** entries and more than **5** fields.
+- In the `README.md` file, give information about your dataset, so people can quickly understand the content without looking into your CSV file. You can include those sections: 1) topic ; 2) data source; 3) data fields (type, sample data); 4) data volume; 5) **license**. Here is a [sample](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2).
+
+Note:
+
+- "License" is very important. Or, people can not build derivatives upon your work.
+- No more than **3** students scrape the same website. Please register your interest with TA as early as possible to coordinate the topics.
+- Assignment 2 will be based on Assignment 1. So pick the scraping target in a sensable way. The dataset had better help you generate some meaningful observations about the chosen topic.
+
+### Bonus: Enrich your dataset
+
+Most of the time, one data set is not enough for you to make a thorough analysis. You may want to enrich your dataset somehow. Here are some potential methods:
+
+- You can download data set from [gov open data portals](https://data.gov.hk/en/), [research institutes](https://ourworldindata.org/), or [any collection](https://github.com/awesomedata/awesome-public-datasets) that you can verify. You don't have to actually download the data in this bonus question, because some dataset is too large to be put onto GitHub repo. Simply give pointers to the database you are considering and briefly describe how they can be incorporated into the dataset you just scraped or how they can assist your articulation.
+- You can get some related data via [HTTP based API](https://earthquake.usgs.gov/fdsnws/event/1/). Please tell us what is the API, give a few (truncated) sample responses, and discuss how that data can potentially help your data-driven report.
 
 ## Assignment 2 -- Data analysis, visualisation and presentation
-
 
 ## Notes on Bonus Question
 
