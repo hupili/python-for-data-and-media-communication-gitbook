@@ -107,7 +107,79 @@ Try to adjust number of bins and bin boundaries to see what happens.
 
 ## Correlation
 
-[past reference code](https://github.com/hupili/python-for-data-and-media-communication/blob/82c813851cfb5e74d1785df86e3a9e633e810508/correlation/Cheating%20our%20children.ipynb)
+We can plot the correlation graph to display relationship between two variables and columns. For example, to figure out whether there is a correlation between absence and score.
+
+```python
+df.plot('P_ABSENT_PERSIST', 'AVG_ENG_MATH_SCORE_09', kind='scatter')
+#kind means the graph type
+```
+
+![Correlation Scatter](assets/correlation_scatter.png)
+
+Generally, you can see that the higher the absence ratio, the lower the test score in general. But here are two questions:
+
+* Is this relationship strong enough?
+* What are the outliers?
+
+To solve this problem, we need to use correlation functions to dig out more.
+
+```python
+help(df['P_ABSENT_PERSIST'].corr)
+```
+
+Output:
+```test
+Help on method corr in module pandas.core.series:
+
+corr(other, method='pearson', min_periods=None) method of pandas.core.series.Series instance
+    Compute correlation with `other` Series, excluding missing values
+    
+    Parameters
+    ----------
+    other : Series
+    method : {'pearson', 'kendall', 'spearman'}
+        * pearson : standard correlation coefficient
+        * kendall : Kendall Tau correlation coefficient
+        * spearman : Spearman rank correlation
+    min_periods : int, optional
+        Minimum number of observations needed to have a valid result
+    
+    
+    Returns
+    -------
+    correlation : float
+```
+
+From above you can see that, `corr` function is used to compute one series with other series. And there are 3 methods: `pearson`, `kendall`, `spearman`. we don't need necessarily to know how to calculate instead
+we need to what does it means and main differences. For example, `person` measure the degree of the relationship between `linearly` related variables, while Spearman rank correlation is a `non-parametric test`. For more details, You can refer [here](http://www.statisticssolutions.com/correlation-pearson-kendall-spearman/)
+
+```python
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='pearson')
+```
+
+output:
+
+```text
+-0.5205965225654683
+```
+
+**Note:**
+
+* Pearson correlation is between [-1, 1]
+* Values around 0 means no correlation/ weak correlation
+* Values near 1 and -1 can be interpreted as strong (linear) correlation
+
+Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also senstive to outliers. Spearman's rank correlation can help here.
+
+```python
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='spearman')
+```
+
+Outut:
+
+```text
+-0.5810765727681304
+```
 
 ### Continuous: Scatter plot and correlation
 
