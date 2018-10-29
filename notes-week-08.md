@@ -30,9 +30,20 @@
   - `Series.corr()` -- calculate correlation
   - `DataFrame.plot()` or `matplotlib.pyplot.plot()` -- scatter plot to visualise 2D correlation
 
+The dataset and case we use this week comes from a workshop called "descriptive analysis" conducted by Jenifer on GICJ2017 in South Africa. You can download data from:
+
+* www.jenster.com/nottingham.xlsx
+* www.jenster.com/index.xlsx
+
+New modules:
+
+* [Matplotlib](https://matplotlib.org/). Matplotlib is a Python 2D plotting library and one of the most frequently used plotting modules in Python.
+* [Seaborn](https://seaborn.pydata.org/). Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.
+
 ## Distribution
 
 ### Histogram and KDE
+
 
 #### Bonus: How histograms can be cheating
 
