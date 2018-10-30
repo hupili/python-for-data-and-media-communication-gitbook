@@ -9,8 +9,11 @@
         - [Histogram and KDE](#histogram-and-kde)
             - [Bonus: How histograms can be cheating](#bonus-how-histograms-can-be-cheating)
         - [Special points in distribution](#special-points-in-distribution)
-    - [Articulate central tendency and spread of data](#articulate-central-tendency-and-spread-of-data)
-        - [Variance, skewness, kurtosis](#variance-skewness-kurtosis)
+    - [Bonus: Articulate central tendency and spread of data](#bonus-articulate-central-tendency-and-spread-of-data)
+        - [Mean](#mean)
+        - [Variance](#variance)
+        - [Skewness](#skewness)
+        - [Kurtosis](#kurtosis)
     - [Correlation](#correlation)
         - [Continuous: Scatter plot and correlation](#continuous-scatter-plot-and-correlation)
         - [Discrete: Cross-tab and correlation](#discrete-cross-tab-and-correlation)
@@ -41,6 +44,12 @@ New modules:
 * [Seaborn](https://seaborn.pydata.org/). Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.
 
 ## Distribution
+
+<!-- Obj: 
+- visual analysis;
+- can filger based on visual clues (1-D);
+- can investigate special data points;
+ -->
 
 ### Histogram and KDE
 
@@ -93,6 +102,14 @@ Try to adjust number of bins and bin boundaries to see what happens.
 
 ### Special points in distribution
 
+<!-- TODO:
+
+- functions
+- can filter out interesting pionts for further discussion
+
+-->
+
+
 - Mean
 - Max/ Min
 - Median
@@ -101,9 +118,17 @@ Try to adjust number of bins and bin boundaries to see what happens.
 * `seaborn`
 * `matplotlib` 
 
-## Articulate central tendency and spread of data
+## Bonus: Articulate central tendency and spread of data
 
-### Variance, skewness, kurtosis
+<!-- TODO: calculate math_score_xx_grade/ yy_grade -->
+
+### Mean
+
+### Variance
+
+### Skewness
+
+### Kurtosis
 
 ## Correlation
 
