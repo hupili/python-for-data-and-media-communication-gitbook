@@ -10,7 +10,6 @@
             - [Bonus: How histograms can be cheating](#bonus-how-histograms-can-be-cheating)
         - [Special points in distribution](#special-points-in-distribution)
     - [Bonus: Articulate central tendency and spread of data](#bonus-articulate-central-tendency-and-spread-of-data)
-        - [Mean](#mean)
         - [Variance](#variance)
         - [Skewness](#skewness)
         - [Kurtosis](#kurtosis)
@@ -103,26 +102,48 @@ Try to adjust number of bins and bin boundaries to see what happens.
 ### Special points in distribution
 
 <!-- TODO:
-
 - functions
 - can filter out interesting pionts for further discussion
-
+- Mean
 -->
 
-
 - Mean
+
+![Pandas Mean](assets/pandas-mean.png)
+
+The statistical mean, gives a very good idea about the central tendency of the data being collected. What can we get from the mean? you can have a general idea that overall, students get better performance in higher grades, but is it normal?
+
 - Max/ Min
+
+![Pandas max&min](assets/pandas-filter-abnormal.png)
+The max and min shows the most extreme observations. If extreme values are real (not measurement errors), it becomes valuable to us, giving us a breakthrough point to dig out the reason, which we emphasis at the very beginning of this course - abnormal.
+
+For this case, we can filter out the school with highest absent rate and see if there is anything interesting. Step further, we can filter out the school with high absent rate but high performance in score at the same time.
+This is also abnormal for us in theory which we can further check out.
+
+![Pandas abnormal2](assets/pandas-filter-abnormal2.png)
+
 - Median
+
+```python
+df["AVG_ENG_MATH_SCORE_10"].median()
+```
+
+Output:
+
+```text
+27.8
+```
+
+Median provides a helpful measure of center of our dataset. But more often, we care more about the Percentile, like where are the majority of the data locate.
+
 - Percentile
 
-* `seaborn`
-* `matplotlib` 
+Percentile is a given percentage of observations in a group of observations fall. For example, the 75th percentile is the value (or score) below which 75% of the observations may be found.
+
+![Pandas percentile](assets/pandas-percentile.png)
 
 ## Bonus: Articulate central tendency and spread of data
-
-<!-- TODO: calculate math_score_xx_grade/ yy_grade -->
-
-### Mean
 
 ### Variance
 
@@ -131,6 +152,8 @@ Try to adjust number of bins and bin boundaries to see what happens.
 ### Kurtosis
 
 ## Correlation
+
+### Continuous: Scatter plot and correlation
 
 We can plot the correlation graph to display relationship between two variables and columns. For example, to figure out whether there is a correlation between absence and score.
 
@@ -205,8 +228,6 @@ Outut:
 ```text
 -0.5810765727681304
 ```
-
-### Continuous: Scatter plot and correlation
 
 ### Discrete: Cross-tab and correlation
 
