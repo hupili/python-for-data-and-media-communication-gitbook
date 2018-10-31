@@ -256,12 +256,11 @@ Output:
 
 #### Benefits of using series
 
-* Compared with list and dict, in series, we can access to elements by the axis labels, which is like `index` way in list and by the elements name, which is like `key` way in dict. Therefore its more convenient than above two in this question.
-* Although they are both one dimensional dataset, series allows you to store list and dict values.
-* With more build-in functions in pandas and other libraries, series are more easily to be analyzed and used to do visualization.
+Series has the advantage from both `dict` and `list`. One can use a key to reference to the elements, which leads a `dict` like look and feel. However, for a regular `dict`, keys do not have certain ordering. Python only guarantees `dict.keys()`, `dict.values()` and `dict.items()` adopts the same ordering but how they are ordered is not specified. `pandas.Series` can preserve the order of elements, which gives a `list` like look and feel.
 
-<!--Todo:
-    about Benefits of using series, whether the above is the advantage?-->
+<!-- * Compared with list and dict, in series, we can access to elements by the axis labels, which is like `index` way in list and by the elements name, which is like `key` way in dict. Therefore its more convenient than above two in this question.
+* Although they are both one dimensional dataset, series allows you to store list and dict values.
+* With more build-in functions in pandas and other libraries, series are more easily to be analyzed and used to do visualization. -->
 
 ### Pandas Dataframe
 
@@ -814,7 +813,7 @@ The content:
 - Check the missing values. Are there empty cells? What is the reasonable default value to fill in those empty cells?
 - Check the above on a subset of data (filtering/ grouping). Does `50` looks like a regular price? Does `50` looks like a regular price within "seafood" category?
 
-Here is an exercise of how to handle common error while in data cleaning, please refer [here](https://github.com/ChicoXYC/python-for-data-and-media-communication/tree/master/pandas-examples/data%20cleaning%20exercise) for dataset and notebook.
+As an exercise, you can download a CSV file with intentionally injected error [here](https://github.com/hupili/python-for-data-and-media-communication/tree/7cec7a85a894871aff26b512155612ecd5e8e8f7/pandas-examples/data%20cleaning%20exercise). The notebook is for your reference.
 
 ### Transformation
 
