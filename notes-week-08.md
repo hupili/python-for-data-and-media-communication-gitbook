@@ -294,17 +294,9 @@ output:
 * Values around 0 means no correlation/ weak correlation
 * Values near 1 and -1 can be interpreted as strong (linear) correlation
 
-Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also senstive to outliers. Spearman's rank correlation can help here.
+Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also senstive to outliers. Spearman's rank correlation can help here. You can make a judgement whether there is a correlation bewteen grades and absent rate.
 
-```python
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='spearman')
-```
-
-Outut:
-
-```text
--0.5810765727681304
-```
+![Calculate 4 years correlation](assets/calculate-correlation.png)
 
 ### Discrete: Cross-tab and correlation
 
