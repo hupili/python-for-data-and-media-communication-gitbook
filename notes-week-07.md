@@ -814,7 +814,7 @@ The content:
 - Check the missing values. Are there empty cells? What is the reasonable default value to fill in those empty cells?
 - Check the above on a subset of data (filtering/ grouping). Does `50` looks like a regular price? Does `50` looks like a regular price within "seafood" category?
 
-Here is an exercise of how to handle common error while in data cleaning, please refer [here](https://github.com/ChicoXYC/python-for-data-and-media-communication/tree/master/pandas-examples/data%20cleaning%20exercise) for dataset and notebook.
+As an exercise, you can download a CSV file with intentionally injected error [here](https://github.com/hupili/python-for-data-and-media-communication/tree/7cec7a85a894871aff26b512155612ecd5e8e8f7/pandas-examples/data%20cleaning%20exercise). The notebook is for your reference.
 
 ### Transformation
 
