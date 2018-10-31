@@ -147,9 +147,69 @@ Percentile is a given percentage of observations in a group of observations fall
 
 ### Variance
 
+variance is the expectation of the squared deviation of a random variable from its mean. Informally, it measures how far a set of (random) numbers are spread out from their average value. The smaller the variance, the sharper the distribution. The variance is the square of the `standard deviation`.
+
+![Variance](assets/variance.png)
+*from Wikipedia*
+
+```python
+df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].var(axis=0).sort_values(ascending=False)
+```
+
+Output:
+
+```text
+AVG_ENG_MATH_SCORE_07    4.128475
+AVG_ENG_MATH_SCORE_10    2.983547
+AVG_ENG_MATH_SCORE_08    2.778986
+AVG_ENG_MATH_SCORE_09    2.694271
+```
+
+For this case, we can see that the score fluctuations of students in year 7 are the largest. And there is no clear pattern only considering this factor.
+
 ### Skewness
 
+Skewness can help us recognize the general distribution pattern, whether it is feasible to treat it as a normal distribution. If Sk> 0, the larger the Sk value, the higher the degree of right deviation; If Sk< 0, the smaller the Sk value, the higher the degree of left deviation.
+
+![Skewness](assets/skewness.png)
+*from Wikipedia*
+
+```python
+df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].skew(axis=0).sort_values(ascending=False)
+```
+
+Output:
+
+```text
+AVG_ENG_MATH_SCORE_09   -0.038742
+AVG_ENG_MATH_SCORE_10   -0.152395
+AVG_ENG_MATH_SCORE_08   -0.224148
+AVG_ENG_MATH_SCORE_07   -1.352412
+```
+
+From the results, we can have a overview of that the scores distribution of those students is left deviated, and mass students is concentrated on the right of the figure. And there is no apparent pattern related to the years.
+
 ### Kurtosis
+
+The kurtosis reflects the sharpness of the peak of the distribution. The greater the kurtosis, the sharper and steeper of the distribution peak. A high kurtosis means that the increase in variance is caused by an extreme values in the low frequency that is greater or less than the average.
+
+![Kurtosis](assets/kurtosis.png)
+*from Wikipedia*
+
+```python
+df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].kurtosis(axis=0).sort_values(ascending=False)
+```
+
+Output:
+
+```text
+AVG_ENG_MATH_SCORE_07    6.934606
+AVG_ENG_MATH_SCORE_10   -0.036167
+AVG_ENG_MATH_SCORE_08   -0.428693
+AVG_ENG_MATH_SCORE_09   -0.478333
+```
+
+From this statistic, we can know that students in year 7 has larger kurtosis, which means that the distribution peak is sharper, and there are more extreme value points in year 7.
 
 ## Correlation
 
