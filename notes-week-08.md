@@ -44,11 +44,12 @@ New modules:
 
 ## Distribution
 
-<!-- Obj: 
-- visual analysis;
-- can filger based on visual clues (1-D);
-- can investigate special data points;
- -->
+For distribution, we can use some simple pandas statistics functions to get a overall picture of whats the data distribution like, from what we can get at least two analyzing directions:
+
+1. Is there a clear trend or a pattern of the distribution?
+2. Is there any abnormal or outliers that worthy noticing?
+
+The following is the analyzing demo after we get a clean dataset, based on the example of *Cheating our children* case, and try to find insights.
 
 ### Histogram and KDE
 
@@ -68,26 +69,48 @@ The columns:
 * `AVG_ENG_MATH_SCORE_xx`: The average score for the particular class of year xx. For a class, this metric is the higher the better
 * `P_ABSENT_PERSIST`:  the absent ratio transformed somehow, the higher the worse.
 
-This is multi dimensional data. We are interested in the relationship between those dimensions/ variables.
+This is multi dimensional data. We are interested in the relationship between those dimensions / variables. For example, the absent ratio.
 
 ```python
-len(df)
 df['P_ABSENT_PERSIST'].hist(bins=20)
 ```
 
 ![Dataframe hist](assets/df_hist.png)
 
-Quick Question:
+Quick Questions:
+
 * What do you conclude from this histogram?
 * What would you do next to mine the news?
 
+It's clear that most of school has only 0 - 2 absent ratio, but 2 schools has more than 8 percent absent ratio. A question for us is why those two schools are abnormal and who are they? We can filter out to dig out more, and see if we can find anything interesting.
+
+![Filter Outlier2](assets/filter-outlier2.png)
+
+Also, one can check out the other columns and see if there anything abnormal or trend.
+
 ```python
-df['AVG_ENG_MATH_SCORE_07'].hist(bins=20)
+plt.subplot(2, 2, 1)
+df['AVG_ENG_MATH_SCORE_07'].hist(bins=10)
+plt.title('AVG_ENG_MATH_SCORE_07')
+
+plt.subplot(2, 2, 2)
+df['AVG_ENG_MATH_SCORE_08'].hist(bins=10)
+plt.title('AVG_ENG_MATH_SCORE_08')
+
+
+plt.subplot(2, 2, 3)
+df['AVG_ENG_MATH_SCORE_09'].hist(bins=10)
+plt.title('AVG_ENG_MATH_SCORE_09')
+
+
+plt.subplot(2, 2, 4)
+df['AVG_ENG_MATH_SCORE_10'].hist(bins=10)
+plt.title('AVG_ENG_MATH_SCORE_10')
 ```
 
-![Dataframe hist](assets/df_hist2.jpg)
+![Dataframe hist](assets/df_hist2.png)
 
-Same question: can you find anything notable from this chart? It that weird for the outlier whose score is around 15? How do we filter that out?
+Same question: can you find anything notable from this chart? It that weird for the outlier whose score is around 15 in year 7? We can filter it out and invest later.
 
 ```python
 df[df['AVG_ENG_MATH_SCORE_07'] < 16]
@@ -100,12 +123,6 @@ df[df['AVG_ENG_MATH_SCORE_07'] < 16]
 Try to adjust number of bins and bin boundaries to see what happens.
 
 ### Special points in distribution
-
-<!-- TODO:
-- functions
-- can filter out interesting pionts for further discussion
-- Mean
--->
 
 - Mean
 
