@@ -301,7 +301,6 @@ Pearson correlation does not work very well with `non-linear correlation` or whe
 
 ![Calculate 4 years correlation](assets/calculate-correlation.png)
 
-
 ### Better visualisation
 
 ```python
@@ -463,6 +462,25 @@ for i in range(len(suspecious_t)):
 ![Corr better viz4](assets/corr-better-viz4.png)
 
 ### Discrete: Cross-tab and correlation
+
+Different groups with different absent rate may show different correlation with their scores. We can divide the absent rate with different groups to check out the situation here.
+
+We name the `absent rate <1` as `hardworking group`,`absent rate 1<=rate<3` as `middle group`, and `absent rate >3` as `happy group`.
+
+```python
+f = {'AVG_ENG_MATH_SCORE_09':['mean','max','min','var','std']}
+g1 = df['P_ABSENT_PERSIST'] <1
+g2 = (df['P_ABSENT_PERSIST'] <3)&(df['P_ABSENT_PERSIST']>=1)
+g3 = (df['P_ABSENT_PERSIST']>3)
+a = np.where(g1, 'hardworking group',
+             np.where(g2, 'middle group',
+             np.where(g3, 'happy group','middle + hardworking group')))
+df.groupby(a)['AVG_ENG_MATH_SCORE_09'].agg(f).reset_index()
+```
+
+![Cross tab correlation](assets/cross-tab-correlation.png)
+
+From the results, we can find the pattern that the more hardworking, the better performance students in their scores, which shows on the mean of their scores. However Middle group shows more diverse in this correlation, which can be explained by our experience. Because most of students are located in this area and the samples are more diverse. To the contrary, hardworking students get good grades and happy students get lower grades generally.
 
 ### From correlation to causality
 
