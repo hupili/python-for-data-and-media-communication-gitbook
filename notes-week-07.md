@@ -329,7 +329,7 @@ import io
 import requests
 url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/openrice_sample.csv"
 s=requests.get(url).content
-df=pd.read_csv(io.StringIO(s.decode('utf-8')))
+df=pd.read_csv(io.StringIO(s.decode('utf-8')),header=None, names=['name', 'location','price','country','type','likes','review','bookmark','discount_info'])
 ```
 
 #### Select data
@@ -413,7 +413,7 @@ Similarly, there is another function `.iloc`, which is purely integer-location b
 Using the `openrice.csv` as an example:
 
 ```python
-#read csv first, make sure the header is right
+#read csv first, make sure the header is right, you can refer to previous content in this chapter.
 df.iloc[5]
 ```
 
