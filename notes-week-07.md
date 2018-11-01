@@ -327,7 +327,7 @@ We can also load CSV from GitHub directly with the help of `requests` and `io.St
 import pandas as pd
 import io
 import requests
-url="https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv"
+url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/openrice_sample.csv"
 s=requests.get(url).content
 df=pd.read_csv(io.StringIO(s.decode('utf-8')))
 ```
