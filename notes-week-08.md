@@ -15,6 +15,9 @@
         - [Kurtosis](#kurtosis)
     - [Correlation](#correlation)
         - [Continuous: Scatter plot and correlation](#continuous-scatter-plot-and-correlation)
+        - [Better visualisation](#better-visualisation)
+            - [Filter out in the charts](#filter-out-in-the-charts)
+            - [A more primitive/ finer controlled way of plotting using matplotlib](#a-more-primitive-finer-controlled-way-of-plotting-using-matplotlib)
         - [Discrete: Cross-tab and correlation](#discrete-cross-tab-and-correlation)
         - [From correlation to causality](#from-correlation-to-causality)
     - [Bonus: (Statistical) Hypothesis testing](#bonus-statistical-hypothesis-testing)
@@ -297,6 +300,167 @@ output:
 Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also senstive to outliers. Spearman's rank correlation can help here. You can make a judgement whether there is a correlation bewteen grades and absent rate.
 
 ![Calculate 4 years correlation](assets/calculate-correlation.png)
+
+
+### Better visualisation
+
+```python
+sns.regplot(df['P_ABSENT_PERSIST'], df['AVG_ENG_MATH_SCORE_09'])
+```
+
+![](assets/regplot.png)
+
+```python
+np.polyfit(df['P_ABSENT_PERSIST'].fillna(0), df['AVG_ENG_MATH_SCORE_09'].fillna(0), 1)
+```
+
+**Quiz:** What does it look like if we plot above line? The return value of polyfit is Polynomial coefficients, highest power first.
+
+**NOTE:** Try the codes without filena and observe the error. Now it is time to do some cleaning.
+
+![Clean data](assets/corr-clean-data.png)
+
+After we get the regression coefficient, we can estimate the grade09 and compare with the actual ones to see if there is a big difference.
+
+```python
+absent = df_cleaned['P_ABSENT_PERSIST']
+score_grade09 = df_cleaned['AVG_ENG_MATH_SCORE_09']
+estimated_score_grade09 =  28.54239409 + (-0.44654826) * absent
+(score_grade09 - estimated_score_grade09).hist()
+```
+
+![Corr prediction](assets/corr-prediction.png)
+
+We can filter out the school that have hugh different scores with the estimation.
+ 
+![Filter abnormal](assets/corr-filter-abnormal.png)
+
+#### Filter out in the charts
+
+Get the threshold value for 95% percentile
+
+```python
+s.quantile(0.95)
+df_cleaned[s > s.quantile(0.95)].plot(
+    x='P_ABSENT_PERSIST', 
+    y='AVG_ENG_MATH_SCORE_09', 
+    kind='scatter')
+```
+
+![95 percentile](assets/95percentile.png)
+
+Adjust the quantile to include/ exclude suspicious schools.
+
+```python
+ax = sns.regplot(
+    df_cleaned['P_ABSENT_PERSIST'], 
+    df_cleaned['AVG_ENG_MATH_SCORE_09'],
+)
+df_cleaned[s > s.quantile(0.90)].plot(
+    x='P_ABSENT_PERSIST', 
+    y='AVG_ENG_MATH_SCORE_09', 
+    kind='scatter',
+    color='red',
+    ax=ax)
+```
+
+![Quantile exclude](assets/quantile-exclude.png)
+
+#### A more primitive/ finer controlled way of plotting using matplotlib
+
+Two common tricks for better visuals:
+
+* Add jitter to further scatter the data points
+* Use transparency to help identify density
+
+```python
+plt.figure(figsize=(10, 5))
+plt.scatter(
+    df_cleaned['P_ABSENT_PERSIST'], 
+    df_cleaned['AVG_ENG_MATH_SCORE_09'],
+    s=80, alpha=0.5)
+```
+
+![Corr better viz](assets/corr-better-viz1.png)
+
+```python
+plt.figure(figsize=(10, 5))
+plt.scatter(
+    df_cleaned['P_ABSENT_PERSIST'] + np.random.normal(0, 0.1, len(df_cleaned)), 
+    df_cleaned['AVG_ENG_MATH_SCORE_09'] + np.random.normal(0, 1, len(df_cleaned)),
+    s=80, alpha=0.5)
+```
+
+![Corr better viz](assets/corr-better-viz2.png)
+
+```python
+coeffs = np.polyfit(df_cleaned['P_ABSENT_PERSIST'].fillna(0), 
+           df_cleaned['AVG_ENG_MATH_SCORE_09'].fillna(0), 
+           1)
+trendline_x = np.linspace(df_cleaned['P_ABSENT_PERSIST'].min(), df_cleaned['P_ABSENT_PERSIST'].max())
+trendline_y = coeffs[0] * trendline_x + coeffs[1]
+plt.figure(figsize=(10, 5))
+
+plt.scatter(
+    df_cleaned['P_ABSENT_PERSIST'] + np.random.normal(0, 0.1, len(df_cleaned)), 
+    df_cleaned['AVG_ENG_MATH_SCORE_09'] + np.random.normal(0, 1, len(df_cleaned)),
+    s=80, alpha=0.5)
+
+plt.plot(trendline_x, trendline_y, linewidth=5)
+
+plt.scatter(
+    df_cleaned[s > s.quantile(0.90)]['P_ABSENT_PERSIST'],
+    df_cleaned[s > s.quantile(0.90)]['AVG_ENG_MATH_SCORE_09'],
+    color='red'
+)
+```
+
+![Corr better viz3](assets/corr-better-viz3.png)
+
+Jitter is good to present data but you need to track how the data is jittered in order to aligh multiple plots. The complete version is followed.
+
+```python
+plt.figure(figsize=(10, 5))
+
+# Plot main bubbles
+
+x = df_cleaned['P_ABSENT_PERSIST']
+x_jitter = x + np.random.normal(0, 0.05, len(df_cleaned))
+y = df_cleaned['AVG_ENG_MATH_SCORE_09'] 
+y_jitter = y + np.random.normal(0, 0.1, len(df_cleaned))
+
+plt.scatter(
+    x_jitter, 
+    y_jitter,
+    s=80, alpha=0.5)
+
+# Fit the curve (a line) and plot trendline
+
+coeffs = np.polyfit(x, y, 1)
+
+trendline_x = np.linspace(x.min(), x.max())
+trendline_y = coeffs[0] * trendline_x + coeffs[1]
+
+plt.plot(trendline_x, trendline_y, linewidth=5)
+
+# Identify suspecious schools, highlight and label texts
+
+estimated_y = coeffs[0] * x + coeffs[1]
+s = y - estimated_y
+
+suspecious_x = x_jitter[s > s.quantile(0.90)].values
+suspecious_y = y_jitter[s > s.quantile(0.90)].values
+suspecious_t = df_cleaned[s > s.quantile(0.90)]['Schoolme'].values
+plt.scatter(
+    suspecious_x,
+    suspecious_y,
+    color='red'
+)
+for i in range(len(suspecious_t)):
+    plt.text(suspecious_x[i], suspecious_y[i], suspecious_t[i])
+```
+
+![Corr better viz4](assets/corr-better-viz4.png)
 
 ### Discrete: Cross-tab and correlation
 
