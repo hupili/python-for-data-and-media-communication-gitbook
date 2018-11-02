@@ -828,7 +828,6 @@ We load the CSV data in one shot, because the current dataset is very small. In 
 
 ## References
 
-* First two chapters \(i.e. before "3D"\) of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
 * [Exercise numpy](https://www.shiyanlou.com/courses/1090) on ShiYanLou
 * [Exercise pandas](https://www.shiyanlou.com/courses/1091) on ShiYanLou
 

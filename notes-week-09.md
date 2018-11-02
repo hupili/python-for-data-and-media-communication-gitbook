@@ -13,6 +13,7 @@
         - [Presenting dataset](#presenting-dataset)
         - [README.md](#readmemd)
     - [Code of conduct: Reproducible reporting](#code-of-conduct-reproducible-reporting)
+    - [References](#references)
 
 <!-- /TOC -->
 
@@ -52,6 +53,11 @@ Besides giving important project information and "play the open source way", a g
 - A [tutorial](https://blog.github.com/2018-06-29-GIF-that-keeps-on-GIFing/) to use GIFs to better present your work on GitHub.
 
 ## Code of conduct: Reproducible reporting
+
+## References
+
+- First two chapters \(i.e. before "3D"\) of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
+
 
 ------
 
