@@ -15,10 +15,12 @@
         - [Kurtosis](#kurtosis)
     - [Correlation](#correlation)
         - [Continuous: Scatter plot and correlation](#continuous-scatter-plot-and-correlation)
-        - [Better visualisation](#better-visualisation)
+        - [Bonus: Better visualisation](#bonus-better-visualisation)
             - [Filter out in the charts](#filter-out-in-the-charts)
             - [A more primitive/ finer controlled way of plotting using matplotlib](#a-more-primitive-finer-controlled-way-of-plotting-using-matplotlib)
-        - [Discrete: Cross-tab and correlation](#discrete-cross-tab-and-correlation)
+        - [Discrete: Cross-tab](#discrete-cross-tab)
+            - [DataFrame.groupby](#dataframegroupby)
+            - [pandas.pivot_table](#pandaspivot_table)
         - [From correlation to causality](#from-correlation-to-causality)
     - [Bonus: (Statistical) Hypothesis testing](#bonus-statistical-hypothesis-testing)
 
@@ -301,7 +303,7 @@ Pearson correlation does not work very well with `non-linear correlation` or whe
 
 ![Calculate 4 years correlation](assets/calculate-correlation.png)
 
-### Better visualisation
+### Bonus: Better visualisation
 
 ```python
 sns.regplot(df['P_ABSENT_PERSIST'], df['AVG_ENG_MATH_SCORE_09'])
@@ -318,6 +320,10 @@ np.polyfit(df['P_ABSENT_PERSIST'].fillna(0), df['AVG_ENG_MATH_SCORE_09'].fillna(
 **NOTE:** Try the codes without filena and observe the error. Now it is time to do some cleaning.
 
 ![Clean data](assets/corr-clean-data.png)
+
+<!-- TODO: 
+    Please change all "In[]" cells into markdown code block, so that people can copy-paste.
+ -->
 
 After we get the regression coefficient, we can estimate the grade09 and compare with the actual ones to see if there is a big difference.
 
@@ -461,7 +467,9 @@ for i in range(len(suspecious_t)):
 
 ![Corr better viz4](assets/corr-better-viz4.png)
 
-### Discrete: Cross-tab and correlation
+### Discrete: Cross-tab
+
+#### DataFrame.groupby
 
 Different groups with different absent rate may show different correlation with their scores. We can divide the absent rate with different groups to check out the situation here.
 
@@ -478,9 +486,38 @@ a = np.where(g1, 'hardworking group',
 df.groupby(a)['AVG_ENG_MATH_SCORE_09'].agg(f).reset_index()
 ```
 
+<!-- TODO:
+    Change to simpler version.
+
+    def discretise(...):
+        ...
+        return ...
+
+    df['label'] = df['P_ABSENT_PERSIST'].apply(discretise)
+    df.groupby('label'). ...
+ -->
+
 ![Cross tab correlation](assets/cross-tab-correlation.png)
 
 From the results, we can find the pattern that the more hardworking, the better performance students in their scores, which shows on the mean of their scores. However Middle group shows more diverse in this correlation, which can be explained by our experience. Because most of students are located in this area and the samples are more diverse. To the contrary, hardworking students get good grades and happy students get lower grades generally.
+
+#### pandas.pivot_table
+
+**TODO**
+
+<!-- TODO: 
+    1) Discretise multiple columns:
+    - score07, score08, ... score10
+    - absent ratio
+    - total number of pupil
+
+    2) Use pandas.pivot_table to generate crosstabs. Some motivating questions:
+    - does higher score07 leads to higher score10?
+    - does lower absent ratio leads to higher score08?
+    - does higher score07 and score08 leads to higher score10?
+
+    Pivot table is flexible. You can run many combinations of indices and columns.
+-->
 
 ### From correlation to causality
 
@@ -492,4 +529,5 @@ Seeking for causality is one of the constant persuit of journalists. However, da
 The discussion causality is hard to be thorough. That is why, as journalist, once you get the facts (data analysis/ investigation/ desktop research/ ...), it is a common practice to consult experts for comments and insights.
 
 ## Bonus: (Statistical) Hypothesis testing
+
 
