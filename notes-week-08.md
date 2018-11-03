@@ -23,6 +23,7 @@
             - [pandas.pivot_table](#pandaspivot_table)
         - [From correlation to causality](#from-correlation-to-causality)
     - [Bonus: (Statistical) Hypothesis testing](#bonus-statistical-hypothesis-testing)
+    - [Reference](#reference)
 
 <!-- /TOC -->
 </div>
@@ -530,4 +531,23 @@ The discussion causality is hard to be thorough. That is why, as journalist, onc
 
 ## Bonus: (Statistical) Hypothesis testing
 
+Hypothesis testing is a common statistical tool used in social research domain. Suppose we have observations in `X`, the general process is as follows:
 
+- Establish "null hypothesis" as `H0`, which states that the observation is purely due to chance.
+- Calculate the likelihood that we have such observations under null hypothesis, i.e. `P{X | H0}`. This is called "p-value".
+- If p-value is small, we reject `H0` because `X` is not likly to happen given that condition. In other words, it is "statistically significant that `X` is not happening purely due to chance" -- in short, 
+
+> lower p-value --> more significant --> "more convincing"
+
+"Think stats" by Allen has a whole Chapter 7 on hypothesis testing. We omit the detailed discussion here. The purpose of this book is to help new learners to acquire essential Python and data analytics/ visualisation skills so that they can articulate the result by "common sense"/ "data sense". Articulating in a rigorous statistical language is not a requirement here.
+
+In the literatures, people usually put some alternative hypotheses aside `H0`. By reject `H0`, they conclude `H1` or `H2`, ... This is not always correct though. The short message that "lower p-value --> more significant" is a bit misleading. The precise version needs two more elaborations:
+
+- The alternative hypotheses need to be stated in a mutually exclusive and collectively exhaustive way, together with `H0`. Sometimes, people state the alternative not exactly the complement of `H0`.
+- Even if when `H0` is rejecrted, we can not draw the conclusion on your research question directly. The rejection happens under the assumed model `M`. Under `M`, `X` is unlikely to happen due to chance. There must be something (some cause). However, this do not give us information on how likely `M` itself is correct.
+
+The short take-away is: Use hypothesis with caution. When in double, just do a full reporting on all relevant experiments, tests, results. Leave it to the readers to draw their own conclusions.
+
+## Reference
+
+- Downey, A. B. (2014). Think stats: exploratory data analysis.  O’Reilly Media, Inc. Retrieved from https://the-eye.eu/public/Books/IT%20Various/think_stats.pdf
