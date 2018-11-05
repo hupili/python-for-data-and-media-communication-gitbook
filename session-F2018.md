@@ -57,4 +57,4 @@
 - Bohan ZHANG, [@ZHANGboh](https://github.com/ZHANGboh)
 - Huimin ZHANG, [@ZhangHuimin97](https://github.com/ZhangHuimin97)
 - Zichun ZHANG, [@NicoleZZC](https://github.com/NicoleZZC)
-- Yuanyuan CHENG, [@niegung](https://github.com/niegung) // Setting in
+- Yuanyuan CHENG, [@niegung](https://github.com/niegung), (Audit)
