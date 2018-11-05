@@ -55,7 +55,7 @@ Collect your **original** data by one of the following two ways:
 Requirement:
 
 - The dataset needs to contain more than **100** entries and more than **5** fields.
-- In the `README.md` file, give information about your dataset, so people can quickly understand the content without looking into your CSV file. You can include those sections: 1) topic ; 2) data source; 3) data fields (type, sample data); 4) data volume; 5) **license**. Here is a [sample](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2).
+- In the `README.md` file, give information about your dataset, so people can quickly understand the content without looking into your CSV file. You can include those sections: 1) **topic** ; 2) data source; 3) data fields (type, sample data); 4) data volume; 5) **license**; 6) obstacles and solutions (optional); 7) future work (optional). Here is a [sample](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2).
 
 Note:
 
@@ -63,12 +63,20 @@ Note:
 - No more than **3** students scrape the same website. Please register your interest with TA as early as possible to coordinate the topics.
 - Assignment 2 will be based on Assignment 1. So pick the scraping target in a sensable way. The dataset had better help you generate some meaningful observations about the chosen topic.
 
+More on `README.md`:
+
+- "topic" section -- it helps people to quickly understand what they can do with this dataset. We usually put a piece of motivation and some sample questions into the "topic" section.
+- "obstacles and solutions" section -- do you encounter any anti-crawling mechnism? do you have trouble scrolling to more pages? do you need to continuously crawl for several days and merge the results? How do you solve those problems?
+- "future work" section -- No project can be ideal. List down the potential directions for improvements. For example, you may crawl more rows and columns when time permits. You may want to simplify the code later. You may want to make the crawling more efficient somehow. If the questions listed in this section is substantial, you are very welcome to [raise issue](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new), so we can discuss.
+
 ### Bonus: Enrich your dataset
 
 Most of the time, one data set is not enough for you to make a thorough analysis. You may want to enrich your dataset somehow. Here are some potential methods:
 
 - You can download data set from [gov open data portals](https://data.gov.hk/en/), [research institutes](https://ourworldindata.org/), or [any collection](https://github.com/awesomedata/awesome-public-datasets) that you can verify. You don't have to actually download the data in this bonus question, because some dataset is too large to be put onto GitHub repo. Simply give pointers to the database you are considering and briefly describe how they can be incorporated into the dataset you just scraped or how they can assist your articulation.
 - You can get some related data via [HTTP based API](https://earthquake.usgs.gov/fdsnws/event/1/). Please tell us what is the API, give a few (truncated) sample responses, and discuss how that data can potentially help your data-driven report.
+
+Adding a section to your `README.md` will be good.
 
 ## Assignment 2 -- Data analysis, visualisation and presentation
 
