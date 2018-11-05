@@ -80,20 +80,28 @@ Adding a section to your `README.md` will be good.
 
 ## Assignment 2 -- Data analysis, visualisation and presentation
 
-**NOTE**: this section is to be further specified. Please check back later.
+Deadline: **Nov 23, 2018 (Fri)**
 
 The core objective of this assignment is to make a **reproducible** and **data-driven** report in jupyter notebook, with pandas, matplotlib, seaborn, networkx, nltk, ...
 
-Requirements: 
+Basic requirements:
 
-- Base on the dataset from Assignment 1. You can enrich it if necessary.
-- 3 story points
-- 2 types of charts
-- Notebook is legible: Put trial & error codes aside; adjust output
-- All auxiliary files, e.g. data, image, codes need to be stored in this folder.
-- The .ipynb notebook should be self-explainary. Make sure you can use https://nbviewer.jupyter.org to view it.
+- The analysis and visualisation is based on the dataset from Assignment 1. You can enrich it if needed.
+- Find 3 story points from data, and present it with data.
+- Use at least 2 types of charts.
+- Notebook needs to be legible:
+  - Put trial & error codes aside
+  - Adjust/ truncate/ omit long output
+- All auxiliary files need to be stored in the assignment folder, including data, image, codes, ...
+- **Important** The `.ipynb` notebook file should be self-explainary. Make sure you can use https://nbviewer.jupyter.org to view it.
 
-**NOTE**: This is a mini story produced from data. The purpose of this assignemnt is to exercise workflow so don't dwell on the content too much if thing the story points are not compelling.
+**NOTE**: This is a mini story produced from data. The purpose of this assignemnt is to exercise workflow so don't dwell on the content too much if you find the story points are not compelling. Once you get used to this workflow, you will find it very easy to share ideas/ results and collaborate with others online. Again, we do not ask for a _substantial_ story from this assignment.
+
+Some references from past submissions, with instructor notes:
+
+- [Hans Rosling tops TED](https://nbviewer.jupyter.org/github/17441781/hkbu-big-data-media/blob/master/home) -- The notebook is in standard format and highly legible. Headlines (using `##`) present story points directly and follows a data-driven exploratory path. Hans Roslig is famous in creative data visualisation for social science. He is one of the top cited figures in data journalism courses. You should watch all his TED videos.
+- [Analysis of top 200 online novels](https://nbviewer.jupyter.org/github/DaisyZhongDai/hkbu-big-data-media/blob/master/homework3/Top%20200%20online%20novels.ipynb) -- Having **annotations** in bar chart and leveraging word cloud (beyond then course schedule) are two technical advantages. We encourage you to go beyond our class and find other useful libraries. You can learn with online samples and tutorials. The annotation of "mode (most frequent value) of book length" is newsworthy. It clearly shows that online novels follow certain pattern and may be an indicator of "factory production". However, histogram could be misleading sometimes, a serious researcher would checkout other alternatives of bin segments (size and boundary), but that is not required in assignment 3 as this is just a mini story.
+- [Chengdu scenic points](https://nbviewer.jupyter.org/github/marla322/hkbu-big-data-media/blob/master/HW3/pandas_chengdu.ipynb) -- The technical plus is to use `plotly`, which can generate interactive plots very easily. Those charts can also be published online using [GitHub Pages](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-00.md#github-pages). `Out[4]` and `Out[11]` could be improved, though. In the exploration stage, you may have some lengthy output cells. In the final product notebook, you can use `.head()`, `.tail()` or list-slicing to only present a few smaple data. That improves the legibility.
 
 ## Notes on Bonus Question
 
