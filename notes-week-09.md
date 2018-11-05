@@ -111,6 +111,14 @@ Besides giving important project information and "play the open source way", a g
 
 ### Basic HTML
 
+- h1/ h2/ h3
+- p
+- img
+- a
+- ul/ ol/ li
+- strong, em
+- iframe
+
 ### Bonus: CSS
 
 ### Single column layout
