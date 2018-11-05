@@ -31,6 +31,7 @@
                 - [Locating elements by attribute](#locating-elements-by-attribute)
                 - [Locating elements with multiple class name](#locating-elements-with-multiple-class-name)
                 - [Locating Child Element](#locating-child-element)
+            - [Scroll down certain element](#scroll-down-certain-element)
             - [Example: CNN articles scraping](#example-cnn-articles-scraping)
                 - [Fundamental: One page](#fundamental-one-page)
                 - [Advanced: All pages](#advanced-all-pages)
@@ -360,6 +361,31 @@ css="div#summaryList_mixed .summaryBlock:nth-of-type(2)"
 
 For more explanations and examples about css selector, here is a good [documentation](https://saucelabs.com/resources/articles/selenium-tips-css-selectors) you can refer to.
 
+#### Scroll down certain element
+
+In the navigation or scraping, we may need to click the button to turn pages. And the buttons locate differently in different website. How we locate those buttons? Scroll down to the element may help you accomplish this. We use the `cnn example` to demo here, and test how to turn pages via browser emulation.
+
+```python
+from selenium import webdriver
+import time
+browser = webdriver.Chrome()
+url = 'https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser.get(url)
+next_button = browser.find_element_by_link_text('Next') #get the element's location
+next_button.location
+loc = next_button.location
+browser.execute_script("window.scrollTo({x}, {y});".format(**loc)) #scroll to the element
+next_button.click()
+```
+
+Apart for directly scroll to the elements. There are two scrolling usages you may need to know.
+
+```python
+browser.execute_script('window.scrollBy(x,y)') # x is horizontal, y is vertical
+browser.execute_script('window.scrollTo(0, document.body.scrollHeight);') #scroll to the page bottom
+browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #you can divide numbers after the page height
+```
+
 #### Example: CNN articles scraping
 
 The following is the link of results returned by keyword searching of `trade war`. We can scrape those articles title, time and url for further studying. The reason why we need use `selenium` is because the page turning links are embedded javascript codes, which cannot be extracted and use directly in `requests` way. To solve that, we need to interact with the page, and do browser emulation.
@@ -420,15 +446,6 @@ for i in range(10):
     try:
         new_articles = get_articles_from_browser(browser)
         all_page_articles.extend(new_articles)
-#in the following, we need to emulate to click `next button` to turn pages.
-#try 1: just click link by default ...
-#next_page = browser.find_element_by_link_text('Next').click()
-#error: not clickable. After try several print() in the process,I found that, we need to scroll the window down till we can see the next button. Therefore you can see that selenium browser emulation method is really just like a human behavior.
-#try 2: scroll whole body down to the bottom...
-#browser.execute_script('window.scrollTo(0, document.body.scrollHeight);')
-#error: In some page, the navigation bar has blocked the click button if you scroll down to the bottom
-#try 3: (document.body.scrollHeight - int) ...  
-#fail: can not be minus, but can be divided.
         browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);')#test several numbers to choose a suitable one
         next_page = browser.find_element_by_link_text('Next')
         next_page.click()
