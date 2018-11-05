@@ -6,12 +6,29 @@
 
 - [Week 09 - Present findings: data visualization and reproducible report](#week-09---present-findings-data-visualization-and-reproducible-report)
     - [Objective](#objective)
+    - [Data Visualization Libraries](#data-visualization-libraries)
         - [matplotlib](#matplotlib)
-            - [How to plot multiple chart in one input cell](#how-to-plot-multiple-chart-in-one-input-cell)
-    - [Data visualization](#data-visualization)
+            - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
+            - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
+        - [seaborn](#seaborn)
+        - [plotly](#plotly)
+        - [pyecharts](#pyecharts)
+        - [pandas](#pandas)
+    - [Data visualization Principles](#data-visualization-principles)
+        - [Principle](#principle)
+        - [Charts](#charts)
+        - [Dashboard](#dashboard)
     - [GitHub repo](#github-repo)
         - [Presenting dataset](#presenting-dataset)
         - [README.md](#readmemd)
+    - [Publish work on GitHub Pages](#publish-work-on-github-pages)
+        - [Basic HTML](#basic-html)
+        - [Bonus: CSS](#bonus-css)
+        - [Single column layout](#single-column-layout)
+        - [Save plotly chart](#save-plotly-chart)
+        - [Integrated exercise: Publish a full work in a stand alone page](#integrated-exercise-publish-a-full-work-in-a-stand-alone-page)
+        - [Bonus: Continuously update GitHub Pages](#bonus-continuously-update-github-pages)
+    - [Bonus: Craft a data service](#bonus-craft-a-data-service)
     - [Code of conduct: Reproducible reporting](#code-of-conduct-reproducible-reporting)
     - [References](#references)
 
@@ -22,23 +39,61 @@
 ## Objective
 
 - `matplotlib`
+- `seaborn`
 - `plotly`
+- `pyecharts`
+- `pandas`
+
+## Data Visualization Libraries
+
+Demo data: open rice data
+
+- 1D: plot price range bars
+- 2D: plot price range bars w.r.t areas
+  - Use faceting, i.e. multiple sub plots in one plot
+  - Use grouping, i.e. grouped bar chart (can select a subset of areas)
 
 ### matplotlib
 
-#### How to plot multiple chart in one input cell
+<!-- TODO -->
+
+#### How to order the keys of bar chart
+
+<!-- TDOO -->
+
+#### How to plot multiple chart in one input/ output cell
 
 <!-- TODO: .figure() -->
 
-## Data visualization
+### seaborn
+
+### plotly
+
+### pyecharts
+
+### pandas
+
+<!-- TODO: run pivot table on price and area; then plot the bars inside the pandas table -->
+
+Reference:
+
+- [bar chart via pandas.DataFrame styling](https://pandas.pydata.org/pandas-docs/stable/style.html#Bar-charts)
+
+## Data visualization Principles
+
+### Principle
 
 **TODO**: examples and counter examples. Where visualization helps and where visualization can go wrong. How data and viz can cheat you.
+
+### Charts
+
+### Dashboard
 
 ## GitHub repo
 
 ### Presenting dataset
 
-<!-- TODO: requirement on presenting dataset -->
+<!-- TODO: Pili, requirement on presenting dataset -->
 
 ### README.md
 
@@ -51,6 +106,29 @@ Besides giving important project information and "play the open source way", a g
 - Include a "quickstart" to show user the painless operations that can give some prelminary results.
 - Include a "license" section to make the file look professional
 - A [tutorial](https://blog.github.com/2018-06-29-GIF-that-keeps-on-GIFing/) to use GIFs to better present your work on GitHub.
+
+## Publish work on GitHub Pages
+
+### Basic HTML
+
+### Bonus: CSS
+
+### Single column layout
+
+### Save plotly chart
+
+### Integrated exercise: Publish a full work in a stand alone page
+
+<!-- TODO: show the whole workflow -->
+
+### Bonus: Continuously update GitHub Pages
+
+## Bonus: Craft a data service
+
+Two components of the system:
+
+- Frontend
+- Backend
 
 ## Code of conduct: Reproducible reporting
 
