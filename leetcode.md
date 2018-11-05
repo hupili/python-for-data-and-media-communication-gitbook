@@ -47,6 +47,7 @@ You can win points by copy and pasting the above one-line solution to the input 
 
 ## String
 
+- ★☆☆☆☆ [to-lower-case](https://leetcode.com/problems/to-lower-case/) - Python has string function to directly solve it. It will be a good exercise to implement the `str.lower()` function yourself using `for`, `ord`, `chr` and string concatenation
 - ★★★★☆ [license-key-formatting](https://leetcode.com/problems/license-key-formatting/) - involves `str` functions, integer division's quotient and remainder. Requires a bit sense of math.
 
 ## Set

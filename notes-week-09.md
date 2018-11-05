@@ -14,6 +14,7 @@
         - [plotly](#plotly)
         - [pyecharts](#pyecharts)
         - [pandas](#pandas)
+        - [bokeh](#bokeh)
     - [Data visualization Principles](#data-visualization-principles)
         - [Principle](#principle)
         - [Charts](#charts)
@@ -79,6 +80,8 @@ Reference:
 
 - [bar chart via pandas.DataFrame styling](https://pandas.pydata.org/pandas-docs/stable/style.html#Bar-charts)
 
+### bokeh
+
 ## Data visualization Principles
 
 ### Principle
@@ -110,6 +113,14 @@ Besides giving important project information and "play the open source way", a g
 ## Publish work on GitHub Pages
 
 ### Basic HTML
+
+- h1/ h2/ h3
+- p
+- img
+- a
+- ul/ ol/ li
+- strong, em
+- iframe
 
 ### Bonus: CSS
 
