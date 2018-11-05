@@ -254,7 +254,9 @@ element = browser.find_element_by_name("q") #Find the search box
 element.send_keys("github python for data and media communication gitbook") #search our openbook
 element.submit() #submit search action
 # you will find the webpage will automatically return the results you search
-link = browser.find_element_by_partial_link_text('GitHub - hupili') #find our tutorial
+open_book = browser.find_element_by_css_selector('.g')
+link = open_book.find_element_by_tag_name('a') #find our tutorial
+# you can also find by the link text. link = browser.find_element_by_partial_link_text('GitHub - hupili')
 link.click() #click the link, enter our tutorial
 browser.execute_script("window.scrollTo(0,1200);") #scroll in the page, window.scrollTo(x,y), x means horizontal, y means vertical
 notes_links = browser.find_element_by_link_text('notes-week-06.md') #find link of notes 6
