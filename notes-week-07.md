@@ -28,6 +28,7 @@
             - [Basic statistics](#basic-statistics)
                 - [DataFrame.describe()](#dataframedescribe)
                 - [Count values of series](#count-values-of-series)
+                - [Sort values in dataframe](#sort-values-in-dataframe)
                 - [Plot a simple chart: histogram](#plot-a-simple-chart-histogram)
             - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
                 - [Apply a function](#apply-a-function)
@@ -200,12 +201,6 @@ Output:
 烤肉       10
 薄餅        9
 dtype: int64
-```
-
-**Note:** sort_values in dataframe is similar to which in series. You can sort by different columns like the example:
-
-```python
-df.sort_values(by='likes',ascending=False)
 ```
 
 ##### Series.sum
@@ -516,7 +511,23 @@ All Day Breakfast     7
 Name: style, dtype: int64
 ```
 
-`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
+`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
+
+##### Sort values in dataframe
+
+Sort values in dataframe is similar to which in series. You can sort by different columns like the example:
+
+```python
+df.sort_values(by='likes',ascending=False)
+```
+
+What's more, in the multiple columns dataset, one may need to filter or sort values by multiple columns, we can use following method to accomplish this:
+
+```python
+df.sort_values(['likes','bookmark'],ascending=[False,False]) #the first false corresponding to the first column
+```
+
+![Sort values by multiple columns](assets/sort-values-by-multiple-columns.png)
 
 ##### Plot a simple chart: histogram
 
