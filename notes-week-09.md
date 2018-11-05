@@ -14,6 +14,7 @@
         - [plotly](#plotly)
         - [pyecharts](#pyecharts)
         - [pandas](#pandas)
+        - [bokeh](#bokeh)
     - [Data visualization Principles](#data-visualization-principles)
         - [Principle](#principle)
         - [Charts](#charts)
@@ -78,6 +79,8 @@ Demo data: open rice data
 Reference:
 
 - [bar chart via pandas.DataFrame styling](https://pandas.pydata.org/pandas-docs/stable/style.html#Bar-charts)
+
+### bokeh
 
 ## Data visualization Principles
 
