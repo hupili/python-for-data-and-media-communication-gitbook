@@ -29,6 +29,7 @@
             - [Locating Elements](#locating-elements)
             - [Find_element(s)_by_css_selector](#find_elements_by_css_selector)
                 - [Locating elements by attribute](#locating-elements-by-attribute)
+                - [Locating elements with multiple class name](#locating-elements-with-multiple-class-name)
                 - [Locating Child Element](#locating-child-element)
             - [Example: CNN articles scraping](#example-cnn-articles-scraping)
                 - [Fundamental: One page](#fundamental-one-page)
@@ -312,6 +313,25 @@ css="div.summaryList" or just css=".summaryList"
 ```python
 css="div[class='summaryList'] [style='display:block']"
 ```
+
+##### Locating elements with multiple class name
+
+When using `.className` notation, every class needs a prefix `.`: `.className1.className2.className3` (no blanks between those class names if they are used to attribute one element)
+
+For example: for the following case:
+
+```html
+<i class='.sr_item sr_item_new sr_item_default sr_property_block  sr_flex_layout                 '>
+</i>
+```
+
+The css will be like this:
+
+```python
+css='.sr_item.sr_item_new.sr_item_default.sr_property_block.sr_flex_layout'
+```
+
+For detail cases, please refer [here](https://github.com/hupili/python-for-data-and-media-communication/blob/314b2469290f28ed146b8d5c2e49be962e32e1d7/scraper-selenium/booking.com.ipynb)
 
 ##### Locating Child Element
 
