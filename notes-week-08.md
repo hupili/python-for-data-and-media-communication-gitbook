@@ -6,8 +6,9 @@
 - [Week 08 - Work with table: 1D analysis and 2D analysis](#week-08---work-with-table-1d-analysis-and-2d-analysis)
     - [Objective](#objective)
     - [Distribution](#distribution)
-        - [Histogram and KDE](#histogram-and-kde)
+        - [Histogram](#histogram)
             - [Bonus: How histograms can be cheating](#bonus-how-histograms-can-be-cheating)
+        - [Kernel Density Estimation (KDE)](#kernel-density-estimation-kde)
         - [Special points in distribution](#special-points-in-distribution)
     - [Bonus: Articulate central tendency and spread of data](#bonus-articulate-central-tendency-and-spread-of-data)
         - [Variance](#variance)
@@ -57,7 +58,7 @@ For distribution, we can use some simple pandas statistics functions to get a ov
 
 The following is the analyzing demo after we get a clean dataset, based on the example of *Cheating our children* case, and try to find insights.
 
-### Histogram and KDE
+### Histogram
 
 ```python
 import pandas as pd
@@ -127,6 +128,29 @@ df[df['AVG_ENG_MATH_SCORE_07'] < 16]
 #### Bonus: How histograms can be cheating
 
 Try to adjust number of bins and bin boundaries to see what happens.
+
+<!-- 
+    TODO: 
+    try this section and see if you can generate different shapes? which leads to different story?
+
+    If no, still show the possibilities by changing 
+    1) the number of bins
+    2) the position of boundaries
+
+    Need to discuss with me regarding this result.
+-->
+
+### Kernel Density Estimation (KDE)
+
+KDE is fundamentally similar to histogram. It takes every data point, interpolate the distribution using a continuous function (kernel), and then sum up those functions to generate the envelop of distribution. It has similar function when you articulate the distribution of data. The major advantage is that it does not suffer from the bin-segmentation issue as we see above in histogram.
+
+For better data presentation and aesthetics purpose, people sometimes put histogram and KDE on the same chart.
+
+<!-- TODO: 
+
+https://stackoverflow.com/a/39987117/2446356
+
+ -->
 
 ### Special points in distribution
 
