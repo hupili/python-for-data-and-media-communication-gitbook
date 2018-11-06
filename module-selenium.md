@@ -57,3 +57,17 @@ Path Expression examples:
 | //book              | Selects all book elements no matter where they are in the document               |
 | //@lang             | Selects all attributes that are named lang                                       |
 | //title[@lang='en'] | Selects all the title elements that have a "lang" attribute with a value of "en" |
+
+## Find elements by css selector
+
+When we use the find elements in css selector. Two common error are that:
+
+1. the element cannot be located.
+2. matching imprecisely. We can find the element, but thats not what we want.
+
+The following are useful workflow that can help us debug when encounter those problems:
+
+1. CSS Selector needs to be precise some time. Being too broad may risk matching something else.
+2. The best practice is to use select_elements_x method (notice s) first to verify if the matching is precise. If it is, use the non-"s" version to find the element. If it is not, check if the elements come in specific order. If so, one can use list navigation to locate the precise one.
+
+For more details explanation, you can refer to this [example](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-selenium/CNN%20next%20page.ipynb).
