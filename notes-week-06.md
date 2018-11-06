@@ -392,7 +392,7 @@ browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #y
 
 #method 4
 element = browser.find_element_by_class_name("pn-next")#locate the element
-browser.execute_script("return arguments[0].scrollIntoView();", element) scroll to view the element
+browser.execute_script("return arguments[0].scrollIntoView();", element) #scroll to view the element
 ```
 
 #### Example: CNN articles scraping
