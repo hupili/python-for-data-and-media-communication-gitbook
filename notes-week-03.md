@@ -18,6 +18,7 @@
             - [List functions](#list-functions)
             - [List methods](#list-methods)
             - [in operator on list](#in-operator-on-list)
+            - [List slicing](#list-slicing)
         - [Dict {}](#dict-)
             - [Common features of dict](#common-features-of-dict)
             - [Dict functions](#dict-functions)
@@ -251,10 +252,6 @@ list2[1:5]:  [2, 3, 4, 5]
 ['Hello', 'Python', 2018, 814, 'Hello', 'Python', 2018, 814]
 >>> 2018 in list1  #check whether 2018 is in list1
 true
->>> list2[3:] #slice list2 from index[3] value to last value
-[4, 5, 6, 7]
->>> list2[:2] #slice list2 from index[0] to index[2] but does not include index2 value
-[1, 2]
 ```
 
 #### List functions
@@ -366,6 +363,41 @@ vowels descending :  ['u', 'o', 'i', 'e', 'a']
 True
 >>> 55 in my_list
 False
+```
+
+#### List slicing
+
+In short, We use the colon `:` to slice the list. The following are the common usages:
+
+```python
+# a is a list
+a[3:10] # items start from index3 to index10
+a[3:]   # items start from index3 to the end
+a[:10]  # items starts from the beginning to index10
+a[:]    # a copy of the whole list
+a[-1]    # last item in the list
+a[-2:]   # last two items in the list
+a[:-2]   # everything except the last two items
+```
+
+Apart from increasing or decreasing by integer 1, we can also and step in list slicing.
+
+Syntax:
+
+```python
+sliceable_list[start:stop:step]
+```
+
+The start and stop is already explained in the above example. For step - the amount by which the index increases, defaults to 1. If it's negative, you're slicing over the iterable in reverse. For example:
+
+```bash
+>>> r=[1,2,3,4,5,6]
+>>>r[::2] #iterate whole list, increased by step 2
+[1, 3, 5]
+>>> r[2::2] #iterate from index2 to the end, increased by step 2
+[3, 5]
+>>> r[::-2] #iterate in reverse, decreased by step 2
+[6, 4, 2]
 ```
 
 ### Dict {}
