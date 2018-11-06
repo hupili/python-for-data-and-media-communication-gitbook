@@ -371,7 +371,7 @@ import time
 browser = webdriver.Chrome()
 url = 'https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
 browser.get(url)
-next_button = browser.find_element_by_link_text('Next') #get the element's location
+next_button = browser.find_element_by_css_selector('#mixedpagination ul.pagingLinks li.ends.next span a') #get the element's location
 next_button.location
 loc = next_button.location
 browser.execute_script("window.scrollTo({x}, {y});".format(**loc)) #scroll to the element
@@ -381,9 +381,18 @@ next_button.click()
 Apart for directly scroll to the elements. There are two scrolling usages you may need to know.
 
 ```python
+#method 1
 browser.execute_script('window.scrollBy(x,y)') # x is horizontal, y is vertical
+
+#method 2
 browser.execute_script('window.scrollTo(0, document.body.scrollHeight);') #scroll to the page bottom
+
+#method 3
 browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #you can divide numbers after the page height
+
+#method 4
+element = browser.find_element_by_class_name("pn-next")#locate the element
+browser.execute_script("return arguments[0].scrollIntoView();", element) scroll to view the element
 ```
 
 #### Example: CNN articles scraping
