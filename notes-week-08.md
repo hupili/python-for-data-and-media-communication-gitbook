@@ -129,6 +129,28 @@ df[df['AVG_ENG_MATH_SCORE_07'] < 16]
 
 Try to adjust number of bins and bin boundaries to see what happens.
 
+```python
+df['P_ABSENT_PERSIST'].hist(bins=8) #bins=8
+```
+
+![Hist bins 8](assets/hist-bins8.png)
+
+```python
+df['P_ABSENT_PERSIST'].hist(bins=50) #bins = 50
+```
+
+![Hist bins 50](assets/hist-bins50.png)
+
+```python
+df['P_ABSENT_PERSIST'].hist(bins=8,range=(0,4)) #change data range
+```
+
+![Hist range change](assets/hist-range-change.png)
+
+You can see that the amount of students decrease when the absent rate increase in generally. But if you enlarges `bins`, you will get more detailed information. In those two charts, we can find more abnormal points in the second one, like several points in range(0,1), and the largest one etc..., while we can draw a more clear trend in the first one. Besides, if you change the data range, the situation here can be more diverse.
+
+The key takeaway here is that different angle could lead to different stories, and it's all depend on which angle you choose to take in. What we can do is to learn to recognize the pattern here and not to be fooled by the charts.
+
 <!-- 
     TODO: 
     try this section and see if you can generate different shapes? which leads to different story?
