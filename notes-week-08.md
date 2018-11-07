@@ -22,6 +22,8 @@
         - [Discrete: Cross-tab](#discrete-cross-tab)
             - [DataFrame.groupby](#dataframegroupby)
             - [pandas.pivot_table](#pandaspivot_table)
+                - [Discretise multiple columns](#discretise-multiple-columns)
+                - [pivot_table to generate cross-tabs table](#pivot_table-to-generate-cross-tabs-table)
         - [From correlation to causality](#from-correlation-to-causality)
     - [Bonus: (Statistical) Hypothesis testing](#bonus-statistical-hypothesis-testing)
     - [Reference](#reference)
@@ -567,20 +569,63 @@ From the results, we can find the pattern that the more hardworking, the better 
 
 #### pandas.pivot_table
 
-**TODO**
+##### Discretise multiple columns
+
+```python
+# discretise all all-year students scores
+df['grade_07'] = df['AVG_ENG_MATH_SCORE_07'].apply(discretise)
+df['grade_08'] = df['AVG_ENG_MATH_SCORE_08'].apply(discretise)
+df['grade_09'] = df['AVG_ENG_MATH_SCORE_09'].apply(discretise)
+df['grade_10'] = df['AVG_ENG_MATH_SCORE_10'].apply(discretise)
+```
+
+##### pivot_table to generate cross-tabs table
+
+For example, to see whether higher score07 leads to higher score10?
+
+```python
+df.pivot_table(index=['Schoolme','grade_07','grade_10'],values='P_ABSENT_PERSIST')
+```
+
+![Pivot table](assets/pivot-table1.png)
+
+from this charts we can found out whether students with good grades in year07 can keep the advantages in year10.
+
+Q2：Does lower absent ratio leads to higher score08?
+
+```python
+df.pivot_table(index=['Schoolme','grade_08'],values='P_ABSENT_PERSIST').sort_values(by='P_ABSENT_PERSIST')
+```
+
+![Pivot table](assets/pivot-table2.png)
+
+![Pivot table](assets/pivot-table3.png)
+
+Generally, we can see that it matches to our speculation.
+
+Q3: Does higher score07 and score08 leads to higher score10?
+
+```python
+a = len(df[(df['grade_07']=='A') & (df['grade_08']=='A')])
+b = len(df[(df['grade_07']=='A') & (df['grade_08']=='A') & (df['grade_10']=='A')])
+rate = a / b
+#0.68
+```
 
 <!-- TODO: 
     1) Discretise multiple columns:
-    - score07, score08, ... score10
-    - absent ratio
-    - total number of pupil
+    - core07, score08, ... score10 ✅
+    - absent ratio ✅
+    - total number of pupil  ❓what does this mean???
 
     2) Use pandas.pivot_table to generate crosstabs. Some motivating questions:
-    - does higher score07 leads to higher score10?
-    - does lower absent ratio leads to higher score08?
+    - does higher score07 leads to higher score10? ✅
+    - does lower absent ratio leads to higher score08? ✅
     - does higher score07 and score08 leads to higher score10?
 
     Pivot table is flexible. You can run many combinations of indices and columns.
+
+    I found this example is not a good example for pivot_table, cause I can only got 3-4 columns, besides the columns are not independent arguments
 -->
 
 ### From correlation to causality
