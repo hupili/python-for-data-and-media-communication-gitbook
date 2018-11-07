@@ -176,6 +176,10 @@ When you use browser emulator, you also need to know that it takes time to rende
 
 For example, `StaleElementReferenceException` and `IndexError` are quite common when using `selenium`. The error sometimes disappears when you execute the same script with the same parameter again. Or it is better to add some `time.sleep` between critical operations. For example, you want to wait the browser to load new content after triggering a click event on a button.
 
+Related issues:
+
+- Booking.com [#68](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/68)
+
 ## Browser emulation
 
 Primarily, Browser emulation or browser automation is used for automating web applications for testing purpose. Like when you build your web application, you want to simulate how many users your server can handle, and how the users act when they look into your website, how they open page, click, navigate and read the the page content.
