@@ -347,7 +347,14 @@ output:
 * Values around 0 means no correlation/ weak correlation
 * Values near 1 and -1 can be interpreted as strong (linear) correlation
 
-Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also senstive to outliers. Spearman's rank correlation can help here. You can make a judgement whether there is a correlation bewteen grades and absent rate.
+Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also sensitive to outliers. Spearman rank correlation can help here. You can make a judgement whether there is a correlation between grades and absent rate.
+
+```python
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_10'], method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_9'], method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_8'], method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_7'], method='spearman')
+```
 
 ![Calculate 4 years correlation](assets/calculate-correlation.png)
 
@@ -365,13 +372,24 @@ np.polyfit(df['P_ABSENT_PERSIST'].fillna(0), df['AVG_ENG_MATH_SCORE_09'].fillna(
 
 **Quiz:** What does it look like if we plot above line? The return value of polyfit is Polynomial coefficients, highest power first.
 
-**NOTE:** Try the codes without filena and observe the error. Now it is time to do some cleaning.
+**NOTE:** Try the codes without fillna and observe the error. Now it is time to do some cleaning.
+
+```python
+na_selector = df['P_ABSENT_PERSIST'].isna()
+na_selector |= df['AVG_ENG_MATH_SCORE_07'].isna()
+na_selector |= df['AVG_ENG_MATH_SCORE_08'].isna()
+na_selector |= df['AVG_ENG_MATH_SCORE_09'].isna()
+na_selector |= df['AVG_ENG_MATH_SCORE_10'].isna()
+len(df[na_selector])
+len(df)
+len(df[~na_selector])
+df_cleaned = df[~na_selector]
+np.polyfit(df_cleaned['P_ABSENT_PERSIST'].fillna(0), 
+           df_cleaned['AVG_ENG_MATH_SCORE_09'].fillna(0), 
+           1)
+```
 
 ![Clean data](assets/corr-clean-data.png)
-
-<!-- TODO: 
-    Please change all "In[]" cells into markdown code block, so that people can copy-paste.
- -->
 
 After we get the regression coefficient, we can estimate the grade09 and compare with the actual ones to see if there is a big difference.
 
@@ -385,7 +403,12 @@ estimated_score_grade09 =  28.54239409 + (-0.44654826) * absent
 ![Corr prediction](assets/corr-prediction.png)
 
 We can filter out the school that have hugh different scores with the estimation.
- 
+
+```python
+df_cleaned[(score_grade09 - estimated_score_grade09) > 3]
+df_cleaned[(score_grade09 - estimated_score_grade09) > 2.5]
+```
+
 ![Filter abnormal](assets/corr-filter-abnormal.png)
 
 #### Filter out in the charts
