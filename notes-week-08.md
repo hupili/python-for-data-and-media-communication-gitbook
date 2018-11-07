@@ -166,13 +166,14 @@ The key takeaway here is that different angle could lead to different stories, a
 
 KDE is fundamentally similar to histogram. It takes every data point, interpolate the distribution using a continuous function (kernel), and then sum up those functions to generate the envelop of distribution. It has similar function when you articulate the distribution of data. The major advantage is that it does not suffer from the bin-segmentation issue as we see above in histogram.
 
-For better data presentation and aesthetics purpose, people sometimes put histogram and KDE on the same chart.
+For better data presentation and aesthetics purpose, people sometimes put histogram and KDE on the same chart, from which you can see the distribution pattern more clearly.
 
-<!-- TODO: 
+```python
+ax = df['AVG_ENG_MATH_SCORE_10'].hist(bins=15)
+df['AVG_ENG_MATH_SCORE_10'].plot(kind='kde', ax=ax, secondary_y=True)
+```
 
-https://stackoverflow.com/a/39987117/2446356
-
- -->
+![Histogram and KDE](assets/histogram-and-KDE.png)
 
 ### Special points in distribution
 
