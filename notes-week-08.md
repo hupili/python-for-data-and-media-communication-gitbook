@@ -162,7 +162,17 @@ The key takeaway here is that different angle could lead to different stories, a
     2) the position of boundaries
 
     Need to discuss with me regarding this result.
+
 -->
+
+<!-- TODO:
+
+    Update 1108: 
+    AVG_ENG_MATH_SCORE_08 seems a better case to demonstrate "how histogram can be cheating".
+
+    Basically, there seems to be "two peaks", when # bin is set to 10. When # bin is set to other values, there could be "one peak", or "more peaks". Those lead to different interpretation. Many histogram has this effect due to small sample size.
+
+ -->
 
 ### Kernel Density Estimation (KDE)
 
@@ -583,6 +593,16 @@ df['grade_10'] = df['AVG_ENG_MATH_SCORE_10'].apply(discretise)
 
 For example, to see whether higher score07 leads to higher score10?
 
+<!-- TODO：
+    Not a conventional use of pivot table.
+
+    The current way basically **enumerates the data points** because school name is supposed to be unique.
+    
+    Try: 
+    
+    df.pivot_table(index=['grade_07'], columns=['grade_10'], values='Schoolme', aggfunc='count')
+-->
+
 ```python
 df.pivot_table(index=['Schoolme','grade_07','grade_10'],values='P_ABSENT_PERSIST')
 ```
@@ -617,6 +637,10 @@ rate = a / b
     - core07, score08, ... score10 ✅
     - absent ratio ✅
     - total number of pupil  ❓what does this mean???
+    
+    Update 1108: TotPup -- Total pupil (pupil means "student in primary school")
+    Update 1108: TotElig -- Total eligible (not all pupil is eligible to attend the test)
+    
 
     2) Use pandas.pivot_table to generate crosstabs. Some motivating questions:
     - does higher score07 leads to higher score10? ✅
