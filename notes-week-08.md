@@ -547,26 +547,19 @@ Different groups with different absent rate may show different correlation with 
 We name the `absent rate <1` as `hardworking group`,`absent rate 1<=rate<3` as `middle group`, and `absent rate >3` as `happy group`.
 
 ```python
-f = {'AVG_ENG_MATH_SCORE_09':['mean','max','min','var','std']}
-g1 = df['P_ABSENT_PERSIST'] <1
-g2 = (df['P_ABSENT_PERSIST'] <3)&(df['P_ABSENT_PERSIST']>=1)
-g3 = (df['P_ABSENT_PERSIST']>3)
-a = np.where(g1, 'hardworking group',
-             np.where(g2, 'middle group',
-             np.where(g3, 'happy group','middle + hardworking group')))
-df.groupby(a)['AVG_ENG_MATH_SCORE_09'].agg(f).reset_index()
+def discretise(x):
+    if x <= 1:
+        x = 'hard_working'
+    elif x > 1 and x <= 3:
+        x = 'middle'
+    elif x > 3:
+        x = 'happy'
+    return x
+f = ['mean','max','min','var','std']
+df['group'] = df['P_ABSENT_PERSIST'].apply(discretise)
+year9_agg = yeardf.groupby('group')['AVG_ENG_MATH_SCORE_09'].agg(f)
+year9_agg.sort_values(f,ascending=False)
 ```
-
-<!-- TODO:
-    Change to simpler version.
-
-    def discretise(...):
-        ...
-        return ...
-
-    df['label'] = df['P_ABSENT_PERSIST'].apply(discretise)
-    df.groupby('label'). ...
- -->
 
 ![Cross tab correlation](assets/cross-tab-correlation.png)
 
