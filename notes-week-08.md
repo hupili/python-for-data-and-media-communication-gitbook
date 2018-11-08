@@ -222,7 +222,7 @@ Median provides a helpful measure of center of our dataset. But more often, we c
 
 - Percentile
 
-Percentile is a given percentage of observations in a group of observations fall. For example, the 75th percentile is the value (or score) below which 75% of the observations may be found.
+Percentile is a given percentage of observations in a group of observations fall. For example, the 75th percentile is the value (or score) below which 75% of the observations may be found. 50th percentile is equal to median.
 
 ![Pandas percentile](assets/pandas-percentile.png)
 
@@ -342,7 +342,7 @@ corr(other, method='pearson', min_periods=None) method of pandas.core.series.Ser
 ```
 
 From above you can see that, `corr` function is used to compute one series with other series. And there are 3 methods: `pearson`, `kendall`, `spearman`. we don't need necessarily to know how to calculate instead
-we need to what does it means and main differences. For example, `person` measure the degree of the relationship between `linearly` related variables, while Spearman rank correlation is a `non-parametric test`. For more details, You can refer [here](http://www.statisticssolutions.com/correlation-pearson-kendall-spearman/)
+we need to what does it means and main differences. For example, `pearson` measure the degree of the relationship between `linearly` related variables, while Spearman rank correlation is a `non-parametric test`. For more details, You can refer [here](http://www.statisticssolutions.com/correlation-pearson-kendall-spearman/)
 
 ```python
 df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='pearson')
@@ -373,11 +373,13 @@ df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_07'], method='spearman')
 
 ### Bonus: Better visualisation
 
+One can do more with the scatter graphs. We can draw the regression line in the charts, filter the outliers on the charts, adjust the transparency of the dots...
+
 ```python
 sns.regplot(df['P_ABSENT_PERSIST'], df['AVG_ENG_MATH_SCORE_09'])
 ```
 
-![](assets/regplot.png)
+![Reg plot](assets/regplot.png)
 
 ```python
 np.polyfit(df['P_ABSENT_PERSIST'].fillna(0), df['AVG_ENG_MATH_SCORE_09'].fillna(0), 1)
@@ -401,6 +403,8 @@ np.polyfit(df_cleaned['P_ABSENT_PERSIST'].fillna(0),
            df_cleaned['AVG_ENG_MATH_SCORE_09'].fillna(0), 
            1)
 ```
+
+**Note:** For how to handle NA/NaN value in pandas, you can refer [here](https://blog.csdn.net/lwgkzl/article/details/80948548).
 
 ![Clean data](assets/corr-clean-data.png)
 
