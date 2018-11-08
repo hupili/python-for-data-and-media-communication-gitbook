@@ -76,6 +76,11 @@ Many functions that are available for `Series` are also available for `DataFrame
 
 **TIP**: Sometimes, one may be used to column operations or row operations, when writing his/ her computation logics. It is Ok to stick with one convention. When you need to operate along another axis, use the **transpose** version of the DataFrame, i.e. `DataFrame.T` (Use it like a member variable).
 
+With the progress of data processing, the table at your hand is usually larger and larger. You may want to put the new result back to original table sometimes. There are mainly two ways:
+
+- Adding a new column is easy. Just use `df['new-column'] = A valid Sereis`.
+- Adding a new row needs some more work. Use `pandas.concat([df, row])`, where `df` is the original DataFrame; and `row` is the new DataFrame with one data point, whose columns are the same as `df`.
+
 ### Exercise: The Berkeley admission synthesis dataset
 
 Calculate the by-department admission ratio and the whole-school admission ratio. Try to articulate whether there is gender discrimination or not.
