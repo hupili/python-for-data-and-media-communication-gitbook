@@ -6,6 +6,7 @@
 - [Week 08 - Work with table: 1D analysis and 2D analysis](#week-08---work-with-table-1d-analysis-and-2d-analysis)
     - [Objective](#objective)
     - [More Arithmetics on DataFrame and Series](#more-arithmetics-on-dataframe-and-series)
+        - [Exercise: The Berkeley admission synthesis dataset](#exercise-the-berkeley-admission-synthesis-dataset)
     - [Distribution](#distribution)
         - [Histogram](#histogram)
             - [Bonus: How histograms can be cheating](#bonus-how-histograms-can-be-cheating)
@@ -73,7 +74,13 @@ Many functions that are available for `Series` are also available for `DataFrame
 - Operate along columns (`axis=0`)
 - Operate along rows (`axis=1`)
 
-**Exercise**: The Berkeley admission synthesis dataset. Calculate the by-department admission ratio and the whole-school admission ratio. Try to articulate whether there is gender discrimination or not. (For further reading, search for "Simpson's paradox").
+### Exercise: The Berkeley admission synthesis dataset
+
+Calculate the by-department admission ratio and the whole-school admission ratio. Try to articulate whether there is gender discrimination or not.
+
+The dataset can be downloaded [here](assets/1973-UC-Berkeley-Admission-Data - Synthesis Data.csv).
+
+For further reading, search for "Simpson's paradox".
 
 ## Distribution
 
