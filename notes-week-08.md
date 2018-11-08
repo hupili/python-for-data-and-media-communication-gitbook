@@ -183,35 +183,15 @@ df['AVG_ENG_MATH_SCORE_08'].hist(bins=25) #bins = 25
 ![Hist bins 50](assets/hist-bins25.png)
 
 ```python
-df['P_ABSENT_PERSIST'].hist(bins=8,range=(0,4)) #change data range
+df['AVG_ENG_MATH_SCORE_08'].hist(bins=10,range=(24,30)) #change data range
 ```
 
-![Hist range change](assets/hist-range-change.png)
+![Hist range changes](assets/hist-range-change.png)
 
 You can see that there is only one peak when the number of bins is 5, however, if you enlarges `bins`, you will get a more detailed information. There appears more peaks and a valley between. Besides, if you change the data range, the situation and conclusion here can be more diverse.
 
 The key takeaway here is that different angle could lead to different stories, and it's all depend on which angle you choose to take in. What we can do is to learn to recognize the pattern here and not to be fooled by the charts.
 
-<!-- 
-    TODO: 
-    try this section and see if you can generate different shapes? which leads to different story?
-
-    If no, still show the possibilities by changing 
-    1) the number of bins
-    2) the position of boundaries
-
-    Need to discuss with me regarding this result.
-
--->
-
-<!-- TODO:
-
-    Update 1108: 
-    AVG_ENG_MATH_SCORE_08 seems a better case to demonstrate "how histogram can be cheating".
-
-    Basically, there seems to be "two peaks", when # bin is set to 10. When # bin is set to other values, there could be "one peak", or "more peaks". Those lead to different interpretation. Many histogram has this effect due to small sample size.
-
- -->
 
 ### Kernel Density Estimation (KDE)
 
