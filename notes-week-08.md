@@ -5,6 +5,7 @@
 
 - [Week 08 - Work with table: 1D analysis and 2D analysis](#week-08---work-with-table-1d-analysis-and-2d-analysis)
     - [Objective](#objective)
+    - [More Arithmetics on DataFrame and Series](#more-arithmetics-on-dataframe-and-series)
     - [Distribution](#distribution)
         - [Histogram](#histogram)
             - [Bonus: How histograms can be cheating](#bonus-how-histograms-can-be-cheating)
@@ -50,6 +51,29 @@ New modules:
 
 * [Matplotlib](https://matplotlib.org/). Matplotlib is a Python 2D plotting library and one of the most frequently used plotting modules in Python.
 * [Seaborn](https://seaborn.pydata.org/). Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.
+
+## More Arithmetics on DataFrame and Series
+
+Series has many arithmetic funcitons. Although one can easily implement those functions with basic `list` and basic logics in Python, those provided by `Series` can save some time by writing for loops, because they are design to work on "a series of numbers". Examples are like:
+
+- `.sum()`
+- `.min()`
+- `.max()`
+- `.quantile()`
+
+Two `Series` of the same length can use conventional arithmetics and boolean operators to perform an **element-wise** operation. For example:
+
+- `a + b` - result is a new Series whose values are the element-wise addition from `a` and `b`.
+- `a == b` - result is a new Series whose values are element-wise `==` logical operation.
+
+When one hand side of the equation is not a Series, but a "scalar", i.e. single number, this single number is used in all operations with all elements from another Series.
+
+Many functions that are available for `Series` are also available for `DataFrame`. A `DataFrame` is in essense a collection of `Series`. To apply those functions that works on `Series` to `DataFrame`, we need to have certain ordering, which is given by a keyword parameter called `axis`:
+
+- Operate along columns (`axis=0`)
+- Operate along rows (`axis=1`)
+
+**Exercise**: The Berkeley admission synthesis dataset. Calculate the by-department admission ratio and the whole-school admission ratio. Try to articulate whether there is gender discrimination or not. (For further reading, search for "Simpson's paradox").
 
 ## Distribution
 
