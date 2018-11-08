@@ -604,33 +604,43 @@ For example, to see whether higher score07 leads to higher score10?
 -->
 
 ```python
-df.pivot_table(index=['Schoolme','grade_07','grade_10'],values='P_ABSENT_PERSIST')
+df.pivot_table(index=['grade_07'], columns=['grade_10'], values='Schoolme', aggfunc='count')
 ```
 
 ![Pivot table](assets/pivot-table1.png)
 
-from this charts we can found out whether students with good grades in year07 can keep the advantages in year10.
+From this charts we can found out most students with grade A in year7 will still get good grades in year10. About 46/61 = 72%.
 
 Q2：Does lower absent ratio leads to higher score08?
 
 ```python
-df.pivot_table(index=['Schoolme','grade_08'],values='P_ABSENT_PERSIST').sort_values(by='P_ABSENT_PERSIST')
+df.pivot_table(index=['group'], columns=['grade_08'], values='Schoolme', aggfunc='count')
 ```
 
 ![Pivot table](assets/pivot-table2.png)
 
-![Pivot table](assets/pivot-table3.png)
-
-Generally, we can see that it matches to our speculation.
+Generally, we can see that it matches to our speculation. Low-absent-rate group(hard_working) got most A grade, about 50/81 = 62%, while only 5% of high-absent-rate group got A.
 
 Q3: Does higher score07 and score08 leads to higher score10?
 
 ```python
-a = len(df[(df['grade_07']=='A') & (df['grade_08']=='A')])
-b = len(df[(df['grade_07']=='A') & (df['grade_08']=='A') & (df['grade_10']=='A')])
+df.pivot_table(index=['grade_07','grade_08'], columns=['grade_10'], values='Schoolme', aggfunc='count')
 rate = a / b
-#0.68
 ```
+
+![Pivot table](assets/pivot-table3.png)
+
+The results show highly correlation in this hypothesis. Students in year 7 and year 8 with grade higher than B, and at least one A, is more likely to get A in year 10. About 53/70 = 76%.
+
+An interesting point here, the abnormal one is that 3 schools' students with grade C in year 7 and year 8 got A in year 10. What happened to those schools?  We can filter out those schools.
+
+```python
+df[(df['grade_07']=='C') & (df['grade_08']=='C') & (df['grade_10']=='A')]
+```
+
+![Pivot table abnormal](assets/pivot-table-abnormal.png)
+
+After we got those school names and address, next thing is to investigate on the stories behind the data.
 
 <!-- TODO: 
     1) Discretise multiple columns:
@@ -646,10 +656,6 @@ rate = a / b
     - does higher score07 leads to higher score10? ✅
     - does lower absent ratio leads to higher score08? ✅
     - does higher score07 and score08 leads to higher score10?
-
-    Pivot table is flexible. You can run many combinations of indices and columns.
-
-    I found this example is not a good example for pivot_table, cause I can only got 3-4 columns, besides the columns are not independent arguments
 -->
 
 ### From correlation to causality
