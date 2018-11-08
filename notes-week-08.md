@@ -81,6 +81,7 @@ The columns:
 This is multi dimensional data. We are interested in the relationship between those dimensions / variables. For example, the absent ratio.
 
 ```python
+%matplotlib inline  #add this line before plotting charts
 df['P_ABSENT_PERSIST'].hist(bins=20)
 ```
 
@@ -362,10 +363,10 @@ output:
 Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also sensitive to outliers. Spearman rank correlation can help here. You can make a judgement whether there is a correlation between grades and absent rate.
 
 ```python
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_10'], method='spearman')
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_9'], method='spearman')
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_8'], method='spearman')
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_7'], method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_10'],method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_08'], method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_07'], method='spearman')
 ```
 
 ![Calculate 4 years correlation](assets/calculate-correlation.png)
