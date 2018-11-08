@@ -451,6 +451,7 @@ df_cleaned[(score_grade09 - estimated_score_grade09) > 2.5]
 Get the threshold value for 95% percentile
 
 ```python
+s = (score_grade09 - estimated_score_grade09)
 s.quantile(0.95)
 df_cleaned[s > s.quantile(0.95)].plot(
     x='P_ABSENT_PERSIST', 
@@ -508,6 +509,7 @@ plt.scatter(
 coeffs = np.polyfit(df_cleaned['P_ABSENT_PERSIST'].fillna(0), 
            df_cleaned['AVG_ENG_MATH_SCORE_09'].fillna(0), 
            1)
+#coeffs
 trendline_x = np.linspace(df_cleaned['P_ABSENT_PERSIST'].min(), df_cleaned['P_ABSENT_PERSIST'].max())
 trendline_y = coeffs[0] * trendline_x + coeffs[1]
 plt.figure(figsize=(10, 5))
