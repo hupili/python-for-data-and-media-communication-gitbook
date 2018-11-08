@@ -74,6 +74,8 @@ Many functions that are available for `Series` are also available for `DataFrame
 - Operate along columns (`axis=0`)
 - Operate along rows (`axis=1`)
 
+**TIP**: Sometimes, one may be used to column operations or row operations, when writing his/ her computation logics. It is Ok to stick with one convention. When you need to operate along another axis, use the **transpose** version of the DataFrame, i.e. `DataFrame.T` (Use it like a member variable).
+
 ### Exercise: The Berkeley admission synthesis dataset
 
 Calculate the by-department admission ratio and the whole-school admission ratio. Try to articulate whether there is gender discrimination or not.
