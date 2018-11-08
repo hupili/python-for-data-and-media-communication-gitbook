@@ -584,11 +584,11 @@ We name the `absent rate <1` as `hardworking group`,`absent rate 1<=rate<3` as `
 ```python
 def discretise(x):
     if x <= 1:
-        x = 'hard_working'
+        x = '01_hard_working'
     elif x > 1 and x <= 3:
-        x = 'middle'
+        x = '02_middle'
     elif x > 3:
-        x = 'happy'
+        x = '03_happy'
     return x
 f = ['mean','max','min','var','std']
 df['group'] = df['P_ABSENT_PERSIST'].apply(discretise)
@@ -616,16 +616,6 @@ df['grade_10'] = df['AVG_ENG_MATH_SCORE_10'].apply(discretise)
 
 For example, to see whether higher score07 leads to higher score10?
 
-<!-- TODO：
-    Not a conventional use of pivot table.
-
-    The current way basically **enumerates the data points** because school name is supposed to be unique.
-    
-    Try: 
-    
-    df.pivot_table(index=['grade_07'], columns=['grade_10'], values='Schoolme', aggfunc='count')
--->
-
 ```python
 df.pivot_table(index=['grade_07'], columns=['grade_10'], values='Schoolme', aggfunc='count')
 ```
@@ -648,12 +638,29 @@ Q3: Does higher score07 and score08 leads to higher score10?
 
 ```python
 df.pivot_table(index=['grade_07','grade_08'], columns=['grade_10'], values='Schoolme', aggfunc='count')
-rate = a / b
 ```
 
 ![Pivot table](assets/pivot-table3.png)
 
 The results show highly correlation in this hypothesis. Students in year 7 and year 8 with grade higher than B, and at least one A, is more likely to get A in year 10. About 53/70 = 76%.
+
+**Note:** From the Q2 question, we can know that there are 33 got C, but from this chart, we can only got 18 C. What happened here? The reason here is that 13 of  students' grade in year 10 is NaN.
+
+```python
+len(df[(df['grade_08'] == 'C') & (df['grade_10'].isnull())])
+#output: 13
+```
+
+<!-- TODO: 
+There is still one error, the above results in total is 31, still missing 2 students. I filter out all students with grade C in year 8 and what the grade they got in year 10. And found out there is missing 1 count in df['grade_10'] == 'B' and df['grade_10'] == 'A'. But why this is happening?
+
+len(df[(df['grade_08'] == 'C') & (df['grade_10'] == 'C')])
+10
+len(df[(df['grade_08'] == 'C') & (df['grade_10'] == 'B')])
+7
+len(df[(df['grade_08'] == 'C') & (df['grade_10'] == 'A')])
+3
+-->
 
 An interesting point here, the abnormal one is that 3 schools' students with grade C in year 7 and year 8 got A in year 10. What happened to those schools?  We can filter out those schools.
 
@@ -664,22 +671,6 @@ df[(df['grade_07']=='C') & (df['grade_08']=='C') & (df['grade_10']=='A')]
 ![Pivot table abnormal](assets/pivot-table-abnormal.png)
 
 After we got those school names and address, next thing is to investigate on the stories behind the data.
-
-<!-- TODO: 
-    1) Discretise multiple columns:
-    - core07, score08, ... score10 ✅
-    - absent ratio ✅
-    - total number of pupil  ❓what does this mean???
-    
-    Update 1108: TotPup -- Total pupil (pupil means "student in primary school")
-    Update 1108: TotElig -- Total eligible (not all pupil is eligible to attend the test)
-    
-
-    2) Use pandas.pivot_table to generate crosstabs. Some motivating questions:
-    - does higher score07 leads to higher score10? ✅
-    - does lower absent ratio leads to higher score08? ✅
-    - does higher score07 and score08 leads to higher score10?
--->
 
 ### From correlation to causality
 
