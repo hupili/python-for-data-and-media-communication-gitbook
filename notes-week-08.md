@@ -80,7 +80,7 @@ Many functions that are available for `Series` are also available for `DataFrame
 
 Calculate the by-department admission ratio and the whole-school admission ratio. Try to articulate whether there is gender discrimination or not.
 
-The dataset can be downloaded [here](assets/1973-UC-Berkeley-Admission-Data - Synthesis Data.csv).
+The dataset can be downloaded [here](assets/1973-UC-Berkeley-Admission-Data-Synthesis-Data.csv).
 
 For further reading, search for "Simpson's paradox".
 
