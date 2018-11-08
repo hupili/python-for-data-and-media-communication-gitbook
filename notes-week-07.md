@@ -521,6 +521,8 @@ Sort values in dataframe is similar to which in series. You can sort by differen
 df.sort_values(by='likes',ascending=False)
 ```
 
+**Note:** In the `sort_values` function, we can only use `ascending` method, `descending` will not work here,which is designed by pandas documentation. But we can use `ascending=False` to meet `descending` needs.
+
 What's more, in the multiple columns dataset, one may need to filter or sort values by multiple columns, we can use following method to accomplish this:
 
 ```python
@@ -580,6 +582,26 @@ mapping.get(original_string, 0)
 def cleaning(e):
     return mapping.get(e, 0)
 cleaning('$50以下')
+```
+
+**Note:** In the mapping function, its not like the traditional dict - key & value like.
+
+```python
+mapping = {'A':'B'}
+mapping.get('A')
+```
+
+Basically, it tells that we use B to replace A. For vast sum of data, we can use apply function to do cleaning. For example, if you have a series of data need to be mapping:
+
+```python
+mapping = 
+{'A':'B',
+'C':'D',
+...,
+'X':'Y'}
+def cleaning(e):
+    return mapping.get(e, 0)
+pandas.series.apply(cleaning)
 ```
 
 ![Pandas Apply Function](assets/pandas-apply-function.png)
