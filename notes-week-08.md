@@ -554,21 +554,21 @@ trendline_y = coeffs[0] * trendline_x + coeffs[1]
 
 plt.plot(trendline_x, trendline_y, linewidth=5)
 
-# Identify suspecious schools, highlight and label texts
+# Identify suspicious schools, highlight and label texts
 
 estimated_y = coeffs[0] * x + coeffs[1]
 s = y - estimated_y
 
-suspecious_x = x_jitter[s > s.quantile(0.90)].values
-suspecious_y = y_jitter[s > s.quantile(0.90)].values
-suspecious_t = df_cleaned[s > s.quantile(0.90)]['Schoolme'].values
+suspicious_x = x_jitter[s > s.quantile(0.90)].values
+suspicious_y = y_jitter[s > s.quantile(0.90)].values
+suspicious_t = df_cleaned[s > s.quantile(0.90)]['Schoolme'].values
 plt.scatter(
-    suspecious_x,
-    suspecious_y,
+    suspicious_x,
+    suspicious_y,
     color='red'
 )
-for i in range(len(suspecious_t)):
-    plt.text(suspecious_x[i], suspecious_y[i], suspecious_t[i])
+for i in range(len(suspicious_t)):
+    plt.text(suspicious_x[i], suspicious_y[i], suspicious_t[i])
 ```
 
 ![Corr better viz4](assets/corr-better-viz4.png)
@@ -592,7 +592,7 @@ def discretise(x):
     return x
 f = ['mean','max','min','var','std']
 df['group'] = df['P_ABSENT_PERSIST'].apply(discretise)
-year9_agg = yeardf.groupby('group')['AVG_ENG_MATH_SCORE_09'].agg(f)
+year9_agg = df.groupby('group')['AVG_ENG_MATH_SCORE_09'].agg(f)
 year9_agg.sort_values(f,ascending=False)
 ```
 
@@ -683,7 +683,7 @@ After we got those school names and address, next thing is to investigate on the
 
 ### From correlation to causality
 
-Seeking for causality is one of the constant persuit of journalists. However, data and statistics can not help too much here. Correlation is an objective measure. No matter which correlation you use, as long as the mathematical formula is defined, you can get an exact number. However, causaility is subjective, which can not be calculated, but can be reasoned/ articulated/ discussed. Suppose we already find the correlation between A and B, there are two directions to consider when discussing causality:
+Seeking for causality is one of the constant pursuit of journalists. However, data and statistics can not help too much here. Correlation is an objective measure. No matter which correlation you use, as long as the mathematical formula is defined, you can get an exact number. However, causality is subjective, which can not be calculated, but can be reasoned/ articulated/ discussed. Suppose we already find the correlation between A and B, there are two directions to consider when discussing causality:
 
 1. Whether event A happens before event B? If not, A can not be the cause of B (in a causal world/ regular world)
 2. Does the domain knowledge/ physical process restrict A to be the cause of B? e.g. observing correlation intelligent parents `<->` intelligent children, we know parents should come first.
@@ -696,7 +696,7 @@ Hypothesis testing is a common statistical tool used in social research domain. 
 
 - Establish "null hypothesis" as `H0`, which states that the observation is purely due to chance.
 - Calculate the likelihood that we have such observations under null hypothesis, i.e. `P{X | H0}`. This is called "p-value".
-- If p-value is small, we reject `H0` because `X` is not likly to happen given that condition. In other words, it is "statistically significant that `X` is not happening purely due to chance" -- in short, 
+- If p-value is small, we reject `H0` because `X` is not likely to happen given that condition. In other words, it is "statistically significant that `X` is not happening purely due to chance" -- in short,
 
 > lower p-value --> more significant --> "more convincing"
 
@@ -705,7 +705,7 @@ Hypothesis testing is a common statistical tool used in social research domain. 
 In the literatures, people usually put some alternative hypotheses aside `H0`. By reject `H0`, they conclude `H1` or `H2`, ... This is not always correct though. The short message that "lower p-value --> more significant" is a bit misleading. The precise version needs two more elaborations:
 
 - The alternative hypotheses need to be stated in a mutually exclusive and collectively exhaustive way, together with `H0`. Sometimes, people state the alternative not exactly the complement of `H0`.
-- Even if when `H0` is rejecrted, we can not draw the conclusion on your research question directly. The rejection happens under the assumed model `M`. Under `M`, `X` is unlikely to happen due to chance. There must be something (some cause). However, this do not give us information on how likely `M` itself is correct.
+- Even if when `H0` is rejected, we can not draw the conclusion on your research question directly. The rejection happens under the assumed model `M`. Under `M`, `X` is unlikely to happen due to chance. There must be something (some cause). However, this do not give us information on how likely `M` itself is correct.
 
 The short take-away is: Use hypothesis with caution. When in double, just do a full reporting on all relevant experiments, tests, results. Leave it to the readers to draw their own conclusions.
 
