@@ -80,7 +80,7 @@ Adding a section to your `README.md` will be good.
 
 ## Assignment 2 -- Data analysis, visualisation and presentation
 
-Deadline: **Nov 23, 2018 (Fri)**
+Deadline: **Nov 24, 2018 (Fri)**
 
 The core objective of this assignment is to make a **reproducible** and **data-driven** report in jupyter notebook, with pandas, matplotlib, seaborn, networkx, nltk, ...
 
