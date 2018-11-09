@@ -610,11 +610,23 @@ From the results, we can find the pattern that the more hardworking, the better 
 ##### Discretise multiple columns
 
 ```python
+def discretise_grade(g):
+    if g >= 28:
+        g = 'A'
+    elif g > 26 and g <= 28:
+        g = 'B'
+    elif g <= 26:
+        g = 'C'
+        
+    return g
+```
+
+```python
 # discretise all all-year students scores
-df['grade_07'] = df['AVG_ENG_MATH_SCORE_07'].apply(discretise)
-df['grade_08'] = df['AVG_ENG_MATH_SCORE_08'].apply(discretise)
-df['grade_09'] = df['AVG_ENG_MATH_SCORE_09'].apply(discretise)
-df['grade_10'] = df['AVG_ENG_MATH_SCORE_10'].apply(discretise)
+df['grade_07'] = df['AVG_ENG_MATH_SCORE_07'].apply(discretise_grade)
+df['grade_08'] = df['AVG_ENG_MATH_SCORE_08'].apply(discretise_grade)
+df['grade_09'] = df['AVG_ENG_MATH_SCORE_09'].apply(discretise_grade)
+df['grade_10'] = df['AVG_ENG_MATH_SCORE_10'].apply(discretise_grade)
 ```
 
 ##### pivot_table to generate cross-tabs table
