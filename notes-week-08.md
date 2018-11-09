@@ -105,7 +105,10 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
 import numpy as np
+
 df = pd.read_excel('nottingham.xlsx')
+#!pip install xlrd for supporting to read excel if error arisen.
+
 df.describe() #get descriptive information
 ```
 
