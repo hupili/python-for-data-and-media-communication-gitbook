@@ -646,23 +646,13 @@ df.pivot_table(index=['grade_07','grade_08'], columns=['grade_10'], values='Scho
 
 The results show highly correlation in this hypothesis. Students in year 7 and year 8 with grade higher than B, and at least one A, is more likely to get A in year 10. About 53/70 = 76%.
 
-**Note:** From the Q2 question, we can know that there are 33 got C, but from this chart, we can only got 18 C. What happened here? The reason here is that 13 of  students' grade in year 10 is NaN.
+**Note:** From the Q2 question, we can know that there are 33 got C in year8, but from this chart, we can only got 18 C-students. What happened here? The reason here is that some of students' grade become NaN when they are in year 10. We can drop out all NaN values to check out the number whether the number is right.
 
 ```python
-len(df[(df['grade_08'] == 'C') & (df['grade_10'].isnull())])
-#output: 13
+df = df.dropna() 
+len(df[df['grade_08']=='C'])
+# 18, which matches the wright answer
 ```
-
-<!-- TODO: 
-There is still one error, the above results in total is 31, still missing 2 students. I filter out all students with grade C in year 8 and what the grade they got in year 10. And found out there is missing 1 count in df['grade_10'] == 'B' and df['grade_10'] == 'A'. But why this is happening?
-
-len(df[(df['grade_08'] == 'C') & (df['grade_10'] == 'C')])
-10
-len(df[(df['grade_08'] == 'C') & (df['grade_10'] == 'B')])
-7
-len(df[(df['grade_08'] == 'C') & (df['grade_10'] == 'A')])
-3
--->
 
 An interesting point here, the abnormal one is that 3 schools' students with grade C in year 7 and year 8 got A in year 10. What happened to those schools?  We can filter out those schools.
 
