@@ -59,12 +59,6 @@ If you are using Jupyter for the first time, you should create virtual environme
 
 If you download the csv from some where, and you want to import it in Jupyter notebook. you should put the csv file in the folder where your venv folder are first. Usually, it's in the user path. All the files you write and read should in this folder. Another method is to type `pwd` in Jupyter, it will return the path, where you should put the file in.
 
-### Message: 'chromedriver' executable needs to be in PATH
-
-Please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-06.md#drivers) .
-
-<!-- TODO: module-selenium.md -->
-
 ## Encoding & Decoding
 
 ### U+FEFF encoding issue

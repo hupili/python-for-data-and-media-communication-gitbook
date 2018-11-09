@@ -28,6 +28,8 @@ For more selenium examples, you can refer [here](https://github.com/hupili/pytho
 
 ## Chrome driver not found in path error
 
+>Message: 'chromedriver' executable needs to be in PATH
+
 This is common error. You can download [Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/home) and put it in your [Current Working Folder](shell.md#verify-your-current-working-folder). Note, for venv and jupyter user, this is not your project root folder, or the venv folder. It is the path at which you issued the `jupyter notebook` command -- a.k.a. "current working folder".
 
 MAC user has a shortcut to install chromedriver in the path.
