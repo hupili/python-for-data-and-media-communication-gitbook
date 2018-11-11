@@ -8,6 +8,8 @@
     - [Objective](#objective)
     - [Data Visualization Libraries](#data-visualization-libraries)
         - [matplotlib](#matplotlib)
+            - [Why matplotlib?](#why-matplotlib)
+            - [Basic usage](#basic-usage)
             - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
             - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
         - [seaborn](#seaborn)
@@ -56,7 +58,30 @@ Demo data: open rice data
 
 ### matplotlib
 
-<!-- TODO -->
+#### Why matplotlib?
+
+Matplotlib is a data visualization library which has ability to support you plot various kind of graphs and charts like scatter plot, bar chart, histogram, even 3D graphics and animations and so on. Its powerful and its simple that we usually use it as the basic driver for the basic data visualization.
+
+#### Basic usage
+
+Install and import:
+
+```python
+!pip install matplotlib
+from matplotlib import pyplot as plt
+```
+
+Basic usage example:
+
+```python
+from matplotlib import pyplot as plt
+data = [1, 5, 2, 3, 2]
+df = pd.DataFrame(data, columns=['value'])
+df
+plt.bar(df.index, df.value) #pass x label value and y label value
+```
+
+![Plt bar](assets/plt-bar.png)
 
 #### How to order the keys of bar chart
 
