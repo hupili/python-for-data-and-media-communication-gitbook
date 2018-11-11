@@ -1,5 +1,21 @@
 # Assignments
 
+<!-- TOC -->
+
+- [Assignments](#assignments)
+    - [How to hand in assignments?](#how-to-hand-in-assignments)
+    - [Assignment 0 -- Bridging assignment for language efficiency](#assignment-0----bridging-assignment-for-language-efficiency)
+        - [Bonus: Handle the stop words](#bonus-handle-the-stop-words)
+        - [Bonus: Discussion or demo](#bonus-discussion-or-demo)
+        - [Reference solutions for assignment 0](#reference-solutions-for-assignment-0)
+    - [Assignment 1 -- Data collection and ideation](#assignment-1----data-collection-and-ideation)
+        - [Bonus: Enrich your dataset](#bonus-enrich-your-dataset)
+    - [Assignment 2 -- Data analysis, visualisation and presentation](#assignment-2----data-analysis-visualisation-and-presentation)
+    - [Notes on Bonus Question](#notes-on-bonus-question)
+
+<!-- /TOC -->
+
+
 Following are the **individual** assignments. You are welcome to discuss and work in groups. In the end, everyone should do the assignment and submit an original version from oneself. Make reference where needed, if you used other's solution.
 
 ## How to hand in assignments?
@@ -35,13 +51,21 @@ Here are the questions:
 1. Can you remove the stop words from above Terminal output, as well as the CSV file?
 2. Can you further enrich this `stop_words` list to make the output more meaningful?
 
-## Bonus: Discussion or demo
+### Bonus: Discussion or demo
 
 To address following questions, you can choose to simply discuss the solution in your `README.md` file or give a working demo using codes:
 
-- If you spotted one interesting keyword from the top list, how do you locate this keyword in articles? i.e. Find which article and which paragraph contains the keyword.
+- If you spot one interesting keyword from the top list, how do you locate this keyword in articles? i.e. Find which article and which paragraph contains the keyword.
 - Can you further organise your code for future reuse? One example of reusable piece is the keyword extraction from one string. Another example is the keyword extraction from one file. You can consider to put those in functions.
 - There are two ways to approach the above problem: 1) assemble the content of all 5 files and extract keyword list for one string; 2) extract keyword-frequency list for all 5 files first and then merge the keyword-frequency (may need to sum the count for the same keyword). Which did you use? Which way is better? And Why?
+
+### Reference solutions for assignment 0
+
+- [@18408532](https://github.com/18408532/python-data-assignments/tree/e5dd0b595606fde3db61a9e2ef8d60c7244935ea/assignment0) gives a solution fully compliant to our requirement. Common pitfalls: print more than top 15 keywords on screen; save only 15 keywords in CSV (we ask for a complete list); fail to process 5 articles (usually due to incorrect loop).
+- [@Catmint1215](https://github.com/Catmint1215/Assugnment0/blob/ad8043e205edb6f63755263b35050397c66c3805/Assignment%200.ipynb) uses function to increase the code reusability. In the future, one only need to input an article list and stop words list.
+- [@FLYSTEPHEN](https://github.com/FLYSTEPHEN/python-data-assignments/blob/e50c7dd973e27bd7beb9f4aeb184ee66b0f58ced/assignment0/keywords_location.ipynb) shows a well organised solution to locate keywords from those articles. Although this is not efficient, you can see a prototype of "search engine" from the demo. For further reading, search for "Inverted Index".
+- [@ClioLI](https://github.com/ClioLI/python-data-assignments/tree/c6629ec0073d588143fd1b90ed61eafe7c35a753/assignment0) and [@ivyWANG958](https://github.com/ivyWANG958/python-data-assignments/tree/911aaff975ec9ec4960dc831cf28dd6b4489a05e/assign0) discussed the two ways of approaching word frequency across multiple articles, i.e. count-then-merge, or merge-then-count.
+- [@dingdinglovesunshine](https://github.com/dingdinglovesunshine/python-data-assignments/blob/33efa994d06998802a217a02db31b8c23d0edb65/python-data-assignments0.md) used `os.listdir` to list all the files to make the code more generic. In the future, on only need to put the articles into a designated folder, and then run this script to get word frequency. The execution of this script does not rely on the number of files in the folder.
 
 ## Assignment 1 -- Data collection and ideation
 
