@@ -119,7 +119,40 @@ plt.show()
 
 #### How to plot multiple chart in one input/ output cell
 
-<!-- TODO: .figure() -->
+Sometimes, we can use `plt.subplot` function to plot multiple charts into one output cell, so that we can more easily to compare and tell the difference between different parameters.
+
+```python
+fig, axes = plt.subplots(nrows=2, ncols=2,constrained_layout=True,figsize=(30,20)) #set a 2*2 canvas, adjust layout to more flexible, adjust figure size, axes means the location of each subplots, you can refer to the following picture below to learn more.
+
+#plot price range count, you can pass kind, color, fontsize in to the function
+price = pd.DataFrame(df['price'].value_counts())
+ax1 = price.plot(kind = 'bar',color = '#46bc99',edgecolor = '#40b4e5',ax=axes[0,0],fontsize=24)
+ax1.set_title("Price range count",fontsize=40)
+
+#plot country count
+country = pd.DataFrame(df['country'].value_counts()[:15])
+ax2 = country.plot(kind = 'bar',color = '#46bc99',edgecolor = '#40b4e5',ax=axes[0,1],fontsize=24)
+ax2.set_title("Country count",fontsize=40)
+
+#plot type count
+type = pd.DataFrame(df['type'].value_counts()[:15])
+ax3 = type.plot(kind = 'bar',color = '#46bc99',edgecolor = '#40b4e5',ax=axes[1,0],fontsize=24)
+ax3.set_title("Type count",fontsize=40)
+
+#plot likes and bookmark scatter
+likes_bookmark = df[['likes','bookmark']]
+ax4 = likes_bookmark.plot(kind = 'scatter',x='likes',y='bookmark',color = '#46bc99',ax=axes[1,1],s=80,fontsize=24)
+ax4.set_title("Like with Bookmark count",fontsize=40)
+```
+
+![Subplot](assets/subplot.png)
+
+About axes:
+
+![Matplotlib axes](assets/matplotlib-axes.png)
+
+**Note:**
+
 
 ### seaborn
 
