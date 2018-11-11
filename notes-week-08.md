@@ -89,6 +89,8 @@ The dataset can be downloaded [here](assets/1973-UC-Berkeley-Admission-Data-Synt
 
 For further reading, search for "Simpson's paradox".
 
+Here is the [demo code](https://github.com/hupili/python-for-data-and-media-communication/blob/b351f35d7a946e4f0068e820c4ebcfb2ed5d114a/pandas-examples/Berkeley.ipynb).
+
 ## Distribution
 
 For distribution, we can use some simple pandas statistics functions to get a overall picture of whats the data distribution like, from what we can get at least two analyzing directions:
