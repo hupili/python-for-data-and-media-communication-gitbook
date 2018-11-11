@@ -85,7 +85,37 @@ plt.bar(df.index, df.value) #pass x label value and y label value
 
 #### How to order the keys of bar chart
 
-<!-- TDOO -->
+We use the Openrice as the example to demo the visualization process, click here to download csv:
+
+<!-- todo upload new csv -->
+
+**Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer here with the tutorial.
+
+```python
+# -*- coding: utf-8 -*-
+import pandas as pd
+from matplotlib import pyplot as plt
+df = pd.read_csv('openrice_viz.csv') #read csv
+#df.head()
+
+plt.rcParams['font.sans-serif']=['SimHei'] #set for displaying Chinese characters here.
+plt.rcParams['axes.unicode_minus']=False #set for displaying `-`
+
+country_counts=df['country'].value_counts()[:15].sort_values(ascending=False) #sort values
+country = pd.DataFrame(country_counts)
+fig = plt.figure(figsize=(14,7)) #adjust size
+plt.bar(country.index, country.country,color = '#46bc99',edgecolor = '#40b4e5') #change color of the bars
+
+# another way to plot bar in pandas:
+# country_counts=df['country'].value_counts()[:15].sort_values(ascending=False).plot(
+#     kind='bar',color = '#46bc99',edgecolor = '#40b4e5')
+plt.title('top 15 country') #plot title and label name
+plt.xlabel('country')
+plt.ylabel('counts')
+plt.show()
+```
+
+![plt bar](assets/plt-bar-by-sorting.png)
 
 #### How to plot multiple chart in one input/ output cell
 
