@@ -156,6 +156,24 @@ ax4.set_title("Like with Bookmark count",fontsize=40)
 
 ### seaborn
 
+Seaborn is a Python data visualization library based on matplotlib, basically, you can regard it as the advanced version of matplotlib, and its closely integrated with `pandas data structures`, with which we can draw more attractive and informative statistical graphics. You can refer [here](https://seaborn.pydata.org/tutorial.html#tutorial) for it's documentation and functions.
+
+Install and import:
+
+```python
+!pip install seaborn
+import seaborn as sns
+```
+
+Basic usage example:
+
+```python
+import seaborn as sns
+ax = sns.scatterplot(x="bookmark", y="likes",data=df)
+```
+
+![Seaborn likes bookmark](assets/seaborn-likes-bookmark.png)
+
 ### plotly
 
 ### pyecharts
