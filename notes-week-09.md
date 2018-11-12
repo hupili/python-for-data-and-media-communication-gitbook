@@ -13,6 +13,8 @@
             - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
             - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
         - [seaborn](#seaborn)
+            - [Basic usage](#basic-usage-1)
+            - [Plot bar-charts and other charts](#plot-bar-charts-and-other-charts)
         - [plotly](#plotly)
         - [pyecharts](#pyecharts)
         - [pandas](#pandas)
@@ -158,6 +160,8 @@ ax4.set_title("Like with Bookmark count",fontsize=40)
 
 Seaborn is a Python data visualization library based on matplotlib, basically, you can regard it as the advanced version of matplotlib, and its closely integrated with `pandas data structures`, with which we can draw more attractive and informative statistical graphics. You can refer [here](https://seaborn.pydata.org/tutorial.html#tutorial) for it's documentation and functions.
 
+#### Basic usage
+
 Install and import:
 
 ```python
@@ -173,6 +177,38 @@ ax = sns.scatterplot(x="bookmark", y="likes",data=df)
 ```
 
 ![Seaborn likes bookmark](assets/seaborn-likes-bookmark.png)
+
+Apart from two dimensional analysis, seaborn can handle more complicated cases. We can add another parameters called `hue`. Hue is the name of variables in data or vector data, its an optional argument. Grouping variable that will produce points with different colors. It can be either categorical or numeric.
+
+```python
+ax = sns.scatterplot(x="bookmark", y="likes",hue='price',data=df)
+```
+
+![Seaborn likes bookmark](assets/seaborn-likes-bookmark2.png)
+
+You can refer [here](https://seaborn.pydata.org/generated/seaborn.scatterplot.html) for more scatter plot usage.
+
+#### Plot bar-charts and other charts
+
+Example: Draw a bar chart between price range and likes,
+you can easily find that $200-400 is the most popular price and acceptable range in Hong Kong.
+
+```python
+sns.set(font='SimHei') #set font to support Chinese character
+pd_df = df.groupby(['price'])['likes'].mean().reset_index().sort_values("likes",ascending=False) #this is to solve the output chart is not sorted by likes.
+ax = sns.barplot(x='price', y='likes',data=pd_df,palette=("ch:2.5,-.2,dark=.3")) #palette is like the color combination style
+plt.title('likes_price', color='gray', fontsize=16, weight='bold')
+```
+
+![Seaborn bar charts](assets/seaborn-bar-charts.png)
+
+Apart from bar charts, there are many other style we can choose, the following is a simple demo of `catplot`.  You can refer [here](https://seaborn.pydata.org/generated/seaborn.catplot.html) for more plotting methods.
+
+```python
+sns.catplot(x="price", y="likes",hue="country", height=10, aspect=1,data=df)
+```
+
+![Seaborn cat-plot.png](assets/seaborn-cat-plot.png)
 
 ### plotly
 
