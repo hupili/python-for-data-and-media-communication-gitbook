@@ -60,7 +60,7 @@ Demo data: open rice data
 
 #### Why matplotlib?
 
-Matplotlib is a data visualization library which has ability to support you plot various kind of graphs and charts like scatter plot, bar chart, histogram, even 3D graphics and animations and so on. Its powerful and its simple that we usually use it as the basic driver for the basic data visualization.
+Matplotlib is a data visualization library which has ability to support you plot various kind of graphs and charts like scatter plot, bar chart, histogram, even 3D graphics and animations and so on. Its powerful and its simple that we usually use it as the basic driver for the basic data visualization. You can refer [here](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html) for it's documentation and functions.
 
 #### Basic usage
 
@@ -89,7 +89,7 @@ We use the Openrice as the example to demo the visualization process, click here
 
 <!-- todo upload new csv -->
 
-**Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer here with the tutorial.
+**Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/module-matplotlib.md#how-to-display-chinese-characters-when-using-matplotlib) with the tutorial.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -124,7 +124,7 @@ Sometimes, we can use `plt.subplot` function to plot multiple charts into one ou
 ```python
 fig, axes = plt.subplots(nrows=2, ncols=2,constrained_layout=True,figsize=(30,20)) #set a 2*2 canvas, adjust layout to more flexible, adjust figure size, axes means the location of each subplots, you can refer to the following picture below to learn more.
 
-#plot price range count, you can pass kind, color, fontsize in to the function
+#plot price range count
 price = pd.DataFrame(df['price'].value_counts())
 ax1 = price.plot(kind = 'bar',color = '#46bc99',edgecolor = '#40b4e5',ax=axes[0,0],fontsize=24)
 ax1.set_title("Price range count",fontsize=40)
@@ -147,12 +147,12 @@ ax4.set_title("Like with Bookmark count",fontsize=40)
 
 ![Subplot](assets/subplot.png)
 
-About axes:
-
-![Matplotlib axes](assets/matplotlib-axes.png)
-
 **Note:**
 
+1. You can pass a lot of parameters like `kind`, `color`, `fontsize` into the function. For more usage documentation, please refer [here](https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.plot.html)
+2. Axes is just like the position of the subplots. You can refer to the following picture for better understanding.
+
+![Matplotlib axes](assets/matplotlib-axes.png)
 
 ### seaborn
 
