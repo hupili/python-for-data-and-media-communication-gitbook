@@ -16,9 +16,7 @@
             - [Basic usage](#basic-usage-1)
             - [Plot bar-charts and other charts](#plot-bar-charts-and-other-charts)
         - [plotly](#plotly)
-            - [Basic usage](#basic-usage-2)
         - [pyecharts](#pyecharts)
-            - [Basic usage](#basic-usage-3)
         - [pandas](#pandas)
         - [bokeh](#bokeh)
     - [Data visualization Principles](#data-visualization-principles)
@@ -53,7 +51,7 @@
 
 ## Data Visualization Libraries
 
-Demo data: open rice data
+Demo data: [open rice data](https://github.com/ChicoXYC/python-for-data-and-media-communication/blob/master/pandas-examples/data%20viz%20demo/openrice_viz.csv)
 
 - 1D: plot price range bars
 - 2D: plot price range bars w.r.t areas
@@ -88,10 +86,6 @@ plt.bar(df.index, df.value) #pass x label value and y label value
 ![Plt bar](assets/plt-bar.png)
 
 #### How to order the keys of bar chart
-
-We use the Openrice as the example to demo the visualization process, click here to download csv:
-
-<!-- todo upload new csv -->
 
 **Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/module-matplotlib.md#how-to-display-chinese-characters-when-using-matplotlib) with the tutorial.
 
@@ -225,8 +219,6 @@ sns.catplot(x="price", y="likes",hue="country", height=10, aspect=1,data=df)
 
 Plotly is very powerful to make interactive, publication-quality graphs online. Including line plots, scatter plots, area charts, bar charts, error bars, box plots, histograms, heatmaps, subplots, multiple-axes, polar charts, and bubble charts. If you want to present and publish your work on html, with some fancy appearance and interactive experience, Plotly is a very recommended library.
 
-#### Basic usage
-
 Install and import:
 
 ```python
@@ -256,8 +248,6 @@ For more plotly examples and tutorials, you can refer [here](https://plot.ly/pyt
 ### pyecharts
 
 Pyecharts is a library to generate charts using Echarts, which is an open source library from Baidu for data visualization in javascript. Pyecharts provides 30+ kinds of charts, especially with easy-to-use interactive graphs.
-
-#### Basic usage
 
 Install and import:
 
