@@ -18,6 +18,7 @@
         - [plotly](#plotly)
             - [Basic usage](#basic-usage-2)
         - [pyecharts](#pyecharts)
+            - [Basic usage](#basic-usage-3)
         - [pandas](#pandas)
         - [bokeh](#bokeh)
     - [Data visualization Principles](#data-visualization-principles)
@@ -177,6 +178,8 @@ import seaborn as sns
 ax = sns.scatterplot(x="bookmark", y="likes",data=df)
 ```
 
+<!-- seaborn hist -->
+
 ![Seaborn likes bookmark](assets/seaborn-likes-bookmark.png)
 
 Apart from two dimensional analysis, seaborn can handle more complicated cases. We can add another parameters called `hue`. Hue is the name of variables in data or vector data, its an optional argument. Grouping variable that will produce points with different colors. It can be either categorical or numeric.
@@ -203,13 +206,13 @@ plt.title('likes_price', color='gray', fontsize=16, weight='bold')
 
 ![Seaborn bar charts](assets/seaborn-bar-charts.png)
 
-Apart from bar charts, there are many other style we can choose, the following is a simple demo of `catplot`.  You can refer [here](https://seaborn.pydata.org/generated/seaborn.catplot.html) for more plotting methods.
+<!-- Apart from bar charts, there are many other style we can choose, the following is a simple demo of `catplot`.  You can refer [here](https://seaborn.pydata.org/generated/seaborn.catplot.html) for more plotting methods.
 
 ```python
 sns.catplot(x="price", y="likes",hue="country", height=10, aspect=1,data=df)
 ```
 
-![Seaborn cat-plot.png](assets/seaborn-cat-plot.png)
+![Seaborn cat-plot.png](assets/seaborn-cat-plot.png) -->
 
 ### plotly
 
@@ -220,7 +223,7 @@ Plotly is very powerful to make interactive, publication-quality graphs online. 
 Install and import:
 
 ```python
-pip install plotly
+!pip install plotly
 import plotly #plot it offline
 import plotly.plotly as py # Every function in this module will communicate with an external plotly server
 ```
@@ -242,6 +245,37 @@ py.iplot(data, filename='country_with_average_like_bar') #you can do interactive
 ![Plotly country with average like](assets/plotly_country_with_average_like.png)
 
 ### pyecharts
+
+Pyecharts is a library to generate charts using Echarts, which is an open source library from Baidu for data visualization in javascript. Pyecharts provides 30+ kinds of charts, especially with easy-to-use interactive graphs.
+
+#### Basic usage
+
+Install and import:
+
+```python
+!pip install pyecharts
+from pyecharts import Bar #you can change Bar to other kind of charts, like Line, Pie, HeatMap etc...
+```
+
+Basic usage example:
+
+```python
+from pyecharts import Bar
+#to see relationship between countries with likes and bookmarks
+pd_df3 = df.groupby(['country'])['bookmark'].mean().reset_index().sort_values("bookmark",ascending=False)
+attr = pd_df2.country
+v1 = pd_df2.likes  #you can pass a list like data here
+v2 = pd_df3.bookmark
+bar = Bar("Countries by likes and bookmark")
+bar.add("by likes", attr, v1, mark_line=["average"])
+bar.add("by bookmark", attr, v2, mark_line=["average"])
+bar
+```
+
+![Pyecharts by bookmark](assets/countries-by-likes-and-bookmark.png)
+![Pyecharts by bookmark2](assets/countries-by-likes-and-bookmark2.png)
+
+For more pyecharts examples and tutorials, you can refer [here](http://pyecharts.org/#/zh-cn/charts_base)
 
 ### pandas
 
