@@ -231,9 +231,11 @@ Basic usage example:
 import plotly.plotly as py
 import plotly.graph_objs as go
 
+pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("likes",ascending=False)
+#if you want to plot charts with sorted order, you need to sorted data first, then pass the data into function.
+
 data = [go.Bar(x=pd_df2.country,
             y=pd_df2.likes)]
-
 py.iplot(data, filename='country_with_average_like_bar') #you can do interactive actions in your Jupyter notebook
 ```
 
