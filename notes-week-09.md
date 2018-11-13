@@ -175,10 +175,31 @@ Basic usage example:
 
 ```python
 import seaborn as sns
-ax = sns.scatterplot(x="bookmark", y="likes",data=df)
+sns.distplot(df["bookmark"],bins=20)
+#one can directly pass pandas.series to plot histogram
 ```
 
-<!-- seaborn hist -->
+![Seaborn hist](assets/seaborn-hist.png)
+
+#### Plot bar-charts and other charts
+
+Example: Draw a bar chart between price range and likes, you can easily find that $200-400 is the most popular price and acceptable range in Hong Kong.
+
+```python
+sns.set(font='SimHei') #set font to support Chinese character
+pd_df = df.groupby(['price'])['likes'].mean().reset_index().sort_values("likes",ascending=False) #this is to solve the output chart is not sorted by likes.
+ax = sns.barplot(x='price', y='likes',data=pd_df,palette=("ch:2.5,-.2,dark=.3")) #palette is like the color combination style
+plt.title('likes_price', color='gray', fontsize=16, weight='bold')
+```
+
+![Seaborn bar charts](assets/seaborn-bar-charts.png)
+
+Example 2: Draw a scatter plot between bookmarks and likes to quickly checkout whether there is a relationship.
+
+```python
+import seaborn as sns
+ax = sns.scatterplot(x="bookmark", y="likes",data=df)
+```
 
 ![Seaborn likes bookmark](assets/seaborn-likes-bookmark.png)
 
@@ -190,21 +211,7 @@ ax = sns.scatterplot(x="bookmark", y="likes",hue='price',data=df)
 
 ![Seaborn likes bookmark](assets/seaborn-likes-bookmark2.png)
 
-You can refer [here](https://seaborn.pydata.org/generated/seaborn.scatterplot.html) for more scatter plot usage.
-
-#### Plot bar-charts and other charts
-
-Example: Draw a bar chart between price range and likes,
-you can easily find that $200-400 is the most popular price and acceptable range in Hong Kong.
-
-```python
-sns.set(font='SimHei') #set font to support Chinese character
-pd_df = df.groupby(['price'])['likes'].mean().reset_index().sort_values("likes",ascending=False) #this is to solve the output chart is not sorted by likes.
-ax = sns.barplot(x='price', y='likes',data=pd_df,palette=("ch:2.5,-.2,dark=.3")) #palette is like the color combination style
-plt.title('likes_price', color='gray', fontsize=16, weight='bold')
-```
-
-![Seaborn bar charts](assets/seaborn-bar-charts.png)
+For more seaborn examples and tutorials, you can refer [here](hhttps://seaborn.pydata.org/tutorial.html)
 
 <!-- Apart from bar charts, there are many other style we can choose, the following is a simple demo of `catplot`.  You can refer [here](https://seaborn.pydata.org/generated/seaborn.catplot.html) for more plotting methods.
 
