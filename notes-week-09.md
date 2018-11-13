@@ -288,11 +288,16 @@ For more pyecharts examples and tutorials, you can refer [here](http://pyecharts
 
 ### pandas
 
-<!-- TODO: run pivot table on price and area; then plot the bars inside the pandas table -->
+One can also include "bar charts" in your DataFrame, from which you can easily find the distribution and the extreme values. For example:
 
-Reference:
+```python
+pd_df4 = df.pivot_table(index=['country'], columns=['price'], values='name', aggfunc='count')
+pd_df4.style.bar(color='#d65f5f')
+```
 
-- [bar chart via pandas.DataFrame styling](https://pandas.pydata.org/pandas-docs/stable/style.html#Bar-charts)
+![Bar inside dataframe](assets/bar-inside-dataframe.png)
+
+For more inside pandas.DataFrame usage, please refer [here](https://pandas.pydata.org/pandas-docs/stable/style.html#Bar-charts)
 
 ### bokeh
 
