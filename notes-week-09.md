@@ -301,6 +301,37 @@ For more inside pandas.DataFrame usage, please refer [here](https://pandas.pydat
 
 ### bokeh
 
+Bokeh is an interactive visualization library that targets modern web browsers for presentation.
+
+Install and import:
+
+```python
+!pip install bokeh
+from bokeh.plotting import figure, show
+```
+
+Basic usage example:
+
+Plot top 10 country grouped with bookmark, and sorted by bookmark.
+
+```python
+from bokeh.plotting import figure
+from bokeh.io import show, output_file
+output_file("bokeh_bar.html")
+pd_df5 = df.groupby(['country'])['bookmark'].mean().reset_index().sort_values("bookmark",ascending=False)[:10]
+# source = ColumnDataSource(data=pd_df5)
+p = figure(x_range=pd_df5.country,plot_height=350, title="Country with bookmark",
+           toolbar_location=None, tools="")
+p.vbar(x=pd_df5.country, top=pd_df5.bookmark, width=0.9)
+p.xgrid.grid_line_color = None
+p.y_range.start = 0
+show(p)
+```
+
+![Bokeh test](assets/bokeh-test.png)
+
+For more bokeh examples and tutorials, you can refer [here](http://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#)
+
 ## Data visualization Principles
 
 ### Principle
