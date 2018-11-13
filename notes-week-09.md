@@ -16,6 +16,7 @@
             - [Basic usage](#basic-usage-1)
             - [Plot bar-charts and other charts](#plot-bar-charts-and-other-charts)
         - [plotly](#plotly)
+            - [Basic usage](#basic-usage-2)
         - [pyecharts](#pyecharts)
         - [pandas](#pandas)
         - [bokeh](#bokeh)
@@ -211,6 +212,32 @@ sns.catplot(x="price", y="likes",hue="country", height=10, aspect=1,data=df)
 ![Seaborn cat-plot.png](assets/seaborn-cat-plot.png)
 
 ### plotly
+
+Plotly is very powerful to make interactive, publication-quality graphs online. Including line plots, scatter plots, area charts, bar charts, error bars, box plots, histograms, heatmaps, subplots, multiple-axes, polar charts, and bubble charts. If you want to present and publish your work on html, with some fancy appearance and interactive experience, Plotly is a very recommended library.
+
+#### Basic usage
+
+Install and import:
+
+```python
+pip install plotly
+import plotly #plot it offline
+import plotly.plotly as py # Every function in this module will communicate with an external plotly server
+```
+
+Basic usage example:
+
+```python
+import plotly.plotly as py
+import plotly.graph_objs as go
+
+data = [go.Bar(x=pd_df2.country,
+            y=pd_df2.likes)]
+
+py.iplot(data, filename='country_with_average_like_bar') #you can do interactive actions in your Jupyter notebook
+```
+
+![Plotly country with average like](assets/plotly_country_with_average_like.png)
 
 ### pyecharts
 
