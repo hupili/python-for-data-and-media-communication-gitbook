@@ -51,7 +51,7 @@
 
 ## Data Visualization Libraries
 
-Demo data: [open rice data](https://github.com/ChicoXYC/python-for-data-and-media-communication/blob/master/pandas-examples/data%20viz%20demo/openrice_viz.csv)
+Demo data: [open rice data](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_viz.csv)
 
 - 1D: plot price range bars
 - 2D: plot price range bars w.r.t areas
