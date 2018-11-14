@@ -2,7 +2,41 @@
 
 <div id="toc">
 
-<!-- TODO: insert TOC here -->
+<!-- TOC -->
+
+- [Week 09 - Present findings: data visualization and reproducible report](#week-09---present-findings-data-visualization-and-reproducible-report)
+    - [Objective](#objective)
+    - [Data Visualization Libraries](#data-visualization-libraries)
+        - [matplotlib](#matplotlib)
+            - [Why matplotlib?](#why-matplotlib)
+            - [Basic usage](#basic-usage)
+            - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
+            - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
+        - [seaborn](#seaborn)
+            - [Basic usage](#basic-usage-1)
+            - [Plot bar-charts and other charts](#plot-bar-charts-and-other-charts)
+        - [plotly](#plotly)
+        - [pyecharts](#pyecharts)
+        - [pandas](#pandas)
+        - [bokeh](#bokeh)
+    - [Data visualization Principles](#data-visualization-principles)
+        - [Principle](#principle)
+        - [Charts](#charts)
+        - [Dashboard](#dashboard)
+    - [GitHub repo](#github-repo)
+        - [README.md](#readmemd)
+        - [Presenting dataset](#presenting-dataset)
+    - [Publish work on GitHub Pages](#publish-work-on-github-pages)
+        - [Basic HTML](#basic-html)
+        - [Bonus: CSS](#bonus-css)
+        - [Single column layout](#single-column-layout)
+        - [Integrated exercise: Publish a full work in a stand alone page](#integrated-exercise-publish-a-full-work-in-a-stand-alone-page)
+            - [Save plotly chart](#save-plotly-chart)
+        - [Bonus: Continuously update GitHub Pages](#bonus-continuously-update-github-pages)
+    - [Bonus: Craft a data service](#bonus-craft-a-data-service)
+    - [Code of conduct: Reproducible reporting and full reporting](#code-of-conduct-reproducible-reporting-and-full-reporting)
+    - [References](#references)
+
 
 </div>
 
@@ -405,7 +439,7 @@ There are some useful libraries in Python for you to build a backend:
 
 ## Code of conduct: Reproducible reporting and full reporting
 
-- Reproducible reporting: Using Jupyter notebook can make most of the content reproducible by default. The readers can find dataset, codes, results, charts and explanatios all in one place. However, note that
+- Reproducible reporting: Using Jupyter notebook can make most of the content reproducible by default. The readers can find dataset, codes, results, charts and explanation all in one place. However, note that
   - Sometimes you execute the cells in the Jupyter notebook in a different order from their appearance on the notebook. That is normal in the trial and error stage. Before you publish the notebook, make sure you restart the kernel and execute from beginning to end in one batch. This makes sure the other readers can **reproduce** the notebook.
   - Sometimes, manual intervention is required in the process, e.g. clicking a button, substituting cookies, etc. You need to put down notes where the workflow is not fully automated. The core concept of reproducible reporting, is to make sure the readers can reproduce your result, either by code, or by human operation.
 - Full reporting: not only report the successful instances; but also report the unsuccessful instances. Sometimes, you find contradictory results from one dataset. Many authors are selective. In our code of conduct, you need to do a full reporting at one intermediate stages, i.e. showing the possible results/ alternative results that you already find. In the narratives of final report, being selective is usually one necessary evil to make a compelling story. You need to make sure you don't over-state anything.
