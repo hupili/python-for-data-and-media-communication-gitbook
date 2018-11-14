@@ -16,7 +16,7 @@
 
 ## Data Visualization Libraries
 
-Demo data: [open rice data](https://github.com/ChicoXYC/python-for-data-and-media-communication/blob/master/pandas-examples/data%20viz%20demo/openrice_viz.csv)
+Demo data: [open rice data](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_viz.csv)
 
 - 1D: plot price range bars
 - 2D: plot price range bars w.r.t areas
@@ -42,10 +42,12 @@ Basic usage example:
 
 ```python
 from matplotlib import pyplot as plt
+import pandas as pd
 data = [1, 5, 2, 3, 2]
 df = pd.DataFrame(data, columns=['value'])
-df
+#df
 plt.bar(df.index, df.value) #pass x label value and y label value
+plt.show()
 ```
 
 ![Plt bar](assets/plt-bar.png)
