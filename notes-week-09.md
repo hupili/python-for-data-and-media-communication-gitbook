@@ -2,42 +2,7 @@
 
 <div id="toc">
 
-<!-- TOC -->
-
-- [Week 09 - Present findings: data visualization and reproducible report](#week-09---present-findings-data-visualization-and-reproducible-report)
-    - [Objective](#objective)
-    - [Data Visualization Libraries](#data-visualization-libraries)
-        - [matplotlib](#matplotlib)
-            - [Why matplotlib?](#why-matplotlib)
-            - [Basic usage](#basic-usage)
-            - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
-            - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
-        - [seaborn](#seaborn)
-            - [Basic usage](#basic-usage-1)
-            - [Plot bar-charts and other charts](#plot-bar-charts-and-other-charts)
-        - [plotly](#plotly)
-        - [pyecharts](#pyecharts)
-        - [pandas](#pandas)
-        - [bokeh](#bokeh)
-    - [Data visualization Principles](#data-visualization-principles)
-        - [Principle](#principle)
-        - [Charts](#charts)
-        - [Dashboard](#dashboard)
-    - [GitHub repo](#github-repo)
-        - [Presenting dataset](#presenting-dataset)
-        - [README.md](#readmemd)
-    - [Publish work on GitHub Pages](#publish-work-on-github-pages)
-        - [Basic HTML](#basic-html)
-        - [Bonus: CSS](#bonus-css)
-        - [Single column layout](#single-column-layout)
-        - [Save plotly chart](#save-plotly-chart)
-        - [Integrated exercise: Publish a full work in a stand alone page](#integrated-exercise-publish-a-full-work-in-a-stand-alone-page)
-        - [Bonus: Continuously update GitHub Pages](#bonus-continuously-update-github-pages)
-    - [Bonus: Craft a data service](#bonus-craft-a-data-service)
-    - [Code of conduct: Reproducible reporting](#code-of-conduct-reproducible-reporting)
-    - [References](#references)
-
-<!-- /TOC -->
+<!-- TODO: insert TOC here -->
 
 </div>
 
@@ -324,19 +289,17 @@ For more bokeh examples and tutorials, you can refer [here](http://bokeh.pydata.
 
 ## Data visualization Principles
 
+**NOTE**: This section are on course slides.
+
 ### Principle
 
-**TODO**: examples and counter examples. Where visualization helps and where visualization can go wrong. How data and viz can cheat you.
+<!-- **TODO**: examples and counter examples. Where visualization helps and where visualization can go wrong. How data and viz can cheat you. -->
 
 ### Charts
 
 ### Dashboard
 
 ## GitHub repo
-
-### Presenting dataset
-
-<!-- TODO: Pili, requirement on presenting dataset -->
 
 ### README.md
 
@@ -350,9 +313,28 @@ Besides giving important project information and "play the open source way", a g
 - Include a "license" section to make the file look professional
 - A [tutorial](https://blog.github.com/2018-06-29-GIF-that-keeps-on-GIFing/) to use GIFs to better present your work on GitHub.
 
+### Presenting dataset
+
+When you present a dataset on GitHub, following information is helpful for the readers to quickly understand your project:
+
+- **topic**
+- data source
+- data fields (type, sample data)
+- data volume
+- **license**
+- obstacles and solutions
+- future work
+
+License is easy to forget. Some serious users may not use your project if there is no permissive license. One can refer to [this section](notes-week-00.md#common-licenses) for some common licenses in the open source world. The suggested license as a default:
+
+- If your work is reusable code, using `MIT` is common.
+- If your work is creative content, either dataset or article, using `CC 4.0 BY` is common.
+
 ## Publish work on GitHub Pages
 
 ### Basic HTML
+
+HTML is a declarative language. One only needs to "declare" what content is on the page, using "tags". HTML tags come in pairs, in the form like `<tag></tag>`. Tags can be nested so some content can be put inside other content (container tags) ("phrase" and "flow" element in HTML language). You can readily start building a web page by modifying other's code. Following tags are common:
 
 - h1/ h2/ h3
 - p
@@ -362,26 +344,69 @@ Besides giving important project information and "play the open source way", a g
 - strong, em
 - iframe
 
+Note that, `iframe` is commonly used to embed external resources into the current web page.
+
 ### Bonus: CSS
+
+CSS can be used to style the page. They usually come in three places:
+
+- The `<style>` tag
+- The `style=""` attribute in HTML element
+- Use `<link rel="stylesheet" src="">` to include external style files.
+
+Detailed explanation is omitted from this open book. To get started, you don't have to worry about CSS. Most common way of practice is to get some existing works and modify the content via HTML directly.
 
 ### Single column layout
 
-### Save plotly chart
+With the wide spread of mobile devices, single column layout is trending. That is, there is only one column on every row. The web page is an interleaved layout of images and texts. No two images appear side by side. No two paragraphs appear side by side. If you need to do so, try to edit those two images into one outside the scope of HTML so that one `img` tag is enough for the presentation.
 
 ### Integrated exercise: Publish a full work in a stand alone page
 
-<!-- TODO: show the whole workflow -->
+[Big Road](http://project.hupili.net/big-road/) is a minimalist solution to make sensible web stories on GitHub. You can follow the instructions there to put your stories on the web. It features:
+
+- Only HTML
+- Mobile-only and single column layout
+- No CSS (actually we do have CSS there; but you don't have to worry about it)
+- Responsive embedding
+- Interactive chart demo
+
+#### Save plotly chart
+
+<!-- TODO: How to save a plotly chart and put into your web story on gh-pages? -->
 
 ### Bonus: Continuously update GitHub Pages
+
+The GitHub repository can be updated continuously ensure the data presented there is latest. One common strategy is:
+
+- Use Python to handle the data collection and data processing.
+- Generate JSON data files to interface between Python and Javascript.
+- Build interactive charts that takes JSON data as input, from a designated location on gh-pages.
+- Periodically run the Python script to make the data up to date. One may find `cron` on Linux or Mac OSX helpful.
 
 ## Bonus: Craft a data service
 
 Two components of the system:
 
-- Frontend
-- Backend
+- Frontend -- things that a regular users can see
+- Backend -- things that a regular users can not see, and usually unaware of
 
-## Code of conduct: Reproducible reporting
+Frontend is based on the languages: HTML/ CSS/ JavaScript. Backend can have many different alternatives, notably `Python`, `JavaScript` (NodeJS), `Ruby` and `PHP`. There are two styles of connecting frontend and backend:
+
+- Server Side Rendering -- The web framework of the backend compiles HTML/ CSS/ JavaScript and then send to the user browser in a batch. This way is more efficient in terms of execution but not less flexible in web design.
+- Client Side Rendering -- The backend only provisions API (the same concept you encountered in week-04). Frontend reads data from API and assembles the web page for user's action. This is the current mainstream approach. This way decouples frontend and backend, and has certain engineering advantages.
+
+There are some useful libraries in Python for you to build a backend:
+
+- `django` -- a very comprehensive library, with a rich eco-system.
+- `flask` -- medium weight library. It is recommended for a serious but small scale project.
+- `bottle` -- light weight library. One can build up a web service in 10 minutes. It is good as an initial trial.
+
+## Code of conduct: Reproducible reporting and full reporting
+
+- Reproducible reporting: Using Jupyter notebook can make most of the content reproducible by default. The readers can find dataset, codes, results, charts and explanatios all in one place. However, note that
+  - Sometimes you execute the cells in the Jupyter notebook in a different order from their appearance on the notebook. That is normal in the trial and error stage. Before you publish the notebook, make sure you restart the kernel and execute from beginning to end in one batch. This makes sure the other readers can **reproduce** the notebook.
+  - Sometimes, manual intervention is required in the process, e.g. clicking a button, substituting cookies, etc. You need to put down notes where the workflow is not fully automated. The core concept of reproducible reporting, is to make sure the readers can reproduce your result, either by code, or by human operation.
+- Full reporting: not only report the successful instances; but also report the unsuccessful instances. Sometimes, you find contradictory results from one dataset. Many authors are selective. In our code of conduct, you need to do a full reporting at one intermediate stages, i.e. showing the possible results/ alternative results that you already find. In the narratives of final report, being selective is usually one necessary evil to make a compelling story. You need to make sure you don't over-state anything.
 
 ## References
 
