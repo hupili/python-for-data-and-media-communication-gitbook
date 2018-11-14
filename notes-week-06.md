@@ -27,6 +27,11 @@
             - [Drivers](#drivers)
             - [Navigating](#navigating)
             - [Locating Elements](#locating-elements)
+            - [Find_element(s)_by_css_selector](#find_elements_by_css_selector)
+                - [Locating elements by attribute](#locating-elements-by-attribute)
+                - [Locating elements with multiple class name](#locating-elements-with-multiple-class-name)
+                - [Locating Child Element](#locating-child-element)
+            - [Scroll down certain element](#scroll-down-certain-element)
             - [Example: CNN articles scraping](#example-cnn-articles-scraping)
                 - [Fundamental: One page](#fundamental-one-page)
                 - [Advanced: All pages](#advanced-all-pages)
@@ -171,6 +176,10 @@ When you use browser emulator, you also need to know that it takes time to rende
 
 For example, `StaleElementReferenceException` and `IndexError` are quite common when using `selenium`. The error sometimes disappears when you execute the same script with the same parameter again. Or it is better to add some `time.sleep` between critical operations. For example, you want to wait the browser to load new content after triggering a click event on a button.
 
+Related issues:
+
+- Booking.com [#68](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/68)
+
 ## Browser emulation
 
 Primarily, Browser emulation or browser automation is used for automating web applications for testing purpose. Like when you build your web application, you want to simulate how many users your server can handle, and how the users act when they look into your website, how they open page, click, navigate and read the the page content.
@@ -241,7 +250,7 @@ browser = webdriver.Chrome() #default to initiate webdriver, you can assign it w
 
 #### Navigating
 
-You can doing a lot of interactive things with the webpage with help of the selenium, like navigating to a link, searching, scrolling, clicking etc. In the following example, we will demo the basic usage of navigating.
+You can do a lot of interactive things with the webpage with help of the selenium, like navigating to a link, searching, scrolling, clicking etc. In the following example, we will demo the basic usage of navigating.
 
 ```python
 from selenium import webdriver
@@ -251,7 +260,9 @@ element = browser.find_element_by_name("q") #Find the search box
 element.send_keys("github python for data and media communication gitbook") #search our openbook
 element.submit() #submit search action
 # you will find the webpage will automatically return the results you search
-link = browser.find_element_by_link_text('GitHub - hupili/python-for-data-and-media-communication-gitbook') #find our tutorial
+open_book = browser.find_element_by_css_selector('.g')
+link = open_book.find_element_by_tag_name('a') #find our tutorial
+# you can also find by the link text. link = browser.find_element_by_partial_link_text('GitHub - hupili')
 link.click() #click the link, enter our tutorial
 browser.execute_script("window.scrollTo(0,1200);") #scroll in the page, window.scrollTo(x,y), x means horizontal, y means vertical
 notes_links = browser.find_element_by_link_text('notes-week-06.md') #find link of notes 6
@@ -265,46 +276,128 @@ There are many ways to locate the elements. It's similar to the usage in `reques
 
 Selenium provides the following methods to locate elements in a page:
 
-* find_element_by_id
-* find_element_by_name
-* find_element_by_xpath
-* find_element_by_link_text
-* find_element_by_partial_link_text
-* find_element_by_tag_name
-* find_element_by_class_name
-* find_element_by_css_selector
+* find_element(s)_by_id
+* find_element(s)_by_name
+* find_element(s)_by_xpath
+* find_element(s)_by_link_text
+* find_element(s)_by_partial_link_text
+* find_element(s)_by_tag_name
+* find_element(s)_by_class_name
+* find_element(s)_by_css_selector
 
-To find multiple elements (these methods will return a list):
+For instruction of the syntax, you can refer this [documentation](https://selenium-python.readthedocs.io/locating-elements.html). In our notes, we mainly use `find_element(s)_by_css_selector` method, due to its easy expression and rich matchability.
 
-* find_elements_by_name
-* find_elements_by_xpath
-* find_elements_by_link_text
-* find_elements_by_partial_link_text
-* find_elements_by_tag_name
-* find_elements_by_class_name
-* find_elements_by_css_selector
+#### Find_element(s)_by_css_selector
 
-Except the `XPath` method, others are pretty much like we used before, just check out the html in Chrome Devtools, find the name, class, link, attributes etc. For instruction of the syntax, you can refer this [documentation](https://selenium-python.readthedocs.io/locating-elements.html).
+##### Locating elements by attribute
 
-For `XPath` method, XPath uses path expressions to select nodes or node-sets in an XML document. The following are basic expression rules and expression path examples. For a more detailed usage, you can check out this [tutorial](https://www.w3schools.com/xml/xpath_syntax.asp).
+Eg:
 
-Basic expression rules:
+```html
+<div id="summaryList_mixed" class="summaryList" style="display: block;"></div>
+```
 
-| Expression | Description                                                                                           |
-|------------|-------------------------------------------------------------------------------------------------------|
-| /          | Selects from the root node                                                                            |
-| //         | Selects nodes in the document from the current node that match the selection no matter where they are |
-| .          | Selects the parent of the current node                                                                |
-| @          | Selects attributes                                                                                    |
+```python
+css = element_name[<attribute_name>='<value>']
+```
 
-Path Expression examples:
+1. Select id. Use `#` notation to select the id:
 
-| Path Expression     | Results                                                                          |
-|---------------------|----------------------------------------------------------------------------------|
-| /bookstore/book[1]  | Selects the first book element that is the child of the bookstore element.       |
-| //book              | Selects all book elements no matter where they are in the document               |
-| //@lang             | Selects all attributes that are named lang                                       |
-| //title[@lang='en'] | Selects all the title elements that have a "lang" attribute with a value of "en" |
+```python
+css="div#summaryList_mixed" or "#summaryList_mixed"
+```
+
+2. Select class. Use the `.` notation to select the class:
+
+```python
+css="div.summaryList" or just css=".summaryList"
+```
+
+3. Select multiple attributes:
+
+```python
+css="div[class='summaryList'] [style='display:block']"
+```
+
+##### Locating elements with multiple class name
+
+When using `.className` notation, every class needs a prefix `.`: `.className1.className2.className3` (no blanks between those class names if they are used to attribute one element)
+
+For example: for the following case:
+
+```html
+<i class='.sr_item sr_item_new sr_item_default sr_property_block  sr_flex_layout                 '>
+</i>
+```
+
+The css will be like this:
+
+```python
+css='.sr_item.sr_item_new.sr_item_default.sr_property_block.sr_flex_layout'
+```
+
+For detail cases, please refer [here](https://github.com/hupili/python-for-data-and-media-communication/blob/314b2469290f28ed146b8d5c2e49be962e32e1d7/scraper-selenium/booking.com.ipynb)
+
+##### Locating Child Element
+
+Eg:
+
+```html
+<div id="summaryList_mixed" class="summaryList" style="display: block;">
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+</div>
+```
+
+1. Locate all children
+
+```python
+css="div#summaryList_mixed .summaryBlock"
+```
+
+2. Locate the certain one with “nth-of-type”. The first one is "nth-of-type(1), and the last one is "last-child"
+
+```python
+css="div#summaryList_mixed .summaryBlock:nth-of-type(2)"
+```
+
+For more explanations and examples about css selector, here is a good [documentation](https://saucelabs.com/resources/articles/selenium-tips-css-selectors) you can refer to.
+
+#### Scroll down certain element
+
+In the navigation or scraping, we may need to click the button to turn pages. And the buttons locate differently in different website. How we locate those buttons? Scroll down to the element may help you accomplish this. We use the `cnn example` to demo here, and test how to turn pages via browser emulation.
+
+```python
+from selenium import webdriver
+import time
+browser = webdriver.Chrome()
+url = 'https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser.get(url)
+next_button = browser.find_element_by_css_selector('#mixedpagination ul.pagingLinks li.ends.next span a') #get the element's location
+next_button.location
+loc = next_button.location
+browser.execute_script("window.scrollTo({x}, {y});".format(**loc)) #scroll to the element
+next_button.click()
+```
+
+Apart for directly scroll to the elements. There are two scrolling usages you may need to know.
+
+```python
+#method 1
+browser.execute_script('window.scrollBy(x,y)') # x is horizontal, y is vertical
+
+#method 2
+browser.execute_script('window.scrollTo(0, document.body.scrollHeight);') #scroll to the page bottom
+
+#method 3
+browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #you can divide numbers after the page height
+
+#method 4
+element = browser.find_element_by_class_name("pn-next")#locate the element
+browser.execute_script("return arguments[0].scrollIntoView();", element) #scroll to view the element
+```
 
 #### Example: CNN articles scraping
 
@@ -321,14 +414,13 @@ from selenium import webdriver
 browser = webdriver.Chrome()
 browser.get('http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war')
 
-browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']") #find all articles wrapped in the path of class='summaryBlock'
 articles = []
-for session in browser.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']"):
+for session in browser.find_elements_by_css_selector('#summaryList_mixed .summaryBlock'): #find all articles wrapped in the path of class='summaryBlock' under the id='summaryList_mixed' 
     article = {}
-    article['headline'] = session.find_element_by_class_name("cnnHeadline").text #find headline
-    article['date'] = session.find_element_by_class_name("cnnDateStamp").text #find date
-    url = session.find_element_by_xpath("./div[@class='cnnHeadline']/*[@href]")  #can not directly get the href attributes, it will return 'url' as a selenium object: <selenium.webdriver.remote.webelement.WebElement (session="936716c8251394a2fddad1fa80b64d23", element="0.9458243256600611-16")>
-    article['url'] = url.get_attribute('href') #further get attributes from last step
+    h = session.find_element_by_css_selector(".cnnHeadline a")
+    article['headline'] = h.text #find headline block
+    article['url'] = h.get_attribute('href') #get url attributes from headline block
+    article['date'] = session.find_element_by_css_selector("span.cnnDateStamp").text #find date
     articles.append(article)
 articles
 ```
@@ -345,13 +437,14 @@ import time #mainly use its time sleep function
 
 def get_articles_from_browser(b):
     articles = []
-    for session in b.find_elements_by_xpath("//div[@id='summaryList_mixed']//div[@class='summaryBlock']"):
+    for session in browser.find_elements_by_css_selector('#summaryList_mixed .summaryBlock'): #find all articles wrapped in the path of class='summaryBlock' under the id='summaryList_mixed'
         article = {}
-        article['headline'] = session.find_element_by_class_name("cnnHeadline").text #find headline
-        article['date'] = session.find_element_by_class_name("cnnDateStamp").text #find date
-        url = session.find_element_by_xpath("./div[@class='cnnHeadline']/*[@href]") #find url 
-        article['url'] = url.get_attribute('href') #get url attribute
+        h = session.find_element_by_css_selector(".cnnHeadline a")
+        article['headline'] = h.text #find headline block
+        article['url'] = h.get_attribute('href') #get url attributes from headline block
+        article['date'] = session.find_element_by_css_selector("span.cnnDateStamp").text #find date
         articles.append(article)
+    
     return articles
 
 
@@ -366,15 +459,6 @@ for i in range(10):
     try:
         new_articles = get_articles_from_browser(browser)
         all_page_articles.extend(new_articles)
-#in the following, we need to emulate to click `next button` to turn pages.
-#try 1: just click link by default ... 
-#next_page = browser.find_element_by_link_text('Next').click()
-#error: not clickable. After try several print() in the process,I found that, we need to scroll the window down till we can see the next button. Therefore you can see that selenium browser emulation method is really just like a human behavior.
-#try 2: scroll whole body down to the bottom...
-#browser.execute_script('window.scrollTo(0, document.body.scrollHeight);')
-#error: In some page, the navigation bar has blocked the click button if you scroll down to the bottom
-#try 3: (document.body.scrollHeight - int) ...  
-#fail: can not be minus, but can be divided.
         browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);')#test several numbers to choose a suitable one
         next_page = browser.find_element_by_link_text('Next')
         next_page.click()
@@ -383,7 +467,7 @@ for i in range(10):
         print('Error on page %s' % i)
 
 import pandas as pd #spoiler. pandas is the key module in the next chapter, you can check out chapter 7 for further information.
-df = pd.DataFrame(articles) #convert articles into dataframe
+df = pd.DataFrame(all_page_articles) #convert articles into dataframe
 df
 ```
 

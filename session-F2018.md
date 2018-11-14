@@ -46,7 +46,7 @@
 - Nixuan JIANG, [@maggie0114](https://github.com/maggie0114)
 - Weiqi JIANG, [@efncij](https://github.com/efncij)
 - Mengyu LI, [@ClioLI](https://github.com/ClioLI)
-- Shengnan LI, [@Lsn-cecilia](https://github.com/Lsn-cecilia)
+- Shengnan LI, [@CCCCCecilia](https://github.com/CCCCCecilia)
 - Yijie LI, [@Alana-LI](https://github.com/Alana-LI)
 - Yuning SHI, [@shiyuning0987](https://github.com/shiyuning0987)
 - Ziwei WANG, [@ivywang958](https://github.com/ivywang958)
@@ -57,4 +57,4 @@
 - Bohan ZHANG, [@ZHANGboh](https://github.com/ZHANGboh)
 - Huimin ZHANG, [@ZhangHuimin97](https://github.com/ZhangHuimin97)
 - Zichun ZHANG, [@NicoleZZC](https://github.com/NicoleZZC)
-- Yuanyuan CHENG, [@niegung](https://github.com/niegung) // Setting in
+- Yuanyuan CHENG, [@niegung](https://github.com/niegung), (Audit)

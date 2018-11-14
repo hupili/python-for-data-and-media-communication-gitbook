@@ -714,7 +714,7 @@ https://www.squarefoot.com.hk/haunted/ – a list of haunted houses in Hong Kong
 
 ### Scrape Hacker News
 
-Hacker News is the world number 1 technology news crowd gathering service: https://news.ycombinator.com/ . One can sense the trend from those articles shared by mostly guru users. You can get post title, link, points (a.k.a. "likes") from the website.
+Hacker News is the world number 1 technology news crowd gathering service: https://news.ycombinator.com/ . One can sense the trend from those articles shared by mostly guru users. You can get post title, link, points (a.k.a. "likes") from the website. More introduction of this news source and related services can be found [here](http://initiumlab.com/blog/20150928-hacker-news-intro/).
 
 ### Scrape Juejin
 

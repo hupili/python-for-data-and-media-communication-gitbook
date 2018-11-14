@@ -451,7 +451,7 @@ GitHub adopts a "sharing first" principle in its community. Whatever content you
 
 ### Common licenses
 
-The short take-away for 
+The short take-away for:
 
 - GPL -- You can use the content freely, but your derivative work based on a GPL licensed project is required to be open source.
 - MIT -- Do whatever you want. You are obligated to provide attribution with your code or binary \(e.g. say "this project uses code that is MIT licensed" -- with a copy of the license and copyright of the author of the open source code\).
@@ -459,6 +459,8 @@ The short take-away for
   - BY: attribute to the author when you use
   - NC: non-commercial use only
   - ND: no derivatives -- you can share but can only share in its original format.
+
+For homeworks, we usually use CC 4.0 license, please refer [here](https://creativecommons.org/licenses/by/4.0/) for explanation.
 
 Of course, the non granted rights are always negotiable with the authors who own the content. The spirit of open source is to cater to the greater good, while protect the authorship. There is a flow chart for you to decide what license you should choose.
 

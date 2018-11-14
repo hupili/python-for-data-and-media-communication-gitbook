@@ -47,6 +47,19 @@ For i in range(1,10):
 
 You will see the outcome: 1,2,3,4,5,6,7,8,9 without 10, because the left range is included, while the right range is excluded.
 
+### == and =
+
+In python, notation `==` represents making a judgment / comparison. Notation `=` means assign values.
+
+For example:
+
+```python
+df['location'] == '旺角'
+#this means Iterate all elements in location column to compare whether its equal to 旺角
+df['location'] = '旺角'
+#this means assign 旺角 to every element in the column location
+```
+
 ## Self learning resources
 
 > TODO: study the following pointers and add comments

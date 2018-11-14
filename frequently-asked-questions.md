@@ -9,9 +9,9 @@
         - [Setup virtual venv and install Jupyter Notebook](#setup-virtual-venv-and-install-jupyter-notebook)
         - [Install modules in venv, it's equivalent to install in Jupyter](#install-modules-in-venv-its-equivalent-to-install-in-jupyter)
     - [Tricks & Hot key](#tricks--hot-key)
+        - [Restart kernel helps](#restart-kernel-helps)
     - [Frequently asked bugs](#frequently-asked-bugs)
         - [No such file or directory in jupyter or file xxx does not exist](#no-such-file-or-directory-in-jupyter-or-file-xxx-does-not-exist)
-        - [Message: 'chromedriver' executable needs to be in PATH](#message-chromedriver-executable-needs-to-be-in-path)
     - [Encoding & Decoding](#encoding--decoding)
         - [U+FEFF encoding issue](#ufeff-encoding-issue)
         - [Csv writer newline](#csv-writer-newline)
@@ -53,17 +53,15 @@ If you are using Jupyter for the first time, you should create virtual environme
 6. Comment multiple lines: select multiple lines, then type `command` + `/`, type again to un-comment
 7. Force quit boxes - `command`+`option`+`esc`
 
+### Restart kernel helps
+
+In the coding process, we may keep renaming the variables or adjust the sequences of the cells. In such circumstances, there might be errors arisen. Therefore, a good practice here is always try `restarting kernels` if encounter the weird errors.
+
 ## Frequently asked bugs
 
 ### No such file or directory in jupyter or file xxx does not exist
 
 If you download the csv from some where, and you want to import it in Jupyter notebook. you should put the csv file in the folder where your venv folder are first. Usually, it's in the user path. All the files you write and read should in this folder. Another method is to type `pwd` in Jupyter, it will return the path, where you should put the file in.
-
-### Message: 'chromedriver' executable needs to be in PATH
-
-Please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-06.md#drivers) .
-
-<!-- TODO: module-selenium.md -->
 
 ## Encoding & Decoding
 

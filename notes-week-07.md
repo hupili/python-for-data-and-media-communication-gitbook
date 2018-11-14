@@ -28,6 +28,7 @@
             - [Basic statistics](#basic-statistics)
                 - [DataFrame.describe()](#dataframedescribe)
                 - [Count values of series](#count-values-of-series)
+                - [Sort values in dataframe](#sort-values-in-dataframe)
                 - [Plot a simple chart: histogram](#plot-a-simple-chart-histogram)
             - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
                 - [Apply a function](#apply-a-function)
@@ -202,12 +203,6 @@ Output:
 dtype: int64
 ```
 
-**Note:** sort_values in dataframe is similar to which in series. You can sort by different columns like the example:
-
-```python
-df.sort_values(by='likes',ascending=False)
-```
-
 ##### Series.sum
 
 Use the above dict_series as an example:
@@ -256,12 +251,11 @@ Output:
 
 #### Benefits of using series
 
-* Compared with list and dict, in series, we can access to elements by the axis labels, which is like `index` way in list and by the elements name, which is like `key` way in dict. Therefore its more convenient than above two in this question.
-* Although they are both one dimensional dataset, series allows you to store list and dict values.
-* With more build-in functions in pandas and other libraries, series are more easily to be analyzed and used to do visualization.
+Series has the advantage from both `dict` and `list`. One can use a key to reference to the elements, which leads a `dict` like look and feel. However, for a regular `dict`, keys do not have certain ordering. Python only guarantees `dict.keys()`, `dict.values()` and `dict.items()` adopts the same ordering but how they are ordered is not specified. `pandas.Series` can preserve the order of elements, which gives a `list` like look and feel.
 
-<!--Todo:
-    about Benefits of using series, whether the above is the advantage?-->
+<!-- * Compared with list and dict, in series, we can access to elements by the axis labels, which is like `index` way in list and by the elements name, which is like `key` way in dict. Therefore its more convenient than above two in this question.
+* Although they are both one dimensional dataset, series allows you to store list and dict values.
+* With more build-in functions in pandas and other libraries, series are more easily to be analyzed and used to do visualization. -->
 
 ### Pandas Dataframe
 
@@ -328,9 +322,9 @@ We can also load CSV from GitHub directly with the help of `requests` and `io.St
 import pandas as pd
 import io
 import requests
-url="https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv"
+url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/openrice_sample.csv"
 s=requests.get(url).content
-df=pd.read_csv(io.StringIO(s.decode('utf-8')))
+df=pd.read_csv(io.StringIO(s.decode('utf-8')),header=None, names=['name', 'location','price','country','type','likes','review','bookmark','discount_info'])
 ```
 
 #### Select data
@@ -414,7 +408,7 @@ Similarly, there is another function `.iloc`, which is purely integer-location b
 Using the `openrice.csv` as an example:
 
 ```python
-#read csv first, make sure the header is right
+#read csv first, make sure the header is right, you can refer to previous content in this chapter.
 df.iloc[5]
 ```
 
@@ -517,7 +511,25 @@ All Day Breakfast     7
 Name: style, dtype: int64
 ```
 
-`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
+`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
+
+##### Sort values in dataframe
+
+Sort values in dataframe is similar to which in series. You can sort by different columns like the example:
+
+```python
+df.sort_values(by='likes',ascending=False)
+```
+
+**Note:** In the `sort_values` function, we can only use `ascending` method, `descending` will not work here,which is designed by pandas documentation. But we can use `ascending=False` to meet `descending` needs.
+
+What's more, in the multiple columns dataset, one may need to filter or sort values by multiple columns, we can use following method to accomplish this:
+
+```python
+df.sort_values(['likes','bookmark'],ascending=[False,False]) #the first false corresponding to the first column
+```
+
+![Sort values by multiple columns](assets/sort-values-by-multiple-columns.png)
 
 ##### Plot a simple chart: histogram
 
@@ -570,6 +582,26 @@ mapping.get(original_string, 0)
 def cleaning(e):
     return mapping.get(e, 0)
 cleaning('$50以下')
+```
+
+**Note:** In the mapping function, its not like the traditional dict - key & value like.
+
+```python
+mapping = {'A':'B'}
+mapping.get('A')
+```
+
+Basically, it tells that we use B to replace A. For vast sum of data, we can use apply function to do cleaning. For example, if you have a series of data need to be mapping:
+
+```python
+mapping = 
+{'A':'B',
+'C':'D',
+...,
+'X':'Y'}
+def cleaning(e):
+    return mapping.get(e, 0)
+pandas.series.apply(cleaning)
 ```
 
 ![Pandas Apply Function](assets/pandas-apply-function.png)
@@ -813,6 +845,9 @@ The content:
 - Check the string length. Is there a super long cell? It may be because parsing error during scraping stage. Some data may mix up.
 - Check the missing values. Are there empty cells? What is the reasonable default value to fill in those empty cells?
 - Check the above on a subset of data (filtering/ grouping). Does `50` looks like a regular price? Does `50` looks like a regular price within "seafood" category?
+- Is the duplicate content? If there is no duplicate _entire rows_, is there duplicate rows in terms of a subset of the columns? Is this duplicate an error in the data? You may want to leverage some domain knowledge to further check.
+
+As an exercise, you can download a CSV file with intentionally injected error [here](hhttps://github.com/hupili/python-for-data-and-media-communication/tree/master/pandas-examples/data%20cleaning%20exercise). The notebook is for your reference.
 
 ### Transformation
 
@@ -826,7 +861,6 @@ We load the CSV data in one shot, because the current dataset is very small. In 
 
 ## References
 
-* First two chapters \(i.e. before "3D"\) of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
 * [Exercise numpy](https://www.shiyanlou.com/courses/1090) on ShiYanLou
 * [Exercise pandas](https://www.shiyanlou.com/courses/1091) on ShiYanLou
 

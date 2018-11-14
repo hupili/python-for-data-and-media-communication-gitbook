@@ -801,6 +801,15 @@ Retrieve a JSON response from Google Map API. Here is an example: [Get the locat
 
 Once you know how to use `requests` and `json` to get the interested coordinates data, you can revisit the [city distance challenge](notes-week-03.md#distances-among-cities) from last chapter. Then you have a fully automated solution.
 
+**NOTE**: The above HTTP API does not work starting from Aug 2018. Instead, you can use the Google geo coder from `geopy` library. You need to apply for an API key first. Following sample code can help you.
+
+```python
+from geopy.geocoders import GoogleV3
+geolocator = GoogleV3(api_key='Put your Google Map API Key here')
+location = geolocator.geocode("慈雲山毓華里18號慈華商場地下2-3號")
+location.point
+```
+
 ### Bonus: Real Estate property in Hong Kong (via government open data portal API)
 
 Lookup real estate properties on HK gov open data portal, e.g. the [dataset page](https://data.gov.hk/en-data/dataset/centaline-centanetod-ccipropertyinfo/resource/4d3d7289-9d84-4f31-bf7e-a515d00d5328). Retrieve the data that `scp_mktc` contains '九龍' from year 2000 up to now. API result is like [this](assets/data-gov-hk-API-results).
