@@ -77,10 +77,12 @@ Basic usage example:
 
 ```python
 from matplotlib import pyplot as plt
+import pandas as pd
 data = [1, 5, 2, 3, 2]
 df = pd.DataFrame(data, columns=['value'])
-df
+#df
 plt.bar(df.index, df.value) #pass x label value and y label value
+plt.show()
 ```
 
 ![Plt bar](assets/plt-bar.png)
