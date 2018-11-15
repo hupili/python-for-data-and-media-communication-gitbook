@@ -412,6 +412,13 @@ With the wide spread of mobile devices, single column layout is trending. That i
 
 <!-- TODO: How to save a plotly chart and put into your web story on gh-pages? -->
 
+The default plotly chart includes a tool bar, making the graphical region too small on "Big Road" template. There are two ways to work around:
+
+1. Use `<ratio-1-to-1>` tag to wrap the `<responsive-block>`.
+2. Remove the tool bar from plotly chart.
+
+The second way is recommended. When using the 1st solution, there will be a large chunk of blank on the page. This area is intended to show the tool bar when hovering your mouse on the chart. Hovering does not make sens on mobile devices.
+
 ### Bonus: Continuously update GitHub Pages
 
 The GitHub repository can be updated continuously ensure the data presented there is latest. One common strategy is:

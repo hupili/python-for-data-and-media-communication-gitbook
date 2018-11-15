@@ -1,10 +1,25 @@
-# Special data type: Text, time series, graph, geographical
+# Week 10: Text data
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Special data type: Text, time series, graph, geographical](#special-data-type-text-time-series-graph-geographical)
+- [Week 10: Text data](#week-10-text-data)
+    - [Text processing](#text-processing)
+        - [String functions recap](#string-functions-recap)
+        - [encode and decode](#encode-and-decode)
+        - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
+            - [Bonus: Text substitution](#bonus-text-substitution)
+            - [RegEx in shell](#regex-in-shell)
+    - [Word frequency](#word-frequency)
+        - [Visualize word frequency](#visualize-word-frequency)
+    - [Word segmentation](#word-segmentation)
+        - [How to add new terms to the wordseg dictionary](#how-to-add-new-terms-to-the-wordseg-dictionary)
+        - [How to adjust term weight in the wordseg dictionary](#how-to-adjust-term-weight-in-the-wordseg-dictionary)
+    - [Bonus: TF.IDF](#bonus-tfidf)
+    - [Bonus: Topic model](#bonus-topic-model)
+    - [Bonus: Sentiment analysis](#bonus-sentiment-analysis)
+    - [Bonus: word2vec](#bonus-word2vec)
     - [Text](#text)
     - [Check the information in terminal](#check-the-information-in-terminal)
     - [Simple steps to start Jupyter notebook in terminal](#simple-steps-to-start-jupyter-notebook-in-terminal)
@@ -64,6 +79,85 @@
 
 </div>
 
+<!-- NOTE: new outline begin -->
+
+## Text processing
+
+### String functions recap
+
+Outline:
+
+- split
+- replace
+- join
+- format
+- find
+- slicing (`:`)
+
+<!-- TODO: pick some representative text processing issues student encountered during scraping -->
+
+### encode and decode
+
+- UTF-8
+- GBK
+
+<!-- TODO -->
+
+### String matching and Regular Expression (RegEx)
+
+The `.find()` and `in` operator on `str` has limited matching capability. They can only perform precise matching. What if we want to do fuzzy matching? Common siutations:
+
+1. Find all the user names from the Twitter message. i.e. those look like `@xxxx `, i.e. start with `@` and end with ` ` (blank).
+2. Find all the phone numbers from a paragraph of texts.
+
+RegEx can solve those problems in a very concise way.
+
+<!-- TODO: solve above two problems using RegEx -->
+
+#### Bonus: Text substitution
+
+RegEx can let you substitute some matching parts. It even allows to interpolate variables using values from matching part.
+
+#### RegEx in shell
+
+Following commands can be used to perform RegEx operation. Those commands sometimes can make your work more efficient.
+
+- `grep`
+- `egrep`
+- `fgrep`
+
+## Word frequency
+
+### Visualize word frequency
+
+Tag cloud is commonly used, for aesthetics purpose. However, it is not a precise presentation of the data.
+
+## Word segmentation
+
+- `jieba` for Chinese
+
+### How to add new terms to the wordseg dictionary
+
+### How to adjust term weight in the wordseg dictionary
+
+## Bonus: TF.IDF
+
+- Term Frequency
+- Inverse Document Frequency
+
+## Bonus: Topic model
+
+<!-- TODO: -->
+
+## Bonus: Sentiment analysis
+
+- Construct classifier using `sklearn`.
+- Online API like [text-processing](http://text-processing.com/docs/sentiment.html).
+- `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
+
+## Bonus: word2vec
+
+<!-- NOTE: new outline end -->
 
 ## Text
 
