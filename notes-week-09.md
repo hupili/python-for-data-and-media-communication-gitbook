@@ -226,13 +226,14 @@ Install and import:
 ```python
 !pip install plotly
 import plotly #plot it offline
-import plotly.plotly as py # Every function in this module will communicate with an external plotly server
+import plotly.plotly as py 
+# Note: online plot method requires you to create an account. In online mode, every function in this module will communicate with an external plotly server
 ```
 
 Basic usage example:
 
 ```python
-import plotly.plotly as py
+import plotly
 import plotly.graph_objs as go
 # to see relationship between countries and likes
 pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("likes",ascending=False)
@@ -240,7 +241,7 @@ pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("like
 
 data = [go.Bar(x=pd_df2.country,
             y=pd_df2.likes)]
-py.iplot(data, filename='country_with_average_like_bar') #if you use py.plot(), you will get the output in a new browser window, but with iplot(), you can do interactive actions just in your Jupyter notebook
+plotly.offline.plot(data, filename='country_with_average_like_bar') #if you use py.plot(), you will get the output in a new browser window, but with iplot(), you can do interactive actions just in your Jupyter notebook
 ```
 
 ![Plotly country with average like](assets/plotly_country_with_average_like.png)
