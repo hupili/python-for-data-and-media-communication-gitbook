@@ -285,6 +285,9 @@ One can also include "bar charts" in your DataFrame, from which you can easily f
 
 ```python
 pd_df4 = df.pivot_table(index=['country'], columns=['price'], values='name', aggfunc='count')
+#pd_df4
+#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range
+pd_df4 = pd_df4.loc[['韓國菜','台湾菜','日本菜','西班牙','西式','意大利菜','粵菜 (廣東)']].T
 pd_df4.style.bar(color='#d65f5f')
 ```
 
