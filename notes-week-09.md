@@ -2,7 +2,42 @@
 
 <div id="toc">
 
-<!-- TODO: insert TOC here -->
+<!-- TOC -->
+
+- [Week 09 - Present findings: data visualization and reproducible report](#week-09---present-findings-data-visualization-and-reproducible-report)
+    - [Objective](#objective)
+    - [Data Visualization Libraries](#data-visualization-libraries)
+        - [matplotlib](#matplotlib)
+            - [Why matplotlib?](#why-matplotlib)
+            - [Basic usage](#basic-usage)
+            - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
+            - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
+        - [seaborn](#seaborn)
+            - [Basic usage](#basic-usage-1)
+            - [Plot bar-charts and other charts](#plot-bar-charts-and-other-charts)
+        - [plotly](#plotly)
+        - [pyecharts](#pyecharts)
+        - [pandas](#pandas)
+        - [bokeh](#bokeh)
+    - [Data visualization Principles](#data-visualization-principles)
+        - [Principle](#principle)
+        - [Charts](#charts)
+        - [Dashboard](#dashboard)
+    - [GitHub repo](#github-repo)
+        - [README.md](#readmemd)
+        - [Presenting dataset](#presenting-dataset)
+    - [Publish work on GitHub Pages](#publish-work-on-github-pages)
+        - [Basic HTML](#basic-html)
+        - [Bonus: CSS](#bonus-css)
+        - [Single column layout](#single-column-layout)
+        - [Integrated exercise: Publish a full work in a stand alone page](#integrated-exercise-publish-a-full-work-in-a-stand-alone-page)
+            - [Save plotly chart](#save-plotly-chart)
+        - [Bonus: Continuously update GitHub Pages](#bonus-continuously-update-github-pages)
+    - [Bonus: Craft a data service](#bonus-craft-a-data-service)
+    - [Code of conduct: Reproducible reporting and full reporting](#code-of-conduct-reproducible-reporting-and-full-reporting)
+    - [References](#references)
+
+<!-- TOC -->
 
 </div>
 
@@ -191,13 +226,14 @@ Install and import:
 ```python
 !pip install plotly
 import plotly #plot it offline
-import plotly.plotly as py # Every function in this module will communicate with an external plotly server
+import plotly.plotly as py 
+# Note: online plot method requires you to create an account. In online mode, every function in this module will communicate with an external plotly server
 ```
 
 Basic usage example:
 
 ```python
-import plotly.plotly as py
+import plotly
 import plotly.graph_objs as go
 # to see relationship between countries and likes
 pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("likes",ascending=False)
@@ -205,7 +241,7 @@ pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("like
 
 data = [go.Bar(x=pd_df2.country,
             y=pd_df2.likes)]
-py.iplot(data, filename='country_with_average_like_bar') #if you use py.plot(), you will get the output in a new browser window, but with iplot(), you can do interactive actions just in your Jupyter notebook
+plotly.offline.plot(data, filename='country_with_average_like_bar') #if you use py.plot(), you will get the output in a new browser window, but with iplot(), you can do interactive actions just in your Jupyter notebook
 ```
 
 ![Plotly country with average like](assets/plotly_country_with_average_like.png)
@@ -249,6 +285,9 @@ One can also include "bar charts" in your DataFrame, from which you can easily f
 
 ```python
 pd_df4 = df.pivot_table(index=['country'], columns=['price'], values='name', aggfunc='count')
+#pd_df4
+#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range
+pd_df4 = pd_df4.loc[['韓國菜','台湾菜','日本菜','西班牙','西式','意大利菜','粵菜 (廣東)']].T
 pd_df4.style.bar(color='#d65f5f')
 ```
 
@@ -376,6 +415,13 @@ With the wide spread of mobile devices, single column layout is trending. That i
 
 <!-- TODO: How to save a plotly chart and put into your web story on gh-pages? -->
 
+The default plotly chart includes a tool bar, making the graphical region too small on "Big Road" template. There are two ways to work around:
+
+1. Use `<ratio-1-to-1>` tag to wrap the `<responsive-block>`.
+2. Remove the tool bar from plotly chart.
+
+The second way is recommended. When using the 1st solution, there will be a large chunk of blank on the page. This area is intended to show the tool bar when hovering your mouse on the chart. Hovering does not make sens on mobile devices.
+
 ### Bonus: Continuously update GitHub Pages
 
 The GitHub repository can be updated continuously ensure the data presented there is latest. One common strategy is:
@@ -405,7 +451,7 @@ There are some useful libraries in Python for you to build a backend:
 
 ## Code of conduct: Reproducible reporting and full reporting
 
-- Reproducible reporting: Using Jupyter notebook can make most of the content reproducible by default. The readers can find dataset, codes, results, charts and explanatios all in one place. However, note that
+- Reproducible reporting: Using Jupyter notebook can make most of the content reproducible by default. The readers can find dataset, codes, results, charts and explanation all in one place. However, note that
   - Sometimes you execute the cells in the Jupyter notebook in a different order from their appearance on the notebook. That is normal in the trial and error stage. Before you publish the notebook, make sure you restart the kernel and execute from beginning to end in one batch. This makes sure the other readers can **reproduce** the notebook.
   - Sometimes, manual intervention is required in the process, e.g. clicking a button, substituting cookies, etc. You need to put down notes where the workflow is not fully automated. The core concept of reproducible reporting, is to make sure the readers can reproduce your result, either by code, or by human operation.
 - Full reporting: not only report the successful instances; but also report the unsuccessful instances. Sometimes, you find contradictory results from one dataset. Many authors are selective. In our code of conduct, you need to do a full reporting at one intermediate stages, i.e. showing the possible results/ alternative results that you already find. In the narratives of final report, being selective is usually one necessary evil to make a compelling story. You need to make sure you don't over-state anything.
