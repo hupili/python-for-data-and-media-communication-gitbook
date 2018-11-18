@@ -13,6 +13,8 @@
             - [RegEx in shell](#regex-in-shell)
     - [Word frequency](#word-frequency)
         - [Visualize word frequency](#visualize-word-frequency)
+            - [with bar chart](#with-bar-chart)
+            - [with tag cloud](#with-tag-cloud)
     - [Word segmentation](#word-segmentation)
         - [How to add new terms to the wordseg dictionary](#how-to-add-new-terms-to-the-wordseg-dictionary)
         - [How to adjust term weight in the wordseg dictionary](#how-to-adjust-term-weight-in-the-wordseg-dictionary)
@@ -224,7 +226,53 @@ foreign           10
 
 ### Visualize word frequency
 
+#### with bar chart
+
+```python
+#you can use other visualization library
+import seaborn as sns
+import matplotlib.pyplot as plt 
+def word_count(processed_word_list):
+    word_count = pd.Series(processed_word_list).value_counts().sort_values(ascending=False)[0:15]  
+    fig = plt.figure(figsize=(16,8))  
+    x = word_count.index.tolist()  
+    y = word_count.values.tolist()  
+    sns.barplot(x, y, palette="BuPu_r")  
+    plt.title('word frequency top 15')  
+    plt.ylabel('count')  
+    sns.despine(bottom=True)  
+    #plt.savefig('./word_count_bar.png',dpi=400)  
+    plt.show()
+
+word_count(processed_word_list)
+```
+
+![Words frequency bar](assets/words-frequency-top15-bar.png)
+
+#### with tag cloud
+
 Tag cloud is commonly used, for aesthetics purpose. However, it is not a precise presentation of the data.
+
+```python
+from PIL import Image
+import wordcloud
+import numpy as np
+
+def tag_cloud(text):
+    mask = np.array(Image.open('newspaper.png')) #set mask, you can change to the picture you like, but it must have a high color contrast
+    wc = wordcloud.WordCloud(mode='RGBA',background_color='white',max_words=2000,stopwords=stopwords,max_font_size=300,random_state=42,mask=mask)
+    wc.generate_from_text(' '.join(text))
+    plt.figure(figsize=(12,12))
+    plt.imshow(wc, interpolation='bilinear')
+    plt.axis("off")
+    plt.title('word frequency top 15 tag cloud', loc='Center', fontsize=20)
+    plt.show()
+    return plt.show()
+
+tag_cloud(words)
+```
+
+![Words frequency tag cloud](assets/words-frequency-tag-cloud.png)
 
 ## Word segmentation
 
