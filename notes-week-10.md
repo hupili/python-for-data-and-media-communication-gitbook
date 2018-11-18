@@ -276,7 +276,24 @@ tag_cloud(words)
 
 ## Word segmentation
 
-- `jieba` for Chinese
+- `jieba` for Chinese. You can download the article [here](assets/trade-wars-zh.txt)
+
+```python
+import jieba
+text = open('trade-wars-zh.txt',"r").read()
+#cut words
+words = jieba.cut(text)
+#set stopwords
+filepath = 'stopwords.txt'
+stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
+#remove stopwords
+processed_word_list = []
+for word in words:
+    if word not in stopwords and len(word)>1: #remove single word
+        processed_word_list.append(word)
+
+#processed_word_list
+```
 
 ### How to add new terms to the wordseg dictionary
 
