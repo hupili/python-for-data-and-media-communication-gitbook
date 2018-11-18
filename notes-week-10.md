@@ -96,6 +96,43 @@ Outline:
 
 <!-- TODO: pick some representative text processing issues student encountered during scraping -->
 
+Example 1: slpit + slice + format
+
+When scrape certain elements in webpage, the elements sometimes are folded or shorted, we need to split to different parts, use list slicing to get the part we want and re-format the strings we want.  For example:
+
+![Initiumlab articles](assets/initiumlab-articles.png)
+
+the article url we get is `"../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"`, but what we expect is this`"http://initiumlab.com/blog/20160730-mediawiki-wiki-knowledge-management-system/"`. We can format the new string by the following method.
+
+```python
+string = "../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"
+s = string.split('/blog')
+#s
+s1 = s[-1]
+#s1
+s2='{0}{1}'.format('http://initiumlab.com',s1)
+#s2
+```
+
+Example 2: find + replace + join
+
+In certain occasion, we need to check out whether there is one word in the string, and need to replace the word.
+
+```python
+str = "this is string example....this is the string we will test, is it"
+str.find('string')
+#output: 8, the position of the first characters
+str.find('python')
+#output: -1, it will return -1 if there is no this word in the string
+str.replace("is", "was") #replace all
+#output: 'thwas was string example....thwas was the string we will test, was it'
+str.replace("is", "was", 3) #replace first 3
+#output: 'thwas was string example....thwas is the string we will test, is it'
+s3 = str.split(' ')
+'|'.join(str) #you can add different things in the string
+#output: 'this|is|string|example....this|is|the|string|we|will|test,|is|it'
+```
+
 ### encode and decode
 
 - UTF-8
