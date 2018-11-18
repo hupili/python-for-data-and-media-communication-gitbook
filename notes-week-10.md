@@ -297,6 +297,21 @@ for word in words:
 
 ### How to add new terms to the wordseg dictionary
 
+For basic needs, using `suggest_freq(segment, tune=True)` and `add_word(word)` are recommended.
+
+```python
+print('/'.join(jieba.cut('特朗普已经准备好对所有进口美国的中国商品征收关税')
+#中国/已/表示/计划/对/美国/的/任何/贸易壁垒/进行/报复/。
+jieba.suggest_freq(('贸易', '壁垒'), True)
+print('/'.join(jieba.cut('中国已表示计划对美国的任何贸易壁垒进行报复。')))
+#中国/已/表示/计划/对/美国/的/任何/贸易/壁垒/进行/报复/。
+jieba.add_word('贸易壁垒')
+print('/'.join(jieba.cut('中国已表示计划对美国的任何贸易壁垒进行报复。')))
+#中国/已/表示/计划/对/美国/的/任何/贸易壁垒/进行/报复/。
+```
+
+For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/article/details/80128076) to customize your own words dict.
+
 ### How to adjust term weight in the wordseg dictionary
 
 ## Bonus: TF.IDF
