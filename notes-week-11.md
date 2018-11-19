@@ -55,6 +55,12 @@ dt = datetime(year=1993, month=10, day=4,
               hour=9, minute=8, second=7)
 dt
 ```
+Or you can use a positional arguments
+```
+from datetime import datetime
+dt = datetime(1993, 10, 4, 9, 8, 7)
+dt
+```
 Output: 
 `datetime.datetime(1993, 10, 4, 9, 8, 7)`
 - The result is a `datetime` object. A [datetime object](https://docs.python.org/3/library/datetime.html#datetime-objects) is a single object containing all the information from a time point.
@@ -63,22 +69,43 @@ Output:
 In many cases, we may need to standardise the format of date/time we scraped from the Internet into datetime objects for further application. See this case:
 ```python
 from dateutil.parser import parse
-time_list = ['19/May/2017 04:10:06',
-    		 '2018.2.3',
-    		 'June 12, 2018']
-[parse(i) for i in time_list]
+dt_1 = parse("Thu Sep 25 10:36:28 2018")
+dt_2 = parse('19/May/2017 04:10:06')
+dt_3 = parse('2018.2.3')
+dt_4 = parse('June 12, 2018')
+dt_1, dt_2, dt_3, dt_4
 ```
 Output: 
 ```
-zzz
-```
-```
-[datetime.datetime(2017, 5, 19, 4, 10, 6),
+(datetime.datetime(2018, 9, 25, 10, 36, 28),
+ datetime.datetime(2017, 5, 19, 4, 10, 6),
  datetime.datetime(2018, 2, 3, 0, 0),
- datetime.datetime(2018, 6, 12, 0, 0)]
+ datetime.datetime(2018, 6, 12, 0, 0))
 ```
 - All the time strings in different formats have been transferred into datetime objects. The level of details depends on how explicit the information the raw data provided is.
-- The *dateutil* module provides powerful extensions to the standard *datetime* module. You can check its further applications [here](https://pypi.org/project/python-dateutil/).
+#### Parsing ambiguous dates
+In some cases, we may need to parse some ambiguous dates like `parse("10-09-2003")`. We need to give the parameter what the first figure represents:
+```
+from dateutil.parser import parse
+dt_1 = parse("10-09-2003", dayfirst=True)
+dt_2 = parse("10-09-03", yearfirst=True)
+dt_1, dt_2
+```
+Output: 
+```
+(datetime.datetime(2003, 9, 10, 0, 0), datetime.datetime(2010, 9, 3, 0, 0))
+```
+#### A failed parsing case
+However, The parsing will fail if we input a time against the regulations.
+```python
+from dateutil.parser import parse
+parse("2月15日 10:36:28")
+```
+This line will raise a `ValueError`:
+```bash
+ValueError: ('Unknown string format:', '2月15日 10:36:28')
+```
+- The *dateutil* module provides powerful extensions to the standard *datetime* module. You can check more parse examples [here](https://dateutil.readthedocs.io/en/stable/examples.html#parse-examples)
 
 ### Convert from datetime to utctimstamp and vice versa
 #### What is a timestamp?
@@ -87,30 +114,33 @@ The [timestamp](https://docs.python.org/3/library/datetime.html#datetime.datetim
 from datetime import datetime, timezone
 dt = datetime(
     1993, 10, 4, 9, 8, 7,
-    microsecond=12345,
-    tzinfo=timezone.utc)  #
+    tzinfo=timezone.utc) 
 ts = dt.timestamp()
 ts
 ```
-Output: `749696888.012345`
-#### Get a datetime from a timstamp:
+Output: `749725687.0` # the output figure depends on your current time
+#### Get a datetime from a timstamp
 ```python
 from datetime import datetime
 datetime.utcfromtimestamp(ts)
 ```
 Output: 
 `datetime.datetime(1993, 10, 4, 9, 8, 8, 12345)`
-- Bonus: [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (abbreviated from *Coordinated Universal Time) is the primary  time standard  by which the world regulates clocks and time.
+- Bonus: [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (abbreviated from *Coordinated Universal Time*) is the primary  time standard  by which the world regulates clocks and time.
 
 ### Format a datetime object to string
-#### First, let’s get the present time:
+#### Get the present time:
 ```python
 from datetime import datetime
-dt = datetime.now().isoformat(timespec='seconds', sep=' ')
-dt
+dt = datetime.now()
+ds = dt.isoformat(timespec='seconds',sep=' ')
+print(ds,type(ds))
 ```
-Output: `‘2018-11-18 00:41:49’`
-- Question: What is the type of  `dt`? You can try to change its parameters in `.isoformat()` or remove it to see what will happen.
+Output:
+```
+2018-11-19 16:45:44 <class 'str'>
+```
+- Question: What is the type of `ds`? You can try to change its parameters in `.isoformat()` or remove it to see what will happen.
  - You can also use `str(dt)` to transfer a datetime object into string.
 #### formating with different style
 In some cases, we may need to convert a datetime into a specific format. Now we can use `strftime()`. Here is an example:
@@ -144,8 +174,8 @@ from datetime import datetime
 datetime(2018, 6, 12, 0, 0) - datetime(2018, 2, 3, 0, 0)
 ```
 Output: `datetime.timedelta(days=129)`
-#### Add timedelta to a datetime object, e.g. what is the date 4 weeks later?
-We can also do calculation between a datetime object and a timedelta object:
+#### Add timedelta to a datetime object
+We can also do calculation between a datetime object and a timedelta object.e.g.what is the date 4 weeks later?:
 ```python
 import datetime
 date_today = datetime.datetime(2018, 11, 19)
@@ -157,13 +187,27 @@ str(date)
 Output:
 ```'2018-12-17 00:00:00'```
 - In this case, you can use `datetime.date.today()` instead to get the real-time date.
-#### In some [cases](https://www.indeed.com/q-Data-Journalism-Internship-jobs.html), we may need to deal with a group of different types of time durations:
+### Bonus: how to get a datetime object for the current time without microseconds?
+You may have found that `datetime.now()` will return `datetime.datetime(2018, 11, 19, 16, 48, 33, 369859)`. In the former part, we use `dt.isoformat(timespec='seconds',sep=' ')` to omit the microseconds, but this method will convert the datetime object into a string.  We can hold the current time as a datetime object for further calculation with these lines:
+```
+from datetime import datetime
+dt = datetime.now()
+dt_without_microseconds = datetime(dt.year,dt.month,dt.day,dt.hour,dt.minute,dt.second)
+dt_without_microseconds
+```
+Output:
+```
+datetime.datetime(2018, 11, 19, 16, 41, 15)
+```
+### Bonus: Deal with different scales of time durations
+Afer we have scape the strings refering to time from a [website](https://www.indeed.com/q-Data-Journalism-Internship-jobs.html), we may need to deal with a group of different scales of time durations:
 ```python
 from datetime import datetime, timedelta
 time_list = ['30 Minutes ago','12 Hours ago',
              '4 Days ago','3 Weeks ago',
              '2 Month ago','1 Year ago']
-now = parse(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+dt = datetime.now()
+now = datetime(dt.year,dt.month,dt.day,dt.hour,dt.minute,dt.second)
 print('The current time is {}'.format(now))
 mylist=[]
 for i in time_list:
