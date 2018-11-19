@@ -158,7 +158,7 @@ Output:
 - In this case,`%H` and `%I` represent hour in 24-hour clock and12-hour clock respectively. For 12-hour clock, we use `%p` to get AM/PM from the datetime object. You can click [here](https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior) to see what each parameter represents in `strftime()`.
 
 ### Arithmetics on datetime
-#### Know timedelta object
+#### Know timedelta object:
 A [timedelta](https://docs.python.org/3/library/datetime.html#timedelta-objects) object represents a duration, the difference between two dates or times. We can build a timedelta object like this:
 ```python
 from datetime import timedelta
@@ -167,22 +167,22 @@ td
 ```
 Output: `datetime.timedelta(days=1)`
 - The parameter `days` can be replaced with `seconds`, `microseconds`, `milliseconds`, `minutes`, `hours` and `weeks`. We can also combine them like `timedelta(weeks = 1, days = 2, hours = 12)`
-#### Get difference between two datetime objects
+#### Get difference between two datetime objects:
 To get the duration between two datetime objects, we can calculate like this:
 ```python
 from datetime import datetime
 datetime(2018, 6, 12, 0, 0) - datetime(2018, 2, 3, 0, 0)
 ```
 Output: `datetime.timedelta(days=129)`
-#### Add timedelta to a datetime object
+#### Add timedelta to a datetime object:
 We can also do calculation between a datetime object and a timedelta object.e.g.what is the date 4 weeks later?:
 ```python
 import datetime
-date_today = datetime.datetime(2018, 11, 19)
-#date_today = datetime.date.today()
-#date_today = datetime.datetime.now()
-date = date_today + datetime.timedelta(weeks = 4)
-str(date)
+td_today = datetime.datetime(2018, 11, 19)
+#td_today = datetime.date.today()
+#td_today = datetime.datetime.now()
+td = td_today + datetime.timedelta(weeks = 4)
+str(td)
 ```
 Output:
 ```'2018-12-17 00:00:00'```
@@ -195,10 +195,7 @@ dt = datetime.now()
 dt_without_microseconds = datetime(dt.year,dt.month,dt.day,dt.hour,dt.minute,dt.second)
 dt_without_microseconds
 ```
-Output:
-```
-datetime.datetime(2018, 11, 19, 16, 41, 15)
-```
+Output: `datetime.datetime(2018, 11, 19, 16, 41, 15)`
 ### Bonus: Deal with different scales of time durations
 Afer we have scape the strings refering to time from a [website](https://www.indeed.com/q-Data-Journalism-Internship-jobs.html), we may need to deal with a group of different scales of time durations:
 ```python
