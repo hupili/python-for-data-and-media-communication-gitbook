@@ -148,7 +148,8 @@ Output:
 from datetime import datetime
 datetime(2018, 6, 12, 0, 0) - datetime(2018, 2, 3, 0, 0)
 ```
-Output: `datetime.timedelta(days=129)`
+Output: 
+```datetime.timedelta(days=129)```
 #### Add timedelta to a datetime object, e.g. what is the date 4 weeks later?
 - We can also do calculation between a datetime object and a timedelta object:
 ```python
