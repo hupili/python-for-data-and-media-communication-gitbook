@@ -816,7 +816,7 @@ Lookup real estate properties on HK gov open data portal, e.g. the [dataset page
 
 ### Bonus: Blockchain - chain data and exchange data
 
-<blockchain.info> provides a set of [API](https://www.blockchain.com/api) for one to retrieve information related with bitcoin transactions. Pick one wallet address, check its UTXO sets and sum up the values to get the total balance in this wallet.
+[blockchain.info](blockchain.info) provides a set of [API](https://www.blockchain.com/api) for one to retrieve information related with bitcoin transactions. Pick one wallet address, check its UTXO sets and sum up the values to get the total balance in this wallet.
 
 [A free crypocurrency API](https://min-api.cryptocompare.com/) for you to retrieve and study historical exchange rates. We are interested in bitcoin price. Try to get the exchange rate day-by-day of `BTC/USDT` pair in recent years and store them in a file.
 

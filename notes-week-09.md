@@ -226,13 +226,14 @@ Install and import:
 ```python
 !pip install plotly
 import plotly #plot it offline
-import plotly.plotly as py # Every function in this module will communicate with an external plotly server
+import plotly.plotly as py 
+# Note: online plot method requires you to create an account. In online mode, every function in this module will communicate with an external plotly server
 ```
 
 Basic usage example:
 
 ```python
-import plotly.plotly as py
+import plotly
 import plotly.graph_objs as go
 # to see relationship between countries and likes
 pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("likes",ascending=False)
@@ -240,7 +241,7 @@ pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("like
 
 data = [go.Bar(x=pd_df2.country,
             y=pd_df2.likes)]
-py.iplot(data, filename='country_with_average_like_bar') #if you use py.plot(), you will get the output in a new browser window, but with iplot(), you can do interactive actions just in your Jupyter notebook
+plotly.offline.plot(data, filename='country_with_average_like_bar') #if you use py.plot(), you will get the output in a new browser window, but with iplot(), you can do interactive actions just in your Jupyter notebook
 ```
 
 ![Plotly country with average like](assets/plotly_country_with_average_like.png)
@@ -284,6 +285,9 @@ One can also include "bar charts" in your DataFrame, from which you can easily f
 
 ```python
 pd_df4 = df.pivot_table(index=['country'], columns=['price'], values='name', aggfunc='count')
+#pd_df4
+#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range
+pd_df4 = pd_df4.loc[['韓國菜','台湾菜','日本菜','西班牙','西式','意大利菜','粵菜 (廣東)']].T
 pd_df4.style.bar(color='#d65f5f')
 ```
 
@@ -410,6 +414,13 @@ With the wide spread of mobile devices, single column layout is trending. That i
 #### Save plotly chart
 
 <!-- TODO: How to save a plotly chart and put into your web story on gh-pages? -->
+
+The default plotly chart includes a tool bar, making the graphical region too small on "Big Road" template. There are two ways to work around:
+
+1. Use `<ratio-1-to-1>` tag to wrap the `<responsive-block>`.
+2. Remove the tool bar from plotly chart.
+
+The second way is recommended. When using the 1st solution, there will be a large chunk of blank on the page. This area is intended to show the tool bar when hovering your mouse on the chart. Hovering does not make sens on mobile devices.
 
 ### Bonus: Continuously update GitHub Pages
 

@@ -16,6 +16,7 @@
         - [Variance](#variance)
         - [Skewness](#skewness)
         - [Kurtosis](#kurtosis)
+        - [The mode of data](#the-mode-of-data)
     - [Correlation](#correlation)
         - [Continuous: Scatter plot and correlation](#continuous-scatter-plot-and-correlation)
         - [Bonus: Better visualisation](#bonus-better-visualisation)
@@ -316,6 +317,10 @@ AVG_ENG_MATH_SCORE_09   -0.478333
 ```
 
 From this statistic, we can know that students in year 7 has larger kurtosis, which means that the distribution peak is sharper, and there are more extreme value points in year 7.
+
+### The mode of data
+
+<!-- TODO: most frequent value of a discrete variable -->
 
 ## Correlation
 

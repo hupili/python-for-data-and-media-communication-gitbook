@@ -2,59 +2,7 @@
 
 <div id="toc">
 
-<!-- TOC -->
-
-- [Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty](#week-06---advanced-scraping-anti-crawler-browser-emulation-and-other-nitty-gritty)
-    - [Objective](#objective)
-    - [Anti-crawling](#anti-crawling)
-        - [User agent](#user-agent)
-            - [Bonus: Test HTTP requests](#bonus-test-http-requests)
-        - [Rate throttling](#rate-throttling)
-        - [Hide numeric incremental IDs](#hide-numeric-incremental-ids)
-        - [Bonus: Stateful page transition](#bonus-stateful-page-transition)
-        - [Bonus: client authentication](#bonus-client-authentication)
-    - [Common issues](#common-issues)
-        - [Encoding](#encoding)
-        - [Network delay and jitter](#network-delay-and-jitter)
-        - [Network interruption](#network-interruption)
-        - [Firewall](#firewall)
-        - [Browser rendering delay](#browser-rendering-delay)
-    - [Browser emulation](#browser-emulation)
-        - [Why use Browser Emulation](#why-use-browser-emulation)
-        - [Limitation](#limitation)
-        - [Selenium](#selenium)
-            - [Downloading Python bindings for Selenium](#downloading-python-bindings-for-selenium)
-            - [Drivers](#drivers)
-            - [Navigating](#navigating)
-            - [Locating Elements](#locating-elements)
-            - [Find_element(s)_by_css_selector](#find_elements_by_css_selector)
-                - [Locating elements by attribute](#locating-elements-by-attribute)
-                - [Locating elements with multiple class name](#locating-elements-with-multiple-class-name)
-                - [Locating Child Element](#locating-child-element)
-            - [Scroll down certain element](#scroll-down-certain-element)
-            - [Example: CNN articles scraping](#example-cnn-articles-scraping)
-                - [Fundamental: One page](#fundamental-one-page)
-                - [Advanced: All pages](#advanced-all-pages)
-        - [Splinter](#splinter)
-            - [Finding elements](#finding-elements)
-                - [Fundamental version: one page](#fundamental-version-one-page)
-                - [Advanced version: all pages](#advanced-version-all-pages)
-        - [Bonus: Twitter example with browser emulation](#bonus-twitter-example-with-browser-emulation)
-    - [Analyse Network Traces](#analyse-network-traces)
-    - [Bonus: Crawl mobile Apps](#bonus-crawl-mobile-apps)
-        - [Packet analysis](#packet-analysis)
-            - [Example: Kwai (kuaishou)](#example-kwai-kuaishou)
-        - [App decompilation](#app-decompilation)
-        - [App emulation](#app-emulation)
-    - [Bonus: Other quick scraping/ crawling tricks](#bonus-other-quick-scraping-crawling-tricks)
-    - [Exercises and Challenges](#exercises-and-challenges)
-        - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
-        - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
-        - [Bonus: Crawl Weibo data and discover KOL](#bonus-crawl-weibo-data-and-discover-kol)
-        - [Bonus: Cheat an online voting system](#bonus-cheat-an-online-voting-system)
-    - [Related Readings](#related-readings)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty](#week-06---advanced-scraping-anti-crawler-browser-emulation-and-other-nitty-gritty)auto    - [Objective](#objective)auto    - [Anti-crawling](#anti-crawling)auto        - [User agent](#user-agent)auto            - [Bonus: Test HTTP requests](#bonus-test-http-requests)auto        - [Rate throttling](#rate-throttling)auto        - [Hide numeric incremental IDs](#hide-numeric-incremental-ids)auto        - [Hide key information using special fonts](#hide-key-information-using-special-fonts)auto        - [Bonus: Stateful page transition](#bonus-stateful-page-transition)auto        - [Bonus: client authentication](#bonus-client-authentication)auto    - [Common issues](#common-issues)auto        - [Encoding](#encoding)auto        - [Network delay and jitter](#network-delay-and-jitter)auto        - [Network interruption](#network-interruption)auto        - [Firewall](#firewall)auto        - [Browser rendering delay](#browser-rendering-delay)auto    - [Browser emulation](#browser-emulation)auto        - [Why use Browser Emulation](#why-use-browser-emulation)auto        - [Limitation](#limitation)auto        - [Selenium](#selenium)auto            - [Downloading Python bindings for Selenium](#downloading-python-bindings-for-selenium)auto            - [Drivers](#drivers)auto            - [Navigating](#navigating)auto            - [Locating Elements](#locating-elements)auto            - [Find_element(s)_by_css_selector](#find_elements_by_css_selector)auto                - [Locating elements by attribute](#locating-elements-by-attribute)auto                - [Locating elements with multiple class name](#locating-elements-with-multiple-class-name)auto                - [Locating Child Element](#locating-child-element)auto            - [Scroll down certain element](#scroll-down-certain-element)auto            - [Example: CNN articles scraping](#example-cnn-articles-scraping)auto                - [Fundamental: One page](#fundamental-one-page)auto                - [Advanced: All pages](#advanced-all-pages)auto        - [Splinter](#splinter)auto            - [Finding elements](#finding-elements)auto                - [Fundamental version: one page](#fundamental-version-one-page)auto                - [Advanced version: all pages](#advanced-version-all-pages)auto        - [Bonus: Twitter example with browser emulation](#bonus-twitter-example-with-browser-emulation)auto    - [Analyse Network Traces](#analyse-network-traces)auto    - [Bonus: Crawl mobile Apps](#bonus-crawl-mobile-apps)auto        - [Packet analysis](#packet-analysis)auto            - [Example: Kwai (kuaishou)](#example-kwai-kuaishou)auto        - [App decompilation](#app-decompilation)auto        - [App emulation](#app-emulation)auto    - [Bonus: Other quick scraping/ crawling tricks](#bonus-other-quick-scraping-crawling-tricks)auto    - [Exercises and Challenges](#exercises-and-challenges)auto        - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)auto        - [Crawl the legal case of China](#crawl-the-legal-case-of-china)auto        - [Bonus: Crawl Weibo data and discover KOL](#bonus-crawl-weibo-data-and-discover-kol)auto        - [Bonus: Cheat an online voting system](#bonus-cheat-an-online-voting-system)auto    - [Related Readings](#related-readings)autoauto<!-- /TOC -->
 
 </div>
 
@@ -121,6 +69,10 @@ Example: Check the default user-agent of `requests`:
 ### Hide numeric incremental IDs
 
 Scrapers usually return a list of objects. Sometimes the list can be enumerated given certain IDs. One common case is the use of `page=xxx` parameter in the URL. You can increment the page number and assemble valid URLs. Some carefully designed web service will try to hide this kind of incremental IDs, in order to prevent other's crawler accessing this information so easily. Nevertheless, you can analyse page structure in depth and find a way. The principle is that: as long as the user can see it, there is no way to ultimately hide it from a robot. The only thing website builder can do is to make the crawling less straightforward.
+
+### Hide key information using special fonts
+
+qidian.com hides key information using special fonts. When normal user visit the webpage, those non-printable characters are rendered in a normal way because they load a special font. However, when you check the Chrome Developer Console, or try to get the values of the string in Python, the number field appears to be non-printable characters. The way to work around is to analyse the font file and make a decoding logic yourself. Find discussion on [#85](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/85).
 
 ### Bonus: Stateful page transition
 
