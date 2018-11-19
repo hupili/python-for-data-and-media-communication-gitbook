@@ -107,9 +107,8 @@ dt = datetime.now().isoformat(timespec='seconds', sep=' ')
 dt
 ```
 Output: `‘2018-11-18 00:41:49’`
-- Question:
-    - What is the type of  `dt`? You can try to change its parameters in `.isoformat()` or remove it to see what will happen.
-    - You can also use `str(dt)` to transfer a datetime object into string.
+- Question: What is the type of  `dt`? You can try to change its parameters in `.isoformat()` or remove it to see what will happen.
+ - You can also use `str(dt)` to transfer a datetime object into string.
 #### formating with different style
 In some cases, we may need to convert a datetime into a specific format. Now we can use `strftime()`. Here is an example:
 ```python
