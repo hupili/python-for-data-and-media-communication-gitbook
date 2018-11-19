@@ -24,7 +24,10 @@ Following are the **individual** assignments. You are welcome to discuss and wor
 - Create one folder for each assignment, with names `assignment0`, `assignment1` and `assignment2`.
 - Put all the relevant files, including codes, docs and data (where applicable) into the per assignment folder. Refer to [notes-week-00.md](notes-week-00.md) for GitHub operations.
 
-**Note**: You need to ensure the work is on GitHub before the deadline. Although we don't grade immediately after submission close, we can always check back the status at that time from version history.
+**Note**:
+
+- You need to ensure the work is on GitHub before the deadline. Although we don't grade immediately after submission close, we can always check back the status at that time from version history.
+- Please use `master` branch, which is a default setting on GitHub or your Git client. Create **one folder** for each assignment, not **one branch**.
 
 ## Assignment 0 -- Bridging assignment for language efficiency
 
