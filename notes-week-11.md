@@ -91,8 +91,7 @@ dt = datetime(
 ts = dt.timestamp()
 ts
 ```
-Output: 
-```749696888.012345```
+Output: `749696888.012345`
 #### Get a datetime from a timstamp:
 ```python
 from datetime import datetime
@@ -111,10 +110,7 @@ from datetime import datetime
 dt = datetime.now().isoformat(timespec='seconds', sep=' ')
 dt
 ```
-Output: 
-```
-‘2018-11-18 00:41:49’
-```
+Output: `‘2018-11-18 00:41:49’`
 Question:
     - What is the type of  `dt`? You can try to change its parameters in `.isoformat()` or remove it to see what will happen.
     - You can also use `str(dt)` to transfer a datetime object into string.
@@ -141,8 +137,7 @@ from datetime import timedelta
 td = timedelta(days = 1)
 td
 ```
-Output: 
-```datetime.timedelta(days=1)```
+Output: `datetime.timedelta(days=1)`
 - The parameter `days` can be replaced with `seconds`, `microseconds`, `milliseconds`, `minutes`, `hours` and `weeks`. We can also combine them like `timedelta(weeks = 1, days = 2, hours = 12)`
 #### Get difference between two datetime objects
 To get the duration between two datetime objects, we can calculate like this:
@@ -150,8 +145,7 @@ To get the duration between two datetime objects, we can calculate like this:
 from datetime import datetime
 datetime(2018, 6, 12, 0, 0) - datetime(2018, 2, 3, 0, 0)
 ```
-Output: 
-```datetime.timedelta(days=129)```
+Output: `datetime.timedelta(days=129)`
 #### Add timedelta to a datetime object, e.g. what is the date 4 weeks later?
 We can also do calculation between a datetime object and a timedelta object:
 ```python
