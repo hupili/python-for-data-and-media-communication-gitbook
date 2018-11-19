@@ -66,7 +66,7 @@ Output:
 - The result is a `datetime` object. A [datetime object](https://docs.python.org/3/library/datetime.html#datetime-objects) is a single object containing all the information from a time point.
 
 ### Convert from string to datetime
-In many cases, we may need to standardise the format of date/time we scraped from the Internet into datetime objects for further application. See this case:
+In many cases, we may need to standardise the format of date/time we scraped from the Internet into datetime objects for further application. We can use `parse` in `dateutil` library. See this case:
 ```python
 from dateutil.parser import parse
 dt_1 = parse("Thu Sep 25 10:36:28 2018")
@@ -83,7 +83,7 @@ Output:
  datetime.datetime(2018, 6, 12, 0, 0))
 ```
 - All the time strings in different formats have been transferred into datetime objects. The level of details depends on how explicit the information the raw data provided is.
-#### Parsie ambiguous dates
+#### Parse ambiguous dates
 In some cases, we may need to parse some ambiguous dates like `parse("10-09-2003")`. We need to give the parameter what the first figure represents:
 ```
 from dateutil.parser import parse
@@ -95,7 +95,7 @@ Output:
 ```
 (datetime.datetime(2003, 9, 10, 0, 0), datetime.datetime(2010, 9, 3, 0, 0))
 ```
-#### Parsie incomplete times
+#### Parse incomplete times
 Many times on the Internet may not be as normative as `2018/12/22`. Instead, many of them are `12/22` or even`Thu 10:36:28`. We can define a default time
 ```python
 from datetime import datetime 
