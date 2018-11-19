@@ -205,7 +205,7 @@ Output:
 ```'2018-12-17 00:00:00'```
 - In this case, you can use `datetime.date.today()` instead to get the real-time date.
 ### Bonus: how to get a datetime object for the current time without microseconds?
-You may have found that `datetime.now()` will return `datetime.datetime(2018, 11, 19, 16, 48, 33, 369859)`. In the former part, we use `dt.isoformat(timespec='seconds',sep=' ')` to omit the microseconds, but this method will convert the datetime object into a string.  We can hold the current time as a datetime object for further calculation with these lines:
+You may have found that `datetime.now()` will return `datetime.datetime(2018, 11, 19, 16, 48, 33, 369859)`. In the former part, we use `dt.isoformat(timespec='seconds',sep=' ')` to omit the **microseconds**, but this method will convert the datetime object into a string.  We can hold the current time as a datetime object for further calculation with these lines:
 ```
 from datetime import datetime
 dt = datetime.now()
