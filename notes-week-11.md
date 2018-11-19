@@ -46,9 +46,9 @@ Modules:
 * Bitcoin transactions are available via [blockchain.com API](https://www.blockchain.com/api). [A free crypocurrency API](https://min-api.cryptocompare.com/) is available to query the exchange ratio between two symbols.
 
 ## Datetime
-- The *datetime* module supplies classes for manipulating dates and times in the fields like time parsing, formatting or even arithmetic. You can read its document [here](https://docs.python.org/3/library/datetime.html).
+The *datetime* module supplies classes for manipulating dates and times in the fields like time parsing, formatting or even arithmetic. You can read its document [here](https://docs.python.org/3/library/datetime.html).
 ### Create datetime object
-- First we create a datetime object:
+First we create a datetime object:
 ```python
 from datetime import datetime
 dt = datetime(year=1993, month=10, day=4,
@@ -59,10 +59,10 @@ Output:
 ```
 datetime.datetime(1993, 10, 4, 9, 8, 7)
 ```
-The result is a `datetime` object. A [datetime object](https://docs.python.org/3/library/datetime.html#datetime-objects) is a single object containing all the information from a time point.
+- The result is a `datetime` object. A [datetime object](https://docs.python.org/3/library/datetime.html#datetime-objects) is a single object containing all the information from a time point.
 
 ### Convert from string to datetime
-- In many cases, we may need to standardise the format of date/time we scraped from the Internet into datetime objects for further application. See this case:
+In many cases, we may need to standardise the format of date/time we scraped from the Internet into datetime objects for further application. See this case:
 ```python
 from dateutil.parser import parse
 time_list = ['19/May/2017 04:10:06',
@@ -80,7 +80,8 @@ Output:
 - The *dateutil* module provides powerful extensions to the standard *datetime* module. You can check its further applications [here](https://pypi.org/project/python-dateutil/).
 
 ### Convert from datetime to utctimstamp and vice versa
-- The [timestamp](https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp) is the time in seconds since an *epoch* as a floating point number. The *epoch* is the point where the time starts, and is platform dependent. On Windows and most Unix systems, the epoch is January 1, 1970, 00:00:00 (UTC). 
+#### What is a timestamp?
+The [timestamp](https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp) is the time in seconds since an *epoch* as a floating point number. The *epoch* is the point where the time starts, and is platform dependent. On Windows and most Unix systems, the epoch is January 1, 1970, 00:00:00 (UTC). 
 ```python
 from datetime import datetime, timezone
 dt = datetime(
@@ -90,8 +91,9 @@ dt = datetime(
 ts = dt.timestamp()
 ts
 ```
-Output: `749696888.012345`
-- Also, we can get a datetime from a timstamp:
+Output: 
+```749696888.012345```
+#### Get a datetime from a timstamp:
 ```python
 from datetime import datetime
 datetime.utcfromtimestamp(ts)
@@ -100,7 +102,7 @@ Output:
 ```
 datetime.datetime(1993, 10, 4, 9, 8, 8, 12345)
 ```
-- [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (abbreviated from *Coordinated Universal Time) is the primary  time standard  by which the world regulates clocks and time.
+- Bonus: [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (abbreviated from *Coordinated Universal Time) is the primary  time standard  by which the world regulates clocks and time.
 
 ### Format a datetime object to string
 #### First, let’s get the present time:
@@ -113,7 +115,7 @@ Output:
 ```
 ‘2018-11-18 00:41:49’
 ```
-- Question:
+Question:
     - What is the type of  `dt`? You can try to change its parameters in `.isoformat()` or remove it to see what will happen.
     - You can also use `str(dt)` to transfer a datetime object into string.
 #### formating with different style
@@ -133,7 +135,7 @@ Output:
 
 ### Arithmetics on datetime
 #### Know timedelta object
-- A [timedelta](https://docs.python.org/3/library/datetime.html#timedelta-objects) object represents a duration, the difference between two dates or times. We can build a timedelta object like this:
+A [timedelta](https://docs.python.org/3/library/datetime.html#timedelta-objects) object represents a duration, the difference between two dates or times. We can build a timedelta object like this:
 ```python
 from datetime import timedelta
 td = timedelta(days = 1)
@@ -143,7 +145,7 @@ Output:
 ```datetime.timedelta(days=1)```
 - The parameter `days` can be replaced with `seconds`, `microseconds`, `milliseconds`, `minutes`, `hours` and `weeks`. We can also combine them like `timedelta(weeks = 1, days = 2, hours = 12)`
 #### Get difference between two datetime objects
-- To get the duration between two datetime objects, we can calculate like this:
+To get the duration between two datetime objects, we can calculate like this:
 ```python
 from datetime import datetime
 datetime(2018, 6, 12, 0, 0) - datetime(2018, 2, 3, 0, 0)
@@ -151,7 +153,7 @@ datetime(2018, 6, 12, 0, 0) - datetime(2018, 2, 3, 0, 0)
 Output: 
 ```datetime.timedelta(days=129)```
 #### Add timedelta to a datetime object, e.g. what is the date 4 weeks later?
-- We can also do calculation between a datetime object and a timedelta object:
+We can also do calculation between a datetime object and a timedelta object:
 ```python
 import datetime
 date_today = datetime.datetime(2018, 11, 19)
