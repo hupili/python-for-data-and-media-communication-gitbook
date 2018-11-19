@@ -180,8 +180,7 @@ for i in time_list:
     output = 'The time {} is {}.'.format(i, post_time)
     print(output)
 ```
-Now we need the timedelta object to get their precise time point.
-Output:
+Now we get their precise time point. Output:
 ```
 The current time is 2018-11-19 10:57:50.
 The time 30 Minutes ago is 2018-11-19 10:27:50.
