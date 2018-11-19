@@ -70,6 +70,9 @@ time_list = ['19/May/2017 04:10:06',
 ```
 Output: 
 ```
+zzz
+```
+```
 [datetime.datetime(2017, 5, 19, 4, 10, 6),
  datetime.datetime(2018, 2, 3, 0, 0),
  datetime.datetime(2018, 6, 12, 0, 0)]
