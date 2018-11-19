@@ -56,9 +56,7 @@ dt = datetime(year=1993, month=10, day=4,
 dt
 ```
 Output: 
-```
-datetime.datetime(1993, 10, 4, 9, 8, 7)
-```
+`datetime.datetime(1993, 10, 4, 9, 8, 7)`
 - The result is a `datetime` object. A [datetime object](https://docs.python.org/3/library/datetime.html#datetime-objects) is a single object containing all the information from a time point.
 
 ### Convert from string to datetime
