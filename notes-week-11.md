@@ -83,7 +83,7 @@ Output:
  datetime.datetime(2018, 6, 12, 0, 0))
 ```
 - All the time strings in different formats have been transferred into datetime objects. The level of details depends on how explicit the information the raw data provided is.
-#### Parsing ambiguous dates
+#### Parsie ambiguous dates
 In some cases, we may need to parse some ambiguous dates like `parse("10-09-2003")`. We need to give the parameter what the first figure represents:
 ```
 from dateutil.parser import parse
@@ -94,6 +94,24 @@ dt_1, dt_2
 Output: 
 ```
 (datetime.datetime(2003, 9, 10, 0, 0), datetime.datetime(2010, 9, 3, 0, 0))
+```
+#### Parsie incomplete times
+Many times on the Internet may not be as normative as `2018/12/22`. Instead, many of them are `12/22` or even`Thu 10:36:28`. We can define a default time
+```python
+from datetime import datetime 
+DEFAULT = datetime(2018, 11, 25)
+dt_1 = parse("Thu Sep 10:36:28", default=DEFAULT)
+dt_2 = parse("Thu 10:36:28", default=DEFAULT)
+dt_3 = parse("12/25", default=DEFAULT)
+dt_4 = parse("10:36", default=DEFAULT)
+dt_1,dt_2,dt_3,dt_4
+```
+Output
+```
+(datetime.datetime(2018, 9, 27, 10, 36, 28),
+ datetime.datetime(2018, 11, 29, 10, 36, 28),
+ datetime.datetime(2018, 12, 25, 0, 0),
+ datetime.datetime(2018, 11, 25, 10, 36))
 ```
 #### A failed parsing case
 However, The parsing will fail if we input a time against the regulations.
@@ -118,14 +136,13 @@ dt = datetime(
 ts = dt.timestamp()
 ts
 ```
-Output: `749725687.0` # the output figure depends on your current time
-#### Get a datetime from a timstamp
+Output: `749725687.0 #the output figure depends on your current time`
+#### Get a datetime from a timstamp:
 ```python
 from datetime import datetime
 datetime.utcfromtimestamp(ts)
 ```
-Output: 
-`datetime.datetime(1993, 10, 4, 9, 8, 8, 12345)`
+Output: `datetime.datetime(1993, 10, 4, 9, 8, 8, 12345)`
 - Bonus: [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (abbreviated from *Coordinated Universal Time*) is the primary  time standard  by which the world regulates clocks and time.
 
 ### Format a datetime object to string
@@ -234,7 +251,6 @@ The time 3 Weeks ago is 2018-10-29 10:57:50.
 The time 2 Month ago is 2018-09-20 10:57:50.
 The time 1 Year ago is 2017-11-19 10:57:50.
 ```
-
 
 ## Time Series
 
