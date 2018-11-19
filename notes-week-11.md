@@ -96,9 +96,7 @@ from datetime import datetime
 datetime.utcfromtimestamp(ts)
 ```
 Output: 
-```
-datetime.datetime(1993, 10, 4, 9, 8, 8, 12345)
-```
+`datetime.datetime(1993, 10, 4, 9, 8, 8, 12345)`
 - Bonus: [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (abbreviated from *Coordinated Universal Time) is the primary  time standard  by which the world regulates clocks and time.
 
 ### Format a datetime object to string
