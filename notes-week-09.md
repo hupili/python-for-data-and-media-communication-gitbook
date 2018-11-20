@@ -26,6 +26,10 @@
     - [GitHub repo](#github-repo)
         - [README.md](#readmemd)
         - [Presenting dataset](#presenting-dataset)
+        - [Jupyter notebook](#jupyter-notebook)
+            - [Write notes in Jupyter notebook](#write-notes-in-jupyter-notebook)
+            - [Display the picture](#display-the-picture)
+            - [Add HTML link](#add-html-link)
     - [Publish work on GitHub Pages](#publish-work-on-github-pages)
         - [Basic HTML](#basic-html)
         - [Bonus: CSS](#bonus-css)
@@ -37,7 +41,7 @@
     - [Code of conduct: Reproducible reporting and full reporting](#code-of-conduct-reproducible-reporting-and-full-reporting)
     - [References](#references)
 
-<!-- TOC -->
+<!-- /TOC -->
 
 </div>
 
@@ -375,7 +379,7 @@ License is easy to forget. Some serious users may not use your project if there 
 
 Jupyter notebook is very convenient and powerful to present your work, you can write notes by markdown, you can insert url links, pictures, interactive graphs, and of course, codes. Therefore, in most cases, one notebook is enough for us to present and share our works. The following is the introduction of how to use jupyter as the primary presenting method.
 
-#### Write notes/articles in Jupyter notebook
+#### Write notes in Jupyter notebook
 
 We can change the cell type to present non-codes content.
 Click `cell --> cell type --> Markdown`. Then write the notes and stories you like, Jupyter also support markdown syntax.
@@ -387,7 +391,7 @@ For shortcut:
 * type `m` to change cell to markdown mode
 * type `y` to change cell to code mode
 
-### Display the picture
+#### Display the picture
 
 Assuming that you have the pictures in the folder where your current jupyter notebook are. You can display the picture by the following method.
 
@@ -398,7 +402,7 @@ Image("top 15 directors.png") #change the name corresponding your own file
 
 ![Jupyter display pics](assets/jupyter-display-pics.png)
 
-### HTML link
+#### Add HTML link
 
 We can also insert `html` in jupyter. For example:
 
