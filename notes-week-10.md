@@ -321,6 +321,8 @@ for word in words:
 
 ### How to add new terms to the wordseg dictionary
 
+Example 1: Customize your own words dict
+
 For basic needs, using `suggest_freq(segment, tune=True)` and `add_word(word)` are recommended.
 
 ```python
@@ -332,6 +334,30 @@ print('/'.join(jieba.cut('中国已表示计划对美国的任何贸易壁垒进
 jieba.add_word('贸易壁垒')
 print('/'.join(jieba.cut('中国已表示计划对美国的任何贸易壁垒进行报复。')))
 #中国/已/表示/计划/对/美国/的/任何/贸易壁垒/进行/报复/。
+```
+
+Example 2: Ambiguous word segmentation
+
+1. 如果 & 果汁
+
+```python
+s1 = '香港的自来水如果汁一般好喝'
+'/'.join(jieba.cut(s1))
+#'狮子山/的/山泉水/如果/汁/一般/好喝'
+jieba.suggest_freq(('如', '果'), True)
+'/'.join(jieba.cut(s1))
+#'狮子山/的/山泉水/如/果汁/一般/好喝'
+```
+
+2. 乒乓球拍 卖完了& 乒乓球 拍卖完了
+
+```python
+s2 = '乒乓球拍卖完了'
+'/'.join(jieba.cut(s2))
+#'乒乓球/拍卖/完/了'
+jieba.add_word('乒乓球拍')
+jieba.suggest_freq(('拍', '卖'), True)
+#'乒乓球拍/卖完/了'
 ```
 
 For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/article/details/80128076) to customize your own words dict.
