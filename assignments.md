@@ -119,6 +119,7 @@ Basic requirements:
 - Notebook needs to be legible:
   - Put trial & error codes aside
   - Adjust/ truncate/ omit long output
+- Notebook should be able to execute by the readers and get the same results.
 - All auxiliary files need to be stored in the assignment folder, including data, image, codes, ...
 - **Important** The `.ipynb` notebook file should be self-explainary. Make sure you can use https://nbviewer.jupyter.org to view it.
 
