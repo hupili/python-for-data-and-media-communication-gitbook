@@ -17,6 +17,9 @@
         - [Background Layer](#background-layer)
         - [Tooltip](#tooltip)
         - [Highlight](#highlight)
+    - [Case studies](#case-studies)
+        - [Aircrash map](#aircrash-map)
+        - [Open Rrice Sichuan Food](#open-rrice-sichuan-food)
 
 <!-- /TOC -->
 </div>
@@ -50,4 +53,12 @@
 ### Tooltip
 
 ### Highlight
+
+## Case studies
+
+### Aircrash map
+
+<!-- TODO: Yucan -->
+
+### Open Rrice Sichuan Food
 
