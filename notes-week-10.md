@@ -44,6 +44,7 @@
             - [Pandas plotting](#pandas-plotting)
     - [Time series](#time-series)
     - [Geographical data](#geographical-data)
+    - [Further readings](#further-readings)
 
 <!-- /TOC -->
 
@@ -164,7 +165,36 @@ Output:
 - UTF-8
 - GBK
 
-<!-- TODO -->
+`UTF-8` is the most widely used implementation of Unicode on the Internet, while `GBK` is mainly used for coding Chinese character.
+
+For example, scraping Chinese websites like `电影天堂`.
+
+```python
+url = 'https://www.dytt8.net/'
+r = requests.get(url)
+html_str = r.text
+```
+
+![Wrong encoding](assets/wrong-encoding.png)
+
+You will find the results is messy because the website is using `gb2312` method to encode the html, which is kind of `GBK` methods.
+
+![GBK encoding](assets/gbk-encoding.png)
+
+Therefore, we need to firstly decode the content.
+
+```python
+html = r.content.decode('gbk')
+html
+```
+
+After decoding, the Chinese characters can display appropriately. And when saving the data, you can use a more widely used method `utf-8` to encode it.
+
+```python
+with open('dy.csv','a',newline='',encoding='utf-8') as csvfile
+```
+
+![Decodes gbk](assets/decode-gbk.png)
 
 ### String matching and Regular Expression (RegEx)
 
@@ -677,6 +707,9 @@ References for geographical data:
 - Bubble chart on map using `folium` (leaflet.js based) for visualisation and `overpy` for geocoding: [Visualising HK property prices](https://medium.com/coinmonks/visualizing-property-prices-in-hong-kong-with-pandas-overpy-and-folium-595240ffca90)
 - Plot choropleth using `folium`: [United States unemployment rate choropleth map](https://python-graph-gallery.com/292-choropleth-map-with-folium/) . One needs to prepare a data table and a geojson file which includes the interested geometries.
 
+## Further readings
+
+1. [Unicode, ASCII,UTF-8 and GBK](https://jdhao.github.io/2018/01/28/unicodede-utf8-gbk/)
 ------
 
 If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
