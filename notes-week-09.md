@@ -371,6 +371,81 @@ License is easy to forget. Some serious users may not use your project if there 
 - If your work is reusable code, using `MIT` is common.
 - If your work is creative content, either dataset or article, using `CC 4.0 BY` is common.
 
+### Jupyter notebook
+
+Jupyter notebook is very convenient and powerful to present your work, you can write notes by markdown, you can insert url links, pictures, interactive graphs, and of course, codes. Therefore, in most cases, one notebook is enough for us to present and share our works. The following is the introduction of how to use jupyter as the primary presenting method.
+
+#### Write notes/articles in Jupyter notebook
+
+We can change the cell type to present non-codes content.
+Click `cell --> cell type --> Markdown`. Then write the notes and stories you like, Jupyter also support markdown syntax.
+
+![Jupyter write notes](assets/jupyter-write-notes.png)
+
+For shortcut:
+
+* type `m` to change cell to markdown mode
+* type `y` to change cell to code mode
+
+### Display the picture
+
+Assuming that you have the pictures in the folder where your current jupyter notebook are. You can display the picture by the following method.
+
+```python
+from IPython.display import Image
+Image("top 15 directors.png") #change the name corresponding your own file
+```
+
+![Jupyter display pics](assets/jupyter-display-pics.png)
+
+### HTML link
+
+We can also insert `html` in jupyter. For example:
+
+```python
+from IPython.core.display import HTML
+HTML('<a href="https://github.com/ChicoXYC/python-for-data-and-media-communication-gitbook">Openbook</a>')
+```
+
+Then you will find a clickable text `openbook` linking to the repo. For code blocks, you can write by `''' '''` to quote codes.
+
+```python
+HTML('''
+<a href="https://github.com/ChicoXYC/python-for-data-and-media-communication-gitbook">Openbook</a>
+<ul>
+<li>item 1</li>
+<li>item 1</li>
+</ul>
+''')
+```
+
+![Jupyter write html](assets/jupyter-write-html.png)
+
+Bonus: For better presentation, we need to clear the long and working-in-progress output. Click `cell --> Current Output --> Clear` can solve help you accomplish this.
+
+![Jupyter clear output](assets/jupyter-clear-output.png)
+
+Also we can write html codes at the beginning of your Jupyter notebook, which can generate a link that only present the cells with output. You can click the link to toggle between raw codes and plain documentation.
+
+```python
+HTML('''<script>
+code_show=true; 
+function code_toggle() {
+ if (code_show){
+ $('div.input').hide();
+ } else {
+ $('div.input').show();
+ }
+ code_show = !code_show
+} 
+$( document ).ready(code_toggle);
+</script>
+The raw code for this IPython notebook is by default hidden for easier reading.
+To toggle on/off the raw code, click <a href="javascript:code_toggle()">here</a>.''')
+```
+
+![Jupyter notebook](assets/jupyter-html.png)
+
 ## Publish work on GitHub Pages
 
 ### Basic HTML
