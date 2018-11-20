@@ -124,6 +124,8 @@ Basic requirements:
 
 **NOTE**: This is a mini story produced from data. The purpose of this assignemnt is to exercise workflow so don't dwell on the content too much if you find the story points are not compelling. Once you get used to this workflow, you will find it very easy to share ideas/ results and collaborate with others online. Again, we do not ask for a _substantial_ story from this assignment.
 
+Jupyter notebook is a rich environment for you to put up multimedia texts. You can refer to [this section](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-09.md#jupyter-notebook) for some functionalities of the Jupyter notebook.
+
 Some references from past submissions, with instructor notes:
 
 - [Hans Rosling tops TED](https://nbviewer.jupyter.org/github/17441781/hkbu-big-data-media/blob/master/homework3/HW3-analysis.ipynb) -- The notebook is in standard format and highly legible. Headlines (using `##`) present story points directly and follows a data-driven exploratory path. Hans Roslig is famous in creative data visualisation for social science. He is one of the top cited figures in data journalism courses. You should watch all his TED videos.
