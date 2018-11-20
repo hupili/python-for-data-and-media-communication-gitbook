@@ -2,6 +2,20 @@
 
 Good use of hotkeys and shorthands can boost your efficiency.
 
+## Asking questions like a Pro
+
+Asking questions like a Pro is the first step to boost your journey in programmning world. As long as you adopt the best practice in asking questions, people can easily help you. Developers in the open world like challenges and never mind your silly questions. Here are some tips to help to ask questions like a Pro:
+
+- Clearly state what you want to achieve. Text and images can help.
+- Show people what you have tried so far. It is good to let them know what are already known to not work.
+- Make a minimum reproducible example of the issue. This helps people focus on the technical problem, instead of your business logics.
+
+In our Python case, it is suggested to make a Jupyter notebook to put those information in one place.
+
+Here are some hand-picked issues for your reference:
+
+- [#90](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/90)
+
 ## Shell
 
 ### auto completion
@@ -59,3 +73,4 @@ Before using JSONView:
 After using JSONView:
 
 ![Jsonview after](assets/jsonview-after.png)
+
