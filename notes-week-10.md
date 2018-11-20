@@ -34,17 +34,6 @@
     - [Verify every step -splinter python](#verify-every-step--splinter-python)
         - [Fail to save content](#fail-to-save-content)
         - [Resolution splinter](#resolution-splinter)
-        - [Exercise Tweeter Troll Data](#exercise-tweeter-troll-data)
-        - [Download the file](#download-the-file)
-    - [Dataframe](#dataframe)
-        - [Apply a function onto every element of the dataframe.](#apply-a-function-onto-every-element-of-the-dataframe)
-        - [Convert text by str(),lower()](#convert-text-by-strlower)
-        - [Use the previous step as a filter](#use-the-previous-step-as-a-filter)
-        - [Find the most one retweeted - by function.](#find-the-most-one-retweeted---by-function)
-        - [Apply the function into all the names](#apply-the-function-into-all-the-names)
-            - [Try1 Fail](#try1-fail)
-            - [Try2 change the name as the value of the Series](#try2-change-the-name-as-the-value-of-the-series)
-            - [Try3 succeed](#try3-succeed)
         - [Save time](#save-time)
         - [Calculate the frequent terms](#calculate-the-frequent-terms)
             - [Get text](#get-text)
@@ -54,12 +43,6 @@
             - [Jieba](#jieba)
             - [Pandas plotting](#pandas-plotting)
     - [Time series](#time-series)
-    - [Graph](#graph)
-    - [Basic preparations](#basic-preparations)
-        - [Pip install all the modules by one step](#pip-install-all-the-modules-by-one-step)
-        - [Jupyter display to show the picture](#jupyter-display-to-show-the-picture)
-        - [Markdown to show a picture](#markdown-to-show-a-picture)
-        - [HTML link](#html-link)
     - [Geographical data](#geographical-data)
 
 <!-- /TOC -->
@@ -81,9 +64,10 @@ Outline:
 - find
 - slicing (`:`)
 
-<!-- TODO: pick some representative text processing issues student encountered during scraping -->
 
-Example 1: slpit + slice + format
+Case 1: Scraping Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
+
+* Using `split + slice + format`
 
 When scrape certain elements in webpage, the elements sometimes are folded or shorted, we need to split to different parts, use list slicing to get the part we want and re-format the strings we want.  For example:
 
@@ -101,7 +85,9 @@ s2='{0}{1}'.format('http://initiumlab.com',s1)
 #s2
 ```
 
-Example 2: find + replace + join
+Case 2: Check out certain words in a string, replace certain words and separate the words with some notations.
+
+* Using `find + replace + join`
 
 In certain occasion, we need to check out whether there is one word in the string, and need to replace the word.
 
@@ -116,9 +102,62 @@ str.replace("is", "was") #replace all
 str.replace("is", "was", 3) #replace first 3
 #output: 'thwas was string example....thwas is the string we will test, is it'
 s3 = str.split(' ')
-'|'.join(str) #you can add different things in the string
+'|'.join(s3) #you can add different things in the string
 #output: 'this|is|string|example....this|is|the|string|we|will|test,|is|it'
 ```
+
+Case 3: Apply a function onto every element of the dataframe - Check out the most frequent names in the tweets text
+
+* Using `str.lower()` + `in` operator + `pandas.apply()`
+
+Exercise with the Tweeter Troll Data, you can download [here](https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/text-analysis/regular_reader_tweets.csv).
+
+1. Check out times that certain name appears in the dataset.
+
+```python
+#import and check out the dataset
+import pandas as pd
+df = pd.read_csv('regular_reader_tweets.csv')
+#len(df)
+#df.sample(10)
+
+#check certain user name in the text
+def check_name(x):
+    return 'ten_gop' in str(x).lower()
+df['text'].apply(check_name).value_counts()
+#return results true only
+#df['text'].apply[check_names].value_counts()[True]
+```
+
+Output:
+
+```text
+False    202991
+True        491
+Name: text, dtype: int64
+```
+
+2. Check out the most common names in the tweet text.
+
+```python
+# filter out all the user and reset to dataframe
+s_user = df['user_key'].value_counts()
+df_users = s_user.reset_index()
+#df_users
+
+# count_retweeted_number of all the users with apply function
+def count_retweeted_number(name):
+    def check_name(x):
+        return name in str(x).lower()
+    return df['text'].apply(check_name).value_counts().get(True, 0)
+
+df_users['count'] = df_users['index'].apply(count_retweeted_number)
+df_users.sort_values(by='count', ascending=False)
+```
+
+Output:
+
+![Checkout most common names](assets/checkout-most-common-names.png)
 
 ### encode and decode
 
@@ -442,254 +481,7 @@ Splinter is a browser to emulate a real person. So the website won't know whethe
 
 You can google to learn that.
 
-### Exercise Tweeter Troll Data
 
-* Pili's Github  
-  [https://github.com/hupili/python-for-data-and-media-communication](https://github.com/hupili/python-for-data-and-media-communication)
-
-* Exercise Data:  
-  [https://github.com/hupili/python-for-data-and-media-communication/blob/master/w7-text/Twitter Troll data from NBC \(nltk\).ipynb](https://github.com/hupili/python-for-data-and-media-communication/blob/master/w7-text/Twitter Troll data from NBC %28nltk%29.ipynb)
-
-* Research get those deleted data from archive.
-
-### Download the file
-
-* `Control + right click` the 'save the file\(link\) as ...'.  
-  ![](assets/to-do-uncategorized-screenshots/no46.png)
-
-* Drag that into our working folder or just download into the folder.  
-  ![](assets/to-do-uncategorized-screenshots/no47.png)
-
-## Dataframe
-
-  ```
-  import pandas as pd
-  df= pd.read_csv('XXXXXXXXXXXXXX.csv')
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no48.png)
-
-* It can also be opened by '[https://XXXX](https://XXXX) links'.
-
-  ```
-  import pandas as pd
-  df= pd.read_csv('https://XXXXXXXXXXXXXXXXX')
-  ```
-
-  ```
-  df.sample(10)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no49.png)  
-  It means it randomly print 10 samples. It is useful when your dataset is very large, which will be slow to run the code.
-
-  ```
-  df['user_key'].value_counts()
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no50.png)  
-  Count the popular users. They post largest number of messages.
-
-  ```
-  'a' in 'am'
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no51.png)  
-  `in` is to check if it is contained in the text.
-
-```
-  'abc'.find('b')
-```
-
-  ![](assets/to-do-uncategorized-screenshots/no52.png)  
-  It shows the index, which starts from 0. You can see from \[46\], space is also contained. And '-1' means the last one.
-
-### Apply a function onto every element of the dataframe.
-
-  ```
-  df.apply()
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no53.png)  
-  ![](assets/to-do-uncategorized-screenshots/no54.png)
-
-* `def` is to define a function called check\_name, which checks if 'amXXX' in x. If it is true, it will return 'amXXX'.
-
-* x is just a variable.
-
-* `apply` to make the function work for all the 'text' in the dataframe. In other words, x='text' in the example.
-
-* There is an error in the second line. There are some dirty data in 'text'.
-
-### Convert text by str(),lower()
-
-  ```
-  str(x)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no55.png)
-
-  ```
-  .value_counts()
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no56.png)  
-  It is to check how many times it appears. And they are the same, which means there are some errors.
-
- ```
-  lower()
-  upper()
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no57.png)  
-  ![](assets/to-do-uncategorized-screenshots/no58.png)
-
-### Use the previous step as a filter
- 
-```
-df[df['XXX'] ]
-```
-
-  ![](assets/to-do-uncategorized-screenshots/no59.png)  
-  ![](assets/to-do-uncategorized-screenshots/no60.png)
-
-* \[61\] is a filter. Now it works. We successfully find out how many times they are retweeted.
-
-```
-df['text'].apply[check_names].value_counts()[True]
-```
-![](assets/to-do-uncategorized-screenshots/no61.png)
-
-* We extract the True.
-
-### Find the most one retweeted - by function.
-
-  ```
-  def check_name(x):
-    retutn 'ten_gop' in str(x).lower()
-  df['text'].apply[check_names].value_counts()[True]
-  ```
-
-  It is the previous step.
-
-  ```
-  def count_retweeted_number(name):
-    def check_name(x):
-        retutn 'name' in str(x).lower()
-    return df['text'].apply(check_name).value_counts()[True]
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no62.png)
-
-* Now we write the previous one into a function. In the inside function, we change 'x' into 'name'.
-
-  ```
-  count_retweeted_number('XXX')
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no63.png)
-
-### Apply the function into all the names
-
-#### Try1 Fail
-
-* `df['user_key']`  
-  ![](assets/to-do-uncategorized-screenshots/no64.png)
-
-  ![](assets/to-do-uncategorized-screenshots/no65.png)  
-  It is a Series.
-
- ```
-  s_user=df['user_key']
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no66.png)  
-  ![](assets/to-do-uncategorized-screenshots/no67.png)  
-  The `value_counts` is just to show you how many times they appear. 's\_user' is just like a dictionary.
-
- ```
-  s_user.apply(count_retweeted_number)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no68.png)  
-  `apply` is a function which only works for the values.  
-  Apply the function into all the 'user\_key'. But there is an error. Because we are applying on the values of the 's\_\_user',  which is obviously integers in \[75\].  So we have to change the name as the value of the Series. Then we can apply to the names.
-
-#### Try2 change the name as the value of the Series
-
-  ```
-  s_user.index
-  s_user.values
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no69.png)  
-  It is to check the index and values. They are correspond to each other.
-
-  ```
-  s_user.to_frame.reset_index()
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no70.png)  
-  `to_frame` is to change Series into Dataframe.  
-  `reset_index` is to add an index. Then the formal index will be change into a value, whose column name is 'index'.
-
-  ```
-  df_user['index'].apply()
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no71.png)  
-  
-  ![](assets/to-do-uncategorized-screenshots/no72.png)
-
-* The error is in the picture below:  
-  ![](assets/to-do-uncategorized-screenshots/no73.png)  
-  In this step, if the answer is false, there will be an error.
-
-#### Try3 succeed
-
-* As we write before:
-
-  ```
-  s_user=df['user_key']
-  ```
-
-
-  ```
-  .get()
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no74.png)  
-  ![](assets/to-do-uncategorized-screenshots/no75.png)  
-  ![](assets/to-do-uncategorized-screenshots/no76.png)  
-  ![](assets/to-do-uncategorized-screenshots/no77.png)  
-  ![](assets/to-do-uncategorized-screenshots/no78.png)
-
-  \[87\] is something appear in the content.  
-  \[88\] is the same.  
-  \[89\] does not exist in the content.  
-  \[90\] and \[91\] means we change the return of the 'false'. In default, it is empty. We can change it in the 2nd parameter. It is better to set it as 0 in this example.
-
-  ```
-  .get(True,0)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no79.png)
-
-  ```
-  sort_values(by='user_key',ascending=False)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no80.png)  
-  We can find out who tweeted the largest number of tweets.
-
-  ```
-  sort_values(by='count',ascending=False)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no81png)  
-  We can find out who is retweeted most.  
-  ![](assets/to-do-uncategorized-screenshots/no82.png)  
-  So it will execute 454 times. It really takes a long time to finish the whole code.
 
 ### Save time
 
@@ -840,59 +632,6 @@ df['text'].apply[check_names].value_counts()[True]
 
 At present, you can refer to those
 [notebooks from S18 class](https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/w8-datetime).
-
-## Graph
-
-## Basic preparations
-
-### Pip install all the modules by one step
-
-* First of all, download the requirements.txt from  [https://github.com/hupili/python-for-data-and-media-communication](https://github.com/hupili/python-for-data-and-media-communication) to your desktop.This file is a list of many modules. So you only need to do this for once to have all the packages.
-
-* Check on your virtual environment to make sure you have this file.  
-  ![](assets/to-do-uncategorized-screenshots/no116.png)
-
-
-### Jupyter display to show the picture
-
-* Create a picture called "picture.png" on your repository on folder 'venv', as follows.  
-  ![](assets/to-do-uncategorized-screenshots/no117.png)
-
-  ```
-  jupyter notebook
-  ```
-
-  Open jupyter notebook and then create a new python file under the 'venv' folder. Then write the code as follows.
-
-  ```
-  from IPython.display import Image
-  Image("picture.png")
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no118.png)
-
-### Markdown to show a picture
-
-* Change to the markdown environment in jupyter notebook as follows.  
-  ![](assets/to-do-uncategorized-screenshots/no119.png)
-
-  ```
-  ![](picture.png)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no120.png)
-
-### HTML link
-
-  ```
-  from IPython.core.display import HTML
-  HTML('<a href="http://example.com"link</a')
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no121.png)
-
-* Block quote, or ''' ''', is to quote code.   
-  ![](assets/to-do-uncategorized-screenshots/no122.png)
 
 ## Geographical data
 
