@@ -26,6 +26,10 @@
     - [GitHub repo](#github-repo)
         - [README.md](#readmemd)
         - [Presenting dataset](#presenting-dataset)
+        - [Jupyter notebook](#jupyter-notebook)
+            - [Write notes in Jupyter notebook](#write-notes-in-jupyter-notebook)
+            - [Display the picture](#display-the-picture)
+            - [Add HTML link](#add-html-link)
     - [Publish work on GitHub Pages](#publish-work-on-github-pages)
         - [Basic HTML](#basic-html)
         - [Bonus: CSS](#bonus-css)
@@ -37,7 +41,7 @@
     - [Code of conduct: Reproducible reporting and full reporting](#code-of-conduct-reproducible-reporting-and-full-reporting)
     - [References](#references)
 
-<!-- TOC -->
+<!-- /TOC -->
 
 </div>
 
@@ -286,8 +290,12 @@ One can also include "bar charts" in your DataFrame, from which you can easily f
 ```python
 pd_df4 = df.pivot_table(index=['country'], columns=['price'], values='name', aggfunc='count')
 #pd_df4
-#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range
-pd_df4 = pd_df4.loc[['韓國菜','台湾菜','日本菜','西班牙','西式','意大利菜','粵菜 (廣東)']].T
+#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range, and replace the nan value with 0
+pd_df4 = pd_df4.loc[['韓國菜','日本菜','西式','意大利菜','粵菜 (廣東)']].fillna(0).T
+
+# because the index is string, not the number, so that we cannot directly sort_index, instead, we need to reindex it.
+reorderlist = [ '$50以下', '$51-100','$101-200' ,'$201-400' ,'$401-800']
+pd_df4 = pd_df4.reindex(reorderlist)
 pd_df4.style.bar(color='#d65f5f')
 ```
 
@@ -375,7 +383,7 @@ License is easy to forget. Some serious users may not use your project if there 
 
 Jupyter notebook is very convenient and powerful to present your work, you can write notes by markdown, you can insert url links, pictures, interactive graphs, and of course, codes. Therefore, in most cases, one notebook is enough for us to present and share our works. The following is the introduction of how to use jupyter as the primary presenting method.
 
-#### Write notes/articles in Jupyter notebook
+#### Write notes in Jupyter notebook
 
 We can change the cell type to present non-codes content.
 Click `cell --> cell type --> Markdown`. Then write the notes and stories you like, Jupyter also support markdown syntax.
@@ -387,7 +395,7 @@ For shortcut:
 * type `m` to change cell to markdown mode
 * type `y` to change cell to code mode
 
-### Display the picture
+#### Display the picture
 
 Assuming that you have the pictures in the folder where your current jupyter notebook are. You can display the picture by the following method.
 
@@ -398,20 +406,20 @@ Image("top 15 directors.png") #change the name corresponding your own file
 
 ![Jupyter display pics](assets/jupyter-display-pics.png)
 
-### HTML link
+#### Add HTML link
 
 We can also insert `html` in jupyter. For example:
 
 ```python
 from IPython.core.display import HTML
-HTML('<a href="https://github.com/ChicoXYC/python-for-data-and-media-communication-gitbook">Openbook</a>')
+HTML('<a href="https://github.com/hupili/python-for-data-and-media-communication-gitbook">Openbook</a>')
 ```
 
 Then you will find a clickable text `openbook` linking to the repo. For code blocks, you can write by `''' '''` to quote codes.
 
 ```python
 HTML('''
-<a href="https://github.com/ChicoXYC/python-for-data-and-media-communication-gitbook">Openbook</a>
+<a href="https://github.com/hupili/python-for-data-and-media-communication-gitbook">Openbook</a>
 <ul>
 <li>item 1</li>
 <li>item 1</li>

@@ -2,50 +2,6 @@
 
 <div id="toc">
 
-<!-- TOC -->
-
-- [Week 10: Text data](#week-10-text-data)
-    - [Text processing](#text-processing)
-        - [String functions recap](#string-functions-recap)
-        - [encode and decode](#encode-and-decode)
-        - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
-            - [Bonus: Text substitution](#bonus-text-substitution)
-            - [RegEx in shell](#regex-in-shell)
-    - [Word frequency](#word-frequency)
-        - [Visualize word frequency](#visualize-word-frequency)
-            - [with bar chart](#with-bar-chart)
-            - [with tag cloud](#with-tag-cloud)
-    - [Word segmentation](#word-segmentation)
-        - [How to add new terms to the wordseg dictionary](#how-to-add-new-terms-to-the-wordseg-dictionary)
-        - [How to adjust term weight in the wordseg dictionary](#how-to-adjust-term-weight-in-the-wordseg-dictionary)
-    - [Bonus: TF.IDF](#bonus-tfidf)
-    - [Bonus: Topic model](#bonus-topic-model)
-    - [Bonus: Sentiment analysis](#bonus-sentiment-analysis)
-    - [Bonus: word2vec](#bonus-word2vec)
-    - [Text](#text)
-    - [Check the information in terminal](#check-the-information-in-terminal)
-    - [Simple steps to start Jupyter notebook in terminal](#simple-steps-to-start-jupyter-notebook-in-terminal)
-        - [4 Steps](#4-steps)
-        - [New](#new)
-        - [Install modules in jupyter](#install-modules-in-jupyter)
-    - [For loop](#for-loop)
-        - [Range\(\)](#range\\)
-        - [Append VS Extend](#append-vs-extend)
-    - [Verify every step -splinter python](#verify-every-step--splinter-python)
-        - [Fail to save content](#fail-to-save-content)
-        - [Resolution splinter](#resolution-splinter)
-        - [Save time](#save-time)
-        - [Calculate the frequent terms](#calculate-the-frequent-terms)
-            - [Get text](#get-text)
-            - [Word count](#word-count)
-            - [Stop word](#stop-word)
-            - [Word cloud](#word-cloud)
-            - [Jieba](#jieba)
-            - [Pandas plotting](#pandas-plotting)
-    - [Time series](#time-series)
-    - [Geographical data](#geographical-data)
-
-<!-- /TOC -->
 
 </div>
 
@@ -63,7 +19,6 @@ Outline:
 - format
 - find
 - slicing (`:`)
-
 
 Case 1: Scraping Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
 
@@ -164,7 +119,36 @@ Output:
 - UTF-8
 - GBK
 
-<!-- TODO -->
+`UTF-8` is the most widely used implementation of Unicode on the Internet, while `GBK` is mainly used for coding Chinese character.
+
+For example, scraping Chinese websites like `电影天堂`.
+
+```python
+url = 'https://www.dytt8.net/'
+r = requests.get(url)
+html_str = r.text
+```
+
+![Wrong encoding](assets/wrong-encoding.png)
+
+You will find the results is messy because the website is using `gb2312` method to encode the html, which is kind of `GBK` methods.
+
+![GBK encoding](assets/gbk-encoding.png)
+
+Therefore, we need to firstly decode the content.
+
+```python
+html = r.content.decode('gbk')
+html
+```
+
+After decoding, the Chinese characters can display appropriately. And when saving the data, you can use a more widely used method `utf-8` to encode it.
+
+```python
+with open('dy.csv','a',newline='',encoding='utf-8') as csvfile
+```
+
+![Decodes gbk](assets/decode-gbk.png)
 
 ### String matching and Regular Expression (RegEx)
 
@@ -300,7 +284,28 @@ tag_cloud(words)
 
 ## Word segmentation
 
-- `jieba` for Chinese. You can download the article [here](assets/trade-wars-zh.txt)
+### jieba for Chinese
+
+For english words, its easy to segment words, just by the blank space between the words. But for Chinese words, its more complicated, because there is no blank space in Chinese sentence and the combination of the characters in one sentences may diverse too. In order to handle this situation, `jieba` is the most useful libraries we can get out here, which is a Chinese specialized word segmentation module.
+
+Install and import:
+
+```python
+!pip3 install jieba
+import jieba
+```
+
+Basic usage:
+
+```python
+s = '我在浸会大学学python'
+jieba.cut(s)
+#output: <generator object Tokenizer.cut at 0x10f3a3048>
+list(jieba.cut(s)) #turn it into list
+#['我', '在', '浸会', '大学', '学', 'python']
+```
+
+Case1: Cut an article, you can download the article [here](assets/trade-wars-zh.txt).
 
 ```python
 import jieba
@@ -341,7 +346,7 @@ Example 2: Ambiguous word segmentation
 1. 如果 & 果汁
 
 ```python
-s1 = '香港的自来水如果汁一般好喝'
+s1 = '狮子山的山泉水如果汁一般好喝'
 '/'.join(jieba.cut(s1))
 #'狮子山/的/山泉水/如果/汁/一般/好喝'
 jieba.suggest_freq(('如', '果'), True)
@@ -594,89 +599,9 @@ You can google to learn that.
 * NLTK:   
   ![](assets/to-do-uncategorized-screenshots/no104.png)
 
-#### Stop word
+## Further readings
 
-![](assets/to-do-uncategorized-screenshots/no105.png)  
-![](assets/to-do-uncategorized-screenshots/no106.png)
-
-* Step1
-
-  ```
-  def is_stop_word(x):
-  return x in stop_words
-  ```
-
-* Step2
-
-  ```
-  df_wrod_count[df_word_count['index'].apply(is_stop_word)]
-  ```
-
-* Step3
-
-  ```
-  .sort_values(by=0,ascending=False)
-  ```
-
-* Step4
-
-  ```
-  is not stop
-  ```
-
-![](assets/to-do-uncategorized-screenshots/no107.png)  
-
-#### Word cloud
-
-![](assets/to-do-uncategorized-screenshots/no108.png)
-![](assets/to-do-uncategorized-screenshots/no109.png)
-*  ![](assets/to-do-uncategorized-screenshots/no110.png)
-   
-
-#### Jieba
-
-
-![](assets/to-do-uncategorized-screenshots/no111.png)
-  ```
-  jieba.cut()
-  ```
-
-![](assets/to-do-uncategorized-screenshots/no113.png)  
-
-*  It means we have to change it into a list.  
-![](assets/to-do-uncategorized-screenshots/no114.png)
-
-#### Pandas plotting
-
-* Please learn to learn from others by google.
-
-* Pandas can be more powerful than excel.First of all,let's start from the excel function.
-
-## Time series
-
-**TODO**: Organise concept notes here.
-
-At present, you can refer to those
-[notebooks from S18 class](https://github.com/hupili/python-for-data-and-media-communication/tree/a4922340f55c4565fff19979f77862605ac19f22/w8-datetime).
-
-## Geographical data
-
-**TODO**
-
-Following are the major steps and considerations when dealing with geographical data:
-
-1. Geocode: turn geographical names into longitude and latitude coordinates. For example, you can not plot `Hong Kong` on a map, but you can plot `(114.141, 22.362)` on the map. (you can use [geojson.io](http://geojson.io/#map=11/22.3672/114.0580) to quickly get the data).
-2. Projection: even if you get the geo coordinates somehow, it still can not be plotted on the screen directly. We need a translation from the geo coordinates to screen coordinates. For example, if we want to put HK in the center of the a `640px by 480px` 2D map, we need to establish a mapping like `(114.141, 22.362) --> (320px, 240px)`. This process is called projection. The actual project is more complex than that. Here's a demo of [different methods of projection](https://www.jasondavies.com/maps/transition/).
-   - Scatter plot/ bubble plot -- simply project the point coordinates
-   - Choropleth -- one needs to project a geometry
-3. Base layer: maps are usually organised into layers. Besides puting the data points we are interested in onto the map, we also show some geographical information, like consitutuency boundaries, streets and ontours. This is the benefit of map -- put new data points onto a plate that people are already familiar with. This kind of information usually comes with the "base layer", whereas the above plotted elements are in "data layers". Choices for base layer are like Google Maps, Open Street Map, Mapbox, etc.
-
-References for geographical data:
-
-- Draw geo scatter plot via matplotlib: [England and Ireland seen from pub locations](http://ramiro.org/notebook/mapping-pubs/)
-- Bubble chart on map using `folium` (leaflet.js based) for visualisation and `overpy` for geocoding: [Visualising HK property prices](https://medium.com/coinmonks/visualizing-property-prices-in-hong-kong-with-pandas-overpy-and-folium-595240ffca90)
-- Plot choropleth using `folium`: [United States unemployment rate choropleth map](https://python-graph-gallery.com/292-choropleth-map-with-folium/) . One needs to prepare a data table and a geojson file which includes the interested geometries.
-
+1. [Unicode, ASCII,UTF-8 and GBK](https://jdhao.github.io/2018/01/28/unicodede-utf8-gbk/)
 ------
 
 If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
