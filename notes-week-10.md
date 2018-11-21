@@ -14,6 +14,9 @@
         - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
             - [Bonus: Text substitution](#bonus-text-substitution)
             - [RegEx in shell](#regex-in-shell)
+    - [Stopwords](#stopwords)
+        - [Set stopwords](#set-stopwords)
+        - [Remove stopwords](#remove-stopwords)
     - [Word frequency](#word-frequency)
         - [Use dict to count the words frequency](#use-dict-to-count-the-words-frequency)
         - [Use pandas.series.value_counts()](#use-pandasseriesvalue_counts)
@@ -207,6 +210,54 @@ Following commands can be used to perform RegEx operation. Those commands someti
 - `grep`
 - `egrep`
 - `fgrep`
+
+## Stopwords
+
+### Set stopwords
+
+1. You can download the `stopwords.txt` from the internet and load when you used, [example](https://github.com/stanfordnlp/CoreNLP/blob/master/data/edu/stanford/nlp/patterns/surface/stopwords.txt).
+
+```python
+filepath = './stopwords.txt'
+stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
+```
+
+2. import stopwords from `nltk` library
+
+```python
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+stopwords = stopwords.words('english')
+```
+
+<!-- this method is under testing with error cannot download -->
+
+3. import stopwords from `pypi`
+
+For installation and documentation, you can refer [here](https://pypi.org/project/stop-words/
+), they provide a diverse languages of stopwords.
+
+4. Customize your own stopwords
+
+You can add new stopwords by the case need.
+
+```python
+stopwords = list #the original stopwords list
+newStopWords = ['stopWord1','stopWord2']
+stopwords.extend(newStopWords)
+```
+
+### Remove stopwords
+
+```python
+processed_word_list = []
+#assume you've already get a list of words  
+for word in words:
+    word = word.lower() # in case they are not all lower cased
+    if word not in stopwords:
+        processed_word_list.append(word)
+```
 
 ## Word frequency
 
