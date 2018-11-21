@@ -7,6 +7,9 @@
 - [Week 10: Text data](#week-10-text-data)
     - [Text processing](#text-processing)
         - [String functions recap](#string-functions-recap)
+            - [Case 1: Get full URL from HTML A tag's href attribute](#case-1-get-full-url-from-html-a-tags-href-attribute)
+            - [Case 2: Substring matching and substitution](#case-2-substring-matching-and-substitution)
+            - [Case 3: Most frequent names in tweets](#case-3-most-frequent-names-in-tweets)
         - [encode and decode](#encode-and-decode)
         - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
             - [Bonus: Text substitution](#bonus-text-substitution)
@@ -60,7 +63,9 @@ Outline:
 - find
 - slicing (`:`)
 
-Case 1: Scraping Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
+#### Case 1: Get full URL from HTML A tag's href attribute
+
+Scraping Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
 
 * Using `split + slice + format`
 
@@ -80,7 +85,9 @@ s2='{0}{1}'.format('http://initiumlab.com',s1)
 #s2
 ```
 
-Case 2: Check out certain words in a string, replace certain words and separate the words with some notations.
+#### Case 2: Substring matching and substitution
+
+Check out certain words in a string, replace certain words and separate the words with some notations.
 
 * Using `find + replace + join`
 
@@ -101,7 +108,9 @@ s3 = str.split(' ')
 #output: 'this|is|string|example....this|is|the|string|we|will|test,|is|it'
 ```
 
-Case 3: Apply a function onto every element of the dataframe - Check out the most frequent names in the tweets text
+#### Case 3: Most frequent names in tweets
+
+Apply a function onto every element of the dataframe - Check out the most frequent names in the tweets text
 
 * Using `str.lower()` + `in` operator + `pandas.apply()`
 
