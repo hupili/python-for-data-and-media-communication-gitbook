@@ -34,7 +34,7 @@
 <!-- /TOC -->
 </div>
 
-## Objective
+## Objective 
 
 - Master the schema of "data-driven story telling": the crowd \(pattern\) and the outlier \(anomaly\)
 - Can use `pandas`, `matplotlib` and `seaborn` to conduct 1D analysis and articulate on the statistics
