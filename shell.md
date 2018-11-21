@@ -8,6 +8,7 @@
     - [Difference between Terminal and Shell](#difference-between-terminal-and-shell)
     - [Different shell commands in Win and Mac](#different-shell-commands-in-win-and-mac)
     - [Verify your current working folder](#verify-your-current-working-folder)
+    - [Check the information in terminal](#check-the-information-in-terminal)
 
 <!-- /TOC -->
 
@@ -35,3 +36,11 @@ Most of the path related errors are caused by wrong current working folder. One 
 
 - `pwd` -- prints the working directory. You can check the path name.
 - `ls` -- list directory. This shows the files in the current directory for your double check.
+
+## Check the information in terminal
+
+1. `which pip3` to learn where is pip3 in your computer. You can also input `which pip` to know the location of pip.
+
+You can also drag the pip file and pip3 file into the Visual Studio Code,after you use `which` to know their location.
+
+2. `cat pip` to check the content.
