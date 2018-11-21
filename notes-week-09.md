@@ -408,14 +408,14 @@ We can also insert `html` in jupyter. For example:
 
 ```python
 from IPython.core.display import HTML
-HTML('<a href="https://github.com/ChicoXYC/python-for-data-and-media-communication-gitbook">Openbook</a>')
+HTML('<a href="https://github.com/hupili/python-for-data-and-media-communication-gitbook">Openbook</a>')
 ```
 
 Then you will find a clickable text `openbook` linking to the repo. For code blocks, you can write by `''' '''` to quote codes.
 
 ```python
 HTML('''
-<a href="https://github.com/ChicoXYC/python-for-data-and-media-communication-gitbook">Openbook</a>
+<a href="https://github.com/hupili/python-for-data-and-media-communication-gitbook">Openbook</a>
 <ul>
 <li>item 1</li>
 <li>item 1</li>
