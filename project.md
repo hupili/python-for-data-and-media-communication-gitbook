@@ -1,16 +1,14 @@
 # Project guidelines
 
-**NOTE**: This document is under construction
-
 Key dates:
 
-- Dec 4 (Tue): Final presentation for JOUR7280
-- Dec 7 (Fri): Final presentation for COMM7780
-- Dec 16 (Sun): Final submission (report/ dataset/ codes/ aux files) due for JOUR7280/ COMM7780, i.e. finalise your GitHub repo by this date
+- **Dec 4 (Tue)**: Final presentation for JOUR7280
+- **Dec 7 (Fri)**: Final presentation for COMM7780
+- **Dec 16 (Sun)**: Final submission (report/ dataset/ codes/ aux files) due for JOUR7280/ COMM7780, i.e. finalise your GitHub repo by this date
 
 ## Final Presentation Guideline
 
-Every group has up to 20 min including Q/A time. It is suggested to control your presentation time to ~12 min, up to 15 min. 15 min will be a hard cut. We will stop you immediately at 15 min no matter how many slides are left. The presentation is rated by the lecturer, as well as invited guests from the industry. The formula of a good presentation:
+Every group has up to 20 min including Q/A time. It is suggested to control your presentation time to **~12 min**, up to **15 min**. 15 min will be a hard cut. We will stop you immediately at 15 min no matter how many slides are left. The presentation is rated by the lecturer, as well as invited guests from the industry. The formula of a good presentation:
 
 - It usually catches people's attention very quickly and then goes through the main story points without messing the audience with too many technical details.
 - People then raise various questions, related with the presentation but may well beyond the presentation itself. Since you have studied the topic in depth via the final project, you have the best expertise to answer those questions. You can prepare some "backup slides", so when people ask, you can jump there.
