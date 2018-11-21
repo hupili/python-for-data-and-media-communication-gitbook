@@ -2,6 +2,46 @@
 
 <div id="toc">
 
+<!-- TOC -->
+
+- [Week 10: Text data](#week-10-text-data)
+    - [Text processing](#text-processing)
+        - [String functions recap](#string-functions-recap)
+        - [encode and decode](#encode-and-decode)
+        - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
+            - [Bonus: Text substitution](#bonus-text-substitution)
+            - [RegEx in shell](#regex-in-shell)
+    - [Word frequency](#word-frequency)
+        - [Visualize word frequency](#visualize-word-frequency)
+            - [with bar chart](#with-bar-chart)
+            - [with tag cloud](#with-tag-cloud)
+    - [Word segmentation](#word-segmentation)
+        - [jieba for Chinese](#jieba-for-chinese)
+        - [How to add new terms to the wordseg dictionary](#how-to-add-new-terms-to-the-wordseg-dictionary)
+        - [How to adjust term weight in the wordseg dictionary](#how-to-adjust-term-weight-in-the-wordseg-dictionary)
+    - [Bonus: TF.IDF](#bonus-tfidf)
+    - [Bonus: Topic model](#bonus-topic-model)
+    - [Bonus: Sentiment analysis](#bonus-sentiment-analysis)
+    - [Bonus: word2vec](#bonus-word2vec)
+    - [Text](#text)
+    - [Check the information in terminal](#check-the-information-in-terminal)
+    - [Simple steps to start Jupyter notebook in terminal](#simple-steps-to-start-jupyter-notebook-in-terminal)
+        - [4 Steps](#4-steps)
+        - [New](#new)
+        - [Install modules in jupyter](#install-modules-in-jupyter)
+    - [For loop](#for-loop)
+        - [Range\(\)](#range\\)
+        - [Append VS Extend](#append-vs-extend)
+    - [Verify every step -splinter python](#verify-every-step--splinter-python)
+        - [Fail to save content](#fail-to-save-content)
+        - [Resolution splinter](#resolution-splinter)
+        - [Save time](#save-time)
+        - [Calculate the frequent terms](#calculate-the-frequent-terms)
+            - [Get text](#get-text)
+            - [Word count](#word-count)
+    - [Further readings](#further-readings)
+
+<!-- /TOC -->
 
 </div>
 
@@ -386,13 +426,12 @@ For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/
 
 ## Bonus: word2vec
 
-<!-- NOTE: new outline end -->
 
-## Text
-
-----
+----------------------
 
 Following content is from week7 of S18 offering. Unorganised yet.
+
+## Text
 
 ## Check the information in terminal
 
