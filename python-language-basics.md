@@ -14,6 +14,7 @@
         - [List range pattern](#list-range-pattern)
         - [== and =](#-and-)
         - [Append VS Extend](#append-vs-extend)
+        - [For loop range](#for-loop-range)
 
 <!-- /TOC -->
 </div>
@@ -106,4 +107,38 @@ Output:
 
 ```text
 ['a', 'b', 0, 2, 4, 8]
+```
+
+### For loop range
+
+Function 'Range' has 3 parameters. From XX to XX with the step size XX. The 3rd parameter is the step size. If you don't input the 3rd one, it will take 1 in default.
+
+```python
+for i in range(5,10):
+    print(i)
+#5
+#6
+#7
+#8
+#9
+```
+
+```python
+for i in range(5,10,2):
+    print(i)
+#5
+#7
+#9
+```
+
+The parameters can be negative. At the same time, you need adjust the positions of the first and second parameters.
+
+```python
+for i in range(5,10,-1):
+    print(i)
+#10
+#9
+#8
+#7
+#6
 ```
