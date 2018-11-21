@@ -61,3 +61,23 @@ Being data-driven should be easy for most students who have taken the course. Fi
 - Market analysis that supports a startup idea.
 
 We will keep the list growing when more ideas and references are available. You are suggested to discuss with the instructor as early as possible, to help evaluate the relevance and viability. The final deliverable could be a report like industrial research report, e.g. [Reuters X Oxford digital media report](https://reutersinstitute.politics.ox.ac.uk/sites/default/files/digital-news-report-2018.pdf). However, you are not limited to this form. A product document, planning document, or pitch deck/ business proopsal are all valid. You can even build a web based data query service if you'd like to. Note that, one important factor is **communication perspective**. A report that purely enumerates data/ statistics/ charts and describes only what they are, will not meet the requirement. You need to extract communication insights or make derivative works that is relevant to a communication issue.
+
+## Bonus: Release and promote your work on mobile web
+
+NOTE: Doing bonus part will not hard other's performance; However, you may get upgrade once the curving on basic part is done.
+
+Mobile web has been the major channel for people to access and read content today. Although GitHub ecosystem and Jupyter notebook are convenient for us professionals to share among each other, it is hard for normal readers to access. To help your work to reach a wider audience and create an impact, you may want to release it on mobile web. We have prepared a 10-minutes template intended for people with no background: http://project.hupili.net/big-road/ 
+
+You can make a landing page, or put your entire story on this web page. It is subject to your preference and your understanding of the potential audience. In the end of the web (e.g. footer), please following information:
+
+- Course code/ title
+- Project team
+- Link to your GitHub repo -- so they can read more or try to reproduce the report
+- Link to the [open book](https://github.com/hupili/python-for-data-and-media-communication-gitbook/) -- so they can also learn and jump into this field
+
+Note following two technical details if you want to participate in the bonus competition:
+
+- There are several `<script>` tags in the end of the page that includes a Google Analytics code.
+- Remember to modify `<title>` tag in `<head>` region. Or, the traffic may be incorrectly recorded elsewhere.
+
+We will measure the impract of your project using Google Aanalytics data and assign bonus grades.
