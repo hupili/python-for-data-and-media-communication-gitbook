@@ -290,8 +290,12 @@ One can also include "bar charts" in your DataFrame, from which you can easily f
 ```python
 pd_df4 = df.pivot_table(index=['country'], columns=['price'], values='name', aggfunc='count')
 #pd_df4
-#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range
-pd_df4 = pd_df4.loc[['韓國菜','台湾菜','日本菜','西班牙','西式','意大利菜','粵菜 (廣東)']].T
+#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range, and replace the nan value with 0
+pd_df4 = pd_df4.loc[['韓國菜','日本菜','西式','意大利菜','粵菜 (廣東)']].fillna(0).T
+
+# because the index is string, not the number, so that we cannot directly sort_index, instead, we need to reindex it.
+reorderlist = [ '$50以下', '$51-100','$101-200' ,'$201-400' ,'$401-800']
+pd_df4 = pd_df4.reindex(reorderlist)
 pd_df4.style.bar(color='#d65f5f')
 ```
 
