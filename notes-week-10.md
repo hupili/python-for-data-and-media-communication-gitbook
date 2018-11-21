@@ -371,7 +371,7 @@ Example 2: Ambiguous word segmentation
 1. 如果 & 果汁
 
 ```python
-s1 = '香港的自来水如果汁一般好喝'
+s1 = '狮子山的山泉水如果汁一般好喝'
 '/'.join(jieba.cut(s1))
 #'狮子山/的/山泉水/如果/汁/一般/好喝'
 jieba.suggest_freq(('如', '果'), True)
