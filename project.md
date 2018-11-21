@@ -42,4 +42,6 @@ You can refer to [archive of past projects](https://github.com/data-projects-arc
 
 ## Content guideline: JOUR7280 -- Data Journalism
 
+The final output is a **complete story** powered by data. Depending on the group expertise, you can emphasise more on data, or more on story. Besides using data, you can leverage conventional techniques from journalism production, e.g. interview, photo, video. We adopt the broad sense of "newsworthiness" -- new knowledge on old topic also counts. Of course, if the project can tackle a question with social impact, that is better. The best one starts from a current affair, scrape/ find relevant dataset, and mine the data to get new perspectives not yet told/ not well told in the public.
+
 ## Content guideline: COMM7780 -- Data-driven report on communication issues
