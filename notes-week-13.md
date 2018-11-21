@@ -60,5 +60,4 @@
 
 <!-- TODO: Yucan -->
 
-### Open Rrice Sichuan Food
-
+### Openrice Sichuan Food
