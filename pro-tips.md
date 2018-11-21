@@ -10,7 +10,7 @@ Asking questions like a Pro is the first step to boost your journey in programmn
 - Show people what you have tried so far. It is good to let them know what are already known to not work.
 - Make a minimum reproducible example of the issue. This helps people focus on the technical problem, instead of your business logics.
 
-In our Python case, it is suggested to make a Jupyter notebook to put those information in one place.
+In our Python case, it is suggested to make a Jupyter notebook to put the above information in one place. Besides showing the GitHub URL to your notebook, it is even better to show the [NBViewer preview link](notes-week-00.md#nbviewer). That helps people to quickly understand the issue. Note, dynamic chart (via Javascript) is not shown on GitHub due to security reasons.
 
 Here are some hand-picked issues for your reference:
 
