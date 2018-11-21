@@ -19,7 +19,7 @@
         - [Highlight](#highlight)
     - [Case studies](#case-studies)
         - [Aircrash map](#aircrash-map)
-        - [Open Rrice Sichuan Food](#open-rrice-sichuan-food)
+        - [Openrice Sichuan Food](#openrice-sichuan-food)
 
 <!-- /TOC -->
 </div>
@@ -74,3 +74,17 @@ References for geographical data:
 <!-- TODO: Yucan -->
 
 ### Openrice Sichuan Food
+
+Following is an animated map showing how Sichuan restaurants rolled out in Hong Kong.
+
+![](assets/openrice-sichuan-food-animation.gif)
+
+The tools and process:
+
+- Use `requests`, `selenium`, and `beautifulsoup` to collect data
+- Use `geopy` to perform geocoding, i.e. turn address into geo-location
+- Use `folium` (built-on leaflet.js) to visualise circles on map
+- Use selenium to take screenshot
+- Use ImageMatick and `gifsicle` to combine screenshots into gif
+
+Code repo: https://github.com/hupili/openrice-data-blog-201811
