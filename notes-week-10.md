@@ -197,7 +197,7 @@ The `.find()` and `in` operator on `str` has limited matching capability. They c
 1. Find all the user names from the Twitter message. i.e. those look like `@xxxx `, i.e. start with `@` and end with ` ` (blank).
 2. Find all the phone numbers from a paragraph of texts.
 
-RegEx can solve those problems in a very concise way.
+RegEx can solve those problems in a very concise way. We show you the power of RegEx in following subsections. Once you decide to move further, the [official doc on re](https://docs.python.org/3/library/re.html) is a good source for you to further study RegEx.
 
 #### RegEx case 1: match Twitter username from tweets
 
@@ -267,7 +267,20 @@ Back to our focus on basic pattern matching, we can conclude that it is easy to 
 
 #### Bonus: Text substitution
 
-RegEx can let you substitute some matching parts. It even allows to interpolate variables using values from matching part.
+RegEx can let you substitute some matching parts. This is very similar to the `str.replace` function but does more than that. It even allows one to interpolate variables using values from matching part.
+
+Suppose the university decides "3411" is a bad prefix and "8888" sounds good. How do we change all the numbers? Checkout following solution:
+
+```python
+>>> pattern = re.compile(r'3411(\d{4})')
+>>> re.sub(pattern, r'+852 8888-\1', introduction)
+'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at +852 8888-9999 or Mr B +852 8888-9998. Students who enrol in extra courseswill be charged 12345678 dollar per course.'
+```
+
+Besides changing the telephone prefix, we also added the country code and a hyphen between university prefix and the phone number. Note how this happens:
+
+- `()` is called a "group" in RegEx. The brackets do not match any character. However, patterns inside a pair of brackets are of the same group. The match substring will be put in the same group for further reference.
+- `\1` means the first group. There could be multiple groups matched by one pattern. You can use `\n` notation to refer to the `n`-th group. `\0` means the entire string.
 
 #### RegEx in shell
 
