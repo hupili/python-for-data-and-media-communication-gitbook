@@ -387,6 +387,8 @@ The key points of plotting time series using pandas:
 - Use `.resample` to put the data points into different buckets. This is essentially a `.groupby` operation. Instead of working on categorical values like `.groupby`, `.resample` works on datetime ranges. One can specify a time length when performing resample operation, e.g. one week `1w` and two days `2d`.
 - Use `.aggregate` to turn the bucket of data points into a single value. This is the same process like [groupby + aggregate](notes-week-08.md#dataframegroupby) approach, but applied on datetime data types.
 
+There is a small missing piece of the above Tweets keyword time series from current discussion. Besides handling the index, you also need to have numeric data on columns, e.g. `kw-hillary` as you can see from the chart. You can checkout [Most Common Names in Tweets](notes-week-10.md#case-3-most-frequent-names-in-tweets) example to see how to encode tweet text into such numeric indicator variables.
+
 ### Smoothing technique: Moving average
 
 ### Bonus: Time Series forecasting models
