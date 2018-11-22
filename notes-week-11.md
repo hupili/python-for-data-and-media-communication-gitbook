@@ -391,6 +391,13 @@ There is a small missing piece of the above Tweets keyword time series from curr
 
 ### Smoothing technique: Moving average
 
+When analysing/ visualising time series, one most common issue is to deal with short period fluctuations. This is especially important in technical analysis of stock price. Stock price can fluctuate a lot in minutes but the fluctuation is less impactful when viewed in the larger time span. We need to smooth the time series curves in order to discover long term trend. `pandas` provides `DataFrame.rolling_mean` and `Series.rolling` to calculate "moving average" (The "MA-xx" curves you see in stock software). The moving average captures the momentum in the data and the crossing of two MAs of different length are usually used as indicators of buy/ sell signals. Checkout [this notebook](https://github.com/mGalarnyk/Python_Tutorials/blob/master/Time_Series/Part1_Time_Series_Data_BasicPlotting.ipynb) for more details.
+
+![](assets/GOOG-time-series-smoothing.png)
+Image credit: [Michael Galarnyk](https://github.com/mGalarnyk/Python_Tutorials/blob/master/Time_Series/Part1_Time_Series_Data_BasicPlotting.ipynb)
+
+
+
 ### Bonus: Time Series forecasting models
 
 Predictive analysis is not a requirement from this introductory course. Our main focus is on the descriptive part. Interested readers can checkout the following models from other literatures.
