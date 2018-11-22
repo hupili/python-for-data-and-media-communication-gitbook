@@ -12,6 +12,8 @@
             - [Case 3: Most frequent names in tweets](#case-3-most-frequent-names-in-tweets)
         - [encode and decode](#encode-and-decode)
         - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
+            - [RegEx case 1: match Twitter username from tweets](#regex-case-1-match-twitter-username-from-tweets)
+            - [RegEx case 2: match telephone numbers in a piece of text](#regex-case-2-match-telephone-numbers-in-a-piece-of-text)
             - [Bonus: Text substitution](#bonus-text-substitution)
             - [RegEx in shell](#regex-in-shell)
     - [Stopwords](#stopwords)
@@ -197,6 +199,8 @@ The `.find()` and `in` operator on `str` has limited matching capability. They c
 
 RegEx can solve those problems in a very concise way.
 
+#### RegEx case 1: match Twitter username from tweets
+
 Here's the solution for question 1.
 
 ```python
@@ -219,6 +223,47 @@ The key of learning RegEx is to learn the pattern string, i.e. `@[a-zA-Z0-9]+` i
 
 To sum it up, the above RegEx pattern can match all any substring that starts with a `@` character and then followed by one or more alphanumeric characters.
 
+#### RegEx case 2: match telephone numbers in a piece of text
+
+Learning RegEx is like learning a new language. It is very easy to match the pattern you want. However, it may be difficult to exclude things that you don't want to match. Let's give a demo using question 2. The first trial would be:
+
+```python
+>>> introduction = 'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at 34119999 or Mr B 34119998'
+>>> pattern = re.compile(r'\d+')
+>>> pattern.findall(introduction)
+['16', '1', '34119999', '34119998']
+```
+
+In this pattern, `\d` means the collection of numbers, i.e. `[0-9]`. The `+` specifies a repetition count of one or multiple. You can see that all the numeric substrings are extracted. However, not all of them are telephone numbers. Gievn a bit domain knowledge, we know that the phone numbers in Hong Kong have 8 digits. So we can adjust our pattern to use a repetition number of `{8}`:
+
+```python
+>>> pattern = re.compile(r'\d{8}')
+>>> pattern.findall(introduction)
+['34119999', '34119998']
+```
+
+The pattern works at present, but does not work when the text includes other 8-digit non telephone number substrings:
+
+```python
+>>> introduction = 'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at 34119999 or Mr B 34119998. Students who enrol in extra courses will be charged 12345678 dollar per course.'
+>>> pattern = re.compile(r'\d{8}')
+>>> pattern.findall(introduction)
+['34119999', '34119998', '12345678']
+```
+
+The tuition fee is also match because our pattern is not precise enough. In order to fix this problem, we need to further apply our domain knowledge. We know that HKBU's telephone numbers start with `3411`. So we can revise our pattern and get following result:
+
+```python
+>>> pattern = re.compile(r'3411\d{4}')
+>>> pattern.findall(introduction)
+['34119999', '34119998']
+```
+
+The pattern is to match any 8 character string that starts with "3411" and ends with any four digits. The curious readers may ask: what if the tuition fee is "34113411 dollar"? As you guess, the above pattern fails. How to refine? The short answer is that there is no ultimate way. As long as "34113411" itself is a valid telephone number, we can hardly exclude it from our matching by just looking at itself. 
+
+This issue is quite common text processing, or further more **Natural Language Processing (NL)**. The token itself is not enough for us to understand its meaning. One similar example is: "Apple is good". We are not sure if "the Apple" that produces iPhone is good; or apple, as a fruit, is good. We human being needs context in order to understand this sentence. So is computer. This discussion is beyond our curriculum. Interested readers can search for "NLP".
+
+Back to our focus on basic pattern matching, we can conclude that it is easy to match the things one want using RegEx, but rather difficult to fully exclude other unwanted stuffs. When building your RegEx solution, you usually starts with a collection of **cases**. You keep on adding new cases to the collection and test them with your RegEx pattern. You may need to refine multiple times in order to find the one that works well on your dataset.
 
 #### Bonus: Text substitution
 
