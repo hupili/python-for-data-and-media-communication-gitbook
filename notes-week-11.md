@@ -396,7 +396,7 @@ We can find that there are 1/10 (because of `frac=0.1`) data have been randomly 
 
 ### Resample
 In `pandas` library, `resample()` is a convenience method for frequency conversion and resampling of time series. Its object  must have a index composed by datetime-like values like Datetime or Timedelta. Therefore, let's first utilise what we learned before to parse these twitts' post time, formatting them into machine recognizable ones:
-```
+```python
 from datetime import datetime
 from dateutil import parser
 import numpy
@@ -409,12 +409,12 @@ df['datetime'] = df['created_str'].apply(parse_datetime)
 ```
 #### Resampling by timeline
 Now we can use `resample('1W')` to know how many twitts emerged every week.
-```
+```python
 df.set_index('datetime').resample('1w').aggregate('count').tail()
 ```
 Notes:
 - Setting the 'datetime' column as index is necessary, for `resample()` must have a index composed by datetime-like values.
-- '1W' is an essential positional argument which means we collect twitts per 7-day period. You can also use the parameters like `'S'`(second), `'Min'`(minute), `'M'`(month), `'SM'`(semi-month) and so forth to do your own research. You can check [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.resample.html) to read more instructions.
+- `'1W'` is an essential positional argument which means we collect twitts per 7-day period. You can also use the parameters like `'S'`(second), `'Min'`(minute), `'M'`(month), `'SM'`(semi-month) and so forth to do your own research. You can check [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.resample.html) to read more instructions.
 - `aggregate('count')` counts how many twitts posted on a weekly level. We will introduce 'aggregate' in the next part.
 #### Bonus: explore resample
 In statistics, **resampling** is method for drawing randomly with replacement from a set of data points, including exchanging labels on data points when performing significance tests or validating models by using random subsets. The resampling as a methodology has been widely used in the field of analogue signal processing or audio compression for many years. See its basic mode:
@@ -423,18 +423,23 @@ You can learn more about it from [Resampling - Wikipedia](https://en.wikipedia.o
 ### aggregate
 The aggregate is a process where the values of multiple rows are grouped together. It is aimed to form a single value of more significant meaning or measurement e.g. a sum, a max or a mean.
 See how it works in this case:
-```
+```python
 def has_hillary(t):
     return 'hillary' in str(t).lower()
 def has_trump(t):
     return 'trump' in str(t).lower()
 df['kw-hillary'] = df['text'].apply(has_hillary)
 df['kw-trump'] = df['text'].apply(has_trump)
-df.set_index('datetime').resample('1w').aggregate('sum').tail()
+df.head()
 ```
 Output:
 ![Image](4.png)
 
+```python
+df.set_index('datetime').resample('1w').aggregate('sum').tail()
+```
+Output:
+![Image](5.png)
 ### plot
 
 ### Smoothing technique: Moving average
