@@ -389,7 +389,7 @@ def remove_stopwords(words): #remove stopwords
             processed_word_list.append(word)
     return processed_word_list
 
-words = read_txt("text/")
+words = read_txt("text/") #pass your own file path that include list of .txt
 words = words.split()
 stopwords = stopwordslist('./stopwords_eng.txt')
 stopwords = set(stopwords)
