@@ -197,7 +197,28 @@ The `.find()` and `in` operator on `str` has limited matching capability. They c
 
 RegEx can solve those problems in a very concise way.
 
-<!-- TODO: solve above two problems using RegEx -->
+Here's the solution for question 1.
+
+```python
+>>> tweet = '@tom @jacky and @will, please come to my office at 10am.'
+>>> import re
+>>> pattern = re.compile(r'@[a-zA-Z0-9]+')  # pattern of the Twitter username
+>>> pattern.findall(tweet)
+['@tom', '@jacky', '@will']
+```
+
+The key of learning RegEx is to learn the pattern string, i.e. `@[a-zA-Z0-9]+` in the above example. Let's decode this pattern as follows:
+
+- `@` - matches a single `@` character.
+- `[]` - is a collection notation, matching the current position to any valid character in this collection.
+  - In our example, the collection is composed of
+    - All characters from `a` to `z`, and from `A` to `Z`, and from `0` to `9`.
+    - The hyphen `-` here is a notation to specify a range of characters.
+- `+` - is a repetition number, meaning matching one or more characters using the preceding pattern character
+  - The preceding pattern character is a collection, i.e. `[a-zA-Z0-9]`.
+
+To sum it up, the above RegEx pattern can match all any substring that starts with a `@` character and then followed by one or more alphanumeric characters.
+
 
 #### Bonus: Text substitution
 
