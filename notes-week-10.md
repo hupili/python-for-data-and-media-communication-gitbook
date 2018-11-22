@@ -324,9 +324,9 @@ For installation and documentation, you can refer [here](https://pypi.org/projec
 You can add new stopwords by the case need.
 
 ```python
-stopwords = list #the original stopwords list
-newStopWords = ['stopWord1','stopWord2']
-stopwords.extend(newStopWords)
+stopwords = ['a','b'] #the original stopwords list
+newstopwords = ['stopword1','stopword2']
+stopwords.extend(newstopwords)
 ```
 
 ### Remove stopwords
