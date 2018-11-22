@@ -594,7 +594,14 @@ The above is just an intuition of sentiment analysis. The real work involves mor
 
 ## Bonus: word2vec
 
-<!-- TODO: -->
+word2vec is a set of algorithms to perform "word embedding". It is similar to "topic modeling" in terms of the structure:
+
+- Topic modeling - A document is represented by a (linear) combination of topics; A topic is represented by a (linear) combination of terms.
+- Word embedding - A document is represented by a variable length sequence of words; A word is represented by a lower-dimension vectors; the element of word vectors may not have physical interpretation.
+
+The upside of word embedding is to enable vector arithmetics like `king−man+woman=queen`. Also, the word vector can be computed offline (pre-computation). That makes it easier to handle new documents.
+
+Checkout [Wikipedia](https://en.wikipedia.org/wiki/Word2vec) for background information and [this blog](https://www.datacamp.com/community/tutorials/lda2vec-topic-model) for a quick tutorial on LDA (topic model), word2vec and LDA2vec.
 
 ## Further readings
 
