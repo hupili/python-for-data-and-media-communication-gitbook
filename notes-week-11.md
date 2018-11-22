@@ -442,16 +442,57 @@ Output:
 ![Image](5.png)
 ### plot
 
+Checkout [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/datetime/timeseries.ipynb) for a concrete case of analysing term frequency changes over time in the Tweets.
+
+The core codes are as follows
+
+```python
+df_kws = df.set_index('datetime').resample('1m').aggregate('sum')
+df_kws.plot()
+```
+
+![](assets/twitter-russian-keywords-timeseries.png)
+
+The key points of plotting time series using pandas:
+
+- First you need to put `datetime` type of data onto index. This usually involves
+  - `.apply` a function to [convert from string to datetime](#convert-from-string-to-datetime)
+  - `.set_index` to move the `datetime` type from column to index. This is essential step to perform time series operation because later functions all refer to index for the datetime value.
+- Use `.resample` to put the data points into different buckets. This is essentially a `.groupby` operation. Instead of working on categorical values like `.groupby`, `.resample` works on datetime ranges. One can specify a time length when performing resample operation, e.g. one week `1w` and two days `2d`.
+- Use `.aggregate` to turn the bucket of data points into a single value. This is the same process like [groupby + aggregate](notes-week-08.md#dataframegroupby) approach, but applied on datetime data types.
+
+There is a small missing piece of the above Tweets keyword time series from current discussion. Besides handling the index, you also need to have numeric data on columns, e.g. `kw-hillary` as you can see from the chart. You can checkout [Most Common Names in Tweets](notes-week-10.md#case-3-most-frequent-names-in-tweets) example to see how to encode tweet text into such numeric indicator variables.
+
 ### Smoothing technique: Moving average
+
+When analysing/ visualising time series, one most common issue is to deal with short period fluctuations. This is especially important in technical analysis of stock price. Stock price can fluctuate a lot in minutes but the fluctuation is less impactful when viewed in the larger time span. We need to smooth the time series curves in order to discover long term trend. `pandas` provides `DataFrame.rolling_mean` and `Series.rolling` to calculate "moving average" (The "MA-xx" curves you see in stock software). The moving average captures the momentum in the data and the crossing of two MAs of different length are usually used as indicators of buy/ sell signals. Checkout [this notebook](https://github.com/mGalarnyk/Python_Tutorials/blob/master/Time_Series/Part1_Time_Series_Data_BasicPlotting.ipynb) for more details.
+
+![](assets/GOOG-time-series-smoothing.png)
+Image credit: [Michael Galarnyk](https://github.com/mGalarnyk/Python_Tutorials/blob/master/Time_Series/Part1_Time_Series_Data_BasicPlotting.ipynb)
 
 ### Bonus: Time Series forecasting models
 
-Predictive analysis is not a requirement from this introductory course. Our main focus is on the descriptive part. Interested readers can checkout the following models from other literatures.
+A time series usually involves several components:
+
+- Trend - the non-repeating movement in the data, e.g. increasing stock price
+- Seasonal - repeating movement in the data, e.g. more sells before tax payment period.
+- Noise/ residual - other movements that do not belong to the above, e.g. interruptions in the market/ move-the-market news.
+
+![](assets/time-series-decomposition.png)
+Image credit: [Jae Duk Seo](https://towardsdatascience.com/trend-seasonality-moving-average-auto-regressive-model-my-journey-to-time-series-data-with-edc4c0c8284b)
+
+Next question is how to forecast a time series? Predictive analysis is not a requirement from this introductory course. Our main focus is on the descriptive part. Interested readers can checkout the following models from other literatures.
 
 - AR
 - MA
 - ARMA
 - ARIMA
+
+Checkout [this tutorial](https://medium.com/@josemarcialportilla/using-python-and-auto-arima-to-forecast-seasonal-time-series-90877adff03c) for an implementation of ARIMA using `pyramid-arima` (on [pypi](https://pypi.org/project/pyramid-arima/)) and `statsmodels`.
+
+[This tutorial](https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/) has a more detailed explanation of AR and MA and its decompositions.
+
+Note that the above models are highly simplified presentation of the reality. It works resonably with one-way market like sales forecast, where vendor and consumer have clear roles. It does not work well in stock market price prediction, because the market participants play the counterpart of each other and their predictions affect their behaviour which further affect the market status.
 
 ## References
 

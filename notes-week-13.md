@@ -71,7 +71,90 @@ References for geographical data:
 
 ### Aircrash map
 
-<!-- TODO: Yucan -->
+You can refer [here](https://dnnsociety.org/2018/04/30/flying-in-the-sky-a-report-of-air-crash-worldwide/) for the whole story. And the dataset can be found [here](https://github.com/ChicoXYC/HKBU-BIG-DATA-MEDIA/tree/master/Final%20Project%20-%20Airplane%20crash).
+
+For the visualization of the map, the key data we should get is the longitude and latitude of each cities, and organize the start station and the end station of each path. Then, with help of `plotly`, we can get an interactive map.
+
+```python
+import pandas as pd 
+import plotly
+import plotly.plotly as py
+import plotly.graph_objs as go
+import matplotlib.pyplot as plt
+df_flight_paths = pd.read_csv('path.csv') #includes the latitude and longitude of start station and end station
+df_airports = pd.read_csv('station.csv') #includes latitude and longitude of all cities.
+
+#prepare the airports station
+airports1 = [ dict(
+        type = 'scattergeo',
+        lon = df_airports['lng'],
+        lat = df_airports['lat'],
+        mode = 'markers',
+        marker = dict( 
+            size=3,
+            color='rgb(255, 0, 0)',
+            opacity=0.7
+        ))]
+airports2 = [ dict(
+        type = 'scattergeo',
+        lon = df_airports['lng'],
+        lat = df_airports['lat'],
+        mode = 'markers',
+        marker = dict( 
+            size=1,
+            color='rgb(255, 0, 0)',
+            opacity=1
+        ))]
+
+#prepare the flight path
+flight_paths = []
+for i in range(len(df_flight_paths)):
+    flight_paths.append(
+        dict(
+            type = 'scattergeo',
+            lon = [ df_flight_paths['start_lon'][i], df_flight_paths['end_lon1'][i] ],
+            lat = [ df_flight_paths['start_lat'][i], df_flight_paths['end_lat1'][i] ],
+            mode = 'lines',
+            line = dict(
+                width = 0.5,
+                alpha = 0.2,
+                color = 'blue',
+            )
+        )
+    )
+
+#set layout
+layout = dict(
+        title = 'flight path',
+        showlegend = False,         
+        geo = dict(
+            projection = dict( type="world" ),
+            resolution = 50,
+            showland = True,
+            landcolor = 'rgb(243, 243, 243)',
+            countrycolor = 'rgb(204, 204, 204)',
+
+            lataxis = dict(
+                #range = [ 20, 60],
+                showgrid = False,
+                tickmode = "linear",
+                dtick = 50
+            ),
+            lonaxis = dict(
+                #range = [-100, 20],
+                showgrid = False,
+                tickmode = "linear",
+                dtick = 60
+            ),
+        ),
+    )
+
+#plot map
+fig = dict(data=airports1+airports2+flight_paths, layout=layout)
+py.iplot(fig, validate=False, filename='flight path')
+```
+
+![Plotly interactive map](assets/plotly-interactive-map.png)
 
 ### Openrice Sichuan Food
 

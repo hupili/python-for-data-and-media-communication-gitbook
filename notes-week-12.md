@@ -4,7 +4,7 @@
 <!-- TOC -->
 
 - [Week 12: Network data](#week-12-network-data)
-    - [Count the edge](#count-the-edge)
+    - [Graph introduction](#graph-introduction)
     - [Network example](#network-example)
     - [Get data by json](#get-data-by-json)
     - [Visualization Spring layout](#visualization-spring-layout)
@@ -21,26 +21,34 @@
 <!-- /TOC -->
 </div>
 
-## Count the edge
+## Graph introduction
 
-* Represents of the graph.
- ![](assets/to-do-uncategorized-screenshots/no123.png)
+>Graph theory is the study of graphs, which are mathematical structures used to model `pairwise relations` between objects. A graph in this context is made up of `nodes`, which are connected by `edges`, arcs, or lines. A graph may be `undirected`, meaning that there is no distinction between the two vertices associated with each edge. (from [wiki](https://en.wikipedia.org/wiki/Graph_theory))
 
+There are different kind of graphs.
+![Graph types 1](assets/type-of-graphs1.png)
 
-![](assets/to-do-uncategorized-screenshots/no124.png)
+The criteria to judge whether one graph is the same as others is not the appearance, but the relationship between different nodes.
 
-* Try to count the edge between those circles.
+![Graph types 2](assets/type-of-graphs2.png)
 
-   ![](assets/to-do-uncategorized-screenshots/no125.png)  
-   This undirected table is symmetric. It shows that 1 and 2 has one edge. 2 and 3 is the same.   
-   ![](assets/to-do-uncategorized-screenshots/no126.png)  
-   The above one is directed.
+* Nodes: the fundamental unit of which graphs are formed,also called endpoint. They are connected by the edge like `A` and `B` in above picture.
+* Edge：the line that connect two nodes. Each edge has two nodes to which it is attached. Edges may be directed or undirected
 
-* There are different ways to show the relationships.
-   ![](assets/to-do-uncategorized-screenshots/no127.png)  
-   ![](assets/to-do-uncategorized-screenshots/no129.png)  
-   ![](assets/to-do-uncategorized-screenshots/no130.png)  
-   Then we can infer the list.
+Case1: Try to count the edge between those circles.
+
+![Undirected graph](assets/undirected-graph.png)
+
+This undirected table is symmetric. It shows that 1 and 2 has one edge. 2 and 3 is the same, but there is no edge between 1 and 3.
+
+![Directed graph](assets/directed-graph.png)  
+
+While in the directed relationships, like the above picture, 3->2 has one edge, 2->3 has zero edge, this is caused by the edge directions.
+
+There are different ways to show the relationships.
+
+![Edge list](assets/edge-list.png)  
+![Edge list weighted](assets/edge-list-weighted.png)  
 
 ## Network example
 

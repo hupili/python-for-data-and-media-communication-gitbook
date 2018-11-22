@@ -12,6 +12,8 @@
             - [Case 3: Most frequent names in tweets](#case-3-most-frequent-names-in-tweets)
         - [encode and decode](#encode-and-decode)
         - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
+            - [RegEx case 1: match Twitter username from tweets](#regex-case-1-match-twitter-username-from-tweets)
+            - [RegEx case 2: match telephone numbers in a piece of text](#regex-case-2-match-telephone-numbers-in-a-piece-of-text)
             - [Bonus: Text substitution](#bonus-text-substitution)
             - [RegEx in shell](#regex-in-shell)
     - [Stopwords](#stopwords)
@@ -70,7 +72,7 @@ s = string.split('/blog')
 #s
 s1 = s[-1]
 #s1
-s2='{0}{1}'.format('http://initiumlab.com',s1)
+s2='{0}{1}'.format('http://initiumlab.com/blog',s1)
 #s2
 ```
 
@@ -180,10 +182,12 @@ html = r.content.decode('gbk')
 html
 ```
 
-After decoding, the Chinese characters can display appropriately. And when saving the data, you can use a more widely used method `utf-8` to encode it.
+After decoding, the Chinese characters can display appropriately. And when writing data into csv, you can use a more widely used method `utf-8` to encode it.
 
 ```python
-with open('dy.csv','a',newline='',encoding='utf-8') as csvfile
+with open('dy.csv','a',newline='',encoding='utf-8') as f:
+    writer = csv.writer(f)
+    ...
 ```
 
 ![Decodes gbk](assets/decode-gbk.png)
@@ -195,13 +199,90 @@ The `.find()` and `in` operator on `str` has limited matching capability. They c
 1. Find all the user names from the Twitter message. i.e. those look like `@xxxx `, i.e. start with `@` and end with ` ` (blank).
 2. Find all the phone numbers from a paragraph of texts.
 
-RegEx can solve those problems in a very concise way.
+RegEx can solve those problems in a very concise way. We show you the power of RegEx in following subsections. Once you decide to move further, the [official doc on re](https://docs.python.org/3/library/re.html) is a good source for you to further study RegEx.
 
-<!-- TODO: solve above two problems using RegEx -->
+#### RegEx case 1: match Twitter username from tweets
+
+Here's the solution for question 1.
+
+```python
+>>> tweet = '@tom @jacky and @will, please come to my office at 10am.'
+>>> import re
+>>> pattern = re.compile(r'@[a-zA-Z0-9]+')  # pattern of the Twitter username
+>>> pattern.findall(tweet)
+['@tom', '@jacky', '@will']
+```
+
+The key of learning RegEx is to learn the pattern string, i.e. `@[a-zA-Z0-9]+` in the above example. Let's decode this pattern as follows:
+
+- `@` - matches a single `@` character.
+- `[]` - is a collection notation, matching the current position to any valid character in this collection.
+  - In our example, the collection is composed of
+    - All characters from `a` to `z`, and from `A` to `Z`, and from `0` to `9`.
+    - The hyphen `-` here is a notation to specify a range of characters.
+- `+` - is a repetition number, meaning matching one or more characters using the preceding pattern character
+  - The preceding pattern character is a collection, i.e. `[a-zA-Z0-9]`.
+
+To sum it up, the above RegEx pattern can match all any substring that starts with a `@` character and then followed by one or more alphanumeric characters.
+
+#### RegEx case 2: match telephone numbers in a piece of text
+
+Learning RegEx is like learning a new language. It is very easy to match the pattern you want. However, it may be difficult to exclude things that you don't want to match. Let's give a demo using question 2. The first trial would be:
+
+```python
+>>> introduction = 'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at 34119999 or Mr B 34119998'
+>>> pattern = re.compile(r'\d+')
+>>> pattern.findall(introduction)
+['16', '1', '34119999', '34119998']
+```
+
+In this pattern, `\d` means the collection of numbers, i.e. `[0-9]`. The `+` specifies a repetition count of one or multiple. You can see that all the numeric substrings are extracted. However, not all of them are telephone numbers. Gievn a bit domain knowledge, we know that the phone numbers in Hong Kong have 8 digits. So we can adjust our pattern to use a repetition number of `{8}`:
+
+```python
+>>> pattern = re.compile(r'\d{8}')
+>>> pattern.findall(introduction)
+['34119999', '34119998']
+```
+
+The pattern works at present, but does not work when the text includes other 8-digit non telephone number substrings:
+
+```python
+>>> introduction = 'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at 34119999 or Mr B 34119998. Students who enrol in extra courses will be charged 12345678 dollar per course.'
+>>> pattern = re.compile(r'\d{8}')
+>>> pattern.findall(introduction)
+['34119999', '34119998', '12345678']
+```
+
+The tuition fee is also match because our pattern is not precise enough. In order to fix this problem, we need to further apply our domain knowledge. We know that HKBU's telephone numbers start with `3411`. So we can revise our pattern and get following result:
+
+```python
+>>> pattern = re.compile(r'3411\d{4}')
+>>> pattern.findall(introduction)
+['34119999', '34119998']
+```
+
+The pattern is to match any 8 character string that starts with "3411" and ends with any four digits. The curious readers may ask: what if the tuition fee is "34113411 dollar"? As you guess, the above pattern fails. How to refine? The short answer is that there is no ultimate way. As long as "34113411" itself is a valid telephone number, we can hardly exclude it from our matching by just looking at itself. 
+
+This issue is quite common text processing, or further more **Natural Language Processing (NL)**. The token itself is not enough for us to understand its meaning. One similar example is: "Apple is good". We are not sure if "the Apple" that produces iPhone is good; or apple, as a fruit, is good. We human being needs context in order to understand this sentence. So is computer. This discussion is beyond our curriculum. Interested readers can search for "NLP".
+
+Back to our focus on basic pattern matching, we can conclude that it is easy to match the things one want using RegEx, but rather difficult to fully exclude other unwanted stuffs. When building your RegEx solution, you usually starts with a collection of **cases**. You keep on adding new cases to the collection and test them with your RegEx pattern. You may need to refine multiple times in order to find the one that works well on your dataset.
 
 #### Bonus: Text substitution
 
-RegEx can let you substitute some matching parts. It even allows to interpolate variables using values from matching part.
+RegEx can let you substitute some matching parts. This is very similar to the `str.replace` function but does more than that. It even allows one to interpolate variables using values from matching part.
+
+Suppose the university decides "3411" is a bad prefix and "8888" sounds good. How do we change all the numbers? Checkout following solution:
+
+```python
+>>> pattern = re.compile(r'3411(\d{4})')
+>>> re.sub(pattern, r'+852 8888-\1', introduction)
+'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at +852 8888-9999 or Mr B +852 8888-9998. Students who enrol in extra courseswill be charged 12345678 dollar per course.'
+```
+
+Besides changing the telephone prefix, we also added the country code and a hyphen between university prefix and the phone number. Note how this happens:
+
+- `()` is called a "group" in RegEx. The brackets do not match any character. However, patterns inside a pair of brackets are of the same group. The match substring will be put in the same group for further reference.
+- `\1` means the first group. There could be multiple groups matched by one pattern. You can use `\n` notation to refer to the `n`-th group. `\0` means the entire string.
 
 #### RegEx in shell
 
@@ -243,20 +324,26 @@ For installation and documentation, you can refer [here](https://pypi.org/projec
 You can add new stopwords by the case need.
 
 ```python
-stopwords = list #the original stopwords list
-newStopWords = ['stopWord1','stopWord2']
-stopwords.extend(newStopWords)
+stopwords = ['a','b'] #the original stopwords list
+newstopwords = ['stopword1','stopword2']
+stopwords.extend(newstopwords)
 ```
 
 ### Remove stopwords
 
+Move stopwords is easy, you just loop them to determine
+whether the words are in the stopwords, if true, then remove them. Following the above example:
+
 ```python
+words = ['a','like','media','b']
 processed_word_list = []
 #assume you've already get a list of words  
 for word in words:
     word = word.lower() # in case they are not all lower cased
     if word not in stopwords:
         processed_word_list.append(word)
+#processed_word_list
+#['like', 'media']
 ```
 
 ## Word frequency
@@ -302,7 +389,7 @@ def remove_stopwords(words): #remove stopwords
             processed_word_list.append(word)
     return processed_word_list
 
-words = read_txt("text/")
+words = read_txt("text/") #pass your own file path that include list of .txt
 words = words.split()
 stopwords = stopwordslist('./stopwords_eng.txt')
 stopwords = set(stopwords)
@@ -469,22 +556,60 @@ For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/
 
 ## Bonus: TF.IDF
 
-- Term Frequency
-- Inverse Document Frequency
+- `TF` - Term Frequency
+- `IDF` - Inverse Document Frequency
+- `TFIDF` = `TF * IDF`
+
+TFIDF is a measure of (a term's importance to a document) in (a collection of documents), called "corpus". We put the previous sentence in branckets so that it is easier to read. The rationale is very straight forward:
+
+- TF -- importance to a specific document -- the more one term appears in one document, the more important it is to the document.
+- IDF -- importance in a collection of documents -- if a term appears too frequently in all documents, e.g. stop words, it does not carry much importance to the current document.
+
+[Read more](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 
 ## Bonus: Topic model
 
-<!-- TODO: -->
+Topic model is a typical example of machine learning: discover meaningful lower dimension space out of higher dimension observations. The higher dimension space is called data space. The lower dimension space is called latent space. The basic assumption is that, despite the complexity of text/ human language, the intrinsic structure is simple. The texts we observe are just statistical variables generated from the intrinsic structure.
+
+Consider two courses about data journalism:
+
+1. The data analysis course, e.g. [current course](https://github.com/hupili/python-for-data-and-media-communication-gitbook/)
+2. The data visualization course, e.g. [http://datavis.studio](http://datavis.studio)
+
+We know the "topic" of the two courses are different. How can we tell? If we check out the word frequency of the two course, we may find that:
+
+1. Frequent terms: Data, scraper, web, Python, jupyter, pandas, numpy, matplotlib, ...
+2. Frequent terms: Data, Javascript, CSS, HTML, web, responsive, bootstrap, echart, ...
+
+By looking at the two different lists, we can tell they are of different topics. Computers can also recognise topics in a similar way. In a usual topic modeling procedure, we start with a matrix composed of "document vectors". The vector has a coordinate system using all the potential terms, so every element in the vector represents an intensity of this term in the document. A "topic vector" has the same shape of a "document vector" -- a collection of terms with different weights. Some terms may be stronger indicator of certain topic, like "Python" and "Javascript" in above example. Some other terms may be a weaker indicator, like "web" in above example, where one course emphasize more on "web scraping" and another course emaphasize more on "responsive web". In the technical language, "topic vector" is a (mostly "linear") combination of "document vectors". The number of topics is much less than the number of documents, which can be told from the original rationale:
+
+- We have many documents but only a few topics
+- The intrinsic structure (number of docs) is much simpler than the observations (documents)
+
+Here is a [tutorial](https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef03213cd21) of topic mining using `nltk` and `gensim`. The algorithm used is called LDA.
 
 ## Bonus: Sentiment analysis
 
-- Construct classifier using `sklearn`.
+The task of sentiment analysis is to get polarity and subjectivity from a piece of text. Polarity can be positively mooded or negatively mooded. Subjectivity can be subjective or objective. It finds good applications in media monitoring. When a crisis emerges, you may want to know how the public reacts to the incident. With massive data from the social network and real-time sentiment analysis, one can devise a better PR strategy.
+
+The procedure of sentiment analysis usually starts with a collection of positive terms and a collection of negative terms. If one piece of text contains more positive terms, it is likely to be an overall positive statement; Vice versa. How to get the collection of positive or negative terms? We usually start with human labels on some training texts. After human judges the sentiment of the training texts, we throw them to the computer. The computer builds the term collection using the collection that if one term appears frequently in a positive statements, that term is likely to be positive; Vice versa.
+
+The above is just an intuition of sentiment analysis. The real work involves more sophisticated statistical models. You may not be able to fully understand them but following are some pointers for you to get working codes:
+
+- Construct classifier using `sklearn`. Checkout the [tutorial](https://towardsdatascience.com/sentiment-analysis-of-tweets-using-multinomial-naive-bayes-1009ed24276b).
 - Online API like [text-processing](http://text-processing.com/docs/sentiment.html).
 - `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
 
 ## Bonus: word2vec
 
-<!-- TODO: -->
+word2vec is a set of algorithms to perform "word embedding". It is similar to "topic modeling" in terms of the structure:
+
+- Topic modeling - A document is represented by a (linear) combination of topics; A topic is represented by a (linear) combination of terms.
+- Word embedding - A document is represented by a variable length sequence of words; A word is represented by a lower-dimension vectors; the element of word vectors may not have physical interpretation.
+
+The upside of word embedding is to enable vector arithmetics like `king−man+woman=queen`. Also, the word vector can be computed offline (pre-computation). That makes it easier to handle new documents.
+
+Checkout [Wikipedia](https://en.wikipedia.org/wiki/Word2vec) for background information and [this blog](https://www.datacamp.com/community/tutorials/lda2vec-topic-model) for a quick tutorial on LDA (topic model), word2vec and LDA2vec.
 
 ## Further readings
 

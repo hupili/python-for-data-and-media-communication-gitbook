@@ -77,6 +77,7 @@ You can search through our whole repo, including all the notes and FAQs using th
 * [module: python-twitter](module-python-twitter.md)
 * [module: datetime](module-datetime.md)
 * [module: selenium](module-selenium.md)
+* [module: wordcloud](module-wordcloud.md)
 
 ### Other Uncategorized FAQs
 

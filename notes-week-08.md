@@ -320,7 +320,22 @@ From this statistic, we can know that students in year 7 has larger kurtosis, wh
 
 ### The mode of data
 
-<!-- TODO: most frequent value of a discrete variable -->
+Get the value with maximum frequency. For example, filter out the grade with maximum frequency of each year students.
+
+```python
+#get the data of all years
+df_g = df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']]
+#drop the rows with nan value, unless it will affect the results
+df_g.dropna(inplace=True)
+#df_g
+df_g.mode()
+```
+
+![Dataframe mode](assets/dataframe-mode.png)
+
+Note that there could be multiple values returned for the selected axis (when more than one item share the maximum frequency), which is the reason why a dataframe is returned. If you want to impute missing values with the mode in a dataframe df, you can just do this: `df_g.mode().iloc[0]`
+
+Also, you can use `df_g['AVG_ENG_MATH_SCORE_08'].mode()` to get single series mode.
 
 ## Correlation
 

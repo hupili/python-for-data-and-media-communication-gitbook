@@ -1,5 +1,13 @@
 # matplotlib
 
+## Troubleshooting Chinese characters on MAC
+
+[This noteboko](https://github.com/hupili/python-for-data-and-media-communication/blob/master/matplotlib-examples/Chinese%20Font.ipynb) gives detailed steps in troubleshooting the Chinese characters on MAC. You will learn:
+
+- Where are the fonts stored on your system
+- How to filter out the font files that include CJK characters
+- How to load a font file into matplotlib. Note that `ttc` does not work for some version of matplotlib. `ttf` works.
+
 ## How to display Chinese characters when using matplotlib
 
 Step 1: Download the SimHei font [here](https://www.fontpalace.com/font-details/SimHei/)
@@ -45,3 +53,5 @@ Step 7: add following two lines into your codes
 plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 ```
+
+There is a similar issue about Chinese characters (CJK characters) when you use wordcloud. Please refer to [this section](module-wordcloud.md#display-chinese-characters-when-plotting-tag-cloud) for the solution.
