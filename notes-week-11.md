@@ -365,30 +365,8 @@ The time 1 Year ago is 2017-11-19 10:57:50.
 
 ## Time Series
 
-Basic requirement is to plot time series at different granularity, e.g. by hour, by day, by week, ... Articulate the findings on the polyline plot.
+- Basic requirement: plot time series at different granularity, e.g. by hour, by day, by week, ... Articulate the findings on the polyline plot.
 
-### Resample, aggregate and plot
-
-Checkout [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/datetime/timeseries.ipynb) for a concrete case of analysing term frequency changes over time in the Tweets.
-
-The core codes are as follows
-
-```python
-df_kws = df.set_index('datetime').resample('1m').aggregate('sum')
-df_kws.plot()
-```
-
-![](assets/twitter-russian-keywords-timeseries.png)
-
-The key points of plotting time series using pandas:
-
-- First you need to put `datetime` type of data onto index. This usually involves
-  - `.apply` a function to [convert from string to datetime](#convert-from-string-to-datetime)
-  - `.set_index` to move the `datetime` type from column to index. This is essential step to perform time series operation because later functions all refer to index for the datetime value.
-- Use `.resample` to put the data points into different buckets. This is essentially a `.groupby` operation. Instead of working on categorical values like `.groupby`, `.resample` works on datetime ranges. One can specify a time length when performing resample operation, e.g. one week `1w` and two days `2d`.
-- Use `.aggregate` to turn the bucket of data points into a single value. This is the same process like [groupby + aggregate](notes-week-08.md#dataframegroupby) approach, but applied on datetime data types.
-
-### Time Series
 A **time series** is a series of data points indexed (or listed or graphed) in time order. They are very frequently plotted via line charts and used in many fields like statistics, pattern recognition, mathematical finance, weather forecasting, earthquake prediction, astronomy and communications engineering. Check here for more information: [Time series - Wikipedia](https://en.wikipedia.org/wiki/Time_series).
 Time series will become more important when we are dealing with the rather bigger datasets. See this case:
 ```python
@@ -401,7 +379,7 @@ Output:
 ```
 The length of df is 203482
 ```
-![Image](assets/time-series-1.png)
+![Image](assets/time-series-0.png)
 Their are more than 200 thousand lines in this dataframe. However, this is the very beginning and we can extract data by different time series from it.
 
 ### Sample
@@ -416,7 +394,7 @@ Output:
 ```
 After sampling, the length of df is 20348
 ```
-![Image](assets/time-series-2.png)
+![Image](assets/time-series-1.png)
 We can find that there are 1/10 (because of `frac=0.1`) data have been randomly selected and the data has been disrupted the order. You can also learn more about the regulations of sampling in [pandas official document](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sample.html#pandas-dataframe-sample).
 
 ### Resample
@@ -432,21 +410,22 @@ def parse_datetime(x):
         return numpy.nan
 df['datetime'] = df['created_str'].apply(parse_datetime)
 ```
-#### Resampling by timeline
 Now we can use `resample('1W')` to know how many twitts emerged every week.
 ```python
 df.set_index('datetime').resample('1w').aggregate('count').tail()
 ```
+Output:
+![Image](assets/time-series-2.png)
 Notes:
 - Setting the 'datetime' column as index is necessary, for `resample()` must have a index composed by datetime-like values.
-- `'1W'` is an essential positional argument which means we collect twitts per 7-day period. You can also use the parameters like `'S'`(second), `'Min'`(minute), `'M'`(month), `'SM'`(semi-month) and so forth to do your own research. You can check [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.resample.html) to read more instructions.
-- `aggregate('count')` counts how many twitts posted on a weekly level. We will introduce 'aggregate' in the next part.
+- `'1W'` is an essential positional argument which means we collect twitts per 7-day period. You can also use the parameters like `'S'`(second), `'Min'`(minute), `'M'`(month), `'SM'`(semi-month) and so forth. You can check [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.resample.html) to read more instructions.
+- `aggregate('count')` counts how many Tweets posted on a weekly level. We will introduce 'aggregate' in the next part.
 #### Bonus: explore resample
 In statistics, **resampling** is method for drawing randomly with replacement from a set of data points, including exchanging labels on data points when performing significance tests or validating models by using random subsets. The resampling as a methodology has been widely used in the field of analogue signal processing or audio compression for many years. See its basic mode:
 ![Image](assets/time-series-3.png)
 You can learn more about it from [Resampling - Wikipedia](https://en.wikipedia.org/wiki/Resampling_(statistics)).
 ### aggregate
-The aggregate is a process where the values of multiple rows are grouped together. It is aimed to form a single value of more significant meaning or measurement e.g. a sum, a max or a mean.
+The **aggregate** is a process where the values of multiple rows are grouped together. It is aimed to form a single value of more significant meaning or measurement e.g. a sum, a max or a mean.
 See how it works in this case:
 ```python
 def has_hillary(t):
@@ -465,10 +444,35 @@ df.set_index('datetime').resample('1w').aggregate('sum').tail()
 ```
 Output:
 ![Image](assets/time-series-5.png)
-
+The sum of each line have been figured. You can check [here](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.aggregate.html?highlight=aggregate#pandas.DataFrame.aggregate) to learn more about what aggregate can do.
 ### plot
+After resample and aggregate, we can use `plot()` to do the visualisation. Here is an example:
 
+```
+df['kw-all'] = df['text'].apply(lambda x: 1)
+df.set_index('datetime').resample('1w').aggregate('sum').plot()
+```
+Output:
+![Image](assets/time-series-6.png)
+You can check out more visual aid analysis in [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/datetime/timeseries.ipynb). It is a concrete case of analysing term frequency changes over time in the Tweets.
 
+### Summary: Resample, aggregate and plot
+
+The core codes are as follows:
+
+```python
+df_kws = df.set_index('datetime').resample('1m').aggregate('sum')
+df_kws.plot()
+```
+![](assets/twitter-russian-keywords-timeseries.png)
+
+The key points of plotting time series using pandas:
+
+- First you need to put `datetime` type of data onto index. This usually involves
+  - `.apply` a function to [convert from string to datetime](#convert-from-string-to-datetime)
+  - `.set_index` to move the `datetime` type from column to index. This is essential step to perform time series operation because later functions all refer to index for the datetime value.
+- Use `.resample` to put the data points into different buckets. This is essentially a `.groupby` operation. Instead of working on categorical values like `.groupby`, `.resample` works on datetime ranges. One can specify a time length when performing resample operation, e.g. one week `1w` and two days `2d`.
+- Use `.aggregate` to turn the bucket of data points into a single value. This is the same process like [groupby + aggregate](notes-week-08.md#dataframegroupby) approach, but applied on datetime data types.
 There is a small missing piece of the above Tweets keyword time series from current discussion. Besides handling the index, you also need to have numeric data on columns, e.g. `kw-hillary` as you can see from the chart. You can checkout [Most Common Names in Tweets](notes-week-10.md#case-3-most-frequent-names-in-tweets) example to see how to encode tweet text into such numeric indicator variables.
 
 ### Smoothing technique: Moving average
