@@ -548,8 +548,16 @@ For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/
 
 ## Bonus: TF.IDF
 
-- Term Frequency
-- Inverse Document Frequency
+- `TF` - Term Frequency
+- `IDF` - Inverse Document Frequency
+- `TFIDF` = `TF * IDF`
+
+TFIDF is a measure of (a term's importance to a document) in (a collection of documents), called "corpus". We put the previous sentence in branckets so that it is easier to read. The rationale is very straight forward:
+
+- TF -- importance to a specific document -- the more one term appears in one document, the more important it is to the document.
+- IDF -- importance in a collection of documents -- if a term appears too frequently in all documents, e.g. stop words, it does not carry much importance to the current document.
+
+[Read more](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 
 ## Bonus: Topic model
 
