@@ -548,22 +548,60 @@ For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/
 
 ## Bonus: TF.IDF
 
-- Term Frequency
-- Inverse Document Frequency
+- `TF` - Term Frequency
+- `IDF` - Inverse Document Frequency
+- `TFIDF` = `TF * IDF`
+
+TFIDF is a measure of (a term's importance to a document) in (a collection of documents), called "corpus". We put the previous sentence in branckets so that it is easier to read. The rationale is very straight forward:
+
+- TF -- importance to a specific document -- the more one term appears in one document, the more important it is to the document.
+- IDF -- importance in a collection of documents -- if a term appears too frequently in all documents, e.g. stop words, it does not carry much importance to the current document.
+
+[Read more](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 
 ## Bonus: Topic model
 
-<!-- TODO: -->
+Topic model is a typical example of machine learning: discover meaningful lower dimension space out of higher dimension observations. The higher dimension space is called data space. The lower dimension space is called latent space. The basic assumption is that, despite the complexity of text/ human language, the intrinsic structure is simple. The texts we observe are just statistical variables generated from the intrinsic structure.
+
+Consider two courses about data journalism:
+
+1. The data analysis course, e.g. [current course](https://github.com/hupili/python-for-data-and-media-communication-gitbook/)
+2. The data visualization course, e.g. [http://datavis.studio](http://datavis.studio)
+
+We know the "topic" of the two courses are different. How can we tell? If we check out the word frequency of the two course, we may find that:
+
+1. Frequent terms: Data, scraper, web, Python, jupyter, pandas, numpy, matplotlib, ...
+2. Frequent terms: Data, Javascript, CSS, HTML, web, responsive, bootstrap, echart, ...
+
+By looking at the two different lists, we can tell they are of different topics. Computers can also recognise topics in a similar way. In a usual topic modeling procedure, we start with a matrix composed of "document vectors". The vector has a coordinate system using all the potential terms, so every element in the vector represents an intensity of this term in the document. A "topic vector" has the same shape of a "document vector" -- a collection of terms with different weights. Some terms may be stronger indicator of certain topic, like "Python" and "Javascript" in above example. Some other terms may be a weaker indicator, like "web" in above example, where one course emphasize more on "web scraping" and another course emaphasize more on "responsive web". In the technical language, "topic vector" is a (mostly "linear") combination of "document vectors". The number of topics is much less than the number of documents, which can be told from the original rationale:
+
+- We have many documents but only a few topics
+- The intrinsic structure (number of docs) is much simpler than the observations (documents)
+
+Here is a [tutorial](https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef03213cd21) of topic mining using `nltk` and `gensim`. The algorithm used is called LDA.
 
 ## Bonus: Sentiment analysis
 
-- Construct classifier using `sklearn`.
+The task of sentiment analysis is to get polarity and subjectivity from a piece of text. Polarity can be positively mooded or negatively mooded. Subjectivity can be subjective or objective. It finds good applications in media monitoring. When a crisis emerges, you may want to know how the public reacts to the incident. With massive data from the social network and real-time sentiment analysis, one can devise a better PR strategy.
+
+The procedure of sentiment analysis usually starts with a collection of positive terms and a collection of negative terms. If one piece of text contains more positive terms, it is likely to be an overall positive statement; Vice versa. How to get the collection of positive or negative terms? We usually start with human labels on some training texts. After human judges the sentiment of the training texts, we throw them to the computer. The computer builds the term collection using the collection that if one term appears frequently in a positive statements, that term is likely to be positive; Vice versa.
+
+The above is just an intuition of sentiment analysis. The real work involves more sophisticated statistical models. You may not be able to fully understand them but following are some pointers for you to get working codes:
+
+- Construct classifier using `sklearn`. Checkout the [tutorial](https://towardsdatascience.com/sentiment-analysis-of-tweets-using-multinomial-naive-bayes-1009ed24276b).
 - Online API like [text-processing](http://text-processing.com/docs/sentiment.html).
 - `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
 
 ## Bonus: word2vec
 
-<!-- TODO: -->
+word2vec is a set of algorithms to perform "word embedding". It is similar to "topic modeling" in terms of the structure:
+
+- Topic modeling - A document is represented by a (linear) combination of topics; A topic is represented by a (linear) combination of terms.
+- Word embedding - A document is represented by a variable length sequence of words; A word is represented by a lower-dimension vectors; the element of word vectors may not have physical interpretation.
+
+The upside of word embedding is to enable vector arithmetics like `king−man+woman=queen`. Also, the word vector can be computed offline (pre-computation). That makes it easier to handle new documents.
+
+Checkout [Wikipedia](https://en.wikipedia.org/wiki/Word2vec) for background information and [this blog](https://www.datacamp.com/community/tutorials/lda2vec-topic-model) for a quick tutorial on LDA (topic model), word2vec and LDA2vec.
 
 ## Further readings
 

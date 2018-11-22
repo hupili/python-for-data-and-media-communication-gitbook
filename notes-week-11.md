@@ -368,6 +368,25 @@ Basic requirement is to plot time series at different granularity, e.g. by hour,
 
 ### Resample, aggregate and plot
 
+Checkout [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/datetime/timeseries.ipynb) for a concrete case of analysing term frequency changes over time in the Tweets.
+
+The core codes are as follows
+
+```python
+df_kws = df.set_index('datetime').resample('1m').aggregate('sum')
+df_kws.plot()
+```
+
+![](assets/twitter-russian-keywords-timeseries.png)
+
+The key points of plotting time series using pandas:
+
+- First you need to put `datetime` type of data onto index. This usually involves
+  - `.apply` a function to [convert from string to datetime](#convert-from-string-to-datetime)
+  - `.set_index` to move the `datetime` type from column to index. This is essential step to perform time series operation because later functions all refer to index for the datetime value.
+- Use `.resample` to put the data points into different buckets. This is essentially a `.groupby` operation. Instead of working on categorical values like `.groupby`, `.resample` works on datetime ranges. One can specify a time length when performing resample operation, e.g. one week `1w` and two days `2d`.
+- Use `.aggregate` to turn the bucket of data points into a single value. This is the same process like [groupby + aggregate](notes-week-08.md#dataframegroupby) approach, but applied on datetime data types.
+
 ### Smoothing technique: Moving average
 
 ### Bonus: Time Series forecasting models
