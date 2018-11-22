@@ -24,7 +24,10 @@ Following are the **individual** assignments. You are welcome to discuss and wor
 - Create one folder for each assignment, with names `assignment0`, `assignment1` and `assignment2`.
 - Put all the relevant files, including codes, docs and data (where applicable) into the per assignment folder. Refer to [notes-week-00.md](notes-week-00.md) for GitHub operations.
 
-**Note**: You need to ensure the work is on GitHub before the deadline. Although we don't grade immediately after submission close, we can always check back the status at that time from version history.
+**Note**:
+
+- You need to ensure the work is on GitHub before the deadline. Although we don't grade immediately after submission close, we can always check back the status at that time from version history.
+- Please use `master` branch, which is a default setting on GitHub or your Git client. Create **one folder** for each assignment, not **one branch**.
 
 ## Assignment 0 -- Bridging assignment for language efficiency
 
@@ -116,10 +119,13 @@ Basic requirements:
 - Notebook needs to be legible:
   - Put trial & error codes aside
   - Adjust/ truncate/ omit long output
+- Notebook should be able to execute by the readers and get the same results.
 - All auxiliary files need to be stored in the assignment folder, including data, image, codes, ...
 - **Important** The `.ipynb` notebook file should be self-explainary. Make sure you can use https://nbviewer.jupyter.org to view it.
 
 **NOTE**: This is a mini story produced from data. The purpose of this assignemnt is to exercise workflow so don't dwell on the content too much if you find the story points are not compelling. Once you get used to this workflow, you will find it very easy to share ideas/ results and collaborate with others online. Again, we do not ask for a _substantial_ story from this assignment.
+
+Jupyter notebook is a rich environment for you to put up multimedia texts. You can refer to [this section](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-09.md#jupyter-notebook) for some functionalities of the Jupyter notebook.
 
 Some references from past submissions, with instructor notes:
 

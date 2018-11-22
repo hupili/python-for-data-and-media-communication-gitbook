@@ -36,8 +36,12 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 * [Notes: Week 07 - Work with table: data cleaning and pre-processing](notes-week-07.md)
 * [Notes: Week 08 - Work with table: 1D analysis and 2D analysis](notes-week-08.md)
 * [Notes: Week 09 - Present findings: data visualization and reproducible report](notes-week-09.md)
-* [Notes: Week 10 - Handle special data type: text, graph, time series, geographical](notes-week-10.md)
-* [Notes: Week 11 - Machine learning primer: clustering, classification, regression](notes-week-11.md)
+* [Notes: Week 10 - Text data](notes-week-10.md)
+* [Notes: Week 11 - Datetime and Time Series](notes-week-11.md)
+* [Notes: Week 12 - Network data](notes-week-12.md)
+* [Notes: Week 13 - Geographical data](notes-week-13.md)
+* [Notes: Week 14 - High Dimensional Data](notes-week-14.md)
+* [Notes: Week 15 - Machine learning primer: clustering, classification, regression](notes-week-15.md)
 
 ## FAQ Catalogue
 

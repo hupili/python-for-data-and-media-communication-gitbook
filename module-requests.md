@@ -1,4 +1,15 @@
-# requests
+# Requests
+
+<div id="toc">
+<!-- TOC -->
+
+- [Requests](#requests)
+    - [Modify User Agent](#modify-user-agent)
+    - [HTTP status code](#http-status-code)
+    - [Return empty results](#return-empty-results)
+
+<!-- /TOC -->
+</div>
 
 ## Modify User Agent
 
@@ -27,3 +38,27 @@ When you make a request to a website, there might be different status responded.
 - 403 Forbidden
 
 For more examples, please refer to [here](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) .
+
+
+## Return empty results
+
+Case: Airbnb
+
+```python
+import requests
+from bs4 import BeautifulSoup
+r = requests.get('https://www.airbnb.com/s/all?adults=1&children=0&infants=0&guests=1&toddlers=0&refinement_paths%5B%5D=%2Ffor_you')
+html_text = BeautifulSoup(r.text,"html.parser")
+hotels = html_text.find_all('div')
+hotels
+```
+
+![](assets/requests-return-blank.png)
+
+You will find the content you wanted is not there and if you save the content in a html and reopen it, it's a blank page.
+
+```python
+open('mypage.html','w').write(r.text)
+```
+
+This is indicator that this page is loaded dynamically, you may need to use `selenium` or `splinter` to scrape instead.
