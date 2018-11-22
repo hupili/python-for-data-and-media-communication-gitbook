@@ -376,7 +376,7 @@ Output:
 ```
 The length of df is 203482
 ```
-![Image](1.png)
+![Image](assets/time-series-1.png)
 Their are more than 200 thousand lines in this dataframe. However, this is the very beginning and we can extract data by different time series from it.
 
 ### Sample
@@ -391,7 +391,7 @@ Output:
 ```
 After sampling, the length of df is 20348
 ```
-![Image](2.png)
+![Image](assets/time-series-2.png)
 We can find that there are 1/10 (because of `frac=0.1`) data have been randomly selected and the data has been disrupted the order. You can also learn more about the regulations of sampling in [pandas official document](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sample.html#pandas-dataframe-sample).
 
 ### Resample
@@ -418,7 +418,7 @@ Notes:
 - `aggregate('count')` counts how many twitts posted on a weekly level. We will introduce 'aggregate' in the next part.
 #### Bonus: explore resample
 In statistics, **resampling** is method for drawing randomly with replacement from a set of data points, including exchanging labels on data points when performing significance tests or validating models by using random subsets. The resampling as a methodology has been widely used in the field of analogue signal processing or audio compression for many years. See its basic mode:
-![Image](3.png)
+![Image](assets/time-series-3.png)
 You can learn more about it from [Resampling - Wikipedia](https://en.wikipedia.org/wiki/Resampling_(statistics)).
 ### aggregate
 The aggregate is a process where the values of multiple rows are grouped together. It is aimed to form a single value of more significant meaning or measurement e.g. a sum, a max or a mean.
@@ -433,13 +433,14 @@ df['kw-trump'] = df['text'].apply(has_trump)
 df.head()
 ```
 Output:
-![Image](4.png)
+![Image](assets/time-series-4.png)
 
 ```python
 df.set_index('datetime').resample('1w').aggregate('sum').tail()
 ```
 Output:
-![Image](5.png)
+![Image](assets/time-series-5.png)
+
 ### plot
 
 Checkout [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/datetime/timeseries.ipynb) for a concrete case of analysing term frequency changes over time in the Tweets.
