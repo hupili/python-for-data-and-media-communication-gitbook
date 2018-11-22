@@ -331,13 +331,19 @@ stopwords.extend(newstopwords)
 
 ### Remove stopwords
 
+Move stopwords is easy, you just loop them to determine
+whether the words are in the stopwords, if true, then remove them. Following the above example:
+
 ```python
+words = ['a','like','media','b']
 processed_word_list = []
 #assume you've already get a list of words  
 for word in words:
     word = word.lower() # in case they are not all lower cased
     if word not in stopwords:
         processed_word_list.append(word)
+#processed_word_list
+#['like', 'media']
 ```
 
 ## Word frequency
