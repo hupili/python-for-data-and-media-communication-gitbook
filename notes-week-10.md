@@ -72,7 +72,7 @@ s = string.split('/blog')
 #s
 s1 = s[-1]
 #s1
-s2='{0}{1}'.format('http://initiumlab.com',s1)
+s2='{0}{1}'.format('http://initiumlab.com/blog',s1)
 #s2
 ```
 
@@ -182,10 +182,12 @@ html = r.content.decode('gbk')
 html
 ```
 
-After decoding, the Chinese characters can display appropriately. And when saving the data, you can use a more widely used method `utf-8` to encode it.
+After decoding, the Chinese characters can display appropriately. And when writing data into csv, you can use a more widely used method `utf-8` to encode it.
 
 ```python
-with open('dy.csv','a',newline='',encoding='utf-8') as csvfile
+with open('dy.csv','a',newline='',encoding='utf-8') as f:
+    writer = csv.writer(f)
+    ...
 ```
 
 ![Decodes gbk](assets/decode-gbk.png)
@@ -322,20 +324,26 @@ For installation and documentation, you can refer [here](https://pypi.org/projec
 You can add new stopwords by the case need.
 
 ```python
-stopwords = list #the original stopwords list
-newStopWords = ['stopWord1','stopWord2']
-stopwords.extend(newStopWords)
+stopwords = ['a','b'] #the original stopwords list
+newstopwords = ['stopword1','stopword2']
+stopwords.extend(newstopwords)
 ```
 
 ### Remove stopwords
 
+Move stopwords is easy, you just loop them to determine
+whether the words are in the stopwords, if true, then remove them. Following the above example:
+
 ```python
+words = ['a','like','media','b']
 processed_word_list = []
 #assume you've already get a list of words  
 for word in words:
     word = word.lower() # in case they are not all lower cased
     if word not in stopwords:
         processed_word_list.append(word)
+#processed_word_list
+#['like', 'media']
 ```
 
 ## Word frequency
