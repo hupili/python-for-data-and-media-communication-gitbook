@@ -561,7 +561,24 @@ TFIDF is a measure of (a term's importance to a document) in (a collection of do
 
 ## Bonus: Topic model
 
-<!-- TODO: -->
+Topic model is a typical example of machine learning: discover meaningful lower dimension space out of higher dimension observations. The higher dimension space is called data space. The lower dimension space is called latent space. The basic assumption is that, despite the complexity of text/ human language, the intrinsic structure is simple. The texts we observe are just statistical variables generated from the intrinsic structure.
+
+Consider two courses about data journalism:
+
+1. The data analysis course, e.g. [current course](https://github.com/hupili/python-for-data-and-media-communication-gitbook/)
+2. The data visualization course, e.g. [http://datavis.studio](http://datavis.studio)
+
+We know the "topic" of the two courses are different. How can we tell? If we check out the word frequency of the two course, we may find that:
+
+1. Frequent terms: Data, scraper, web, Python, jupyter, pandas, numpy, matplotlib, ...
+2. Frequent terms: Data, Javascript, CSS, HTML, web, responsive, bootstrap, echart, ...
+
+By looking at the two different lists, we can tell they are of different topics. Computers can also recognise topics in a similar way. In a usual topic modeling procedure, we start with a matrix composed of "document vectors". The vector has a coordinate system using all the potential terms, so every element in the vector represents an intensity of this term in the document. A "topic vector" has the same shape of a "document vector" -- a collection of terms with different weights. Some terms may be stronger indicator of certain topic, like "Python" and "Javascript" in above example. Some other terms may be a weaker indicator, like "web" in above example, where one course emphasize more on "web scraping" and another course emaphasize more on "responsive web". In the technical language, "topic vector" is a (mostly "linear") combination of "document vectors". The number of topics is much less than the number of documents, which can be told from the original rationale:
+
+- We have many documents but only a few topics
+- The intrinsic structure (number of docs) is much simpler than the observations (documents)
+
+Here is a [tutorial](https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef03213cd21) of topic mining using `nltk` and `gensim`. The algorithm used is called LDA.
 
 ## Bonus: Sentiment analysis
 
