@@ -395,7 +395,7 @@ After sampling, the length of df is 20348
 We can find that there are 1/10 (because of `frac=0.1`) data have been randomly selected and the data has been disrupted the order. You can also learn more about the regulations of sampling in [pandas official document](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sample.html#pandas-dataframe-sample).
 
 ### Resample
-In `pandas` library, `resample()` is a convenience method for frequency conversion and resampling of time series. Its object  must have a index composed by datetime-like values like Datetime or Timedelta. Therefore, let's first utilise what we learnt before to parse these twitts' post time, formatting them into machine recognizable ones:
+In `pandas` library, `resample()` is a convenience method for frequency conversion and resampling of time series. Its object  must have a index composed by datetime-like values like Datetime or Timedelta. Therefore, let's first utilise what we learned before to parse these twitts' post time, formatting them into machine recognizable ones:
 ```
 from datetime import datetime
 from dateutil import parser
@@ -422,11 +422,7 @@ In statistics, **resampling** is method for drawing randomly with replacement fr
 You can learn more about it from [Resampling - Wikipedia](https://en.wikipedia.org/wiki/Resampling_(statistics)).
 ### aggregate
 The aggregate is a process where the values of multiple rows are grouped together. It is aimed to form a single value of more significant meaning or measurement e.g. a sum, a max or a mean.
-The sampled dataset from the previous part is still a rather large source for data visualisation. In order to draw a legible chart in our screen, we need to aggerate the frequency of words from a daily level into a more long-range aggregation. 
 See how it works in this case:
-Output:
-![Image](4.png)
-Then, we can use `aggregate` to calculate the sum of each line of this table:
 ```
 def has_hillary(t):
     return 'hillary' in str(t).lower()
@@ -437,8 +433,8 @@ df['kw-trump'] = df['text'].apply(has_trump)
 df.set_index('datetime').resample('1w').aggregate('sum').tail()
 ```
 Output:
-![Image](5.png)
-- note: The parameter `'1w'` in `dataframe.resample('1w')` is a positional argument which means we draft 1 week
+![Image](4.png)
+
 ### plot
 
 ### Smoothing technique: Moving average
