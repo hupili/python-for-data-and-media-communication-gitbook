@@ -72,7 +72,7 @@ s = string.split('/blog')
 #s
 s1 = s[-1]
 #s1
-s2='{0}{1}'.format('http://initiumlab.com',s1)
+s2='{0}{1}'.format('http://initiumlab.com/blog',s1)
 #s2
 ```
 
@@ -182,10 +182,12 @@ html = r.content.decode('gbk')
 html
 ```
 
-After decoding, the Chinese characters can display appropriately. And when saving the data, you can use a more widely used method `utf-8` to encode it.
+After decoding, the Chinese characters can display appropriately. And when writing data into csv, you can use a more widely used method `utf-8` to encode it.
 
 ```python
-with open('dy.csv','a',newline='',encoding='utf-8') as csvfile
+with open('dy.csv','a',newline='',encoding='utf-8') as f:
+    writer = csv.writer(f)
+    ...
 ```
 
 ![Decodes gbk](assets/decode-gbk.png)
