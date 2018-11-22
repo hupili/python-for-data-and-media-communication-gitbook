@@ -362,11 +362,39 @@ The time 2 Month ago is 2018-09-20 10:57:50.
 The time 1 Year ago is 2017-11-19 10:57:50.
 ```
 
+
 ## Time Series
+A **time series** is a series of  data points indexed (or listed or graphed) in time order. They are very frequently plotted via  line charts and used in many fields like statistics, pattern recognition, mathematical finance, weather forecasting, earthquake prediction, astronomy and communications engineering.  Check here for more information: [Time series - Wikipedia](https://en.wikipedia.org/wiki/Time_series).
+Time series will become more important when we are dealing with the rather bigger datasets. See this case:
+```python
+import pandas as pd
+df = pd.read_csv('https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/text-analysis/regular_reader_tweets.csv')
+print('The length of df is {}'.format(len(df)))
+df.head()
+```
+Output:
+```
+The length of df is 203482
+```
+Their are more than 200 thousand lines in this dataframe. However, this is the very beginning and we can extract the time series from it.
 
-Basic requirement is to plot time series at different granularity, e.g. by hour, by day, by week, ... Articulate the findings on the polyline plot.
+### Resample
+In  statistics, **resampling** is method for drawing randomly  with replacement from a set of data points,   including exchanging labels on data points when performing  significance tests or validating models by using random subsets. You can learn more about it from [Resampling - Wikipedia](https://en.wikipedia.org/wiki/Resampling_(statistics))
+In pandas, we can use `pandas.DataFrame.sample` to do resample. It return a random sample of items from an axis of object:
+```python
+df = df.sample(frac=0.1)
+print('After resample, the length of df is {}'.format(len(df)))
+df.head()
+```
+Output:
+```
+After resample, the length of df is 20348
+```
+We can find that there are 1/10 (because of `frac=0.1`) data have been randomly selected and the data has been disrupted the order.
 
-### Resample, aggregate and plot
+### aggregate
+
+### plot
 
 ### Smoothing technique: Moving average
 
@@ -381,6 +409,7 @@ Predictive analysis is not a requirement from this introductory course. Our main
 
 ## References
 
+#big_data
 * timestamp usually come in unit of milliseconds \(1/1000\) of a second. [An example](https://github.com/dmep2017/dmep2017.github.io/blob/master/d3-map-sichuan-earthquate/Data Process.ipynb) to parse this timestamp format into `datetime` format.
 * Past notes of [datetime](https://github.com/hupili/python-for-data-and-media-communication/tree/master/datetime) from spring 2018.
 * Brockwell, Peter J., and Richard A. Davis. Introduction to Time Series and Forecasting. 2nd ed. Springer Texts in Statistics. New York: Springer, 2002.
