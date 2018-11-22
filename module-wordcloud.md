@@ -1,4 +1,11 @@
-# Wordcloud
+# wordcloud
+
+<!-- TOC -->
+
+- [wordcloud](#wordcloud)
+    - [Display Chinese characters when plotting tag cloud](#display-chinese-characters-when-plotting-tag-cloud)
+
+<!-- /TOC -->
 
 ## Display Chinese characters when plotting tag cloud
 

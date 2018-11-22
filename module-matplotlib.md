@@ -46,4 +46,4 @@ plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 ```
 
-There is a similar issue about Chinese characters (CJK characters) when you use wordcloud. Please refer to [this section](module-wordcloud.md/display-chinese-characters-when-plotting-tag-cloud) for the solution.
+There is a similar issue about Chinese characters (CJK characters) when you use wordcloud. Please refer to [this section](module-wordcloud.md#display-chinese-characters-when-plotting-tag-cloud) for the solution.
