@@ -396,16 +396,29 @@ When analysing/ visualising time series, one most common issue is to deal with s
 ![](assets/GOOG-time-series-smoothing.png)
 Image credit: [Michael Galarnyk](https://github.com/mGalarnyk/Python_Tutorials/blob/master/Time_Series/Part1_Time_Series_Data_BasicPlotting.ipynb)
 
-
-
 ### Bonus: Time Series forecasting models
 
-Predictive analysis is not a requirement from this introductory course. Our main focus is on the descriptive part. Interested readers can checkout the following models from other literatures.
+A time series usually involves several components:
+
+- Trend - the non-repeating movement in the data, e.g. increasing stock price
+- Seasonal - repeating movement in the data, e.g. more sells before tax payment period.
+- Noise/ residual - other movements that do not belong to the above, e.g. interruptions in the market/ move-the-market news.
+
+![](assets/time-series-decomposition.png)
+Image credit: [Jae Duk Seo](https://towardsdatascience.com/trend-seasonality-moving-average-auto-regressive-model-my-journey-to-time-series-data-with-edc4c0c8284b)
+
+Next question is how to forecast a time series? Predictive analysis is not a requirement from this introductory course. Our main focus is on the descriptive part. Interested readers can checkout the following models from other literatures.
 
 - AR
 - MA
 - ARMA
 - ARIMA
+
+Checkout [this tutorial](https://medium.com/@josemarcialportilla/using-python-and-auto-arima-to-forecast-seasonal-time-series-90877adff03c) for an implementation of ARIMA using `pyramid-arima` (on [pypi](https://pypi.org/project/pyramid-arima/)) and `statsmodels`.
+
+[This tutorial](https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/) has a more detailed explanation of AR and MA and its decompositions.
+
+Note that the above models are highly simplified presentation of the reality. It works resonably with one-way market like sales forecast, where vendor and consumer have clear roles. It does not work well in stock market price prediction, because the market participants play the counterpart of each other and their predictions affect their behaviour which further affect the market status.
 
 ## References
 
