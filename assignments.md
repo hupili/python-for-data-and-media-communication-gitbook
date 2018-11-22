@@ -88,12 +88,12 @@ Note:
 
 - "License" is very important. Or, people can not build derivatives upon your work.
 - No more than **3** students scrape the same website. Please register your interest with TA as early as possible to coordinate the topics.
-- Assignment 2 will be based on Assignment 1. So pick the scraping target in a sensable way. The dataset had better help you generate some meaningful observations about the chosen topic.
+- Assignment 2 will be based on Assignment 1. So pick the scraping target in a sensible way. The dataset had better help you generate some meaningful observations about the chosen topic.
 
 More on `README.md`:
 
 - "topic" section -- it helps people to quickly understand what they can do with this dataset. We usually put a piece of motivation and some sample questions into the "topic" section.
-- "obstacles and solutions" section -- do you encounter any anti-crawling mechnism? do you have trouble scrolling to more pages? do you need to continuously crawl for several days and merge the results? How do you solve those problems?
+- "obstacles and solutions" section -- do you encounter any anti-crawling mechanism? do you have trouble scrolling to more pages? do you need to continuously crawl for several days and merge the results? How do you solve those problems?
 - "future work" section -- No project can be ideal. List down the potential directions for improvements. For example, you may crawl more rows and columns when time permits. You may want to simplify the code later. You may want to make the crawling more efficient somehow. If the questions listed in this section is substantial, you are very welcome to [raise issue](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new), so we can discuss.
 
 ### Bonus: Enrich your dataset
@@ -121,9 +121,12 @@ Basic requirements:
   - Adjust/ truncate/ omit long output
 - Notebook should be able to execute by the readers and get the same results.
 - All auxiliary files need to be stored in the assignment folder, including data, image, codes, ...
-- **Important** The `.ipynb` notebook file should be self-explainary. Make sure you can use https://nbviewer.jupyter.org to view it.
+- **Important** The `.ipynb` notebook file should be self-explainary.  
+- In case there is any interactive graphs and charts cannot display in your notebook, please use https://nbviewer.jupyter.org to view the final version of the notebook, and leave the nbviewer link in your README file like the following example:
 
-**NOTE**: This is a mini story produced from data. The purpose of this assignemnt is to exercise workflow so don't dwell on the content too much if you find the story points are not compelling. Once you get used to this workflow, you will find it very easy to share ideas/ results and collaborate with others online. Again, we do not ask for a _substantial_ story from this assignment.
+![notebook nbviewer link](assets/notebook-nbviewer-link.png)
+
+**NOTE**: This is a mini story produced from data. The purpose of this assignment is to exercise workflow so don't dwell on the content too much if you find the story points are not compelling. Once you get used to this workflow, you will find it very easy to share ideas/ results and collaborate with others online. Again, we do not ask for a _substantial_ story from this assignment.
 
 Jupyter notebook is a rich environment for you to put up multimedia texts. You can refer to [this section](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-09.md#jupyter-notebook) for some functionalities of the Jupyter notebook.
 
@@ -131,7 +134,7 @@ Some references from past submissions, with instructor notes:
 
 - [Hans Rosling tops TED](https://nbviewer.jupyter.org/github/17441781/hkbu-big-data-media/blob/master/homework3/HW3-analysis.ipynb) -- The notebook is in standard format and highly legible. Headlines (using `##`) present story points directly and follows a data-driven exploratory path. Hans Roslig is famous in creative data visualisation for social science. He is one of the top cited figures in data journalism courses. You should watch all his TED videos.
 - [Analysis of top 200 online novels](https://nbviewer.jupyter.org/github/DaisyZhongDai/hkbu-big-data-media/blob/master/homework3/Top%20200%20online%20novels.ipynb) -- Having **annotations** in bar chart and leveraging word cloud (beyond then course schedule) are two technical advantages. We encourage you to go beyond our class and find other useful libraries. You can learn with online samples and tutorials. The annotation of "mode (most frequent value) of book length" is newsworthy. It clearly shows that online novels follow certain pattern and may be an indicator of "factory production". However, histogram could be misleading sometimes, a serious researcher would checkout other alternatives of bin segments (size and boundary), but that is not required in assignment 3 as this is just a mini story.
-- [Chengdu scenic points](https://nbviewer.jupyter.org/github/marla322/hkbu-big-data-media/blob/master/HW3/pandas_chengdu.ipynb) -- The technical plus is to use `plotly`, which can generate interactive plots very easily. Those charts can also be published online using [GitHub Pages](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-00.md#github-pages). `Out[4]` and `Out[11]` could be improved, though. In the exploration stage, you may have some lengthy output cells. In the final product notebook, you can use `.head()`, `.tail()` or list-slicing to only present a few smaple data. That improves the legibility.
+- [Chengdu scenic points](https://nbviewer.jupyter.org/github/marla322/hkbu-big-data-media/blob/master/HW3/pandas_chengdu.ipynb) -- The technical plus is to use `plotly`, which can generate interactive plots very easily. Those charts can also be published online using [GitHub Pages](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-00.md#github-pages). `Out[4]` and `Out[11]` could be improved, though. In the exploration stage, you may have some lengthy output cells. In the final product notebook, you can use `.head()`, `.tail()` or list-slicing to only present a few sample data. That improves the legibility.
 
 ## Notes on Bonus Question
 
