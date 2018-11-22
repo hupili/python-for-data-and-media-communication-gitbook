@@ -35,18 +35,20 @@ The criteria to judge whether one graph is the same as others is not the appeara
 * Nodes: the fundamental unit of which graphs are formed,also called endpoint. They are connected by the edge like `A` and `B` in above picture.
 * Edge：the line that connect two nodes. Each edge has two nodes to which it is attached. Edges may be directed or undirected
 
-Try to count the edge between those circles.
+Case1: Try to count the edge between those circles.
 
-   ![](assets/to-do-uncategorized-screenshots/no125.png)  
-   This undirected table is symmetric. It shows that 1 and 2 has one edge. 2 and 3 is the same.   
-   ![](assets/to-do-uncategorized-screenshots/no126.png)  
-   The above one is directed.
+![Undirected graph](assets/undirected-graph.png)
 
-* There are different ways to show the relationships.
-   ![](assets/to-do-uncategorized-screenshots/no127.png)  
-   ![](assets/to-do-uncategorized-screenshots/no129.png)  
-   ![](assets/to-do-uncategorized-screenshots/no130.png)  
-   Then we can infer the list.
+This undirected table is symmetric. It shows that 1 and 2 has one edge. 2 and 3 is the same, but there is no edge between 1 and 3.
+
+![Directed graph](assets/directed-graph.png)  
+
+While in the directed relationships, like the above picture, 3->2 has one edge, 2->3 has zero edge, this is caused by the edge directions.
+
+There are different ways to show the relationships.
+
+![Edge list](assets/edge-list.png)  
+![Edge list weighted](assets/edge-list-weighted.png)  
 
 ## Network example
 
