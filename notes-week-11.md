@@ -364,7 +364,7 @@ The time 1 Year ago is 2017-11-19 10:57:50.
 
 
 ## Time Series
-A **time series** is a series of  data points indexed (or listed or graphed) in time order. They are very frequently plotted via  line charts and used in many fields like statistics, pattern recognition, mathematical finance, weather forecasting, earthquake prediction, astronomy and communications engineering.  Check here for more information: [Time series - Wikipedia](https://en.wikipedia.org/wiki/Time_series).
+A **time series** is a series of data points indexed (or listed or graphed) in time order. They are very frequently plotted via line charts and used in many fields like statistics, pattern recognition, mathematical finance, weather forecasting, earthquake prediction, astronomy and communications engineering. Check here for more information: [Time series - Wikipedia](https://en.wikipedia.org/wiki/Time_series).
 Time series will become more important when we are dealing with the rather bigger datasets. See this case:
 ```python
 import pandas as pd
@@ -377,7 +377,7 @@ Output:
 The length of df is 203482
 ```
 ![Image](1.png)
-Their are more than 200 thousand lines in this dataframe. However, this is the very beginning and we can extract the time series from it.
+Their are more than 200 thousand lines in this dataframe. However, this is the very beginning and we can extract data by different time series from it.
 
 ### Sample
 In early stage, we can use `sample()` to return a random sample of items from an axis of object. The sample procedure may lower the reliability but help us deal with large amount of data which are hard for making a census. One can make inferences or extrapolations from the sample to the population. See this step of sampling:
@@ -395,11 +395,7 @@ After sampling, the length of df is 20348
 We can find that there are 1/10 (because of `frac=0.1`) data have been randomly selected and the data has been disrupted the order. You can also learn more about the regulations of sampling in [pandas official document](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sample.html#pandas-dataframe-sample).
 
 ### Resample
-In statistics, **resampling** is method for drawing randomly with replacement from a set of data points, including exchanging labels on data points when performing significance tests or validating models by using random subsets. You can learn more about it from [Resampling - Wikipedia](https://en.wikipedia.org/wiki/Resampling_(statistics)).
-
-### aggregate
-The aggregate is a process where the values of multiple rows are grouped together. It is aimed to form a single value of more significant meaning or measurement e.g. a sum, a max or a mean.
-The sampled dataset from the previous part is still a rather large source for data visualisation. In order to draw a legible chart in our screen, we need to aggerate the frequency of words from a daily level into a more long-range aggregation. Let's first utilise what we learnt before to parse these twitts' post time, formatting them into machine recognizable ones:
+In `pandas` library, `resample()` is a convenience method for frequency conversion and resampling of time series. Its object  must have a index composed by datetime-like values like Datetime or Timedelta. Therefore, let's first utilise what we learnt before to parse these twitts' post time, formatting them into machine recognizable ones:
 ```
 from datetime import datetime
 from dateutil import parser
@@ -410,8 +406,24 @@ def parse_datetime(x):
     except:
         return numpy.nan
 df['datetime'] = df['created_str'].apply(parse_datetime)
-df.head()
 ```
+#### Resampling by timeline
+Now we can use `resample('1W')` to know how many twitts emerged every week.
+```
+df.set_index('datetime').resample('1w').aggregate('count').tail()
+```
+Notes:
+- Setting the 'datetime' column as index is necessary, for `resample()` must have a index composed by datetime-like values.
+- '1W' is an essential positional argument which means we collect twitts per 7-day period. You can also use the parameters like `'S'`(second), `'Min'`(minute), `'M'`(month), `'SM'`(semi-month) and so forth to do your own research. You can check [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.resample.html) to read more instructions.
+- `aggregate('count')` counts how many twitts posted on a weekly level. We will introduce 'aggregate' in the next part.
+#### Bonus: explore resample
+In statistics, **resampling** is method for drawing randomly with replacement from a set of data points, including exchanging labels on data points when performing significance tests or validating models by using random subsets. The resampling as a methodology has been widely used in the field of analogue signal processing or audio compression for many years. See its basic mode:
+![Image](3.png)
+You can learn more about it from [Resampling - Wikipedia](https://en.wikipedia.org/wiki/Resampling_(statistics)).
+### aggregate
+The aggregate is a process where the values of multiple rows are grouped together. It is aimed to form a single value of more significant meaning or measurement e.g. a sum, a max or a mean.
+The sampled dataset from the previous part is still a rather large source for data visualisation. In order to draw a legible chart in our screen, we need to aggerate the frequency of words from a daily level into a more long-range aggregation. 
+See how it works in this case:
 Output:
 ![Image](4.png)
 Then, we can use `aggregate` to calculate the sum of each line of this table:
@@ -426,7 +438,7 @@ df.set_index('datetime').resample('1w').aggregate('sum').tail()
 ```
 Output:
 ![Image](5.png)
-- note: The parameter `'1w'` in `dataframe.resample('1w')` is a positional argument which means we draft 10,000 lines from `df`.
+- note: The parameter `'1w'` in `dataframe.resample('1w')` is a positional argument which means we draft 1 week
 ### plot
 
 ### Smoothing technique: Moving average
