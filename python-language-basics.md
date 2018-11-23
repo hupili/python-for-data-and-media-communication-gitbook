@@ -15,6 +15,7 @@
         - [== and =](#-and-)
         - [Append VS Extend](#append-vs-extend)
         - [For loop range](#for-loop-range)
+    - [Name clash with reserved word](#name-clash-with-reserved-word)
 
 <!-- /TOC -->
 </div>
@@ -142,3 +143,36 @@ for i in range(5,10,-1):
 #7
 #6
 ```
+
+## Name clash with reserved word
+
+We find the following error very common when students start to work on bigger projects, especially in Jupyter notebook.
+
+```python
+TypeError: 'str' object is not callable
+```
+
+or 
+
+```python
+TypeError: 'list' object is not callable
+```
+
+In the first example, you are like to get following result when checking the type of `str`:
+
+```python
+type(str)
+# str
+```
+
+This is an indicator that `str` is reassigned to some other value before. Check if you have `str=xxx` statement earlier on. `str` is a built-in function. The variable assignment changes it to another object. That is why Python complains "'str' object is not callable".
+
+The same issue goes with `list`. Students may use `list = []` and then `list.append(xxx)` later to collect data entries. The name is intuitive but the assignment pollutes the built-in function.
+
+Even if you change that line of assignment, Python still gives the same complaint. The reason is that Jupyter notebook has a continuously running Python engine (called "kernel") in the back. The assignment is already effective and will keep being effective in the whole session. You need to "restart kernerl" after fixing the code.
+
+One needs to keep off reserved word like `list`, `dict`, `str`, etc. Except for that, you also want to keep away from the modules/ classes you import. One useful trick for beginner is to add `my` to your own variables when you are not sure if the variable name might clash with existing object or not.
+
+Related issues:
+
+- [#97](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/97#issuecomment-441145772)
