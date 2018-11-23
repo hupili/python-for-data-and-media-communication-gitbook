@@ -337,6 +337,8 @@ Note that there could be multiple values returned for the selected axis (when mo
 
 Also, you can use `df_g['AVG_ENG_MATH_SCORE_08'].mode()` to get single series mode.
 
+**NOTE**: The above is just for demonstration purpose. You usually do not checkout mode of real valued variables, because it is too likely for every instance to get different values. When the variable is highly discrete or is actually categorical, mode can tell us some stories.
+
 ## Correlation
 
 ### Continuous: Scatter plot and correlation
