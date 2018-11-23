@@ -14,7 +14,8 @@ In our Python case, it is suggested to make a Jupyter notebook to put the above 
 
 Here are some hand-picked issues for your reference:
 
-- [#90](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/90)
+- [#90](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/90) is a very good demo of effectively asking questions.
+- [This comment](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/104#issuecomment-441278543) shows a real minimum reproducible example. It is simpler than the OP. In the open source world, people who come up with minimum reproducible example are highly appreciated. They are the stepping stones for those who eventually solve the issue.
 
 ## Shell
 
