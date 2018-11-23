@@ -5,7 +5,8 @@
 
 - [Week 12: Network data](#week-12-network-data)
     - [Graph introduction](#graph-introduction)
-    - [Network example](#network-example)
+    - [Network analysis with NetworkX](#network-analysis-with-networkx)
+        - [Basic logic](#basic-logic)
     - [Get data by json](#get-data-by-json)
     - [Visualization Spring layout](#visualization-spring-layout)
     - [Color specific nodes](#color-specific-nodes)
@@ -50,43 +51,62 @@ There are different ways to show the relationships.
 ![Edge list](assets/edge-list.png)  
 ![Edge list weighted](assets/edge-list-weighted.png)  
 
-## Network example
+## Network analysis with NetworkX
 
-  ```
-  import networkx as nx
-  g=nx.Graph()
-  ```
+### Basic logic
 
-  ![](assets/to-do-uncategorized-screenshots/no131.png)
+NetworkX is a Python package for study of the structure, dynamics, and functions of complex networks. With which we can analyze the network structure, the relationship between different nodes and generate different kind of graphs.
 
-  ```
-  g.add_node('A')
-  g.add_node('B')
-  g.add_node('C')
-  ```
+Import and install:
 
-  It adds the nodes. Then`g.nodes` to check.  
-  ![](assets/to-do-uncategorized-screenshots/no132.png)
+```python
+!pip install networkx
+import networkx as nx
+```
 
-  ```
-  g.add_edge('A','B')
-  ```
+Basic usage: From the above explanation, we can know that, the network is formed by nodes and edges. Therefore, when using `networkx`, we need get the nodes and edges first, then we can draw the graph.
 
-  It adds egdes between A and B. Then`g.nodes` and`g.edges` to check.  
-  ![](assets/to-do-uncategorized-screenshots/no133.png)
+```python
+#draw an empty graph
+g=nx.Graph()
+g
+#<networkx.classes.graph.Graph at 0x10eb6a1d0>
+```
 
-  ```
-  nx.draw(g)
-  ```
+```python
+#add nodes
+#help(g.add_node) to check out the parameters and syntax
+g.add_node('A')
+g.add_node('B')
+g.add_node('C')
+```
 
-  ![](assets/to-do-uncategorized-screenshots/no134.png)
+It adds the nodes. Then`g.nodes` to check.
 
-  ```
-  g.add_edge('C','B')
-  nx.draw(g)
-  ```
+```python
+g.nodes
+#NodeView(('A', 'B', 'C'))
+```
 
-  ![](assets/to-do-uncategorized-screenshots/no135.png)
+Add edges, draw the graph.
+
+```python
+#help(g.add_edge) to check out the parameters and syntax
+g.add_edge('A','B')
+nx.draw(g)
+```
+
+![Network graph1](assets/network-graph1.png)
+
+```python
+#add another node between c and b
+g.add_edge('C','B')
+nx.draw(g)
+```
+
+After that, we can get one simple graph.
+
+![Network graph2](assets/network-graph2.png)
 
 ## Get data by json
 
