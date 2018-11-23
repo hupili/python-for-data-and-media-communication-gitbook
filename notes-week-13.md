@@ -57,15 +57,25 @@ References for geographical data:
 
 ## Mapping
 
-### Feature
+### Components
 
-### Layer
+#### Feature
 
-### Background Layer
+#### Layer
 
-### Tooltip
+#### Background Layer
 
-### Highlight
+#### Tooltip
+
+#### Highlight
+
+### Map Types
+
+#### Choropleth
+
+Example:
+
+- [US unemployment rate via plotly](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/87)
 
 ## Case studies
 
