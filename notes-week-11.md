@@ -148,16 +148,16 @@ dt_1 = parse("Thu Sep 10:36:28", default=DEFAULT)
 dt_2 = parse("Thu 10:36:28", default=DEFAULT)
 dt_3 = parse("12/25", default=DEFAULT)
 dt_4 = parse("10:36", default=DEFAULT)
-dt_1,dt_2,dt_3,dt_4
+print(dt_1,dt_2,dt_3,dt_4)
 ```
 
 Output
 
 ```text
-(datetime.datetime(2018, 9, 27, 10, 36, 28),
- datetime.datetime(2018, 11, 29, 10, 36, 28),
- datetime.datetime(2018, 12, 25, 0, 0),
- datetime.datetime(2018, 11, 25, 10, 36))
+datetime.datetime(2018, 9, 27, 10, 36, 28),
+datetime.datetime(2018, 11, 29, 10, 36, 28),
+datetime.datetime(2018, 12, 25, 0, 0),
+datetime.datetime(2018, 11, 25, 10, 36)
 ```
 
 #### A failed parsing case
@@ -258,9 +258,19 @@ In this case,`%H` and `%I` represent hour in 24-hour clock and12-hour clock resp
 
 #### Compare two datetime object
 
-One can perform boolean comparison on `datetime` objects.
+One can perform boolean comparison on `datetime` objects:
+```python
+from datetime import datetime
+result_1 = datetime(2018, 6, 12, 0, 0) > datetime(2018, 2, 3, 0, 0)
+result_2 = datetime(2018, 6, 12, 0, 0) == datetime(2018, 2, 3, 0, 0)
+result_3 = datetime(2018, 6, 12, 0, 0) < datetime(2018, 2, 3, 0, 0)
+print(result_1,result_2,result_3)
+```
+Output:
+```text
+True False False
+```
 
-<!-- TODO: Stephen -->
 
 #### Know timedelta object
 
