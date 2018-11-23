@@ -85,16 +85,16 @@ Check out certain words in a string, replace certain words and separate the word
 In certain occasion, we need to check out whether there is one word in the string, and need to replace the word.
 
 ```python
-str = "this is string example....this is the string we will test, is it"
-str.find('string')
+s = "this is string example....this is the string we will test, is it"
+s.find('string')
 #output: 8, the position of the first characters
-str.find('python')
+s.find('python')
 #output: -1, it will return -1 if there is no this word in the string
-str.replace("is", "was") #replace all
+s.replace("is", "was") #replace all
 #output: 'thwas was string example....thwas was the string we will test, was it'
-str.replace("is", "was", 3) #replace first 3
+s.replace("is", "was", 3) #replace first 3
 #output: 'thwas was string example....thwas is the string we will test, is it'
-s3 = str.split(' ')
+s3 = s.split(' ')
 '|'.join(s3) #you can add different things in the string
 #output: 'this|is|string|example....this|is|the|string|we|will|test,|is|it'
 ```
