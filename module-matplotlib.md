@@ -2,7 +2,7 @@
 
 ## Troubleshooting Chinese characters on MAC
 
-[This noteboko](https://github.com/hupili/python-for-data-and-media-communication/blob/master/matplotlib-examples/Chinese%20Font.ipynb) gives detailed steps in troubleshooting the Chinese characters on MAC. You will learn:
+[This notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/matplotlib-examples/Chinese%20Font.ipynb) gives detailed steps in troubleshooting the Chinese characters on MAC. You will learn:
 
 - Where are the fonts stored on your system
 - How to filter out the font files that include CJK characters
