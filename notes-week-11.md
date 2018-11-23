@@ -366,6 +366,7 @@ The time 1 Year ago is 2017-11-19 10:57:50.
 ## Time Series
 
 - Basic requirement: plot time series at different granularity, e.g. by hour, by day, by week, ... Articulate the findings on the polyline plot.
+- Checkout [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/datetime/timeseries.ipynb) for a concrete case of analysing term frequency changes over time in the Tweets.
 
 A **time series** is a series of data points indexed (or listed or graphed) in time order. They are very frequently plotted via line charts and used in many fields like statistics, pattern recognition, mathematical finance, weather forecasting, earthquake prediction, astronomy and communications engineering. Check here for more information: [Time series - Wikipedia](https://en.wikipedia.org/wiki/Time_series).
 Time series will become more important when we are dealing with the rather bigger datasets. See this case:
@@ -508,7 +509,6 @@ Note that the above models are highly simplified presentation of the reality. It
 
 ## References
 
-#big_data
 * timestamp usually come in unit of milliseconds \(1/1000\) of a second. [An example](https://github.com/dmep2017/dmep2017.github.io/blob/master/d3-map-sichuan-earthquate/Data Process.ipynb) to parse this timestamp format into `datetime` format.
 * Past notes of [datetime](https://github.com/hupili/python-for-data-and-media-communication/tree/master/datetime) from spring 2018.
 * Brockwell, Peter J., and Richard A. Davis. Introduction to Time Series and Forecasting. 2nd ed. Springer Texts in Statistics. New York: Springer, 2002.
