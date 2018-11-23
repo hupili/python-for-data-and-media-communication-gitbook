@@ -312,7 +312,7 @@ nltk.download('stopwords')
 stopwords = stopwords.words('english')
 ```
 
-<!-- this method is under testing with error cannot download -->
+**Note:** this method is under testing with error cannot download
 
 3. import stopwords from `pypi`
 
