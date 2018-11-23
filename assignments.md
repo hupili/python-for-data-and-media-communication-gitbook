@@ -122,7 +122,7 @@ Basic requirements:
 - Notebook should be able to execute by the readers and get the same results.
 - All auxiliary files need to be stored in the assignment folder, including data, image, codes, ...
 - **Important** The `.ipynb` notebook file should be self-explainary.  
-- In case there is any interactive graph or chart cannot be displayed in your notebook, please use https://nbviewer.jupyter.org to view the final version of the notebook, and leave the nbviewer link in your README file like the following example:
+- In case there is any interactive graph or chart cannot be displayed in your notebook, please use https://nbviewer.jupyter.org to view the final version of the notebook, and leave the nbviewer link in your README file like the following example, and you can check out details [here](https://github.com/ChicoXYC/HKBU-BIG-DATA-MEDIA/tree/master/Final%20Project%20-%20Airplane%20crash):
 
 ![notebook nbviewer link](assets/notebook-nbviewer-link.png)
 
