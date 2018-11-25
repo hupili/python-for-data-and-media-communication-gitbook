@@ -16,9 +16,8 @@
             - [Structure degree](#structure-degree)
             - [Clustering coefficient](#clustering-coefficient)
             - [Cliques part of the graph](#cliques-part-of-the-graph)
-    - [Connected components](#connected-components)
-    - [Community detection](#community-detection)
-    - [Color the nodes](#color-the-nodes)
+            - [Connected components](#connected-components)
+            - [Community detection](#community-detection)
 
 <!-- /TOC -->
 </div>
@@ -347,7 +346,7 @@ cliques = list(nx.find_cliques(g))
 #len(cliques)
 cliques[0:2]
 
-plt.figure(figsize=(10, 10))
+plt.figure(figsize=(15, 15))
 pos =nx.spring_layout(g)
 nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
 nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
@@ -359,44 +358,41 @@ nx.draw_networkx_nodes(g, pos, nodelist=cliques[12], node_color='#ff7700', alpha
 
 ![Graph clique](assets/graph-clique.png)
 
-## Connected components
+#### Connected components
 
-  ```
-  components =list(nx.connected_components(g))
-  ```
+To find those who are not connected by others.
 
-  to find those who are not connected by others.
-
-## Community detection
-
-  ```
-  from networkx.algorithms import community
-  communities = list(community.girvan_newman(g))
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no158.png)  
-  Those in the community is much denser,and those between the community is sparser.
-
-  ```
-  communities = list(community.label_propagation_communities(g))
-  ```
-
-  The function is similar.
-
-## Color the nodes
-
+```python
+components =list(nx.connected_components(g))
+len(components)
 ```
-plt.figure(figsize=(20,20))
-pos=nx.spring_layout(g)
-nx.draw_networkx_edges(g,pos,width=1,alpha=0.3)
+
+#### Community detection
+
+**Todo**
+
+```python
+from networkx.algorithms import community
+communities = list(community.girvan_newman(g))
+#communities[0]
+
+
+plt.figure(figsize=(15, 15))
+pos =nx.spring_layout(g)
+#nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
 
 for i in range(0, len(communities)):
-  nodelist=communities[i]
-  print(nodelist)
-  nx.draw_networkx_nodes(g,pos,nodelist=nodelist,node_color=color(i), alpha=0.8)
-  labels=dict([(n, '%s:%s' % (n, g.nodes[n]['group'])) for n in nodelist])
-  nx.draw_networkx_labels(g,pos,labels=labels,fint_color='#666666')
+    nodelist = communities[i]
+    print(nodelist)
+    nx.draw_networkx_nodes(g, pos, nodelist=nodelist, node_color=color(i), alpha=0.8)
+    labels = dict([(n, '%s:%s' % (n, g.nodes[n]['group'])) for n in nodelist])
+    nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
 ```
 
-![](assets/to-do-uncategorized-screenshots/no159.png)  
-![](assets/to-do-uncategorized-screenshots/no160.png)
+![Graph community](assets/graph-community.png)  
+
+
+------
+
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
