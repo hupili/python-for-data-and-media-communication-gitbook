@@ -7,7 +7,8 @@
     - [Graph introduction](#graph-introduction)
     - [Network analysis with NetworkX](#network-analysis-with-networkx)
         - [Basic logic](#basic-logic)
-    - [Get data by json](#get-data-by-json)
+        - [Case with Les Misérables](#case-with-les-misérables)
+            - [Visualise the simple graph](#visualise-the-simple-graph)
     - [Visualization Spring layout](#visualization-spring-layout)
     - [Color specific nodes](#color-specific-nodes)
     - [Shortest path](#shortest-path)
@@ -108,13 +109,32 @@ After that, we can get one simple graph.
 
 ![Network graph2](assets/network-graph2.png)
 
-## Get data by json
+### Case with Les Misérables
 
-  ```
-  import json
-  content=open('miserables.json').read()
-  data=json.loads(content)
-  ```
+In the following notes, we will use characters in book [*Les Misérables*](https://en.wikipedia.org/wiki/Les_Mis%C3%A9rables) to demo the analysis process. You can download the dataset [here]()
+
+#### Visualise the simple graph
+
+```python
+import json
+data = json.loads(open('miserables.json').read())
+data
+#data.keys()
+#data['nodes'] checkout nodes
+#data['links'] checkout links
+import networkx as nx
+g = nx.Graph()
+
+#add nodes
+for n in data['nodes']:
+    g.add_node(n['id'], group=n['group'])
+
+for l in data['links']:
+    g.add_edge(l['source'], l['target'])
+nx.draw(g)
+```
+
+![Simple graph](assets/visualise-the-simple-graph.png)
 
  ![](assets/to-do-uncategorized-screenshots/no136.png)  
  The content is an object.
