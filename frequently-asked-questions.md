@@ -15,6 +15,7 @@
     - [Encoding & Decoding](#encoding--decoding)
         - [U+FEFF encoding issue](#ufeff-encoding-issue)
         - [Csv writer newline](#csv-writer-newline)
+        - [Cannot read a csv file downloaded from a website](#cannot-read-a-csv-file-downloaded-from-a-website)
         - [Expecting value: line 1 column 1 (char 0)](#expecting-value-line-1-column-1-char-0)
 
 <!-- /TOC -->
@@ -81,6 +82,32 @@ In some cases, the csv you read may have some encoding issue like the above.`U+F
 ### Csv writer newline
 
 For more explanation, please refer to the documentation on the [open function](https://docs.python.org/3/library/functions.html#open)
+
+### Cannot read a csv file downloaded from a website
+
+This error is usually raised as the following:
+
+`UTF-8 cannot decode byte 0xff in postion x: invalid byte`
+
+Solution:
+
+First, try to copy and paste the contains/data to Google drive with a new sheet, and downloaded it as a new csv.
+
+![Google drive new](assets/google-drive-new.png)
+![Google drive new2](assets/google-drive-new-2.png)
+![Google drive copy data](assets/google-drive-copy-data.png)
+![Google drive download data](assets/google-drive-download-data.png)
+
+Then, we can successfully read the data by the usual way.
+
+```python
+# -*- coding: utf-8 -*-
+import pandas as pd
+df = pd.read_csv('REITs.csv', 'rb')
+```
+
+![Read data successfully](assets/read-data-successfully.png)
+
 
 ### Expecting value: line 1 column 1 (char 0)
 
