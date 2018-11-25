@@ -67,8 +67,8 @@ When scrape certain elements in webpage, the elements sometimes are folded or sh
 the article url we get is `"../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"`, but what we expect is this`"http://initiumlab.com/blog/20160730-mediawiki-wiki-knowledge-management-system/"`. We can format the new string by the following method.
 
 ```python
-string = "../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"
-s = string.split('/blog')
+s = "../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"
+s = s.split('/blog')
 #s
 s1 = s[-1]
 #s1
@@ -236,7 +236,7 @@ Learning RegEx is like learning a new language. It is very easy to match the pat
 ['16', '1', '34119999', '34119998']
 ```
 
-In this pattern, `\d` means the collection of numbers, i.e. `[0-9]`. The `+` specifies a repetition count of one or multiple. You can see that all the numeric substrings are extracted. However, not all of them are telephone numbers. Gievn a bit domain knowledge, we know that the phone numbers in Hong Kong have 8 digits. So we can adjust our pattern to use a repetition number of `{8}`:
+In this pattern, `\d` means the collection of numbers, i.e. `[0-9]`. The `+` specifies a repetition count of one or multiple. You can see that all the numeric substrings are extracted. However, not all of them are telephone numbers. Given a bit domain knowledge, we know that the phone numbers in Hong Kong have 8 digits. So we can adjust our pattern to use a repetition number of `{8}`:
 
 ```python
 >>> pattern = re.compile(r'\d{8}')
@@ -351,10 +351,10 @@ for word in words:
 ### Use dict to count the words frequency
 
 ```python
-list = meaningful_words #the list of words you have
+words_list = meaningful_words #the list of words you have
 dict_words_frequency={}
-for n in list:
-    dict_words_frequency[n]=list.count(n)
+for n in words_list:
+    dict_words_frequency[n]=words_list.count(n)
 #dict_words_frequency
 ```
 
@@ -560,7 +560,7 @@ For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/
 - `IDF` - Inverse Document Frequency
 - `TFIDF` = `TF * IDF`
 
-TFIDF is a measure of (a term's importance to a document) in (a collection of documents), called "corpus". We put the previous sentence in branckets so that it is easier to read. The rationale is very straight forward:
+TFIDF is a measure of (a term's importance to a document) in (a collection of documents), called "corpus". We put the previous sentence in brackets so that it is easier to read. The rationale is very straight forward:
 
 - TF -- importance to a specific document -- the more one term appears in one document, the more important it is to the document.
 - IDF -- importance in a collection of documents -- if a term appears too frequently in all documents, e.g. stop words, it does not carry much importance to the current document.
@@ -581,7 +581,7 @@ We know the "topic" of the two courses are different. How can we tell? If we che
 1. Frequent terms: Data, scraper, web, Python, jupyter, pandas, numpy, matplotlib, ...
 2. Frequent terms: Data, Javascript, CSS, HTML, web, responsive, bootstrap, echart, ...
 
-By looking at the two different lists, we can tell they are of different topics. Computers can also recognise topics in a similar way. In a usual topic modeling procedure, we start with a matrix composed of "document vectors". The vector has a coordinate system using all the potential terms, so every element in the vector represents an intensity of this term in the document. A "topic vector" has the same shape of a "document vector" -- a collection of terms with different weights. Some terms may be stronger indicator of certain topic, like "Python" and "Javascript" in above example. Some other terms may be a weaker indicator, like "web" in above example, where one course emphasize more on "web scraping" and another course emaphasize more on "responsive web". In the technical language, "topic vector" is a (mostly "linear") combination of "document vectors". The number of topics is much less than the number of documents, which can be told from the original rationale:
+By looking at the two different lists, we can tell they are of different topics. Computers can also recognise topics in a similar way. In a usual topic modeling procedure, we start with a matrix composed of "document vectors". The vector has a coordinate system using all the potential terms, so every element in the vector represents an intensity of this term in the document. A "topic vector" has the same shape of a "document vector" -- a collection of terms with different weights. Some terms may be stronger indicator of certain topic, like "Python" and "Javascript" in above example. Some other terms may be a weaker indicator, like "web" in above example, where one course emphasize more on "web scraping" and another course emphasize more on "responsive web". In the technical language, "topic vector" is a (mostly "linear") combination of "document vectors". The number of topics is much less than the number of documents, which can be told from the original rationale:
 
 - We have many documents but only a few topics
 - The intrinsic structure (number of docs) is much simpler than the observations (documents)

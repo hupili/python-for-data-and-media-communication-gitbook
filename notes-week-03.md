@@ -317,27 +317,27 @@ Extended List : ['Hello', 'Python', 2018, 814, 23, 2018, 814, 2049, 2018]
 ```
 
 ```python
->>> list = ['Hello', 'Python', 2018, 814, 23, 2018, 814, 2049, 2018]
->>> list.insert(3, 2009) #list.insert(index, object),insert value 2009 in the index3
->>> print("New List : ", list)
+>>> list1 = ['Hello', 'Python', 2018, 814, 23, 2018, 814, 2049, 2018]
+>>> list1.insert(3, 2009) #list.insert(index, object),insert value 2009 in the index3
+>>> print("New List : ", list1)
 New List :  ['Hello', 'Python', 2018, 2009, 814, 23, 2018, 814, 2049, 2018]
 ```
 
 ```python
->>> list = ['Hello', 'Python', 2018, 2009, 814, 23, 2018, 814, 2049, 2018]
->>> list.pop(2) #delete index2 value and return this value
->>> print('List now : ',list)
+>>> list1 = ['Hello', 'Python', 2018, 2009, 814, 23, 2018, 814, 2049, 2018]
+>>> list1.pop(2) #delete index2 value and return this value
+>>> print('List now : ',list1)
 List now :  ['Hello', 'Python', 2009, 814, 23, 2018, 814, 2049, 2018]
->>> list.remove('Hello') #remove certain value
->>> print('List now : ',list)
+>>> list1.remove('Hello') #remove certain value
+>>> print('List now : ',list1)
 List now :  ['Python', 2009, 814, 23, 2018, 814, 2049, 2018]
 ```
 
 ```python
->>> list = ['Python', 2009, 814, 23, 2018, 814, 2049, 2018]
->>> list.reverse() #reverse list
->>> print('reverse list : ',list)
-reverse list :  [2018, 2049, 814, 2018, 23, 814, 2009, 'Python']
+>>> list1 = ['Python', 2009, 814, 23, 2018, 814, 2049, 2018]
+>>> list1.reverse() #reverse list
+>>> print('reverse list : ',list1)
+reverse list1 :  [2018, 2049, 814, 2018, 23, 814, 2009, 'Python']
 ```
 
 ```python
@@ -472,48 +472,48 @@ Example 12: All examples are corresponding to the list methods stated above.
 
 ```python
 >>> seq = ['Chico', 'Ivy', 'Ri']
->>> dict = dict.fromkeys(seq)  #get/create keys from the list
->>> print("New_dict : %s" % str(dict))
+>>> p_dict = dict.fromkeys(seq)  #get/create keys from the list
+>>> print("New_dict : %s" % str(p_dict))
 New_dict : {'Chico': None, 'Ivy': None, 'Ri': None}
->>> dict = dict.fromkeys(seq, 'A+') #give all keys value A+
->>> print("New_dict : %s" % str(dict))
+>>> p_dict = dict.fromkeys(seq, 'A+') #give all keys value A+
+>>> print("New_dict : %s" % str(p_dict))
 New_dict : {'Chico': 'A+', 'Ivy': 'A+', 'Ri': 'A+'}
 ```
 
 ```python
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> print("Age : %s" % dict.get('Age')) #get key value
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("Age : %s" % p_dict.get('Age')) #get key value
 Age : 23
->>> print("Gender : %s" % dict.get('Gender'))
+>>> print("Gender : %s" % p_dict.get('Gender'))
 Gender : Male #if you get a wrong key, it will return None
 ```
 
 ```python
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> print("dict_values : %s" % dict.items()) #view dict's items
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("dict_values : %s" % p_dict.items()) #view dict's items
 dict_values : dict_items([('Name', 'Chico'), ('Gender', 'Male'), ('Age', '23')]) #return a tuple
 ```
 
 ```python
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> print("dict_keys : %s" % dict.keys()) #view all keys
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("dict_keys : %s" % p_dict.keys()) #view all keys
 dict_keys : dict_keys(['Name', 'Gender', 'Age'])
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> print("has_key : %s" % dict.__contains__('Age')) #two '_', check out keys
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("has_key : %s" % p_dict.__contains__('Age')) #two '_', check out keys
 has_key : True
->>> print("has_key : %s" % dict.__contains__('School'))
+>>> print("has_key : %s" % p_dict.__contains__('School'))
 has_key : False
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> pop_value = dict.pop('Gender') #drop out key
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> pop_value = p_dict.pop('Gender') #drop out key
 >>> print(pop_value)
 Male
->>> print(dict)
+>>> print(p_dict)
 {'Name': 'Chico', 'Age': '23'}
 ```
 
 ```python
->>> dict = {'Name': 'Chico', 'Age': '23'}
->>> print("Value : %s" % dict.values()) #get all values
+>>> p_dict = {'Name': 'Chico', 'Age': '23'}
+>>> print("Value : %s" % p_dict.values()) #get all values
 Value : dict_values(['Chico', '23'])
 >>> dict1 = {'Name': 'Chico', 'Age': '23'}
 >>> dict2 = {'Gender':'Male'}

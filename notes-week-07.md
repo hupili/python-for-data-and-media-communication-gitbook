@@ -130,8 +130,8 @@ Example:
 
 ```python
 #import pandas as pd
-list = ['火鍋','海鮮','甜品/糖水','壽司/刺身','日式放題','烤肉','薄餅']
-list_series = pd.Series(list)
+l = ['火鍋','海鮮','甜品/糖水','壽司/刺身','日式放題','烤肉','薄餅']
+list_series = pd.Series(l)
 list_series
 ```
 
@@ -157,8 +157,8 @@ list_series.tolist()
 Converting between dict and series is pretty much the same like converting between list and series.
 
 ```python
-dict = {'火鍋':39,'海鮮':28,'甜品/糖水':24,'壽司/刺身':14,'日式放題':11,'烤肉':10,'薄餅':9}
-dict_series = pd.Series(dict)
+word_dict = {'火鍋':39,'海鮮':28,'甜品/糖水':24,'壽司/刺身':14,'日式放題':11,'烤肉':10,'薄餅':9}
+dict_series = pd.Series(word_dict)
 ```
 
 ```text
@@ -185,8 +185,8 @@ dict_series.to_dict()
 Sorting values in ascending or descending order.
 
 ```python
-dict = {'火鍋':39,'壽司/刺身':14,'甜品/糖水':24,'日式放題':11,'薄餅':9,'烤肉':10,'海鮮':28}
-dict_series = pd.Series(dict)
+words_dict = {'火鍋':39,'壽司/刺身':14,'甜品/糖水':24,'日式放題':11,'薄餅':9,'烤肉':10,'海鮮':28}
+dict_series = pd.Series(words_dict)
 dict_series.sort_values(ascending=False)
 ```
 
@@ -252,10 +252,6 @@ Output:
 #### Benefits of using series
 
 Series has the advantage from both `dict` and `list`. One can use a key to reference to the elements, which leads a `dict` like look and feel. However, for a regular `dict`, keys do not have certain ordering. Python only guarantees `dict.keys()`, `dict.values()` and `dict.items()` adopts the same ordering but how they are ordered is not specified. `pandas.Series` can preserve the order of elements, which gives a `list` like look and feel.
-
-<!-- * Compared with list and dict, in series, we can access to elements by the axis labels, which is like `index` way in list and by the elements name, which is like `key` way in dict. Therefore its more convenient than above two in this question.
-* Although they are both one dimensional dataset, series allows you to store list and dict values.
-* With more build-in functions in pandas and other libraries, series are more easily to be analyzed and used to do visualization. -->
 
 ### Pandas Dataframe
 
