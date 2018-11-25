@@ -10,7 +10,7 @@
         - [Case with Les Misérables](#case-with-les-misérables)
             - [Visualise the simple graph](#visualise-the-simple-graph)
             - [Adjust layout](#adjust-layout)
-    - [Color specific nodes](#color-specific-nodes)
+            - [Group the nodes with same color](#group-the-nodes-with-same-color)
     - [Shortest path](#shortest-path)
     - [Centrality Measures](#centrality-measures)
     - [Structure degree](#structure-degree)
@@ -196,41 +196,33 @@ _ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666') #draw l
 
 ![Graph layout](assets/graph-layout.png)
 
-* The above one is the basic graph.
+#### Group the nodes with same color
 
- ![](assets/to-do-uncategorized-screenshots/no142.png)  
- `plt.figure(figsize=(20,20))` to change the size.  
- `nx.draw_networkx_nodes` and `nx.draw_networkx_edges` to draw the nodes and edges.  
- `labels=dict([(n,n)for n in g.nodes])` and `_=nx.draw_networkx_labels` to draw the labels. Create a dict\[\(n,n\)\], whose n is from g.nodes
+Group the nodes according to the group number in the json.
+Every node has a group number, we can group those nodes with the color.
 
-## Color specific nodes
+```python
+import matplotlib
+color = matplotlib.cm.Accent
+#import color map, there are many color maps, you can checkout the color maps by the following:
+# import matplotlib.cm as cm
+# dir(cm)
 
-  ```
-  g.nodes['Anzelma']
-  ```
+plt.figure(figsize=(15, 15))
+pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g1.nodes])
+_ = nx.draw_networkx_labels(g1, pos, labels=labels, font_color='#666666')
 
-  ![](assets/to-do-uncategorized-screenshots/no143.png)  
-  We know the content of g.nodes
+for group in range(1, 20):
+    nodelist = [n for n in g.nodes if g.nodes[n]['group'] == group]
+    # If g.nodes's group = 1, add those nodes into the nodelist. They will be the same color 1 . If g.nodes's group = 2, they will be added to another nodelist ,and be colored 2.
+    #print(nodelist)
+    nx.draw_networkx_nodes(g1, pos, nodelist=nodelist, node_color=color(group), alpha=0.8)
+```
 
-  ```
-  import matplotlib
-  color=matplotlib.cm.Accent
-  color(10)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no144.png)  
-  `matplotlib.cm` is a useful tool. You can try by yourself.It shows the R\(red\), G\(green\), B\(blue\) and alpha.
-
-  ```
-  for group in range(1,20):
-  nodelist=[n for n in g.nodes if g.nodes[n]['group']== group]
-  nx.draw_networkx_nodes(g,pos,nodelist=nodelist,node_color=color(group),alpha=0.8)
-  ```
-
-![](assets/to-do-uncategorized-screenshots/no145.png)
-
- ![](assets/to-do-uncategorized-screenshots/no146.png)
- If g.nodes's group = 1, add those nodes into the nodelist. They will be the same color 1 . If g.nodes's group = 2, they will be added to another nodelist ,and be colored 2.
+![Graph group layout](assets/graph-group-layout.png)
 
 ## Shortest path
 
