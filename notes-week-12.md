@@ -12,7 +12,7 @@
             - [Adjust layout](#adjust-layout)
             - [Group the nodes with same color](#group-the-nodes-with-same-color)
             - [Shortest path](#shortest-path)
-    - [Centrality Measures](#centrality-measures)
+            - [Centrality Measures](#centrality-measures)
     - [Structure degree](#structure-degree)
     - [Clustering coefficient](#clustering-coefficient)
     - [Cliques part of the graph](#cliques-part-of-the-graph)
@@ -257,23 +257,47 @@ nx.draw_networkx_edges(g,
 
 ![Graph shortest path](assets/graph-shortest-path.png)
 
-## Centrality Measures
+#### Centrality Measures
 
-* **Degree centrality**: degree is the numbers of edges associated with the nodes.
-* But not everyone is of the same importance. So **Closeness**  means the shorter the path, relationship is closer. 
-* How many times the person be the bridge in the shortest path? This is **Betweenness**. Key messages are in those person.
+[Centrality](https://en.wikipedia.org/wiki/Centralityis) a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
 
-  ```
-  df_top_nodes=df.sort_values('closeness', ascending=False)[:5]
-  #basic grah
-  nx.draw_networkx_nodes(g,pos,nodelist=list(df_top_nodes.index),
-  node_color='#ff7700',
-  alpha=0.5)
-  ```
+You can refer to the [documentation](https://networkx.github.io/documentation/latest/reference/algorithms/centrality.html) and online resources to understand those centrality measures. Try other centrality measures that are not covered in this tutorial. See what interesting findings you can get.
 
-   ![](assets/to-do-uncategorized-screenshots/no150.png)  
-   ![](assets/to-do-uncategorized-screenshots/no151.png)  
-   Sort by closeness.
+```python
+#check out the methods of centrality
+nx.degree_centrality(g)
+#nx.closeness_centrality(g)
+#nx.betweenness_centrality(g)
+#nx.eigenvector_centrality(g)
+
+import pandas as pd
+df = pd.DataFrame()
+df['degree'] = pd.Series(nx.degree_centrality(g))
+df['closeness'] = pd.Series(nx.closeness_centrality(g))
+df['betweenness'] = pd.Series(nx.betweenness_centrality(g))
+df['eigenvector'] = pd.Series(nx.eigenvector_centrality(g))
+```
+
+```python
+#draw degree centrality
+df_top_nodes = df.sort_values('degree', ascending=False)[:5]
+
+plt.figure(figsize=(30, 15))
+# we don't run the spring layout again; to keep the positions in this section
+#pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
+nx.draw_networkx_nodes(g, pos, nodelist=list(df_top_nodes.index), node_color='#ff7700', alpha=0.5)
+
+df_top_nodes
+#change degree to other three columns to see the different top nodes.
+```
+
+![graph degree centrality](assets/graph-degree-centrality.png)
+
+From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
 
 ## Structure degree
 
