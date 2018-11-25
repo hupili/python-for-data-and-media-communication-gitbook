@@ -20,6 +20,7 @@
     - [Install frequently used dependencies](#install-frequently-used-dependencies)
     - [Windows](#windows)
         - [Instructions of Installing Jupyter Notebook on Windows](#instructions-of-installing-jupyter-notebook-on-windows)
+    - [Import interactive charts in Jupyter notebook](#import-interactive-charts-in-jupyter-notebook)
 
 <!-- /TOC -->
 
@@ -162,6 +163,26 @@ pip install -r requirements.txt
 ### Instructions of Installing Jupyter Notebook on Windows
 
 please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/30).
+
+## Import interactive charts in Jupyter notebook
+
+Different libraries to save `.html` locally.
+
+```python
+#plotly
+plotly.offline.plot(data, filename='file name')
+#pyecharts
+bar/line.render('file name.html')
+#bokeh
+output_file("file name.html")
+```
+
+Import the html file it generate on your local computer.
+
+```python
+from IPython.display import IFrame
+IFrame('file_name.html', width=700, height=400)
+```
 
 ------
 
