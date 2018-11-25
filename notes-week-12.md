@@ -11,7 +11,7 @@
             - [Visualise the simple graph](#visualise-the-simple-graph)
             - [Adjust layout](#adjust-layout)
             - [Group the nodes with same color](#group-the-nodes-with-same-color)
-    - [Shortest path](#shortest-path)
+            - [Shortest path](#shortest-path)
     - [Centrality Measures](#centrality-measures)
     - [Structure degree](#structure-degree)
     - [Clustering coefficient](#clustering-coefficient)
@@ -224,27 +224,38 @@ for group in range(1, 20):
 
 ![Graph group layout](assets/graph-group-layout.png)
 
-## Shortest path
+#### Shortest path
 
-  ```
-  sp=nx.shortest_path(g,'XXX','XXX')
-  ```
+Draw the shortest path between two nodes.
 
-  ![](assets/to-do-uncategorized-screenshots/no147.png)  
-  It shows the shortest way between the two nodes.
+```python
+sp = nx.shortest_path(g1, 'Gribier', 'Child2')
+#you can change to any other two nodes
+sp
 
-  ```
-  #base on the above graph
-  nx.draw_networkx_edges(g,
-  pos,
-  edgelist=list(zip(sp[:-1],sp[1:])),
-  width=5,
-  edge_color='r'
-  )
-  ```
+plt.figure(figsize=(15, 15))
+#pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
 
-   ![](assets/to-do-uncategorized-screenshots/no148.png)  
-   ![](assets/to-do-uncategorized-screenshots/no149.png)
+nx.draw_networkx_edges(g, 
+                       pos,
+                       edgelist=list(zip(sp[:-1], sp[1:])),
+                       width=5,
+                       edge_color='r'
+                      )
+#help(nx.draw_networkx_edges)
+#edgelist:collection of edge tuples
+#list(zip(sp[:-1], sp[1:])) check out the edgelist
+# [('Gribier', 'Fauchelevent'),
+#  ('Fauchelevent', 'Javert'),
+#  ('Javert', 'Gavroche'),
+#  ('Gavroche', 'Child2')]
+```
+
+![Graph shortest path](assets/graph-shortest-path.png)
 
 ## Centrality Measures
 
