@@ -94,6 +94,11 @@ Add edges, draw the graph.
 ```python
 #help(g.add_edge) to check out the parameters and syntax
 g.add_edge('A','B')
+```
+
+Graph show.
+
+```python
 nx.draw(g)
 ```
 
