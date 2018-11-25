@@ -13,7 +13,7 @@
             - [Group the nodes with same color](#group-the-nodes-with-same-color)
             - [Shortest path](#shortest-path)
             - [Centrality Measures](#centrality-measures)
-    - [Structure degree](#structure-degree)
+            - [Structure degree](#structure-degree)
     - [Clustering coefficient](#clustering-coefficient)
     - [Cliques part of the graph](#cliques-part-of-the-graph)
     - [Connected components](#connected-components)
@@ -299,20 +299,15 @@ df_top_nodes
 
 From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
 
-## Structure degree
+#### Structure degree
 
-  ```
-  g.degree
-  ```
+```python
+g.degree
+pd.Series(dict(g.degree())).hist(bins=20)
+```
 
-  ![](assets/to-do-uncategorized-screenshots/no152.png)
-
-  ```
-  pd.Series(dict(g.degree())).hist(bins=20)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no153.png)  
-  `dict(g.degree())` and then `Series`. Then Draw a picture.
+![Graph structure degree.png](assets/graph-structure-degree.png)  
+`dict(g.degree())` and then `Series`. Then Draw a picture.
 
 * Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
 
