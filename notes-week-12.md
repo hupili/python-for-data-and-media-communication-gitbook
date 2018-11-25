@@ -15,7 +15,7 @@
             - [Centrality Measures](#centrality-measures)
             - [Structure degree](#structure-degree)
             - [Clustering coefficient](#clustering-coefficient)
-    - [Cliques part of the graph](#cliques-part-of-the-graph)
+            - [Cliques part of the graph](#cliques-part-of-the-graph)
     - [Connected components](#connected-components)
     - [Community detection](#community-detection)
     - [Color the nodes](#color-the-nodes)
@@ -338,48 +338,26 @@ nx.average_clustering(nx.complete_graph(5))
 1.0
 ```
 
-## Cliques part of the graph
+#### Cliques part of the graph
 
-  ```
-  Cliques=list(nx.find_cliques(g))
-  ```
+We can highlight the certain clique.
 
-  ![](assets/to-do-uncategorized-screenshots/no156.png)
+```python
+cliques = list(nx.find_cliques(g))
+#len(cliques)
+cliques[0:2]
 
-  ```
-  from matplotlib import pyplot as plt
-  plt.figure(figsize=(20,20))
-  pos=nx.spring_layout(g)
-  nx.draw_networkx_nodes(g,
-                     pos,
-                     node_color='#ccccff',
-                     alpha=0.5
-                     )
-  nx.draw_networkx_edges(g,
-                     pos,
-                     width=1,
-                     alpha=0.3
-                     )
-  labels=dict([(n,n)for n in g.nodes])
-  _=nx.draw_networkx_labels(g,
-                   pos,
-                   labels=labels,
-                   font_color='#666666'
-                   )
-  ```
+plt.figure(figsize=(10, 10))
+pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
+nx.draw_networkx_nodes(g, pos, nodelist=cliques[12], node_color='#ff7700', alpha=0.5)
+#draw any clique by changing nodelist=cliques[12]
+```
 
-  The above is the basic graph. Then
-
-  ```
-  nx.draw_networkx_nodes(g,
-                       pos,
-                       nodelist=cliques[1],
-                       node_color='#ff7700',
-                       alpha=0.5
-                       )
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no157.png)
+![Graph clique](assets/graph-clique.png)
 
 ## Connected components
 
