@@ -9,7 +9,7 @@
         - [Basic logic](#basic-logic)
         - [Case with Les Misérables](#case-with-les-misérables)
             - [Visualise the simple graph](#visualise-the-simple-graph)
-    - [Visualization Spring layout](#visualization-spring-layout)
+            - [Adjust layout](#adjust-layout)
     - [Color specific nodes](#color-specific-nodes)
     - [Shortest path](#shortest-path)
     - [Centrality Measures](#centrality-measures)
@@ -136,64 +136,65 @@ nx.draw(g)
 
 ![Simple graph](assets/visualise-the-simple-graph.png)
 
- ![](assets/to-do-uncategorized-screenshots/no136.png)  
- The content is an object.
+Next step for us is improving the graphs. To solve the following questions:
 
- ![](assets/to-do-uncategorized-screenshots/no137.png)  
- `json.loads` is to load a string which is given by content. Then data becomes the python structure.
+- Are there some groups in the network?
+- Who are in the same group?
+- Who are the top nodes here?
+- The shortest path between two path?
 
-  ```
-  type(data)
-  data.keys()
-  data['nodes']
-  data['links']
-  ```
+#### Adjust layout
 
-   ![](assets/to-do-uncategorized-screenshots/no138.png)  
-   ![](assets/to-do-uncategorized-screenshots/no139.png)  
-   Check the data. There are many nodes called 'group' and 'ID' and links called 'source' and 'target'.
-  ```
-  for n in data['nodes']:
-  g.add_node(n['id'],group=n['group'])
-  ```
+```python
+help(nx.draw) #to learn about the function and parameters. What may be useful for us are parameters and see also functions. Those are helpful for optimizing our graphs.
+```
 
-  `n['id']` means extracting the id from every item in data\[nodes\], and add them into g.  
-  `g.number_of_nodes` and `g.number_of_edges` to check the node.
+```text
+    Parameters
+    ----------
+    G : graph
+       A networkx graph
+    
+    pos : dictionary, optional
+       A dictionary with nodes as keys and positions as values.
+       If not specified a spring layout positioning will be computed.
+       See :py:mod:`networkx.drawing.layout` for functions that
+       compute node positions.
+    
+    ax : Matplotlib Axes object, optional
+       Draw the graph in specified Matplotlib axes.
+    
+    kwds : optional keywords
+       See networkx.draw_networkx() for a description of optional keywords.
+    
+    Examples
+    --------
+    >>> G = nx.dodecahedral_graph()
+    >>> nx.draw(G)
+    >>> nx.draw(G, pos=nx.spring_layout(G))  # use spring layout
+    
+    See Also
+    --------
+    draw_networkx()
+    draw_networkx_nodes()
+    draw_networkx_edges()
+    draw_networkx_labels()
+    draw_networkx_edge_labels()
+```
 
-  ```
-  for l in data['links']:
-  g.add_edge(l['source'],l['target'], **l)
-  ```
+```python
+from matplotlib import pyplot as plt
 
-  `**l` is an attribute. It means to take every item in 'key-value' pairs. So it equals to
+plt.figure(figsize=(20, 20))
+pos =nx.spring_layout(g)
+# nx.draw(g, pos=nx.spring_layout(g))
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5) #change nodes style
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3) #change edges style
+labels = dict([(n, n) for n in g.nodes]) #add labels
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666') #draw labels
+```
 
-  ```
-  l['source'],l['target'], source=0,target=0,value=0
-  ```
-
-## Visualization Spring layout
-
-* 'spring layout' is another name for 'force directed layout'.
-
-  ```
-  import matplotlib 
-  %matplotlib inline
-  nx.draw(g)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no140.png)
-
-  ```
-  from matplotlib import pyplot as plt
-  plt.figure(figsize=(20,20))
-  pos=nx.spring_layout(g)
-  nx.draw_networkx_nodes(g,pos,node_color='#ccccff',alpha=0.5)
-  nx.draw_networkx_edges(g,pos,width=1,alpha=0.3)
-  labels=dict([(n,n)for n in g.nodes])
-  _=nx.draw_networkx_labels(g,pos,labels=labels,font_color='#666666')
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no141.png)
+![Graph layout](assets/graph-layout.png)
 
 * The above one is the basic graph.
 
