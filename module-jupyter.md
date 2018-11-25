@@ -20,7 +20,9 @@
     - [Install frequently used dependencies](#install-frequently-used-dependencies)
     - [Windows](#windows)
         - [Instructions of Installing Jupyter Notebook on Windows](#instructions-of-installing-jupyter-notebook-on-windows)
-    - [Import interactive charts in Jupyter notebook](#import-interactive-charts-in-jupyter-notebook)
+    - [Display charts in nbviwer](#display-charts-in-nbviwer)
+        - [Import interactive charts in Jupyter notebook](#import-interactive-charts-in-jupyter-notebook)
+        - [Cannot display some static charts](#cannot-display-some-static-charts)
 
 <!-- /TOC -->
 
@@ -164,7 +166,9 @@ pip install -r requirements.txt
 
 please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/30).
 
-## Import interactive charts in Jupyter notebook
+## Display charts in nbviwer
+
+### Import interactive charts in Jupyter notebook
 
 Different libraries to save `.html` locally.
 
@@ -183,6 +187,10 @@ Import the html file it generate on your local computer.
 from IPython.display import IFrame
 IFrame('file_name.html', width=700, height=400)
 ```
+
+### Cannot display some static charts
+
+This is caused by the temporary cache in the browser. The first solution is you can change another browser to visit the link. The second, add several `???` in the nbviwer link to refresh the link, then the chart will display correctly.
 
 ------
 
