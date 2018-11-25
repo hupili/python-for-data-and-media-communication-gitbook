@@ -18,6 +18,7 @@
             - [Cliques part of the graph](#cliques-part-of-the-graph)
             - [Connected components](#connected-components)
             - [Community detection](#community-detection)
+    - [Reference examples](#reference-examples)
 
 <!-- /TOC -->
 </div>
@@ -392,6 +393,11 @@ for i in range(0, len(communities)):
 
 ![Graph community](assets/graph-community.png)  
 
+## Reference examples
+
+* [Who control the discourse power in 红楼梦](https://dnnsociety.org/2018/04/15/who-control-the-discourse-power-in-%E7%BA%A2%E6%A5%BC%E6%A2%A6%EF%BC%9F/) by Group 8 2018S
+
+* [Li's family business map and spring layout analysis](https://dnnsociety.org/2018/04/15/lis-family-business-map-and-spring-layout-analysis/) by Group 7 2018S
 
 ------
 
