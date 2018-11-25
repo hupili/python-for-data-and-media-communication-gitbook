@@ -14,7 +14,7 @@
             - [Shortest path](#shortest-path)
             - [Centrality Measures](#centrality-measures)
             - [Structure degree](#structure-degree)
-    - [Clustering coefficient](#clustering-coefficient)
+            - [Clustering coefficient](#clustering-coefficient)
     - [Cliques part of the graph](#cliques-part-of-the-graph)
     - [Connected components](#connected-components)
     - [Community detection](#community-detection)
@@ -301,6 +301,8 @@ From centrality analysis, we can figure out the `key figures` and nodes in the n
 
 #### Structure degree
 
+**Todo**
+
 ```python
 g.degree
 pd.Series(dict(g.degree())).hist(bins=20)
@@ -311,20 +313,30 @@ pd.Series(dict(g.degree())).hist(bins=20)
 
 * Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
 
-## Clustering coefficient
+#### Clustering coefficient
 
-  ```
-  nx.algorithms.clustering(g,['XXX','XXX','XXX'])
-  nx.average_clustering(g)
-  ```
+**Todo**
 
-  The numbers of triangles over the number of potential triangles .
-  ![](assets/to-do-uncategorized-screenshots/no154.png)
-  ```
-  nx.average_clustering(nx.complete_graph(5))
-  ```
+```python
+nx.algorithms.clustering(g,['XXX','XXX','XXX'])
+nx.average_clustering(g)
+```
 
-  ![](assets/to-do-uncategorized-screenshots/no155.png)
+```python
+gorithms.clustering(g, ['Myriel', 'Champtercier', 'Count', 'Cravatte', 'Napoleon', 'Geborand', 'CountessdeLo', 'OldMan'])
+# {'Champtercier': 0,
+#  'Count': 0,
+#  'CountessdeLo': 0,
+#  'Cravatte': 0,
+#  'Geborand': 0,
+#  'Myriel': 0.06666666666666667,
+#  'Napoleon': 0,
+#  'OldMan': 0}
+nx.average_clustering(g)
+0.5731367499320134
+nx.average_clustering(nx.complete_graph(5))
+1.0
+```
 
 ## Cliques part of the graph
 
