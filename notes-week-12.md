@@ -326,10 +326,12 @@ pd.Series(dict(g.degree())).hist(bins=20)
 
 #### Clustering coefficient
 
-**Todo**
+>A clustering coefficient is a measure of the degree to which nodes in a graph tend to cluster together. *From [wiki](https://en.wikipedia.org/wiki/Clustering_coefficient)*
+
+There are different kind of clustering coefficient, including global clustering coefficient, local clustering coefficient, average clustering coefficient. The simplest is `global clustering coefficient`, which is the number of closed triplets (or 3 x triangles) over the total number of triplets (both open and closed). The larger the clustering coefficient is, the closer one node is wth other nodes. For usage in `networkx`, you can refer [here](https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.algorithms.cluster.clustering.html#networkx.algorithms.cluster.clustering).
 
 ```python
-nx.algorithms.clustering(g,['XXX','XXX','XXX'])
+nx.algorithms.clustering(g,['XXX','XXX','XXX']) #pass a set of nodes in the list
 nx.average_clustering(g)
 ```
 
@@ -353,7 +355,7 @@ nx.average_clustering(nx.complete_graph(5))
 
 #### Cliques
 
-We can highlight the certain clique.
+Simply speaking, a clique is a subset of nodes in an undirected graph. Which is a segmented group in a bigger community. Highlight those cliques may help us know the core figures and groups in one network.
 
 ```python
 cliques = list(nx.find_cliques(g))
@@ -374,7 +376,7 @@ nx.draw_networkx_nodes(g, pos, nodelist=cliques[12], node_color='#ff7700', alpha
 
 #### Connected components
 
-To find those who are not connected by others.
+To find those who are not connected by any others.
 
 ```python
 components =list(nx.connected_components(g))
@@ -383,7 +385,9 @@ len(components)
 
 #### Community detection
 
-**Todo**
+>In the network analysis, community structure refers to the occurrence of groups of nodes in a network that are more densely connected internally than with the rest of the network *From [wiki](https://en.wikipedia.org/wiki/Community_structure)*.
+
+Community detection can help us categorize every single node into different groups based on different characteristics so that we can study them as whole. Other importance of community detection is to help us find the `missing links` and `identify the false links` in one network.
 
 ```python
 from networkx.algorithms import community
