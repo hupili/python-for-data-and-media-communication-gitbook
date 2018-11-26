@@ -334,6 +334,8 @@ Following commands can be used to perform RegEx operation. Those commands someti
 
 ## Word frequency
 
+Word frequency refers to the number of times a list of given word appears in the file, which gives you a quick overview of the top words in one text data and help find the news point for further analysis.
+
 ### Use dict to count the words frequency
 
 ```python
@@ -355,53 +357,39 @@ import pandas as pd
 def read_txt(path): #read files and get content
     all_text = []
     for file in os.listdir(path):
-        f=open(file,"r+",encoding="utf8")
+        f=open(file,"r+",encoding="utf8",errors="ignore")
         contents= f.read()
         all_text.append(contents)
     all_words = "".join(all_text)
-    for ch in '\s+\.\!\/_,$%^*(+\"\')]+|[+——()?:【】“”‘’！，。’':
-        words = all_words.replace(ch," ")
-    return words
-
-def stopwordslist(filepath):   #set stopwords
-    stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]  
-    return stopwords
-
-def remove_stopwords(words): #remove stopwords
-    processed_word_list = [] 
-    for word in words:
-        word = word.lower() # in case they are not all lower cased
-        if word not in stopwords:
-            processed_word_list.append(word)
-    return processed_word_list
+    return all_words
 
 words = read_txt("text/") #pass your own file path that include list of .txt
 words = words.split()
-stopwords = stopwordslist('./stopwords_eng.txt')
-stopwords = set(stopwords)
-processed_word_list = remove_stopwords(words)
-word_count = pd.Series(processed_word_list).value_counts().sort_values(ascending=False)[0:15]
+word_count = pd.Series(words).value_counts().sort_values(ascending=False)[0:15]
+word_count
 ```
 
 Output:
 
 ```text
-china             69
-trade             52
-chinese           43
-trump             32
-war               25
-beijing           20
-u.s.              17
-tariffs           16
-america           15
-american          14
-president         14
-global            14
-economic          11
-administration    11
-foreign           10
+the        327
+to         187
+of         149
+and        132
+a          124
+in          99
+that        68
+is          58
+as          53
+on          52
+China       50
+with        49
+US          47
+trade       47
+Chinese     43
 ```
+
+You can find that the above word frequency list is not so good because there are many meaningless words,like `the`, `to`... Those are generally we called `stopwords`.
 
 ### Stopwords
 
