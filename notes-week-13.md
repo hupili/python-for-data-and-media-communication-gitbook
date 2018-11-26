@@ -17,6 +17,8 @@
     - [Mapping](#mapping)
         - [Map types](#map-types)
         - [Map components](#map-components)
+        - [When map is used to show correlation](#when-map-is-used-to-show-correlation)
+        - [When map hides key information](#when-map-hides-key-information)
     - [Case studies](#case-studies)
         - [Air crash map using plotly](#air-crash-map-using-plotly)
         - [Openrice Sichuan Food using folium](#openrice-sichuan-food-using-folium)
@@ -167,6 +169,20 @@ Plotting areas:
   - Tooltip
   - Highlight
   - Toolbox
+
+### When map is used to show correlation
+
+![](assets/map-correlation.png)
+
+Map can be very effective when the data value is correlated with geolocation. It helps one to identify patterns and discover anomalies.
+
+### When map hides key information
+
+![](assets/map-qingtian-migrants.png)
+
+**Map can often hide key information**, because the larger area on a map does not carry an equivalent importance of data. In the above example, Europe, especially Spain, needs to be highlighted because those are the major targets of Qingtian migrants. However, due to the map area issue, Brazil catches one's eye more easily.
+
+One way to solve this problem technically is to plot Cartogram. However, bar chart could come handy most of the time.
 
 ## Case studies
 
