@@ -1,26 +1,34 @@
 # Week 12: Network data
 
 <div id="toc">
+
 <!-- TOC -->
 
 - [Week 12: Network data](#week-12-network-data)
     - [Graph introduction](#graph-introduction)
     - [Network analysis with NetworkX](#network-analysis-with-networkx)
-        - [Basic logic](#basic-logic)
-        - [Case with Les Misérables](#case-with-les-misérables)
-            - [Visualise the simple graph](#visualise-the-simple-graph)
-            - [Adjust layout](#adjust-layout)
-            - [Group the nodes with same color](#group-the-nodes-with-same-color)
-            - [Shortest path](#shortest-path)
-            - [Centrality Measures](#centrality-measures)
-            - [Structure degree](#structure-degree)
-            - [Clustering coefficient](#clustering-coefficient)
-            - [Cliques part of the graph](#cliques-part-of-the-graph)
-            - [Connected components](#connected-components)
-            - [Community detection](#community-detection)
+        - [Basic usage of networkx](#basic-usage-of-networkx)
+    - [Common Network Analysis Routine via Les Misérables dataset](#common-network-analysis-routine-via-les-misérables-dataset)
+            - [Graph visualization](#graph-visualization)
+                - [Basic visualization](#basic-visualization)
+                - [Adjust layout](#adjust-layout)
+                - [Group the nodes with same color](#group-the-nodes-with-same-color)
+            - [Measure Node and Edge Importance](#measure-node-and-edge-importance)
+                - [Degree](#degree)
+                - [Centrality Measures](#centrality-measures)
+            - [Basic statistics of graph](#basic-statistics-of-graph)
+                - [Degree distribution](#degree-distribution)
+                - [Clustering coefficient](#clustering-coefficient)
+            - [Structure of a graph](#structure-of-a-graph)
+                - [Cliques](#cliques)
+                - [Connected components](#connected-components)
+                - [Community detection](#community-detection)
+            - [Other Graph algorithms](#other-graph-algorithms)
+                - [Shortest path](#shortest-path)
     - [Reference examples](#reference-examples)
 
 <!-- /TOC -->
+
 </div>
 
 ## Graph introduction
@@ -54,7 +62,7 @@ There are different ways to show the relationships.
 
 ## Network analysis with NetworkX
 
-### Basic logic
+### Basic usage of networkx
 
 NetworkX is a Python package for study of the structure, dynamics, and functions of complex networks. With which we can analyze the network structure, the relationship between different nodes and generate different kind of graphs.
 
@@ -114,11 +122,13 @@ After that, we can get one simple graph.
 
 ![Network graph2](assets/network-graph2.png)
 
-### Case with Les Misérables
+## Common Network Analysis Routine via Les Misérables dataset
 
 In the following notes, we will use characters in book [*Les Misérables*](https://en.wikipedia.org/wiki/Les_Mis%C3%A9rables) to demo the analysis process. You can download the dataset [here](https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/graph/miserables.json)
 
-#### Visualise the simple graph
+#### Graph visualization
+
+##### Basic visualization
 
 ```python
 import json
@@ -148,7 +158,7 @@ Next step for us is improving the graphs. To solve the following questions:
 - Who are the top nodes here?
 - The shortest path between two path?
 
-#### Adjust layout
+##### Adjust layout
 
 ```python
 help(nx.draw) #to learn about the function and parameters. What may be useful for us are parameters and see also functions. Those are helpful for optimizing our graphs.
@@ -201,7 +211,7 @@ _ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666') #draw l
 
 ![Graph layout](assets/graph-layout.png)
 
-#### Group the nodes with same color
+##### Group the nodes with same color
 
 Group the nodes according to the group number in the json.
 Every node has a group number, we can group those nodes with the color.
@@ -229,40 +239,27 @@ for group in range(1, 20):
 
 ![Graph group layout](assets/graph-group-layout.png)
 
-#### Shortest path
+#### Measure Node and Edge Importance
 
-Draw the shortest path between two nodes.
+##### Degree
+
+**Todo**
+
+<!-- TODO: what is degree? -->
 
 ```python
-sp = nx.shortest_path(g1, 'Gribier', 'Child2')
-#you can change to any other two nodes
-sp
-
-plt.figure(figsize=(15, 15))
-#pos =nx.spring_layout(g)
-nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
-nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
-labels = dict([(n, n) for n in g.nodes])
-_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
-
-nx.draw_networkx_edges(g, 
-                       pos,
-                       edgelist=list(zip(sp[:-1], sp[1:])),
-                       width=5,
-                       edge_color='r'
-                      )
-#help(nx.draw_networkx_edges)
-#edgelist:collection of edge tuples
-#list(zip(sp[:-1], sp[1:])) check out the edgelist
-# [('Gribier', 'Fauchelevent'),
-#  ('Fauchelevent', 'Javert'),
-#  ('Javert', 'Gavroche'),
-#  ('Gavroche', 'Child2')]
+g.degree
+pd.Series(dict(g.degree())).hist(bins=20)
 ```
 
-![Graph shortest path](assets/graph-shortest-path.png)
+![Graph structure degree.png](assets/graph-structure-degree.png)  
+`dict(g.degree())` and then `Series`. Then Draw a picture.
 
-#### Centrality Measures
+* Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
+
+##### Centrality Measures
+
+<!-- TODO: motivation?? -->
 
 [Centrality](https://en.wikipedia.org/wiki/Centralityis) a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
 
@@ -304,9 +301,16 @@ df_top_nodes
 
 From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
 
-#### Structure degree
+
+<!-- TODO: further reading?? outline.md, notes. Chainsaw's work on Mingpao -->
+
+#### Basic statistics of graph
+
+##### Degree distribution
 
 **Todo**
+
+<!-- TODO: what is degree? -->
 
 ```python
 g.degree
@@ -318,7 +322,9 @@ pd.Series(dict(g.degree())).hist(bins=20)
 
 * Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
 
-#### Clustering coefficient
+<!-- TODO: power law/ prefential attachment/ long tail -->
+
+##### Clustering coefficient
 
 **Todo**
 
@@ -343,7 +349,9 @@ nx.average_clustering(nx.complete_graph(5))
 1.0
 ```
 
-#### Cliques part of the graph
+#### Structure of a graph
+
+##### Cliques
 
 We can highlight the certain clique.
 
@@ -364,7 +372,7 @@ nx.draw_networkx_nodes(g, pos, nodelist=cliques[12], node_color='#ff7700', alpha
 
 ![Graph clique](assets/graph-clique.png)
 
-#### Connected components
+##### Connected components
 
 To find those who are not connected by others.
 
@@ -373,7 +381,7 @@ components =list(nx.connected_components(g))
 len(components)
 ```
 
-#### Community detection
+##### Community detection
 
 **Todo**
 
@@ -397,6 +405,41 @@ for i in range(0, len(communities)):
 ```
 
 ![Graph community](assets/graph-community.png)  
+
+#### Other Graph algorithms
+
+##### Shortest path
+
+Draw the shortest path between two nodes.
+
+```python
+sp = nx.shortest_path(g1, 'Gribier', 'Child2')
+#you can change to any other two nodes
+sp
+
+plt.figure(figsize=(15, 15))
+#pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
+
+nx.draw_networkx_edges(g, 
+                       pos,
+                       edgelist=list(zip(sp[:-1], sp[1:])),
+                       width=5,
+                       edge_color='r'
+                      )
+#help(nx.draw_networkx_edges)
+#edgelist:collection of edge tuples
+#list(zip(sp[:-1], sp[1:])) check out the edgelist
+# [('Gribier', 'Fauchelevent'),
+#  ('Fauchelevent', 'Javert'),
+#  ('Javert', 'Gavroche'),
+#  ('Gavroche', 'Child2')]
+```
+
+![Graph shortest path](assets/graph-shortest-path.png)
 
 ## Reference examples
 
