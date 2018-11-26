@@ -16,12 +16,12 @@
             - [RegEx case 2: match telephone numbers in a piece of text](#regex-case-2-match-telephone-numbers-in-a-piece-of-text)
             - [Bonus: Text substitution](#bonus-text-substitution)
             - [RegEx in shell](#regex-in-shell)
-    - [Stopwords](#stopwords)
-        - [Set stopwords](#set-stopwords)
-        - [Remove stopwords](#remove-stopwords)
     - [Word frequency](#word-frequency)
         - [Use dict to count the words frequency](#use-dict-to-count-the-words-frequency)
         - [Use pandas.series.value_counts()](#use-pandasseriesvalue_counts)
+        - [Stopwords](#stopwords)
+            - [Set stopwords](#set-stopwords)
+            - [Remove stopwords](#remove-stopwords)
         - [Visualize word frequency](#visualize-word-frequency)
             - [with bar chart](#with-bar-chart)
             - [with tag cloud](#with-tag-cloud)
@@ -56,11 +56,11 @@ Outline:
 
 #### Case 1: Get full URL from HTML A tag's href attribute
 
-Scraping Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
+To Scrape Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
 
 * Using `split + slice + format`
 
-When scrape certain elements in webpage, the elements sometimes are folded or shorted, we need to split to different parts, use list slicing to get the part we want and re-format the strings we want.  For example:
+When scraping certain elements in webpage, the elements sometimes are folded or shorted, we need to split to different parts, use list slicing to get the part we want and re-format the strings we want.  For example:
 
 ![Initiumlab articles](assets/initiumlab-articles.png)
 
@@ -94,8 +94,8 @@ s.replace("is", "was") #replace all
 #output: 'thwas was string example....thwas was the string we will test, was it'
 s.replace("is", "was", 3) #replace first 3
 #output: 'thwas was string example....thwas is the string we will test, is it'
-s3 = s.split(' ')
-'|'.join(s3) #you can add different things in the string
+s2 = s.split(' ')
+'|'.join(s2) #you can add different things in the string
 #output: 'this|is|string|example....this|is|the|string|we|will|test,|is|it'
 ```
 
@@ -161,7 +161,47 @@ Output:
 
 `UTF-8` is the most widely used implementation of Unicode on the Internet, while `GBK` is mainly used for coding Chinese character.
 
-For example, scraping Chinese websites like `电影天堂`.
+When scraping the webpage, the results of `r.text` & `r.content` is different. Let's get straight of their relationships.
+
+```python
+url = 'http://www.jour.hkbu.edu.hk/faculty/'
+r = requests.get(url)
+r.text
+```
+
+This is the results of `r.text` its a string.
+
+![Encoding text](assets/encoding-r-text.png)
+
+```python
+r.content
+```
+
+This is the results of `r.content` its a byte.
+![Encoding content](assets/encoding-r-content.png)
+
+The conversion between string and byte is as follows:
+
+- byte to string: `r.content.decode()`. Pass the decode method like `gbk` into the bracket.
+- string to byte: `r.text.encode()`. Pass the encode method like `utf-8` into the bracket.
+
+Why we need to convert between two types?
+
+When scraping one webpage, we need to get the `string` type so that we can use `BeautifulSoup` to parser the string and extract the value we want. Therefore, usually, we just use `r.text` is enough.
+
+But if the website use other encoding methods than `utf-8`, like `gbk`, we need to decode the content first. In such circumstance, using `r.content.decode()` to get the string. Usually, we can get the website encoding method in their html `meta` tag.
+
+Another method to solve the encoding problem is making a statement at the beginning like the following.
+
+```python
+r = requests.get('http://www.jour.hkbu.edu.hk/faculty/')
+r.encoding = 'utf-8' #using this line, change the encoding method corresponding to their webpage encoding method
+data = BeautifulSoup(r.text,"html.parser")
+```
+
+Case1: You can refer [Chapter 6 - encoding for another example](notes-week-06.md#encoding). 
+
+Case2 : scraping Chinese websites like `电影天堂`.
 
 ```python
 url = 'https://www.dytt8.net/'
@@ -182,6 +222,8 @@ html = r.content.decode('gbk')
 html
 ```
 
+![Decodes gbk](assets/decode-gbk.png)
+
 After decoding, the Chinese characters can display appropriately. And when writing data into csv, you can use a more widely used method `utf-8` to encode it.
 
 ```python
@@ -189,8 +231,6 @@ with open('dy.csv','a',newline='',encoding='utf-8') as f:
     writer = csv.writer(f)
     ...
 ```
-
-![Decodes gbk](assets/decode-gbk.png)
 
 ### String matching and Regular Expression (RegEx)
 
@@ -292,61 +332,9 @@ Following commands can be used to perform RegEx operation. Those commands someti
 - `egrep`
 - `fgrep`
 
-## Stopwords
-
-### Set stopwords
-
-1. You can download the `stopwords.txt` from the internet and load when you used, [example](https://github.com/stanfordnlp/CoreNLP/blob/master/data/edu/stanford/nlp/patterns/surface/stopwords.txt).
-
-```python
-filepath = './stopwords.txt'
-stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
-```
-
-2. import stopwords from `nltk` library
-
-```python
-import nltk
-from nltk.corpus import stopwords
-nltk.download('stopwords')
-stopwords = stopwords.words('english')
-```
-
-**Note:** this method is under testing with error cannot download
-
-3. import stopwords from `pypi`
-
-For installation and documentation, you can refer [here](https://pypi.org/project/stop-words/
-), they provide a diverse languages of stopwords.
-
-4. Customize your own stopwords
-
-You can add new stopwords by the case need.
-
-```python
-stopwords = ['a','b'] #the original stopwords list
-newstopwords = ['stopword1','stopword2']
-stopwords.extend(newstopwords)
-```
-
-### Remove stopwords
-
-Move stopwords is easy, you just loop them to determine
-whether the words are in the stopwords, if true, then remove them. Following the above example:
-
-```python
-words = ['a','like','media','b']
-processed_word_list = []
-#assume you've already get a list of words  
-for word in words:
-    word = word.lower() # in case they are not all lower cased
-    if word not in stopwords:
-        processed_word_list.append(word)
-#processed_word_list
-#['like', 'media']
-```
-
 ## Word frequency
+
+Word frequency refers to the number of times a list of given word appears in the file, which gives you a quick overview of the top words in one text data and help find the news point for further analysis.
 
 ### Use dict to count the words frequency
 
@@ -369,20 +357,112 @@ import pandas as pd
 def read_txt(path): #read files and get content
     all_text = []
     for file in os.listdir(path):
-        f=open(file,"r+",encoding="utf8")
+        f=open(file,"r+",encoding="utf8",errors="ignore")
         contents= f.read()
         all_text.append(contents)
     all_words = "".join(all_text)
-    for ch in '\s+\.\!\/_,$%^*(+\"\')]+|[+——()?:【】“”‘’！，。’':
+    return all_words
+
+words = read_txt("text/") #pass your own file path that include list of .txt
+words = words.split()
+word_count = pd.Series(words).value_counts().sort_values(ascending=False)[0:15]
+word_count
+```
+
+Output:
+
+```text
+the        327
+to         187
+of         149
+and        132
+a          124
+in          99
+that        68
+is          58
+as          53
+on          52
+China       50
+with        49
+US          47
+trade       47
+Chinese     43
+```
+
+You can find that the above word frequency list is not so good because there are many meaningless words,like `the`, `to`... Those are generally we called `stopwords`.
+
+### Stopwords
+
+>Stop words are words which are filtered out before or after processing of natural language data (text). *From [wiki](https://en.wikipedia.org/wiki/Stop_words)*
+
+The stopwords may change when handling different text analysis cases. We can get stopwords from the open source channel or customize your own stopwords.
+
+#### Set stopwords
+
+1. You can download the `stopwords.txt` from the internet and load when you used, [example](https://github.com/stanfordnlp/CoreNLP/blob/master/data/edu/stanford/nlp/patterns/surface/stopwords.txt).
+
+```python
+filepath = './stopwords.txt'
+stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
+```
+
+2. import stopwords from `nltk` library
+
+```python
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+stopwords = stopwords.words('english')
+```
+
+**Note:** According to our helpers feedback, Windows users can successfully set stopwords with this method, for Mac users, you need to visit their [website](https://www.nltk.org/nltk_data/), search `stopwords` and download.
+
+![NLTK stopwords](assets/nltk-stopwords.png)
+
+Then put the language txt file in the current folder where your Jupyter notebook are.
+
+3. import stopwords from `pypi`
+
+For installation and documentation, you can refer [here](https://pypi.org/project/stop-words/
+), they provide a diverse languages of stopwords.
+
+4. Customize your own stopwords
+
+You can add new stopwords by the case need.
+
+```python
+stopwords = ['a','b'] #the original stopwords list
+newstopwords = ['stopword1','stopword2']
+stopwords.extend(newstopwords)
+```
+
+#### Remove stopwords
+
+Move stopwords is easy, you just loop them to determine
+whether the words are in the stopwords, if true, then remove them. Expect the stopwords, we need also handle some punctuation and letter case. Following the above `assignment 1` example:
+
+```python
+import os
+import pandas as pd
+
+def read_txt(path): #read files and get content
+    all_text = []
+    for file in os.listdir(path):
+        f=open(file,"r")
+        contents= f.read()
+        all_text.append(contents)
+    all_words = "".join(all_text)
+    #remove punctuation
+    for ch in '\s+\.\!\/_,$%^*(+\"\')]+|[+——()?:【】“”‘’':
         words = all_words.replace(ch," ")
     return words
 
 def stopwordslist(filepath):   #set stopwords
-    stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]  
+    stopwords = [line.strip() for line in open(filepath, 'r').readlines()]  
     return stopwords
 
 def remove_stopwords(words): #remove stopwords
-    processed_word_list = [] 
+    processed_word_list = []
     for word in words:
         word = word.lower() # in case they are not all lower cased
         if word not in stopwords:
@@ -397,7 +477,7 @@ processed_word_list = remove_stopwords(words)
 word_count = pd.Series(processed_word_list).value_counts().sort_values(ascending=False)[0:15]
 ```
 
-Output:
+After remove stopwords, you can see that the word frequency list is more meaningful, if there are still some stopwords, you can add them into your `stopword.txt` and run the codes again.
 
 ```text
 china             69
@@ -416,6 +496,12 @@ economic          11
 administration    11
 foreign           10
 ```
+
+**Note:** If arising error when import the data like the following:
+
+`'utf-8' codec can't decode byte 0x80 in position 3131`
+
+You can refer [here](frequently-asked-questions#cannot-import-list-of-files) for solutions.
 
 ### Visualize word frequency
 
@@ -444,7 +530,7 @@ word_count(processed_word_list)
 
 #### with tag cloud
 
-Tag cloud is commonly used, for aesthetics purpose. However, it is not a precise presentation of the data.
+Tag cloud is widely used, for aesthetics purpose. You can have a more vivid picture about the top frequency words.
 
 ```python
 from PIL import Image

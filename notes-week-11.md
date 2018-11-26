@@ -142,22 +142,23 @@ Output:
 Many times on the Internet may not be as normative as `2018/12/22`. Instead, many of them are `12/22` or even`Thu 10:36:28`. We can define a default time.
 
 ```python
-from datetime import datetime 
+from datetime import datetime
+from dateutil.parser import parse
 DEFAULT = datetime(2018, 11, 25)
 dt_1 = parse("Thu Sep 10:36:28", default=DEFAULT)
 dt_2 = parse("Thu 10:36:28", default=DEFAULT)
 dt_3 = parse("12/25", default=DEFAULT)
 dt_4 = parse("10:36", default=DEFAULT)
-print(dt_1,dt_2,dt_3,dt_4)
+dt_1,dt_2,dt_3,dt_4
 ```
 
 Output
 
 ```text
-datetime.datetime(2018, 9, 27, 10, 36, 28),
+(datetime.datetime(2018, 9, 27, 10, 36, 28),
 datetime.datetime(2018, 11, 29, 10, 36, 28),
 datetime.datetime(2018, 12, 25, 0, 0),
-datetime.datetime(2018, 11, 25, 10, 36)
+datetime.datetime(2018, 11, 25, 10, 36))
 ```
 
 #### A failed parsing case
