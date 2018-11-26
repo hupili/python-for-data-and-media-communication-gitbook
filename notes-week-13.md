@@ -76,6 +76,16 @@ One can refer to [this notebook](https://github.com/hupili/openrice-data-blog-20
 
 ### Geographical Reference Systems (GRS)
 
+A Point-Of-Interest (POI) is denoted by a two dimensional coordiate system (two-element tuple). The location of POI is always in a relative sense. In order to systems to communicate with each other and accurately refer to the same location on earth, Geographical Reference Systems (GRS) needs to be specified. GRS is like the protocol between GIS systems. One GRS specifics the followings:
+
+- The projection method
+- Center of the map
+- Scaling factor of the map
+
+For example, the geocoding results from above section are a pair of (longitude, latitude) values, which are referencing to the "WGS1984 CRS" (**EPSG:4326**), i.e. longitude in range `[-180, 180]` and latitude in range `[-90, 90]`. If you checkout the [district council boundary file](https://github.com/hupili/geohk/blob/master/census2001/dc.shp) from Hong Kong's Census and Statistics Department, you will find the coordinates are very large numbers. That is because Hong Kong conventionally used "Hong Kong 1980 CRS" (**EPSG:2326**) in government official files. If you put those files into some visualisation tools like [mapshaper](http://mapshaper.org/), there is no problem displaying them individually. However, when you use those files in modern mapping libraries, the plotted geographical elements may not be at the location you expect.
+
+Most modern mapping library and GeoJSON file use WGS1984 CRS. Usually this step is hidden from a normal user. However, if you encountered some ancient files, you may need to handle the CRS conversion. [Here](https://github.com/hupili/geohk/tree/master/census2001) is a practical case of CRS conversion.
+
 ### Projection system
 
 #### Mercator projection
@@ -201,7 +211,7 @@ Here is a case made by [D3](https://hupili.net/20170800-sichuan-earthquake-in-10
 
 http://mapshaper.org/
 
-MapShper can help one to preview maps files and convert between different formats. It is also available as a command line tool.
+MapShper can help one to preview maps files and convert between different formats. It is also available as a command line tool. See it in action in the [geohk](https://github.com/hupili/geohk/tree/master/census2001) project.
 
 ### Google Fusion Table
 
