@@ -160,7 +160,7 @@ datetime.datetime(2018, 11, 29, 10, 36, 28),
 datetime.datetime(2018, 12, 25, 0, 0),
 datetime.datetime(2018, 11, 25, 10, 36))
 ```
-
+- The parameter `default` here means how python autofill the time which miss some units. For example, `Thu Sep 10:36:28` lack the information 'in which year' and `12/25` lack 'on which time' and 'in which year'. Python will autofill them according to the corresponding part in `default`.
 #### A failed parsing case
 
 However, The parsing will fail if we input a time against the regulations.
