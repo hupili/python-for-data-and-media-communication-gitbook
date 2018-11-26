@@ -13,22 +13,20 @@
         - [GeoJOSN: a lightweight file format to store geographical data](#geojosn-a-lightweight-file-format-to-store-geographical-data)
     - [Mapping](#mapping)
         - [Components](#components)
-            - [Feature](#feature)
-            - [Layer](#layer)
-            - [Background Layer](#background-layer)
-            - [Tooltip](#tooltip)
-            - [Highlight](#highlight)
         - [Map Types](#map-types)
-            - [Choropleth](#choropleth)
     - [Case studies](#case-studies)
         - [Air crash map using plotly](#air-crash-map-using-plotly)
         - [Openrice Sichuan Food using folium](#openrice-sichuan-food-using-folium)
         - [England and Ireland pubs using matplotlib](#england-and-ireland-pubs-using-matplotlib)
         - [Hong Kong property price bubble chart using folium](#hong-kong-property-price-bubble-chart-using-folium)
         - [United States unemployment rate 2012 choropleth using folium](#united-states-unemployment-rate-2012-choropleth-using-folium)
-    - [Other GIS tools](#other-gis-tools)
-        - [Bonus: QGIS](#bonus-qgis)
-        - [Bonus: ArcGIS](#bonus-arcgis)
+    - [Bonus: Other GIS and mapping tools](#bonus-other-gis-and-mapping-tools)
+        - [QGIS](#qgis)
+        - [ArcGIS](#arcgis)
+        - [Carto](#carto)
+        - [D3](#d3)
+        - [MapShaper](#mapshaper)
+        - [Google Fusion Table](#google-fusion-table)
 
 <!-- /TOC -->
 </div>
@@ -88,25 +86,44 @@ One can refer to [this notebook](https://github.com/hupili/openrice-data-blog-20
 
 ### Components
 
-#### Feature
-
-#### Layer
-
-#### Background Layer
-
-#### Tooltip
-
-#### Highlight
+- Feature
+- Layer
+- Background Layer
+- Tooltip
+- Highlight
 
 ### Map Types
 
-#### Choropleth
+This section discusses some common map types.
 
-Example:
+Plotting points: (Point of Interest; POI)
 
-- [US unemployment rate via plotly](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/87)
+- Scatter plot
+  - [England and Ireland seen from pub locations](http://ramiro.org/notebook/mapping-pubs/)
+- Bubble plot
+  - [Sichuan earth quake in 100 years](https://hupili.net/20170800-sichuan-earthquake-in-100years/)
+- Heat map
+  - [Mapbox heatmap example](https://www.mapbox.com/mapbox-gl-js/example/heatmap-layer/)
+- Clustering map
+  - [World airport clustering map](https://www.jerriepelser.com/books/airport-explorer/mapping/clustering/)
+
+Plotting lines:
+
+- Line graph/ path graph
+  - [Boeing 787-8 draws a self portrait in the air](https://flightaware.com/live/flight/BOE4/history/20170803/0448Z/KBFI/KBFI)
+
+Plotting areas:
+
+- Choropleth
+  - [US unemployment rate via plotly](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/87)
+  - [HK Census 2011 visualization](http://hkcensus11.hupili.net/#/choropleth)
+- Cartogram
+  - [Cargogram of the US](http://prag.ma/code/d3-cartogram/#intlmigrate/2011)
+  - [US 2016 election forecast by FiveThirtyEight](https://projects.fivethirtyeight.com/2016-election-forecast/)
 
 ## Case studies
+
+This section includes some selected map visualization cases **made in Python**. There are many other tools that can help you make maps, most notably QGIS, D3 and Carto. We leave pointers in the "other tools" section for readers' reference.
 
 ### Air crash map using plotly
 
@@ -152,9 +169,9 @@ Code repo: https://github.com/hupili/openrice-data-blog-201811
 
 - Plot choropleth using `folium`: [United States unemployment rate 2012 choropleth map](https://python-graph-gallery.com/292-choropleth-map-with-folium/) . One needs to prepare a data table and a geojson file which includes the interested geometries.
 
-## Other GIS tools
+## Bonus: Other GIS and mapping tools
 
-### Bonus: QGIS
+### QGIS
 
 https://www.qgis.org/en/site/
 
@@ -162,8 +179,30 @@ QGIS is written in Python. It provides a nice GUI so people without coding backg
 
 One major advantage of QGIS is being [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software).
 
-### Bonus: ArcGIS
+### ArcGIS
 
 https://www.arcgis.com/index.html
 
 It is a high quality commercial GIS system.
+
+### Carto
+
+https://carto.com/
+
+Very easy to use online tools. However, the free version limits number of POIs to 10,000. You may consider your data scale before using this tool.
+
+### D3
+
+D3 is a widely used data visualization library in Javascript. It provides convenience tools for the users to handle geo project and turn GeoJSON data into SVG `path` elements. The tools is highly flexible and favoured by many web designers.
+
+Here is a case made by [D3](https://hupili.net/20170800-sichuan-earthquake-in-100years/)
+
+### MapShaper
+
+http://mapshaper.org/
+
+MapShper can help one to preview maps files and convert between different formats. It is also available as a command line tool.
+
+### Google Fusion Table
+
+Being in the Google toolchain is a major advantage. However, this online tool requires KML format to plot a map. The current de facto standard GeoJSON is not supported as of this writing.
