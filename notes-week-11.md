@@ -169,15 +169,14 @@ However, The parsing will fail if we input a time against the regulations.
 from dateutil.parser import parse
 parse("2月15日 10:36:28")
 ```
-
 This line will raise a `ValueError`:
 
 ```bash
 ValueError: ('Unknown string format:', '2月15日 10:36:28')
 ```
-If we are going to parse `parse("2月15日 10:36:28")`, we need to convert it into a format without Chinese characters. Try to use `str.replace()` before parsing.
+- If we are going to parse `parse("2月15日 10:36:28")`, we need to convert it into a format without Chinese characters. Try to use `str.replace()` before parsing.
 
-The *dateutil* module provides powerful extensions to the standard *datetime* module. You can check more parse examples [here](https://dateutil.readthedocs.io/en/stable/examples.html#parse-examples)
+Generally, the *dateutil* module provides powerful extensions to the standard *datetime* module. You can check more parse examples [here](https://dateutil.readthedocs.io/en/stable/examples.html#parse-examples)
 
 ### Convert from datetime to utctimstamp and vice versa
 
