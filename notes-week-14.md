@@ -23,10 +23,22 @@ Two flavours of data:
 
 ## Measure the similarity between data points
 
+When the data points come at low dimension, it is very easy to tell how similar they are. For persons A, B, C of height 170cm, 171cm, 192cm, we can easily tell that A and B are closer and C is a bit far away from the rest. 
+
+As to data points in the high dimensional space, the first task is to tell the similarity between the data points. For example, we can use two bag-of-words vectors (see text analysis) to represent two documents. Since there are many possible words in English, the two vectors are of very high dimension. Now we want to tell how similar one document is to another.
+
+Following are some conventional similarity measures:
+
 - inner product
 - cosine
-- set intersection
-- ...
+- Jaccard index
+- correlation
+
+Following are some conventional dissimilarity measures:
+
+- Euclidean distance
+- Hemming distance
+- Editing distance
 
 ## Dimensionality Reduction
 
