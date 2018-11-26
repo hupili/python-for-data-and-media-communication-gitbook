@@ -5,12 +5,15 @@
 
 - [Week 13: Geographical data](#week-13-geographical-data)
     - [Objective](#objective)
-    - [Geographical Data](#geographical-data)
+    - [Geographical System](#geographical-system)
         - [Geocoding: turn string address data into geo coordinates](#geocoding-turn-string-address-data-into-geo-coordinates)
         - [Geographical Reference Systems (GRS)](#geographical-reference-systems-grs)
         - [Projection system](#projection-system)
             - [Mercator projection](#mercator-projection)
-        - [GeoJOSN: a lightweight file format to store geographical data](#geojosn-a-lightweight-file-format-to-store-geographical-data)
+    - [File Formats](#file-formats)
+        - [GeoJOSN](#geojosn)
+        - [TopoJSON](#topojson)
+        - [KML](#kml)
     - [Mapping](#mapping)
         - [Components](#components)
         - [Map Types](#map-types)
@@ -42,7 +45,7 @@ Libraries:
 - `plotly`
 - `matplotlib`
 
-## Geographical Data
+## Geographical System
 
 Following are the major steps and considerations when dealing with geographical data:
 
@@ -104,7 +107,22 @@ Image from ["How the World Map Looks Wildly Different Than You Think"](https://w
 
 The key take-away is that, the farther away from earth equator, the larger the distortion.
 
-### GeoJOSN: a lightweight file format to store geographical data
+## File Formats
+
+### GeoJOSN
+
+GeoJSON is a lightweight file format to store geographical data. It is based on JSON and can be easily load/ processed by many programming languages. Read more about the file format specification on [http://geojson.org/](http://geojson.org/) and try to draw GeoJSON files on [http://geojson.io/](http://geojson.io/).
+
+### TopoJSON
+
+GeoJSON format can result in very large files. It can be a prohibitive factor for widely deployed web service. TopoJSON can significantly reduce the file size. It is based on the following key ideas:
+
+- Reduce redundant/ shared arcs between geometries to save space
+- Use fixed-precision delta-encoding for integer coordinates
+
+### KML
+
+KML was an early format intended for web based mapping services. It is supported by Google and still works as main (or only) format in Google services. Since it is XML like file format, it usually has larger file size than JSON based format (GeoJSON/TopoJSON). Find more on [wiki](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) and try to visualise KML via Google Fusion Map.
 
 ## Mapping
 
