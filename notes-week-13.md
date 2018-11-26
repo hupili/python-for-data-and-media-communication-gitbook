@@ -54,8 +54,27 @@ Following are the major steps and considerations when dealing with geographical 
    - Choropleth -- one needs to project a geometry
 3. Base layer: maps are usually organised into layers. Besides puting the data points we are interested in onto the map, we also show some geographical information, like consitutuency boundaries, streets and ontours. This is the benefit of map -- put new data points onto a plate that people are already familiar with. This kind of information usually comes with the "base layer", whereas the above plotted elements are in "data layers". Choices for base layer are like Google Maps, Open Street Map, Mapbox, etc.
 
-
 ### Geocoding: turn string address data into geo coordinates
+
+Geocoding is usually done via a web service. The service is costly so you can seldom find free service nowadays. `geopy` has encapsulated many useful geocoding services for your selection. `Nominatim` is a frequently used free service. You just need to specify your user agent (any string would work) and control the request rate.
+
+```python
+from geopy.geocoders import Nominatim
+geolocator = Nominatim(user_agent='specify_your_app_name_here')
+location = geolocator.geocode('The address that you want to geocode')
+location.point
+```
+
+Google Map once provided a free API. It ceased operation since July 2018. Now you must apply a Google API key before using this service. The first hundreds requests everyday are free. Followup requests are charged at US$5 per 1000 requests. You can checkout details in the [billing plan](https://developers.google.com/maps/documentation/geocoding/usage-and-billing). The core code is as follows:
+
+```python
+from geopy.geocoders import GoogleV3
+geolocator = GoogleV3(api_key='Your API Key from Google API')
+location = geolocator.geocode('The address that you want to geocode')
+location.point
+```
+
+One can refer to [this notebook](https://github.com/hupili/openrice-data-blog-201811/blob/master/01.%20Geocode%20Sichuan%20Food.ipynb) for a real and complete working example of geocoding. It is part of the [HK Sichuan food growth map](https://github.com/hupili/openrice-data-blog-201811) visualization.
 
 ### Geographical Reference Systems (GRS)
 
