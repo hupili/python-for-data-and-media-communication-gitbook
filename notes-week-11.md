@@ -175,6 +175,7 @@ This line will raise a `ValueError`:
 ```bash
 ValueError: ('Unknown string format:', '2月15日 10:36:28')
 ```
+If we are going to parse `parse("2月15日 10:36:28")`, we need to convert it into a format without Chinese characters. Try to use `str.replace()` before parsing.
 
 The *dateutil* module provides powerful extensions to the standard *datetime* module. You can check more parse examples [here](https://dateutil.readthedocs.io/en/stable/examples.html#parse-examples)
 
@@ -311,11 +312,11 @@ datetime.timedelta(days=129)
 We can also do calculation between a datetime object and a timedelta object.e.g.what is the date 4 weeks later?
 
 ```python
-import datetime
-td_today = datetime.datetime(2018, 11, 19)
+from datetime import datetime, timedelta
+td_today = datetime(2018, 11, 19)
 #td_today = datetime.date.today()
-#td_today = datetime.datetime.now()
-td = td_today + datetime.timedelta(weeks = 4)
+#td_today = datetime.now()
+td = td_today + timedelta(weeks = 4)
 str(td)
 ```
 
