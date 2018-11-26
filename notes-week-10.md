@@ -438,19 +438,70 @@ stopwords.extend(newstopwords)
 
 #### Remove stopwords
 
-Following the above example:
+Move stopwords is easy, you just loop them to determine
+whether the words are in the stopwords, if true, then remove them. Expect the stopwords, we need also handle some punctuation and letter case. Following the above `assignment 1` example:
 
 ```python
-words = ['a','like','media','b']
-processed_word_list = []
-#assume you've already get a list of words  
-for word in words:
-    word = word.lower() # in case they are not all lower cased
-    if word not in stopwords:
-        processed_word_list.append(word)
-#processed_word_list
-#['like', 'media']
+import os
+import pandas as pd
+
+def read_txt(path): #read files and get content
+    all_text = []
+    for file in os.listdir(path):
+        f=open(file,"r")
+        contents= f.read()
+        all_text.append(contents)
+    all_words = "".join(all_text)
+    #remove punctuation
+    for ch in '\s+\.\!\/_,$%^*(+\"\')]+|[+——()?:【】“”‘’':
+        words = all_words.replace(ch," ")
+    return words
+
+def stopwordslist(filepath):   #set stopwords
+    stopwords = [line.strip() for line in open(filepath, 'r').readlines()]  
+    return stopwords
+
+def remove_stopwords(words): #remove stopwords
+    processed_word_list = []
+    for word in words:
+        word = word.lower() # in case they are not all lower cased
+        if word not in stopwords:
+            processed_word_list.append(word)
+    return processed_word_list
+
+words = read_txt("text/") #pass your own file path that include list of .txt
+words = words.split()
+stopwords = stopwordslist('./stopwords_eng.txt')
+stopwords = set(stopwords)
+processed_word_list = remove_stopwords(words)
+word_count = pd.Series(processed_word_list).value_counts().sort_values(ascending=False)[0:15]
 ```
+
+After remove stopwords, you can see that the word frequency list is more meaningful, if there are still some stopwords, you can add them into your `stopword.txt` and run the codes again.
+
+```text
+china             69
+trade             52
+chinese           43
+trump             32
+war               25
+beijing           20
+u.s.              17
+tariffs           16
+america           15
+american          14
+president         14
+global            14
+economic          11
+administration    11
+foreign           10
+```
+
+**Note:** If arising error when import the data like the following:
+
+`'utf-8' codec can't decode byte 0x80 in position 3131`
+
+You can refer [here]() for solutions.
 
 ### Visualize word frequency
 
