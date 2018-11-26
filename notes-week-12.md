@@ -1,26 +1,34 @@
 # Week 12: Network data
 
 <div id="toc">
+
 <!-- TOC -->
 
 - [Week 12: Network data](#week-12-network-data)
     - [Graph introduction](#graph-introduction)
     - [Network analysis with NetworkX](#network-analysis-with-networkx)
-        - [Basic logic](#basic-logic)
-        - [Case with Les Misérables](#case-with-les-misérables)
-            - [Visualise the simple graph](#visualise-the-simple-graph)
+        - [Basic usage of networkx](#basic-usage-of-networkx)
+    - [Common Network Analysis Routine via Les Misérables dataset](#common-network-analysis-routine-via-les-misérables-dataset)
+        - [Graph visualization](#graph-visualization)
+            - [Basic visualization](#basic-visualization)
             - [Adjust layout](#adjust-layout)
-    - [Color specific nodes](#color-specific-nodes)
-    - [Shortest path](#shortest-path)
-    - [Centrality Measures](#centrality-measures)
-    - [Structure degree](#structure-degree)
-    - [Clustering coefficient](#clustering-coefficient)
-    - [Cliques part of the graph](#cliques-part-of-the-graph)
-    - [Connected components](#connected-components)
-    - [Community detection](#community-detection)
-    - [Color the nodes](#color-the-nodes)
+            - [Group the nodes with same color](#group-the-nodes-with-same-color)
+        - [Measure Node and Edge Importance](#measure-node-and-edge-importance)
+            - [Degree](#degree)
+            - [Centrality Measures](#centrality-measures)
+        - [Basic statistics of graph](#basic-statistics-of-graph)
+            - [Degree distribution](#degree-distribution)
+            - [Clustering coefficient](#clustering-coefficient)
+        - [Structure of a graph](#structure-of-a-graph)
+            - [Cliques](#cliques)
+            - [Connected components](#connected-components)
+            - [Community detection](#community-detection)
+        - [Other Graph algorithms](#other-graph-algorithms)
+            - [Shortest path](#shortest-path)
+    - [Reference examples](#reference-examples)
 
 <!-- /TOC -->
+
 </div>
 
 ## Graph introduction
@@ -54,7 +62,7 @@ There are different ways to show the relationships.
 
 ## Network analysis with NetworkX
 
-### Basic logic
+### Basic usage of networkx
 
 NetworkX is a Python package for study of the structure, dynamics, and functions of complex networks. With which we can analyze the network structure, the relationship between different nodes and generate different kind of graphs.
 
@@ -94,6 +102,11 @@ Add edges, draw the graph.
 ```python
 #help(g.add_edge) to check out the parameters and syntax
 g.add_edge('A','B')
+```
+
+Graph show.
+
+```python
 nx.draw(g)
 ```
 
@@ -109,11 +122,13 @@ After that, we can get one simple graph.
 
 ![Network graph2](assets/network-graph2.png)
 
-### Case with Les Misérables
+## Common Network Analysis Routine via Les Misérables dataset
 
-In the following notes, we will use characters in book [*Les Misérables*](https://en.wikipedia.org/wiki/Les_Mis%C3%A9rables) to demo the analysis process. You can download the dataset [here]()
+In the following notes, we will use characters in book [*Les Misérables*](https://en.wikipedia.org/wiki/Les_Mis%C3%A9rables) to demo the analysis process. You can download the dataset [here](https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/graph/miserables.json)
 
-#### Visualise the simple graph
+### Graph visualization
+
+#### Basic visualization
 
 ```python
 import json
@@ -196,195 +211,242 @@ _ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666') #draw l
 
 ![Graph layout](assets/graph-layout.png)
 
-* The above one is the basic graph.
+#### Group the nodes with same color
 
- ![](assets/to-do-uncategorized-screenshots/no142.png)  
- `plt.figure(figsize=(20,20))` to change the size.  
- `nx.draw_networkx_nodes` and `nx.draw_networkx_edges` to draw the nodes and edges.  
- `labels=dict([(n,n)for n in g.nodes])` and `_=nx.draw_networkx_labels` to draw the labels. Create a dict\[\(n,n\)\], whose n is from g.nodes
+Group the nodes according to the group number in the json.
+Every node has a group number, we can group those nodes with the color.
 
-## Color specific nodes
+```python
+import matplotlib
+color = matplotlib.cm.Accent
+#import color map, there are many color maps, you can checkout the color maps by the following:
+# import matplotlib.cm as cm
+# dir(cm)
 
-  ```
-  g.nodes['Anzelma']
-  ```
+plt.figure(figsize=(15, 15))
+pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g1.nodes])
+_ = nx.draw_networkx_labels(g1, pos, labels=labels, font_color='#666666')
 
-  ![](assets/to-do-uncategorized-screenshots/no143.png)  
-  We know the content of g.nodes
+for group in range(1, 20):
+    nodelist = [n for n in g.nodes if g.nodes[n]['group'] == group]
+    # If g.nodes's group = 1, add those nodes into the nodelist. They will be the same color 1 . If g.nodes's group = 2, they will be added to another nodelist ,and be colored 2.
+    #print(nodelist)
+    nx.draw_networkx_nodes(g1, pos, nodelist=nodelist, node_color=color(group), alpha=0.8)
+```
 
-  ```
-  import matplotlib
-  color=matplotlib.cm.Accent
-  color(10)
-  ```
+![Graph group layout](assets/graph-group-layout.png)
 
-  ![](assets/to-do-uncategorized-screenshots/no144.png)  
-  `matplotlib.cm` is a useful tool. You can try by yourself.It shows the R\(red\), G\(green\), B\(blue\) and alpha.
+### Measure Node and Edge Importance
 
-  ```
-  for group in range(1,20):
-  nodelist=[n for n in g.nodes if g.nodes[n]['group']== group]
-  nx.draw_networkx_nodes(g,pos,nodelist=nodelist,node_color=color(group),alpha=0.8)
-  ```
+#### Degree
 
-![](assets/to-do-uncategorized-screenshots/no145.png)
+**Todo**
 
- ![](assets/to-do-uncategorized-screenshots/no146.png)
- If g.nodes's group = 1, add those nodes into the nodelist. They will be the same color 1 . If g.nodes's group = 2, they will be added to another nodelist ,and be colored 2.
+<!-- TODO: what is degree? -->
 
-## Shortest path
+```python
+g.degree
+pd.Series(dict(g.degree())).hist(bins=20)
+```
 
-  ```
-  sp=nx.shortest_path(g,'XXX','XXX')
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no147.png)  
-  It shows the shortest way between the two nodes.
-
-  ```
-  #base on the above graph
-  nx.draw_networkx_edges(g,
-  pos,
-  edgelist=list(zip(sp[:-1],sp[1:])),
-  width=5,
-  edge_color='r'
-  )
-  ```
-
-   ![](assets/to-do-uncategorized-screenshots/no148.png)  
-   ![](assets/to-do-uncategorized-screenshots/no149.png)
-
-## Centrality Measures
-
-* **Degree centrality**: degree is the numbers of edges associated with the nodes.
-* But not everyone is of the same importance. So **Closeness**  means the shorter the path, relationship is closer. 
-* How many times the person be the bridge in the shortest path? This is **Betweenness**. Key messages are in those person.
-
-  ```
-  df_top_nodes=df.sort_values('closeness', ascending=False)[:5]
-  #basic grah
-  nx.draw_networkx_nodes(g,pos,nodelist=list(df_top_nodes.index),
-  node_color='#ff7700',
-  alpha=0.5)
-  ```
-
-   ![](assets/to-do-uncategorized-screenshots/no150.png)  
-   ![](assets/to-do-uncategorized-screenshots/no151.png)  
-   Sort by closeness.
-
-## Structure degree
-
-  ```
-  g.degree
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no152.png)
-
-  ```
-  pd.Series(dict(g.degree())).hist(bins=20)
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no153.png)  
-  `dict(g.degree())` and then `Series`. Then Draw a picture.
+![Graph structure degree.png](assets/graph-structure-degree.png)  
+`dict(g.degree())` and then `Series`. Then Draw a picture.
 
 * Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
 
-## Clustering coefficient
+#### Centrality Measures
 
-  ```
-  nx.algorithms.clustering(g,['XXX','XXX','XXX'])
-  nx.average_clustering(g)
-  ```
+<!-- TODO: motivation?? -->
 
-  The numbers of triangles over the number of potential triangles .
-  ![](assets/to-do-uncategorized-screenshots/no154.png)
-  ```
-  nx.average_clustering(nx.complete_graph(5))
-  ```
+[Centrality](https://en.wikipedia.org/wiki/Centralityis) a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
 
-  ![](assets/to-do-uncategorized-screenshots/no155.png)
+You can refer to the [documentation](https://networkx.github.io/documentation/latest/reference/algorithms/centrality.html) and online resources to understand those centrality measures. Try other centrality measures that are not covered in this tutorial. See what interesting findings you can get.
 
-## Cliques part of the graph
+```python
+#check out the methods of centrality
+nx.degree_centrality(g)
+#nx.closeness_centrality(g)
+#nx.betweenness_centrality(g)
+#nx.eigenvector_centrality(g)
 
-  ```
-  Cliques=list(nx.find_cliques(g))
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no156.png)
-
-  ```
-  from matplotlib import pyplot as plt
-  plt.figure(figsize=(20,20))
-  pos=nx.spring_layout(g)
-  nx.draw_networkx_nodes(g,
-                     pos,
-                     node_color='#ccccff',
-                     alpha=0.5
-                     )
-  nx.draw_networkx_edges(g,
-                     pos,
-                     width=1,
-                     alpha=0.3
-                     )
-  labels=dict([(n,n)for n in g.nodes])
-  _=nx.draw_networkx_labels(g,
-                   pos,
-                   labels=labels,
-                   font_color='#666666'
-                   )
-  ```
-
-  The above is the basic graph. Then
-
-  ```
-  nx.draw_networkx_nodes(g,
-                       pos,
-                       nodelist=cliques[1],
-                       node_color='#ff7700',
-                       alpha=0.5
-                       )
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no157.png)
-
-## Connected components
-
-  ```
-  components =list(nx.connected_components(g))
-  ```
-
-  to find those who are not connected by others.
-
-## Community detection
-
-  ```
-  from networkx.algorithms import community
-  communities = list(community.girvan_newman(g))
-  ```
-
-  ![](assets/to-do-uncategorized-screenshots/no158.png)  
-  Those in the community is much denser,and those between the community is sparser.
-
-  ```
-  communities = list(community.label_propagation_communities(g))
-  ```
-
-  The function is similar.
-
-## Color the nodes
-
+import pandas as pd
+df = pd.DataFrame()
+df['degree'] = pd.Series(nx.degree_centrality(g))
+df['closeness'] = pd.Series(nx.closeness_centrality(g))
+df['betweenness'] = pd.Series(nx.betweenness_centrality(g))
+df['eigenvector'] = pd.Series(nx.eigenvector_centrality(g))
 ```
-plt.figure(figsize=(20,20))
-pos=nx.spring_layout(g)
-nx.draw_networkx_edges(g,pos,width=1,alpha=0.3)
+
+```python
+#draw degree centrality
+df_top_nodes = df.sort_values('degree', ascending=False)[:5]
+
+plt.figure(figsize=(30, 15))
+# we don't run the spring layout again; to keep the positions in this section
+#pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
+nx.draw_networkx_nodes(g, pos, nodelist=list(df_top_nodes.index), node_color='#ff7700', alpha=0.5)
+
+df_top_nodes
+#change degree to other three columns to see the different top nodes.
+```
+
+![graph degree centrality](assets/graph-degree-centrality.png)
+
+From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
+
+
+<!-- TODO: further reading?? outline.md, notes. Chainsaw's work on Mingpao -->
+
+### Basic statistics of graph
+
+#### Degree distribution
+
+**Todo**
+
+<!-- TODO: what is degree? -->
+
+```python
+g.degree
+pd.Series(dict(g.degree())).hist(bins=20)
+```
+
+![Graph structure degree.png](assets/graph-structure-degree.png)  
+`dict(g.degree())` and then `Series`. Then Draw a picture.
+
+* Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
+
+<!-- TODO: power law/ prefential attachment/ long tail -->
+
+#### Clustering coefficient
+
+**Todo**
+
+```python
+nx.algorithms.clustering(g,['XXX','XXX','XXX'])
+nx.average_clustering(g)
+```
+
+```python
+gorithms.clustering(g, ['Myriel', 'Champtercier', 'Count', 'Cravatte', 'Napoleon', 'Geborand', 'CountessdeLo', 'OldMan'])
+# {'Champtercier': 0,
+#  'Count': 0,
+#  'CountessdeLo': 0,
+#  'Cravatte': 0,
+#  'Geborand': 0,
+#  'Myriel': 0.06666666666666667,
+#  'Napoleon': 0,
+#  'OldMan': 0}
+nx.average_clustering(g)
+0.5731367499320134
+nx.average_clustering(nx.complete_graph(5))
+1.0
+```
+
+### Structure of a graph
+
+#### Cliques
+
+We can highlight the certain clique.
+
+```python
+cliques = list(nx.find_cliques(g))
+#len(cliques)
+cliques[0:2]
+
+plt.figure(figsize=(15, 15))
+pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
+nx.draw_networkx_nodes(g, pos, nodelist=cliques[12], node_color='#ff7700', alpha=0.5)
+#draw any clique by changing nodelist=cliques[12]
+```
+
+![Graph clique](assets/graph-clique.png)
+
+#### Connected components
+
+To find those who are not connected by others.
+
+```python
+components =list(nx.connected_components(g))
+len(components)
+```
+
+#### Community detection
+
+**Todo**
+
+```python
+from networkx.algorithms import community
+communities = list(community.girvan_newman(g))
+#communities[0]
+
+
+plt.figure(figsize=(15, 15))
+pos =nx.spring_layout(g)
+#nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
 
 for i in range(0, len(communities)):
-  nodelist=communities[i]
-  print(nodelist)
-  nx.draw_networkx_nodes(g,pos,nodelist=nodelist,node_color=color(i), alpha=0.8)
-  labels=dict([(n, '%s:%s' % (n, g.nodes[n]['group'])) for n in nodelist])
-  nx.draw_networkx_labels(g,pos,labels=labels,fint_color='#666666')
+    nodelist = communities[i]
+    print(nodelist)
+    nx.draw_networkx_nodes(g, pos, nodelist=nodelist, node_color=color(i), alpha=0.8)
+    labels = dict([(n, '%s:%s' % (n, g.nodes[n]['group'])) for n in nodelist])
+    nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
 ```
 
-![](assets/to-do-uncategorized-screenshots/no159.png)  
-![](assets/to-do-uncategorized-screenshots/no160.png)
+![Graph community](assets/graph-community.png)  
+
+### Other Graph algorithms
+
+#### Shortest path
+
+Draw the shortest path between two nodes.
+
+```python
+sp = nx.shortest_path(g1, 'Gribier', 'Child2')
+#you can change to any other two nodes
+sp
+
+plt.figure(figsize=(15, 15))
+#pos =nx.spring_layout(g)
+nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
+nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
+
+nx.draw_networkx_edges(g, 
+                       pos,
+                       edgelist=list(zip(sp[:-1], sp[1:])),
+                       width=5,
+                       edge_color='r'
+                      )
+#help(nx.draw_networkx_edges)
+#edgelist:collection of edge tuples
+#list(zip(sp[:-1], sp[1:])) check out the edgelist
+# [('Gribier', 'Fauchelevent'),
+#  ('Fauchelevent', 'Javert'),
+#  ('Javert', 'Gavroche'),
+#  ('Gavroche', 'Child2')]
+```
+
+![Graph shortest path](assets/graph-shortest-path.png)
+
+## Reference examples
+
+* [Who control the discourse power in 红楼梦](https://dnnsociety.org/2018/04/15/who-control-the-discourse-power-in-%E7%BA%A2%E6%A5%BC%E6%A2%A6%EF%BC%9F/) by Group 8 2018S
+
+* [Li's family business map and spring layout analysis](https://dnnsociety.org/2018/04/15/lis-family-business-map-and-spring-layout-analysis/) by Group 7 2018S
+
+------
+
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)

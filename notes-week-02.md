@@ -476,11 +476,11 @@ Simply, `Index` is like the position of one element in the whole list or object,
 ```
     String  ‘H     e     l      l      o'
     Index   [0]   [1]   [2]    [3]    [4]
-    List    ['a', 'b',  'c',   'd',   'e']
+    ch_list    ['a', 'b',  'c',   'd',   'e']
     Index   [0]   [1]   [2]    [3]    [4]
 ```
 
-In list ['a', 'b', 'c', 'd', 'e'], list[0]='a', 0 is the index of 'a' in this list, similarly use in array. We will use more in chapter 3 so that you can get more familiar with this issue.
+In ch_list ['a', 'b', 'c', 'd', 'e'], ch_list[0]='a', 0 is the index of 'a' in this list, similarly use in array. We will use more in chapter 3 so that you can get more familiar with this issue.
 
 In addition, you can check out more array functions in scipy's [tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html).
 
@@ -687,7 +687,6 @@ Return a random integer N and a <= N <= b. Alias for randrange(a, b+1).
 
 ```python
 >>> import random
->>> list=[1,2,3,4,5,6,7,8,9,10]
 >>> random.randint(2,7)
 5 #one random number >=2 and <=7
 ```
@@ -698,8 +697,8 @@ Return a random element from the non-empty sequence seq. If seq is empty, raises
 
 ```python
 >>> import random
->>> list=[1,2,3,4,5,6,7,8,9,10]
->>> random.choice(list)
+>>> number_list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.choice(number_list)
 6 #one random number of the list
 ```
 
@@ -709,8 +708,8 @@ Return a random sub-seq from the non-empty sequence seq.
 
 ```python
 >>> import random
->>> list=[1,2,3,4,5,6,7,8,9,10]
->>> random.choices(list,k=3)
+>>> number_list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.choices(number_list,k=3)
 [5, 6, 8] #return k random number of the list
 ```
 
@@ -720,9 +719,9 @@ Return a list that randomly sort the sequence of all elements.
 
 ```python
 >>> import random
->>> list=[1,2,3,4,5,6,7,8,9,10]
->>> random.shuffle(list)
->>> print(list)
+>>> number_list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.shuffle(number_list)
+>>> print(number_list)
 [7, 1, 2, 8, 6, 3, 4, 10, 9, 5] #randomly sort
 ```
 
@@ -732,8 +731,8 @@ Return a k length list of unique elements chosen from the population sequence or
 
 ```python
 >>> import random
->>> list=[1,2,3,4,5,6,7,8,9,10]
->>> random.sample(list,4)
+>>> number_list=[1,2,3,4,5,6,7,8,9,10]
+>>> random.sample(number_list,4)
 [5, 10, 6, 1] #random sample 4 elements
 ```
 

@@ -240,17 +240,17 @@ Example 5:
 Example 6:
 
 ```python
->>> list1 = ['Hello', 'Python', 2018, 814]
->>> list2 = [1, 2, 3, 4, 5, 6, 7 ]
->>> print ("list1[0]: ", list1[0]) #index[0] in list1
-list1[0]:  Hello
->>> print ("list2[1:5]: ", list2[1:5]) #index[1] to index[5] but does not include index5 value.
-list2[1:5]:  [2, 3, 4, 5]
->>> list1 + list2  
+>>> test_list = ['Hello', 'Python', 2018, 814]
+>>> test_list2 = [1, 2, 3, 4, 5, 6, 7 ]
+>>> print ("test_list[0]: ", test_list[0]) #index[0] in test_list
+test_list[0]:  Hello
+>>> print ("test_list2[1:5]: ", test_list2[1:5]) #index[1] to index[5] but does not include index5 value.
+test_list2[1:5]:  [2, 3, 4, 5]
+>>> test_list + test_list2  
 ['Hello', 'Python', 2018, 814, 1, 2, 3, 4, 5, 6, 7]
->>> list1*2  #duplicate
+>>> test_list*2  #duplicate
 ['Hello', 'Python', 2018, 814, 'Hello', 'Python', 2018, 814]
->>> 2018 in list1  #check whether 2018 is in list1
+>>> 2018 in test_list  #check whether 2018 is in test_list
 true
 ```
 
@@ -265,12 +265,12 @@ true
 Example 7:
 
 ```python
->>> list2 = [1, 2, 3, 4, 5, 6, 7 ]
->>> len(list2)
+>>> test_list2 = [1, 2, 3, 4, 5, 6, 7 ]
+>>> len(test_list2)
 7
->>> max(list2)
+>>> max(test_list2)
 7
->>> min(list2)
+>>> min(test_list2)
 1
 ```
 
@@ -291,53 +291,53 @@ Example 7:
 Example 8: All examples are corresponding to the list methods stated above.
 
 ```python
->>> list1 = ['Hello', 'Python', 2018, 814]
->>> list1.append(2049) #append() takes exactly one argument
->>> print(list1)
+>>> test_list = ['Hello', 'Python', 2018, 814]
+>>> test_list.append(2049) #append() takes exactly one argument
+>>> print(test_list)
 ['Hello', 'Python', 2018, 814, 2049]
 ```
 
 ```python
->>> list2 = [23, 2018, 814, 2049,2018]
->>> list2.count(2018) #count numbers of 2018
+>>> test_list2 = [23, 2018, 814, 2049,2018]
+>>> test_list2.count(2018) #count numbers of 2018
 2
 ```
 
 ```python
->>> list1.extend(list2) #add list2 into list1
->>> print("Extended List : ", list1)
+>>> test_list.extend(test_list2) #add test_list2 into test_list
+>>> print("Extended List : ", test_list)
 Extended List : ['Hello', 'Python', 2018, 814, 23, 2018, 814, 2049, 2018]
 ```
 
 ```python
->>> print("Index for python : ", list1.index('Python'))
+>>> print("Index for python : ", test_list.index('Python'))
 1 #index value 'Python'
->>> print("Index for 2018 : ", list1.index(2018)) #find the first position of the indexed value
+>>> print("Index for 2018 : ", test_list.index(2018)) #find the first position of the indexed value
 2
 ```
 
 ```python
->>> list = ['Hello', 'Python', 2018, 814, 23, 2018, 814, 2049, 2018]
->>> list.insert(3, 2009) #list.insert(index, object),insert value 2009 in the index3
->>> print("New List : ", list)
+>>> test_list = ['Hello', 'Python', 2018, 814, 23, 2018, 814, 2049, 2018]
+>>> test_list.insert(3, 2009) #list.insert(index, object),insert value 2009 in the index3
+>>> print("New List : ", test_list)
 New List :  ['Hello', 'Python', 2018, 2009, 814, 23, 2018, 814, 2049, 2018]
 ```
 
 ```python
->>> list = ['Hello', 'Python', 2018, 2009, 814, 23, 2018, 814, 2049, 2018]
->>> list.pop(2) #delete index2 value and return this value
->>> print('List now : ',list)
+>>> test_list = ['Hello', 'Python', 2018, 2009, 814, 23, 2018, 814, 2049, 2018]
+>>> test_list.pop(2) #delete index2 value and return this value
+>>> print('List now : ',test_list)
 List now :  ['Hello', 'Python', 2009, 814, 23, 2018, 814, 2049, 2018]
->>> list.remove('Hello') #remove certain value
->>> print('List now : ',list)
+>>> test_list.remove('Hello') #remove certain value
+>>> print('List now : ',test_list)
 List now :  ['Python', 2009, 814, 23, 2018, 814, 2049, 2018]
 ```
 
 ```python
->>> list = ['Python', 2009, 814, 23, 2018, 814, 2049, 2018]
->>> list.reverse() #reverse list
->>> print('reverse list : ',list)
-reverse list :  [2018, 2049, 814, 2018, 23, 814, 2009, 'Python']
+>>> test_list = ['Python', 2009, 814, 23, 2018, 814, 2049, 2018]
+>>> test_list.reverse() #reverse list
+>>> print('reverse list : ',test_list)
+reverse test_list :  [2018, 2049, 814, 2018, 23, 814, 2009, 'Python']
 ```
 
 ```python
@@ -407,12 +407,12 @@ A dictionary is a collection which is disordered, changeable and indexed. In Pyt
 Example 9:
 
 ```python
->>> dict1 = {
+>>> my_dict = {
 ...  "apple": "green",
 ...  "banana": "yellow",
 ...  "cherry": "red"
 ...}
->>> print(dict1)
+>>> print(my_dict)
 {'apple': 'green', 'banana': 'yellow', 'cherry': 'red'}
 ```
 
@@ -472,56 +472,56 @@ Example 12: All examples are corresponding to the list methods stated above.
 
 ```python
 >>> seq = ['Chico', 'Ivy', 'Ri']
->>> dict = dict.fromkeys(seq)  #get/create keys from the list
->>> print("New_dict : %s" % str(dict))
+>>> p_dict = dict.fromkeys(seq)  #get/create keys from the list
+>>> print("New_dict : %s" % str(p_dict))
 New_dict : {'Chico': None, 'Ivy': None, 'Ri': None}
->>> dict = dict.fromkeys(seq, 'A+') #give all keys value A+
->>> print("New_dict : %s" % str(dict))
+>>> p_dict = dict.fromkeys(seq, 'A+') #give all keys value A+
+>>> print("New_dict : %s" % str(p_dict))
 New_dict : {'Chico': 'A+', 'Ivy': 'A+', 'Ri': 'A+'}
 ```
 
 ```python
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> print("Age : %s" % dict.get('Age')) #get key value
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("Age : %s" % p_dict.get('Age')) #get key value
 Age : 23
->>> print("Gender : %s" % dict.get('Gender'))
+>>> print("Gender : %s" % p_dict.get('Gender'))
 Gender : Male #if you get a wrong key, it will return None
 ```
 
 ```python
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> print("dict_values : %s" % dict.items()) #view dict's items
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("dict_values : %s" % p_dict.items()) #view dict's items
 dict_values : dict_items([('Name', 'Chico'), ('Gender', 'Male'), ('Age', '23')]) #return a tuple
 ```
 
 ```python
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> print("dict_keys : %s" % dict.keys()) #view all keys
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("dict_keys : %s" % p_dict.keys()) #view all keys
 dict_keys : dict_keys(['Name', 'Gender', 'Age'])
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> print("has_key : %s" % dict.__contains__('Age')) #two '_', check out keys
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> print("has_key : %s" % p_dict.__contains__('Age')) #two '_', check out keys
 has_key : True
->>> print("has_key : %s" % dict.__contains__('School'))
+>>> print("has_key : %s" % p_dict.__contains__('School'))
 has_key : False
->>> dict = {'Name':'Chico','Gender':'Male','Age':'23'}
->>> pop_value = dict.pop('Gender') #drop out key
+>>> p_dict = {'Name':'Chico','Gender':'Male','Age':'23'}
+>>> pop_value = p_dict.pop('Gender') #drop out key
 >>> print(pop_value)
 Male
->>> print(dict)
+>>> print(p_dict)
 {'Name': 'Chico', 'Age': '23'}
 ```
 
 ```python
->>> dict = {'Name': 'Chico', 'Age': '23'}
->>> print("Value : %s" % dict.values()) #get all values
+>>> p_dict = {'Name': 'Chico', 'Age': '23'}
+>>> print("Value : %s" % p_dict.values()) #get all values
 Value : dict_values(['Chico', '23'])
->>> dict1 = {'Name': 'Chico', 'Age': '23'}
->>> dict2 = {'Gender':'Male'}
+>>> my_dict = {'Name': 'Chico', 'Age': '23'}
+>>> new_dict = {'Gender':'Male'}
 ```
 
 ```python
->>> dict1.update(dict2) #update dict2 in dict1
->>> print('new_dict : %s' % dict1)
+>>> my_dict.update(new_dict) #update new_dict in my_dict
+>>> print('new_dict : %s' % my_dict)
 new_dict : {'Name': 'Chico', 'Age': '23', 'Gender': 'Male'}
 ```
 
