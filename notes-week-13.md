@@ -88,7 +88,21 @@ Most modern mapping library and GeoJSON file use WGS1984 CRS. Usually this step 
 
 ### Projection system
 
+We live on a spherical surface but the computer screen is rectangular. The process to convert shapes from the former to the latter is called "projection". Here is a demo of [different methods of projection](https://www.jasondavies.com/maps/transition/).
+
 #### Mercator projection
+
+Mercator projection is the most widely used projection. One can see the most familiar world map using Mercator projection.
+
+![](assets/mercator-projection.png)
+Image from [Jason Davies's map projection explorer](https://www.jasondavies.com/maps/transition/)
+
+[Here](https://www.youtube.com/watch?v=lPNrtjboISg) is an excellent video to show you how our conventional world map can be misleading.
+
+![](assets/mercator-wyoming-law.png)
+Image from ["How the World Map Looks Wildly Different Than You Think"](https://www.youtube.com/watch?v=lPNrtjboISg)
+
+The key take-away is that, the farther away from earth equator, the larger the distortion.
 
 ### GeoJOSN: a lightweight file format to store geographical data
 
