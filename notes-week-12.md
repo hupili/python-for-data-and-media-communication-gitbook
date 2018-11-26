@@ -9,22 +9,22 @@
     - [Network analysis with NetworkX](#network-analysis-with-networkx)
         - [Basic usage of networkx](#basic-usage-of-networkx)
     - [Common Network Analysis Routine via Les Misérables dataset](#common-network-analysis-routine-via-les-misérables-dataset)
-            - [Graph visualization](#graph-visualization)
-                - [Basic visualization](#basic-visualization)
-                - [Adjust layout](#adjust-layout)
-                - [Group the nodes with same color](#group-the-nodes-with-same-color)
-            - [Measure Node and Edge Importance](#measure-node-and-edge-importance)
-                - [Degree](#degree)
-                - [Centrality Measures](#centrality-measures)
-            - [Basic statistics of graph](#basic-statistics-of-graph)
-                - [Degree distribution](#degree-distribution)
-                - [Clustering coefficient](#clustering-coefficient)
-            - [Structure of a graph](#structure-of-a-graph)
-                - [Cliques](#cliques)
-                - [Connected components](#connected-components)
-                - [Community detection](#community-detection)
-            - [Other Graph algorithms](#other-graph-algorithms)
-                - [Shortest path](#shortest-path)
+        - [Graph visualization](#graph-visualization)
+            - [Basic visualization](#basic-visualization)
+            - [Adjust layout](#adjust-layout)
+            - [Group the nodes with same color](#group-the-nodes-with-same-color)
+        - [Measure Node and Edge Importance](#measure-node-and-edge-importance)
+            - [Degree](#degree)
+            - [Centrality Measures](#centrality-measures)
+        - [Basic statistics of graph](#basic-statistics-of-graph)
+            - [Degree distribution](#degree-distribution)
+            - [Clustering coefficient](#clustering-coefficient)
+        - [Structure of a graph](#structure-of-a-graph)
+            - [Cliques](#cliques)
+            - [Connected components](#connected-components)
+            - [Community detection](#community-detection)
+        - [Other Graph algorithms](#other-graph-algorithms)
+            - [Shortest path](#shortest-path)
     - [Reference examples](#reference-examples)
 
 <!-- /TOC -->
@@ -126,9 +126,9 @@ After that, we can get one simple graph.
 
 In the following notes, we will use characters in book [*Les Misérables*](https://en.wikipedia.org/wiki/Les_Mis%C3%A9rables) to demo the analysis process. You can download the dataset [here](https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/graph/miserables.json)
 
-#### Graph visualization
+### Graph visualization
 
-##### Basic visualization
+#### Basic visualization
 
 ```python
 import json
@@ -158,7 +158,7 @@ Next step for us is improving the graphs. To solve the following questions:
 - Who are the top nodes here?
 - The shortest path between two path?
 
-##### Adjust layout
+#### Adjust layout
 
 ```python
 help(nx.draw) #to learn about the function and parameters. What may be useful for us are parameters and see also functions. Those are helpful for optimizing our graphs.
@@ -211,7 +211,7 @@ _ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666') #draw l
 
 ![Graph layout](assets/graph-layout.png)
 
-##### Group the nodes with same color
+#### Group the nodes with same color
 
 Group the nodes according to the group number in the json.
 Every node has a group number, we can group those nodes with the color.
@@ -239,9 +239,9 @@ for group in range(1, 20):
 
 ![Graph group layout](assets/graph-group-layout.png)
 
-#### Measure Node and Edge Importance
+### Measure Node and Edge Importance
 
-##### Degree
+#### Degree
 
 **Todo**
 
@@ -257,7 +257,7 @@ pd.Series(dict(g.degree())).hist(bins=20)
 
 * Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
 
-##### Centrality Measures
+#### Centrality Measures
 
 <!-- TODO: motivation?? -->
 
@@ -304,9 +304,9 @@ From centrality analysis, we can figure out the `key figures` and nodes in the n
 
 <!-- TODO: further reading?? outline.md, notes. Chainsaw's work on Mingpao -->
 
-#### Basic statistics of graph
+### Basic statistics of graph
 
-##### Degree distribution
+#### Degree distribution
 
 **Todo**
 
@@ -324,7 +324,7 @@ pd.Series(dict(g.degree())).hist(bins=20)
 
 <!-- TODO: power law/ prefential attachment/ long tail -->
 
-##### Clustering coefficient
+#### Clustering coefficient
 
 **Todo**
 
@@ -349,9 +349,9 @@ nx.average_clustering(nx.complete_graph(5))
 1.0
 ```
 
-#### Structure of a graph
+### Structure of a graph
 
-##### Cliques
+#### Cliques
 
 We can highlight the certain clique.
 
@@ -372,7 +372,7 @@ nx.draw_networkx_nodes(g, pos, nodelist=cliques[12], node_color='#ff7700', alpha
 
 ![Graph clique](assets/graph-clique.png)
 
-##### Connected components
+#### Connected components
 
 To find those who are not connected by others.
 
@@ -381,7 +381,7 @@ components =list(nx.connected_components(g))
 len(components)
 ```
 
-##### Community detection
+#### Community detection
 
 **Todo**
 
@@ -406,9 +406,9 @@ for i in range(0, len(communities)):
 
 ![Graph community](assets/graph-community.png)  
 
-#### Other Graph algorithms
+### Other Graph algorithms
 
-##### Shortest path
+#### Shortest path
 
 Draw the shortest path between two nodes.
 
