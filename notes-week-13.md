@@ -4,7 +4,7 @@
 <!-- TOC -->
 
 - [Week 13: Geographical data](#week-13-geographical-data)
-    - [Outline](#outline)
+    - [Objective](#objective)
     - [Geographical Data](#geographical-data)
         - [Geocoding: turn string address data into geo coordinates](#geocoding-turn-string-address-data-into-geo-coordinates)
         - [Geographical Reference Systems (GRS)](#geographical-reference-systems-grs)
@@ -23,11 +23,18 @@
     - [Case studies](#case-studies)
         - [Air crash map](#air-crash-map)
         - [Openrice Sichuan Food](#openrice-sichuan-food)
+    - [Other GIS tools](#other-gis-tools)
+        - [Bonus: QGIS](#bonus-qgis)
+        - [Bonus: ArcGIS](#bonus-arcgis)
 
 <!-- /TOC -->
 </div>
 
-## Outline
+## Objective
+
+Understand geographical data 
+
+Libraries:
 
 - `geopy`
 - `folium`
@@ -113,3 +120,19 @@ The tools and process:
 - Use ImageMatick and `gifsicle` to combine screenshots into gif
 
 Code repo: https://github.com/hupili/openrice-data-blog-201811
+
+## Other GIS tools
+
+### Bonus: QGIS
+
+https://www.qgis.org/en/site/
+
+QGIS is written in Python. It provides a nice GUI so people without coding background can also use this tool. It integrates very well with Python. One can first try to process the geographical data via QGIS GUI. Once the prototyping is done, one can automate the workflow and take it to a massive scale using some glue code written in Python.
+
+One major advantage of QGIS is being [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software).
+
+### Bonus: ArcGIS
+
+https://www.arcgis.com/index.html
+
+It is a high quality commercial GIS system.
