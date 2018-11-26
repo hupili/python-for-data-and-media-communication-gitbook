@@ -15,8 +15,8 @@
         - [TopoJSON](#topojson)
         - [KML](#kml)
     - [Mapping](#mapping)
-        - [Components](#components)
-        - [Map Types](#map-types)
+        - [Map types](#map-types)
+        - [Map components](#map-components)
     - [Case studies](#case-studies)
         - [Air crash map using plotly](#air-crash-map-using-plotly)
         - [Openrice Sichuan Food using folium](#openrice-sichuan-food-using-folium)
@@ -126,15 +126,9 @@ KML was an early format intended for web based mapping services. It is supported
 
 ## Mapping
 
-### Components
+"Mapping" refers to the process of visualizing data on maps, a.k.a data visualization on maps. So the key issue of mapping is to determine which visual element is used to present the data. That leads to three major types of maps: visualise by point, by line and by area.
 
-- Feature
-- Layer
-- Background Layer
-- Tooltip
-- Highlight
-
-### Map Types
+### Map types
 
 This section discusses some common map types.
 
@@ -162,6 +156,17 @@ Plotting areas:
 - Cartogram
   - [Cargogram of the US](http://prag.ma/code/d3-cartogram/#intlmigrate/2011)
   - [US 2016 election forecast by FiveThirtyEight](https://projects.fivethirtyeight.com/2016-election-forecast/)
+
+### Map components
+
+- Feature
+- Layer
+  - Layer
+  - Background Layer
+- Auxiliary
+  - Tooltip
+  - Highlight
+  - Toolbox
 
 ## Case studies
 
