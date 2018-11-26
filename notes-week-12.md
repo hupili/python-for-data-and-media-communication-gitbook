@@ -130,6 +130,8 @@ In the following notes, we will use characters in book [*Les Misérables*](https
 
 #### Basic visualization
 
+Add all nodes and edges.
+
 ```python
 import json
 data = json.loads(open('miserables.json').read())
@@ -151,14 +153,14 @@ nx.draw(g)
 
 ![Simple graph](assets/visualise-the-simple-graph.png)
 
-Next step for us is improving the graphs. To solve the following questions:
+From this graph, we can know that there are some groups, but we don't know who are them. Next step for us is improving the graphs. To solve the following questions:
 
 - Are there some groups in the network?
 - Who are in the same group?
-- Who are the top nodes here?
-- The shortest path between two path?
 
 #### Adjust layout
+
+Add labels on the graph.
 
 ```python
 help(nx.draw) #to learn about the function and parameters. What may be useful for us are parameters and see also functions. Those are helpful for optimizing our graphs.
@@ -200,7 +202,7 @@ help(nx.draw) #to learn about the function and parameters. What may be useful fo
 ```python
 from matplotlib import pyplot as plt
 
-plt.figure(figsize=(20, 20))
+plt.figure(figsize=(15, 15))
 pos =nx.spring_layout(g)
 # nx.draw(g, pos=nx.spring_layout(g))
 nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5) #change nodes style
@@ -227,14 +229,14 @@ plt.figure(figsize=(15, 15))
 pos =nx.spring_layout(g)
 nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
 nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
-labels = dict([(n, n) for n in g1.nodes])
-_ = nx.draw_networkx_labels(g1, pos, labels=labels, font_color='#666666')
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
 
 for group in range(1, 20):
     nodelist = [n for n in g.nodes if g.nodes[n]['group'] == group]
     # If g.nodes's group = 1, add those nodes into the nodelist. They will be the same color 1 . If g.nodes's group = 2, they will be added to another nodelist ,and be colored 2.
     #print(nodelist)
-    nx.draw_networkx_nodes(g1, pos, nodelist=nodelist, node_color=color(group), alpha=0.8)
+    nx.draw_networkx_nodes(g, pos, nodelist=nodelist, node_color=color(group), alpha=0.8)
 ```
 
 ![Graph group layout](assets/graph-group-layout.png)
@@ -243,9 +245,7 @@ for group in range(1, 20):
 
 #### Degree
 
-**Todo**
-
-<!-- TODO: what is degree? -->
+In graph theory, the degree is the number of edges incident to the nodes. The degree usually represent the **importance** of nodes. Degree can be divided into In-Degree and Out-Degree. In-Degree is how many other nodes point to one node, while Out-Degree is how many other nodes one node points to. Degree is the sum of In-Degree and Out-Degree.
 
 ```python
 g.degree
@@ -255,18 +255,19 @@ pd.Series(dict(g.degree())).hist(bins=20)
 ![Graph structure degree.png](assets/graph-structure-degree.png)  
 `dict(g.degree())` and then `Series`. Then Draw a picture.
 
-* Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
+From the histogram, we can see that the minority nodes have large number of edges while majority have less edges.
+This is a [Heave tail distribution](https://en.wikipedia.org/wiki/Heavy-tailed_distribution), which is famous for rich will be richer and poor will be poorer.
 
 #### Centrality Measures
 
-<!-- TODO: motivation?? -->
+As we mentioned above, Degree can be divided into In-Degree and Out-Degree. The importance of nodes with the same total degree but different In-Degree and Out-Degree are different. That's the reason why We need Centrality Measures.
 
 [Centrality](https://en.wikipedia.org/wiki/Centralityis) a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
 
 You can refer to the [documentation](https://networkx.github.io/documentation/latest/reference/algorithms/centrality.html) and online resources to understand those centrality measures. Try other centrality measures that are not covered in this tutorial. See what interesting findings you can get.
 
 ```python
-#check out the methods of centrality
+#check out the methods of centrality, generally speaking, the greater centrality of a node, and the more important the node is in the network.
 nx.degree_centrality(g)
 #nx.closeness_centrality(g)
 #nx.betweenness_centrality(g)
@@ -301,14 +302,13 @@ df_top_nodes
 
 From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
 
-
 <!-- TODO: further reading?? outline.md, notes. Chainsaw's work on Mingpao -->
 
 ### Basic statistics of graph
 
 #### Degree distribution
 
-**Todo**
+In the above session, we mentioned that the degree of a node is the number of edges it has to other nodes. The degree distribution is the probability distribution of these degrees over the whole network.
 
 <!-- TODO: what is degree? -->
 
@@ -326,10 +326,12 @@ pd.Series(dict(g.degree())).hist(bins=20)
 
 #### Clustering coefficient
 
-**Todo**
+>A clustering coefficient is a measure of the degree to which nodes in a graph tend to cluster together. *From [wiki](https://en.wikipedia.org/wiki/Clustering_coefficient)*
+
+There are different kind of clustering coefficient, including global clustering coefficient, local clustering coefficient, average clustering coefficient. The simplest is `global clustering coefficient`, which is the number of closed triplets (or 3 x triangles) over the total number of triplets (both open and closed). The larger the clustering coefficient is, the closer one node is wth other nodes. For usage in `networkx`, you can refer [here](https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.algorithms.cluster.clustering.html#networkx.algorithms.cluster.clustering).
 
 ```python
-nx.algorithms.clustering(g,['XXX','XXX','XXX'])
+nx.algorithms.clustering(g,['XXX','XXX','XXX']) #pass a set of nodes in the list
 nx.average_clustering(g)
 ```
 
@@ -353,7 +355,7 @@ nx.average_clustering(nx.complete_graph(5))
 
 #### Cliques
 
-We can highlight the certain clique.
+Simply speaking, a clique is a subset of nodes in an undirected graph. Which is a segmented group in a bigger community. Highlight those cliques may help us know the core figures and groups in one network.
 
 ```python
 cliques = list(nx.find_cliques(g))
@@ -374,7 +376,7 @@ nx.draw_networkx_nodes(g, pos, nodelist=cliques[12], node_color='#ff7700', alpha
 
 #### Connected components
 
-To find those who are not connected by others.
+To find those who are not connected by any others.
 
 ```python
 components =list(nx.connected_components(g))
@@ -383,13 +385,14 @@ len(components)
 
 #### Community detection
 
-**Todo**
+>In the network analysis, community structure refers to the occurrence of groups of nodes in a network that are more densely connected internally than with the rest of the network *From [wiki](https://en.wikipedia.org/wiki/Community_structure)*.
+
+Community detection can help us categorize every single node into different groups based on different characteristics so that we can study them as whole. Other importance of community detection is to help us find the `missing links` and `identify the false links` in one network.
 
 ```python
 from networkx.algorithms import community
-communities = list(community.girvan_newman(g))
+communities = list(community.label_propagation_communities(g))
 #communities[0]
-
 
 plt.figure(figsize=(15, 15))
 pos =nx.spring_layout(g)
@@ -413,7 +416,7 @@ for i in range(0, len(communities)):
 Draw the shortest path between two nodes.
 
 ```python
-sp = nx.shortest_path(g1, 'Gribier', 'Child2')
+sp = nx.shortest_path(g, 'Gribier', 'Child2')
 #you can change to any other two nodes
 sp
 
