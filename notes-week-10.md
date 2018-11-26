@@ -197,6 +197,8 @@ r.encoding = 'utf-8' #using this line, change the encoding method corresponding 
 data = BeautifulSoup(r.text,"html.parser")
 ```
 
+You can refer [Chapter 6 - encoding for another example](notes-week-06.md#encoding)
+
 Case1: scraping Chinese websites like `电影天堂`.
 
 ```python
