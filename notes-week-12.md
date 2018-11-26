@@ -245,9 +245,7 @@ for group in range(1, 20):
 
 #### Degree
 
-**Todo**
-
-<!-- TODO: what is degree? -->
+In graph theory, the degree is the number of edges incident to the nodes. The degree usually represent the **importance** of nodes. Degree can be divided into In-Degree and Out-Degree. In-Degree is how many other nodes point to one node, while Out-Degree is how many other nodes one node points to. Degree is the sum of In-Degree and Out-Degree.
 
 ```python
 g.degree
@@ -257,7 +255,8 @@ pd.Series(dict(g.degree())).hist(bins=20)
 ![Graph structure degree.png](assets/graph-structure-degree.png)  
 `dict(g.degree())` and then `Series`. Then Draw a picture.
 
-* Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
+From the histogram, we can see that the minority nodes have large number of edges while majority have less edges.
+This is a [Heave tail distribution](https://en.wikipedia.org/wiki/Heavy-tailed_distribution), which is famous for rich will be richer and poor will be poorer.
 
 #### Centrality Measures
 
