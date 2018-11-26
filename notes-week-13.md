@@ -25,6 +25,8 @@
         - [ArcGIS](#arcgis)
         - [Carto](#carto)
         - [D3](#d3)
+        - [MapShaper](#mapshaper)
+        - [Google Fusion Table](#google-fusion-table)
 
 <!-- /TOC -->
 </div>
@@ -92,7 +94,9 @@ One can refer to [this notebook](https://github.com/hupili/openrice-data-blog-20
 
 ### Map Types
 
-Following are common map types:
+This section discusses some common map types.
+
+Plotting points: (Point of Interest; POI)
 
 - Scatter plot
   - [England and Ireland seen from pub locations](http://ramiro.org/notebook/mapping-pubs/)
@@ -102,9 +106,20 @@ Following are common map types:
   - [Mapbox heatmap example](https://www.mapbox.com/mapbox-gl-js/example/heatmap-layer/)
 - Clustering map
   - [World airport clustering map](https://www.jerriepelser.com/books/airport-explorer/mapping/clustering/)
+
+Plotting lines:
+
+- Line graph/ path graph
+  - [Boeing 787-8 draws a self portrait in the air](https://flightaware.com/live/flight/BOE4/history/20170803/0448Z/KBFI/KBFI)
+
+Plotting areas:
+
 - Choropleth
   - [US unemployment rate via plotly](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/87)
   - [HK Census 2011 visualization](http://hkcensus11.hupili.net/#/choropleth)
+- Cartogram
+  - [Cargogram of the US](http://prag.ma/code/d3-cartogram/#intlmigrate/2011)
+  - [US 2016 election forecast by FiveThirtyEight](https://projects.fivethirtyeight.com/2016-election-forecast/)
 
 ## Case studies
 
@@ -181,3 +196,13 @@ Very easy to use online tools. However, the free version limits number of POIs t
 D3 is a widely used data visualization library in Javascript. It provides convenience tools for the users to handle geo project and turn GeoJSON data into SVG `path` elements. The tools is highly flexible and favoured by many web designers.
 
 Here is a case made by [D3](https://hupili.net/20170800-sichuan-earthquake-in-100years/)
+
+### MapShaper
+
+http://mapshaper.org/
+
+MapShper can help one to preview maps files and convert between different formats. It is also available as a command line tool.
+
+### Google Fusion Table
+
+Being in the Google toolchain is a major advantage. However, this online tool requires KML format to plot a map. The current de facto standard GeoJSON is not supported as of this writing.
