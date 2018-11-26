@@ -19,6 +19,7 @@
         - [pyecharts](#pyecharts)
         - [pandas](#pandas)
         - [bokeh](#bokeh)
+        - [ggplot](#ggplot)
     - [Data visualization Principles](#data-visualization-principles)
         - [Principle](#principle)
         - [Charts](#charts)
@@ -335,6 +336,12 @@ show(p)
 ![Bokeh test](assets/bokeh-test.png)
 
 For more bokeh examples and tutorials, you can refer [here](http://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#)
+
+### ggplot
+
+There is a Python implementation of the very famous `ggplot` that is also available in R language and other standalone tools. It is based on the Grammar of Graphics and is the Swiss Knife for visual analysis. However, the flexibility might impose a sharper learning curve on beginners. Other "model-based" charting librares are usually easier to get started: 1) select a proper model (bar/ scatter/ line/ ...); 2) fit your data into the model.
+
+**TODO**: some examples will be added here later.
 
 ## Data visualization Principles
 
