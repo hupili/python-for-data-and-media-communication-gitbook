@@ -326,10 +326,12 @@ pd.Series(dict(g.degree())).hist(bins=20)
 
 #### Clustering coefficient
 
-**Todo**
+>A clustering coefficient is a measure of the degree to which nodes in a graph tend to cluster together. *From [wiki](https://en.wikipedia.org/wiki/Clustering_coefficient)*
+
+There are different kind of clustering coefficient, including global clustering coefficient, local clustering coefficient, average clustering coefficient. The simplest is `global clustering coefficient`, which is the number of closed triplets (or 3 x triangles) over the total number of triplets (both open and closed). The larger the clustering coefficient is, the closer one node is wth other nodes. For usage in `networkx`, you can refer [here](https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.algorithms.cluster.clustering.html#networkx.algorithms.cluster.clustering).
 
 ```python
-nx.algorithms.clustering(g,['XXX','XXX','XXX'])
+nx.algorithms.clustering(g,['XXX','XXX','XXX']) #pass a set of nodes in the list
 nx.average_clustering(g)
 ```
 
