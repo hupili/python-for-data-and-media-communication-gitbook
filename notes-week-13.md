@@ -134,13 +134,13 @@ This section discusses some common map types.
 
 Plotting points: (Point of Interest; POI)
 
-- Scatter plot
+- Scatter plot -- plot the coordinates on map
   - [England and Ireland seen from pub locations](http://ramiro.org/notebook/mapping-pubs/)
-- Bubble plot
+- Bubble plot -- use size/ radius to represent a 3rd dimension data
   - [Sichuan earth quake in 100 years](https://hupili.net/20170800-sichuan-earthquake-in-100years/)
-- Heat map
+- Heat map -- diffuse a point to surroundings and shows the density
   - [Mapbox heatmap example](https://www.mapbox.com/mapbox-gl-js/example/heatmap-layer/)
-- Clustering map
+- Clustering map -- group nearby points to clusters to make scatter plot less cluttered. Clustering map to heatmap is like [histogram to KDE](notes-week-08.md#kernel-density-estimation-kde)
   - [World airport clustering map](https://www.jerriepelser.com/books/airport-explorer/mapping/clustering/)
 
 Plotting lines:
@@ -150,10 +150,10 @@ Plotting lines:
 
 Plotting areas:
 
-- Choropleth
+- Choropleth -- represent data value by color; a choropleth is equivalent to a bar chart, where data x-axis of the bar becomes geometry on a map. Think twice before you use choropleth, because in many cases bar chart works better.
   - [US unemployment rate via plotly](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/87)
   - [HK Census 2011 visualization](http://hkcensus11.hupili.net/#/choropleth)
-- Cartogram
+- Cartogram -- represent data value by size of geometry (distortion)
   - [Cargogram of the US](http://prag.ma/code/d3-cartogram/#intlmigrate/2011)
   - [US 2016 election forecast by FiveThirtyEight](https://projects.fivethirtyeight.com/2016-election-forecast/)
 
