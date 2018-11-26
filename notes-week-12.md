@@ -260,14 +260,14 @@ This is a [Heave tail distribution](https://en.wikipedia.org/wiki/Heavy-tailed_d
 
 #### Centrality Measures
 
-<!-- TODO: motivation?? -->
+As we mentioned above, Degree can be divided into In-Degree and Out-Degree. The importance of nodes with the same total degree but different In-Degree and Out-Degree are different. That's the reason why We need Centrality Measures.
 
 [Centrality](https://en.wikipedia.org/wiki/Centralityis) a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
 
 You can refer to the [documentation](https://networkx.github.io/documentation/latest/reference/algorithms/centrality.html) and online resources to understand those centrality measures. Try other centrality measures that are not covered in this tutorial. See what interesting findings you can get.
 
 ```python
-#check out the methods of centrality
+#check out the methods of centrality, generally speaking, the greater centrality of a node, and the more important the node is in the network.
 nx.degree_centrality(g)
 #nx.closeness_centrality(g)
 #nx.betweenness_centrality(g)
@@ -302,14 +302,13 @@ df_top_nodes
 
 From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
 
-
 <!-- TODO: further reading?? outline.md, notes. Chainsaw's work on Mingpao -->
 
 ### Basic statistics of graph
 
 #### Degree distribution
 
-**Todo**
+In the above session, we mentioned that the degree of a node is the number of edges it has to other nodes. The degree distribution is the probability distribution of these degrees over the whole network.
 
 <!-- TODO: what is degree? -->
 
