@@ -130,6 +130,8 @@ In the following notes, we will use characters in book [*Les Misérables*](https
 
 #### Basic visualization
 
+Add all nodes and edges.
+
 ```python
 import json
 data = json.loads(open('miserables.json').read())
@@ -151,14 +153,14 @@ nx.draw(g)
 
 ![Simple graph](assets/visualise-the-simple-graph.png)
 
-Next step for us is improving the graphs. To solve the following questions:
+From this graph, we can know that there are some groups, but we don't know who are them. Next step for us is improving the graphs. To solve the following questions:
 
 - Are there some groups in the network?
 - Who are in the same group?
-- Who are the top nodes here?
-- The shortest path between two path?
 
 #### Adjust layout
+
+Add labels on the graph.
 
 ```python
 help(nx.draw) #to learn about the function and parameters. What may be useful for us are parameters and see also functions. Those are helpful for optimizing our graphs.
@@ -200,7 +202,7 @@ help(nx.draw) #to learn about the function and parameters. What may be useful fo
 ```python
 from matplotlib import pyplot as plt
 
-plt.figure(figsize=(20, 20))
+plt.figure(figsize=(15, 15))
 pos =nx.spring_layout(g)
 # nx.draw(g, pos=nx.spring_layout(g))
 nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5) #change nodes style
@@ -227,14 +229,14 @@ plt.figure(figsize=(15, 15))
 pos =nx.spring_layout(g)
 nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
 nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
-labels = dict([(n, n) for n in g1.nodes])
-_ = nx.draw_networkx_labels(g1, pos, labels=labels, font_color='#666666')
+labels = dict([(n, n) for n in g.nodes])
+_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
 
 for group in range(1, 20):
     nodelist = [n for n in g.nodes if g.nodes[n]['group'] == group]
     # If g.nodes's group = 1, add those nodes into the nodelist. They will be the same color 1 . If g.nodes's group = 2, they will be added to another nodelist ,and be colored 2.
     #print(nodelist)
-    nx.draw_networkx_nodes(g1, pos, nodelist=nodelist, node_color=color(group), alpha=0.8)
+    nx.draw_networkx_nodes(g, pos, nodelist=nodelist, node_color=color(group), alpha=0.8)
 ```
 
 ![Graph group layout](assets/graph-group-layout.png)
@@ -387,9 +389,8 @@ len(components)
 
 ```python
 from networkx.algorithms import community
-communities = list(community.girvan_newman(g))
+communities = list(community.label_propagation_communities(g))
 #communities[0]
-
 
 plt.figure(figsize=(15, 15))
 pos =nx.spring_layout(g)
@@ -413,7 +414,7 @@ for i in range(0, len(communities)):
 Draw the shortest path between two nodes.
 
 ```python
-sp = nx.shortest_path(g1, 'Gribier', 'Child2')
+sp = nx.shortest_path(g, 'Gribier', 'Child2')
 #you can change to any other two nodes
 sp
 
