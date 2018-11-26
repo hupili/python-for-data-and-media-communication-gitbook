@@ -393,6 +393,10 @@ You can find that the above word frequency list is not so good because there are
 
 ### Stopwords
 
+>Stop words are words which are filtered out before or after processing of natural language data (text). *From [wiki](https://en.wikipedia.org/wiki/Stop_words)*
+
+The stopwords may change when handling different text analysis cases. We can get stopwords from the open source channel or customize your own stopwords.
+
 #### Set stopwords
 
 1. You can download the `stopwords.txt` from the internet and load when you used, [example](https://github.com/stanfordnlp/CoreNLP/blob/master/data/edu/stanford/nlp/patterns/surface/stopwords.txt).
@@ -411,7 +415,11 @@ nltk.download('stopwords')
 stopwords = stopwords.words('english')
 ```
 
-**Note:** this method is under testing with error cannot download
+**Note:** According to our helpers feedback, Windows users can successfully set stopwords with this method, for Mac users, you need to visit their [website](https://www.nltk.org/nltk_data/), search `stopwords` and download.
+
+![NLTK stopwords](assets/nltk-stopwords.png)
+
+Then put the language txt file in the current folder where your Jupyter notebook are.
 
 3. import stopwords from `pypi`
 
@@ -430,8 +438,7 @@ stopwords.extend(newstopwords)
 
 #### Remove stopwords
 
-Move stopwords is easy, you just loop them to determine
-whether the words are in the stopwords, if true, then remove them. Following the above example:
+Following the above example:
 
 ```python
 words = ['a','like','media','b']
