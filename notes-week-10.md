@@ -161,7 +161,43 @@ Output:
 
 `UTF-8` is the most widely used implementation of Unicode on the Internet, while `GBK` is mainly used for coding Chinese character.
 
-For example, scraping Chinese websites like `电影天堂`.
+When scraping the webpage, the results of `r.text` & `r.content` is different. Let's get straight of their relationships.
+
+```python
+url = 'http://www.jour.hkbu.edu.hk/faculty/'
+r = requests.get(url)
+r.text
+```
+
+This is the results of `r.text` its a string.
+
+![Encoding text](assets/encoding-r-text.png)
+
+```python
+r.content
+```
+
+This is the results of `r.content` its a byte.
+![Encoding content](assets/encoding-r-content.png)
+
+The conversion between string and byte is as follows:
+
+- byte to string: `r.content.decode()`. Pass the decode method like `gbk` into the bracket.
+- string to byte: `r.text.encode()`. Pass the encode method like `utf-8` into the bracket.
+
+When scraping one webpage, we need to get the `string` type so that we can use `BeautifulSoup` to parser the string and extract the value we want. Therefore, usually, we just use `r.text` is enough.
+
+But if the website use other encoding methods than `utf-8`, like `gbk`, we need first decoding the content. In such circumstance, we need use `r.content.decode()` to get the string. Usually, we can get the website encoding method in their html `meta` tag.
+
+Another method to solve the encoding problem is making a statement at the beginning like the following.
+
+```python
+r = requests.get('http://www.jour.hkbu.edu.hk/faculty/')
+r.encoding = 'utf-8' #using this line, change the encoding method corresponding to their webpage encoding method
+data = BeautifulSoup(r.text,"html.parser")
+```
+
+Case1: scraping Chinese websites like `电影天堂`.
 
 ```python
 url = 'https://www.dytt8.net/'
