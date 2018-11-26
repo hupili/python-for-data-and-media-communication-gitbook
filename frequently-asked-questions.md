@@ -15,7 +15,8 @@
     - [Encoding & Decoding](#encoding--decoding)
         - [U+FEFF encoding issue](#ufeff-encoding-issue)
         - [Csv writer newline](#csv-writer-newline)
-        - [Cannot read a csv file downloaded from a website](#cannot-read-a-csv-file-downloaded-from-a-website)
+        - [Cannot read csv files downloaded from a website](#cannot-read-csv-files-downloaded-from-a-website)
+        - [Cannot import list of files](#cannot-import-list-of-files)
         - [Expecting value: line 1 column 1 (char 0)](#expecting-value-line-1-column-1-char-0)
 
 <!-- /TOC -->
@@ -83,7 +84,7 @@ In some cases, the csv you read may have some encoding issue like the above.`U+F
 
 For more explanation, please refer to the documentation on the [open function](https://docs.python.org/3/library/functions.html#open)
 
-### Cannot read a csv file downloaded from a website
+### Cannot read csv files downloaded from a website
 
 This error is usually raised as the following:
 
@@ -108,6 +109,33 @@ df = pd.read_csv('REITs.csv', 'rb')
 
 ![Read data successfully](assets/read-data-successfully.png)
 
+### Cannot import list of files
+
+For example, using `os.listdir` to import a list of files.
+
+```python
+def read_txt(path): #read files and get content
+    all_text = []
+    for file in os.listdir(path):
+        f=open(file,"r")
+        contents= f.read()
+        all_text.append(contents)
+    all_words = "".join(all_text)
+    for ch in '\s+\.\!\/_,$%^*(+\"\')]+|[+——()?:【】“”‘’':
+        words = all_words.replace(ch," ")
+    return words
+words = read_txt("text/") #pass your own file path that include list of .txt
+```
+
+Error: `'utf-8' codec can't decode byte 0x80 in position 3131`
+
+Even though your files are encodes by `utf-8`, somehow it may still rising error above, you can using following solution in the terminal:
+
+```bash
+cd to desktop/chicoxyc/text #cd to the folder where your txt files are
+ls -a #list all the files
+rm .DS_Store #delete .DS_Store if there is any
+```
 
 ### Expecting value: line 1 column 1 (char 0)
 

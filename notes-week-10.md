@@ -501,7 +501,7 @@ foreign           10
 
 `'utf-8' codec can't decode byte 0x80 in position 3131`
 
-You can refer [here]() for solutions.
+You can refer [here](frequently-asked-questions#cannot-import-list-of-files) for solutions.
 
 ### Visualize word frequency
 
@@ -530,7 +530,7 @@ word_count(processed_word_list)
 
 #### with tag cloud
 
-Tag cloud is commonly used, for aesthetics purpose. However, it is not a precise presentation of the data.
+Tag cloud is widely used, for aesthetics purpose. You can have a more vivid picture about the top frequency words.
 
 ```python
 from PIL import Image
