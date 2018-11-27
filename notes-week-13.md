@@ -220,6 +220,28 @@ The tools and process:
 
 Code repo: https://github.com/hupili/openrice-data-blog-201811
 
+### Global data journalist distribution and contribution map using ploty
+Following is an example of scatter plots on maps about how data journalists distribute all over the world.
+
+Like the air crash map above, this map's key data that we should get is also the longitude and latitude of each cities. In addition, we need another dimension to assign the color of each point on this map. In this case, the depth of color represents a journalist's overall github contribution from 2008. 
+![](Geographical-data-scatter.png)
+
+The tools and process:
+- Get the geographical data from the geopy-raw.csv file.
+- Get the other information of a journalist from journalists-data-including-github-contributions.csv
+- Use pandas to curate and restructure all the data source
+- Use plotly to visualize the map
+
+### American journalist job market map using ploty
+This is an example of choropleth map and a report about the condition of the employment market for journalists in the U.S.
+In this map, the key data is the number of opening positions in each state of the U.S. In addition, this map recognise the states with their abbreviations(VA, NY...). 
+![](Geographical-data-choropleth.png)
+
+The tools and process:
+- Get the data from `0 jobs.csv`
+- Use pandas to curate and restructure all the data source
+- Use plotly to visualize the map
+
 ### England and Ireland pubs using matplotlib
 
 - Draw geo scatter plot via matplotlib: [England and Ireland seen from pub locations](http://ramiro.org/notebook/mapping-pubs/)
