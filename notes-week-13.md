@@ -224,7 +224,7 @@ Code repo: https://github.com/hupili/openrice-data-blog-201811
 Following is an example of scatter plots on maps about how data journalists distribute all over the world.
 
 Like the air crash map above, this map's key data that we should get is also the longitude and latitude of each cities. In addition, we need another dimension to assign the color of each point on this map. In this case, the depth of color represents a journalist's overall github contribution from 2008. 
-![](Geographical-data-scatter.png)
+![](assets/Geographical-data-scatter.png)
 
 The tools and process:
 - Get the geographical data from the geopy-raw.csv file.
@@ -232,15 +232,19 @@ The tools and process:
 - Use pandas to curate and restructure all the data source
 - Use plotly to visualize the map
 
+The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/Global%20Data%20Journalist%20Distribution)
+
 ### American journalist job market map using ploty
 This is an example of choropleth map and a report about the condition of the employment market for journalists in the U.S.
 In this map, the key data is the number of opening positions in each state of the U.S. In addition, this map recognise the states with their abbreviations(VA, NY...). 
-![](Geographical-data-choropleth.png)
+![](assets/Geographical-data-choropleth.png)
 
 The tools and process:
 - Get the data from `0 jobs.csv`
 - Use pandas to curate and restructure all the data source
 - Use plotly to visualize the map
+
+The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/2018-America-Journalist-job-market-map)
 
 ### England and Ireland pubs using matplotlib
 
