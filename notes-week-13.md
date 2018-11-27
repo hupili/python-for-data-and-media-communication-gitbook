@@ -227,10 +227,9 @@ Like the air crash map above, this map's key data that we should get is also the
 ![](assets/Geographical-data-scatter.png)
 
 The tools and process:
-- Get the geographical data from the geopy-raw.csv file.
-- Get the other information of a journalist from journalists-data-including-github-contributions.csv
-- Use pandas to curate and restructure all the data source
-- Use plotly to visualize the map
+- Get the geographical data and other information of a journalist from the csv files
+- Use `aggregate()` to accumulate each journalist's Github contribution data from 2008
+- Use `plotly` to visualize the map
 
 The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/Global%20Data%20Journalist%20Distribution)
 
@@ -241,8 +240,9 @@ In this map, the key data is the number of opening positions in each state of th
 
 The tools and process:
 - Get the data from `0 jobs.csv`
-- Use pandas to curate and restructure all the data source
-- Use plotly to visualize the map
+- Use `pandas` to manipulate the location data from `0 jobs.csv` into `US-States.csv` to code the states of the U.S into their abbreviations
+- Use `list.count()` to categorise the jobs into different states
+- Use `plotly` to visualize the map
 
 The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/2018-America-Journalist-job-market-map)
 
