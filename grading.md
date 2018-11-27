@@ -8,7 +8,7 @@ Basic grades:
   - **10%** 1x bridging exercise
   - **15%** 1x data scraping
   - **15%** 1x data analysis/ visualisation/ presentation -- based on the data above
-- **00%** 0x Quiz (or mid-term)
+- 0x Quiz (or mid-term)
 - **60%** 1x Group-based final project
 
 Bonus grades:
