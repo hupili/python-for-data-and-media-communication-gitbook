@@ -1,736 +1,756 @@
-# Week 08 - Work with table: 1D analysis and 2D analysis
+# Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty
 
 <div id="toc">
+
 <!-- TOC -->
 
-- [Week 08 - Work with table: 1D analysis and 2D analysis](#week-08---work-with-table-1d-analysis-and-2d-analysis)
+- [Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty](#week-06---advanced-scraping-anti-crawler-browser-emulation-and-other-nitty-gritty)
     - [Objective](#objective)
-    - [More Arithmetics on DataFrame and Series](#more-arithmetics-on-dataframe-and-series)
-        - [Exercise: The Berkeley admission synthesis dataset](#exercise-the-berkeley-admission-synthesis-dataset)
-    - [Distribution](#distribution)
-        - [Histogram](#histogram)
-            - [Bonus: How histograms can be cheating](#bonus-how-histograms-can-be-cheating)
-        - [Kernel Density Estimation (KDE)](#kernel-density-estimation-kde)
-        - [Special points in distribution](#special-points-in-distribution)
-    - [Bonus: Articulate central tendency and spread of data](#bonus-articulate-central-tendency-and-spread-of-data)
-        - [Variance](#variance)
-        - [Skewness](#skewness)
-        - [Kurtosis](#kurtosis)
-        - [The mode of data](#the-mode-of-data)
-    - [Correlation](#correlation)
-        - [Continuous: Scatter plot and correlation](#continuous-scatter-plot-and-correlation)
-        - [Bonus: Better visualisation](#bonus-better-visualisation)
-            - [Filter out in the charts](#filter-out-in-the-charts)
-            - [A more primitive/ finer controlled way of plotting using matplotlib](#a-more-primitive-finer-controlled-way-of-plotting-using-matplotlib)
-        - [Discrete: Cross-tab](#discrete-cross-tab)
-            - [DataFrame.groupby](#dataframegroupby)
-            - [pandas.pivot_table](#pandaspivot_table)
-                - [Discretise multiple columns](#discretise-multiple-columns)
-                - [pivot_table to generate cross-tabs table](#pivot_table-to-generate-cross-tabs-table)
-        - [From correlation to causality](#from-correlation-to-causality)
-    - [Bonus: (Statistical) Hypothesis testing](#bonus-statistical-hypothesis-testing)
-    - [Reference](#reference)
+    - [Anti-crawling](#anti-crawling)
+        - [User agent](#user-agent)
+            - [Bonus: Test HTTP requests](#bonus-test-http-requests)
+        - [Rate throttling](#rate-throttling)
+        - [Hide numeric incremental IDs](#hide-numeric-incremental-ids)
+        - [Hide key information using special fonts](#hide-key-information-using-special-fonts)
+        - [Bonus: Stateful page transition](#bonus-stateful-page-transition)
+        - [Bonus: client authentication](#bonus-client-authentication)
+    - [Common issues](#common-issues)
+        - [Encoding](#encoding)
+        - [Network delay and jitter](#network-delay-and-jitter)
+        - [Network interruption](#network-interruption)
+        - [Firewall](#firewall)
+        - [Browser rendering delay](#browser-rendering-delay)
+    - [Browser emulation](#browser-emulation)
+        - [Why use Browser Emulation](#why-use-browser-emulation)
+        - [Limitation](#limitation)
+        - [Selenium](#selenium)
+            - [Downloading Python bindings for Selenium](#downloading-python-bindings-for-selenium)
+            - [Drivers](#drivers)
+            - [Navigating](#navigating)
+            - [Locating Elements](#locating-elements)
+            - [Find_element(s)_by_css_selector](#find_elements_by_css_selector)
+                - [Locating elements by attribute](#locating-elements-by-attribute)
+                - [Locating elements with multiple class name](#locating-elements-with-multiple-class-name)
+                - [Locating Child Element](#locating-child-element)
+            - [Scroll down certain element](#scroll-down-certain-element)
+            - [Example: CNN articles scraping](#example-cnn-articles-scraping)
+                - [Fundamental: One page](#fundamental-one-page)
+                - [Advanced: All pages](#advanced-all-pages)
+        - [Splinter](#splinter)
+            - [Finding elements](#finding-elements)
+                - [Fundamental version: one page](#fundamental-version-one-page)
+                - [Advanced version: all pages](#advanced-version-all-pages)
+        - [Bonus: Twitter example with browser emulation](#bonus-twitter-example-with-browser-emulation)
+    - [Analyse Network Traces](#analyse-network-traces)
+    - [Bonus: Crawl mobile Apps](#bonus-crawl-mobile-apps)
+        - [Packet analysis](#packet-analysis)
+            - [Example: Kwai (kuaishou)](#example-kwai-kuaishou)
+        - [App decompilation](#app-decompilation)
+        - [App emulation](#app-emulation)
+    - [Bonus: Other quick scraping/ crawling tricks](#bonus-other-quick-scraping-crawling-tricks)
+    - [Exercises and Challenges](#exercises-and-challenges)
+        - [In-bound marketing and SEO auditing](#in-bound-marketing-and-seo-auditing)
+        - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
+        - [Bonus: Crawl Weibo data and discover KOL](#bonus-crawl-weibo-data-and-discover-kol)
+        - [Bonus: Cheat an online voting system](#bonus-cheat-an-online-voting-system)
+    - [Related Readings](#related-readings)
 
 <!-- /TOC -->
+
 </div>
 
-## Objective 
+In this chapter, we will learn **advanced scraping**, which is scraping dynamic loading pages or some pages that need us interactively involved, the ones that we need emulate browsers to navigate and find elements.
 
-- Master the schema of "data-driven story telling": the crowd \(pattern\) and the outlier \(anomaly\)
-- Can use `pandas`, `matplotlib` and `seaborn` to conduct 1D analysis and articulate on the statistics
-- Can conduct 2D analysis by:
-  - `pandas.pivot_table()` -- discrete distribution analysis (bin analysis)
-  - `pandas.groupby().aggreate()` -- the SAC (splitting -- applying -- combining) pattern
-  - `Series.corr()` -- calculate correlation
-  - `DataFrame.plot()` or `matplotlib.pyplot.plot()` -- scatter plot to visualise 2D correlation
+As you may have a clue due to its name, this chapter will be more demanding than previous chapters. We need spend more time to learn how to use those two complete new libraries - `selenium` and `splinter`. Which are similar but with a little bit difference. At the same time, we need learn more about `Frontend three`: HTML, JS, and CSS. And how to locate and find elements from them.
 
-The dataset and case we use this week comes from a workshop called "descriptive analysis" conducted by Jenifer on GICJ2017 in South Africa. You can download data from:
+After this chapter, I believe, we can apply what we learn to the most of `usual scraping cases`, most of websites, social media etc…Which will paves the way for further data analysis stage (interested students can talk to me or refer to chapter 7 for learning advanced).
 
-* www.jenster.com/nottingham.xlsx
-* www.jenster.com/index.xlsx
+## Objective
 
-New modules:
+- Bypass anti-crawler by modifying user-agent
+- Handle glitches: encoding, pagination, ...
+- Handle dynamic page with headless browser
+- Handle login with headless browser
+- Scrape social networks
+- Case studies on different websites
+- Further strengthen the list-of-dict data types; organise multi-layer loops/ item based parsing logics.
 
-* [Matplotlib](https://matplotlib.org/). Matplotlib is a Python 2D plotting library and one of the most frequently used plotting modules in Python.
-* [Seaborn](https://seaborn.pydata.org/). Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.
+## Anti-crawling
 
-## More Arithmetics on DataFrame and Series
+### User agent
 
-Series has many arithmetic funcitons. Although one can easily implement those functions with basic `list` and basic logics in Python, those provided by `Series` can save some time by writing for loops, because they are design to work on "a series of numbers". Examples are like:
-
-- `.sum()`
-- `.min()`
-- `.max()`
-- `.quantile()`
-
-Two `Series` of the same length can use conventional arithmetics and boolean operators to perform an **element-wise** operation. For example:
-
-- `a + b` - result is a new Series whose values are the element-wise addition from `a` and `b`.
-- `a == b` - result is a new Series whose values are element-wise `==` logical operation.
-
-When one hand side of the equation is not a Series, but a "scalar", i.e. single number, this single number is used in all operations with all elements from another Series.
-
-Many functions that are available for `Series` are also available for `DataFrame`. A `DataFrame` is in essense a collection of `Series`. To apply those functions that works on `Series` to `DataFrame`, we need to have certain ordering, which is given by a keyword parameter called `axis`:
-
-- Operate along columns (`axis=0`)
-- Operate along rows (`axis=1`)
-
-**TIP**: Sometimes, one may be used to column operations or row operations, when writing his/ her computation logics. It is Ok to stick with one convention. When you need to operate along another axis, use the **transpose** version of the DataFrame, i.e. `DataFrame.T` (Use it like a member variable).
-
-With the progress of data processing, the table at your hand is usually larger and larger. You may want to put the new result back to original table sometimes. There are mainly two ways:
-
-- Adding a new column is easy. Just use `df['new-column'] = A valid Sereis`.
-- Adding a new row needs some more work. Use `pandas.concat([df, row])`, where `df` is the original DataFrame; and `row` is the new DataFrame with one data point, whose columns are the same as `df`.
-
-### Exercise: The Berkeley admission synthesis dataset
-
-Calculate the by-department admission ratio and the whole-school admission ratio. Try to articulate whether there is gender discrimination or not.
-
-The dataset can be downloaded [here](assets/1973-UC-Berkeley-Admission-Data-Synthesis-Data.csv).
-
-For further reading, search for "Simpson's paradox".
-
-Here is the [demo code](https://github.com/hupili/python-for-data-and-media-communication/blob/b351f35d7a946e4f0068e820c4ebcfb2ed5d114a/pandas-examples/Berkeley.ipynb).
-
-## Distribution
-
-For distribution, we can use some simple pandas statistics functions to get a overall picture of whats the data distribution like, from what we can get at least two analyzing directions:
-
-1. Is there a clear trend or a pattern of the distribution?
-2. Is there any abnormal or outliers that worthy noticing?
-
-The following is the analyzing demo after we get a clean dataset, based on the example of *Cheating our children* case, and try to find insights.
-
-### Histogram
+The simplest way to prevent crawler access it to limit by user agent. "User agent" can be thought of synonym for "web browser". When you surft the Internet with a normal web browser, the server will know whether you use Chrome, Firefix, IE, or other browsers. Your browser give this information to the web server by a field called `user-agent` in the HTTP request headers. Similarly, `requests` is a like a web browser, for Python code, not for human. It also gives the `user-agent` to the web server and the default value is like `python-requests/*`. In this way, the server knows that the client is Python requests module, not a regular human user. One can by-pass this limit by modifying the user-agent string.
 
 ```python
+r = requests.get(url,
+        headers = {
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'
+        }
+    )
+```
+
+Full code and demo can be found in [this notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/ff77a632e030fcaa392dac34086bf84e2a802b45/scraper-examples/Open%20Rice.ipynb).
+
+#### Bonus: Test HTTP requests
+
+[https://nghttp2.org/httpbin](https://nghttp2.org/httpbin) is a useful service to test HTTP requests. This service basically echos the content or certain parameters from your HTTP request. You can get better idea of what your tools send to the server via this service.
+
+Example: Check the user-agent of shell command `curl`:
+
+```bash
+%curl https://nghttp2.org/httpbin/user-agent
+{"user-agent":"curl/7.54.0"}
+```
+
+Example: Check the default user-agent of `requests`:
+
+```python
+>>> r = requests.get('https://nghttp2.org/httpbin/user-agent')
+>>> r.text
+'{"user-agent":"python-requests/2.19.1"}\n'
+>>> r = requests.get('https://nghttp2.org/httpbin/user-agent', headers={'user-agent': 'See, I modified the user agent!!'})
+>>> r.text
+'{"user-agent":"See, I modified the user agent!!"}\n'
+```
+
+### Rate throttling
+
+- Limit by IP
+- Limit by cookie/ access token
+- Limit by API quota per a unit time, usually implemented with a [leaky bucket algorithm](https://whatis.techtarget.com/definition/leaky-bucket-algorithm)
+
+### Hide numeric incremental IDs
+
+Scrapers usually return a list of objects. Sometimes the list can be enumerated given certain IDs. One common case is the use of `page=xxx` parameter in the URL. You can increment the page number and assemble valid URLs. Some carefully designed web service will try to hide this kind of incremental IDs, in order to prevent other's crawler accessing this information so easily. Nevertheless, you can analyse page structure in depth and find a way. The principle is that: as long as the user can see it, there is no way to ultimately hide it from a robot. The only thing website builder can do is to make the crawling less straightforward.
+
+### Hide key information using special fonts
+
+qidian.com hides key information using special fonts. When normal user visit the webpage, those non-printable characters are rendered in a normal way because they load a special font. However, when you check the Chrome Developer Console, or try to get the values of the string in Python, the number field appears to be non-printable characters. The way to work around is to analyse the font file and make a decoding logic yourself. Find discussion on [#85](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/85).
+
+### Bonus: Stateful page transition
+
+Most early websites are designed in a _stateless_ manner. That is, the order how you visit those pages does not make a difference. For example, you can visit article 1 and jump to article 2. 
+
+On the contrary, some modern websites can be _stateful_. One common example is the requirement of login. You need to first visit the login page, before sending username/ password to the server. You need to have successfully sent the username/ password in order to access certain restricted resources.
+
+Imagine a social network for another _stateful_ example. As a regular user, you must first visit your own homepage to access friend list. Then you can access the profile page of a friend, after which you can visit a specific post.
+
+Websites can record the user activity log and enforce stateful transition. However, this design also consumes a lot of resources and is not commonly preferred. In some mission critcal sites, like banks, you may find stateful enforcement by certain token injected from the server side onto the current page.
+
+Again, nothing can be completely hidden if a regular user can access it. More efforts are needed.
+
+### Bonus: client authentication
+
+Checking user-agent is the first step to identify whether a client is a valid or not. This step is generally referred as "client authentication". The server checks if the request is sent from a legitimate client. Examples are like [client side signature](https://mp.weixin.qq.com/s/JhpGhQhXS_-FSVHfZyppOQ). However, the web is an open world. You can be assured that people can hide nothing if the data is already in your browser. Even if the web developers apply complex compuational logics to conduct client authentication, the client side authenticator code is available in your browser as Javascript. With some cryptography knowledge, one may be able to reverse engineer it.
+
+However, cracking the system is not the purpose. Our objective is to get data. Instead of cracking and traslating the logics into Python script, we had better re-use the Javascript scripts as-is. Or further more, we can run browser emulator to naturally trigger those logics, which may be a more direct solution. Browser emulator is one major topic introduced in this chapter.
+
+## Common issues
+
+### Encoding
+
+Example 1: See [51job.com example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/51job.com.ipynb)
+
+Example 2: 
+
+```python
+r = requests.get('http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept.htm')
+r.encoding = 'utf-8'
+mypage = BeautifulSoup(r.text)
+mypage.find('td', {'class': 'personNameArea'}).text
+```
+
+### Network delay and jitter
+
+- Delay refers to the elapsed time used for the browser to receive the complete HTTP response since the first byte. Your code needs to consider potential delays especially under different network condition. Or the data you are trying to access may not be ready when your code tries to process. This is not a major problem when we use `requests` in last chapter, because `requests` is "blocking". That is, the whole HTTP response will be received before Python further executes the code. However, it may arise as a major problem in this chapter when we use browser emulator.
+- Jitter refers to the unstable/ unsteady delay. Sometimes the delay is large and some time it is small. You will find your usually working codes go wrong in some rare scenarios.
+
+To handle delay and jitter, the common strategy is to wait and test. You can use `time.sleep` to pause for some time before proceed. If there is a way to test the finishing condition, you had better test before move. For example, use `.find_element_by_xxx` to check if the intended element is already loaded. If not, wait further.
+
+### Network interruption
+
+Network can be interrupted in many ways, like sudden loss of wifi signal. When the network is interrupted, you may get partial data or corrupted data. Make sure to guard your parser codes with `try...except` block, handle the errors and print detailed log for further trouble shooting.
+
+### Firewall
+
+If you are behind firewalls, which is common in campus and enterprise networks, some automatic HTTP requests may be flagged and further stopped. There is no direct solution to this. When in doubt, try one alternative network (wifi, wired, 4G, ..) to see if things work.
+
+### Browser rendering delay
+
+When you use browser emulator, you also need to know that it takes time to render the whole page. You do not feel that because computer is very fast. Most of the loading and rendering could have happened in minisecond level. However, when you use automatic programs to browse and click, things become different. Your own program may be so fast that the dependent element/ data has not loaded when you try to access it.
+
+For example, `StaleElementReferenceException` and `IndexError` are quite common when using `selenium`. The error sometimes disappears when you execute the same script with the same parameter again. Or it is better to add some `time.sleep` between critical operations. For example, you want to wait the browser to load new content after triggering a click event on a button.
+
+Related issues:
+
+- Booking.com [#68](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/68)
+
+## Browser emulation
+
+Primarily, Browser emulation or browser automation is used for automating web applications for testing purpose. Like when you build your web application, you want to simulate how many users your server can handle, and how the users act when they look into your website, how they open page, click, navigate and read the the page content.
+
+But browser emulation is certainly not limited to just that. For our course, we mainly use it to manipulate the
+browser, to interactively communicate with the website, locate the information and get the data we want.
+
+### Why use Browser Emulation
+
+1. Some of complicated website can't be directly scraped by static method. For example, some elements, especially page turning buttons/links in the webpage have embedded javascript codes, which need users certain actions to further loading the content.
+2. Browser Emulation way can handle some complicated scraping work like ones that need you login.
+3. Some webpages have strictly rules for anti-scraping. However, in browser emulation, we simulate users' behaviors, which is more camouflaged and not easy to discover, meaning that the limits is smaller than static scraping like `request`.
+
+In our course, we mainly introduce two libraries - `Selenium` and `Splinter` for browser emulation and dynamic scraping. Those packages are wildly used in this field. And their documentations are easy to read.
+
+### Limitation
+
+Each time, it need to load all the content of the webpage, the crawling speed is slow, therefore not suitable for scraping cases with a large load of data.
+
+### Selenium
+
+Selenium is a set of different software tools, each with a different approach to supporting browser automation. These tools are highly flexible, allowing many options for locating and manipulating elements within a browser, the key tool we will use is Selenium Python bindings.
+
+> Selenium Python bindings provides a simple API to write functional/acceptance tests using Selenium WebDriver. Through Selenium Python API you can access all functionalities of Selenium WebDriver in an intuitive way.
+
+You can visit [here](https://selenium-python.readthedocs.io/) to learn how to use those functions by yourself. In the following example, we will use CNN articles scraping case to elaborate the basic functions of it, and how to scrape a webpage that need our interaction.
+
+#### Downloading Python bindings for Selenium
+
+```python
+!pip install selenium   #in Jupyter Notebook
+```
+
+```python
+from selenium import webdriver  #import
+```
+
+#### Drivers
+
+Selenium requires a driver to interface with the chosen browser. Chrome, for example, requires Chromedriver, which needs to be installed before the below examples can be run.
+
+you can download different drivers for supported browsers in the following links:
+
+| Supported Browsers | Download Links                                                 |
+|--------------------|----------------------------------------------------------------|
+| Chrome             | https://sites.google.com/a/chromium.org/chromedriver/downloads |
+| Firefox            | https://github.com/mozilla/geckodriver/releases                |
+| Safari             | https://webkit.org/blog/6900/webdriver-support-in-safari-10/   |
+
+For windows users: please refer to [here](https://selenium-python.readthedocs.io/installation.html#detailed-instructions-for-windows-users) for instruction of download.
+
+After you download the webdriver, we can use the following command to initiate the webdriver.
+
+```python
+browser = webdriver.Chrome() #default to initiate webdriver, you can assign it with driver or browser or other things you like.
+```
+
+**Note:** Make sure it’s in your PATH. e. g. place it in `/usr/bin` or `/usr/local/bin`. If it's not in the PATH, when you initiate the Chromedriver, it will raise error `Message: 'chromedriver' executable needs to be in PATH.` If raise this error, you can solve this problem by putting dependency/chromedriver you download into PATH. The PATH here is the current working folder, where your Jupyter Notebook is running. You can check out where it is by the following command.
+
+```python
+!echo $PATH #you will get a set of paths and the first one is what we want. In the following example, it will be as:
+#/Library/Frameworks/Python.framework/Versions/3.6/bin
+!ls #add the first path returned from last step to list all files in the folder
+!open #add the first path returned from first step to open the path and put the chromedriver into the path
+```
+
+![Driver Path](assets/splinter-driver-path.png)
+
+#### Navigating
+
+You can do a lot of interactive things with the webpage with help of the selenium, like navigating to a link, searching, scrolling, clicking etc. In the following example, we will demo the basic usage of navigating.
+
+```python
+from selenium import webdriver
+browser = webdriver.Chrome() #initiate webdriver
+browser.get('http://google.com/') #visit to google page
+element = browser.find_element_by_name("q") #Find the search box
+element.send_keys("github python for data and media communication gitbook") #search our openbook
+element.submit() #submit search action
+# you will find the webpage will automatically return the results you search
+open_book = browser.find_element_by_css_selector('.g')
+link = open_book.find_element_by_tag_name('a') #find our tutorial
+# you can also find by the link text. link = browser.find_element_by_partial_link_text('GitHub - hupili')
+link.click() #click the link, enter our tutorial
+browser.execute_script("window.scrollTo(0,1200);") #scroll in the page, window.scrollTo(x,y), x means horizontal, y means vertical
+notes_links = browser.find_element_by_link_text('notes-week-06.md') #find link of notes 6
+notes_links.click() #click into notes 6
+#browser.close()
+```
+
+#### Locating Elements
+
+There are many ways to locate the elements. It's similar to the usage in `requests` method, just a simple `find...` sentence but more diverse.
+
+Selenium provides the following methods to locate elements in a page:
+
+* find_element(s)_by_id
+* find_element(s)_by_name
+* find_element(s)_by_xpath
+* find_element(s)_by_link_text
+* find_element(s)_by_partial_link_text
+* find_element(s)_by_tag_name
+* find_element(s)_by_class_name
+* find_element(s)_by_css_selector
+
+For instruction of the syntax, you can refer this [documentation](https://selenium-python.readthedocs.io/locating-elements.html). In our notes, we mainly use `find_element(s)_by_css_selector` method, due to its easy expression and rich matchability.
+
+#### Find_element(s)_by_css_selector
+
+##### Locating elements by attribute
+
+Eg:
+
+```html
+<div id="summaryList_mixed" class="summaryList" style="display: block;"></div>
+```
+
+```python
+css = element_name[<attribute_name>='<value>']
+```
+
+1. Select id. Use `#` notation to select the id:
+
+```python
+css="div#summaryList_mixed" or "#summaryList_mixed"
+```
+
+2. Select class. Use the `.` notation to select the class:
+
+```python
+css="div.summaryList" or just css=".summaryList"
+```
+
+3. Select multiple attributes:
+
+```python
+css="div[class='summaryList'] [style='display:block']"
+```
+
+##### Locating elements with multiple class name
+
+When using `.className` notation, every class needs a prefix `.`: `.className1.className2.className3` (no blanks between those class names if they are used to attribute one element)
+
+For example: for the following case:
+
+```html
+<i class='.sr_item sr_item_new sr_item_default sr_property_block  sr_flex_layout                 '>
+</i>
+```
+
+The css will be like this:
+
+```python
+css='.sr_item.sr_item_new.sr_item_default.sr_property_block.sr_flex_layout'
+```
+
+For detail cases, please refer [here](https://github.com/hupili/python-for-data-and-media-communication/blob/314b2469290f28ed146b8d5c2e49be962e32e1d7/scraper-selenium/booking.com.ipynb)
+
+##### Locating Child Element
+
+Eg:
+
+```html
+<div id="summaryList_mixed" class="summaryList" style="display: block;">
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+    <div class="summaryBlock"></div>
+</div>
+```
+
+1. Locate all children
+
+```python
+css="div#summaryList_mixed .summaryBlock"
+```
+
+2. Locate the certain one with “nth-of-type”. The first one is "nth-of-type(1), and the last one is "last-child"
+
+```python
+css="div#summaryList_mixed .summaryBlock:nth-of-type(2)"
+```
+
+For more explanations and examples about css selector, here is a good [documentation](https://saucelabs.com/resources/articles/selenium-tips-css-selectors) you can refer to.
+
+#### Scroll down certain element
+
+In the navigation or scraping, we may need to click the button to turn pages. And the buttons locate differently in different website. How we locate those buttons? Scroll down to the element may help you accomplish this. We use the `cnn example` to demo here, and test how to turn pages via browser emulation.
+
+```python
+from selenium import webdriver
+import time
+browser = webdriver.Chrome()
+url = 'https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser.get(url)
+next_button = browser.find_element_by_css_selector('#mixedpagination ul.pagingLinks li.ends.next span a') #get the element's location
+next_button.location
+loc = next_button.location
+browser.execute_script("window.scrollTo({x}, {y});".format(**loc)) #scroll to the element
+next_button.click()
+```
+
+Apart for directly scroll to the elements. There are two scrolling usages you may need to know.
+
+```python
+#method 1
+browser.execute_script('window.scrollBy(x,y)') # x is horizontal, y is vertical
+
+#method 2
+browser.execute_script('window.scrollTo(0, document.body.scrollHeight);') #scroll to the page bottom
+
+#method 3
+browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #you can divide numbers after the page height
+
+#method 4
+element = browser.find_element_by_class_name("pn-next")#locate the element
+browser.execute_script("return arguments[0].scrollIntoView();", element) #scroll to view the element
+```
+
+#### Example: CNN articles scraping
+
+The following is the link of results returned by keyword searching of `trade war`. We can scrape those articles title, time and url for further studying. The reason why we need use `selenium` is because the page turning links are embedded javascript codes, which cannot be extracted and use directly in `requests` way. To solve that, we need to interact with the page, and do browser emulation.
+
+<https://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war>
+
+##### Fundamental: One page
+
+```python
+!pip3 install selenium # if you installed before, just ignore
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war')
+
+articles = []
+for session in browser.find_elements_by_css_selector('#summaryList_mixed .summaryBlock'): #find all articles wrapped in the path of class='summaryBlock' under the id='summaryList_mixed' 
+    article = {}
+    h = session.find_element_by_css_selector(".cnnHeadline a")
+    article['headline'] = h.text #find headline block
+    article['url'] = h.get_attribute('href') #get url attributes from headline block
+    article['date'] = session.find_element_by_css_selector("span.cnnDateStamp").text #find date
+    articles.append(article)
+articles
+```
+
+Output:
+
+![Articles Output1](assets/selenium-articles-output1.png)
+
+##### Advanced: All pages
+
+```python
+from selenium import webdriver
+import time #mainly use its time sleep function
+
+def get_articles_from_browser(b):
+    articles = []
+    for session in browser.find_elements_by_css_selector('#summaryList_mixed .summaryBlock'): #find all articles wrapped in the path of class='summaryBlock' under the id='summaryList_mixed'
+        article = {}
+        h = session.find_element_by_css_selector(".cnnHeadline a")
+        article['headline'] = h.text #find headline block
+        article['url'] = h.get_attribute('href') #get url attributes from headline block
+        article['date'] = session.find_element_by_css_selector("span.cnnDateStamp").text #find date
+        articles.append(article)
+    
+    return articles
+
+
+url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser = webdriver.Chrome()
+browser.get(url)
+time.sleep(2) #sleep 2 second for each call action, if it's too frequently with no sleep time, its has high opportunity to be banned from the website.
+
+all_page_articles = []
+for i in range(10):
+    time.sleep(0.5)
+    try:
+        new_articles = get_articles_from_browser(browser)
+        all_page_articles.extend(new_articles)
+        browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);')#test several numbers to choose a suitable one
+        next_page = browser.find_element_by_link_text('Next')
+        next_page.click()
+    except Exception as e:
+        print(e)
+        print('Error on page %s' % i)
+
+import pandas as pd #spoiler. pandas is the key module in the next chapter, you can check out chapter 7 for further information.
+df = pd.DataFrame(all_page_articles) #convert articles into dataframe
+df
+```
+
+Output:
+
+![Selenium Articles Output2](assets/selenium-articles-output2.png)
+
+### Splinter
+
+Splinter achieves pretty much the same results as Selenium does, though there might be a little difference in syntax. In the following, we will also use `splinter` method to demo the cnn example, you can compare it with `selenium` method, and choose one you like to practice more.
+
+```python
+!pip3 install splinter  
+from splinter import Browser
+import time
+url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser = Browser('chrome')
+browser.visit(url)
+time.sleep(2)
+```
+
+#### Finding elements
+
+Splinter provides 6 methods for finding elements in the page, one for each selector type: `css`, `xpath`, `tag`, `name`, `id`, `value`, `text`. Each of these methods returns a list with the found elements. And you can use index to access each of them in the list. This method is different from `selenium` which provides with finding single element and list of elements. All in all, those two methods are very alike. You can check out [here](https://splinter.readthedocs.io/en/latest/api/driver-and-element-api.html#splinter.driver.DriverAPI.find_by_css) for Splinter doc about finding elements. In this case, we mainly use `find_by_css(css_selector)` method.
+
+##### Fundamental version: one page
+
+```python
+!pip3 install splinter  
+from splinter import Browser
+import time
+url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+browser = Browser('chrome')
+browser.visit(url)
+time.sleep(2)
+
+articles = []
+for block in browser.find_by_css('#summaryList_mixed .summaryBlock'):
+    article = {}
+    h = block.find_by_css('.cnnHeadline a')
+    article['headline'] = h.text
+    article['url'] = h['href']
+    article['date'] = block.find_by_css('span.cnnDateStamp').text
+    articles.append(article)
+
+articles
+```
+
+Output:
+
+![Splinter articles output1](assets/splinter-articles-output1.png)
+
+How to find its css? When you open chrome devtools, you can find the css in the `style` console by corresponding to the elements in the webpage.
+
+![Find by css](assets/find_by_css.png)
+
+##### Advanced version: all pages
+
+```python
+url = 'http://money.cnn.com/search/index.html?sortBy=date&primaryType=mixed&search=Search&query=trade%20war'
+
+def get_articles_from_browser(b):
+    articles = []
+    for block in b.find_by_css('#summaryList_mixed .summaryBlock'):
+        article = {}
+        h = block.find_by_css('.cnnHeadline a')
+        article['headline'] = h.text
+        article['url'] = h['href']
+        article['date'] = block.find_by_css('span.cnnDateStamp').text
+        articles.append(article)
+    return articles
+
+# Launch the initial page#
+browser = Browser('chrome')
+browser.visit(url)
+time.sleep(2)
+
+all_page_articles  = []
+for i in range(50): #scrape 50 pages
+    time.sleep(0.5)
+    try:
+        new_articles = get_articles_from_browser(browser)
+        all_page_articles.extend(new_articles)
+        browser.execute_script('window.scrollTo(0, document.body.scrollHeight/1.5);') #scroll down
+        next_buttons = browser.find_by_css('.pagingLinks li.ends.next')
+        next_buttons[0].click() #splinter find_by return a list, therefore we need use index0 to access the next_button.
+    except Exception as e:
+        print(e)
+        print('Error on page %s' % i)
+
 import pandas as pd
-from matplotlib import pyplot as plt
-import seaborn as sns
-import numpy as np
-
-df = pd.read_excel('nottingham.xlsx')
-#!pip install xlrd for supporting to read excel if error arisen.
-
-df.describe() #get descriptive information
+df = pd.DataFrame(all_page_articles)
+df
 ```
 
-![Df describe](assets/df_describe.png)
+Output: There will be 500 rows.
 
-The columns:
+![Splinter Articles Output2](assets/splinter-articles-output2.png)
 
-* `AVG_ENG_MATH_SCORE_xx`: The average score for the particular class of year xx. For a class, this metric is the higher the better
-* `P_ABSENT_PERSIST`:  the absent ratio transformed somehow, the higher the worse.
+### Bonus: Twitter example with browser emulation
 
-This is multi dimensional data. We are interested in the relationship between those dimensions / variables. For example, the absent ratio.
+After we can handle browser emulation to find and extract data from a dynamic loading webpage, we can further apply this method to crawl some data from social media platforms, like the recent hot topic discussed right now on Twitter, to further analyze people's comments and opinions about certain events.
+The following are some pointers that may be useful for you to manipulate browser emulation with Twitter:
+
+1. First you need to Simulate the login process
+2. Do some navigating, searching, scrolling action to load more contents and tweets you want
+3. Extract tweets by different finding elements method
+
+Here are the common issues when scraping those social media platform:
+
+1. Here is strong limitation to the data you can get. For example, after the certain point, the browser window and not be scrolled and there is only a `back to top` button at the bottom of the page.
+2. The scraping results from webpage end may be different from the mobile end. For example, `https://twitter.com/` and `https://mobile.twitter.com/home`. Because Twitter has different regulations to different platforms.
+
+Here is the [sample codes](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/twitter_selenium/twitter_selenium.ipynb) we did with selenium browser emulation. We scrape tweets by keyword searching `Mangkhut`, the typhon that stroke Hong Kong and nearby region in 2018-09-16.
+
+## Analyse Network Traces
+
+Open "Google Chrome Developer Console" by `command+option+i`. Check out the "Network" tab and use "XHR" filter to find potential packages. We are usually interested in `json` files or `xml` files sent over the line. Most dynamic web pages have predictable / enumerable internal API -- use HTTP request to get certain `json`/ `xml` files.
+
+Some websites render HTML at the backend and send them to the frontend in a dynamic way. You find the URL in address bar stays the same but the content is changed. You can also find the HTML files and their **real URL** via developer console. One such example is [xiachufang.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/xiachufang.com.ipynb).
+
+## Bonus: Crawl mobile Apps
+
+With the explosion of mobile Apps, more and more data is shifted from the open web to mobile platform. The design principle of web and mobile are very different. When Tim Berners Lee initially designed the WWW, it was intended to be an open standard that every one can connect to. That is why, once the web server is up, you can use Chrome to access it while other users may use Firefox or even Python `requests`. There are many tools to emulate browser activities, so you can programmably do the same thing as if a regular user is surfing the Internet. Compare with the open web, mobile world is a closed eco system. It often requires heavy duty packet analysis, App decompilation, or App emulation, in order to get data behind the mobile Apps. "Packet analysis" is most close to our course and is elaborated below.
+
+### Packet analysis
+
+This section is very similar to earlier [Analyse Network Traces](#analyse-network-traces). The only difference is that we analyse the mobile App packet here.
+
+No matter how mysterious a mobile App seems to be, it has to talk to a server in order to get updated information. You can be assured that everything you see from your smart phone screen comes from either of the two channels:
+
+1. Embedded in the phone, i.e. in the operating system, or in the App when you initially install
+2. Loaded via the Internet upon certain user operation, e.g. App launch, swipe left, touch, ...
+
+Channel 1 is the topic of next section. Channel 2 is what we are going to tackle. The idea is to insert a sniffer between the App and the backend server. In this way, whatever conversation the App has with the server will pass the sniffer first. The sniffer is also called "man-in-the-middle (MITM)", and [a famous attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) is named after this. You may have also heard the term "proxy", which intercepts your original network packet, modify it somehow, and then send the packet to the destination. One can use proxy to bypass Internet censorship or use proxy to hide the original sender's address. Our key tool is a MITM proxy. Here are two common choices
+
+- "Charles proxy" -- Its GUI is very convenient for further packet analysis. It also has iOS and MAC clients. The software is not free though.
+- `mitmproxy` -- You can install it via `pip`. It is free and open source. It provides command line interface to help intercept and dump packets. Recent version also provides web interface to browse the sniffed packets.
+
+#### Example: Kwai (kuaishou)
+
+[Kuaishou](https://www.kuaishou.com/) is a popular video sharing platform originated from China. We analyse its international version, [kwai](http://www.kwai.com), and scrape the top players data.
+
+We'll omit the configuration of Charles Proxy on iOS and MAC, because there are numerous resources online and the interfaces are always changing. Once you finish configuration, do the following steps:
+
+- Start sniffing in Charles Proxy on iOS.
+- Open Kwai App.
+- Browse like a normal user. Note that the packet sniffer can only intercept the conversations that happened. So you want to trigger more actions.
+- Quit Kwai App.
+- Send sniffed packet traces to MAC for further analysis.
+
+There is no direct formula for packet analysis. We usually observe the request/ response sequence by time. For example, if you "pull down" to refresh the video list at 10th second, then the relevant packets are very likely to be sent around 10th second. You can find that data is obtained from an endpoint called `http://api.kwai.com/`. Specifically, the App sends HTTP requests to `http://api.kwai.com/rest/n/feed/hot` in order to obtain a list of hot videos. In our previous scraper examples, HTTP request is usually sent using the `GET` method. In the case of Kwai, `POST` is used. A complete `POST` request is composed of three parts:
+
+- headers -- send in HTTP protocol; users can not see
+- params -- usually appears as `?a=3&b=5` in browser bar; `a` and `b` here are called parameters
+- data -- the `POST` body; this is the main content to be consumed by the web server; based on this content, the server give corresponding response.
+
+Charles Proxy's MAC software can help you to convert one HTTP request into the Python language, with the above three parts filled -- that is, give you the Python code that can **replay** one request. The variable configurations are as follows, with certain fields masked to preserve privacy:
 
 ```python
-%matplotlib inline  #add this line before plotting charts
-df['P_ABSENT_PERSIST'].hist(bins=20)
-```
-
-![Dataframe hist](assets/df_hist.png)
-
-Quick Questions:
-
-* What do you conclude from this histogram?
-* What would you do next to mine the news?
-
-It's clear that most of school has only 0 - 2 absent ratio, but 2 schools has more than 8 percent absent ratio. A question for us is why those two schools are abnormal and who are they? We can filter out to dig out more, and see if we can find anything interesting.
-
-![Filter Outlier2](assets/filter-outlier2.png)
-
-Also, one can check out the other columns and see if there anything abnormal or trend.
-
-```python
-plt.subplot(2, 2, 1)
-df['AVG_ENG_MATH_SCORE_07'].hist(bins=10)
-plt.title('AVG_ENG_MATH_SCORE_07')
-
-plt.subplot(2, 2, 2)
-df['AVG_ENG_MATH_SCORE_08'].hist(bins=10)
-plt.title('AVG_ENG_MATH_SCORE_08')
-
-
-plt.subplot(2, 2, 3)
-df['AVG_ENG_MATH_SCORE_09'].hist(bins=10)
-plt.title('AVG_ENG_MATH_SCORE_09')
-
-
-plt.subplot(2, 2, 4)
-df['AVG_ENG_MATH_SCORE_10'].hist(bins=10)
-plt.title('AVG_ENG_MATH_SCORE_10')
-```
-
-![Dataframe hist](assets/df_hist2.png)
-
-Same question: can you find anything notable from this chart? It that weird for the outlier whose score is around 15 in year 7? We can filter it out and invest later.
-
-```python
-df[df['AVG_ENG_MATH_SCORE_07'] < 16]
-```
-
-![Filter Outlier](assets/filter_outlier.png)
-
-#### Bonus: How histograms can be cheating
-
-Try to adjust number of bins and bin boundaries to see what happens.
-
-```python
-df['AVG_ENG_MATH_SCORE_08'].hist(bins=5) #bins=5
-```
-
-![Hist bins 5](assets/hist-bins5.png)
-
-```python
-df['AVG_ENG_MATH_SCORE_08'].hist(bins=25) #bins = 25
-```
-
-![Hist bins 50](assets/hist-bins25.png)
-
-```python
-df['AVG_ENG_MATH_SCORE_08'].hist(bins=10,range=(24,30)) #change data range
-```
-
-![Hist range changes](assets/hist-range-change.png)
-
-You can see that there is only one peak when the number of bins is 5, however, if you enlarges `bins`, you will get a more detailed information. There appears more peaks and a valley between. Besides, if you change the data range, the situation and conclusion here can be more diverse.
-
-The key takeaway here is that different angle could lead to different stories, and it's all depend on which angle you choose to take in. What we can do is to learn to recognize the pattern here and not to be fooled by the charts.
-
-
-### Kernel Density Estimation (KDE)
-
-KDE is fundamentally similar to histogram. It takes every data point, interpolate the distribution using a continuous function (kernel), and then sum up those functions to generate the envelop of distribution. It has similar function when you articulate the distribution of data. The major advantage is that it does not suffer from the bin-segmentation issue as we see above in histogram.
-
-For better data presentation and aesthetics purpose, people sometimes put histogram and KDE on the same chart, from which you can see the distribution pattern more clearly.
-
-```python
-ax = df['AVG_ENG_MATH_SCORE_10'].hist(bins=15)
-df['AVG_ENG_MATH_SCORE_10'].plot(kind='kde', ax=ax, secondary_y=True)
-```
-
-![Histogram and KDE](assets/histogram-and-KDE.png)
-
-### Special points in distribution
-
-- Mean
-
-![Pandas Mean](assets/pandas-mean.png)
-
-The statistical mean, gives a very good idea about the central tendency of the data being collected. What can we get from the mean? you can have a general idea that overall, students get better performance in higher grades, but is it normal?
-
-- Max/ Min
-
-![Pandas max&min](assets/pandas-filter-abnormal.png)
-The max and min shows the most extreme observations. If extreme values are real (not measurement errors), it becomes valuable to us, giving us a breakthrough point to dig out the reason, which we emphasis at the very beginning of this course - abnormal.
-
-For this case, we can filter out the school with highest absent rate and see if there is anything interesting. Step further, we can filter out the school with high absent rate but high performance in score at the same time.
-This is also abnormal for us in theory which we can further check out.
-
-![Pandas abnormal2](assets/pandas-filter-abnormal2.png)
-
-- Median
-
-```python
-df["AVG_ENG_MATH_SCORE_10"].median()
-```
-
-Output:
-
-```text
-27.8
-```
-
-Median provides a helpful measure of center of our dataset. But more often, we care more about the Percentile, like where are the majority of the data locate.
-
-- Percentile
-
-Percentile is a given percentage of observations in a group of observations fall. For example, the 75th percentile is the value (or score) below which 75% of the observations may be found. 50th percentile is equal to median.
-
-![Pandas percentile](assets/pandas-percentile.png)
-
-## Bonus: Articulate central tendency and spread of data
-
-### Variance
-
-variance is the expectation of the squared deviation of a random variable from its mean. Informally, it measures how far a set of (random) numbers are spread out from their average value. The smaller the variance, the sharper the distribution. The variance is the square of the `standard deviation`.
-
-![Variance](assets/variance.png)
-*from Wikipedia*
-
-```python
-df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].var(axis=0).sort_values(ascending=False)
-```
-
-Output:
-
-```text
-AVG_ENG_MATH_SCORE_07    4.128475
-AVG_ENG_MATH_SCORE_10    2.983547
-AVG_ENG_MATH_SCORE_08    2.778986
-AVG_ENG_MATH_SCORE_09    2.694271
-```
-
-For this case, we can see that the score fluctuations of students in year 7 are the largest. And there is no clear pattern only considering this factor.
-
-### Skewness
-
-Skewness can help us recognize the general distribution pattern, whether it is feasible to treat it as a normal distribution. If Sk> 0, the larger the Sk value, the higher the degree of right deviation; If Sk< 0, the smaller the Sk value, the higher the degree of left deviation.
-
-![Skewness](assets/skewness.png)
-*from Wikipedia*
-
-```python
-df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].skew(axis=0).sort_values(ascending=False)
-```
-
-Output:
-
-```text
-AVG_ENG_MATH_SCORE_09   -0.038742
-AVG_ENG_MATH_SCORE_10   -0.152395
-AVG_ENG_MATH_SCORE_08   -0.224148
-AVG_ENG_MATH_SCORE_07   -1.352412
-```
-
-From the results, we can have a overview of that the scores distribution of those students is left deviated, and mass students is concentrated on the right of the figure. And there is no apparent pattern related to the years.
-
-### Kurtosis
-
-The kurtosis reflects the sharpness of the peak of the distribution. The greater the kurtosis, the sharper and steeper of the distribution peak. A high kurtosis means that the increase in variance is caused by an extreme values in the low frequency that is greater or less than the average.
-
-![Kurtosis](assets/kurtosis.png)
-*from Wikipedia*
-
-```python
-df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].kurtosis(axis=0).sort_values(ascending=False)
-```
-
-Output:
-
-```text
-AVG_ENG_MATH_SCORE_07    6.934606
-AVG_ENG_MATH_SCORE_10   -0.036167
-AVG_ENG_MATH_SCORE_08   -0.428693
-AVG_ENG_MATH_SCORE_09   -0.478333
-```
-
-From this statistic, we can know that students in year 7 has larger kurtosis, which means that the distribution peak is sharper, and there are more extreme value points in year 7.
-
-### The mode of data
-
-Get the value with maximum frequency. For example, filter out the grade with maximum frequency of each year students.
-
-```python
-#get the data of all years
-df_g = df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']]
-#drop the rows with nan value, unless it will affect the results
-df_g.dropna(inplace=True)
-#df_g
-df_g.mode()
-```
-
-![Dataframe mode](assets/dataframe-mode.png)
-
-Note that there could be multiple values returned for the selected axis (when more than one item share the maximum frequency), which is the reason why a dataframe is returned. If you want to impute missing values with the mode in a dataframe df, you can just do this: `df_g.mode().iloc[0]`
-
-Also, you can use `df_g['AVG_ENG_MATH_SCORE_08'].mode()` to get single series mode.
-
-**NOTE**: The above is just for demonstration purpose. You usually do not checkout mode of real valued variables, because it is too likely for every instance to get different values. When the variable is highly discrete or is actually categorical, mode can tell us some stories.
-
-## Correlation
-
-### Continuous: Scatter plot and correlation
-
-We can plot the correlation graph to display relationship between two variables and columns. For example, to figure out whether there is a correlation between absence and score.
-
-```python
-df.plot('P_ABSENT_PERSIST', 'AVG_ENG_MATH_SCORE_09', kind='scatter')
-#kind means the graph type
-```
-
-![Correlation Scatter](assets/correlation_scatter.png)
-
-Generally, you can see that the higher the absence ratio, the lower the test score in general. But here are two questions:
-
-* Is this relationship strong enough?
-* What are the outliers?
-
-To solve this problem, we need to use correlation functions to dig out more.
-
-```python
-help(df['P_ABSENT_PERSIST'].corr)
-```
-
-Output:
-```test
-Help on method corr in module pandas.core.series:
-
-corr(other, method='pearson', min_periods=None) method of pandas.core.series.Series instance
-    Compute correlation with `other` Series, excluding missing values
-    
-    Parameters
-    ----------
-    other : Series
-    method : {'pearson', 'kendall', 'spearman'}
-        * pearson : standard correlation coefficient
-        * kendall : Kendall Tau correlation coefficient
-        * spearman : Spearman rank correlation
-    min_periods : int, optional
-        Minimum number of observations needed to have a valid result
-    
-    
-    Returns
-    -------
-    correlation : float
-```
-
-From above you can see that, `corr` function is used to compute one series with other series. And there are 3 methods: `pearson`, `kendall`, `spearman`. we don't need necessarily to know how to calculate instead
-we need to what does it means and main differences. For example, `pearson` measure the degree of the relationship between `linearly` related variables, while Spearman rank correlation is a `non-parametric test`. For more details, You can refer [here](http://www.statisticssolutions.com/correlation-pearson-kendall-spearman/)
-
-```python
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='pearson')
-```
-
-output:
-
-```text
--0.5205965225654683
-```
-
-**Note:**
-
-* Pearson correlation is between [-1, 1]
-* Values around 0 means no correlation/ weak correlation
-* Values near 1 and -1 can be interpreted as strong (linear) correlation
-
-Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also sensitive to outliers. Spearman rank correlation can help here. You can make a judgement whether there is a correlation between grades and absent rate.
-
-```python
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_10'],method='spearman')
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='spearman')
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_08'], method='spearman')
-df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_07'], method='spearman')
-```
-
-![Calculate 4 years correlation](assets/calculate-correlation.png)
-
-### Bonus: Better visualisation
-
-One can do more with the scatter graphs. We can draw the regression line in the charts, filter the outliers on the charts, adjust the transparency of the dots...
-
-```python
-sns.regplot(df['P_ABSENT_PERSIST'], df['AVG_ENG_MATH_SCORE_09'])
-```
-
-![Reg plot](assets/regplot.png)
-
-```python
-np.polyfit(df['P_ABSENT_PERSIST'].fillna(0), df['AVG_ENG_MATH_SCORE_09'].fillna(0), 1)
-```
-
-**Quiz:** What does it look like if we plot above line? The return value of polyfit is Polynomial coefficients, highest power first.
-
-**NOTE:** Try the codes without fillna and observe the error. Now it is time to do some cleaning.
-
-```python
-na_selector = df['P_ABSENT_PERSIST'].isna()
-na_selector |= df['AVG_ENG_MATH_SCORE_07'].isna()
-na_selector |= df['AVG_ENG_MATH_SCORE_08'].isna()
-na_selector |= df['AVG_ENG_MATH_SCORE_09'].isna()
-na_selector |= df['AVG_ENG_MATH_SCORE_10'].isna()
-len(df[na_selector])
-len(df)
-len(df[~na_selector])
-df_cleaned = df[~na_selector]
-np.polyfit(df_cleaned['P_ABSENT_PERSIST'].fillna(0), 
-           df_cleaned['AVG_ENG_MATH_SCORE_09'].fillna(0), 
-           1)
-```
-
-**Note:** For how to handle NA/NaN value in pandas, you can refer [here](https://blog.csdn.net/lwgkzl/article/details/80948548).
-
-![Clean data](assets/corr-clean-data.png)
-
-After we get the regression coefficient, we can estimate the grade09 and compare with the actual ones to see if there is a big difference.
-
-```python
-absent = df_cleaned['P_ABSENT_PERSIST']
-score_grade09 = df_cleaned['AVG_ENG_MATH_SCORE_09']
-estimated_score_grade09 =  28.54239409 + (-0.44654826) * absent
-(score_grade09 - estimated_score_grade09).hist()
-```
-
-![Corr prediction](assets/corr-prediction.png)
-
-We can filter out the school that have hugh different scores with the estimation.
-
-```python
-df_cleaned[(score_grade09 - estimated_score_grade09) > 3]
-df_cleaned[(score_grade09 - estimated_score_grade09) > 2.5]
-```
-
-![Filter abnormal](assets/corr-filter-abnormal.png)
-
-#### Filter out in the charts
-
-Get the threshold value for 95% percentile
-
-```python
-s = (score_grade09 - estimated_score_grade09)
-s.quantile(0.95)
-df_cleaned[s > s.quantile(0.95)].plot(
-    x='P_ABSENT_PERSIST', 
-    y='AVG_ENG_MATH_SCORE_09', 
-    kind='scatter')
-```
-
-![95 percentile](assets/95percentile.png)
-
-Adjust the quantile to include/ exclude suspicious schools.
-
-```python
-ax = sns.regplot(
-    df_cleaned['P_ABSENT_PERSIST'], 
-    df_cleaned['AVG_ENG_MATH_SCORE_09'],
+headers = {
+    'Host': 'api.kwai.com',
+    ...
+    'Accept': 'application/json',
+    'User-Agent': 'kwai-ios',
+    'Accept-Language': 'en-HK;q=1, zh-HK;q=0.9, zh-Hans-HK;q=0.8',
+}
+
+params = (
+    ('appver', '5.7.3.494'),
+    ...
+    ('c', 'a'),
+    ('ver', '5.7'),
+    ('sys', 'ios11.4'),
+    ('mod', 'iPhone10,3'),
+    ...
 )
-df_cleaned[s > s.quantile(0.90)].plot(
-    x='P_ABSENT_PERSIST', 
-    y='AVG_ENG_MATH_SCORE_09', 
-    kind='scatter',
-    color='red',
-    ax=ax)
+
+data = [
+  ...
+  ('coldStart', 'true'),
+  ('count', '20'),
+  ('country_code', 'hk'),
+  ('id', '13'),
+  ('language', 'en-HK;q=1, zh-HK;q=0.9, zh-Hans-HK;q=0.8'),
+  ('pv', 'false'),
+  ('refreshTimes', '0'),
+  ('sig', ...),
+  ('source', '1'),
+  ('type', '7'),
+]
 ```
 
-![Quantile exclude](assets/quantile-exclude.png)
+Here's the request operation and its outcome:
 
-#### A more primitive/ finer controlled way of plotting using matplotlib
+![Kwai's top user information](assets/kwai-top-users.png)
 
-Two common tricks for better visuals:
+<!-- ![](assets/kwai-app.png) -->
 
-* Add jitter to further scatter the data points
-* Use transparency to help identify density
+Note the `pd.DataFrame` is a `pandas` object, which will be explained in [notes-week-07.md](notes-week-07.md).
 
-```python
-plt.figure(figsize=(10, 5))
-plt.scatter(
-    df_cleaned['P_ABSENT_PERSIST'], 
-    df_cleaned['AVG_ENG_MATH_SCORE_09'],
-    s=80, alpha=0.5)
-```
+### App decompilation
 
-![Corr better viz](assets/corr-better-viz1.png)
+This means to "crack" the App. You need to first get the installation package of the App, analyse its structure, decompile it, and understand how this App talk with a server from its source code.
 
-```python
-plt.figure(figsize=(10, 5))
-plt.scatter(
-    df_cleaned['P_ABSENT_PERSIST'] + np.random.normal(0, 0.1, len(df_cleaned)), 
-    df_cleaned['AVG_ENG_MATH_SCORE_09'] + np.random.normal(0, 1, len(df_cleaned)),
-    s=80, alpha=0.5)
-```
+Sophisticated App will embed certain cryptography routine in the App and authenticate itself with the server. Even if you successfully analysed the network packet, it is hard for you to come up with the correct authentication parameters. In order to understand how this authentication process is conducted, you may want to reverse engineer the App.
 
-![Corr better viz](assets/corr-better-viz2.png)
+Further discussion is omitted here because this part takes years of computer science background, especially in information security domain.
 
-```python
-coeffs = np.polyfit(df_cleaned['P_ABSENT_PERSIST'].fillna(0), 
-           df_cleaned['AVG_ENG_MATH_SCORE_09'].fillna(0), 
-           1)
-#coeffs
-trendline_x = np.linspace(df_cleaned['P_ABSENT_PERSIST'].min(), df_cleaned['P_ABSENT_PERSIST'].max())
-trendline_y = coeffs[0] * trendline_x + coeffs[1]
-plt.figure(figsize=(10, 5))
+### App emulation
 
-plt.scatter(
-    df_cleaned['P_ABSENT_PERSIST'] + np.random.normal(0, 0.1, len(df_cleaned)), 
-    df_cleaned['AVG_ENG_MATH_SCORE_09'] + np.random.normal(0, 1, len(df_cleaned)),
-    s=80, alpha=0.5)
+[Appium](http://appium.io/) is a frequently used automatic testing tool. You can use this tool to emulate user operations on mobile Apps and scrape the data from the screen. For Android users, [Auto.js](https://github.com/hyb1996/Auto.js) is a convenient library that relies on accessibility features and does not require root access.
 
-plt.plot(trendline_x, trendline_y, linewidth=5)
+Actually, `selenium`, we introduced earlier in this chapter, was initially also an automatic testing tool for the web frontend. Then it became a bridge between the programmable user and web browser driver, which was used in a lot scraping works. When you find yourself stuck with data access because of non-human behavoiur (e.g. anti-crawling), you can try to search the keywords "emulation" or "auto testing", and can usually get some pointers to useful tools.
 
-plt.scatter(
-    df_cleaned[s > s.quantile(0.90)]['P_ABSENT_PERSIST'],
-    df_cleaned[s > s.quantile(0.90)]['AVG_ENG_MATH_SCORE_09'],
-    color='red'
-)
-```
-
-![Corr better viz3](assets/corr-better-viz3.png)
-
-Jitter is good to present data but you need to track how the data is jittered in order to aligh multiple plots. The complete version is followed.
+## Bonus: Other quick scraping/ crawling tricks
 
-```python
-plt.figure(figsize=(10, 5))
+In our class, we show you the very basic steps of scraping so that you know how it things happen in a sequential way. However, you don't have write codes for everything from scratch in real practice. People already made numerous tools and libraries that can help you do certain tasks quickly. Here are some examples related with course (Shell/ Python) for those who are interested:
 
-# Plot main bubbles
+- Type `wget -r {url}`, where `{url}` is the URL of the website you want to crawl. After running this command, you can find all the web pages and their dependent resources are on your computer. You can fine tune the parameters to limit crawling scope, like number of hops or types of files. Use `man wget` to find out more.
+- There are many shell commands which can be combined to perform efficient text processing. [This article](https://github.com/hupili/agile-ir/blob/master/cases/case2-crawl-by-url-filling/index.md) shows how one can combine a few Shell commands to quickly download the Shakespeare works.
+- [This repo](https://github.com/hupili/workshop-easy-scraping-PyConHK-2015), originally a workshop given on PyConHK in 2015, shows you some handy tools and libraries in Python that allow one to scrape more with less codes. For example, you can use `readability` to extract the main body of an HTML page, without bothering with its page structure. For readers with frontend development background, `pyquery` is a handy library to allow you write jQuery like selectors to access HTML elements. `scraply` is a machine learning based library that can learn the labelled crawling target and generate corresponding rules; The user only needs to tell `scraply` what to crawl, instead of how to crawl.
+- [Data Science at the Command Line](https://www.datascienceatthecommandline.com/chapter-3-obtaining-data.html) by Jeroen Janssens is a comprehensive and duly updated reference book for command line tools for data science. Its [Obtaining data](https://www.datascienceatthecommandline.com/chapter-3-obtaining-data.html) is a good further reading for those who are interested in more efficient data collection in Linux shell environment.
 
-x = df_cleaned['P_ABSENT_PERSIST']
-x_jitter = x + np.random.normal(0, 0.05, len(df_cleaned))
-y = df_cleaned['AVG_ENG_MATH_SCORE_09'] 
-y_jitter = y + np.random.normal(0, 0.1, len(df_cleaned))
+## Exercises and Challenges
 
-plt.scatter(
-    x_jitter, 
-    y_jitter,
-    s=80, alpha=0.5)
+### In-bound marketing and SEO auditing
 
-# Fit the curve (a line) and plot trendline
+Search Engine Optimization (SEO) is one common technique a digital marketer needs to master. Suppose you have led a team to conduct the optimization. Now it is time to audit the optimization result. One of the key function is to build scraper which can:
 
-coeffs = np.polyfit(x, y, 1)
+- Input 1 is a search query, i.e. some keywords
+- Input 2 is a set of URLs from your own website
+- Output the ranks of each URL in the search result list
 
-trendline_x = np.linspace(x.min(), x.max())
-trendline_y = coeffs[0] * trendline_x + coeffs[1]
+### Crawl the legal case of China
 
-plt.plot(trendline_x, trendline_y, linewidth=5)
+<http://wenshu.court.gov.cn> collects the legal cases in China. It supports advanced search options. One can emulate browser to download relevant documents on a certain area. Please try:
 
-# Identify suspicious schools, highlight and label texts
+- Give a keyword as input.
+- Download the documents of the first page, e.g. `.docx` files, onto local disk.
+- Organise an index of those documents into a `CSV` which may include "title", "court", "date", "document-path", and other fields if you deem useful.
 
-estimated_y = coeffs[0] * x + coeffs[1]
-s = y - estimated_y
+### Bonus: Crawl Weibo data and discover KOL
 
-suspicious_x = x_jitter[s > s.quantile(0.90)].values
-suspicious_y = y_jitter[s > s.quantile(0.90)].values
-suspicious_t = df_cleaned[s > s.quantile(0.90)]['Schoolme'].values
-plt.scatter(
-    suspicious_x,
-    suspicious_y,
-    color='red'
-)
-for i in range(len(suspicious_t)):
-    plt.text(suspicious_x[i], suspicious_y[i], suspicious_t[i])
-```
+Key Opinion Leader (KOL) is the goto person for targeted massive marketing. As a marketing specialist, you want to identify the KOLs in a certain area so that your team can reach out to them effectively. Before learning sophisticated graph mining algorithms, one can do the follow challenge to get some preliminary result:
 
-![Corr better viz4](assets/corr-better-viz4.png)
+- Given an industry domain, identify `keywords`
+- For every `keyword in keywords`, scrape the search of related micro blogs.
+- Every piece of microblog may have following data structure:
 
-### Discrete: Cross-tab
+  ```python
+  microblog = {
+      'username': 'DATA HERE',
+      'datetime': 'DATA HERE',
+      'text': 'DATA HERE',
+      'num_like': 'DATA HERE',
+      'num_comment': 'DATA HERE',
+      'num_share': 'DATA HERE'
+  }
+  ```
 
-#### DataFrame.groupby
+- A simple algorithm to find KOL is to count `num_like`, `num_comment`, `num_share` for each `username`.
 
-Different groups with different absent rate may show different correlation with their scores. We can divide the absent rate with different groups to check out the situation here.
+### Bonus: Cheat an online voting system
 
-We name the `absent rate <1` as `hardworking group`,`absent rate 1<=rate<3` as `middle group`, and `absent rate >3` as `happy group`.
+Some people host competitions online and calculate the leaderboard based on web traffic, like page visits, number of clicks of "upvote" and so on. The system is very easy to cheat if it does not adopt CAPTCHA system. After this week, you can use Python to emulate user behaviour and cheat those systems. Here are some examples for your reference:
 
-```python
-def discretise(x):
-    if x <= 1:
-        x = '01_hard_working'
-    elif x > 1 and x <= 3:
-        x = '02_middle'
-    elif x > 3:
-        x = '03_happy'
-    return x
-f = ['mean','max','min','var','std']
-df['group'] = df['P_ABSENT_PERSIST'].apply(discretise)
-year9_agg = df.groupby('group')['AVG_ENG_MATH_SCORE_09'].agg(f)
-year9_agg.sort_values(f,ascending=False)
-```
+- Increase Youtube page views by refreshing browser page [code](https://github.com/data-projects-archive/Python-examples/blob/3d4ee06249cf5697c72bae4e2732e814dde97dec/get_youtube_view.py)
 
-![Cross tab correlation](assets/cross-tab-correlation.png)
+Please find another system/ another parameter from the system, which you can cheat using similar tricks.
 
-From the results, we can find the pattern that the more hardworking, the better performance students in their scores, which shows on the mean of their scores. However Middle group shows more diverse in this correlation, which can be explained by our experience. Because most of students are located in this area and the samples are more diverse. To the contrary, hardworking students get good grades and happy students get lower grades generally.
+## Related Readings
 
-#### pandas.pivot_table
+- Dynamic loading and crawling example: [libguides example](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/Libguides.ipynb)
+- Social media crawling example: [Scrape a luxury brand with keyword in Weibo](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium/Weibo.ipynb)
+- Dynamic page crawling, with a matter of parsing page content: [Timeout](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-splinter/timeout.com.ipynb)
+- Dynamic crawling a static page with a matter of pagination: [Amazon Books](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-splinter/Amazon%20books.ipynb)
 
-##### Discretise multiple columns
+------
 
-```python
-def discretise_grade(g):
-    if g >= 28:
-        g = 'A'
-    elif g > 26 and g <= 28:
-        g = 'B'
-    elif g <= 26:
-        g = 'C'
-        
-    return g
-```
-
-```python
-# discretise all all-year students scores
-df['grade_07'] = df['AVG_ENG_MATH_SCORE_07'].apply(discretise_grade)
-df['grade_08'] = df['AVG_ENG_MATH_SCORE_08'].apply(discretise_grade)
-df['grade_09'] = df['AVG_ENG_MATH_SCORE_09'].apply(discretise_grade)
-df['grade_10'] = df['AVG_ENG_MATH_SCORE_10'].apply(discretise_grade)
-```
-
-##### pivot_table to generate cross-tabs table
-
-For example, to see whether higher score07 leads to higher score10?
-
-```python
-df.pivot_table(index=['grade_07'], columns=['grade_10'], values='Schoolme', aggfunc='count')
-```
-
-![Pivot table](assets/pivot-table1.png)
-
-From this charts we can found out most students with grade A in year7 will still get good grades in year10. About 46/61 = 72%.
-
-Q2：Does lower absent ratio leads to higher score08?
-
-```python
-df.pivot_table(index=['group'], columns=['grade_08'], values='Schoolme', aggfunc='count')
-```
-
-![Pivot table](assets/pivot-table2.png)
-
-Generally, we can see that it matches to our speculation. Low-absent-rate group(hard_working) got most A grade, about 50/81 = 62%, while only 5% of high-absent-rate group got A.
-
-Q3: Does higher score07 and score08 leads to higher score10?
-
-```python
-df.pivot_table(index=['grade_07','grade_08'], columns=['grade_10'], values='Schoolme', aggfunc='count')
-```
-
-![Pivot table](assets/pivot-table3.png)
-
-The results show highly correlation in this hypothesis. Students in year 7 and year 8 with grade higher than B, and at least one A, is more likely to get A in year 10. About 53/70 = 76%.
-
-**Note:** From the Q2 question, we can know that there are 33 got C in year8, but from this chart, we can only got 18 C-students. What happened here? The reason here is that some of students' grade become NaN when they are in year 10. We can drop out all NaN values to check out the number whether the number is right.
-
-```python
-df = df.dropna() 
-len(df[df['grade_08']=='C'])
-# 18, which matches the wright answer
-```
-
-An interesting point here, the abnormal one is that 3 schools' students with grade C in year 7 and year 8 got A in year 10. What happened to those schools?  We can filter out those schools.
-
-```python
-df[(df['grade_07']=='C') & (df['grade_08']=='C') & (df['grade_10']=='A')]
-```
-
-![Pivot table abnormal](assets/pivot-table-abnormal.png)
-
-After we got those school names and address, next thing is to investigate on the stories behind the data.
-
-### From correlation to causality
-
-Seeking for causality is one of the constant pursuit of journalists. However, data and statistics can not help too much here. Correlation is an objective measure. No matter which correlation you use, as long as the mathematical formula is defined, you can get an exact number. However, causality is subjective, which can not be calculated, but can be reasoned/ articulated/ discussed. Suppose we already find the correlation between A and B, there are two directions to consider when discussing causality:
-
-1. Whether event A happens before event B? If not, A can not be the cause of B (in a causal world/ regular world)
-2. Does the domain knowledge/ physical process restrict A to be the cause of B? e.g. observing correlation intelligent parents `<->` intelligent children, we know parents should come first.
-
-The discussion causality is hard to be thorough. That is why, as journalist, once you get the facts (data analysis/ investigation/ desktop research/ ...), it is a common practice to consult experts for comments and insights.
-
-## Bonus: (Statistical) Hypothesis testing
-
-Hypothesis testing is a common statistical tool used in social research domain. Suppose we have observations in `X`, the general process is as follows:
-
-- Establish "null hypothesis" as `H0`, which states that the observation is purely due to chance.
-- Calculate the likelihood that we have such observations under null hypothesis, i.e. `P{X | H0}`. This is called "p-value".
-- If p-value is small, we reject `H0` because `X` is not likely to happen given that condition. In other words, it is "statistically significant that `X` is not happening purely due to chance" -- in short,
-
-> lower p-value --> more significant --> "more convincing"
-
-"Think stats" by Allen has a whole Chapter 7 on hypothesis testing. We omit the detailed discussion here. The purpose of this book is to help new learners to acquire essential Python and data analytics/ visualisation skills so that they can articulate the result by "common sense"/ "data sense". Articulating in a rigorous statistical language is not a requirement here.
-
-In the literatures, people usually put some alternative hypotheses aside `H0`. By reject `H0`, they conclude `H1` or `H2`, ... This is not always correct though. The short message that "lower p-value --> more significant" is a bit misleading. The precise version needs two more elaborations:
-
-- The alternative hypotheses need to be stated in a mutually exclusive and collectively exhaustive way, together with `H0`. Sometimes, people state the alternative not exactly the complement of `H0`.
-- Even if when `H0` is rejected, we can not draw the conclusion on your research question directly. The rejection happens under the assumed model `M`. Under `M`, `X` is unlikely to happen due to chance. There must be something (some cause). However, this do not give us information on how likely `M` itself is correct.
-
-The short take-away is: Use hypothesis with caution. When in double, just do a full reporting on all relevant experiments, tests, results. Leave it to the readers to draw their own conclusions.
-
-## Reference
-
-- Downey, A. B. (2014). Think stats: exploratory data analysis.  O’Reilly Media, Inc. Retrieved from https://the-eye.eu/public/Books/IT%20Various/think_stats.pdf
+If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)

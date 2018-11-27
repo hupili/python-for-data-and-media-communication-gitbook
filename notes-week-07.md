@@ -1,864 +1,759 @@
-# Week 07 - Work with table: data cleaning and pre-processing
+# Week 05 - Get semi-structured data: Web scraping
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 07 - Work with table: data cleaning and pre-processing](#week-07---work-with-table-data-cleaning-and-pre-processing)
-    - [Objective](#objective)
-    - [Preparation](#preparation)
-        - [Python environment](#python-environment)
-    - [`pandas` introduction](#pandas-introduction)
-        - [Pandas Series](#pandas-series)
-            - [Convert between list/dict with series](#convert-between-listdict-with-series)
-                - [list<-->series](#list--series)
-                - [dict<-->series](#dict--series)
-            - [Get quick stats of series](#get-quick-stats-of-series)
-                - [Series.sort_values](#seriessort_values)
-                - [Series.sum](#seriessum)
-            - [Slice series](#slice-series)
-            - [Reference to elements in series](#reference-to-elements-in-series)
-            - [Benefits of using series](#benefits-of-using-series)
-        - [Pandas Dataframe](#pandas-dataframe)
-            - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
-            - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
-            - [Select data](#select-data)
-                - [Select columns with []](#select-columns-with-)
-                - [Select rows with .loc and .iloc](#select-rows-with-loc-and-iloc)
-            - [Basic statistics](#basic-statistics)
-                - [DataFrame.describe()](#dataframedescribe)
-                - [Count values of series](#count-values-of-series)
-                - [Sort values in dataframe](#sort-values-in-dataframe)
-                - [Plot a simple chart: histogram](#plot-a-simple-chart-histogram)
-            - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
-                - [Apply a function](#apply-a-function)
-                - [lambda: anonymous function](#lambda-anonymous-function)
-            - [Filtering](#filtering)
-                - [Filter by numeric range](#filter-by-numeric-range)
-                - [Filter by exact value](#filter-by-exact-value)
-                - [Filter by more than two conditions](#filter-by-more-than-two-conditions)
-        - [Export from `pandas`](#export-from-pandas)
-            - [to_csv](#to_csv)
-            - [to_dict](#to_dict)
-            - [to_json](#to_json)
-            - [Bonus: Python and Javascript in action](#bonus-python-and-javascript-in-action)
-    - [Dataprep](#dataprep)
-        - [Cleaning](#cleaning)
-        - [Transformation](#transformation)
-        - [Extraction](#extraction)
-    - [References](#references)
+- [Week 05 - Get semi-structured data: Web scraping](#week-05---get-semi-structured-data-web-scraping)
+    - [A word on unified environment](#a-word-on-unified-environment)
+        - [virtualenv, Python3 and Python2](#virtualenv-python3-and-python2)
+        - [Jupyter notebook](#jupyter-notebook)
+    - [Knowledge about HTML](#knowledge-about-html)
+        - [Chrome DevTools](#chrome-devtools)
+        - [How to use Chrome DevTools](#how-to-use-chrome-devtools)
+        - [Frontend three: HTML, JS, and CSS](#frontend-three-html-js-and-css)
+        - [HTML](#html)
+    - [Scraper](#scraper)
+        - [Basic logic](#basic-logic)
+        - [New module: BeautifulSoup](#new-module-beautifulsoup)
+            - [Use BeautifulSoup parser](#use-beautifulsoup-parser)
+            - [Find data: find.() and find_all()](#find-data-find-and-find_all)
+        - [Get data](#get-data)
+            - [Get title](#get-title)
+            - [Get date](#get-date)
+            - [Get author](#get-author)
+                - [Method 1: Failed because of lack of specificity](#method-1-failed-because-of-lack-of-specificity)
+                - [Method 2: Best Current Practice (BCP) -- multiple layers of element lookup (find)](#method-2-best-current-practice-bcp----multiple-layers-of-element-lookup-find)
+                - [Method 3: Parse authors by spliting a larger text](#method-3-parse-authors-by-spliting-a-larger-text)
+            - [Get tags](#get-tags)
+            - [Scrape all articles of one page](#scrape-all-articles-of-one-page)
+            - [Bonus: Scrape all articles features of all pages](#bonus-scrape-all-articles-features-of-all-pages)
+    - [Scraper pattern](#scraper-pattern)
+        - [Data structure](#data-structure)
+        - [Item-first v.s. attribute first](#item-first-vs-attribute-first)
+        - [Deal with missing data in scraping](#deal-with-missing-data-in-scraping)
+        - [Bonus: Scrape by text processing and regular expression](#bonus-scrape-by-text-processing-and-regular-expression)
+    - [Bonus: Crawler](#bonus-crawler)
+        - [Workflow of a search engine like Google](#workflow-of-a-search-engine-like-google)
+        - [Crawler is more than scraper](#crawler-is-more-than-scraper)
+        - [Crawler is not necessary in most of your cases](#crawler-is-not-necessary-in-most-of-your-cases)
+        - [scrapy](#scrapy)
+        - [scrapy-cluster](#scrapy-cluster)
+    - [Exercises and Challenges](#exercises-and-challenges)
+        - [Scrape github users' contribution frequency](#scrape-github-users-contribution-frequency)
+            - [Further challenge1: more users](#further-challenge1-more-users)
+            - [Further challenge2: detailed activities](#further-challenge2-detailed-activities)
+        - [Scrape the faculty list](#scrape-the-faculty-list)
+        - [Scrape Haunted House in Hong Kong](#scrape-haunted-house-in-hong-kong)
+        - [Scrape Hacker News](#scrape-hacker-news)
+        - [Scrape Juejin](#scrape-juejin)
+            - [Bonus: Automatic trending topic detection and posting](#bonus-automatic-trending-topic-detection-and-posting)
+        - [Scrape Douban Top 250](#scrape-douban-top-250)
+        - [Scrape IMDB Top 250](#scrape-imdb-top-250)
+        - [Scrape opening journalist positions in the world](#scrape-opening-journalist-positions-in-the-world)
+    - [Related Readings](#related-readings)
 
 <!-- /TOC -->
 
-
 </div>
 
-This week, we will step from data collecting process into analyzing process. We will learn a new module called pandas, with which, we can do tasks like data cleaning, pre-processing, filtering, and even simple visualizations.
-In this week, we will only cover some basic usage of pandas, advanced data analyzing and data manipulating will be touched in the following weeks, stay tuned.
+## A word on unified environment
 
-## Objective
+### virtualenv, Python3 and Python2
 
-- Master the schema of data pre-processing: cleaning, transforming, extracting
-- Can efficiently manipulate structured table formatted datasets
-- Use `pandas` for basic calculation and plotting
+Python3 is the de facto standard in Python now (year 2018). The community spent [around 10 years](https://en.wikipedia.org/wiki/History_of_Python#Version_3) efforts before the widespread of Python3. The standard and interpreter core are out in the market for a very long time but many useful libraries were waiting to support Python3. People have maintained a [wall of shame](https://python3wos.appspot.com), which is later changed to "wall of superpowers", to track the progress of moving to Python3. It is all because Python3 is not a backward compatible upgrade to Python2. Past codes will break when we upgrade from Python2 to Python3.
 
-Modules:
+**TIP**: If you start a new project now, use Python3, *Python3*, **Python3**.
 
-- `pandas`
+However, in some places, especially older systems/ environments, you still have Python2, or dependencies on Python2. To make things uncluttered, please setup virtualenv and your Jupyter notebook in virtualenv.
 
-Datasets to work on:
+### Jupyter notebook
 
-- [openrice_sample.csv](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv)
+Windows users and Mac OS X users suffer different environment setup problems in chapter 1-3. Starting from chapter 4, all our works will be based on virtualenv and Jupyter notebook. So everyone will see the same input/ output in the future. -- A big cheers! -- you have already passed through the most difficult part of the whole course.
 
-In this chapter, we will not cover the specific scraping demo but basic usage of `pandas`. Interested students can refer to [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_urls-selenium.ipynb) for scraping process.
+You can refer to [FQA on Jupyter](module-jupyter.md) for more information.
 
--------
+## Knowledge about HTML
 
-## Preparation
+### Chrome DevTools
 
-### Python environment
+Chrome DevTools is a set of web developer tools built directly into the Google Chrome browser. For us, Chrome DevTools can help us better learn the basics of viewing and even changing a page's code, with what we can understand the structure of a webpage better, how a website store the data, present the information, and most importantly, how we locate/find those information we want and retrieve them into structural data to process further analysis.
 
-Please install libraries/dependencies in your virtual environment:
+### How to use Chrome DevTools
 
-```python
-pip install pandas, requests, csv
-# if you've already installed, just ignore
+1. Firstly, It is suggested to use 'Chrome' as our browser.
+2. In Chrome, `option+command+i` to open the Chrome DevTools, a.k.a Chrome developer console.
+3. Click the upper left corner of the console, you can select an element in the webpage to inspect it. You will see its source code by moving your cursor on to it.
+
+Eg: Check out the structure of a webpage, a project about tweets of Trump <https://initiumlab.com/blog/20170329-trump-and-ivanka/>. For example, moving your cursor to check out every `h2` headline.
+
+![Chrome DevTools](assets/wepage-usage-of-chrome-devtools.png)
+
+### Frontend three: HTML, JS, and CSS
+
+![HTML, JS and CSS](assets/html&js&css.png)
+
+* HTML is a machine language of web page. Writing something in HTML means to create a web page. It is a structure of diverse tags. Those tags are in pairs,with open tag and closing tag that wrap up content we want to present. Like `<p>` content `</p>`.
+* CSS stands for Cascading Style Sheets. CSS describes how HTML elements are to be displayed on screen, paper, or in other media.
+* JavaScript is the programming language of HTML and the Web, which is mainly used for image manipulation, form validation, and dynamic changes of content.
+
+### HTML
+
+HTML is a "declarative language", whereas Python is "imperative language" (in short, loose terms). The key difference here is that declarative language does not instruct the machine how to solve a problem/ present result in a step-by-step manner. Instead, it tells the machine what the desired output is and it is subject to the machine how to generate the output in its own ways.
+
+The whole web lives on HTML so you can find numerous free online resources for further study of HTML, e.g. [here](https://en.wikibooks.org/wiki/HyperText_Markup_Language). Our major objective here is not to teach one to write web pages (frontend development). We emphasize on understanding the HTML pages and parsing useful **structured** data out of the pages. Here are the core concepts on HTML:
+
+- It is a language based on tags. Common tags can be `p`, `h1`, `h2`, `h3`, `ul`, `ol`, `li`, `img`, `a`, ...
+- Tags come in paired and nested manners:
+  - Paired -- if you see `<p>`, there must be a `</p>` later on. The document looks like 
+
+  ```html
+  <p>
+    ... content is here ...
+  </p>
+  ```
+
+  - Nested -- imagine a list of shopping items on the page, and each item is an image link, that leads you to detailed page when clicked. The structure looks like
+
+  ```html
+  <ul>
+    <li>
+        <a href="link to the destination when click">
+            <img src="link to the thumbnail image">
+        </a>
+    </li>
+  <ul>
+  ```
+
+In this way, one can build a complex structure of pages. The inner tags are called "children" of the out tags. One can picture in mind that the HTML document is organised in **tree** like structure, where `<html></html>` is the "root" and every other tag is a "branch" who has child tag and parent tag. One may note that `img` tag does not come in pairs in above example. That is because you can not place any content inside `img`. It is a "leaf" and we don't enclose further tags inside it. Towards this end, we can give a shorthand omitting the closing tag `</img>`. It was once a good practice to make the tags come in paired format. Since the inception of HTML5, it was suggested to leave "leaf" tags the way it naturally should be -- i.e. no pairing closing tag and no content iside.
+
+![an illustration of HTML tree structure](assets/html-tree-structure.png)
+(an illustration of HTML tree structure)
+
+For the ease of discussion, we also call "HTML tag" as "HTML element" or "HTML node" interchangeably.
+
+## Scraper
+
+### Basic logic
+
+Before we try to get data, here is the logic we should know.
+Basically, when we scrape a website, firstly we need to know the website.
+
+1. Does the website provide its own API to get the data?
+2. If no, we will scrape the data from it's html.
+3. All data or information is stored in the html tags. Tag names are settled by the website creators, which always appears as pairs. So, all we need to do is to find the tags that contains our required data. For example, the article titles are usually in `h1`, and texts are usually in `p`. You can find those tags by using Chrome DevTools, which we talked about this at the beginning of the chapter.
+4. After we find the data and the tags, we write code to get them(using `control flows`), clean them(`manipulating strings`,`strip()`,`replace()`...), and store them into files(`CSV`,`JSON`).
+
+### New module: BeautifulSoup
+
+>`bs4` is the abbreviation of BeautifulSoup4. Beautiful Soup is a Python library for pulling data out of HTML and XML files.
+
+In other words, BeautifulSoup parse the html content you request into structural data so that we can easily find the element we want.
+
+Install BeautifulSoup
+
+```text
+!pip3 install --user bs4
 ```
 
-If you install in Jupyter notebook, you can prefix the command with `!` in order to execute execute those commands in a Jupyter notebook cell.
+Import the module
 
-## `pandas` introduction
-
-Pandas is an open source library providing easy-to-use data structures and data analysis tools for the Python programming language, enabling you to carry out your entire data analysis workflow in Python without having to switch to a more domain specific language like R. For easy and light weighed data analysis, pandas in our best choice.
-
-There are two basic data structures:
-
-### Pandas Series
-
-A series is a one-dimensional object that can hold any data type such as integers, floats and strings. Simply, series is like a single column of a DataFrame.
-
-Example 1:
-
-```python
-import pandas as pd
-x = pd.Series([1,0,2,8])
-x
-0    1
-1    0
-2    2
-3    8
-dtype: int64
+```text
+from bs4 import BeautifulSoup
 ```
 
-The first axis is referred to as the index. Also, we can define indexes for the data by our own way.
+#### Use BeautifulSoup parser
+
+BeautifulSoup parser can convert the results we request into structural data so that we can easily find the data we want.
+
+Eg: <https://initiumlab.com/blog/20170329-trump-and-ivanka/>
 
 ```python
-x = pd.Series([1,0,2,8], index=['a', 'b', 'c', 'd'])
-x
-a    1
-b    0
-c    2
-d    8
-dtype: int64
+import requests #week o4 request module
+from bs4 import BeautifulSoup #pay attention to its syntax
+r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
+#print(r) you will get <Response [200]> means request successful
+html_str = r.text #get the content of the request
 ```
 
-#### Convert between list/dict with series
+* Store the web as `r`, `get()` means try to get response of that web page, passing url string in to `()`.
+* `text` means to show the text of the web page.
 
-##### list<-->series
+Output: This is before the parsing step, you can see that they are like a mess.
+![HTML Text](assets/html-text.png)
+
+```python
+data = BeautifulSoup(html_str,"html.parser") #pay attention to it's syntax
+```
+
+Output: After parsing, you can see that the data is more structural, and we can further get/find the data by using `control flows` and manipulating of `[]` and `{}`.
+
+![HTML After Parsing](assets/html-after-parsing.png)
+
+#### Find data: find.() and find_all()
+
+* `find` to find what we want, and output the first item. Like if there are 10 h1, they will return the first one.
+* `find_all` return a list of all the values we want. Like if there are 10 h1, they will return a list that contain all those h1. **A list means that we can use for loop to further filter**.
 
 Example:
 
-```python
-#import pandas as pd
-l = ['火鍋','海鮮','甜品/糖水','壽司/刺身','日式放題','烤肉','薄餅']
-list_series = pd.Series(l)
-list_series
-```
-
-```text
-0       火鍋
-1       海鮮
-2    甜品/糖水
-3    壽司/刺身
-4     日式放題
-5       烤肉
-6       薄餅
-dtype: object
-```
-
-Convert series back to list
+html_doc is as following:
 
 ```python
-list_series.tolist()
-```
+html_doc = """
+<html><head><title>The Dormouse's story</title></head>
+<body>
+<p class="title"><b>The Dormouse's story</b></p>
 
-##### dict<-->series
+<p class="story">Once upon a time there were three little sisters; and their names were
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
+<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+and they lived at the bottom of a well.</p>
 
-Converting between dict and series is pretty much the same like converting between list and series.
+<p class="story">...</p>
+"""
 
-```python
-word_dict = {'火鍋':39,'海鮮':28,'甜品/糖水':24,'壽司/刺身':14,'日式放題':11,'烤肉':10,'薄餅':9}
-dict_series = pd.Series(word_dict)
-```
-
-```text
-火鍋       39
-海鮮       28
-甜品/糖水    24
-壽司/刺身    14
-日式放題     11
-烤肉       10
-薄餅        9
-dtype: int64
-```
-
-Convert series back to dict
-
-```python
-dict_series.to_dict()
-```
-
-#### Get quick stats of series
-
-##### Series.sort_values
-
-Sorting values in ascending or descending order.
-
-```python
-words_dict = {'火鍋':39,'壽司/刺身':14,'甜品/糖水':24,'日式放題':11,'薄餅':9,'烤肉':10,'海鮮':28}
-dict_series = pd.Series(words_dict)
-dict_series.sort_values(ascending=False)
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(html_doc, 'html.parser')
+my_a = soup.find('a') #find a
+my_a
 ```
 
 Output:
 
 ```text
-火鍋       39
-海鮮       28
-甜品/糖水    24
-壽司/刺身    14
-日式放題     11
-烤肉       10
-薄餅        9
-dtype: int64
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>
 ```
 
-##### Series.sum
-
-Use the above dict_series as an example:
-
 ```python
-dict_series.sum()
+my_a = soup.find_all('a') #find all a
+my_a
 ```
 
 Output:
 
 ```text
-135
+[<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>,
+ <a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>,
+ <a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>]
 ```
-
-#### Slice series
-
-Slicing series is the same as slicing list, just give the index interval can work. Also take the above example:
 
 ```python
-dict_series[:4]
+my_a = soup.find('a',attrs={'id':'link3'}) #find link3
 ```
+
+Note: **You can see that in tag a, there are some attributes, like class, id. Those attributes are used to distinguish this tag from other similar tags, especially when there are many tags in the html page. So, if you want to locate or find sth. more precisely. You can find those attributes specifically by writing it as `soup.find('tag_name',attrs={'attributes':'values'})`**
 
 Output:
 
 ```text
-火鍋       39
-壽司/刺身    14
-甜品/糖水    24
-日式放題     11
-dtype: int64
+<a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>
 ```
 
-#### Reference to elements in series
+Basically, parser and find functions are the most used of `BeautifulSoup` library for us, if you want to know more functions and syntax of using it, please check out [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
-Reference to elements in series is pretty much the same as doing it in dict. each element in series is like the key in dict.
+### Get data
+
+#### Get title
+
+Open the chrome devtools, by moving the mouse on the headline, you can find title is in:
+
+```html
+<h1 class="post__title" itemprop="name headline"> 特朗普父女推特解密</h1>
+```
+
+![HTML Headline](assets/html-headline.png)
 
 ```python
-dict_series['火鍋']
-```
-
-Output:
-
-```text
-39
-```
-
-#### Benefits of using series
-
-Series has the advantage from both `dict` and `list`. One can use a key to reference to the elements, which leads a `dict` like look and feel. However, for a regular `dict`, keys do not have certain ordering. Python only guarantees `dict.keys()`, `dict.values()` and `dict.items()` adopts the same ordering but how they are ordered is not specified. `pandas.Series` can preserve the order of elements, which gives a `list` like look and feel.
-
-### Pandas Dataframe
-
-A DataFrame is a two dimensional object that can have columns with different types,dictionaries, lists, series etc... Dataframe is the primary pandas data structure.
-
-Example 3: [2017 Hong Kong population](https://www.censtatd.gov.hk/hkstat/sub/sp150_tc.jsp?productCode=D5320189). There are several series, one can merge them to a dataframe.
-
-```python
-land_area = pd.Series({
-                'Hong Kong Island': 79.92,
-                'Kowloon': 46.94,
-                'New Territories and Islands':954.69
-})
-mid_year_population = pd.Series({
-                'Hong Kong Island': 1248.5,
-                'Kowloon': 2256.1,
-                'New Territories and Islands':3886
-})
-population_density = pd.Series({
-                'Hong Kong Island': 15620,
-                'Kowloon': 48060,
-                'New Territories and Islands': 4070,
-})
-hongkong_population_distribution = pd.DataFrame({
-                'Land Area (sq. km)': land_area,
-                'Mid- year Population (\'000)': mid_year_population,
-                'Population Density (Persons per sq. km)': population_density
-})
-hongkong_population_distribution
-```
-
-Output:
-
-![Series to Df](assets/pandas-series-to-df.png)
-
-#### Load table (DataFrame) from local csv file
-
-First of all, you need to download the csv file from [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv). For how to download the file, you can refer to [here](github.md#how-to-download-a-file-from-github-web-page).
-
-Put csv file into the same folder with Jupyter notebook. You can type `!pwd` to check out where it is and put the file in this path.
-
-```python
-import pandas
-pandas.read_csv('openrice_sample.csv')
-```
-
-The output will be as below:
-![Pandas Read Csv](assets/openrice-sample-csv.png)
-
-If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
-
-```python
-df = pandas.read_csv('openrice_sample.csv', header=None, names=['name', 'location','price','country','type','likes','review','bookmark','discount_info'])
-# `df`is short for "dataframe", which is usually used as return value in pandas.
-```
-
-#### Load table (DataFrame) from a URL
-
-We can also load CSV from GitHub directly with the help of `requests` and `io.StringIO`. `io` module is used for dealing with various types of I/O (input/output). Due to the requirement that `pandas.read_csv` function needs a `file-like object` as the argument, we need to use `io.StringIO` to write and store those string, returned from the request, temporarily. Then we can read the csv in pandas. Interested students can find more info about `io` module in [here](https://docs.python.org/3/library/io.html#text-i-o).
-
-**Note:** We should use `raw data` url from github page instead of preview url.
-
-```python
-import pandas as pd
-import io
 import requests
-url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/openrice_sample.csv"
-s=requests.get(url).content
-df=pd.read_csv(io.StringIO(s.decode('utf-8')),header=None, names=['name', 'location','price','country','type','likes','review','bookmark','discount_info'])
+import csv
+from bs4 import BeautifulSoup
+r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
+html_str = r.text
+data = BeautifulSoup(html_str,"html.parser")
+my_h1 = data.find('h1') # we use tag and attributes to extract the data we want. Type(my_h1) you can see that `my_h1` is bs4.element.Tag
+my_title = my_h1.text #turn bs4.element.Tag into pure text
+my_title.strip() # remove the character specified at the beginning and end of the string
 ```
 
-#### Select data
+Output: You can learn the logic and function of each step.
 
-First of all, every time we load a csv in Jupyter, always print the first several rows to have a overview what's look like. It's useful and necessary because sometimes the dataset can be really large, if you print the whole table, your browser might get crushed. We can use following command to check out the records here.
+![HTML Find Attributes](assets/html-find-attributes.png)
+
+**Note:**
+
+* `strip()`means delete the meaningless character at the beginning and end of the string.
+* `HTML/bs4_tag.text` means turn bs4.element.Tag into pure text.
+* You can `help(str.strip)` to see the usage of strip.
+* `type(sth)` is to print what is the format of sth. It's useful because you should know what's the data it return to further extract the value we want. Like, if it is a list, we should first use index to access its value. Similarly, if it is a dict, we should use keys to access its value.
+
+#### Get date
+
+In the same way we use to find the title, we can find that time tag as follows:
+
+```html
+<time itemprop="dateCreated" datetime="2017-03-29T....." content="2017-03-29">
+                  2017-03-29
+                </time>
+```
+
+Extract time value:
 
 ```python
-df.head() #displaying first 5 rows by default, you can pass the number in () to show more/less rows.
+my_date = data.find('time').text.strip()
 ```
 
-the output will be as blow:  
-![Pandas Csv Read](assets/pandas-csv-head.png)
+Output:
+![HTML Text time](assets/html-text-time.png)
 
-There are several ways to select data. We only focus on the most used ones. `[]`, `.loc` and `.iloc`. Collectively, they are called the indexers.
+#### Get author
 
-##### Select columns with []
+![HTML Get Authors](assets/html-find-authors.png)
 
-`[]` method is mainly used for selecting single column and multiple columns. Basically, `[]` method treat the dataframe as a dict, using a key to refer to certain value. If you want to select one column of data, just simply put the name of the column in-between the brackets. For example, you want all the restaurant locations.You can type:
+You can find that authors are in the span, so could we just use `find.span`to get the authors?
+
+##### Method 1: Failed because of lack of specificity
 
 ```python
-df['location']
-```
-
-Then the output will be as below:  
-![Pandas Select With []](assets/pandas-select-with-[].png)
-
-You can find that the data type of the results returned is changed. Using `type(df['location'])` to check out what it is. If you want to keep the it with the `dataframe`, you can write the above code as this: `df[['location']]`.
-
-To select multiple columns of the data, you can pass it a list of column names.
-
-```python
-df[['name','location','likes']]
-```
-
-The output will be like this:
-
-![Select Multiple Columns](assets/select-multiple-columns.png)
-
-##### Select rows with .loc and .iloc
-
-The `.loc` indexer will return a single row as a Series when given a single row `label`, and return DataFrame if multiple rows are selected.
-
-Example:
-
-```python
-df = pd.DataFrame([[170, 60], [180, 82], [175, 70]],
-    index=['Ri', 'Frank', 'Tyler'],
-    columns=['height', 'weight'])
-df
-```
-
-```text
-                height  weight
-Ri                170      60
-Frank             180      82
-Tyler             175      70
-```
-
-```python
-df.loc['Frank'] #select one row
-```
-
-```text
-height    180
-weight     82
-Name: Frank, dtype: int64
-```
-
-```python
-df.loc[['Frank', 'Tyler']]
-```
-
-```text
-                height  weight
-Frank              180      82
-Tyler              175      70
-```
-
-Similarly, there is another function `.iloc`, which is purely integer-location based indexing for selection by position.
-
-Using the `openrice.csv` as an example:
-
-```python
-#read csv first, make sure the header is right, you can refer to previous content in this chapter.
-df.iloc[5]
-```
-
-```text
-name             Day and Nite by Master Kama
-likes                                    462
-location                        旺角山東街50號1-2樓
-price                               $101-200
-country                                  日本菜
-style                                     海鮮
-review                              (595 食評)
-bookmark                               28151
-discount_info                  送 25里數 / 30積分
-Name: 5, dtype: object
-```
-
-```python
-df.iloc[[5,10,15]]
-```
-
-![Select Multiple Rows](assets/select-multiple-rows.png)
-
-```python
-df.iloc[10:20]
-```
-
-![Select Slice List](assets/select-slice-list.png)
-
-#### Basic statistics
-
-##### DataFrame.describe()
-
-Descriptive or summary statistics in python – pandas, can be obtained by using describe function. `describe()` function gives you a summary about the dataframe or certain series with the `mean`, `count`, `std` and `freq` values etc. Only the column with pure numbers can be described if you don't specify the column.
-
-Example:
-
-```python
-df.describe()
-	likes	        bookmark
-count	244.000000	244.000000
-mean	249.094262	12596.356557
-std	112.075938	8567.647276
-min	66.000000	1430.000000
-25%	165.000000	6741.750000
-50%	215.500000	10755.500000
-75%	309.500000	15464.500000
-max	692.000000	52023.000000
-```
-
-```python
-df['style'].describe()
-count     244
-unique     47
-top        火鍋
-freq       39
-Name: style, dtype: object
-```
-
-##### Count values of series
-
-After we can select one column or row, we can do further calculation or analysis. One common usage is to count different values in one column.
-
-Example
-
-```python
-df['country'].value_counts()
-```
-
-```text
-西式         47
-日本菜        45
-意大利菜       26
-韓國菜        20
-粵菜 (廣東)    18
-港式         18
-多國菜        17
-泰國菜        10
-台灣菜        10
-西班牙菜       10
-...
-Name: country, dtype: int64
-```
-
-```python
-df['style'].value_counts()
-```
-
-```text
-火鍋                   39
-海鮮                   28
-甜品/糖水                24
-壽司/刺身                14
-日式放題                 11
-烤肉                   10
-自助餐                   9
-薄餅                    9
-咖啡店                   8
-All Day Breakfast     7
-...
-Name: style, dtype: int64
-```
-
-`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
-
-##### Sort values in dataframe
-
-Sort values in dataframe is similar to which in series. You can sort by different columns like the example:
-
-```python
-df.sort_values(by='likes',ascending=False)
-```
-
-**Note:** In the `sort_values` function, we can only use `ascending` method, `descending` will not work here,which is designed by pandas documentation. But we can use `ascending=False` to meet `descending` needs.
-
-What's more, in the multiple columns dataset, one may need to filter or sort values by multiple columns, we can use following method to accomplish this:
-
-```python
-df.sort_values(['likes','bookmark'],ascending=[False,False]) #the first false corresponding to the first column
-```
-
-![Sort values by multiple columns](assets/sort-values-by-multiple-columns.png)
-
-##### Plot a simple chart: histogram
-
-After we got the results from our analysis, the key point is to visualize them so that we can have a better understanding of the results and get insights from them. By using `.hist()` function, We can plot a simple histogram to show the distribution and trend.
-
-Example:
-
-```python
-%matplotlib inline #this line is to solve the problem that histogram doesn't reveal.
-df['likes'].hist()
-```
-
-and you can get a distribution like below:  
-![Openrice-Csv-Likes](assets/openrice-csv-likes.png)
-
-You can change shape of the charts by changing the bins(basically, one bin means one column)
-
-```python
-df['likes'].hist(bins=20)
-```
-
-![Openrice Csv Bins](assets/openrice-csv-bins.png)
-
-#### Data cleaning and pre-processing
-
-##### Apply a function
-
-In the process of analyzing, we will encounter a lot of data cleaning issues, like the missing values, NoneType values or other type of values that have side effects, which need us to build different functions to handle them or convert them. For example, the price in the `openrice` is a range of number which cannot be compared directly. We need firstly clean the data and convert price range to numeric values.
-
-If you need to compare price which is a interval.You need to pay special attention on numbers. Otherwise,Python recognize '$101-200' < '$51-100' because Python only compare the first number in sequence of each interval.
-
-You need to convert each interval string into numbers, which means you need to choose a number to represent each interval to do comparison. Here, we use `mapping` function:
-
-```python
-mapping = {
-  '$101-200': 200,
-  '$201-400': 400,
-  '$51-100': 100,
-  '$401-800': 800,
-  '$50以下': 25
-}
-```
-
-Now, build a function to handle those data.
-
-```python
-original_string = '$60以下'
-mapping.get(original_string, 0)
-# if those string is in the mapping dict, it will return the paired value, otherwise, it will return the value you set, in this case, is the second parameter 0.
-def cleaning(e):
-    return mapping.get(e, 0)
-cleaning('$50以下')
-```
-
-**Note:** In the mapping function, its not like the traditional dict - key & value like.
-
-```python
-mapping = {'A':'B'}
-mapping.get('A')
-```
-
-Basically, it tells that we use B to replace A. For vast sum of data, we can use apply function to do cleaning. For example, if you have a series of data need to be mapping:
-
-```python
-mapping = 
-{'A':'B',
-'C':'D',
-...,
-'X':'Y'}
-def cleaning(e):
-    return mapping.get(e, 0)
-pandas.series.apply(cleaning)
-```
-
-![Pandas Apply Function](assets/pandas-apply-function.png)
-
-Then we can use `apply` function to do cleaning for the whole column. Basically, `<data>.apply(<function_name>)` means that pass those data one by one to call the function, which is equal to a `for` loop processing data.
-
-```python
-df['price'].apply(cleaning) #clean the whole column
-```
-
-![Pandas Apply Cleaning](assets/pandas-apply-cleaning.png)
-
-##### lambda: anonymous function
-
-lambda also called as anonymous function, which doesn't have a specific name, only need one line to declare function. The usual syntax is as follows:
-
-```python
-lambda arguments : expression
-```
-
-There can be multiple arguments, and expression is the results it returns.
-
-For example:
-
-```python
-c = lambda x,y : x**2 + 4*y
-c(4,2)
-#24
-```
-
-x,y are arguments, and after the`:` is the results. This is equal to:
-
-```python
-def f(x,y):
-    return x**2 + 4*y
-f(4,2)
-```
-
-The advantages of `lambda`:
-
-- Using lambda omit the process of defining functions, which make the code more light.
-- We can save time by using lambda without thinking about naming the function
-- The power of lambda is better shown when you use them as an anonymous function inside another function.
-
-For example: Build a filter lambda function inside a function
-
-```python
-# Program to filter out only the even items from a list
-
-my_list = [1, 5, 4, 6, 8, 11, 3, 12,9,27,15,14,17]
-new_list = list(filter(lambda x: (x%3 == 0) , my_list))
-new_list
-# Output: [6, 3, 12, 9, 27, 15]
-```
-
-#### Filtering
-
-In the above example, we learned how to access to the columns, raws and multiple data in the dataframe. For further analysis, we need to do some filtering work to help us better finding the insights. For example, how to select the most expensive restaurants and the least likeable restaurants? Is there any correlation between likes and types?...
-
-For filtering, in pandas, we use the `df[ conditions ]` method. This is basically means, we first use `condition` to filter the data, and put it into data frame. For example, if you want to know how many restaurants having over 500 likes, and what are those restaurants.
-
-```python
-df['likes'] > 500 #this is a condition filtering restaurants that received more than 500 likes.
-```
-
-![Pandas Filtering](assets/pandas-filter-likes.png)
-
-The results returned is a series true or false, true means meeting the condition, while false is not.
-
-To get the information of those filtered restaurants, we use `df[]` outside of the `condition`.
-
-```python
-df[df['likes'] > 500]
-```
-
-![Pandas Filtering2](assets/pandas-filter-likes2.png)
-
-There are many ways to do filtering, the following are the common methods that are wildly used.
-
-##### Filter by numeric range
-
-If there is multiple conditions in filtering, we need to use `()` to include each condition. For example, filter the `bookmark` between 50000-60000.
-
-```python
-df[(df['bookmark'] < 60000) & (df['bookmark']>50000)]
-```
-
-![Pandas Filter Inrange](assets/pandas-filter-inrange.png)
-
-##### Filter by exact value
-
-You can filter the exact value by passing the specific numbers or strings. For example, we can select all Spanish restaurants.
-
-```python
-[df['country'] == '西班牙菜'] #use two == for comparison
-```
-
-the output will be:
-![Pandas Filter Value](assets/pandas-filter-value.png)
-
-##### Filter by more than two conditions
-
-As we discuss before, we can filter multiple conditions by using () to include each condition. For example, we can select some cost-effective restaurants for a friends gathering. Like, the `seafood restaurants` with price range in `$100-200` and likes `more than 300`.
-
-```python
-df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)]
-```
-
-![Pandas Filter Multiple](assets/pandas-filter-multiple.png)
-
-For how to manipulate multiple conditions, You may need to review the bool comparison logic in the Chapter 3 - [logic operators](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/78e8f08afdd84855295287ba19e360352fca373a/notes-week-03.md#logic-operators)
-
-### Export from `pandas`
-
-After you finish processing data in `pandas`, you may want to export it
-
-- to store the dataset for later analysis.
-- to convert it into a format that can be used by Frontend developers to make interactive web visualisations.
-
-The common export formats are:
-
-- `to_csv`
-- `to_dict`
-- to JSON format
-
-#### to_csv
-
-In pandas, dataframe to csv is very simple, just one line can work for this.
-
-```python
-df.to_csv('full_filename', encoding='utf-8', index=False) #full_filename means you need to add the file format like openrice.csv .
-```
-
-You can pass other parameter if needed, for more information, you can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html) .
-
-#### to_dict
-
-There are different output formats with `to_dict` method, which depends on what parameter you pass in. By default, it will return dict like {column -> {index -> value}}. List like method [{column -> value}, … , {column -> value}] is also wildly used. For example:
-
-```python
-df.to_dict()
+my_authors = data.find('span')
 ```
 
 Output:
 
 ```text
-{'bookmark': {0: 50744,
-  1: 21136,
-  2: 27681,
-  ...
-  'country': {0: '西式',
-  1: '西式',
-  2: '韓國菜',
-  ...
-  'style': {0: '海鮮',
-  1: '酒',
-  2: '韓式炸雞',
-  ...}}
+<span>首頁</span>
 ```
 
+It is not what we want, the reasonable guess is that there are many 'span'. So check how many span there, and find the difference between those tags. `command+f` to open the search bar in console,and input 'span'.You can see, there are more than 2 'span'. Therefore we should find all the span.
+
 ```python
-df.to_dict('records')
+my_spans = data.find_all('span')
+my_spans
 ```
 
 Output:
 
 ```text
-[{'bookmark': 50744,
-  'country': '西式',
-  'discount_info': '網上訂座可享75折優惠',
-  'likes': 436.0,
-  'location': '尖沙咀金巴利道87-89號僑豐大厦地下1-2號舖',
-  'name': 'LAB EAT Restaurant & Bar',
-  'price': '$201-400',
-  'review': '(565 食評)',
-  'style': '海鮮'},
-  ...
- {'bookmark': 21136,
-  'country': '西式',
-  'discount_info': '送 25里數 / 30積分',
-  'likes': 693.0,
-  'location': '尖沙咀北京道12A號太子集團中心6樓',
-  'name': 'Shine',
-  'price': '$201-400',
-  'review': '(777 食評)',
-  'style': '酒'}]
+[<span>首頁</span>,
+ <span>文章</span>,
+ <span>專題</span>,
+ <span>活動</span>,
+ <span>職位</span>,
+ <span>團隊</span>,
+ <span>訂閱</span>,
+ <span>Li Yiming</span>,
+ <span>Li Yuqiong</span>,
+ <span class="tag">
+ ...
+ <span>香港北角英皇道 663 號泓富產業千禧廣場 1907 室</span>]
 ```
 
-You can check out [here](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_dict.html) for more usage and methods.
-
-#### to_json
-
-`to_json` method will convert the dataframe to a JSON string, and its like combination of above two methods. The difference is that json has a `orient` parameter, which determine the output format, whether `list like` or `dict like`. Besides, for a file path or object. If not specified, the result is returned as a string.
+You can see that `find_all` returns a list and there are so many spans, and the authors are also in two of those spans. So how we get them? We use `index` to access them.
 
 ```python
-df.to_json('full_file_name', orient='split',force_ascii=False) #then you can open the json file
+authors = []
+author_1 = my_span[7].text
+author_2 = my_span[8].text
+authors.append(author_1) #append them into a list
+authors.append(author_2)
 ```
 
+**Note**: Why do we just use `authors = my_span.find[7:9].text` to find all authors? Because `find[7:9]` or `find_all` return a list of elements, however, if you use `().text` function in a list of elements, it will raise error, the list has no attribute 'text', which means it cannot be converted to text directly in this way.
+
+**TIP**: "specificity" issue is quite common in writing scraper. There are usually many ways, and usually easy, to find the element(s) we are interested in. One needs to work hard to ensure, the scraper does not pollute the result by other elements that we are **not interested** in.
+
+##### Method 2: Best Current Practice (BCP) -- multiple layers of element lookup (find)
+
+![HTML Find Author 2](assets/html-find-authors2.png)
+
+* The logic here is if we can not specify one elements in the inner circle, we spread out to find the differentiate tag that only the element has.
+* In the HTML, we can find that authors upper tag is 'td'. But there are too many td. And it is difficult to be specific. So, we spread out.
+* Outer the `td` is the `tr` tag with a class named `post_authors`, you can find its the special tag only used to wrap authors, so try to locate and extract author names by tag: `tr`. Once we find the `tr`, we wan further find td, then find all `span` in `td`, thats what we want.
+
 ```python
-df.to_json(orient='records',force_ascii=False) #you can change different orient method
+my_authors = []
+post_authors = data.find('tr',attrs={'class':"post__authors"})
+#pay attention to its syntax, find('tag_name,attributes={'key':'value'})
+my_td = post_authors.find_all('td')
+my_span = my_td[1].find_all('span')
+for span in my_span:
+    my_authors.append(span.text)
+my_authors
 ```
 
 Output:
 
 ```text
-'[{"name":"LAB EAT Restaurant & Bar","location":"尖沙咀金巴利道87-89號僑豐大厦地下1-2號舖","price":"$201-400","country":"西式","style":"海鮮","likes":436.0,"review":"(565 食評)","bookmark":50744,"discount_info":"網上訂座可享75折優惠"},
+['Li Yiming', 'Li Yuqiong']
+```
+
+##### Method 3: Parse authors by spliting a larger text
+
+```python
+my_authors = data.find('tr',attrs={'class':"post__authors"}).text.strip().replace('\n',',') #after .text, we got the author names with several characters, we can further use strip and replace to omit those meaning less characters.
+```
+
+Output:
+![HTML Find Authors2 Output](assets/html-find-authors2-output.png)
+
+* Syntax: `find('tag_name,attributes={'key':'value'})`
+* attrs = attributes. It contains more detailed information about about HTML tags, which helps to locate and identify the values better.
+* `replace('a','b')` means replace a as b. You can see that even after `strip()`, there is a `\n` in lines, in such circumstances, we can use replace to get off those characters.
+
+**TIP**: Please compare this method to the previous method. The best practice is to refrain from text processing if possible, especially in the upstream (earlier stage) of data processing pipeline. Method 3 looks simpler by a glance but Method 2 is more stable, especially in the long run, when more people join force to maintain one set of codes. The major drawback of splitting text is that the delimiter (`\n` here) may also appear as part of the text content. It is unlikely the case in our current example but have caused trouble to many students in other scenarios.
+
+#### Get tags
+
+```python
+my_tags = data.find('tr',attrs={'class':'post__tags'}).text.strip().replace(' ','').replace('\n\n\n\n\n','|')
+#you can find that there are several blanks and escape characters in return my_tags. We can use replace to get off those meaningless characters.
+```
+
+#### Scrape all articles of one page
+
+If you want to scrape more articles, you will find there are some repeatable work and logic, so it's better for us to define a function to scrape more articles. Aside of this, all we need to do is find all articles url so that we can use a `for loop` to scrape more articles, right?
+
+Step 1: Based on what we do in the above example, we can define a function like the following.
+
+```python
+def scrape_one_article(article_url):
+    r = requests.get(article_url).text
+    data = BeautifulSoup(r,"html.parser")
+    my_title = data.find('h1').text.strip()
+    my_date = data.find('time').text.strip()
+    my_authors = data.find('tr',attrs={'class':"post__authors"}).text.strip().replace('\n',',')
+    my_tags = data.find('tr',attrs={'class':'post__tags'}).text.strip().replace(' ','').replace('\n\n\n\n\n','|')
+    my_url = article_url
+    return my_title,my_authors,my_date,my_tags,my_url
+```
+
+Step 2: Get all the urls of one page. You can click '文章' to get into the articles page.
+
+![Articles Page](assets/articles-page.png)
+
+![Articles Page Details](assets/articles-page-details.png)
+
+You can see that there are many articles in this page. So how can we scrape all the articles features including authors, dates, headlines? Firstly, we should get all urls of those articles. Therefore, we define another function to get those urls.
+
+```python
+def scrape_articles_urls_of_one_page(article_page_url): #scrape_articles_urls_of_one_page
+    article_urls = []
+    r = requests.get(article_page_url).text
+    data = BeautifulSoup(r,"html.parser")
+    my_urls = data.find_all('a',attrs={'class':'post__title-link js-read-more'}) #find the links
+
+    #quiz1: if you read the code of this page, most students will try to find ('a',attrs={'class':'post__title-link'}) first and failed. Do you know why?
+
+    #quiz2: you will find that url can be extracted by my_url['href'], the results will be like this: '../blog/20160908-taipei-power-usage/', but the real one should be like this 'http://initiumlab.com/blog/20160908-taipei-power-usage/',
+    #so who do we format those links we want?
+
+    for my_url in my_urls:
+        url ='{0}{1}'.format('http://initiumlab.com',my_url['href'][2:]) #format urls
+        #print(url)
+        article_urls.append(url)
+
+    return article_urls
+scrape_articles_urls_of_one_page('http://initiumlab.com/blog/')
+```
+
+Output:
+
+```text
+['http://initiumlab.com/blog/20170407-open-data-hk/',
+ 'http://initiumlab.com/blog/20170401-data-news/',
+ 'http://initiumlab.com/blog/20170329-trump-and-ivanka/',
+ 'http://initiumlab.com/blog/20170324-hk-odd/',
+ 'http://initiumlab.com/blog/20170315-news-tool/',
+ 'http://initiumlab.com/blog/20170312-soma-post/',
+ 'http://initiumlab.com/blog/20170222-new-media/',
+ 'http://initiumlab.com/blog/20170113-Sharing-With-Friends-Versus-Strangers/',
+ 'http://initiumlab.com/blog/20161229-Facebook-App-Download-Conversion/',
+ 'http://initiumlab.com/blog/20160908-taipei-power-usage/']
+```
+
+After we get all the articles urls of one page, you can call the `scrape_one_article(article_url)` function to crape all the features of this page.
+
+```python
+articles = []
+article_urls = scrape_articles_urls_of_one_page('http://initiumlab.com/blog/') #scrape_articles_urls_of_page1
+for article_url in article_urls:
+    articles.append(scrape_one_article(article_url))
+
+with open('articles.csv','w',newline='') as f:
+    writer = csv.writer(f)
+    header = ['Titles','Authors','Dates']
+    writer.writerow(header)
+    writer.writerows(articles)
+```
+
+Output:
+
+![Initiumlab Articles CSV](assets/initiumlab-articles-csv.png)
+
+#### Bonus: Scrape all articles features of all pages
+
+Since we scrape one page of articles, can I scrape all articles of all pages? Of course! we just come from 0 to 1, next step is from 1 to n. But there are some difficulties on the way which might be a little bit difficult for us, but definitely we can solve this.
+
+Potential challenges：
+
+* Scrape articles urls from different pages. Because the format of articles urls changes in different pages, plus the articles urls are not directly what we want, which need us further construct those urls.
+* Format all pages urls.
+* Get straight/understanding with 3 layers structure.
+
+```python
+import requests #week o4 request module
+from bs4 import BeautifulSoup #pay attention to its syntax
+import csv
+
+def scrape_one_article(article_url):  #scrape one articles features, which we've already done this
+    r = requests.get(article_url).text
+    data = BeautifulSoup(r,"html.parser")
+    my_title = data.find('h1').text.strip()
+    my_date = data.find('time').text.strip()
+    my_authors = data.find('tr',attrs={'class':'post__authors'}).text.strip().replace('\n',',')
+    my_tags = data.find('tr',attrs={'class':'post__tags'}).text.strip().replace(' ','').replace('\n\n\n\n\n','|')
+    my_url = article_url
+    return my_title,my_authors,my_date,my_tags,my_url
+
+def scrape_articles_urls_of_one_page(article_page_url): #scrape_articles_urls_of_one_page, its a little bit different from demo above because in the following pages(2-7), the articles' urls are different...
+    article_urls = []
+    r = requests.get(article_page_url).text
+    data = BeautifulSoup(r,"html.parser")
+    my_urls = data.find_all('a',attrs={'class':'post__title-link js-read-more'})
+    for my_url in my_urls:
+        url ='{0}blog{1}'.format('http://initiumlab.com/',my_url['href'].split('/blog')[-1]) #format urls.
+        # Fail try 1 : use slice to cut off ../../..
+        # Fail try 2 : use blog instead of /blog to split. There are blog in the headline
+        #print(url)
+        article_urls.append(url)
+    return article_urls
+
+def scrape_all_pages(url):
+    articles=[]
+    for i in range(1,8):  #format all pages urls
+        if i == 1:
+            page_url = url
+        else:
+            page_url = '{url_initial}page/{number}/'.format(url_initial = url,number=i)
+            #print(page_url)
+
+        article_urls = scrape_articles_urls_of_one_page(page_url)
+        for article_url in article_urls:
+            articles.append(scrape_one_article(article_url))
+
+    return(articles)
+
+with open('initiumlab_articles.csv','w',newline='') as f:
+    all_articles = scrape_all_pages('http://initiumlab.com/blog/')
+    writer = csv.writer(f)
+    header = ['Titles','Authors','Dates','Tags','Url']
+    writer.writerow(header)
+    writer.writerows(all_articles)
+```
+
+Output will be like the following picture, and you can also find the csv file [here](assets/initiumlab_articles.csv).
+
+![Initiumlab Articles CSV2](assets/initiumlab-articles-csv2.png)
+
+## Scraper pattern
+
+### Data structure
+
+"list-of-dict" structure is preferred. We also organise our code in this way:
+
+- First (outer) layer is `list` -- iterate the data items we are interested in.
+- Second (inner) layer is `dict` -- extract the features/ properties of a single data item.
+
+[list-of-list](notes-week-03.md#representing-a-dataset) is one alternative to store the data. The advantage is compact representation of data entrires. Instead of having `{key1: value1, key2: value2, ..}`, we have `[value, value2, ...]`. The (insignificant) disadvantage is missing "table headers", or "column names" which appeared as keys in the list-of-dict representation. One can maintain this information outside `dataset`.
+
+The choice of data structure is closely related the workflow of your program. So, put it another words, it is a reflection of the thought process. Please checkout the [imdb.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb) for a complete example of this method.
+
+Also read the following section to compare the two different workflow
+
+### Item-first v.s. attribute first
+
+Item-first approach is adopted as best practice when you get started. Suppose we scrape the OpenRice website. Each item is a restaurant and fields include `title`, `like`, `location`, etc. Suppose we already have Beautifulsoup object in `mypage`. Following is the framework for item-first approacah:
+
+```python
+dataset = []
+myitems = mypage.find_all(???)
+for myitem in myitems:
+    title = myitem.find(???).???
+    like = myitem.find(???).???
+    location = myitem.find(???).???
+    ...
+    # the variables can be None to represent missing data
+    dataset.append([title, like, location, ...])
 ...
-{"name":"Shine","location":"尖沙咀北京道12A號太子集團中心6樓","price":"$201-400","country":"西式","style":"酒","likes":693.0,"review":"(777 食評)","bookmark":21136,"discount_info":"送 25里數 \\/ 30積分"}]'
+csv.writerows(dataset) # one line is enough for the output.
 ```
 
-You can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_json.html) for more usage and methods.
+Attribute-first approach is not preferred, although sometimes the code seems simpler. We put the framework here for the completeness of discussion.
 
-After we get the json string, we also can use `json_dumps` and `json_loads` to convert between Python object and json file.
+```python
+titles = []
+likes = []
+locations = []
+...
 
-#### Bonus: Python and Javascript in action
+for e in mypage.find_all(???):
+    titles.append(e.???)
+for e in mypage.find_all(???):
+    likes.append(e.???)
+for e in mypage.find_all(???):
+    locations.append(e.???)
+...
 
-A very common workflow is to process data in Python and visualize data in Javascript. The last interactive chart in this [blog post](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/#%E8%AD%B0%E5%93%A1%E5%9B%9B%E5%B9%B4%E6%8A%95%E7%A5%A8%E5%82%BE%E5%90%91%E8%AE%8A%E5%8C%96) shows the political preference variation of HK legco members during the 2012-2016 term. The interactive chart is made by [echarts](https://ecomfe.github.io/echarts-doc/public/en/index.html), a popular Javascript library for interactive visualisation from Baidu. However, the data collection and heavy duty data analysis are done in Python. We conducted the analysis in Python and export the `pandas.DataFrame` into a `JSON` format that can be consumed by echarts. You can checkout the [JSON file here](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/echarts-option-legco-5.json).
+for i in range(len(titles)):
+    csv.writerow(titles[i], likes[i], locations[i], ...)
 
-The key takeaway is that data files like `json`, `csv` and `xml` are usually the bridge between frontend (e.g. Javascript) and backend (e.g. Python).
+# Or try this more compact method:
+# csv.writerows(zip(titles, likes, locations, ...))
+```
 
-## Dataprep
+### Deal with missing data in scraping
 
-You need to finish "Dataprep" before analysis. That is, we start with structured data. Preparing the structured and cleaned data has no common schema. A data scientist regularly spends most of the time in dataprep. We have pointers in [Dataprep](dataprep.md) for your own reading, including some non-Python dataprep tools/ platforms. Now that we learned the basics of `pandas`, we can conduct the dataprep workflow all in Python.
+One general guideline in data processing is to preserve as much original information as possible at the early stage of the pipeline. The downstream analysis programs can always decide how to deal with missing data. So instead of substituting the missing data with some "reasonable value", it is better to put `None` in that place. `None` will become empty cell in CSV and `null` in JSON to represent "empty". In later chapters, when we load the data via `pandas`, the data frame will put an `NaN` in that place, meaning "not a number". The `None`, `null`, `NaN`, or empty, are language specific way of treating missing data. No matter which way it adopts, leting the user know the data is missing is important.
 
-Here is a polluted dataset from original openrice scraped data. Please try to combine pandas knowledge above and following guidelines to prepare a structured data that is good for further analysis.
+To further understand this **missing data is data** philosophy, one can simply mind experiment the "average" operation. When the data entry is marked as missing, we just skip this data. However, if someone substituted this missing data in upstream with some reasonable value, say "0", the output will be smaller -- "0" does not contribute to the numerator but having a valid data entry here contributes 1 more to the denominator.
 
-### Cleaning
+### Bonus: Scrape by text processing and regular expression
 
-The format:
+You may have noticed one way of scraping called "text processing". Common string functions in Python are like `strip()`, `split()`, `find()`, `replace()`, `str[begin:end]`. The advantage of text processing is its simplicity and you can write intuitive codes. The disadvantage of text processing is that it is error prone. Never the less, handling text is one important technique in data analysis pipeline.
 
-- Does this file use UTF-8 encoding? Checkout some common issues [about encoding](encoding.md). If not, are you able to convert it to the conventional UTF-8 encoding?
-- Does the input data table has valid column names? If not, how do you know the meaning of each column?
-- Does every row of the table have the same number of columns ("cells" more precisely)?
-- Is every element in a single column of the data type? Say all integers or all strings. Do you see a string mixed into to a column where you are supposed to see numbers?
-- How many missing values are in this table? Do missing values affect your analysis result? Do you want to fill the missing values (e.g. `DataFrame.fillna()`) somehow; Or do you want to remove the rows/ columns which contain missing values?
+Interested readers can further study [Regular Expression](https://docs.python.org/3/library/re.html) (RegEx, regex, `re`) in Python. It is a powerful way for pattern matching and pattern substitution. The learning curve of regex is sharp so we omit the discussion in this chapter. We *might* revisit this concept and given an introduction in the text process chapter.
 
-The content:
+## Bonus: Crawler
 
-- Check the variable distribution. Is there any special value that only appears once or a few times? Will it be a typo?
-- Check the variable range. What is the common range of values in this variable? Is there any peculiar value?
-- Check the string length. Is there a super long cell? It may be because parsing error during scraping stage. Some data may mix up.
-- Check the missing values. Are there empty cells? What is the reasonable default value to fill in those empty cells?
-- Check the above on a subset of data (filtering/ grouping). Does `50` looks like a regular price? Does `50` looks like a regular price within "seafood" category?
-- Is the duplicate content? If there is no duplicate _entire rows_, is there duplicate rows in terms of a subset of the columns? Is this duplicate an error in the data? You may want to leverage some domain knowledge to further check.
+### Workflow of a search engine like Google
 
-As an exercise, you can download a CSV file with intentionally injected error [here](hhttps://github.com/hupili/python-for-data-and-media-communication/tree/master/pandas-examples/data%20cleaning%20exercise). The notebook is for your reference.
+A search engine mainly works in following way:
 
-### Transformation
+1. Crawl web pages from the Internet
+2. Store those web pages in a distributed cluster
+3. Build reverse index, which is essentially a mapping from the term (keyword) to web pages
+4. Analyse the user query and use terms to recall candidate pages
+5. Rank the candidate pages according to their relevance, using many features including term level, page level and user level ones.
 
-- Convert text value to numeric value. e.g. convert price range text into a representative number that can be sorted.
-- Merge multiple categories. e.g. merge `港式` and `潮州菜` into `中式`. Sometimes, less categories help analysis. You may need some domain knowledge and trials and errors, in order to find good method of grouping.
-- Encoding, many times called "coding" in social science research, is the process of turning natural language data into numeric data. This is also a matter of domain knowledge but you can try the method here. e.g. in order to study the relationship between price range and the income level of that district, we can encode 18 districts into three income class `high`, `medium` and `low`.
+### Crawler is more than scraper
 
-### Extraction
+A crawler is essentially a super module of scraper. When talking about "scraper", we mainly focus on retrieving and parsing a single document, be it an HTML, PDF, or image. Most of the time, we deal with HTML documents. "crawler" can follow the hyperlinks in a document, scrape documents pointed by those hyperlinks, and find new hyperlinks -- thus crawling.
 
-We load the CSV data in one shot, because the current dataset is very small. In real practice, you may meet a large dataset, so the first step is usually data extraction. One can do extraction by certain rules, e.g. get the restaurants in a certain district, get the restaurants that are open in a certain time period. Or you are interested in the whole population but do not possess the appropriate computation power to handle this dataset. At this point, you may want to do sampling. `DataFrame.sample()` may be helpful here. When dealing with really large dataset, you may want to combine extraction by rule and extraction by sampling.
+Crawler is an essential building block for a search engine. Think of how Google and Baidu can reach the whole WWW-world without knowing where it is, or how large it is. It all starts by giving a set of "seed pages", and let the crawler expand the horizon by following the links on the pages.
 
-## References
+### Crawler is not necessary in most of your cases
 
-* [Exercise numpy](https://www.shiyanlou.com/courses/1090) on ShiYanLou
-* [Exercise pandas](https://www.shiyanlou.com/courses/1091) on ShiYanLou
+As a beginner of programmatic data collection, you often find crawler is non-necessary. The major reason is that in our use case, the "crawling zone" is bounded, namely there is a systematic way to specify where to crawl and how to crawl. In such scenario, you only need to focus on "scraper" part. Once you can handle one page, you can systematically generate other pages, or rules/ operation sequences to find other pages. Here are some examples of common generators:
+
+- Find pages to scrape from a "hub page" -- e.g. find links to news articles from a list page, and then scrape each page from the list.
+- Manipulate page id parameter in URL -- e.g. a forum/ a Wordpress blog site.
+- Start from a seed page and continuously click "Next Page" -- e.g. search engine results. [notes-week-06.md](notes-week-06.md) will explain in details how to emulate browser in a programmatic way.
+
+### scrapy
+
+[scrapy](https://scrapy.org/) is the most commonly used crawler framework in Python. Given this framework, you only need to write a `parse` function, which basically does two jobs:
+
+1. Emit "data item" found in the current page
+2. Emit "page item" that `scrapy` framework needs to follow.
+
+Note the keyword `yield` when you try this framework. This is called "Generator" -- a common construct in most modern programming languages. You have already used generator for many times throughout this class. We don't mention it to avoid possible confusion. Interested readers can find a simple tutorial [here](https://www.liaoxuefeng.com/wikipage/00138681965108490cb4c13182e472f8d87830f13be6e88000).
+
+### scrapy-cluster
+
+[scrapy-cluster](https://github.com/istresearch/scrapy-cluster) is a distributed crawling framework, that uses [Docker](https://www.docker.com/) container technology to easily and horizontally scale out with your task size. It is a super module of `scrapy`. The layering is a follows:
+
+1. `parse()` function in `scrapy` -- This is essentially a "Scraper" -- single page, parsing
+2. `scrapy` -- This is essentially **one** "Crawler" -- The emitted data items and page items are within one crawling topic.
+3. `scrapy-cluster` -- This is essentially a (distributed) cluster of **multiple** Crawlers. Those crawlers can have different topics, priorities, scheduling options, etc.
+
+## Exercises and Challenges
+
+### Scrape github users' contribution frequency
+
+Scrape contributions of [Justin Myers](https://github.com/myersjustinc). We just need to know in different time, how many contributions he committed (1). You can change the url parameters to get the contributions of different time (2).
+
+![GitHub Contributions](assets/github-contributions.png)
+
+Please save the results into csv like the following.
+
+![Github Contribution Output](assets/github-contribution-output.png)
+
+#### Further challenge1: more users
+
+Given a list of users, scrape all of their contribution frequency and store accordingly with the user identifier.
+
+#### Further challenge2: detailed activities
+
+Below the contribution calendar, there is a list of detailed activities. Can you further scrape those activities? You may need to design a good table structure to store the data.
+
+### Scrape the faculty list
+
+Try to scrape as more fields as possible, e.g. name, introduction, contact, etc. Here are some potential scraping target for your choice:
+
+- http://www.jour.hkbu.edu.hk/faculty/
+- http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept.htm
+- http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept_academy_film.htm
+- http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept_communication_studies.htm
+- http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept_journalism.htm
+
+Note, scraping techniques demoed in this chapter may not be enough. You may need to do some text processing (`str` functions).
+
+Note, for the 2-5 URLs, you may suffer from encoding issue because the server side configuration has a problem. You can use the `r.encoding` to specify the right encoding. Following is a sample:
+
+```python
+r = requests.get('http://www.comm.hkbu.edu.hk/comd-www/english/people/m_facutly_dept.htm')
+r.encoding = 'utf-8' # Try what happens without this line
+mypage = BeautifulSoup(r.text)
+mypage.find('td', {'class': 'personNameArea'}).text
+```
+
+### Scrape Haunted House in Hong Kong
+
+https://www.squarefoot.com.hk/haunted/ – a list of haunted houses in Hong Kong. A group of DJ students last term [used scrapinghub.com to crawl the data](https://dnnsociety.org/2017/12/17/hk-residents-perception-on-haunted-house-keeps-conservative-2/). Now you can write Python codes with fine control. There are two more databases for you to cross-check https://news.gohome.com.hk/tc/category/haunted-house/haunted-house-article/ and  http://www.hkea.com.hk/UHousesServ
+
+### Scrape Hacker News
+
+Hacker News is the world number 1 technology news crowd gathering service: https://news.ycombinator.com/ . One can sense the trend from those articles shared by mostly guru users. You can get post title, link, points (a.k.a. "likes") from the website. More introduction of this news source and related services can be found [here](http://initiumlab.com/blog/20150928-hacker-news-intro/).
+
+### Scrape Juejin
+
+https://juejin.im/ is the Chinese counterpart of Hacker News. One can check the difference of topic popularity between HN and juejin, in past 5-10 years, and answer the question: is China switching from a copycat role to a leading role in the technology world? There might be a difficulty when comparing topics because the two sites use difference languages.
+
+#### Bonus: Automatic trending topic detection and posting
+
+You can setup a robot to scrape HackerNews continuously. Once a topic gets enough points, that may be a trending one in the technology sphere. As an automated journalist, you may want to immediately post this to a Twitter account. For example, [this bot](https://twitter.com/newsyc50) tweets a Hacker News story once it reaches 50 points. There are other thresholds in this family.
+
+### Scrape Douban Top 250
+
+https://movie.douban.com/top250  . Maybe you already know a convenient way using API, this is still good exercise. Is there any difference between the data you scraped from web and the data you retrieved via API?
+
+### Scrape IMDB Top 250
+
+https://www.imdb.com/chart/top . Can you get as many fields as you can? Can you find any difference between the two lists? What are the implications of the differences?
+
+### Scrape opening journalist positions in the world
+
+The following online job list can be scraped with the knowledge in this chapter:
+
+- https://careers.journalists.org/jobs/10753217/graphics-journalist
+- https://www.indeed.com/q-Data-Journalism-Internship-jobs.html
+- https://hk.jobsdb.com/hk/search-jobs/data-journalist/1
+- https://www.glassdoor.co.uk/Job/data-journalist-jobs-SRCH_KO0,15.htm
+- https://www.linkedin.com/jobs/search/?keywords=data%20journalism&location=%E5%85%A8%E7%90%83&locationId=OTHERS.worldwide
+
+**Note:** LinkedIn is dynamic and requires [selenium](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-06.md#selenium) in Chapter 6 to run. You need to work around the sign in page.
+
+(Feel free to add to the list when you find new ones)
+
+## Related Readings
+
+Here are some scrapers and the output dataset from our past students, you can learn some tricks and search for inspirations of your own project:
+
+- [HK Carpark price data](https://github.com/XIAO-Chao/hkbu-big-data-media/tree/master/homework2)
+- [Qidian](https://github.com/DaisyZhongDai/hkbu-big-data-media/tree/master/homework2)
+- [CTrip scenic point data](https://github.com/marla322/hkbu-big-data-media/tree/master/HW2)
+- This [blog post](https://dnnsociety.org/2018/03/10/some-scraping-targets-and-ideas/) has some past scraping ideas. Some ideas are beyond this chapter. You can ask for an evaluation before start.
 
 ------
 

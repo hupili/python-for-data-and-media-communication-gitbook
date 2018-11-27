@@ -1,454 +1,705 @@
-# Week 12: Network data
+# Week 10: Text data
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 12: Network data](#week-12-network-data)
-    - [Graph introduction](#graph-introduction)
-    - [Network analysis with NetworkX](#network-analysis-with-networkx)
-        - [Basic usage of networkx](#basic-usage-of-networkx)
-    - [Common Network Analysis Routine via Les Misérables dataset](#common-network-analysis-routine-via-les-misérables-dataset)
-        - [Graph visualization](#graph-visualization)
-            - [Basic visualization](#basic-visualization)
-            - [Adjust layout](#adjust-layout)
-            - [Group the nodes with same color](#group-the-nodes-with-same-color)
-        - [Measure Node and Edge Importance](#measure-node-and-edge-importance)
-            - [Degree](#degree)
-            - [Centrality Measures](#centrality-measures)
-        - [Basic statistics of graph](#basic-statistics-of-graph)
-            - [Degree distribution](#degree-distribution)
-            - [Clustering coefficient](#clustering-coefficient)
-        - [Structure of a graph](#structure-of-a-graph)
-            - [Cliques](#cliques)
-            - [Connected components](#connected-components)
-            - [Community detection](#community-detection)
-        - [Other Graph algorithms](#other-graph-algorithms)
-            - [Shortest path](#shortest-path)
-    - [Reference examples](#reference-examples)
+- [Week 10: Text data](#week-10-text-data)
+    - [Text processing](#text-processing)
+        - [String functions recap](#string-functions-recap)
+            - [Case 1: Get full URL from HTML A tag's href attribute](#case-1-get-full-url-from-html-a-tags-href-attribute)
+            - [Case 2: Substring matching and substitution](#case-2-substring-matching-and-substitution)
+            - [Case 3: Most frequent names in tweets](#case-3-most-frequent-names-in-tweets)
+        - [encode and decode](#encode-and-decode)
+        - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
+            - [RegEx case 1: match Twitter username from tweets](#regex-case-1-match-twitter-username-from-tweets)
+            - [RegEx case 2: match telephone numbers in a piece of text](#regex-case-2-match-telephone-numbers-in-a-piece-of-text)
+            - [Bonus: Text substitution](#bonus-text-substitution)
+            - [RegEx in shell](#regex-in-shell)
+    - [Word frequency](#word-frequency)
+        - [Use dict to count the words frequency](#use-dict-to-count-the-words-frequency)
+        - [Use pandas.series.value_counts()](#use-pandasseriesvalue_counts)
+        - [Stopwords](#stopwords)
+            - [Set stopwords](#set-stopwords)
+            - [Remove stopwords](#remove-stopwords)
+        - [Visualize word frequency](#visualize-word-frequency)
+            - [with bar chart](#with-bar-chart)
+            - [with tag cloud](#with-tag-cloud)
+    - [Word segmentation](#word-segmentation)
+        - [jieba for Chinese](#jieba-for-chinese)
+        - [How to add new terms to the wordseg dictionary](#how-to-add-new-terms-to-the-wordseg-dictionary)
+        - [How to adjust term weight in the wordseg dictionary](#how-to-adjust-term-weight-in-the-wordseg-dictionary)
+    - [Bonus: TF.IDF](#bonus-tfidf)
+    - [Bonus: Topic model](#bonus-topic-model)
+    - [Bonus: Sentiment analysis](#bonus-sentiment-analysis)
+    - [Bonus: word2vec](#bonus-word2vec)
+    - [Further readings](#further-readings)
 
 <!-- /TOC -->
 
 </div>
 
-## Graph introduction
+<!-- NOTE: new outline begin -->
 
->Graph theory is the study of graphs, which are mathematical structures used to model `pairwise relations` between objects. A graph in this context is made up of `nodes`, which are connected by `edges`, arcs, or lines. A graph may be `undirected`, meaning that there is no distinction between the two vertices associated with each edge. (from [wiki](https://en.wikipedia.org/wiki/Graph_theory))
+## Text processing
 
-There are different kind of graphs.
-![Graph types 1](assets/type-of-graphs1.png)
+### String functions recap
 
-The criteria to judge whether one graph is the same as others is not the appearance, but the relationship between different nodes.
+Outline:
 
-![Graph types 2](assets/type-of-graphs2.png)
+- split
+- replace
+- join
+- format
+- find
+- slicing (`:`)
 
-* Nodes: the fundamental unit of which graphs are formed,also called endpoint. They are connected by the edge like `A` and `B` in above picture.
-* Edge：the line that connect two nodes. Each edge has two nodes to which it is attached. Edges may be directed or undirected
+#### Case 1: Get full URL from HTML A tag's href attribute
 
-Case1: Try to count the edge between those circles.
+To Scrape Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
 
-![Undirected graph](assets/undirected-graph.png)
+* Using `split + slice + format`
 
-This undirected table is symmetric. It shows that 1 and 2 has one edge. 2 and 3 is the same, but there is no edge between 1 and 3.
+When scraping certain elements in webpage, the elements sometimes are folded or shorted, we need to split to different parts, use list slicing to get the part we want and re-format the strings we want.  For example:
 
-![Directed graph](assets/directed-graph.png)  
+![Initiumlab articles](assets/initiumlab-articles.png)
 
-While in the directed relationships, like the above picture, 3->2 has one edge, 2->3 has zero edge, this is caused by the edge directions.
-
-There are different ways to show the relationships.
-
-![Edge list](assets/edge-list.png)  
-![Edge list weighted](assets/edge-list-weighted.png)  
-
-## Network analysis with NetworkX
-
-### Basic usage of networkx
-
-NetworkX is a Python package for study of the structure, dynamics, and functions of complex networks. With which we can analyze the network structure, the relationship between different nodes and generate different kind of graphs.
-
-Import and install:
+the article url we get is `"../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"`, but what we expect is this`"http://initiumlab.com/blog/20160730-mediawiki-wiki-knowledge-management-system/"`. We can format the new string by the following method.
 
 ```python
-!pip install networkx
-import networkx as nx
+s = "../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"
+s = s.split('/blog')
+#s
+s1 = s[-1]
+#s1
+s2='{0}{1}'.format('http://initiumlab.com/blog',s1)
+#s2
 ```
 
-Basic usage: From the above explanation, we can know that, the network is formed by nodes and edges. Therefore, when using `networkx`, we need get the nodes and edges first, then we can draw the graph.
+#### Case 2: Substring matching and substitution
+
+Check out certain words in a string, replace certain words and separate the words with some notations.
+
+* Using `find + replace + join`
+
+In certain occasion, we need to check out whether there is one word in the string, and need to replace the word.
 
 ```python
-#draw an empty graph
-g=nx.Graph()
-g
-#<networkx.classes.graph.Graph at 0x10eb6a1d0>
+s = "this is string example....this is the string we will test, is it"
+s.find('string')
+#output: 8, the position of the first characters
+s.find('python')
+#output: -1, it will return -1 if there is no this word in the string
+s.replace("is", "was") #replace all
+#output: 'thwas was string example....thwas was the string we will test, was it'
+s.replace("is", "was", 3) #replace first 3
+#output: 'thwas was string example....thwas is the string we will test, is it'
+s2 = s.split(' ')
+'|'.join(s2) #you can add different things in the string
+#output: 'this|is|string|example....this|is|the|string|we|will|test,|is|it'
 ```
+
+#### Case 3: Most frequent names in tweets
+
+Apply a function onto every element of the dataframe - Check out the most frequent names in the tweets text
+
+* Using `str.lower()` + `in` operator + `pandas.apply()`
+
+Exercise with the Tweeter Troll Data, you can download [here](https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/text-analysis/regular_reader_tweets.csv).
+
+1. Check out times that certain name appears in the dataset.
 
 ```python
-#add nodes
-#help(g.add_node) to check out the parameters and syntax
-g.add_node('A')
-g.add_node('B')
-g.add_node('C')
+#import and check out the dataset
+import pandas as pd
+df = pd.read_csv('regular_reader_tweets.csv')
+#len(df)
+#df.sample(10)
+
+#check certain user name in the text
+def check_name(x):
+    return 'ten_gop' in str(x).lower()
+df['text'].apply(check_name).value_counts()
+#return results true only
+#df['text'].apply[check_names].value_counts()[True]
 ```
 
-It adds the nodes. Then`g.nodes` to check.
-
-```python
-g.nodes
-#NodeView(('A', 'B', 'C'))
-```
-
-Add edges, draw the graph.
-
-```python
-#help(g.add_edge) to check out the parameters and syntax
-g.add_edge('A','B')
-```
-
-Graph show.
-
-```python
-nx.draw(g)
-```
-
-![Network graph1](assets/network-graph1.png)
-
-```python
-#add another node between c and b
-g.add_edge('C','B')
-nx.draw(g)
-```
-
-After that, we can get one simple graph.
-
-![Network graph2](assets/network-graph2.png)
-
-## Common Network Analysis Routine via Les Misérables dataset
-
-In the following notes, we will use characters in book [*Les Misérables*](https://en.wikipedia.org/wiki/Les_Mis%C3%A9rables) to demo the analysis process. You can download the dataset [here](https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/graph/miserables.json)
-
-### Graph visualization
-
-#### Basic visualization
-
-Add all nodes and edges.
-
-```python
-import json
-data = json.loads(open('miserables.json').read())
-data
-#data.keys()
-#data['nodes'] checkout nodes
-#data['links'] checkout links
-import networkx as nx
-g = nx.Graph()
-
-#add nodes
-for n in data['nodes']:
-    g.add_node(n['id'], group=n['group'])
-
-for l in data['links']:
-    g.add_edge(l['source'], l['target'])
-nx.draw(g)
-```
-
-![Simple graph](assets/visualise-the-simple-graph.png)
-
-From this graph, we can know that there are some groups, but we don't know who are them. Next step for us is improving the graphs. To solve the following questions:
-
-- Are there some groups in the network?
-- Who are in the same group?
-
-#### Adjust layout
-
-Add labels on the graph.
-
-```python
-help(nx.draw) #to learn about the function and parameters. What may be useful for us are parameters and see also functions. Those are helpful for optimizing our graphs.
-```
+Output:
 
 ```text
-    Parameters
-    ----------
-    G : graph
-       A networkx graph
-    
-    pos : dictionary, optional
-       A dictionary with nodes as keys and positions as values.
-       If not specified a spring layout positioning will be computed.
-       See :py:mod:`networkx.drawing.layout` for functions that
-       compute node positions.
-    
-    ax : Matplotlib Axes object, optional
-       Draw the graph in specified Matplotlib axes.
-    
-    kwds : optional keywords
-       See networkx.draw_networkx() for a description of optional keywords.
-    
-    Examples
-    --------
-    >>> G = nx.dodecahedral_graph()
-    >>> nx.draw(G)
-    >>> nx.draw(G, pos=nx.spring_layout(G))  # use spring layout
-    
-    See Also
-    --------
-    draw_networkx()
-    draw_networkx_nodes()
-    draw_networkx_edges()
-    draw_networkx_labels()
-    draw_networkx_edge_labels()
+False    202991
+True        491
+Name: text, dtype: int64
 ```
 
-```python
-from matplotlib import pyplot as plt
+2. Check out the most common names in the tweet text.
 
-plt.figure(figsize=(15, 15))
-pos =nx.spring_layout(g)
-# nx.draw(g, pos=nx.spring_layout(g))
-nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5) #change nodes style
-nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3) #change edges style
-labels = dict([(n, n) for n in g.nodes]) #add labels
-_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666') #draw labels
+```python
+# filter out all the user and reset to dataframe
+s_user = df['user_key'].value_counts()
+df_users = s_user.reset_index()
+#df_users
+
+# count_retweeted_number of all the users with apply function
+def count_retweeted_number(name):
+    def check_name(x):
+        return name in str(x).lower()
+    return df['text'].apply(check_name).value_counts().get(True, 0)
+
+df_users['count'] = df_users['index'].apply(count_retweeted_number)
+df_users.sort_values(by='count', ascending=False)
 ```
 
-![Graph layout](assets/graph-layout.png)
+Output:
 
-#### Group the nodes with same color
+![Checkout most common names](assets/checkout-most-common-names.png)
 
-Group the nodes according to the group number in the json.
-Every node has a group number, we can group those nodes with the color.
+### encode and decode
+
+- UTF-8
+- GBK
+
+`UTF-8` is the most widely used implementation of Unicode on the Internet, while `GBK` is mainly used for coding Chinese character.
+
+When scraping the webpage, the results of `r.text` & `r.content` is different. Let's get straight of their relationships.
 
 ```python
-import matplotlib
-color = matplotlib.cm.Accent
-#import color map, there are many color maps, you can checkout the color maps by the following:
-# import matplotlib.cm as cm
-# dir(cm)
-
-plt.figure(figsize=(15, 15))
-pos =nx.spring_layout(g)
-nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
-nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
-labels = dict([(n, n) for n in g.nodes])
-_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
-
-for group in range(1, 20):
-    nodelist = [n for n in g.nodes if g.nodes[n]['group'] == group]
-    # If g.nodes's group = 1, add those nodes into the nodelist. They will be the same color 1 . If g.nodes's group = 2, they will be added to another nodelist ,and be colored 2.
-    #print(nodelist)
-    nx.draw_networkx_nodes(g, pos, nodelist=nodelist, node_color=color(group), alpha=0.8)
+url = 'http://www.jour.hkbu.edu.hk/faculty/'
+r = requests.get(url)
+r.text
 ```
 
-![Graph group layout](assets/graph-group-layout.png)
+This is the results of `r.text` its a string.
 
-### Measure Node and Edge Importance
-
-#### Degree
-
-In graph theory, the degree is the number of edges incident to the nodes. The degree usually represent the **importance** of nodes. Degree can be divided into In-Degree and Out-Degree. In-Degree is how many other nodes point to one node, while Out-Degree is how many other nodes one node points to. Degree is the sum of In-Degree and Out-Degree.
+![Encoding text](assets/encoding-r-text.png)
 
 ```python
-g.degree
-pd.Series(dict(g.degree())).hist(bins=20)
+r.content
 ```
 
-![Graph structure degree.png](assets/graph-structure-degree.png)  
-`dict(g.degree())` and then `Series`. Then Draw a picture.
+This is the results of `r.content` its a byte.
+![Encoding content](assets/encoding-r-content.png)
 
-From the histogram, we can see that the minority nodes have large number of edges while majority have less edges.
-This is a [Heave tail distribution](https://en.wikipedia.org/wiki/Heavy-tailed_distribution), which is famous for rich will be richer and poor will be poorer.
+The conversion between string and byte is as follows:
 
-#### Centrality Measures
+- byte to string: `r.content.decode()`. Pass the decode method like `gbk` into the bracket.
+- string to byte: `r.text.encode()`. Pass the encode method like `utf-8` into the bracket.
 
-As we mentioned above, Degree can be divided into In-Degree and Out-Degree. The importance of nodes with the same total degree but different In-Degree and Out-Degree are different. That's the reason why We need Centrality Measures.
+Why we need to convert between two types?
 
-[Centrality](https://en.wikipedia.org/wiki/Centralityis) a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
+When scraping one webpage, we need to get the `string` type so that we can use `BeautifulSoup` to parser the string and extract the value we want. Therefore, usually, we just use `r.text` is enough.
 
-You can refer to the [documentation](https://networkx.github.io/documentation/latest/reference/algorithms/centrality.html) and online resources to understand those centrality measures. Try other centrality measures that are not covered in this tutorial. See what interesting findings you can get.
+But if the website use other encoding methods than `utf-8`, like `gbk`, we need to decode the content first. In such circumstance, using `r.content.decode()` to get the string. Usually, we can get the website encoding method in their html `meta` tag.
+
+Another method to solve the encoding problem is making a statement at the beginning like the following.
 
 ```python
-#check out the methods of centrality, generally speaking, the greater centrality of a node, and the more important the node is in the network.
-nx.degree_centrality(g)
-#nx.closeness_centrality(g)
-#nx.betweenness_centrality(g)
-#nx.eigenvector_centrality(g)
+r = requests.get('http://www.jour.hkbu.edu.hk/faculty/')
+r.encoding = 'utf-8' #using this line, change the encoding method corresponding to their webpage encoding method
+data = BeautifulSoup(r.text,"html.parser")
+```
 
+Case1: You can refer [Chapter 6 - encoding for another example](notes-week-06.md#encoding). 
+
+Case2 : scraping Chinese websites like `电影天堂`.
+
+```python
+url = 'https://www.dytt8.net/'
+r = requests.get(url)
+html_str = r.text
+```
+
+![Wrong encoding](assets/wrong-encoding.png)
+
+You will find the results is messy because the website is using `gb2312` method to encode the html, which is kind of `GBK` methods.
+
+![GBK encoding](assets/gbk-encoding.png)
+
+Therefore, we need to firstly decode the content.
+
+```python
+html = r.content.decode('gbk')
+html
+```
+
+![Decodes gbk](assets/decode-gbk.png)
+
+After decoding, the Chinese characters can display appropriately. And when writing data into csv, you can use a more widely used method `utf-8` to encode it.
+
+```python
+with open('dy.csv','a',newline='',encoding='utf-8') as f:
+    writer = csv.writer(f)
+    ...
+```
+
+### String matching and Regular Expression (RegEx)
+
+The `.find()` and `in` operator on `str` has limited matching capability. They can only perform precise matching. What if we want to do fuzzy matching? Common siutations:
+
+1. Find all the user names from the Twitter message. i.e. those look like `@xxxx `, i.e. start with `@` and end with ` ` (blank).
+2. Find all the phone numbers from a paragraph of texts.
+
+RegEx can solve those problems in a very concise way. We show you the power of RegEx in following subsections. Once you decide to move further, the [official doc on re](https://docs.python.org/3/library/re.html) is a good source for you to further study RegEx.
+
+#### RegEx case 1: match Twitter username from tweets
+
+Here's the solution for question 1.
+
+```python
+>>> tweet = '@tom @jacky and @will, please come to my office at 10am.'
+>>> import re
+>>> pattern = re.compile(r'@[a-zA-Z0-9]+')  # pattern of the Twitter username
+>>> pattern.findall(tweet)
+['@tom', '@jacky', '@will']
+```
+
+The key of learning RegEx is to learn the pattern string, i.e. `@[a-zA-Z0-9]+` in the above example. Let's decode this pattern as follows:
+
+- `@` - matches a single `@` character.
+- `[]` - is a collection notation, matching the current position to any valid character in this collection.
+  - In our example, the collection is composed of
+    - All characters from `a` to `z`, and from `A` to `Z`, and from `0` to `9`.
+    - The hyphen `-` here is a notation to specify a range of characters.
+- `+` - is a repetition number, meaning matching one or more characters using the preceding pattern character
+  - The preceding pattern character is a collection, i.e. `[a-zA-Z0-9]`.
+
+To sum it up, the above RegEx pattern can match all any substring that starts with a `@` character and then followed by one or more alphanumeric characters.
+
+#### RegEx case 2: match telephone numbers in a piece of text
+
+Learning RegEx is like learning a new language. It is very easy to match the pattern you want. However, it may be difficult to exclude things that you don't want to match. Let's give a demo using question 2. The first trial would be:
+
+```python
+>>> introduction = 'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at 34119999 or Mr B 34119998'
+>>> pattern = re.compile(r'\d+')
+>>> pattern.findall(introduction)
+['16', '1', '34119999', '34119998']
+```
+
+In this pattern, `\d` means the collection of numbers, i.e. `[0-9]`. The `+` specifies a repetition count of one or multiple. You can see that all the numeric substrings are extracted. However, not all of them are telephone numbers. Given a bit domain knowledge, we know that the phone numbers in Hong Kong have 8 digits. So we can adjust our pattern to use a repetition number of `{8}`:
+
+```python
+>>> pattern = re.compile(r'\d{8}')
+>>> pattern.findall(introduction)
+['34119999', '34119998']
+```
+
+The pattern works at present, but does not work when the text includes other 8-digit non telephone number substrings:
+
+```python
+>>> introduction = 'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at 34119999 or Mr B 34119998. Students who enrol in extra courses will be charged 12345678 dollar per course.'
+>>> pattern = re.compile(r'\d{8}')
+>>> pattern.findall(introduction)
+['34119999', '34119998', '12345678']
+```
+
+The tuition fee is also match because our pattern is not precise enough. In order to fix this problem, we need to further apply our domain knowledge. We know that HKBU's telephone numbers start with `3411`. So we can revise our pattern and get following result:
+
+```python
+>>> pattern = re.compile(r'3411\d{4}')
+>>> pattern.findall(introduction)
+['34119999', '34119998']
+```
+
+The pattern is to match any 8 character string that starts with "3411" and ends with any four digits. The curious readers may ask: what if the tuition fee is "34113411 dollar"? As you guess, the above pattern fails. How to refine? The short answer is that there is no ultimate way. As long as "34113411" itself is a valid telephone number, we can hardly exclude it from our matching by just looking at itself. 
+
+This issue is quite common text processing, or further more **Natural Language Processing (NL)**. The token itself is not enough for us to understand its meaning. One similar example is: "Apple is good". We are not sure if "the Apple" that produces iPhone is good; or apple, as a fruit, is good. We human being needs context in order to understand this sentence. So is computer. This discussion is beyond our curriculum. Interested readers can search for "NLP".
+
+Back to our focus on basic pattern matching, we can conclude that it is easy to match the things one want using RegEx, but rather difficult to fully exclude other unwanted stuffs. When building your RegEx solution, you usually starts with a collection of **cases**. You keep on adding new cases to the collection and test them with your RegEx pattern. You may need to refine multiple times in order to find the one that works well on your dataset.
+
+#### Bonus: Text substitution
+
+RegEx can let you substitute some matching parts. This is very similar to the `str.replace` function but does more than that. It even allows one to interpolate variables using values from matching part.
+
+Suppose the university decides "3411" is a bad prefix and "8888" sounds good. How do we change all the numbers? Checkout following solution:
+
+```python
+>>> pattern = re.compile(r'3411(\d{4})')
+>>> re.sub(pattern, r'+852 8888-\1', introduction)
+'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at +852 8888-9999 or Mr B +852 8888-9998. Students who enrol in extra courseswill be charged 12345678 dollar per course.'
+```
+
+Besides changing the telephone prefix, we also added the country code and a hyphen between university prefix and the phone number. Note how this happens:
+
+- `()` is called a "group" in RegEx. The brackets do not match any character. However, patterns inside a pair of brackets are of the same group. The match substring will be put in the same group for further reference.
+- `\1` means the first group. There could be multiple groups matched by one pattern. You can use `\n` notation to refer to the `n`-th group. `\0` means the entire string.
+
+#### RegEx in shell
+
+Following commands can be used to perform RegEx operation. Those commands sometimes can make your work more efficient.
+
+- `grep`
+- `egrep`
+- `fgrep`
+
+## Word frequency
+
+Word frequency refers to the number of times a list of given word appears in the file, which gives you a quick overview of the top words in one text data and help find the news point for further analysis.
+
+### Use dict to count the words frequency
+
+```python
+words_list = meaningful_words #the list of words you have
+dict_words_frequency={}
+for n in words_list:
+    dict_words_frequency[n]=words_list.count(n)
+#dict_words_frequency
+```
+
+### Use pandas.series.value_counts()
+
+Use the [assignment 1](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assignments.md#assignment-0----bridging-assignment-for-language-efficiency) as an example:
+
+```python
+import os
 import pandas as pd
-df = pd.DataFrame()
-df['degree'] = pd.Series(nx.degree_centrality(g))
-df['closeness'] = pd.Series(nx.closeness_centrality(g))
-df['betweenness'] = pd.Series(nx.betweenness_centrality(g))
-df['eigenvector'] = pd.Series(nx.eigenvector_centrality(g))
+  
+def read_txt(path): #read files and get content
+    all_text = []
+    for file in os.listdir(path):
+        f=open(file,"r+",encoding="utf8",errors="ignore")
+        contents= f.read()
+        all_text.append(contents)
+    all_words = "".join(all_text)
+    return all_words
+
+words = read_txt("text/") #pass your own file path that include list of .txt
+words = words.split()
+word_count = pd.Series(words).value_counts().sort_values(ascending=False)[0:15]
+word_count
 ```
+
+Output:
+
+```text
+the        327
+to         187
+of         149
+and        132
+a          124
+in          99
+that        68
+is          58
+as          53
+on          52
+China       50
+with        49
+US          47
+trade       47
+Chinese     43
+```
+
+You can find that the above word frequency list is not so good because there are many meaningless words,like `the`, `to`... Those are generally we called `stopwords`.
+
+### Stopwords
+
+>Stop words are words which are filtered out before or after processing of natural language data (text). *From [wiki](https://en.wikipedia.org/wiki/Stop_words)*
+
+The stopwords may change when handling different text analysis cases. We can get stopwords from the open source channel or customize your own stopwords.
+
+#### Set stopwords
+
+1. You can download the `stopwords.txt` from the internet and load when you used, [example](https://github.com/stanfordnlp/CoreNLP/blob/master/data/edu/stanford/nlp/patterns/surface/stopwords.txt).
 
 ```python
-#draw degree centrality
-df_top_nodes = df.sort_values('degree', ascending=False)[:5]
-
-plt.figure(figsize=(30, 15))
-# we don't run the spring layout again; to keep the positions in this section
-#pos =nx.spring_layout(g)
-nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
-nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
-labels = dict([(n, n) for n in g.nodes])
-_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
-nx.draw_networkx_nodes(g, pos, nodelist=list(df_top_nodes.index), node_color='#ff7700', alpha=0.5)
-
-df_top_nodes
-#change degree to other three columns to see the different top nodes.
+filepath = './stopwords.txt'
+stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
 ```
 
-![graph degree centrality](assets/graph-degree-centrality.png)
-
-From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
-
-<!-- TODO: further reading?? outline.md, notes. Chainsaw's work on Mingpao -->
-
-### Basic statistics of graph
-
-#### Degree distribution
-
-In the above session, we mentioned that the degree of a node is the number of edges it has to other nodes. The degree distribution is the probability distribution of these degrees over the whole network.
-
-<!-- TODO: what is degree? -->
+2. import stopwords from `nltk` library
 
 ```python
-g.degree
-pd.Series(dict(g.degree())).hist(bins=20)
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+stopwords = stopwords.words('english')
 ```
 
-![Graph structure degree.png](assets/graph-structure-degree.png)  
-`dict(g.degree())` and then `Series`. Then Draw a picture.
+**Note:** According to our helpers feedback, Windows users can successfully set stopwords with this method, for Mac users, you need to visit their [website](https://www.nltk.org/nltk_data/), search `stopwords` and download.
 
-* Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
+![NLTK stopwords](assets/nltk-stopwords.png)
 
-<!-- TODO: power law/ prefential attachment/ long tail -->
+Then put the language txt file in the current folder where your Jupyter notebook are.
 
-#### Clustering coefficient
+3. import stopwords from `pypi`
 
->A clustering coefficient is a measure of the degree to which nodes in a graph tend to cluster together. *From [wiki](https://en.wikipedia.org/wiki/Clustering_coefficient)*
+For installation and documentation, you can refer [here](https://pypi.org/project/stop-words/
+), they provide a diverse languages of stopwords.
 
-There are different kind of clustering coefficient, including global clustering coefficient, local clustering coefficient, average clustering coefficient. The simplest is `global clustering coefficient`, which is the number of closed triplets (or 3 x triangles) over the total number of triplets (both open and closed). The larger the clustering coefficient is, the closer one node is wth other nodes. For usage in `networkx`, you can refer [here](https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.algorithms.cluster.clustering.html#networkx.algorithms.cluster.clustering).
+4. Customize your own stopwords
+
+You can add new stopwords by the case need.
 
 ```python
-nx.algorithms.clustering(g,['XXX','XXX','XXX']) #pass a set of nodes in the list
-nx.average_clustering(g)
+stopwords = ['a','b'] #the original stopwords list
+newstopwords = ['stopword1','stopword2']
+stopwords.extend(newstopwords)
 ```
+
+#### Remove stopwords
+
+Move stopwords is easy, you just loop them to determine
+whether the words are in the stopwords, if true, then remove them. Expect the stopwords, we need also handle some punctuation and letter case. Following the above `assignment 1` example:
 
 ```python
-gorithms.clustering(g, ['Myriel', 'Champtercier', 'Count', 'Cravatte', 'Napoleon', 'Geborand', 'CountessdeLo', 'OldMan'])
-# {'Champtercier': 0,
-#  'Count': 0,
-#  'CountessdeLo': 0,
-#  'Cravatte': 0,
-#  'Geborand': 0,
-#  'Myriel': 0.06666666666666667,
-#  'Napoleon': 0,
-#  'OldMan': 0}
-nx.average_clustering(g)
-0.5731367499320134
-nx.average_clustering(nx.complete_graph(5))
-1.0
+import os
+import pandas as pd
+
+def read_txt(path): #read files and get content
+    all_text = []
+    for file in os.listdir(path):
+        f=open(file,"r")
+        contents= f.read()
+        all_text.append(contents)
+    all_words = "".join(all_text)
+    #remove punctuation
+    for ch in '\s+\.\!\/_,$%^*(+\"\')]+|[+——()?:【】“”‘’':
+        words = all_words.replace(ch," ")
+    return words
+
+def stopwordslist(filepath):   #set stopwords
+    stopwords = [line.strip() for line in open(filepath, 'r').readlines()]  
+    return stopwords
+
+def remove_stopwords(words): #remove stopwords
+    processed_word_list = []
+    for word in words:
+        word = word.lower() # in case they are not all lower cased
+        if word not in stopwords:
+            processed_word_list.append(word)
+    return processed_word_list
+
+words = read_txt("text/") #pass your own file path that include list of .txt
+words = words.split()
+stopwords = stopwordslist('./stopwords_eng.txt')
+stopwords = set(stopwords)
+processed_word_list = remove_stopwords(words)
+word_count = pd.Series(processed_word_list).value_counts().sort_values(ascending=False)[0:15]
 ```
 
-### Structure of a graph
+After remove stopwords, you can see that the word frequency list is more meaningful, if there are still some stopwords, you can add them into your `stopword.txt` and run the codes again.
 
-#### Cliques
+```text
+china             69
+trade             52
+chinese           43
+trump             32
+war               25
+beijing           20
+u.s.              17
+tariffs           16
+america           15
+american          14
+president         14
+global            14
+economic          11
+administration    11
+foreign           10
+```
 
-Simply speaking, a clique is a subset of nodes in an undirected graph. Which is a segmented group in a bigger community. Highlight those cliques may help us know the core figures and groups in one network.
+**Note:** If arising error when import the data like the following:
+
+`'utf-8' codec can't decode byte 0x80 in position 3131`
+
+You can refer [here](frequently-asked-questions#cannot-import-list-of-files) for solutions.
+
+### Visualize word frequency
+
+#### with bar chart
 
 ```python
-cliques = list(nx.find_cliques(g))
-#len(cliques)
-cliques[0:2]
+#you can use other visualization library
+import seaborn as sns
+import matplotlib.pyplot as plt 
+def word_count(processed_word_list):
+    word_count = pd.Series(processed_word_list).value_counts().sort_values(ascending=False)[0:15]  
+    fig = plt.figure(figsize=(16,8))  
+    x = word_count.index.tolist()  
+    y = word_count.values.tolist()  
+    sns.barplot(x, y, palette="BuPu_r")  
+    plt.title('word frequency top 15')  
+    plt.ylabel('count')  
+    sns.despine(bottom=True)  
+    #plt.savefig('./word_count_bar.png',dpi=400)  
+    plt.show()
 
-plt.figure(figsize=(15, 15))
-pos =nx.spring_layout(g)
-nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
-nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
-labels = dict([(n, n) for n in g.nodes])
-_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
-nx.draw_networkx_nodes(g, pos, nodelist=cliques[12], node_color='#ff7700', alpha=0.5)
-#draw any clique by changing nodelist=cliques[12]
+word_count(processed_word_list)
 ```
 
-![Graph clique](assets/graph-clique.png)
+![Words frequency bar](assets/words-frequency-top15-bar.png)
 
-#### Connected components
+#### with tag cloud
 
-To find those who are not connected by any others.
+Tag cloud is widely used, for aesthetics purpose. You can have a more vivid picture about the top frequency words.
 
 ```python
-components =list(nx.connected_components(g))
-len(components)
+from PIL import Image
+import wordcloud
+import numpy as np
+
+def tag_cloud(text):
+    mask = np.array(Image.open('newspaper.png')) #set mask, you can change to the picture you like, but it must have a high color contrast
+    wc = wordcloud.WordCloud(mode='RGBA',background_color='white',max_words=2000,stopwords=stopwords,max_font_size=300,random_state=42,mask=mask)
+    wc.generate_from_text(' '.join(text))
+    plt.figure(figsize=(12,12))
+    plt.imshow(wc, interpolation='bilinear')
+    plt.axis("off")
+    plt.title('word frequency top 15 tag cloud', loc='Center', fontsize=20)
+    plt.show()
+    return plt.show()
+
+tag_cloud(words)
 ```
 
-#### Community detection
+![Words frequency tag cloud](assets/words-frequency-tag-cloud.png)
 
->In the network analysis, community structure refers to the occurrence of groups of nodes in a network that are more densely connected internally than with the rest of the network *From [wiki](https://en.wikipedia.org/wiki/Community_structure)*.
+## Word segmentation
 
-Community detection can help us categorize every single node into different groups based on different characteristics so that we can study them as whole. Other importance of community detection is to help us find the `missing links` and `identify the false links` in one network.
+### jieba for Chinese
+
+For english words, its easy to segment words, just by the blank space between the words. But for Chinese words, its more complicated, because there is no blank space in Chinese sentence and the combination of the characters in one sentences may diverse too. In order to handle this situation, `jieba` is the most useful libraries we can get out here, which is a Chinese specialized word segmentation module.
+
+Install and import:
 
 ```python
-from networkx.algorithms import community
-communities = list(community.label_propagation_communities(g))
-#communities[0]
-
-plt.figure(figsize=(15, 15))
-pos =nx.spring_layout(g)
-#nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
-nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
-
-for i in range(0, len(communities)):
-    nodelist = communities[i]
-    print(nodelist)
-    nx.draw_networkx_nodes(g, pos, nodelist=nodelist, node_color=color(i), alpha=0.8)
-    labels = dict([(n, '%s:%s' % (n, g.nodes[n]['group'])) for n in nodelist])
-    nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
+!pip3 install jieba
+import jieba
 ```
 
-![Graph community](assets/graph-community.png)  
-
-### Other Graph algorithms
-
-#### Shortest path
-
-Draw the shortest path between two nodes.
+Basic usage:
 
 ```python
-sp = nx.shortest_path(g, 'Gribier', 'Child2')
-#you can change to any other two nodes
-sp
-
-plt.figure(figsize=(15, 15))
-#pos =nx.spring_layout(g)
-nx.draw_networkx_nodes(g, pos, node_color='#ccccff', alpha=0.5)
-nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.3)
-labels = dict([(n, n) for n in g.nodes])
-_ = nx.draw_networkx_labels(g, pos, labels=labels, font_color='#666666')
-
-nx.draw_networkx_edges(g, 
-                       pos,
-                       edgelist=list(zip(sp[:-1], sp[1:])),
-                       width=5,
-                       edge_color='r'
-                      )
-#help(nx.draw_networkx_edges)
-#edgelist:collection of edge tuples
-#list(zip(sp[:-1], sp[1:])) check out the edgelist
-# [('Gribier', 'Fauchelevent'),
-#  ('Fauchelevent', 'Javert'),
-#  ('Javert', 'Gavroche'),
-#  ('Gavroche', 'Child2')]
+s = '我在浸会大学学python'
+jieba.cut(s)
+#output: <generator object Tokenizer.cut at 0x10f3a3048>
+list(jieba.cut(s)) #turn it into list
+#['我', '在', '浸会', '大学', '学', 'python']
 ```
 
-![Graph shortest path](assets/graph-shortest-path.png)
+Case1: Cut an article, you can download the article [here](assets/trade-wars-zh.txt).
 
-## Reference examples
+```python
+import jieba
+text = open('trade-wars-zh.txt',"r").read()
+#cut words
+words = jieba.cut(text)
+#set stopwords
+filepath = 'stopwords.txt'
+stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
+#remove stopwords
+processed_word_list = []
+for word in words:
+    if word not in stopwords and len(word)>1: #remove single word
+        processed_word_list.append(word)
 
-* [Who control the discourse power in 红楼梦](https://dnnsociety.org/2018/04/15/who-control-the-discourse-power-in-%E7%BA%A2%E6%A5%BC%E6%A2%A6%EF%BC%9F/) by Group 8 2018S
+#processed_word_list
+```
 
-* [Li's family business map and spring layout analysis](https://dnnsociety.org/2018/04/15/lis-family-business-map-and-spring-layout-analysis/) by Group 7 2018S
+### How to add new terms to the wordseg dictionary
+
+Example 1: Customize your own words dict
+
+For basic needs, using `suggest_freq(segment, tune=True)` and `add_word(word)` are recommended.
+
+```python
+print('/'.join(jieba.cut('特朗普已经准备好对所有进口美国的中国商品征收关税')
+#中国/已/表示/计划/对/美国/的/任何/贸易壁垒/进行/报复/。
+jieba.suggest_freq(('贸易', '壁垒'), True)
+print('/'.join(jieba.cut('中国已表示计划对美国的任何贸易壁垒进行报复。')))
+#中国/已/表示/计划/对/美国/的/任何/贸易/壁垒/进行/报复/。
+jieba.add_word('贸易壁垒')
+print('/'.join(jieba.cut('中国已表示计划对美国的任何贸易壁垒进行报复。')))
+#中国/已/表示/计划/对/美国/的/任何/贸易壁垒/进行/报复/。
+```
+
+Example 2: Ambiguous word segmentation
+
+1. 如果 & 果汁
+
+```python
+s1 = '狮子山的山泉水如果汁一般好喝'
+'/'.join(jieba.cut(s1))
+#'狮子山/的/山泉水/如果/汁/一般/好喝'
+jieba.suggest_freq(('如', '果'), True)
+'/'.join(jieba.cut(s1))
+#'狮子山/的/山泉水/如/果汁/一般/好喝'
+```
+
+2. 乒乓球拍 卖完了& 乒乓球 拍卖完了
+
+```python
+s2 = '乒乓球拍卖完了'
+'/'.join(jieba.cut(s2))
+#'乒乓球/拍卖/完/了'
+jieba.add_word('乒乓球拍')
+jieba.suggest_freq(('拍', '卖'), True)
+#'乒乓球拍/卖完/了'
+```
+
+For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/article/details/80128076) to customize your own words dict.
+
+### How to adjust term weight in the wordseg dictionary
+
+## Bonus: TF.IDF
+
+- `TF` - Term Frequency
+- `IDF` - Inverse Document Frequency
+- `TFIDF` = `TF * IDF`
+
+TFIDF is a measure of (a term's importance to a document) in (a collection of documents), called "corpus". We put the previous sentence in brackets so that it is easier to read. The rationale is very straight forward:
+
+- TF -- importance to a specific document -- the more one term appears in one document, the more important it is to the document.
+- IDF -- importance in a collection of documents -- if a term appears too frequently in all documents, e.g. stop words, it does not carry much importance to the current document.
+
+[Read more](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+
+## Bonus: Topic model
+
+Topic model is a typical example of machine learning: discover meaningful lower dimension space out of higher dimension observations. The higher dimension space is called data space. The lower dimension space is called latent space. The basic assumption is that, despite the complexity of text/ human language, the intrinsic structure is simple. The texts we observe are just statistical variables generated from the intrinsic structure.
+
+Consider two courses about data journalism:
+
+1. The data analysis course, e.g. [current course](https://github.com/hupili/python-for-data-and-media-communication-gitbook/)
+2. The data visualization course, e.g. [http://datavis.studio](http://datavis.studio)
+
+We know the "topic" of the two courses are different. How can we tell? If we check out the word frequency of the two course, we may find that:
+
+1. Frequent terms: Data, scraper, web, Python, jupyter, pandas, numpy, matplotlib, ...
+2. Frequent terms: Data, Javascript, CSS, HTML, web, responsive, bootstrap, echart, ...
+
+By looking at the two different lists, we can tell they are of different topics. Computers can also recognise topics in a similar way. In a usual topic modeling procedure, we start with a matrix composed of "document vectors". The vector has a coordinate system using all the potential terms, so every element in the vector represents an intensity of this term in the document. A "topic vector" has the same shape of a "document vector" -- a collection of terms with different weights. Some terms may be stronger indicator of certain topic, like "Python" and "Javascript" in above example. Some other terms may be a weaker indicator, like "web" in above example, where one course emphasize more on "web scraping" and another course emphasize more on "responsive web". In the technical language, "topic vector" is a (mostly "linear") combination of "document vectors". The number of topics is much less than the number of documents, which can be told from the original rationale:
+
+- We have many documents but only a few topics
+- The intrinsic structure (number of docs) is much simpler than the observations (documents)
+
+Here is a [tutorial](https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef03213cd21) of topic mining using `nltk` and `gensim`. The algorithm used is called LDA.
+
+## Bonus: Sentiment analysis
+
+The task of sentiment analysis is to get polarity and subjectivity from a piece of text. Polarity can be positively mooded or negatively mooded. Subjectivity can be subjective or objective. It finds good applications in media monitoring. When a crisis emerges, you may want to know how the public reacts to the incident. With massive data from the social network and real-time sentiment analysis, one can devise a better PR strategy.
+
+The procedure of sentiment analysis usually starts with a collection of positive terms and a collection of negative terms. If one piece of text contains more positive terms, it is likely to be an overall positive statement; Vice versa. How to get the collection of positive or negative terms? We usually start with human labels on some training texts. After human judges the sentiment of the training texts, we throw them to the computer. The computer builds the term collection using the collection that if one term appears frequently in a positive statements, that term is likely to be positive; Vice versa.
+
+The above is just an intuition of sentiment analysis. The real work involves more sophisticated statistical models. You may not be able to fully understand them but following are some pointers for you to get working codes:
+
+- Construct classifier using `sklearn`. Checkout the [tutorial](https://towardsdatascience.com/sentiment-analysis-of-tweets-using-multinomial-naive-bayes-1009ed24276b).
+- Online API like [text-processing](http://text-processing.com/docs/sentiment.html).
+- `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
+
+## Bonus: word2vec
+
+word2vec is a set of algorithms to perform "word embedding". It is similar to "topic modeling" in terms of the structure:
+
+- Topic modeling - A document is represented by a (linear) combination of topics; A topic is represented by a (linear) combination of terms.
+- Word embedding - A document is represented by a variable length sequence of words; A word is represented by a lower-dimension vectors; the element of word vectors may not have physical interpretation.
+
+The upside of word embedding is to enable vector arithmetics like `king−man+woman=queen`. Also, the word vector can be computed offline (pre-computation). That makes it easier to handle new documents.
+
+Checkout [Wikipedia](https://en.wikipedia.org/wiki/Word2vec) for background information and [this blog](https://www.datacamp.com/community/tutorials/lda2vec-topic-model) for a quick tutorial on LDA (topic model), word2vec and LDA2vec.
+
+## Further readings
+
+1. [Unicode, ASCII,UTF-8 and GBK](https://jdhao.github.io/2018/01/28/unicodede-utf8-gbk/)
 
 ------
 

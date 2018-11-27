@@ -1,555 +1,864 @@
-# Week 09 - Present findings: data visualization and reproducible report
+# Week 07 - Work with table: data cleaning and pre-processing
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 09 - Present findings: data visualization and reproducible report](#week-09---present-findings-data-visualization-and-reproducible-report)
+- [Week 07 - Work with table: data cleaning and pre-processing](#week-07---work-with-table-data-cleaning-and-pre-processing)
     - [Objective](#objective)
-    - [Data Visualization Libraries](#data-visualization-libraries)
-        - [matplotlib](#matplotlib)
-            - [Why matplotlib?](#why-matplotlib)
-            - [Basic usage](#basic-usage)
-            - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
-            - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
-        - [seaborn](#seaborn)
-            - [Basic usage](#basic-usage-1)
-            - [Plot bar-charts and other charts](#plot-bar-charts-and-other-charts)
-        - [plotly](#plotly)
-        - [pyecharts](#pyecharts)
-        - [pandas](#pandas)
-        - [bokeh](#bokeh)
-        - [ggplot](#ggplot)
-    - [Data visualization Principles](#data-visualization-principles)
-        - [Principle](#principle)
-        - [Charts](#charts)
-        - [Dashboard](#dashboard)
-    - [GitHub repo](#github-repo)
-        - [README.md](#readmemd)
-        - [Presenting dataset](#presenting-dataset)
-        - [Jupyter notebook](#jupyter-notebook)
-            - [Write notes in Jupyter notebook](#write-notes-in-jupyter-notebook)
-            - [Display the picture](#display-the-picture)
-            - [Add HTML link](#add-html-link)
-    - [Publish work on GitHub Pages](#publish-work-on-github-pages)
-        - [Basic HTML](#basic-html)
-        - [Bonus: CSS](#bonus-css)
-        - [Single column layout](#single-column-layout)
-        - [Integrated exercise: Publish a full work in a stand alone page](#integrated-exercise-publish-a-full-work-in-a-stand-alone-page)
-            - [Save plotly chart](#save-plotly-chart)
-        - [Bonus: Continuously update GitHub Pages](#bonus-continuously-update-github-pages)
-    - [Bonus: Craft a data service](#bonus-craft-a-data-service)
-    - [Code of conduct: Reproducible reporting and full reporting](#code-of-conduct-reproducible-reporting-and-full-reporting)
+    - [Preparation](#preparation)
+        - [Python environment](#python-environment)
+    - [`pandas` introduction](#pandas-introduction)
+        - [Pandas Series](#pandas-series)
+            - [Convert between list/dict with series](#convert-between-listdict-with-series)
+                - [list<-->series](#list--series)
+                - [dict<-->series](#dict--series)
+            - [Get quick stats of series](#get-quick-stats-of-series)
+                - [Series.sort_values](#seriessort_values)
+                - [Series.sum](#seriessum)
+            - [Slice series](#slice-series)
+            - [Reference to elements in series](#reference-to-elements-in-series)
+            - [Benefits of using series](#benefits-of-using-series)
+        - [Pandas Dataframe](#pandas-dataframe)
+            - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
+            - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
+            - [Select data](#select-data)
+                - [Select columns with []](#select-columns-with-)
+                - [Select rows with .loc and .iloc](#select-rows-with-loc-and-iloc)
+            - [Basic statistics](#basic-statistics)
+                - [DataFrame.describe()](#dataframedescribe)
+                - [Count values of series](#count-values-of-series)
+                - [Sort values in dataframe](#sort-values-in-dataframe)
+                - [Plot a simple chart: histogram](#plot-a-simple-chart-histogram)
+            - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
+                - [Apply a function](#apply-a-function)
+                - [lambda: anonymous function](#lambda-anonymous-function)
+            - [Filtering](#filtering)
+                - [Filter by numeric range](#filter-by-numeric-range)
+                - [Filter by exact value](#filter-by-exact-value)
+                - [Filter by more than two conditions](#filter-by-more-than-two-conditions)
+        - [Export from `pandas`](#export-from-pandas)
+            - [to_csv](#to_csv)
+            - [to_dict](#to_dict)
+            - [to_json](#to_json)
+            - [Bonus: Python and Javascript in action](#bonus-python-and-javascript-in-action)
+    - [Dataprep](#dataprep)
+        - [Cleaning](#cleaning)
+        - [Transformation](#transformation)
+        - [Extraction](#extraction)
     - [References](#references)
 
 <!-- /TOC -->
 
+
 </div>
+
+This week, we will step from data collecting process into analyzing process. We will learn a new module called pandas, with which, we can do tasks like data cleaning, pre-processing, filtering, and even simple visualizations.
+In this week, we will only cover some basic usage of pandas, advanced data analyzing and data manipulating will be touched in the following weeks, stay tuned.
 
 ## Objective
 
-- `matplotlib`
-- `seaborn`
-- `plotly`
-- `pyecharts`
+- Master the schema of data pre-processing: cleaning, transforming, extracting
+- Can efficiently manipulate structured table formatted datasets
+- Use `pandas` for basic calculation and plotting
+
+Modules:
+
 - `pandas`
 
-## Data Visualization Libraries
+Datasets to work on:
 
-Demo data: [open rice data](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_viz.csv)
+- [openrice_sample.csv](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv)
 
-- 1D: plot price range bars
-- 2D: plot price range bars w.r.t areas
-  - Use faceting, i.e. multiple sub plots in one plot
-  - Use grouping, i.e. grouped bar chart (can select a subset of areas)
+In this chapter, we will not cover the specific scraping demo but basic usage of `pandas`. Interested students can refer to [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_urls-selenium.ipynb) for scraping process.
 
-### matplotlib
+-------
 
-#### Why matplotlib?
+## Preparation
 
-Matplotlib is a data visualization library which has ability to support you plot various kind of graphs and charts like scatter plot, bar chart, histogram, even 3D graphics and animations and so on. Its powerful and its simple that we usually use it as the basic driver for the basic data visualization. You can refer [here](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html) for it's documentation and functions.
+### Python environment
 
-#### Basic usage
-
-Install and import:
+Please install libraries/dependencies in your virtual environment:
 
 ```python
-!pip install matplotlib
-from matplotlib import pyplot as plt
+pip install pandas, requests, csv
+# if you've already installed, just ignore
 ```
 
-Basic usage example:
+If you install in Jupyter notebook, you can prefix the command with `!` in order to execute execute those commands in a Jupyter notebook cell.
+
+## `pandas` introduction
+
+Pandas is an open source library providing easy-to-use data structures and data analysis tools for the Python programming language, enabling you to carry out your entire data analysis workflow in Python without having to switch to a more domain specific language like R. For easy and light weighed data analysis, pandas in our best choice.
+
+There are two basic data structures:
+
+### Pandas Series
+
+A series is a one-dimensional object that can hold any data type such as integers, floats and strings. Simply, series is like a single column of a DataFrame.
+
+Example 1:
 
 ```python
-from matplotlib import pyplot as plt
 import pandas as pd
-data = [1, 5, 2, 3, 2]
-df = pd.DataFrame(data, columns=['value'])
-#df
-plt.bar(df.index, df.value) #pass x label value and y label value
-plt.show()
+x = pd.Series([1,0,2,8])
+x
+0    1
+1    0
+2    2
+3    8
+dtype: int64
 ```
 
-![Plt bar](assets/plt-bar.png)
-
-#### How to order the keys of bar chart
-
-**Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/module-matplotlib.md#how-to-display-chinese-characters-when-using-matplotlib) with the tutorial.
+The first axis is referred to as the index. Also, we can define indexes for the data by our own way.
 
 ```python
-# -*- coding: utf-8 -*-
+x = pd.Series([1,0,2,8], index=['a', 'b', 'c', 'd'])
+x
+a    1
+b    0
+c    2
+d    8
+dtype: int64
+```
+
+#### Convert between list/dict with series
+
+##### list<-->series
+
+Example:
+
+```python
+#import pandas as pd
+l = ['火鍋','海鮮','甜品/糖水','壽司/刺身','日式放題','烤肉','薄餅']
+list_series = pd.Series(l)
+list_series
+```
+
+```text
+0       火鍋
+1       海鮮
+2    甜品/糖水
+3    壽司/刺身
+4     日式放題
+5       烤肉
+6       薄餅
+dtype: object
+```
+
+Convert series back to list
+
+```python
+list_series.tolist()
+```
+
+##### dict<-->series
+
+Converting between dict and series is pretty much the same like converting between list and series.
+
+```python
+word_dict = {'火鍋':39,'海鮮':28,'甜品/糖水':24,'壽司/刺身':14,'日式放題':11,'烤肉':10,'薄餅':9}
+dict_series = pd.Series(word_dict)
+```
+
+```text
+火鍋       39
+海鮮       28
+甜品/糖水    24
+壽司/刺身    14
+日式放題     11
+烤肉       10
+薄餅        9
+dtype: int64
+```
+
+Convert series back to dict
+
+```python
+dict_series.to_dict()
+```
+
+#### Get quick stats of series
+
+##### Series.sort_values
+
+Sorting values in ascending or descending order.
+
+```python
+words_dict = {'火鍋':39,'壽司/刺身':14,'甜品/糖水':24,'日式放題':11,'薄餅':9,'烤肉':10,'海鮮':28}
+dict_series = pd.Series(words_dict)
+dict_series.sort_values(ascending=False)
+```
+
+Output:
+
+```text
+火鍋       39
+海鮮       28
+甜品/糖水    24
+壽司/刺身    14
+日式放題     11
+烤肉       10
+薄餅        9
+dtype: int64
+```
+
+##### Series.sum
+
+Use the above dict_series as an example:
+
+```python
+dict_series.sum()
+```
+
+Output:
+
+```text
+135
+```
+
+#### Slice series
+
+Slicing series is the same as slicing list, just give the index interval can work. Also take the above example:
+
+```python
+dict_series[:4]
+```
+
+Output:
+
+```text
+火鍋       39
+壽司/刺身    14
+甜品/糖水    24
+日式放題     11
+dtype: int64
+```
+
+#### Reference to elements in series
+
+Reference to elements in series is pretty much the same as doing it in dict. each element in series is like the key in dict.
+
+```python
+dict_series['火鍋']
+```
+
+Output:
+
+```text
+39
+```
+
+#### Benefits of using series
+
+Series has the advantage from both `dict` and `list`. One can use a key to reference to the elements, which leads a `dict` like look and feel. However, for a regular `dict`, keys do not have certain ordering. Python only guarantees `dict.keys()`, `dict.values()` and `dict.items()` adopts the same ordering but how they are ordered is not specified. `pandas.Series` can preserve the order of elements, which gives a `list` like look and feel.
+
+### Pandas Dataframe
+
+A DataFrame is a two dimensional object that can have columns with different types,dictionaries, lists, series etc... Dataframe is the primary pandas data structure.
+
+Example 3: [2017 Hong Kong population](https://www.censtatd.gov.hk/hkstat/sub/sp150_tc.jsp?productCode=D5320189). There are several series, one can merge them to a dataframe.
+
+```python
+land_area = pd.Series({
+                'Hong Kong Island': 79.92,
+                'Kowloon': 46.94,
+                'New Territories and Islands':954.69
+})
+mid_year_population = pd.Series({
+                'Hong Kong Island': 1248.5,
+                'Kowloon': 2256.1,
+                'New Territories and Islands':3886
+})
+population_density = pd.Series({
+                'Hong Kong Island': 15620,
+                'Kowloon': 48060,
+                'New Territories and Islands': 4070,
+})
+hongkong_population_distribution = pd.DataFrame({
+                'Land Area (sq. km)': land_area,
+                'Mid- year Population (\'000)': mid_year_population,
+                'Population Density (Persons per sq. km)': population_density
+})
+hongkong_population_distribution
+```
+
+Output:
+
+![Series to Df](assets/pandas-series-to-df.png)
+
+#### Load table (DataFrame) from local csv file
+
+First of all, you need to download the csv file from [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv). For how to download the file, you can refer to [here](github.md#how-to-download-a-file-from-github-web-page).
+
+Put csv file into the same folder with Jupyter notebook. You can type `!pwd` to check out where it is and put the file in this path.
+
+```python
+import pandas
+pandas.read_csv('openrice_sample.csv')
+```
+
+The output will be as below:
+![Pandas Read Csv](assets/openrice-sample-csv.png)
+
+If there is no header in the csv file.We can use `Pandas` as below to add proper headers for a form.
+
+```python
+df = pandas.read_csv('openrice_sample.csv', header=None, names=['name', 'location','price','country','type','likes','review','bookmark','discount_info'])
+# `df`is short for "dataframe", which is usually used as return value in pandas.
+```
+
+#### Load table (DataFrame) from a URL
+
+We can also load CSV from GitHub directly with the help of `requests` and `io.StringIO`. `io` module is used for dealing with various types of I/O (input/output). Due to the requirement that `pandas.read_csv` function needs a `file-like object` as the argument, we need to use `io.StringIO` to write and store those string, returned from the request, temporarily. Then we can read the csv in pandas. Interested students can find more info about `io` module in [here](https://docs.python.org/3/library/io.html#text-i-o).
+
+**Note:** We should use `raw data` url from github page instead of preview url.
+
+```python
 import pandas as pd
-from matplotlib import pyplot as plt
-df = pd.read_csv('openrice_viz.csv') #read csv
-#df.head()
-
-plt.rcParams['font.sans-serif']=['SimHei'] #set for displaying Chinese characters here.
-plt.rcParams['axes.unicode_minus']=False #set for displaying `-`
-
-country_counts=df['country'].value_counts()[:15].sort_values(ascending=False) #sort values
-country = pd.DataFrame(country_counts)
-fig = plt.figure(figsize=(14,7)) #adjust size
-plt.bar(country.index, country.country,color = '#46bc99',edgecolor = '#40b4e5') #change color of the bars
-
-# another way to plot bar in pandas:
-# country_counts=df['country'].value_counts()[:15].sort_values(ascending=False).plot(
-#     kind='bar',color = '#46bc99',edgecolor = '#40b4e5')
-plt.title('top 15 country') #plot title and label name
-plt.xlabel('country')
-plt.ylabel('counts')
-plt.show()
+import io
+import requests
+url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/openrice_sample.csv"
+s=requests.get(url).content
+df=pd.read_csv(io.StringIO(s.decode('utf-8')),header=None, names=['name', 'location','price','country','type','likes','review','bookmark','discount_info'])
 ```
 
-![plt bar](assets/plt-bar-by-sorting.png)
+#### Select data
 
-#### How to plot multiple chart in one input/ output cell
-
-Sometimes, we can use `plt.subplot` function to plot multiple charts into one output cell, so that we can more easily to compare and tell the difference between different parameters.
+First of all, every time we load a csv in Jupyter, always print the first several rows to have a overview what's look like. It's useful and necessary because sometimes the dataset can be really large, if you print the whole table, your browser might get crushed. We can use following command to check out the records here.
 
 ```python
-fig, axes = plt.subplots(nrows=2, ncols=2,constrained_layout=True,figsize=(30,20)) #set a 2*2 canvas, adjust layout to more flexible, adjust figure size, axes means the location of each subplots, you can refer to the following picture below to learn more.
-
-#plot price range count
-price = pd.DataFrame(df['price'].value_counts())
-ax1 = price.plot(kind = 'bar',color = '#46bc99',edgecolor = '#40b4e5',ax=axes[0,0],fontsize=24)
-ax1.set_title("Price range count",fontsize=40)
-
-#plot country count
-country = pd.DataFrame(df['country'].value_counts()[:15])
-ax2 = country.plot(kind = 'bar',color = '#46bc99',edgecolor = '#40b4e5',ax=axes[0,1],fontsize=24)
-ax2.set_title("Country count",fontsize=40)
-
-#plot type count
-type = pd.DataFrame(df['type'].value_counts()[:15])
-ax3 = type.plot(kind = 'bar',color = '#46bc99',edgecolor = '#40b4e5',ax=axes[1,0],fontsize=24)
-ax3.set_title("Type count",fontsize=40)
-
-#plot likes and bookmark scatter
-likes_bookmark = df[['likes','bookmark']]
-ax4 = likes_bookmark.plot(kind = 'scatter',x='likes',y='bookmark',color = '#46bc99',ax=axes[1,1],s=80,fontsize=24)
-ax4.set_title("Like with Bookmark count",fontsize=40)
+df.head() #displaying first 5 rows by default, you can pass the number in () to show more/less rows.
 ```
 
-![Subplot](assets/subplot.png)
+the output will be as blow:  
+![Pandas Csv Read](assets/pandas-csv-head.png)
 
-**Note:**
+There are several ways to select data. We only focus on the most used ones. `[]`, `.loc` and `.iloc`. Collectively, they are called the indexers.
 
-1. You can pass a lot of parameters like `kind`, `color`, `fontsize` into the function. For more usage documentation, please refer [here](https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.plot.html)
-2. Axes is just like the position of the subplots. You can refer to the following picture for better understanding.
+##### Select columns with []
 
-![Matplotlib axes](assets/matplotlib-axes.png)
-
-### seaborn
-
-Seaborn is a Python data visualization library based on matplotlib, basically, you can regard it as the advanced version of matplotlib, and its closely integrated with `pandas data structures`, with which we can draw more attractive and informative statistical graphics. You can refer [here](https://seaborn.pydata.org/tutorial.html#tutorial) for it's documentation and functions.
-
-#### Basic usage
-
-Install and import:
+`[]` method is mainly used for selecting single column and multiple columns. Basically, `[]` method treat the dataframe as a dict, using a key to refer to certain value. If you want to select one column of data, just simply put the name of the column in-between the brackets. For example, you want all the restaurant locations.You can type:
 
 ```python
-!pip install seaborn
-import seaborn as sns
+df['location']
 ```
 
-Basic usage example:
+Then the output will be as below:  
+![Pandas Select With []](assets/pandas-select-with-[].png)
+
+You can find that the data type of the results returned is changed. Using `type(df['location'])` to check out what it is. If you want to keep the it with the `dataframe`, you can write the above code as this: `df[['location']]`.
+
+To select multiple columns of the data, you can pass it a list of column names.
 
 ```python
-import seaborn as sns
-sns.distplot(df["bookmark"],bins=20)
-#one can directly pass pandas.series to plot histogram
+df[['name','location','likes']]
 ```
 
-![Seaborn hist](assets/seaborn-hist.png)
+The output will be like this:
 
-#### Plot bar-charts and other charts
+![Select Multiple Columns](assets/select-multiple-columns.png)
 
-Example: Draw a bar chart between price range and likes, you can easily find that $200-400 is the most popular price and acceptable range in Hong Kong.
+##### Select rows with .loc and .iloc
+
+The `.loc` indexer will return a single row as a Series when given a single row `label`, and return DataFrame if multiple rows are selected.
+
+Example:
 
 ```python
-sns.set(font='SimHei') #set font to support Chinese character
-pd_df = df.groupby(['price'])['likes'].mean().reset_index().sort_values("likes",ascending=False) #this is to solve the output chart is not sorted by likes.
-ax = sns.barplot(x='price', y='likes',data=pd_df,palette=("ch:2.5,-.2,dark=.3")) #palette is like the color combination style
-plt.title('likes_price', color='gray', fontsize=16, weight='bold')
+df = pd.DataFrame([[170, 60], [180, 82], [175, 70]],
+    index=['Ri', 'Frank', 'Tyler'],
+    columns=['height', 'weight'])
+df
 ```
 
-![Seaborn bar charts](assets/seaborn-bar-charts.png)
-
-Example 2: Draw a scatter plot between bookmarks and likes to quickly checkout whether there is a relationship.
+```text
+                height  weight
+Ri                170      60
+Frank             180      82
+Tyler             175      70
+```
 
 ```python
-import seaborn as sns
-ax = sns.scatterplot(x="bookmark", y="likes",data=df)
+df.loc['Frank'] #select one row
 ```
 
-![Seaborn likes bookmark](assets/seaborn-likes-bookmark.png)
-
-Apart from two dimensional analysis, seaborn can handle more complicated cases. We can add another parameters called `hue`. Hue is the name of variables in data or vector data, its an optional argument. Grouping variable that will produce points with different colors. It can be either categorical or numeric.
+```text
+height    180
+weight     82
+Name: Frank, dtype: int64
+```
 
 ```python
-ax = sns.scatterplot(x="bookmark", y="likes",hue='price',data=df)
+df.loc[['Frank', 'Tyler']]
 ```
 
-![Seaborn likes bookmark](assets/seaborn-likes-bookmark2.png)
+```text
+                height  weight
+Frank              180      82
+Tyler              175      70
+```
 
-For more seaborn examples and tutorials, you can refer [here](hhttps://seaborn.pydata.org/tutorial.html)
+Similarly, there is another function `.iloc`, which is purely integer-location based indexing for selection by position.
 
-<!-- Apart from bar charts, there are many other style we can choose, the following is a simple demo of `catplot`.  You can refer [here](https://seaborn.pydata.org/generated/seaborn.catplot.html) for more plotting methods.
+Using the `openrice.csv` as an example:
 
 ```python
-sns.catplot(x="price", y="likes",hue="country", height=10, aspect=1,data=df)
+#read csv first, make sure the header is right, you can refer to previous content in this chapter.
+df.iloc[5]
 ```
 
-![Seaborn cat-plot.png](assets/seaborn-cat-plot.png) -->
-
-### plotly
-
-Plotly is very powerful to make interactive, publication-quality graphs online. Including line plots, scatter plots, area charts, bar charts, error bars, box plots, histograms, heatmaps, subplots, multiple-axes, polar charts, and bubble charts. If you want to present and publish your work on html, with some fancy appearance and interactive experience, Plotly is a very recommended library.
-
-Install and import:
+```text
+name             Day and Nite by Master Kama
+likes                                    462
+location                        旺角山東街50號1-2樓
+price                               $101-200
+country                                  日本菜
+style                                     海鮮
+review                              (595 食評)
+bookmark                               28151
+discount_info                  送 25里數 / 30積分
+Name: 5, dtype: object
+```
 
 ```python
-!pip install plotly
-import plotly #plot it offline
-import plotly.plotly as py 
-# Note: online plot method requires you to create an account. In online mode, every function in this module will communicate with an external plotly server
+df.iloc[[5,10,15]]
 ```
 
-Basic usage example:
+![Select Multiple Rows](assets/select-multiple-rows.png)
 
 ```python
-import plotly
-import plotly.graph_objs as go
-# to see relationship between countries and likes
-pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("likes",ascending=False)
-#if you want to plot charts with sorted order, you need to sorted data first, then pass the data into function.
-
-data = [go.Bar(x=pd_df2.country,
-            y=pd_df2.likes)]
-plotly.offline.plot(data, filename='country_with_average_like_bar') #if you use py.plot(), you will get the output in a new browser window, but with iplot(), you can do interactive actions just in your Jupyter notebook
+df.iloc[10:20]
 ```
 
-![Plotly country with average like](assets/plotly_country_with_average_like.png)
+![Select Slice List](assets/select-slice-list.png)
 
-For more plotly examples and tutorials, you can refer [here](https://plot.ly/python/)
+#### Basic statistics
 
-### pyecharts
+##### DataFrame.describe()
 
-Pyecharts is a library to generate charts using Echarts, which is an open source library from Baidu for data visualization in javascript. Pyecharts provides 30+ kinds of charts, especially with easy-to-use interactive graphs.
+Descriptive or summary statistics in python – pandas, can be obtained by using describe function. `describe()` function gives you a summary about the dataframe or certain series with the `mean`, `count`, `std` and `freq` values etc. Only the column with pure numbers can be described if you don't specify the column.
 
-Install and import:
+Example:
 
 ```python
-!pip install pyecharts
-from pyecharts import Bar #you can change Bar to other kind of charts, like Line, Pie, HeatMap etc...
+df.describe()
+	likes	        bookmark
+count	244.000000	244.000000
+mean	249.094262	12596.356557
+std	112.075938	8567.647276
+min	66.000000	1430.000000
+25%	165.000000	6741.750000
+50%	215.500000	10755.500000
+75%	309.500000	15464.500000
+max	692.000000	52023.000000
 ```
-
-Basic usage example:
 
 ```python
-from pyecharts import Bar
-#to see relationship between countries with likes and bookmarks
-pd_df3 = df.groupby(['country'])['bookmark'].mean().reset_index().sort_values("bookmark",ascending=False)
-attr = pd_df2.country
-v1 = pd_df2.likes  #you can pass a list like data here
-v2 = pd_df3.bookmark
-bar = Bar("Countries by likes and bookmark")
-bar.add("by likes", attr, v1, mark_line=["average"])
-bar.add("by bookmark", attr, v2, mark_line=["average"])
-bar
+df['style'].describe()
+count     244
+unique     47
+top        火鍋
+freq       39
+Name: style, dtype: object
 ```
 
-![Pyecharts by bookmark](assets/countries-by-likes-and-bookmark.png)
-![Pyecharts by bookmark2](assets/countries-by-likes-and-bookmark2.png)
+##### Count values of series
 
-For more pyecharts examples and tutorials, you can refer [here](http://pyecharts.org/#/zh-cn/charts_base)
+After we can select one column or row, we can do further calculation or analysis. One common usage is to count different values in one column.
 
-### pandas
-
-One can also include "bar charts" in your DataFrame, from which you can easily find the distribution and the extreme values. For example:
+Example
 
 ```python
-pd_df4 = df.pivot_table(index=['country'], columns=['price'], values='name', aggfunc='count')
-#pd_df4
-#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range, and replace the nan value with 0
-pd_df4 = pd_df4.loc[['韓國菜','日本菜','西式','意大利菜','粵菜 (廣東)']].fillna(0).T
-
-# because the index is string, not the number, so that we cannot directly sort_index, instead, we need to reindex it.
-reorderlist = [ '$50以下', '$51-100','$101-200' ,'$201-400' ,'$401-800']
-pd_df4 = pd_df4.reindex(reorderlist)
-pd_df4.style.bar(color='#d65f5f')
+df['country'].value_counts()
 ```
 
-![Bar inside dataframe](assets/bar-inside-dataframe.png)
-
-For more inside pandas.DataFrame usage, please refer [here](https://pandas.pydata.org/pandas-docs/stable/style.html#Bar-charts)
-
-### bokeh
-
-Bokeh is an interactive visualization library that targets modern web browsers for presentation.
-
-Install and import:
+```text
+西式         47
+日本菜        45
+意大利菜       26
+韓國菜        20
+粵菜 (廣東)    18
+港式         18
+多國菜        17
+泰國菜        10
+台灣菜        10
+西班牙菜       10
+...
+Name: country, dtype: int64
+```
 
 ```python
-!pip install bokeh
-from bokeh.plotting import figure, show
+df['style'].value_counts()
 ```
 
-Basic usage example:
+```text
+火鍋                   39
+海鮮                   28
+甜品/糖水                24
+壽司/刺身                14
+日式放題                 11
+烤肉                   10
+自助餐                   9
+薄餅                    9
+咖啡店                   8
+All Day Breakfast     7
+...
+Name: style, dtype: int64
+```
 
-Plot top 10 country grouped with bookmark, and sorted by bookmark.
+`value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
+
+##### Sort values in dataframe
+
+Sort values in dataframe is similar to which in series. You can sort by different columns like the example:
 
 ```python
-from bokeh.plotting import figure
-from bokeh.io import show, output_file
-output_file("bokeh_bar.html")
-pd_df5 = df.groupby(['country'])['bookmark'].mean().reset_index().sort_values("bookmark",ascending=False)[:10]
-# source = ColumnDataSource(data=pd_df5)
-p = figure(x_range=pd_df5.country,plot_height=350, title="Country with bookmark",
-           toolbar_location=None, tools="")
-p.vbar(x=pd_df5.country, top=pd_df5.bookmark, width=0.9)
-p.xgrid.grid_line_color = None
-p.y_range.start = 0
-show(p)
+df.sort_values(by='likes',ascending=False)
 ```
 
-![Bokeh test](assets/bokeh-test.png)
+**Note:** In the `sort_values` function, we can only use `ascending` method, `descending` will not work here,which is designed by pandas documentation. But we can use `ascending=False` to meet `descending` needs.
 
-For more bokeh examples and tutorials, you can refer [here](http://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#)
-
-### ggplot
-
-There is a Python implementation of the very famous `ggplot` that is also available in R language and other standalone tools. It is based on the Grammar of Graphics and is the Swiss Knife for visual analysis. However, the flexibility might impose a sharper learning curve on beginners. Other "model-based" charting librares are usually easier to get started: 1) select a proper model (bar/ scatter/ line/ ...); 2) fit your data into the model.
-
-**TODO**: some examples will be added here later.
-
-## Data visualization Principles
-
-**NOTE**: This section are on course slides.
-
-### Principle
-
-<!-- **TODO**: examples and counter examples. Where visualization helps and where visualization can go wrong. How data and viz can cheat you. -->
-
-### Charts
-
-### Dashboard
-
-## GitHub repo
-
-### README.md
-
-"README" is a convention in computer world. You can find a file of this name in almost all software distribution. It means exactly the same as its name indicates: before you do anything, read me first! This file usually gives people instructions on first steps to work with the software. It may point to other more detailed tutorials or mannuals. The `.md` in `README.md` is just a suffix to indicate that this file is written in markdown format. When GitHub sees this file, it renders the file into HTML (for your web browser) using a markdown compiler. You can check out the [README.md](README.md) of this current repo to get an idea.
-
-Besides giving important project information and "play the open source way", a good README file is also an "elevator pitch" to potential readers/ users. You want to present the key functions/ highlights in quick/ direct way. Here are some tips for your consideration.
-
-- Use one sentence to summarise the project. You can use analogy to help visitors quickly comprehend the content.
-- Include a "demo" section to show the outcome. Screenshots may help.
-- Include a "quickstart" to show user the painless operations that can give some prelminary results.
-- Include a "license" section to make the file look professional
-- A [tutorial](https://blog.github.com/2018-06-29-GIF-that-keeps-on-GIFing/) to use GIFs to better present your work on GitHub.
-
-### Presenting dataset
-
-When you present a dataset on GitHub, following information is helpful for the readers to quickly understand your project:
-
-- **topic**
-- data source
-- data fields (type, sample data)
-- data volume
-- **license**
-- obstacles and solutions
-- future work
-
-License is easy to forget. Some serious users may not use your project if there is no permissive license. One can refer to [this section](notes-week-00.md#common-licenses) for some common licenses in the open source world. The suggested license as a default:
-
-- If your work is reusable code, using `MIT` is common.
-- If your work is creative content, either dataset or article, using `CC 4.0 BY` is common.
-
-### Jupyter notebook
-
-Jupyter notebook is very convenient and powerful to present your work, you can write notes by markdown, you can insert url links, pictures, interactive graphs, and of course, codes. Therefore, in most cases, one notebook is enough for us to present and share our works. The following is the introduction of how to use jupyter as the primary presenting method.
-
-#### Write notes in Jupyter notebook
-
-We can change the cell type to present non-codes content.
-Click `cell --> cell type --> Markdown`. Then write the notes and stories you like, Jupyter also support markdown syntax.
-
-![Jupyter write notes](assets/jupyter-write-notes.png)
-
-For shortcut:
-
-* type `m` to change cell to markdown mode
-* type `y` to change cell to code mode
-
-#### Display the picture
-
-Assuming that you have the pictures in the folder where your current jupyter notebook are. You can display the picture by the following method.
+What's more, in the multiple columns dataset, one may need to filter or sort values by multiple columns, we can use following method to accomplish this:
 
 ```python
-from IPython.display import Image
-Image("top 15 directors.png") #change the name corresponding your own file
+df.sort_values(['likes','bookmark'],ascending=[False,False]) #the first false corresponding to the first column
 ```
 
-![Jupyter display pics](assets/jupyter-display-pics.png)
+![Sort values by multiple columns](assets/sort-values-by-multiple-columns.png)
 
-#### Add HTML link
+##### Plot a simple chart: histogram
 
-We can also insert `html` in jupyter. For example:
+After we got the results from our analysis, the key point is to visualize them so that we can have a better understanding of the results and get insights from them. By using `.hist()` function, We can plot a simple histogram to show the distribution and trend.
+
+Example:
 
 ```python
-from IPython.core.display import HTML
-HTML('<a href="https://github.com/hupili/python-for-data-and-media-communication-gitbook">Openbook</a>')
+%matplotlib inline #this line is to solve the problem that histogram doesn't reveal.
+df['likes'].hist()
 ```
 
-Then you will find a clickable text `openbook` linking to the repo. For code blocks, you can write by `''' '''` to quote codes.
+and you can get a distribution like below:  
+![Openrice-Csv-Likes](assets/openrice-csv-likes.png)
+
+You can change shape of the charts by changing the bins(basically, one bin means one column)
 
 ```python
-HTML('''
-<a href="https://github.com/hupili/python-for-data-and-media-communication-gitbook">Openbook</a>
-<ul>
-<li>item 1</li>
-<li>item 1</li>
-</ul>
-''')
+df['likes'].hist(bins=20)
 ```
 
-![Jupyter write html](assets/jupyter-write-html.png)
+![Openrice Csv Bins](assets/openrice-csv-bins.png)
 
-Bonus: For better presentation, we need to clear the long and working-in-progress output. Click `cell --> Current Output --> Clear` can solve help you accomplish this.
+#### Data cleaning and pre-processing
 
-![Jupyter clear output](assets/jupyter-clear-output.png)
+##### Apply a function
 
-Also we can write html codes at the beginning of your Jupyter notebook, which can generate a link that only present the cells with output. You can click the link to toggle between raw codes and plain documentation.
+In the process of analyzing, we will encounter a lot of data cleaning issues, like the missing values, NoneType values or other type of values that have side effects, which need us to build different functions to handle them or convert them. For example, the price in the `openrice` is a range of number which cannot be compared directly. We need firstly clean the data and convert price range to numeric values.
+
+If you need to compare price which is a interval.You need to pay special attention on numbers. Otherwise,Python recognize '$101-200' < '$51-100' because Python only compare the first number in sequence of each interval.
+
+You need to convert each interval string into numbers, which means you need to choose a number to represent each interval to do comparison. Here, we use `mapping` function:
 
 ```python
-HTML('''<script>
-code_show=true; 
-function code_toggle() {
- if (code_show){
- $('div.input').hide();
- } else {
- $('div.input').show();
- }
- code_show = !code_show
-} 
-$( document ).ready(code_toggle);
-</script>
-The raw code for this IPython notebook is by default hidden for easier reading.
-To toggle on/off the raw code, click <a href="javascript:code_toggle()">here</a>.''')
+mapping = {
+  '$101-200': 200,
+  '$201-400': 400,
+  '$51-100': 100,
+  '$401-800': 800,
+  '$50以下': 25
+}
 ```
 
-![Jupyter notebook](assets/jupyter-html.png)
+Now, build a function to handle those data.
 
-## Publish work on GitHub Pages
+```python
+original_string = '$60以下'
+mapping.get(original_string, 0)
+# if those string is in the mapping dict, it will return the paired value, otherwise, it will return the value you set, in this case, is the second parameter 0.
+def cleaning(e):
+    return mapping.get(e, 0)
+cleaning('$50以下')
+```
 
-### Basic HTML
+**Note:** In the mapping function, its not like the traditional dict - key & value like.
 
-HTML is a declarative language. One only needs to "declare" what content is on the page, using "tags". HTML tags come in pairs, in the form like `<tag></tag>`. Tags can be nested so some content can be put inside other content (container tags) ("phrase" and "flow" element in HTML language). You can readily start building a web page by modifying other's code. Following tags are common:
+```python
+mapping = {'A':'B'}
+mapping.get('A')
+```
 
-- h1/ h2/ h3
-- p
-- img
-- a
-- ul/ ol/ li
-- strong, em
-- iframe
+Basically, it tells that we use B to replace A. For vast sum of data, we can use apply function to do cleaning. For example, if you have a series of data need to be mapping:
 
-Note that, `iframe` is commonly used to embed external resources into the current web page.
+```python
+mapping = 
+{'A':'B',
+'C':'D',
+...,
+'X':'Y'}
+def cleaning(e):
+    return mapping.get(e, 0)
+pandas.series.apply(cleaning)
+```
 
-### Bonus: CSS
+![Pandas Apply Function](assets/pandas-apply-function.png)
 
-CSS can be used to style the page. They usually come in three places:
+Then we can use `apply` function to do cleaning for the whole column. Basically, `<data>.apply(<function_name>)` means that pass those data one by one to call the function, which is equal to a `for` loop processing data.
 
-- The `<style>` tag
-- The `style=""` attribute in HTML element
-- Use `<link rel="stylesheet" src="">` to include external style files.
+```python
+df['price'].apply(cleaning) #clean the whole column
+```
 
-Detailed explanation is omitted from this open book. To get started, you don't have to worry about CSS. Most common way of practice is to get some existing works and modify the content via HTML directly.
+![Pandas Apply Cleaning](assets/pandas-apply-cleaning.png)
 
-### Single column layout
+##### lambda: anonymous function
 
-With the wide spread of mobile devices, single column layout is trending. That is, there is only one column on every row. The web page is an interleaved layout of images and texts. No two images appear side by side. No two paragraphs appear side by side. If you need to do so, try to edit those two images into one outside the scope of HTML so that one `img` tag is enough for the presentation.
+lambda also called as anonymous function, which doesn't have a specific name, only need one line to declare function. The usual syntax is as follows:
 
-### Integrated exercise: Publish a full work in a stand alone page
+```python
+lambda arguments : expression
+```
 
-[Big Road](http://project.hupili.net/big-road/) is a minimalist solution to make sensible web stories on GitHub. You can follow the instructions there to put your stories on the web. It features:
+There can be multiple arguments, and expression is the results it returns.
 
-- Only HTML
-- Mobile-only and single column layout
-- No CSS (actually we do have CSS there; but you don't have to worry about it)
-- Responsive embedding
-- Interactive chart demo
+For example:
 
-#### Save plotly chart
+```python
+c = lambda x,y : x**2 + 4*y
+c(4,2)
+#24
+```
 
-<!-- TODO: How to save a plotly chart and put into your web story on gh-pages? -->
+x,y are arguments, and after the`:` is the results. This is equal to:
 
-The default plotly chart includes a tool bar, making the graphical region too small on "Big Road" template. There are two ways to work around:
+```python
+def f(x,y):
+    return x**2 + 4*y
+f(4,2)
+```
 
-1. Use `<ratio-1-to-1>` tag to wrap the `<responsive-block>`.
-2. Remove the tool bar from plotly chart.
+The advantages of `lambda`:
 
-The second way is recommended. When using the 1st solution, there will be a large chunk of blank on the page. This area is intended to show the tool bar when hovering your mouse on the chart. Hovering does not make sens on mobile devices.
+- Using lambda omit the process of defining functions, which make the code more light.
+- We can save time by using lambda without thinking about naming the function
+- The power of lambda is better shown when you use them as an anonymous function inside another function.
 
-### Bonus: Continuously update GitHub Pages
+For example: Build a filter lambda function inside a function
 
-The GitHub repository can be updated continuously ensure the data presented there is latest. One common strategy is:
+```python
+# Program to filter out only the even items from a list
 
-- Use Python to handle the data collection and data processing.
-- Generate JSON data files to interface between Python and Javascript.
-- Build interactive charts that takes JSON data as input, from a designated location on gh-pages.
-- Periodically run the Python script to make the data up to date. One may find `cron` on Linux or Mac OSX helpful.
+my_list = [1, 5, 4, 6, 8, 11, 3, 12,9,27,15,14,17]
+new_list = list(filter(lambda x: (x%3 == 0) , my_list))
+new_list
+# Output: [6, 3, 12, 9, 27, 15]
+```
 
-## Bonus: Craft a data service
+#### Filtering
 
-Two components of the system:
+In the above example, we learned how to access to the columns, raws and multiple data in the dataframe. For further analysis, we need to do some filtering work to help us better finding the insights. For example, how to select the most expensive restaurants and the least likeable restaurants? Is there any correlation between likes and types?...
 
-- Frontend -- things that a regular users can see
-- Backend -- things that a regular users can not see, and usually unaware of
+For filtering, in pandas, we use the `df[ conditions ]` method. This is basically means, we first use `condition` to filter the data, and put it into data frame. For example, if you want to know how many restaurants having over 500 likes, and what are those restaurants.
 
-Frontend is based on the languages: HTML/ CSS/ JavaScript. Backend can have many different alternatives, notably `Python`, `JavaScript` (NodeJS), `Ruby` and `PHP`. There are two styles of connecting frontend and backend:
+```python
+df['likes'] > 500 #this is a condition filtering restaurants that received more than 500 likes.
+```
 
-- Server Side Rendering -- The web framework of the backend compiles HTML/ CSS/ JavaScript and then send to the user browser in a batch. This way is more efficient in terms of execution but not less flexible in web design.
-- Client Side Rendering -- The backend only provisions API (the same concept you encountered in week-04). Frontend reads data from API and assembles the web page for user's action. This is the current mainstream approach. This way decouples frontend and backend, and has certain engineering advantages.
+![Pandas Filtering](assets/pandas-filter-likes.png)
 
-There are some useful libraries in Python for you to build a backend:
+The results returned is a series true or false, true means meeting the condition, while false is not.
 
-- `django` -- a very comprehensive library, with a rich eco-system.
-- `flask` -- medium weight library. It is recommended for a serious but small scale project.
-- `bottle` -- light weight library. One can build up a web service in 10 minutes. It is good as an initial trial.
+To get the information of those filtered restaurants, we use `df[]` outside of the `condition`.
 
-## Code of conduct: Reproducible reporting and full reporting
+```python
+df[df['likes'] > 500]
+```
 
-- Reproducible reporting: Using Jupyter notebook can make most of the content reproducible by default. The readers can find dataset, codes, results, charts and explanation all in one place. However, note that
-  - Sometimes you execute the cells in the Jupyter notebook in a different order from their appearance on the notebook. That is normal in the trial and error stage. Before you publish the notebook, make sure you restart the kernel and execute from beginning to end in one batch. This makes sure the other readers can **reproduce** the notebook.
-  - Sometimes, manual intervention is required in the process, e.g. clicking a button, substituting cookies, etc. You need to put down notes where the workflow is not fully automated. The core concept of reproducible reporting, is to make sure the readers can reproduce your result, either by code, or by human operation.
-- Full reporting: not only report the successful instances; but also report the unsuccessful instances. Sometimes, you find contradictory results from one dataset. Many authors are selective. In our code of conduct, you need to do a full reporting at one intermediate stages, i.e. showing the possible results/ alternative results that you already find. In the narratives of final report, being selective is usually one necessary evil to make a compelling story. You need to make sure you don't over-state anything.
+![Pandas Filtering2](assets/pandas-filter-likes2.png)
+
+There are many ways to do filtering, the following are the common methods that are wildly used.
+
+##### Filter by numeric range
+
+If there is multiple conditions in filtering, we need to use `()` to include each condition. For example, filter the `bookmark` between 50000-60000.
+
+```python
+df[(df['bookmark'] < 60000) & (df['bookmark']>50000)]
+```
+
+![Pandas Filter Inrange](assets/pandas-filter-inrange.png)
+
+##### Filter by exact value
+
+You can filter the exact value by passing the specific numbers or strings. For example, we can select all Spanish restaurants.
+
+```python
+[df['country'] == '西班牙菜'] #use two == for comparison
+```
+
+the output will be:
+![Pandas Filter Value](assets/pandas-filter-value.png)
+
+##### Filter by more than two conditions
+
+As we discuss before, we can filter multiple conditions by using () to include each condition. For example, we can select some cost-effective restaurants for a friends gathering. Like, the `seafood restaurants` with price range in `$100-200` and likes `more than 300`.
+
+```python
+df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)]
+```
+
+![Pandas Filter Multiple](assets/pandas-filter-multiple.png)
+
+For how to manipulate multiple conditions, You may need to review the bool comparison logic in the Chapter 3 - [logic operators](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/78e8f08afdd84855295287ba19e360352fca373a/notes-week-03.md#logic-operators)
+
+### Export from `pandas`
+
+After you finish processing data in `pandas`, you may want to export it
+
+- to store the dataset for later analysis.
+- to convert it into a format that can be used by Frontend developers to make interactive web visualisations.
+
+The common export formats are:
+
+- `to_csv`
+- `to_dict`
+- to JSON format
+
+#### to_csv
+
+In pandas, dataframe to csv is very simple, just one line can work for this.
+
+```python
+df.to_csv('full_filename', encoding='utf-8', index=False) #full_filename means you need to add the file format like openrice.csv .
+```
+
+You can pass other parameter if needed, for more information, you can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html) .
+
+#### to_dict
+
+There are different output formats with `to_dict` method, which depends on what parameter you pass in. By default, it will return dict like {column -> {index -> value}}. List like method [{column -> value}, … , {column -> value}] is also wildly used. For example:
+
+```python
+df.to_dict()
+```
+
+Output:
+
+```text
+{'bookmark': {0: 50744,
+  1: 21136,
+  2: 27681,
+  ...
+  'country': {0: '西式',
+  1: '西式',
+  2: '韓國菜',
+  ...
+  'style': {0: '海鮮',
+  1: '酒',
+  2: '韓式炸雞',
+  ...}}
+```
+
+```python
+df.to_dict('records')
+```
+
+Output:
+
+```text
+[{'bookmark': 50744,
+  'country': '西式',
+  'discount_info': '網上訂座可享75折優惠',
+  'likes': 436.0,
+  'location': '尖沙咀金巴利道87-89號僑豐大厦地下1-2號舖',
+  'name': 'LAB EAT Restaurant & Bar',
+  'price': '$201-400',
+  'review': '(565 食評)',
+  'style': '海鮮'},
+  ...
+ {'bookmark': 21136,
+  'country': '西式',
+  'discount_info': '送 25里數 / 30積分',
+  'likes': 693.0,
+  'location': '尖沙咀北京道12A號太子集團中心6樓',
+  'name': 'Shine',
+  'price': '$201-400',
+  'review': '(777 食評)',
+  'style': '酒'}]
+```
+
+You can check out [here](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_dict.html) for more usage and methods.
+
+#### to_json
+
+`to_json` method will convert the dataframe to a JSON string, and its like combination of above two methods. The difference is that json has a `orient` parameter, which determine the output format, whether `list like` or `dict like`. Besides, for a file path or object. If not specified, the result is returned as a string.
+
+```python
+df.to_json('full_file_name', orient='split',force_ascii=False) #then you can open the json file
+```
+
+```python
+df.to_json(orient='records',force_ascii=False) #you can change different orient method
+```
+
+Output:
+
+```text
+'[{"name":"LAB EAT Restaurant & Bar","location":"尖沙咀金巴利道87-89號僑豐大厦地下1-2號舖","price":"$201-400","country":"西式","style":"海鮮","likes":436.0,"review":"(565 食評)","bookmark":50744,"discount_info":"網上訂座可享75折優惠"},
+...
+{"name":"Shine","location":"尖沙咀北京道12A號太子集團中心6樓","price":"$201-400","country":"西式","style":"酒","likes":693.0,"review":"(777 食評)","bookmark":21136,"discount_info":"送 25里數 \\/ 30積分"}]'
+```
+
+You can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_json.html) for more usage and methods.
+
+After we get the json string, we also can use `json_dumps` and `json_loads` to convert between Python object and json file.
+
+#### Bonus: Python and Javascript in action
+
+A very common workflow is to process data in Python and visualize data in Javascript. The last interactive chart in this [blog post](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/#%E8%AD%B0%E5%93%A1%E5%9B%9B%E5%B9%B4%E6%8A%95%E7%A5%A8%E5%82%BE%E5%90%91%E8%AE%8A%E5%8C%96) shows the political preference variation of HK legco members during the 2012-2016 term. The interactive chart is made by [echarts](https://ecomfe.github.io/echarts-doc/public/en/index.html), a popular Javascript library for interactive visualisation from Baidu. However, the data collection and heavy duty data analysis are done in Python. We conducted the analysis in Python and export the `pandas.DataFrame` into a `JSON` format that can be consumed by echarts. You can checkout the [JSON file here](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/echarts-option-legco-5.json).
+
+The key takeaway is that data files like `json`, `csv` and `xml` are usually the bridge between frontend (e.g. Javascript) and backend (e.g. Python).
+
+## Dataprep
+
+You need to finish "Dataprep" before analysis. That is, we start with structured data. Preparing the structured and cleaned data has no common schema. A data scientist regularly spends most of the time in dataprep. We have pointers in [Dataprep](dataprep.md) for your own reading, including some non-Python dataprep tools/ platforms. Now that we learned the basics of `pandas`, we can conduct the dataprep workflow all in Python.
+
+Here is a polluted dataset from original openrice scraped data. Please try to combine pandas knowledge above and following guidelines to prepare a structured data that is good for further analysis.
+
+### Cleaning
+
+The format:
+
+- Does this file use UTF-8 encoding? Checkout some common issues [about encoding](encoding.md). If not, are you able to convert it to the conventional UTF-8 encoding?
+- Does the input data table has valid column names? If not, how do you know the meaning of each column?
+- Does every row of the table have the same number of columns ("cells" more precisely)?
+- Is every element in a single column of the data type? Say all integers or all strings. Do you see a string mixed into to a column where you are supposed to see numbers?
+- How many missing values are in this table? Do missing values affect your analysis result? Do you want to fill the missing values (e.g. `DataFrame.fillna()`) somehow; Or do you want to remove the rows/ columns which contain missing values?
+
+The content:
+
+- Check the variable distribution. Is there any special value that only appears once or a few times? Will it be a typo?
+- Check the variable range. What is the common range of values in this variable? Is there any peculiar value?
+- Check the string length. Is there a super long cell? It may be because parsing error during scraping stage. Some data may mix up.
+- Check the missing values. Are there empty cells? What is the reasonable default value to fill in those empty cells?
+- Check the above on a subset of data (filtering/ grouping). Does `50` looks like a regular price? Does `50` looks like a regular price within "seafood" category?
+- Is the duplicate content? If there is no duplicate _entire rows_, is there duplicate rows in terms of a subset of the columns? Is this duplicate an error in the data? You may want to leverage some domain knowledge to further check.
+
+As an exercise, you can download a CSV file with intentionally injected error [here](hhttps://github.com/hupili/python-for-data-and-media-communication/tree/master/pandas-examples/data%20cleaning%20exercise). The notebook is for your reference.
+
+### Transformation
+
+- Convert text value to numeric value. e.g. convert price range text into a representative number that can be sorted.
+- Merge multiple categories. e.g. merge `港式` and `潮州菜` into `中式`. Sometimes, less categories help analysis. You may need some domain knowledge and trials and errors, in order to find good method of grouping.
+- Encoding, many times called "coding" in social science research, is the process of turning natural language data into numeric data. This is also a matter of domain knowledge but you can try the method here. e.g. in order to study the relationship between price range and the income level of that district, we can encode 18 districts into three income class `high`, `medium` and `low`.
+
+### Extraction
+
+We load the CSV data in one shot, because the current dataset is very small. In real practice, you may meet a large dataset, so the first step is usually data extraction. One can do extraction by certain rules, e.g. get the restaurants in a certain district, get the restaurants that are open in a certain time period. Or you are interested in the whole population but do not possess the appropriate computation power to handle this dataset. At this point, you may want to do sampling. `DataFrame.sample()` may be helpful here. When dealing with really large dataset, you may want to combine extraction by rule and extraction by sampling.
 
 ## References
 
-- First two chapters \(i.e. before "3D"\) of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
-
+* [Exercise numpy](https://www.shiyanlou.com/courses/1090) on ShiYanLou
+* [Exercise pandas](https://www.shiyanlou.com/courses/1091) on ShiYanLou
 
 ------
 
