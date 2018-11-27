@@ -262,7 +262,20 @@ This is a [Heave tail distribution](https://en.wikipedia.org/wiki/Heavy-tailed_d
 
 As we mentioned above, Degree can be divided into In-Degree and Out-Degree. The importance of nodes with the same total degree but different In-Degree and Out-Degree are different. That's the reason why We need Centrality Measures.
 
-[Centrality](https://en.wikipedia.org/wiki/Centralityis) a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
+[Centrality](https://en.wikipedia.org/wiki/Centralityis) is a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
+
+![centrality](assets/centrality.jpg)
+
+There are different centrality measures, like `Degree`, `Eigenvector` `Closeness` and `Betweenness`. 
+
+Interpretation of measures:
+
+| Centrality measure | Interpretation in social networks                                                     |
+|--------------------|---------------------------------------------------------------------------------------|
+| Degree             | How many nodes can one node reach directly?                                           |
+| Betweenness        | How likely is this node to be the most direct route between two nodes in the network? |
+| Closeness          | How fast can this node reach every other nodes in the network?                        |
+| Eigenvector        | How well is this node connected to other well- connected nodes?                       |
 
 You can refer to the [documentation](https://networkx.github.io/documentation/latest/reference/algorithms/centrality.html) and online resources to understand those centrality measures. Try other centrality measures that are not covered in this tutorial. See what interesting findings you can get.
 
@@ -302,7 +315,7 @@ df_top_nodes
 
 From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
 
-<!-- TODO: further reading?? outline.md, notes. Chainsaw's work on Mingpao -->
+Relative reading: [政商網絡系列 文：陳電鋸](https://news.mingpao.com/ins/instantnews/web_tc/article/20150831/s00022/1441006491105).
 
 ### Basic statistics of graph
 
