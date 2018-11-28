@@ -22,6 +22,8 @@
     - [Case studies](#case-studies)
         - [Air crash map using plotly](#air-crash-map-using-plotly)
         - [Openrice Sichuan Food using folium](#openrice-sichuan-food-using-folium)
+        - [Global data journalist distribution and contribution map using ploty](#global-data-journalist-distribution-and-contribution-map-using-ploty)
+        - [American journalist job market map using ploty](#american-journalist-job-market-map-using-ploty)
         - [England and Ireland pubs using matplotlib](#england-and-ireland-pubs-using-matplotlib)
         - [Hong Kong property price bubble chart using folium](#hong-kong-property-price-bubble-chart-using-folium)
         - [United States unemployment rate 2012 choropleth using folium](#united-states-unemployment-rate-2012-choropleth-using-folium)
@@ -246,15 +248,44 @@ The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples
 
 ### England and Ireland pubs using matplotlib
 
-- Draw geo scatter plot via matplotlib: [England and Ireland seen from pub locations](http://ramiro.org/notebook/mapping-pubs/)
+A map of Britain and Ireland pubs.
+
+![Britain and Ireland](assets/mapping-pubs.png)
+
+The tools and process:
+
+- Get data from `OpenStreetMap` and provided by `osm-x-tractor`.
+- Draw geo scatter plot via `matplotlib`
+
+Data and codes can be found here: [England and Ireland seen from pub locations](http://ramiro.org/notebook/mapping-pubs/).
 
 ### Hong Kong property price bubble chart using folium
 
-- Bubble chart on map using `folium` (leaflet.js based) for visualisation and `overpy` for geocoding: [Visualising HK property prices](https://medium.com/coinmonks/visualizing-property-prices-in-hong-kong-with-pandas-overpy-and-folium-595240ffca90)
+Visualizing various property prices in Hong Kong.
+
+![Property prices in hongkong.png](assets/property-prices-in-hongkong.png)
+
+The tools and process:
+
+- Dataset extracted from Midland Realty Property Price Chart with help of `pdf to csv converter`
+- `overpy` for geocoding.
+- Using `pandas` to combine the property names, prices, and coordinates into one huge dataframe for mapping.
+- Drawing a map with `Folium`
+
+Data and codes can be found here: [Visualising HK property prices](https://medium.com/coinmonks/visualizing-property-prices-in-hong-kong-with-pandas-overpy-and-folium-595240ffca90).
 
 ### United States unemployment rate 2012 choropleth using folium
 
-- Plot choropleth using `folium`: [United States unemployment rate 2012 choropleth map](https://python-graph-gallery.com/292-choropleth-map-with-folium/) . One needs to prepare a data table and a geojson file which includes the interested geometries.
+An example of a choropleth map made using the Folium library. This example comes directly from the [documentation](http://python-visualization.github.io/folium/docs-master/quickstart.html#Choropleth-maps) of this library, you can find more examples here.
+
+![Choropleth map with folium](assets/choropleth-map-with-folium.png)
+
+The tools and process:
+
+- First get A shape file in the geojson format & A data frame that gives the values of each zone in your case
+- Plot choropleth using `folium`.
+
+Data and codes can be found here: [United States unemployment rate 2012 choropleth map](https://python-graph-gallery.com/292-choropleth-map-with-folium/).
 
 ## Bonus: Other GIS and mapping tools
 
