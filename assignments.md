@@ -10,7 +10,9 @@
         - [Reference solutions for assignment 0](#reference-solutions-for-assignment-0)
     - [Assignment 1 -- Data collection and ideation](#assignment-1----data-collection-and-ideation)
         - [Bonus: Enrich your dataset](#bonus-enrich-your-dataset)
+        - [Reference solutions for assignment 1](#reference-solutions-for-assignment-1)
     - [Assignment 2 -- Data analysis, visualisation and presentation](#assignment-2----data-analysis-visualisation-and-presentation)
+        - [Reference solutions for assignment 2](#reference-solutions-for-assignment-2)
     - [Notes on Bonus Question](#notes-on-bonus-question)
 
 <!-- /TOC -->
@@ -105,6 +107,16 @@ Most of the time, one data set is not enough for you to make a thorough analysis
 
 Adding a section to your `README.md` will be good.
 
+### Reference solutions for assignment 1
+
+Here are some hand-picked reference solutions to you. Not all of them earned most marks but some have good features for others to learn.
+
+- [ConnorLi96](https://github.com/ConnorLi96/python-data-assignments/tree/master/assignment1) is standard reference. It also scrapes extra dataset to facilitate discussion of the topic.
+- [18408532](https://github.com/18408532/python-data-assignments/tree/master/assignment1) uses string slicing and conditional branching to cleanup the director/ actor strings and separate them into two fields.
+- [iiiJenny](https://github.com/iiiJenny/python-data-assignments/tree/master/assignment1) uses selenium to crawl "jd.com". The page refreshes when one scroll. So one needs to find the element again, after scroll. Full discussion can be found on [Issue #65](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/65).
+- [ClioLI](https://github.com/ClioLI/python-data-assignments/tree/master/assignment1) emulates Webo login operation. The student also studied how to retrieve and format cookie string. One followup experiment is possible: Use cookiestr plus `requests` to get pages. Another uesful tip: use `selenium.webdriver.common.keys` to emulate special keys that may not be available via ASCII `str`.
+- [CCCCCecilia](https://github.com/CCCCCecilia/python-data-assignments/blob/master/assignment1/assignment1.ipynb) shows how to crawl gated content via static scraping tool like `requests`. One needs to use Chrome to visit the page first and then copy HTTP headers strings from the browser, [format it into Python style](https://curl.trillworks.com/), then fire `requests`. Since the user information xiami page changes, the HTTP header strings (mainly header) may not be useful later. One needs to repeat the process if more data points are wanted.
+
 ## Assignment 2 -- Data analysis, visualisation and presentation
 
 Deadline: **Nov 24, 2018 (Sat)**
@@ -135,6 +147,9 @@ Some references from past submissions, with instructor notes:
 - [Hans Rosling tops TED](https://nbviewer.jupyter.org/github/17441781/hkbu-big-data-media/blob/master/homework3/HW3-analysis.ipynb) -- The notebook is in standard format and highly legible. Headlines (using `##`) present story points directly and follows a data-driven exploratory path. Hans Roslig is famous in creative data visualisation for social science. He is one of the top cited figures in data journalism courses. You should watch all his TED videos.
 - [Analysis of top 200 online novels](https://nbviewer.jupyter.org/github/DaisyZhongDai/hkbu-big-data-media/blob/master/homework3/Top%20200%20online%20novels.ipynb) -- Having **annotations** in bar chart and leveraging word cloud (beyond then course schedule) are two technical advantages. We encourage you to go beyond our class and find other useful libraries. You can learn with online samples and tutorials. The annotation of "mode (most frequent value) of book length" is newsworthy. It clearly shows that online novels follow certain pattern and may be an indicator of "factory production". However, histogram could be misleading sometimes, a serious researcher would checkout other alternatives of bin segments (size and boundary), but that is not required in assignment 3 as this is just a mini story.
 - [Chengdu scenic points](https://nbviewer.jupyter.org/github/marla322/hkbu-big-data-media/blob/master/HW3/pandas_chengdu.ipynb) -- The technical plus is to use `plotly`, which can generate interactive plots very easily. Those charts can also be published online using [GitHub Pages](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-00.md#github-pages). `Out[4]` and `Out[11]` could be improved, though. In the exploration stage, you may have some lengthy output cells. In the final product notebook, you can use `.head()`, `.tail()` or list-slicing to only present a few sample data. That improves the legibility.
+
+### Reference solutions for assignment 2
+
 
 ## Notes on Bonus Question
 
