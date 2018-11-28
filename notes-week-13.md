@@ -232,7 +232,7 @@ The tools and process:
 - Use `aggregate()` to accumulate each journalist's Github contribution data from 2008
 - Use `plotly` to visualize the map
 
-The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/Global%20Data%20Journalist%20Distribution).
+The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/Global-Data-Journalist-Distribution).
 
 ### American journalist job market map using ploty
 This is an example of choropleth map and a report about the condition of the employment market for journalists in the U.S.
