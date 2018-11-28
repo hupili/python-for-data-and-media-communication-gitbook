@@ -160,7 +160,7 @@ datetime.datetime(2018, 11, 29, 10, 36, 28),
 datetime.datetime(2018, 12, 25, 0, 0),
 datetime.datetime(2018, 11, 25, 10, 36))
 ```
-
+- The parameter `default` here means how python autofill the time which miss some units. For example, `Thu Sep 10:36:28` lack the information 'in which year' and `12/25` lack 'on which time' and 'in which year'. Python will autofill them according to the corresponding part in `default`.
 #### A failed parsing case
 
 However, The parsing will fail if we input a time against the regulations.
@@ -169,14 +169,14 @@ However, The parsing will fail if we input a time against the regulations.
 from dateutil.parser import parse
 parse("2月15日 10:36:28")
 ```
-
 This line will raise a `ValueError`:
 
 ```bash
 ValueError: ('Unknown string format:', '2月15日 10:36:28')
 ```
+- If we are going to parse `parse("2月15日 10:36:28")`, we need to convert it into a format without Chinese characters. Try to use `str.replace()` before parsing.
 
-The *dateutil* module provides powerful extensions to the standard *datetime* module. You can check more parse examples [here](https://dateutil.readthedocs.io/en/stable/examples.html#parse-examples)
+Generally, the *dateutil* module provides powerful extensions to the standard *datetime* module. You can check more parse examples [here](https://dateutil.readthedocs.io/en/stable/examples.html#parse-examples)
 
 ### Convert from datetime to utctimstamp and vice versa
 
@@ -311,11 +311,11 @@ datetime.timedelta(days=129)
 We can also do calculation between a datetime object and a timedelta object.e.g.what is the date 4 weeks later?
 
 ```python
-import datetime
-td_today = datetime.datetime(2018, 11, 19)
+from datetime import datetime, timedelta
+td_today = datetime(2018, 11, 19)
 #td_today = datetime.date.today()
-#td_today = datetime.datetime.now()
-td = td_today + datetime.timedelta(weeks = 4)
+#td_today = datetime.now()
+td = td_today + timedelta(weeks = 4)
 str(td)
 ```
 

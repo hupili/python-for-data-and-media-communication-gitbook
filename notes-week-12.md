@@ -247,22 +247,24 @@ for group in range(1, 20):
 
 In graph theory, the degree is the number of edges incident to the nodes. The degree usually represent the **importance** of nodes. Degree can be divided into In-Degree and Out-Degree. In-Degree is how many other nodes point to one node, while Out-Degree is how many other nodes one node points to. Degree is the sum of In-Degree and Out-Degree.
 
-```python
-g.degree
-pd.Series(dict(g.degree())).hist(bins=20)
-```
-
-![Graph structure degree.png](assets/graph-structure-degree.png)  
-`dict(g.degree())` and then `Series`. Then Draw a picture.
-
-From the histogram, we can see that the minority nodes have large number of edges while majority have less edges.
-This is a [Heave tail distribution](https://en.wikipedia.org/wiki/Heavy-tailed_distribution), which is famous for rich will be richer and poor will be poorer.
+![degree](assets/degree.jpg)
 
 #### Centrality Measures
 
 As we mentioned above, Degree can be divided into In-Degree and Out-Degree. The importance of nodes with the same total degree but different In-Degree and Out-Degree are different. That's the reason why We need Centrality Measures.
 
-[Centrality](https://en.wikipedia.org/wiki/Centralityis) a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
+[Centrality](https://en.wikipedia.org/wiki/Centralityis) is a classical concept in graph analysis. It measures the "importance" of nodes. The notions of "importance" are different. We only provide some samples in following sections.
+
+![centrality](assets/centrality.png)
+
+There are different centrality measures, like `Degree`, `Eigenvector` `Closeness` and `Betweenness`. The following is the interpretation of measures:
+
+| Centrality measure | Interpretation in social networks                                                     |
+|--------------------|---------------------------------------------------------------------------------------|
+| Degree             | How many nodes can one node reach directly?                                           |
+| Betweenness        | How likely is this node to be the most direct route between two nodes in the network? |
+| Closeness          | How fast can this node reach every other nodes in the network?                        |
+| Eigenvector        | How well is this node connected to other well- connected nodes?                       |
 
 You can refer to the [documentation](https://networkx.github.io/documentation/latest/reference/algorithms/centrality.html) and online resources to understand those centrality measures. Try other centrality measures that are not covered in this tutorial. See what interesting findings you can get.
 
@@ -302,15 +304,16 @@ df_top_nodes
 
 From centrality analysis, we can figure out the `key figures` and nodes in the network, and get the next step analysis leads.
 
-<!-- TODO: further reading?? outline.md, notes. Chainsaw's work on Mingpao -->
+Relative reading:
+
+* [政商網絡系列 文：陳電鋸](https://news.mingpao.com/ins/instantnews/web_tc/article/20150831/s00022/1441006491105).
+* [Network analysis of Game of Thrones](https://datascienceplus.com/network-analysis-of-game-of-thrones/)
 
 ### Basic statistics of graph
 
 #### Degree distribution
 
 In the above session, we mentioned that the degree of a node is the number of edges it has to other nodes. The degree distribution is the probability distribution of these degrees over the whole network.
-
-<!-- TODO: what is degree? -->
 
 ```python
 g.degree
@@ -320,7 +323,8 @@ pd.Series(dict(g.degree())).hist(bins=20)
 ![Graph structure degree.png](assets/graph-structure-degree.png)  
 `dict(g.degree())` and then `Series`. Then Draw a picture.
 
-* Heave tail distribution, which is famous for rich will be richer and poor will be poorer.
+From the histogram, we can see that the minority nodes have large number of edges while majority have less edges.
+This is a [Heave tail distribution](https://en.wikipedia.org/wiki/Heavy-tailed_distribution), which is famous for rich will be richer and poor will be poorer.
 
 <!-- TODO: power law/ prefential attachment/ long tail -->
 
