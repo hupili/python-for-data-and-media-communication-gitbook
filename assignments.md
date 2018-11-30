@@ -144,13 +144,24 @@ Basic requirements:
 
 Jupyter notebook is a rich environment for you to put up multimedia texts. You can refer to [this section](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-09.md#jupyter-notebook) for some functionalities of the Jupyter notebook.
 
-Some references from past submissions, with instructor notes:
+### Reference solutions for assignment 2
+
+Here are some references from past submissions, with instructor notes.
+
+S2018:
 
 - [Hans Rosling tops TED](https://nbviewer.jupyter.org/github/17441781/hkbu-big-data-media/blob/master/homework3/HW3-analysis.ipynb) -- The notebook is in standard format and highly legible. Headlines (using `##`) present story points directly and follows a data-driven exploratory path. Hans Roslig is famous in creative data visualisation for social science. He is one of the top cited figures in data journalism courses. You should watch all his TED videos.
 - [Analysis of top 200 online novels](https://nbviewer.jupyter.org/github/DaisyZhongDai/hkbu-big-data-media/blob/master/homework3/Top%20200%20online%20novels.ipynb) -- Having **annotations** in bar chart and leveraging word cloud (beyond then course schedule) are two technical advantages. We encourage you to go beyond our class and find other useful libraries. You can learn with online samples and tutorials. The annotation of "mode (most frequent value) of book length" is newsworthy. It clearly shows that online novels follow certain pattern and may be an indicator of "factory production". However, histogram could be misleading sometimes, a serious researcher would checkout other alternatives of bin segments (size and boundary), but that is not required in assignment 3 as this is just a mini story.
 - [Chengdu scenic points](https://nbviewer.jupyter.org/github/marla322/hkbu-big-data-media/blob/master/HW3/pandas_chengdu.ipynb) -- The technical plus is to use `plotly`, which can generate interactive plots very easily. Those charts can also be published online using [GitHub Pages](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-00.md#github-pages). `Out[4]` and `Out[11]` could be improved, though. In the exploration stage, you may have some lengthy output cells. In the final product notebook, you can use `.head()`, `.tail()` or list-slicing to only present a few sample data. That improves the legibility.
 
-### Reference solutions for assignment 2
+F2018:
+
+- [An analysis of crowd funding platform](https://nbviewer.jupyter.org/github/DidoChan/python-data-assignments/blob/master/assignment2/assignment2_new.ipynb) shared some practical insights. The correlation that Mon and Thur usually lead to high average funding volume is intersting and worth further discussion.
+- [GitHub activity of data journalists](https://nbviewer.jupyter.org/github/FLYSTEPHEN/python-data-assignments/blob/master/assignment2/jupyter-notebook.ipynb) analysed a list of data journalists curated by Journalism++, a news tool startup. This project is a good demo of how to approach a multi-dimensional data. 1D analysis by time/ by geo-region is the first touching point. The successful visualization by map and time series is worth sharing.
+- [Analysis of woshipm](https://nbviewer.jupyter.org/github/AlexZenghuashan/python-data-assignment/blob/master/assignment2/assignment%202.ipynb?) the last chart, i.e. a correlation between thumb and favourite, is worth sharing. It well exercises our key strategy of data mining: pattern recognition and anomaly detection. It is worth further investigation to see if there is any insight or cheating. Both could lead to a profound story.
+- [metoo on Weibo](http://nbviewer.jupyter.org/github/ClioLI/python-data-assignments/blob/master/assignment2/assignment2.ipynb) is a newsworthy topic. The analysis of KOL v.s. key nodes in diffusion process is very good and worth further discussion. One can apply network analysis and use centrality measurements and structural analysis to articulate the position of those nodes in a network.
+- [Google trend of last week](http://nbviewer.jupyter.org/github/ivyWANG958/python-data-assignments/blob/master/assignment2/GoogleAnalysis.ipynb) shows the top key words in last week (around 2018 US midterm election time). The discovery that "election" may be more closely related with "2016" is a good lead. A further analysis can leverage term co-occurrence network.
+- [Deaths in the news industry](http://nbviewer.jupyter.org/github/kaiwenxu94/python-data-assignments/blob/master/assignment2/Assignment2-v2.ipynb) analysed a public data base on journalists deaths. The topic selection is good to share. Chart selection can be further improved.
 
 
 ## Notes on Bonus Question
