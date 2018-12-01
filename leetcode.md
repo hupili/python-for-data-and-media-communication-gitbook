@@ -1,20 +1,6 @@
 # Leetcode
 
-<!-- TOC -->
-
-- [Leetcode](#leetcode)
-    - [Getting started](#getting-started)
-    - [Control flow](#control-flow)
-    - [List](#list)
-    - [String](#string)
-    - [Set](#set)
-    - [Algorithms](#algorithms)
-        - [Problem comprehension and simulation](#problem-comprehension-and-simulation)
-        - [Cummulative summation](#cummulative-summation)
-        - [Search, recursion, backtacking](#search-recursion-backtacking)
-        - [Dynamic programming](#dynamic-programming)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Leetcode](#leetcode)auto    - [Getting started](#getting-started)auto    - [Control flow](#control-flow)auto    - [List](#list)auto    - [String](#string)auto    - [Set](#set)auto    - [Algorithms](#algorithms)auto        - [Problem comprehension and simulation](#problem-comprehension-and-simulation)auto        - [Cummulative summation](#cummulative-summation)auto        - [Search, recursion, backtacking](#search-recursion-backtacking)auto        - [Dynamic programming](#dynamic-programming)autoauto<!-- /TOC -->
 
 Leetcode is a programming training website specially designed for Internet companies. The target audience is generally computer science background students. The problems on leetcode may involve some advanced data structure (more than `list`, `dict` stuffs you learn here) and advanced algorithms. A common heuristic is that, once you can finish first 200 random leedcode, you have very good chance to get into tier one Internet companies in the world. We do not require our students to be as proficient as that. However, this is the place to get you started with "computational thinking". We curate the following list with annotations for those curious minds. You can use the following list to test your basic Python knowledge.
 
@@ -39,6 +25,7 @@ You can win points by copy and pasting the above one-line solution to the input 
 ## Control flow
 
 - ★★☆☆☆ [lemonade-change](https://leetcode.com/problems/lemonade-change/) - involves `for`, `if` and variables. A very realistic problem in our life. Good to exercise logical thinking.
+- ★★★★☆ [utf-8-validation](https://leetcode.com/problems/utf-8-validation/) - a practical example for you to exercise advanced control flow. If you can pass this question with only a few number of trials, that is a good sign of mastery of control flow. Hint: you can use `'{:08b}'.format(d)` to quickly turn an integer into binary (0/1) presentations; the exercise involves, `for`, `if`, `else`, `continue`, `return`. "early return" is a useful trick to simplify code in a function.
 
 ## List
 
