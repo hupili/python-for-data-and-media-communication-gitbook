@@ -189,7 +189,7 @@ Example: Draw a bar chart between price range and likes, you can easily find tha
 ```python
 sns.set(font='SimHei') #set font to support Chinese character
 pd_df = df.groupby(['price'])['likes'].mean().reset_index().sort_values("likes",ascending=False) #this is to solve the output chart is not sorted by likes.
-ax = sns.barplot(x='price', y='likes',data=pd_df,palette=("ch:2.5,-.2,dark=.3")) #palette is like the color combination style
+ax = sns.barplot(x='price', y='likes',data=pd_df)
 plt.title('likes_price', color='gray', fontsize=16, weight='bold')
 ```
 
@@ -213,14 +213,6 @@ ax = sns.scatterplot(x="bookmark", y="likes",hue='price',data=df)
 ![Seaborn likes bookmark](assets/seaborn-likes-bookmark2.png)
 
 For more seaborn examples and tutorials, you can refer [here](hhttps://seaborn.pydata.org/tutorial.html)
-
-<!-- Apart from bar charts, there are many other style we can choose, the following is a simple demo of `catplot`.  You can refer [here](https://seaborn.pydata.org/generated/seaborn.catplot.html) for more plotting methods.
-
-```python
-sns.catplot(x="price", y="likes",hue="country", height=10, aspect=1,data=df)
-```
-
-![Seaborn cat-plot.png](assets/seaborn-cat-plot.png) -->
 
 ### plotly
 
