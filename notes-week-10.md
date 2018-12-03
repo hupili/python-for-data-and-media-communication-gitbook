@@ -24,7 +24,8 @@
             - [Remove stopwords](#remove-stopwords)
         - [Visualize word frequency](#visualize-word-frequency)
             - [with bar chart](#with-bar-chart)
-            - [with tag cloud](#with-tag-cloud)
+            - [wordcloud with matplotlib](#wordcloud-with-matplotlib)
+            - [wordcloud with pyecharts](#wordcloud-with-pyecharts)
     - [Word segmentation](#word-segmentation)
         - [jieba for Chinese](#jieba-for-chinese)
         - [How to add new terms to the wordseg dictionary](#how-to-add-new-terms-to-the-wordseg-dictionary)
@@ -528,7 +529,7 @@ word_count(processed_word_list)
 
 ![Words frequency bar](assets/words-frequency-top15-bar.png)
 
-#### with tag cloud
+#### wordcloud with matplotlib
 
 Tag cloud is widely used, for aesthetics purpose. You can have a more vivid picture about the top frequency words.
 
@@ -552,6 +553,25 @@ tag_cloud(words)
 ```
 
 ![Words frequency tag cloud](assets/words-frequency-tag-cloud.png)
+
+#### wordcloud with pyecharts 
+
+One can also plot interactive tag cloud with pyecharts, one thing is that its very simple, you only need to get the `clean words` with its `frequency`. Another thing is you can save the efforts to set the font and environment to support displaying Chinese characters with matplotlib. Following is a example of wordloud with pyecharts, you can find more in their [documentation](http://pyecharts.org/#/zh-cn/charts_base?id=wordcloud%EF%BC%88%E8%AF%8D%E4%BA%91%E5%9B%BE%EF%BC%89).
+
+```python
+from pyecharts import WordCloud
+words = ['特朗普','关税','美国','中国','加拿大','表示','贸易','征收','产品','上周五','亿美元','征税','威胁','政府','争端','准备','谈判','进行','商品','美国政府']
+value = [19, 17, 17, 17, 13, 8, 8, 7, 6, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 3]
+
+wordcloud = WordCloud(width=1300, height=620)
+wordcloud.add("", word, value, word_size_range=[20, 100])
+wordcloud.render('trade-war-wordcloud.html')
+
+from IPython.display import IFrame
+IFrame('trade-war-wordcloud.html', width=700, height=620)
+```
+
+![pyecharts tag cloud.png](assets/pyecharts-tag-cloud.png)
 
 ## Word segmentation
 
