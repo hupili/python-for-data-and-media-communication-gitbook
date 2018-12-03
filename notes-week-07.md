@@ -20,28 +20,28 @@
             - [Reference to elements in series](#reference-to-elements-in-series)
             - [Benefits of using series](#benefits-of-using-series)
         - [Pandas Dataframe](#pandas-dataframe)
-            - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
-            - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
+            - [Data Loading](#data-loading)
+                - [Load table (DataFrame) from local csv file](#load-table-dataframe-from-local-csv-file)
+                - [Load table (DataFrame) from a URL](#load-table-dataframe-from-a-url)
             - [Select data](#select-data)
                 - [Select columns with []](#select-columns-with-)
                 - [Select rows with .loc and .iloc](#select-rows-with-loc-and-iloc)
             - [Basic statistics](#basic-statistics)
                 - [DataFrame.describe()](#dataframedescribe)
                 - [Count values of series](#count-values-of-series)
-                - [Sort values in dataframe](#sort-values-in-dataframe)
                 - [Plot a simple chart: histogram](#plot-a-simple-chart-histogram)
-            - [Data cleaning and pre-processing](#data-cleaning-and-pre-processing)
-                - [Apply a function](#apply-a-function)
+            - [Sorting: DataFrame.sort_values](#sorting-dataframesort_values)
+            - [Transformation: DataFrame.apply and Series.apply](#transformation-dataframeapply-and-seriesapply)
                 - [lambda: anonymous function](#lambda-anonymous-function)
             - [Filtering](#filtering)
                 - [Filter by numeric range](#filter-by-numeric-range)
                 - [Filter by exact value](#filter-by-exact-value)
                 - [Filter by more than two conditions](#filter-by-more-than-two-conditions)
-        - [Export from `pandas`](#export-from-pandas)
-            - [to_csv](#to_csv)
-            - [to_dict](#to_dict)
-            - [to_json](#to_json)
-            - [Bonus: Python and Javascript in action](#bonus-python-and-javascript-in-action)
+            - [Save data](#save-data)
+                - [to_csv](#to_csv)
+                - [to_dict](#to_dict)
+                - [to_json](#to_json)
+        - [Bonus: from Python pandas and Javascript visualization](#bonus-from-python-pandas-and-javascript-visualization)
     - [Dataprep](#dataprep)
         - [Cleaning](#cleaning)
         - [Transformation](#transformation)
@@ -287,7 +287,9 @@ Output:
 
 ![Series to Df](assets/pandas-series-to-df.png)
 
-#### Load table (DataFrame) from local csv file
+#### Data Loading
+
+##### Load table (DataFrame) from local csv file
 
 First of all, you need to download the csv file from [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/open_rice/openrice_sample.csv). For how to download the file, you can refer to [here](github.md#how-to-download-a-file-from-github-web-page).
 
@@ -308,7 +310,7 @@ df = pandas.read_csv('openrice_sample.csv', header=None, names=['name', 'locatio
 # `df`is short for "dataframe", which is usually used as return value in pandas.
 ```
 
-#### Load table (DataFrame) from a URL
+##### Load table (DataFrame) from a URL
 
 We can also load CSV from GitHub directly with the help of `requests` and `io.StringIO`. `io` module is used for dealing with various types of I/O (input/output). Due to the requirement that `pandas.read_csv` function needs a `file-like object` as the argument, we need to use `io.StringIO` to write and store those string, returned from the request, temporarily. Then we can read the csv in pandas. Interested students can find more info about `io` module in [here](https://docs.python.org/3/library/io.html#text-i-o).
 
@@ -509,23 +511,6 @@ Name: style, dtype: int64
 
 `value_counts()` function gives you a hint for further filter and data processing. For example, after you know the `火锅` is the most popular food type. We can do a filter that select all the restaurants in `火锅` and cross analysis it with likes, prices etc., which we will cover later in this chapter.
 
-##### Sort values in dataframe
-
-Sort values in dataframe is similar to which in series. You can sort by different columns like the example:
-
-```python
-df.sort_values(by='likes',ascending=False)
-```
-
-**Note:** In the `sort_values` function, we can only use `ascending` method, `descending` will not work here,which is designed by pandas documentation. But we can use `ascending=False` to meet `descending` needs.
-
-What's more, in the multiple columns dataset, one may need to filter or sort values by multiple columns, we can use following method to accomplish this:
-
-```python
-df.sort_values(['likes','bookmark'],ascending=[False,False]) #the first false corresponding to the first column
-```
-
-![Sort values by multiple columns](assets/sort-values-by-multiple-columns.png)
 
 ##### Plot a simple chart: histogram
 
@@ -549,9 +534,25 @@ df['likes'].hist(bins=20)
 
 ![Openrice Csv Bins](assets/openrice-csv-bins.png)
 
-#### Data cleaning and pre-processing
+#### Sorting: DataFrame.sort_values
 
-##### Apply a function
+Sort values in dataframe is similar to which in series. You can sort by different columns like the example:
+
+```python
+df.sort_values(by='likes',ascending=False)
+```
+
+**Note:** In the `sort_values` function, we can only use `ascending` method, `descending` will not work here,which is designed by pandas documentation. But we can use `ascending=False` to meet `descending` needs.
+
+What's more, in the multiple columns dataset, one may need to filter or sort values by multiple columns, we can use following method to accomplish this:
+
+```python
+df.sort_values(['likes','bookmark'],ascending=[False,False]) #the first false corresponding to the first column
+```
+
+![Sort values by multiple columns](assets/sort-values-by-multiple-columns.png)
+
+#### Transformation: DataFrame.apply and Series.apply
 
 In the process of analyzing, we will encounter a lot of data cleaning issues, like the missing values, NoneType values or other type of values that have side effects, which need us to build different functions to handle them or convert them. For example, the price in the `openrice` is a range of number which cannot be compared directly. We need firstly clean the data and convert price range to numeric values.
 
@@ -710,7 +711,7 @@ df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)
 
 For how to manipulate multiple conditions, You may need to review the bool comparison logic in the Chapter 3 - [logic operators](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/78e8f08afdd84855295287ba19e360352fca373a/notes-week-03.md#logic-operators)
 
-### Export from `pandas`
+#### Save data
 
 After you finish processing data in `pandas`, you may want to export it
 
@@ -723,7 +724,7 @@ The common export formats are:
 - `to_dict`
 - to JSON format
 
-#### to_csv
+##### to_csv
 
 In pandas, dataframe to csv is very simple, just one line can work for this.
 
@@ -733,7 +734,7 @@ df.to_csv('full_filename', encoding='utf-8', index=False) #full_filename means y
 
 You can pass other parameter if needed, for more information, you can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html) .
 
-#### to_dict
+##### to_dict
 
 There are different output formats with `to_dict` method, which depends on what parameter you pass in. By default, it will return dict like {column -> {index -> value}}. List like method [{column -> value}, … , {column -> value}] is also wildly used. For example:
 
@@ -788,7 +789,7 @@ Output:
 
 You can check out [here](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_dict.html) for more usage and methods.
 
-#### to_json
+##### to_json
 
 `to_json` method will convert the dataframe to a JSON string, and its like combination of above two methods. The difference is that json has a `orient` parameter, which determine the output format, whether `list like` or `dict like`. Besides, for a file path or object. If not specified, the result is returned as a string.
 
@@ -812,7 +813,7 @@ You can check out [here](https://pandas.pydata.org/pandas-docs/stable/generated/
 
 After we get the json string, we also can use `json_dumps` and `json_loads` to convert between Python object and json file.
 
-#### Bonus: Python and Javascript in action
+### Bonus: from Python pandas and Javascript visualization
 
 A very common workflow is to process data in Python and visualize data in Javascript. The last interactive chart in this [blog post](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/#%E8%AD%B0%E5%93%A1%E5%9B%9B%E5%B9%B4%E6%8A%95%E7%A5%A8%E5%82%BE%E5%90%91%E8%AE%8A%E5%8C%96) shows the political preference variation of HK legco members during the 2012-2016 term. The interactive chart is made by [echarts](https://ecomfe.github.io/echarts-doc/public/en/index.html), a popular Javascript library for interactive visualisation from Baidu. However, the data collection and heavy duty data analysis are done in Python. We conducted the analysis in Python and export the `pandas.DataFrame` into a `JSON` format that can be consumed by echarts. You can checkout the [JSON file here](http://initiumlab.com/blog/20160730-Voting-Preference-Analysis-for-Hong-Kong-Legislative-Council-2012-2016/echarts-option-legco-5.json).
 
