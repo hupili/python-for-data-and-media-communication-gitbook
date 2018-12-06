@@ -25,6 +25,10 @@
             - [Community detection](#community-detection)
         - [Other Graph algorithms](#other-graph-algorithms)
             - [Shortest path](#shortest-path)
+    - [Other Network Visualization Libraries and Tools](#other-network-visualization-libraries-and-tools)
+        - [kumu.io](#kumuio)
+        - [Google Fusion Table](#google-fusion-table)
+        - [pyecharts](#pyecharts)
     - [Reference examples](#reference-examples)
 
 <!-- /TOC -->
@@ -448,11 +452,32 @@ nx.draw_networkx_edges(g,
 
 ![Graph shortest path](assets/graph-shortest-path.png)
 
+## Other Network Visualization Libraries and Tools
+
+### kumu.io
+
+<!-- TODO -->
+
+References:
+
+- Use Kumu To Make A Relationship Graph For Les Misérables
+ https://dnnsociety.org/2018/01/17/use-kumu-to-make-a-relationship-graph-for-les-miserables/
+- 關係圖表速成方案：Google Fusion Tables & Kumu ,  https://dnnsociety.org/2017/08/28/%E9%97%9C%E4%BF%82%E5%9C%96%E8%A1%A8%E9%80%9F%E6%88%90%E6%96%B9%E6%A1%88%EF%BC%9Agoogle-fusion-tables-kumu/
+
+### Google Fusion Table
+
+<!-- TODO -->
+
+- 關係圖表速成方案：Google Fusion Tables & Kumu ,  https://dnnsociety.org/2017/08/28/%E9%97%9C%E4%BF%82%E5%9C%96%E8%A1%A8%E9%80%9F%E6%88%90%E6%96%B9%E6%A1%88%EF%BC%9Agoogle-fusion-tables-kumu/
+
+### pyecharts
+
+<!-- TODO -->
+
 ## Reference examples
 
-* [Who control the discourse power in 红楼梦](https://dnnsociety.org/2018/04/15/who-control-the-discourse-power-in-%E7%BA%A2%E6%A5%BC%E6%A2%A6%EF%BC%9F/) by Group 8 2018S
-
-* [Li's family business map and spring layout analysis](https://dnnsociety.org/2018/04/15/lis-family-business-map-and-spring-layout-analysis/) by Group 7 2018S
+- [Who control the discourse power in 红楼梦](https://dnnsociety.org/2018/04/15/who-control-the-discourse-power-in-%E7%BA%A2%E6%A5%BC%E6%A2%A6%EF%BC%9F/) by Group 8 2018S
+- [Li's family business map and spring layout analysis](https://dnnsociety.org/2018/04/15/lis-family-business-map-and-spring-layout-analysis/) by Group 7 2018S
 
 ------
 
