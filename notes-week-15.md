@@ -34,6 +34,9 @@
         - [D3](#d3)
         - [MapShaper](#mapshaper)
         - [Google Fusion Table](#google-fusion-table)
+    - [Exercises](#exercises)
+        - [Distances among cities](#distances-among-cities)
+            - [Extended exercise of geo distance](#extended-exercise-of-geo-distance)
 
 <!-- /TOC -->
 </div>
@@ -324,3 +327,19 @@ MapShper can help one to preview maps files and convert between different format
 ### Google Fusion Table
 
 Being in the Google toolchain is a major advantage. However, this online tool requires KML format to plot a map. The current de facto standard GeoJSON is not supported as of this writing.
+
+## Exercises
+
+### Distances among cities
+
+1. Calculate the "straight line" distance on earth surface from several source cities to Hong Kong. The source cities: New York, Vancouver, Stockholm, Buenos Aires, Perth. For each source city, print one line containing the name of the city and distance.
+2. You can find "Great-circle distance" formula [here](https://en.wikipedia.org/wiki/Great-circle_distance).
+3. Use list and for loop to handle multiple cities.
+4. Use function to increase the reusability.
+5. Modules you need: [math](https://docs.python.org/3/library/math.html), you may need to use trigonometric functions.
+
+**NOTE:** Our objective of the whole course is to get you onboard a new tool -- Python. You should use the tool but not be constrained by this tool. When you get stuck with a challenge, try to use your way, combining non-Python methods, to solve it and then iterate for better solution. For example, one key question for this exercise is to get the geo-locations of the cities in terms of longitudes and latitudes. Only with those coordinates, you can fit them into the great-circle distance formula. You can do this by searching Google, Google Map or Wikipedia as a start. After you have a basic version, try to think of automatic ways, in case there are a large number of interested cities in our real challenge, which makes the manual searching method infeasible.
+
+#### Extended exercise of geo distance
+
+There is a package called `geopy`. It can automatically search the geo-locations in terms of longitude and latitude based on the location names. Further more, it can directly compute the distance between two geo-locations, without requiring to write the formula all by one's own.
