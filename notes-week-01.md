@@ -23,6 +23,16 @@
         - [Install python 3](#install-python-3)
         - [Modify the `ex1.py` file by a text editor](#modify-the-ex1py-file-by-a-text-editor)
         - [Execute .py file](#execute-py-file)
+    - [Familiar with python interactive mode](#familiar-with-python-interactive-mode)
+        - [Python interpreter](#python-interpreter)
+        - [Invoking the Interpreter](#invoking-the-interpreter)
+        - [Two basic modes: script and interactive](#two-basic-modes-script-and-interactive)
+            - [Execute an existing script interactively](#execute-an-existing-script-interactively)
+    - [Learn to use Jupyter Notebook](#learn-to-use-jupyter-notebook)
+        - [Virtual environment](#virtual-environment)
+        - [Setup virtualenv and install Jupyter Notebook](#setup-virtualenv-and-install-jupyter-notebook)
+        - [Setup jupyter environment in CVA517](#setup-jupyter-environment-in-cva517)
+        - [Basic usage](#basic-usage-1)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References and Further Readings](#references-and-further-readings)
 
@@ -35,8 +45,10 @@ In this very first chapter, you will start a journey, swimming in the ocean of c
 ## Objective of this week
 
 * Setup the Python environment. Please read [here](setup-environment.md).
-* Learn what is terminal, Able to navigate file system in Terminal, using the shell.
+* Learn what is terminal. Be able to navigate file system in Terminal using the shell.
 * Create the first python script and execute it.
+* Learn the interactive mode of Python interpreter -- convenient for rapid experimentation.
+* Learn the Jupyter notebook -- our major working platform in following weeks.
 
 ## About terminal on Mac
 
@@ -301,6 +313,136 @@ Press **Command+s** to save the file as "ex1.py" on desktop.
   ```
 
 If the output is "2.x", you will need to try `python3`. For example, when you execute Python script, you need to type `python3 myscript.py` when our book uses `python myscript.py`.
+
+## Familiar with python interactive mode
+
+### Python interpreter
+
+> An interpreter is a program that reads and executes code. This includes source code, pre-compiled code, and scripts. Basically, the Python interpreter is the application that runs your python script.
+
+By default, Python source files are treated as encoded in UTF-8. But the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, python interpreter will recognize that the file is UTF-8, and support all the characters in the file.
+
+What the interpreter does in a nutshell:
+
+1. Read the script line by line and converts that script into python byte code.
+2. The interpreter then executes the file instruction by instruction, it is at this stage errors are created if your code generates such errors.
+
+### Invoking the Interpreter
+
+Typing the command `python` or `python3` on your terminal.
+After that, you will see `>>>` notation which indicates you that you have already entered the interactive mode and the interpreter is waiting for your input. For instance:
+
+```python
+$ python3
+>>> hello
+hello
+>>> 1 + 2
+3
+>>> a = 0
+```
+
+Type `control + d`， or use `quit()` function to the interpreter.
+
+### Two basic modes: script and interactive
+
+1. `The script mode` is the normal mode where the scripted and finished `.py` files are run in the Python interpreter.
+
+2. `The interactive mode` is a command line shell which gives immediate feedback for each statement.
+
+Differences between two modes：
+
+* A `.py` file can only be executed in script mode, using `python3` + `filename.py` to run the file.
+* In interactive mode, you can only enter one line and execute one line each time, while in script mode, you can execute all the code in the file at once by running the .py file directly.
+* The interactive mode is primarily used to debug the code and testing.
+
+#### Execute an existing script interactively
+
+Sometimes, you have an existing script, maybe from past works or from others. You want to execute this script first but stays in the Python interpreter after that. In this way, the state of the interpreter, e.g. all the variables, will be fully preserved for your further exploration. One can use the `-i` option. The command line pattern is as follows:
+
+```bash
+python -i myscript.py
+```
+
+## Learn to use Jupyter Notebook
+
+Jupyter notebook is originally called "IPython notebook" (interactive Python notebook), thus having the `.ipynb` suffix/ extention name of the the Jupyter notebook file.
+
+It provides a web-based interface for you to interactively test and build Python codes. It is well suited for a bottom-up approach when buiding larger projects.
+
+### Virtual environment
+
+You will hear the term "environment" a lot of times when learning programming. It is a very broad term that refers to the context where the program is executed. The context can be time, operating system, current working folder, Python version, dependent module version, the status of system, the status of dependent components, ...
+
+**TIP**: Two pieces of codes can act differently if the environments are different. When you find someone else's codes work but the same thing does not work at your side, it is a problem of "environment". Trouble shooting highly depends on experience and we will see a lot during the semester.
+
+Python has a concept called virtual environment, "virtualenv" for short. You can use virtualenv to ensure the programs execute in the same environment. One common use case is to run Python2 and Python3 programs on the same computer. The system defaults to one of the major versions. However, you can use virtualenv to run some programs in Python2 and some programs in Python3. We also use virtualenv to ensure the dependent Python moduels are the same, whose version is usually specified in `requirements.txt`.
+
+There are two commands to setup virtualenv:
+
+* `virtualenv` -- old executable usually used in Python2.
+* `pyvenv` -- the default and recommended way of setting up virtualenv in Python3. The tools is shipped with Python3 installation.
+
+### Setup virtualenv and install Jupyter Notebook
+
+If it's the first time you use jupyter notebook, you need create a virtual environment first. The following are the usual path to setup jupyter environment. For users in CVA 517 LAB, please see [here](#setup-jupyter-environment-in-cva517).
+
+Step 1: Create virtual environment
+
+```bash
+pyvenv venv
+```
+
+Step 2: Enter virtual environment
+
+```bash
+source venv/bin/activate
+```
+
+Step 3: Install Jupyter notebook
+
+```bash
+pip3 install jupyter
+```
+
+Step 4: Enter Jupyter notebook
+
+```bash
+jupyter notebook
+```
+
+### Setup jupyter environment in CVA517
+
+Due to the jupyter and the python conflict, there are problems of installing jupyter by the usual way. Instead, the following will work. For more details explanation, please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/48).
+
+```bash
+pyvenv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip3 install jupyter
+pip3 install 'ipython ==6.5.0'
+pip3 install 'prompt-toolkit ==1.0.15'
+```
+
+Then, next time, you can just type the following command to open jupyter notebook
+
+```bash
+source venv/bin/activate
+jupyter notebook
+```
+
+For details, Please see to our [tutorial](/module-jupyter.md) of how to install and enter jupyter notebook. The following is what jupyter notebook will look like.
+
+![jupyter notebook example](/assets/jupyter-notebook-example.png)
+
+### Basic usage
+
+1. click `new` to create a new python 3 notebook
+2. write codes like you usually do in text editors, and press `shift`+`return` to run the code. It will return the results or errors under the cell.
+3. use `! pip3 install module_name` to install modules in jupyter notebook.
+4. in front of every cell, there is an `in [ ]` sign, the number in `[]` means the sequences of cells, and if there is `*` in `[]`, means that this cell is still running, you can either wait it finish or click `stop` under the `kernel` to exit from the running,pressing `I` twice will also do the trick.
+5. cell. `run cell` run step by step. `run all above` to run and check the previous steps of coding.
+6. kernel. `kernel` is a tool for interactive input and output all the things you did from the beginning. By clicking`restart`, you can give a variable another value.
+
 
 ## Exercises and Challenges
 

@@ -6,11 +6,6 @@
 
 - [Week 02 - Use Python as a daily tool](#week-02---use-python-as-a-daily-tool)
     - [Objective of this week](#objective-of-this-week)
-    - [Familiar with python interactive mode](#familiar-with-python-interactive-mode)
-        - [Python interpreter](#python-interpreter)
-        - [Invoking the Interpreter](#invoking-the-interpreter)
-        - [Two basic modes: script and interactive](#two-basic-modes-script-and-interactive)
-            - [Execute an existing script interactively](#execute-an-existing-script-interactively)
     - [Variables and assignment](#variables-and-assignment)
     - [Basic data types](#basic-data-types)
         - [Integer: `int`](#integer-int)
@@ -69,54 +64,7 @@ In the previous chapter, We introduced the basic knowledge about terminal on Mac
 * Become comfortable with Python interpreter -- the REPL pattern (Read-Evaluate-Print Loop)
 * Can use Python as a daily tool -- at least a powerful calculator
 
-## Familiar with python interactive mode
 
-### Python interpreter
-
-> An interpreter is a program that reads and executes code. This includes source code, pre-compiled code, and scripts. Basically, the Python interpreter is the application that runs your python script.
-
-By default, Python source files are treated as encoded in UTF-8. But the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, python interpreter will recognize that the file is UTF-8, and support all the characters in the file.
-
-What the interpreter does in a nutshell:
-
-1. Read the script line by line and converts that script into python byte code.
-2. The interpreter then executes the file instruction by instruction, it is at this stage errors are created if your code generates such errors.
-
-### Invoking the Interpreter
-
-Typing the command `python` or `python3` on your terminal.
-After that, you will see `>>>` notation which indicates you that you have already entered the interactive mode and the interpreter is waiting for your input. For instance:
-
-```python
-$ python3
->>> hello
-hello
->>> 1 + 2
-3
->>> a = 0
-```
-
-Type `control + d`， or use `quit()` function to the interpreter.
-
-### Two basic modes: script and interactive
-
-1. `The script mode` is the normal mode where the scripted and finished `.py` files are run in the Python interpreter.
-
-2. `The interactive mode` is a command line shell which gives immediate feedback for each statement.
-
-Differences between two modes：
-
-* A `.py` file can only be executed in script mode, using `python3` + `filename.py` to run the file.
-* In interactive mode, you can only enter one line and execute one line each time, while in script mode, you can execute all the code in the file at once by running the .py file directly.
-* The interactive mode is primarily used to debug the code and testing.
-
-#### Execute an existing script interactively
-
-Sometimes, you have an existing script, maybe from past works or from others. You want to execute this script first but stays in the Python interpreter after that. In this way, the state of the interpreter, e.g. all the variables, will be fully preserved for your further exploration. One can use the `-i` option. The command line pattern is as follows:
-
-```bash
-python -i myscript.py
-```
 
 ## Variables and assignment
 
