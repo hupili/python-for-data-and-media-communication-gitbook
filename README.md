@@ -1,5 +1,7 @@
 # Python and Data Analysis for Communication Students
 
+**NOTICE**: The `master` branch you are reading now are the WIP version 2. The chapter structure is different from version 1. If readers want to refer to version 1, please follow this link: https://github.com/hupili/python-for-data-and-media-communication-gitbook/tree/v1
+
 <!-- TOC -->
 
 - [Python and Data Analysis for Communication Students](#python-and-data-analysis-for-communication-students)
