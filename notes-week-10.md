@@ -1,726 +1,736 @@
-# Week 10: Text data
+# Week 08 - Work with table: 1D analysis and 2D analysis
 
 <div id="toc">
-
 <!-- TOC -->
 
-- [Week 10: Text data](#week-10-text-data)
-    - [Text processing](#text-processing)
-        - [String functions recap](#string-functions-recap)
-            - [Case 1: Get full URL from HTML A tag's href attribute](#case-1-get-full-url-from-html-a-tags-href-attribute)
-            - [Case 2: Substring matching and substitution](#case-2-substring-matching-and-substitution)
-            - [Case 3: Most frequent names in tweets](#case-3-most-frequent-names-in-tweets)
-        - [encode and decode](#encode-and-decode)
-        - [String matching and Regular Expression (RegEx)](#string-matching-and-regular-expression-regex)
-            - [RegEx case 1: match Twitter username from tweets](#regex-case-1-match-twitter-username-from-tweets)
-            - [RegEx case 2: match telephone numbers in a piece of text](#regex-case-2-match-telephone-numbers-in-a-piece-of-text)
-            - [Bonus: Text substitution](#bonus-text-substitution)
-            - [RegEx in shell](#regex-in-shell)
-    - [Word frequency](#word-frequency)
-        - [Use dict to count the words frequency](#use-dict-to-count-the-words-frequency)
-        - [Use pandas.series.value_counts()](#use-pandasseriesvalue_counts)
-        - [Stopwords](#stopwords)
-            - [Set stopwords](#set-stopwords)
-            - [Remove stopwords](#remove-stopwords)
-        - [Visualize word frequency](#visualize-word-frequency)
-            - [with bar chart](#with-bar-chart)
-            - [wordcloud with matplotlib](#wordcloud-with-matplotlib)
-            - [wordcloud with pyecharts](#wordcloud-with-pyecharts)
-    - [Word segmentation](#word-segmentation)
-        - [jieba for Chinese](#jieba-for-chinese)
-        - [How to add new terms to the wordseg dictionary](#how-to-add-new-terms-to-the-wordseg-dictionary)
-        - [How to adjust term weight in the wordseg dictionary](#how-to-adjust-term-weight-in-the-wordseg-dictionary)
-    - [Bonus: TF.IDF](#bonus-tfidf)
-    - [Bonus: Topic model](#bonus-topic-model)
-    - [Bonus: Sentiment analysis](#bonus-sentiment-analysis)
-    - [Bonus: word2vec](#bonus-word2vec)
-    - [Further readings](#further-readings)
+- [Week 08 - Work with table: 1D analysis and 2D analysis](#week-08---work-with-table-1d-analysis-and-2d-analysis)
+    - [Objective](#objective)
+    - [More Arithmetics on DataFrame and Series](#more-arithmetics-on-dataframe-and-series)
+        - [Exercise: The Berkeley admission synthesis dataset](#exercise-the-berkeley-admission-synthesis-dataset)
+    - [Distribution](#distribution)
+        - [Histogram](#histogram)
+            - [Bonus: How histograms can be cheating](#bonus-how-histograms-can-be-cheating)
+        - [Kernel Density Estimation (KDE)](#kernel-density-estimation-kde)
+        - [Special points in distribution](#special-points-in-distribution)
+    - [Bonus: Articulate central tendency and spread of data](#bonus-articulate-central-tendency-and-spread-of-data)
+        - [Variance](#variance)
+        - [Skewness](#skewness)
+        - [Kurtosis](#kurtosis)
+        - [The mode of data](#the-mode-of-data)
+    - [Correlation](#correlation)
+        - [Continuous: Scatter plot and correlation](#continuous-scatter-plot-and-correlation)
+        - [Bonus: Better visualisation](#bonus-better-visualisation)
+            - [Filter out in the charts](#filter-out-in-the-charts)
+            - [A more primitive/ finer controlled way of plotting using matplotlib](#a-more-primitive-finer-controlled-way-of-plotting-using-matplotlib)
+        - [Discrete: Cross-tab](#discrete-cross-tab)
+            - [DataFrame.groupby](#dataframegroupby)
+            - [pandas.pivot_table](#pandaspivot_table)
+                - [Discretise multiple columns](#discretise-multiple-columns)
+                - [pivot_table to generate cross-tabs table](#pivot_table-to-generate-cross-tabs-table)
+        - [From correlation to causality](#from-correlation-to-causality)
+    - [Bonus: (Statistical) Hypothesis testing](#bonus-statistical-hypothesis-testing)
+    - [Reference](#reference)
 
 <!-- /TOC -->
-
 </div>
 
-<!-- NOTE: new outline begin -->
+## Objective 
 
-## Text processing
+- Master the schema of "data-driven story telling": the crowd \(pattern\) and the outlier \(anomaly\)
+- Can use `pandas`, `matplotlib` and `seaborn` to conduct 1D analysis and articulate on the statistics
+- Can conduct 2D analysis by:
+  - `pandas.pivot_table()` -- discrete distribution analysis (bin analysis)
+  - `pandas.groupby().aggreate()` -- the SAC (splitting -- applying -- combining) pattern
+  - `Series.corr()` -- calculate correlation
+  - `DataFrame.plot()` or `matplotlib.pyplot.plot()` -- scatter plot to visualise 2D correlation
 
-### String functions recap
+The dataset and case we use this week comes from a workshop called "descriptive analysis" conducted by Jenifer on GICJ2017 in South Africa. You can download data from:
 
-Outline:
+* www.jenster.com/nottingham.xlsx
+* www.jenster.com/index.xlsx
 
-- split
-- replace
-- join
-- format
-- find
-- slicing (`:`)
+New modules:
 
-#### Case 1: Get full URL from HTML A tag's href attribute
+* [Matplotlib](https://matplotlib.org/). Matplotlib is a Python 2D plotting library and one of the most frequently used plotting modules in Python.
+* [Seaborn](https://seaborn.pydata.org/). Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.
 
-To Scrape Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
+## More Arithmetics on DataFrame and Series
 
-* Using `split + slice + format`
+Series has many arithmetic funcitons. Although one can easily implement those functions with basic `list` and basic logics in Python, those provided by `Series` can save some time by writing for loops, because they are design to work on "a series of numbers". Examples are like:
 
-When scraping certain elements in webpage, the elements sometimes are folded or shorted, we need to split to different parts, use list slicing to get the part we want and re-format the strings we want.  For example:
+- `.sum()`
+- `.min()`
+- `.max()`
+- `.quantile()`
 
-![Initiumlab articles](assets/initiumlab-articles.png)
+Two `Series` of the same length can use conventional arithmetics and boolean operators to perform an **element-wise** operation. For example:
 
-the article url we get is `"../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"`, but what we expect is this`"http://initiumlab.com/blog/20160730-mediawiki-wiki-knowledge-management-system/"`. We can format the new string by the following method.
+- `a + b` - result is a new Series whose values are the element-wise addition from `a` and `b`.
+- `a == b` - result is a new Series whose values are element-wise `==` logical operation.
+
+When one hand side of the equation is not a Series, but a "scalar", i.e. single number, this single number is used in all operations with all elements from another Series.
+
+Many functions that are available for `Series` are also available for `DataFrame`. A `DataFrame` is in essense a collection of `Series`. To apply those functions that works on `Series` to `DataFrame`, we need to have certain ordering, which is given by a keyword parameter called `axis`:
+
+- Operate along columns (`axis=0`)
+- Operate along rows (`axis=1`)
+
+**TIP**: Sometimes, one may be used to column operations or row operations, when writing his/ her computation logics. It is Ok to stick with one convention. When you need to operate along another axis, use the **transpose** version of the DataFrame, i.e. `DataFrame.T` (Use it like a member variable).
+
+With the progress of data processing, the table at your hand is usually larger and larger. You may want to put the new result back to original table sometimes. There are mainly two ways:
+
+- Adding a new column is easy. Just use `df['new-column'] = A valid Sereis`.
+- Adding a new row needs some more work. Use `pandas.concat([df, row])`, where `df` is the original DataFrame; and `row` is the new DataFrame with one data point, whose columns are the same as `df`.
+
+### Exercise: The Berkeley admission synthesis dataset
+
+Calculate the by-department admission ratio and the whole-school admission ratio. Try to articulate whether there is gender discrimination or not.
+
+The dataset can be downloaded [here](assets/1973-UC-Berkeley-Admission-Data-Synthesis-Data.csv).
+
+For further reading, search for "Simpson's paradox".
+
+Here is the [demo code](https://github.com/hupili/python-for-data-and-media-communication/blob/b351f35d7a946e4f0068e820c4ebcfb2ed5d114a/pandas-examples/Berkeley.ipynb).
+
+## Distribution
+
+For distribution, we can use some simple pandas statistics functions to get a overall picture of whats the data distribution like, from what we can get at least two analyzing directions:
+
+1. Is there a clear trend or a pattern of the distribution?
+2. Is there any abnormal or outliers that worthy noticing?
+
+The following is the analyzing demo after we get a clean dataset, based on the example of *Cheating our children* case, and try to find insights.
+
+### Histogram
 
 ```python
-s = "../../../blog/20160730-mediawiki-wiki-knowledge-management-system/"
-s = s.split('/blog')
-#s
-s1 = s[-1]
-#s1
-s2='{0}{1}'.format('http://initiumlab.com/blog',s1)
-#s2
-```
-
-#### Case 2: Substring matching and substitution
-
-Check out certain words in a string, replace certain words and separate the words with some notations.
-
-* Using `find + replace + join`
-
-In certain occasion, we need to check out whether there is one word in the string, and need to replace the word.
-
-```python
-s = "this is string example....this is the string we will test, is it"
-s.find('string')
-#output: 8, the position of the first characters
-s.find('python')
-#output: -1, it will return -1 if there is no this word in the string
-s.replace("is", "was") #replace all
-#output: 'thwas was string example....thwas was the string we will test, was it'
-s.replace("is", "was", 3) #replace first 3
-#output: 'thwas was string example....thwas is the string we will test, is it'
-s2 = s.split(' ')
-'|'.join(s2) #you can add different things in the string
-#output: 'this|is|string|example....this|is|the|string|we|will|test,|is|it'
-```
-
-#### Case 3: Most frequent names in tweets
-
-Apply a function onto every element of the dataframe - Check out the most frequent names in the tweets text
-
-* Using `str.lower()` + `in` operator + `pandas.apply()`
-
-Exercise with the Tweeter Troll Data, you can download [here](https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/text-analysis/regular_reader_tweets.csv).
-
-1. Check out times that certain name appears in the dataset.
-
-```python
-#import and check out the dataset
 import pandas as pd
-df = pd.read_csv('regular_reader_tweets.csv')
-#len(df)
-#df.sample(10)
-
-#check certain user name in the text
-def check_name(x):
-    return 'ten_gop' in str(x).lower()
-df['text'].apply(check_name).value_counts()
-#return results true only
-#df['text'].apply[check_names].value_counts()[True]
-```
-
-Output:
-
-```text
-False    202991
-True        491
-Name: text, dtype: int64
-```
-
-2. Check out the most common names in the tweet text.
-
-```python
-# filter out all the user and reset to dataframe
-s_user = df['user_key'].value_counts()
-df_users = s_user.reset_index()
-#df_users
-
-# count_retweeted_number of all the users with apply function
-def count_retweeted_number(name):
-    def check_name(x):
-        return name in str(x).lower()
-    return df['text'].apply(check_name).value_counts().get(True, 0)
-
-df_users['count'] = df_users['index'].apply(count_retweeted_number)
-df_users.sort_values(by='count', ascending=False)
-```
-
-Output:
-
-![Checkout most common names](assets/checkout-most-common-names.png)
-
-### encode and decode
-
-- UTF-8
-- GBK
-
-`UTF-8` is the most widely used implementation of Unicode on the Internet, while `GBK` is mainly used for coding Chinese character.
-
-When scraping the webpage, the results of `r.text` & `r.content` is different. Let's get straight of their relationships.
-
-```python
-url = 'http://www.jour.hkbu.edu.hk/faculty/'
-r = requests.get(url)
-r.text
-```
-
-This is the results of `r.text` its a string.
-
-![Encoding text](assets/encoding-r-text.png)
-
-```python
-r.content
-```
-
-This is the results of `r.content` its a byte.
-![Encoding content](assets/encoding-r-content.png)
-
-The conversion between string and byte is as follows:
-
-- byte to string: `r.content.decode()`. Pass the decode method like `gbk` into the bracket.
-- string to byte: `r.text.encode()`. Pass the encode method like `utf-8` into the bracket.
-
-Why we need to convert between two types?
-
-When scraping one webpage, we need to get the `string` type so that we can use `BeautifulSoup` to parser the string and extract the value we want. Therefore, usually, we just use `r.text` is enough.
-
-But if the website use other encoding methods than `utf-8`, like `gbk`, we need to decode the content first. In such circumstance, using `r.content.decode()` to get the string. Usually, we can get the website encoding method in their html `meta` tag.
-
-Another method to solve the encoding problem is making a statement at the beginning like the following.
-
-```python
-r = requests.get('http://www.jour.hkbu.edu.hk/faculty/')
-r.encoding = 'utf-8' #using this line, change the encoding method corresponding to their webpage encoding method
-data = BeautifulSoup(r.text,"html.parser")
-```
-
-Case1: You can refer [Chapter 6 - encoding for another example](notes-week-06.md#encoding). 
-
-Case2 : scraping Chinese websites like `电影天堂`.
-
-```python
-url = 'https://www.dytt8.net/'
-r = requests.get(url)
-html_str = r.text
-```
-
-![Wrong encoding](assets/wrong-encoding.png)
-
-You will find the results is messy because the website is using `gb2312` method to encode the html, which is kind of `GBK` methods.
-
-![GBK encoding](assets/gbk-encoding.png)
-
-Therefore, we need to firstly decode the content.
-
-```python
-html = r.content.decode('gbk')
-html
-```
-
-![Decodes gbk](assets/decode-gbk.png)
-
-After decoding, the Chinese characters can display appropriately. And when writing data into csv, you can use a more widely used method `utf-8` to encode it.
-
-```python
-with open('dy.csv','a',newline='',encoding='utf-8') as f:
-    writer = csv.writer(f)
-    ...
-```
-
-### String matching and Regular Expression (RegEx)
-
-The `.find()` and `in` operator on `str` has limited matching capability. They can only perform precise matching. What if we want to do fuzzy matching? Common siutations:
-
-1. Find all the user names from the Twitter message. i.e. those look like `@xxxx `, i.e. start with `@` and end with ` ` (blank).
-2. Find all the phone numbers from a paragraph of texts.
-
-RegEx can solve those problems in a very concise way. We show you the power of RegEx in following subsections. Once you decide to move further, the [official doc on re](https://docs.python.org/3/library/re.html) is a good source for you to further study RegEx.
-
-#### RegEx case 1: match Twitter username from tweets
-
-Here's the solution for question 1.
-
-```python
->>> tweet = '@tom @jacky and @will, please come to my office at 10am.'
->>> import re
->>> pattern = re.compile(r'@[a-zA-Z0-9]+')  # pattern of the Twitter username
->>> pattern.findall(tweet)
-['@tom', '@jacky', '@will']
-```
-
-The key of learning RegEx is to learn the pattern string, i.e. `@[a-zA-Z0-9]+` in the above example. Let's decode this pattern as follows:
-
-- `@` - matches a single `@` character.
-- `[]` - is a collection notation, matching the current position to any valid character in this collection.
-  - In our example, the collection is composed of
-    - All characters from `a` to `z`, and from `A` to `Z`, and from `0` to `9`.
-    - The hyphen `-` here is a notation to specify a range of characters.
-- `+` - is a repetition number, meaning matching one or more characters using the preceding pattern character
-  - The preceding pattern character is a collection, i.e. `[a-zA-Z0-9]`.
-
-To sum it up, the above RegEx pattern can match all any substring that starts with a `@` character and then followed by one or more alphanumeric characters.
-
-#### RegEx case 2: match telephone numbers in a piece of text
-
-Learning RegEx is like learning a new language. It is very easy to match the pattern you want. However, it may be difficult to exclude things that you don't want to match. Let's give a demo using question 2. The first trial would be:
-
-```python
->>> introduction = 'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at 34119999 or Mr B 34119998'
->>> pattern = re.compile(r'\d+')
->>> pattern.findall(introduction)
-['16', '1', '34119999', '34119998']
-```
-
-In this pattern, `\d` means the collection of numbers, i.e. `[0-9]`. The `+` specifies a repetition count of one or multiple. You can see that all the numeric substrings are extracted. However, not all of them are telephone numbers. Given a bit domain knowledge, we know that the phone numbers in Hong Kong have 8 digits. So we can adjust our pattern to use a repetition number of `{8}`:
-
-```python
->>> pattern = re.compile(r'\d{8}')
->>> pattern.findall(introduction)
-['34119999', '34119998']
-```
-
-The pattern works at present, but does not work when the text includes other 8-digit non telephone number substrings:
-
-```python
->>> introduction = 'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at 34119999 or Mr B 34119998. Students who enrol in extra courses will be charged 12345678 dollar per course.'
->>> pattern = re.compile(r'\d{8}')
->>> pattern.findall(introduction)
-['34119999', '34119998', '12345678']
-```
-
-The tuition fee is also match because our pattern is not precise enough. In order to fix this problem, we need to further apply our domain knowledge. We know that HKBU's telephone numbers start with `3411`. So we can revise our pattern and get following result:
-
-```python
->>> pattern = re.compile(r'3411\d{4}')
->>> pattern.findall(introduction)
-['34119999', '34119998']
-```
-
-The pattern is to match any 8 character string that starts with "3411" and ends with any four digits. The curious readers may ask: what if the tuition fee is "34113411 dollar"? As you guess, the above pattern fails. How to refine? The short answer is that there is no ultimate way. As long as "34113411" itself is a valid telephone number, we can hardly exclude it from our matching by just looking at itself. 
-
-This issue is quite common text processing, or further more **Natural Language Processing (NL)**. The token itself is not enough for us to understand its meaning. One similar example is: "Apple is good". We are not sure if "the Apple" that produces iPhone is good; or apple, as a fruit, is good. We human being needs context in order to understand this sentence. So is computer. This discussion is beyond our curriculum. Interested readers can search for "NLP".
-
-Back to our focus on basic pattern matching, we can conclude that it is easy to match the things one want using RegEx, but rather difficult to fully exclude other unwanted stuffs. When building your RegEx solution, you usually starts with a collection of **cases**. You keep on adding new cases to the collection and test them with your RegEx pattern. You may need to refine multiple times in order to find the one that works well on your dataset.
-
-#### Bonus: Text substitution
-
-RegEx can let you substitute some matching parts. This is very similar to the `str.replace` function but does more than that. It even allows one to interpolate variables using values from matching part.
-
-Suppose the university decides "3411" is a bad prefix and "8888" sounds good. How do we change all the numbers? Checkout following solution:
-
-```python
->>> pattern = re.compile(r'3411(\d{4})')
->>> re.sub(pattern, r'+852 8888-\1', introduction)
-'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at +852 8888-9999 or Mr B +852 8888-9998. Students who enrol in extra courseswill be charged 12345678 dollar per course.'
-```
-
-Besides changing the telephone prefix, we also added the country code and a hyphen between university prefix and the phone number. Note how this happens:
-
-- `()` is called a "group" in RegEx. The brackets do not match any character. However, patterns inside a pair of brackets are of the same group. The match substring will be put in the same group for further reference.
-- `\1` means the first group. There could be multiple groups matched by one pattern. You can use `\n` notation to refer to the `n`-th group. `\0` means the entire string.
-
-#### RegEx in shell
-
-Following commands can be used to perform RegEx operation. Those commands sometimes can make your work more efficient.
-
-- `grep`
-- `egrep`
-- `fgrep`
-
-## Word frequency
-
-Word frequency refers to the number of times a list of given word appears in the file, which gives you a quick overview of the top words in one text data and help find the news point for further analysis.
-
-### Use dict to count the words frequency
-
-```python
-words_list = meaningful_words #the list of words you have
-dict_words_frequency={}
-for n in words_list:
-    dict_words_frequency[n]=words_list.count(n)
-#dict_words_frequency
-```
-
-### Use pandas.series.value_counts()
-
-Use the [assignment 1](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assignments.md#assignment-0----bridging-assignment-for-language-efficiency) as an example:
-
-```python
-import os
-import pandas as pd
-  
-def read_txt(path): #read files and get content
-    all_text = []
-    for file in os.listdir(path):
-        f=open(file,"r+",encoding="utf8",errors="ignore")
-        contents= f.read()
-        all_text.append(contents)
-    all_words = "".join(all_text)
-    return all_words
-
-words = read_txt("text/") #pass your own file path that include list of .txt
-words = words.split()
-word_count = pd.Series(words).value_counts().sort_values(ascending=False)[0:15]
-word_count
-```
-
-Output:
-
-```text
-the        327
-to         187
-of         149
-and        132
-a          124
-in          99
-that        68
-is          58
-as          53
-on          52
-China       50
-with        49
-US          47
-trade       47
-Chinese     43
-```
-
-You can find that the above word frequency list is not so good because there are many meaningless words,like `the`, `to`... Those are generally we called `stopwords`.
-
-### Stopwords
-
->Stop words are words which are filtered out before or after processing of natural language data (text). *From [wiki](https://en.wikipedia.org/wiki/Stop_words)*
-
-The stopwords may change when handling different text analysis cases. We can get stopwords from the open source channel or customize your own stopwords.
-
-#### Set stopwords
-
-1. You can download the `stopwords.txt` from the internet and load when you used, [example](https://github.com/stanfordnlp/CoreNLP/blob/master/data/edu/stanford/nlp/patterns/surface/stopwords.txt).
-
-```python
-filepath = './stopwords.txt'
-stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
-```
-
-2. import stopwords from `nltk` library
-
-```python
-import nltk
-from nltk.corpus import stopwords
-nltk.download('stopwords')
-stopwords = stopwords.words('english')
-```
-
-**Note:** According to our helpers feedback, Windows users can successfully set stopwords with this method, for Mac users, you need to visit their [website](https://www.nltk.org/nltk_data/), search `stopwords` and download.
-
-![NLTK stopwords](assets/nltk-stopwords.png)
-
-Then put the language txt file in the current folder where your Jupyter notebook are.
-
-3. import stopwords from `pypi`
-
-For installation and documentation, you can refer [here](https://pypi.org/project/stop-words/
-), they provide a diverse languages of stopwords.
-
-4. Customize your own stopwords
-
-You can add new stopwords by the case need.
-
-```python
-stopwords = ['a','b'] #the original stopwords list
-newstopwords = ['stopword1','stopword2']
-stopwords.extend(newstopwords)
-```
-
-#### Remove stopwords
-
-Move stopwords is easy, you just loop them to determine
-whether the words are in the stopwords, if true, then remove them. Expect the stopwords, we need also handle some punctuation and letter case. Following the above `assignment 1` example:
-
-```python
-import os
-import pandas as pd
-
-def read_txt(path): #read files and get content
-    all_text = []
-    for file in os.listdir(path):
-        f=open(file,"r")
-        contents= f.read()
-        all_text.append(contents)
-    all_words = "".join(all_text)
-    #remove punctuation
-    for ch in '\s+\.\!\/_,$%^*(+\"\')]+|[+——()?:【】“”‘’':
-        words = all_words.replace(ch," ")
-    return words
-
-def stopwordslist(filepath):   #set stopwords
-    stopwords = [line.strip() for line in open(filepath, 'r').readlines()]  
-    return stopwords
-
-def remove_stopwords(words): #remove stopwords
-    processed_word_list = []
-    for word in words:
-        word = word.lower() # in case they are not all lower cased
-        if word not in stopwords:
-            processed_word_list.append(word)
-    return processed_word_list
-
-words = read_txt("text/") #pass your own file path that include list of .txt
-words = words.split()
-stopwords = stopwordslist('./stopwords_eng.txt')
-stopwords = set(stopwords)
-processed_word_list = remove_stopwords(words)
-word_count = pd.Series(processed_word_list).value_counts().sort_values(ascending=False)[0:15]
-```
-
-After remove stopwords, you can see that the word frequency list is more meaningful, if there are still some stopwords, you can add them into your `stopword.txt` and run the codes again.
-
-```text
-china             69
-trade             52
-chinese           43
-trump             32
-war               25
-beijing           20
-u.s.              17
-tariffs           16
-america           15
-american          14
-president         14
-global            14
-economic          11
-administration    11
-foreign           10
-```
-
-**Note:** If arising error when import the data like the following:
-
-`'utf-8' codec can't decode byte 0x80 in position 3131`
-
-You can refer [here](frequently-asked-questions#cannot-import-list-of-files) for solutions.
-
-### Visualize word frequency
-
-#### with bar chart
-
-```python
-#you can use other visualization library
+from matplotlib import pyplot as plt
 import seaborn as sns
-import matplotlib.pyplot as plt 
-def word_count(processed_word_list):
-    word_count = pd.Series(processed_word_list).value_counts().sort_values(ascending=False)[0:15]  
-    fig = plt.figure(figsize=(16,8))  
-    x = word_count.index.tolist()  
-    y = word_count.values.tolist()  
-    sns.barplot(x, y, palette="BuPu_r")  
-    plt.title('word frequency top 15')  
-    plt.ylabel('count')  
-    sns.despine(bottom=True)  
-    #plt.savefig('./word_count_bar.png',dpi=400)  
-    plt.show()
-
-word_count(processed_word_list)
-```
-
-![Words frequency bar](assets/words-frequency-top15-bar.png)
-
-#### wordcloud with matplotlib
-
-Tag cloud is widely used, for aesthetics purpose. You can have a more vivid picture about the top frequency words.
-
-```python
-from PIL import Image
-import wordcloud
 import numpy as np
 
-def tag_cloud(text):
-    mask = np.array(Image.open('newspaper.png')) #set mask, you can change to the picture you like, but it must have a high color contrast
-    wc = wordcloud.WordCloud(mode='RGBA',background_color='white',max_words=2000,stopwords=stopwords,max_font_size=300,random_state=42,mask=mask)
-    wc.generate_from_text(' '.join(text))
-    plt.figure(figsize=(12,12))
-    plt.imshow(wc, interpolation='bilinear')
-    plt.axis("off")
-    plt.title('word frequency top 15 tag cloud', loc='Center', fontsize=20)
-    plt.show()
-    return plt.show()
+df = pd.read_excel('nottingham.xlsx')
+#!pip install xlrd for supporting to read excel if error arisen.
 
-tag_cloud(words)
+df.describe() #get descriptive information
 ```
 
-![Words frequency tag cloud](assets/words-frequency-tag-cloud.png)
+![Df describe](assets/df_describe.png)
 
-#### wordcloud with pyecharts 
+The columns:
 
-One can also plot interactive tag cloud with pyecharts, one thing is that its very simple, you only need to get the `clean words` with its `frequency`. Another thing is you can save the efforts to set the font and environment to support displaying Chinese characters with matplotlib. Following is a example of wordloud with pyecharts, you can find more in their [documentation](http://pyecharts.org/#/zh-cn/charts_base?id=wordcloud%EF%BC%88%E8%AF%8D%E4%BA%91%E5%9B%BE%EF%BC%89).
+* `AVG_ENG_MATH_SCORE_xx`: The average score for the particular class of year xx. For a class, this metric is the higher the better
+* `P_ABSENT_PERSIST`:  the absent ratio transformed somehow, the higher the worse.
+
+This is multi dimensional data. We are interested in the relationship between those dimensions / variables. For example, the absent ratio.
 
 ```python
-from pyecharts import WordCloud
-words = ['特朗普','关税','美国','中国','加拿大','表示','贸易','征收','产品','上周五','亿美元','征税','威胁','政府','争端','准备','谈判','进行','商品','美国政府']
-value = [19, 17, 17, 17, 13, 8, 8, 7, 6, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 3]
-
-wordcloud = WordCloud(width=1300, height=620)
-wordcloud.add("", word, value, word_size_range=[20, 100])
-wordcloud.render('trade-war-wordcloud.html')
-
-from IPython.display import IFrame
-IFrame('trade-war-wordcloud.html', width=700, height=620)
+%matplotlib inline  #add this line before plotting charts
+df['P_ABSENT_PERSIST'].hist(bins=20)
 ```
 
-![pyecharts tag cloud.png](assets/pyecharts-tag-cloud.png)
+![Dataframe hist](assets/df_hist.png)
 
-## Word segmentation
+Quick Questions:
 
-### jieba for Chinese
+* What do you conclude from this histogram?
+* What would you do next to mine the news?
 
-For english words, its easy to segment words, just by the blank space between the words. But for Chinese words, its more complicated, because there is no blank space in Chinese sentence and the combination of the characters in one sentences may diverse too. In order to handle this situation, `jieba` is the most useful libraries we can get out here, which is a Chinese specialized word segmentation module.
+It's clear that most of school has only 0 - 2 absent ratio, but 2 schools has more than 8 percent absent ratio. A question for us is why those two schools are abnormal and who are they? We can filter out to dig out more, and see if we can find anything interesting.
 
-Install and import:
+![Filter Outlier2](assets/filter-outlier2.png)
+
+Also, one can check out the other columns and see if there anything abnormal or trend.
 
 ```python
-!pip3 install jieba
-import jieba
+plt.subplot(2, 2, 1)
+df['AVG_ENG_MATH_SCORE_07'].hist(bins=10)
+plt.title('AVG_ENG_MATH_SCORE_07')
+
+plt.subplot(2, 2, 2)
+df['AVG_ENG_MATH_SCORE_08'].hist(bins=10)
+plt.title('AVG_ENG_MATH_SCORE_08')
+
+
+plt.subplot(2, 2, 3)
+df['AVG_ENG_MATH_SCORE_09'].hist(bins=10)
+plt.title('AVG_ENG_MATH_SCORE_09')
+
+
+plt.subplot(2, 2, 4)
+df['AVG_ENG_MATH_SCORE_10'].hist(bins=10)
+plt.title('AVG_ENG_MATH_SCORE_10')
 ```
 
-Basic usage:
+![Dataframe hist](assets/df_hist2.png)
+
+Same question: can you find anything notable from this chart? It that weird for the outlier whose score is around 15 in year 7? We can filter it out and invest later.
 
 ```python
-s = '我在浸会大学学python'
-jieba.cut(s)
-#output: <generator object Tokenizer.cut at 0x10f3a3048>
-list(jieba.cut(s)) #turn it into list
-#['我', '在', '浸会', '大学', '学', 'python']
+df[df['AVG_ENG_MATH_SCORE_07'] < 16]
 ```
 
-Case1: Cut an article, you can download the article [here](assets/trade-wars-zh.txt).
+![Filter Outlier](assets/filter_outlier.png)
+
+#### Bonus: How histograms can be cheating
+
+Try to adjust number of bins and bin boundaries to see what happens.
 
 ```python
-import jieba
-text = open('trade-wars-zh.txt',"r").read()
-#cut words
-words = jieba.cut(text)
-#set stopwords
-filepath = 'stopwords.txt'
-stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
-#remove stopwords
-processed_word_list = []
-for word in words:
-    if word not in stopwords and len(word)>1: #remove single word
-        processed_word_list.append(word)
-
-#processed_word_list
+df['AVG_ENG_MATH_SCORE_08'].hist(bins=5) #bins=5
 ```
 
-### How to add new terms to the wordseg dictionary
-
-Example 1: Customize your own words dict
-
-For basic needs, using `suggest_freq(segment, tune=True)` and `add_word(word)` are recommended.
+![Hist bins 5](assets/hist-bins5.png)
 
 ```python
-print('/'.join(jieba.cut('特朗普已经准备好对所有进口美国的中国商品征收关税')
-#中国/已/表示/计划/对/美国/的/任何/贸易壁垒/进行/报复/。
-jieba.suggest_freq(('贸易', '壁垒'), True)
-print('/'.join(jieba.cut('中国已表示计划对美国的任何贸易壁垒进行报复。')))
-#中国/已/表示/计划/对/美国/的/任何/贸易/壁垒/进行/报复/。
-jieba.add_word('贸易壁垒')
-print('/'.join(jieba.cut('中国已表示计划对美国的任何贸易壁垒进行报复。')))
-#中国/已/表示/计划/对/美国/的/任何/贸易壁垒/进行/报复/。
+df['AVG_ENG_MATH_SCORE_08'].hist(bins=25) #bins = 25
 ```
 
-Example 2: Ambiguous word segmentation
-
-1. 如果 & 果汁
+![Hist bins 50](assets/hist-bins25.png)
 
 ```python
-s1 = '狮子山的山泉水如果汁一般好喝'
-'/'.join(jieba.cut(s1))
-#'狮子山/的/山泉水/如果/汁/一般/好喝'
-jieba.suggest_freq(('如', '果'), True)
-'/'.join(jieba.cut(s1))
-#'狮子山/的/山泉水/如/果汁/一般/好喝'
+df['AVG_ENG_MATH_SCORE_08'].hist(bins=10,range=(24,30)) #change data range
 ```
 
-2. 乒乓球拍 卖完了& 乒乓球 拍卖完了
+![Hist range changes](assets/hist-range-change.png)
+
+You can see that there is only one peak when the number of bins is 5, however, if you enlarges `bins`, you will get a more detailed information. There appears more peaks and a valley between. Besides, if you change the data range, the situation and conclusion here can be more diverse.
+
+The key takeaway here is that different angle could lead to different stories, and it's all depend on which angle you choose to take in. What we can do is to learn to recognize the pattern here and not to be fooled by the charts.
+
+
+### Kernel Density Estimation (KDE)
+
+KDE is fundamentally similar to histogram. It takes every data point, interpolate the distribution using a continuous function (kernel), and then sum up those functions to generate the envelop of distribution. It has similar function when you articulate the distribution of data. The major advantage is that it does not suffer from the bin-segmentation issue as we see above in histogram.
+
+For better data presentation and aesthetics purpose, people sometimes put histogram and KDE on the same chart, from which you can see the distribution pattern more clearly.
 
 ```python
-s2 = '乒乓球拍卖完了'
-'/'.join(jieba.cut(s2))
-#'乒乓球/拍卖/完/了'
-jieba.add_word('乒乓球拍')
-jieba.suggest_freq(('拍', '卖'), True)
-#'乒乓球拍/卖完/了'
+ax = df['AVG_ENG_MATH_SCORE_10'].hist(bins=15)
+df['AVG_ENG_MATH_SCORE_10'].plot(kind='kde', ax=ax, secondary_y=True)
 ```
 
-For a complicated cases, you can refer [here](https://blog.csdn.net/qq_30262201/article/details/80128076) to customize your own words dict.
+![Histogram and KDE](assets/histogram-and-KDE.png)
 
-### How to adjust term weight in the wordseg dictionary
+### Special points in distribution
 
-## Bonus: TF.IDF
+- Mean
 
-- `TF` - Term Frequency
-- `IDF` - Inverse Document Frequency
-- `TFIDF` = `TF * IDF`
+![Pandas Mean](assets/pandas-mean.png)
 
-TFIDF is a measure of (a term's importance to a document) in (a collection of documents), called "corpus". We put the previous sentence in brackets so that it is easier to read. The rationale is very straight forward:
+The statistical mean, gives a very good idea about the central tendency of the data being collected. What can we get from the mean? you can have a general idea that overall, students get better performance in higher grades, but is it normal?
 
-- TF -- importance to a specific document -- the more one term appears in one document, the more important it is to the document.
-- IDF -- importance in a collection of documents -- if a term appears too frequently in all documents, e.g. stop words, it does not carry much importance to the current document.
+- Max/ Min
 
-[Read more](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+![Pandas max&min](assets/pandas-filter-abnormal.png)
+The max and min shows the most extreme observations. If extreme values are real (not measurement errors), it becomes valuable to us, giving us a breakthrough point to dig out the reason, which we emphasis at the very beginning of this course - abnormal.
 
-## Bonus: Topic model
+For this case, we can filter out the school with highest absent rate and see if there is anything interesting. Step further, we can filter out the school with high absent rate but high performance in score at the same time.
+This is also abnormal for us in theory which we can further check out.
 
-Topic model is a typical example of machine learning: discover meaningful lower dimension space out of higher dimension observations. The higher dimension space is called data space. The lower dimension space is called latent space. The basic assumption is that, despite the complexity of text/ human language, the intrinsic structure is simple. The texts we observe are just statistical variables generated from the intrinsic structure.
+![Pandas abnormal2](assets/pandas-filter-abnormal2.png)
 
-Consider two courses about data journalism:
+- Median
 
-1. The data analysis course, e.g. [current course](https://github.com/hupili/python-for-data-and-media-communication-gitbook/)
-2. The data visualization course, e.g. [http://datavis.studio](http://datavis.studio)
+```python
+df["AVG_ENG_MATH_SCORE_10"].median()
+```
 
-We know the "topic" of the two courses are different. How can we tell? If we check out the word frequency of the two course, we may find that:
+Output:
 
-1. Frequent terms: Data, scraper, web, Python, jupyter, pandas, numpy, matplotlib, ...
-2. Frequent terms: Data, Javascript, CSS, HTML, web, responsive, bootstrap, echart, ...
+```text
+27.8
+```
 
-By looking at the two different lists, we can tell they are of different topics. Computers can also recognise topics in a similar way. In a usual topic modeling procedure, we start with a matrix composed of "document vectors". The vector has a coordinate system using all the potential terms, so every element in the vector represents an intensity of this term in the document. A "topic vector" has the same shape of a "document vector" -- a collection of terms with different weights. Some terms may be stronger indicator of certain topic, like "Python" and "Javascript" in above example. Some other terms may be a weaker indicator, like "web" in above example, where one course emphasize more on "web scraping" and another course emphasize more on "responsive web". In the technical language, "topic vector" is a (mostly "linear") combination of "document vectors". The number of topics is much less than the number of documents, which can be told from the original rationale:
+Median provides a helpful measure of center of our dataset. But more often, we care more about the Percentile, like where are the majority of the data locate.
 
-- We have many documents but only a few topics
-- The intrinsic structure (number of docs) is much simpler than the observations (documents)
+- Percentile
 
-Here is a [tutorial](https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef03213cd21) of topic mining using `nltk` and `gensim`. The algorithm used is called LDA.
+Percentile is a given percentage of observations in a group of observations fall. For example, the 75th percentile is the value (or score) below which 75% of the observations may be found. 50th percentile is equal to median.
 
-## Bonus: Sentiment analysis
+![Pandas percentile](assets/pandas-percentile.png)
 
-The task of sentiment analysis is to get polarity and subjectivity from a piece of text. Polarity can be positively mooded or negatively mooded. Subjectivity can be subjective or objective. It finds good applications in media monitoring. When a crisis emerges, you may want to know how the public reacts to the incident. With massive data from the social network and real-time sentiment analysis, one can devise a better PR strategy.
+## Bonus: Articulate central tendency and spread of data
 
-The procedure of sentiment analysis usually starts with a collection of positive terms and a collection of negative terms. If one piece of text contains more positive terms, it is likely to be an overall positive statement; Vice versa. How to get the collection of positive or negative terms? We usually start with human labels on some training texts. After human judges the sentiment of the training texts, we throw them to the computer. The computer builds the term collection using the collection that if one term appears frequently in a positive statements, that term is likely to be positive; Vice versa.
+### Variance
 
-The above is just an intuition of sentiment analysis. The real work involves more sophisticated statistical models. You may not be able to fully understand them but following are some pointers for you to get working codes:
+variance is the expectation of the squared deviation of a random variable from its mean. Informally, it measures how far a set of (random) numbers are spread out from their average value. The smaller the variance, the sharper the distribution. The variance is the square of the `standard deviation`.
 
-- Construct classifier using `sklearn`. Checkout the [tutorial](https://towardsdatascience.com/sentiment-analysis-of-tweets-using-multinomial-naive-bayes-1009ed24276b).
-- Online API like [text-processing](http://text-processing.com/docs/sentiment.html).
-- `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
+![Variance](assets/variance.png)
+*from Wikipedia*
 
-## Bonus: word2vec
+```python
+df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].var(axis=0).sort_values(ascending=False)
+```
 
-word2vec is a set of algorithms to perform "word embedding". It is similar to "topic modeling" in terms of the structure:
+Output:
 
-- Topic modeling - A document is represented by a (linear) combination of topics; A topic is represented by a (linear) combination of terms.
-- Word embedding - A document is represented by a variable length sequence of words; A word is represented by a lower-dimension vectors; the element of word vectors may not have physical interpretation.
+```text
+AVG_ENG_MATH_SCORE_07    4.128475
+AVG_ENG_MATH_SCORE_10    2.983547
+AVG_ENG_MATH_SCORE_08    2.778986
+AVG_ENG_MATH_SCORE_09    2.694271
+```
 
-The upside of word embedding is to enable vector arithmetics like `king−man+woman=queen`. Also, the word vector can be computed offline (pre-computation). That makes it easier to handle new documents.
+For this case, we can see that the score fluctuations of students in year 7 are the largest. And there is no clear pattern only considering this factor.
 
-Checkout [Wikipedia](https://en.wikipedia.org/wiki/Word2vec) for background information and [this blog](https://www.datacamp.com/community/tutorials/lda2vec-topic-model) for a quick tutorial on LDA (topic model), word2vec and LDA2vec.
+### Skewness
 
-## Further readings
+Skewness can help us recognize the general distribution pattern, whether it is feasible to treat it as a normal distribution. If Sk> 0, the larger the Sk value, the higher the degree of right deviation; If Sk< 0, the smaller the Sk value, the higher the degree of left deviation.
 
-1. [Unicode, ASCII,UTF-8 and GBK](https://jdhao.github.io/2018/01/28/unicodede-utf8-gbk/)
+![Skewness](assets/skewness.png)
+*from Wikipedia*
 
-------
+```python
+df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].skew(axis=0).sort_values(ascending=False)
+```
 
-If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
+Output:
+
+```text
+AVG_ENG_MATH_SCORE_09   -0.038742
+AVG_ENG_MATH_SCORE_10   -0.152395
+AVG_ENG_MATH_SCORE_08   -0.224148
+AVG_ENG_MATH_SCORE_07   -1.352412
+```
+
+From the results, we can have a overview of that the scores distribution of those students is left deviated, and mass students is concentrated on the right of the figure. And there is no apparent pattern related to the years.
+
+### Kurtosis
+
+The kurtosis reflects the sharpness of the peak of the distribution. The greater the kurtosis, the sharper and steeper of the distribution peak. A high kurtosis means that the increase in variance is caused by an extreme values in the low frequency that is greater or less than the average.
+
+![Kurtosis](assets/kurtosis.png)
+*from Wikipedia*
+
+```python
+df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']].kurtosis(axis=0).sort_values(ascending=False)
+```
+
+Output:
+
+```text
+AVG_ENG_MATH_SCORE_07    6.934606
+AVG_ENG_MATH_SCORE_10   -0.036167
+AVG_ENG_MATH_SCORE_08   -0.428693
+AVG_ENG_MATH_SCORE_09   -0.478333
+```
+
+From this statistic, we can know that students in year 7 has larger kurtosis, which means that the distribution peak is sharper, and there are more extreme value points in year 7.
+
+### The mode of data
+
+Get the value with maximum frequency. For example, filter out the grade with maximum frequency of each year students.
+
+```python
+#get the data of all years
+df_g = df[['AVG_ENG_MATH_SCORE_07','AVG_ENG_MATH_SCORE_08','AVG_ENG_MATH_SCORE_09','AVG_ENG_MATH_SCORE_10']]
+#drop the rows with nan value, unless it will affect the results
+df_g.dropna(inplace=True)
+#df_g
+df_g.mode()
+```
+
+![Dataframe mode](assets/dataframe-mode.png)
+
+Note that there could be multiple values returned for the selected axis (when more than one item share the maximum frequency), which is the reason why a dataframe is returned. If you want to impute missing values with the mode in a dataframe df, you can just do this: `df_g.mode().iloc[0]`
+
+Also, you can use `df_g['AVG_ENG_MATH_SCORE_08'].mode()` to get single series mode.
+
+**NOTE**: The above is just for demonstration purpose. You usually do not checkout mode of real valued variables, because it is too likely for every instance to get different values. When the variable is highly discrete or is actually categorical, mode can tell us some stories.
+
+## Correlation
+
+### Continuous: Scatter plot and correlation
+
+We can plot the correlation graph to display relationship between two variables and columns. For example, to figure out whether there is a correlation between absence and score.
+
+```python
+df.plot('P_ABSENT_PERSIST', 'AVG_ENG_MATH_SCORE_09', kind='scatter')
+#kind means the graph type
+```
+
+![Correlation Scatter](assets/correlation_scatter.png)
+
+Generally, you can see that the higher the absence ratio, the lower the test score in general. But here are two questions:
+
+* Is this relationship strong enough?
+* What are the outliers?
+
+To solve this problem, we need to use correlation functions to dig out more.
+
+```python
+help(df['P_ABSENT_PERSIST'].corr)
+```
+
+Output:
+```test
+Help on method corr in module pandas.core.series:
+
+corr(other, method='pearson', min_periods=None) method of pandas.core.series.Series instance
+    Compute correlation with `other` Series, excluding missing values
+    
+    Parameters
+    ----------
+    other : Series
+    method : {'pearson', 'kendall', 'spearman'}
+        * pearson : standard correlation coefficient
+        * kendall : Kendall Tau correlation coefficient
+        * spearman : Spearman rank correlation
+    min_periods : int, optional
+        Minimum number of observations needed to have a valid result
+    
+    
+    Returns
+    -------
+    correlation : float
+```
+
+From above you can see that, `corr` function is used to compute one series with other series. And there are 3 methods: `pearson`, `kendall`, `spearman`. we don't need necessarily to know how to calculate instead
+we need to what does it means and main differences. For example, `pearson` measure the degree of the relationship between `linearly` related variables, while Spearman rank correlation is a `non-parametric test`. For more details, You can refer [here](http://www.statisticssolutions.com/correlation-pearson-kendall-spearman/)
+
+```python
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='pearson')
+```
+
+output:
+
+```text
+-0.5205965225654683
+```
+
+**Note:**
+
+* Pearson correlation is between [-1, 1]
+* Values around 0 means no correlation/ weak correlation
+* Values near 1 and -1 can be interpreted as strong (linear) correlation
+
+Pearson correlation does not work very well with `non-linear correlation` or when the variables are not (jointly) normally distributed. It is also sensitive to outliers. Spearman rank correlation can help here. You can make a judgement whether there is a correlation between grades and absent rate.
+
+```python
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_10'],method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_09'], method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_08'], method='spearman')
+df['P_ABSENT_PERSIST'].corr(df['AVG_ENG_MATH_SCORE_07'], method='spearman')
+```
+
+![Calculate 4 years correlation](assets/calculate-correlation.png)
+
+### Bonus: Better visualisation
+
+One can do more with the scatter graphs. We can draw the regression line in the charts, filter the outliers on the charts, adjust the transparency of the dots...
+
+```python
+sns.regplot(df['P_ABSENT_PERSIST'], df['AVG_ENG_MATH_SCORE_09'])
+```
+
+![Reg plot](assets/regplot.png)
+
+```python
+np.polyfit(df['P_ABSENT_PERSIST'].fillna(0), df['AVG_ENG_MATH_SCORE_09'].fillna(0), 1)
+```
+
+**Quiz:** What does it look like if we plot above line? The return value of polyfit is Polynomial coefficients, highest power first.
+
+**NOTE:** Try the codes without fillna and observe the error. Now it is time to do some cleaning.
+
+```python
+na_selector = df['P_ABSENT_PERSIST'].isna()
+na_selector |= df['AVG_ENG_MATH_SCORE_07'].isna()
+na_selector |= df['AVG_ENG_MATH_SCORE_08'].isna()
+na_selector |= df['AVG_ENG_MATH_SCORE_09'].isna()
+na_selector |= df['AVG_ENG_MATH_SCORE_10'].isna()
+len(df[na_selector])
+len(df)
+len(df[~na_selector])
+df_cleaned = df[~na_selector]
+np.polyfit(df_cleaned['P_ABSENT_PERSIST'].fillna(0), 
+           df_cleaned['AVG_ENG_MATH_SCORE_09'].fillna(0), 
+           1)
+```
+
+**Note:** For how to handle NA/NaN value in pandas, you can refer [here](https://blog.csdn.net/lwgkzl/article/details/80948548).
+
+![Clean data](assets/corr-clean-data.png)
+
+After we get the regression coefficient, we can estimate the grade09 and compare with the actual ones to see if there is a big difference.
+
+```python
+absent = df_cleaned['P_ABSENT_PERSIST']
+score_grade09 = df_cleaned['AVG_ENG_MATH_SCORE_09']
+estimated_score_grade09 =  28.54239409 + (-0.44654826) * absent
+(score_grade09 - estimated_score_grade09).hist()
+```
+
+![Corr prediction](assets/corr-prediction.png)
+
+We can filter out the school that have hugh different scores with the estimation.
+
+```python
+df_cleaned[(score_grade09 - estimated_score_grade09) > 3]
+df_cleaned[(score_grade09 - estimated_score_grade09) > 2.5]
+```
+
+![Filter abnormal](assets/corr-filter-abnormal.png)
+
+#### Filter out in the charts
+
+Get the threshold value for 95% percentile
+
+```python
+s = (score_grade09 - estimated_score_grade09)
+s.quantile(0.95)
+df_cleaned[s > s.quantile(0.95)].plot(
+    x='P_ABSENT_PERSIST', 
+    y='AVG_ENG_MATH_SCORE_09', 
+    kind='scatter')
+```
+
+![95 percentile](assets/95percentile.png)
+
+Adjust the quantile to include/ exclude suspicious schools.
+
+```python
+ax = sns.regplot(
+    df_cleaned['P_ABSENT_PERSIST'], 
+    df_cleaned['AVG_ENG_MATH_SCORE_09'],
+)
+df_cleaned[s > s.quantile(0.90)].plot(
+    x='P_ABSENT_PERSIST', 
+    y='AVG_ENG_MATH_SCORE_09', 
+    kind='scatter',
+    color='red',
+    ax=ax)
+```
+
+![Quantile exclude](assets/quantile-exclude.png)
+
+#### A more primitive/ finer controlled way of plotting using matplotlib
+
+Two common tricks for better visuals:
+
+* Add jitter to further scatter the data points
+* Use transparency to help identify density
+
+```python
+plt.figure(figsize=(10, 5))
+plt.scatter(
+    df_cleaned['P_ABSENT_PERSIST'], 
+    df_cleaned['AVG_ENG_MATH_SCORE_09'],
+    s=80, alpha=0.5)
+```
+
+![Corr better viz](assets/corr-better-viz1.png)
+
+```python
+plt.figure(figsize=(10, 5))
+plt.scatter(
+    df_cleaned['P_ABSENT_PERSIST'] + np.random.normal(0, 0.1, len(df_cleaned)), 
+    df_cleaned['AVG_ENG_MATH_SCORE_09'] + np.random.normal(0, 1, len(df_cleaned)),
+    s=80, alpha=0.5)
+```
+
+![Corr better viz](assets/corr-better-viz2.png)
+
+```python
+coeffs = np.polyfit(df_cleaned['P_ABSENT_PERSIST'].fillna(0), 
+           df_cleaned['AVG_ENG_MATH_SCORE_09'].fillna(0), 
+           1)
+#coeffs
+trendline_x = np.linspace(df_cleaned['P_ABSENT_PERSIST'].min(), df_cleaned['P_ABSENT_PERSIST'].max())
+trendline_y = coeffs[0] * trendline_x + coeffs[1]
+plt.figure(figsize=(10, 5))
+
+plt.scatter(
+    df_cleaned['P_ABSENT_PERSIST'] + np.random.normal(0, 0.1, len(df_cleaned)), 
+    df_cleaned['AVG_ENG_MATH_SCORE_09'] + np.random.normal(0, 1, len(df_cleaned)),
+    s=80, alpha=0.5)
+
+plt.plot(trendline_x, trendline_y, linewidth=5)
+
+plt.scatter(
+    df_cleaned[s > s.quantile(0.90)]['P_ABSENT_PERSIST'],
+    df_cleaned[s > s.quantile(0.90)]['AVG_ENG_MATH_SCORE_09'],
+    color='red'
+)
+```
+
+![Corr better viz3](assets/corr-better-viz3.png)
+
+Jitter is good to present data but you need to track how the data is jittered in order to aligh multiple plots. The complete version is followed.
+
+```python
+plt.figure(figsize=(10, 5))
+
+# Plot main bubbles
+
+x = df_cleaned['P_ABSENT_PERSIST']
+x_jitter = x + np.random.normal(0, 0.05, len(df_cleaned))
+y = df_cleaned['AVG_ENG_MATH_SCORE_09'] 
+y_jitter = y + np.random.normal(0, 0.1, len(df_cleaned))
+
+plt.scatter(
+    x_jitter, 
+    y_jitter,
+    s=80, alpha=0.5)
+
+# Fit the curve (a line) and plot trendline
+
+coeffs = np.polyfit(x, y, 1)
+
+trendline_x = np.linspace(x.min(), x.max())
+trendline_y = coeffs[0] * trendline_x + coeffs[1]
+
+plt.plot(trendline_x, trendline_y, linewidth=5)
+
+# Identify suspicious schools, highlight and label texts
+
+estimated_y = coeffs[0] * x + coeffs[1]
+s = y - estimated_y
+
+suspicious_x = x_jitter[s > s.quantile(0.90)].values
+suspicious_y = y_jitter[s > s.quantile(0.90)].values
+suspicious_t = df_cleaned[s > s.quantile(0.90)]['Schoolme'].values
+plt.scatter(
+    suspicious_x,
+    suspicious_y,
+    color='red'
+)
+for i in range(len(suspicious_t)):
+    plt.text(suspicious_x[i], suspicious_y[i], suspicious_t[i])
+```
+
+![Corr better viz4](assets/corr-better-viz4.png)
+
+### Discrete: Cross-tab
+
+#### DataFrame.groupby
+
+Different groups with different absent rate may show different correlation with their scores. We can divide the absent rate with different groups to check out the situation here.
+
+We name the `absent rate <1` as `hardworking group`,`absent rate 1<=rate<3` as `middle group`, and `absent rate >3` as `happy group`.
+
+```python
+def discretise(x):
+    if x <= 1:
+        x = '01_hard_working'
+    elif x > 1 and x <= 3:
+        x = '02_middle'
+    elif x > 3:
+        x = '03_happy'
+    return x
+f = ['mean','max','min','var','std']
+df['group'] = df['P_ABSENT_PERSIST'].apply(discretise)
+year9_agg = df.groupby('group')['AVG_ENG_MATH_SCORE_09'].agg(f)
+year9_agg.sort_values(f,ascending=False)
+```
+
+![Cross tab correlation](assets/cross-tab-correlation.png)
+
+From the results, we can find the pattern that the more hardworking, the better performance students in their scores, which shows on the mean of their scores. However Middle group shows more diverse in this correlation, which can be explained by our experience. Because most of students are located in this area and the samples are more diverse. To the contrary, hardworking students get good grades and happy students get lower grades generally.
+
+#### pandas.pivot_table
+
+##### Discretise multiple columns
+
+```python
+def discretise_grade(g):
+    if g >= 28:
+        g = 'A'
+    elif g > 26 and g <= 28:
+        g = 'B'
+    elif g <= 26:
+        g = 'C'
+        
+    return g
+```
+
+```python
+# discretise all all-year students scores
+df['grade_07'] = df['AVG_ENG_MATH_SCORE_07'].apply(discretise_grade)
+df['grade_08'] = df['AVG_ENG_MATH_SCORE_08'].apply(discretise_grade)
+df['grade_09'] = df['AVG_ENG_MATH_SCORE_09'].apply(discretise_grade)
+df['grade_10'] = df['AVG_ENG_MATH_SCORE_10'].apply(discretise_grade)
+```
+
+##### pivot_table to generate cross-tabs table
+
+For example, to see whether higher score07 leads to higher score10?
+
+```python
+df.pivot_table(index=['grade_07'], columns=['grade_10'], values='Schoolme', aggfunc='count')
+```
+
+![Pivot table](assets/pivot-table1.png)
+
+From this charts we can found out most students with grade A in year7 will still get good grades in year10. About 46/61 = 72%.
+
+Q2：Does lower absent ratio leads to higher score08?
+
+```python
+df.pivot_table(index=['group'], columns=['grade_08'], values='Schoolme', aggfunc='count')
+```
+
+![Pivot table](assets/pivot-table2.png)
+
+Generally, we can see that it matches to our speculation. Low-absent-rate group(hard_working) got most A grade, about 50/81 = 62%, while only 5% of high-absent-rate group got A.
+
+Q3: Does higher score07 and score08 leads to higher score10?
+
+```python
+df.pivot_table(index=['grade_07','grade_08'], columns=['grade_10'], values='Schoolme', aggfunc='count')
+```
+
+![Pivot table](assets/pivot-table3.png)
+
+The results show highly correlation in this hypothesis. Students in year 7 and year 8 with grade higher than B, and at least one A, is more likely to get A in year 10. About 53/70 = 76%.
+
+**Note:** From the Q2 question, we can know that there are 33 got C in year8, but from this chart, we can only got 18 C-students. What happened here? The reason here is that some of students' grade become NaN when they are in year 10. We can drop out all NaN values to check out the number whether the number is right.
+
+```python
+df = df.dropna() 
+len(df[df['grade_08']=='C'])
+# 18, which matches the wright answer
+```
+
+An interesting point here, the abnormal one is that 3 schools' students with grade C in year 7 and year 8 got A in year 10. What happened to those schools?  We can filter out those schools.
+
+```python
+df[(df['grade_07']=='C') & (df['grade_08']=='C') & (df['grade_10']=='A')]
+```
+
+![Pivot table abnormal](assets/pivot-table-abnormal.png)
+
+After we got those school names and address, next thing is to investigate on the stories behind the data.
+
+### From correlation to causality
+
+Seeking for causality is one of the constant pursuit of journalists. However, data and statistics can not help too much here. Correlation is an objective measure. No matter which correlation you use, as long as the mathematical formula is defined, you can get an exact number. However, causality is subjective, which can not be calculated, but can be reasoned/ articulated/ discussed. Suppose we already find the correlation between A and B, there are two directions to consider when discussing causality:
+
+1. Whether event A happens before event B? If not, A can not be the cause of B (in a causal world/ regular world)
+2. Does the domain knowledge/ physical process restrict A to be the cause of B? e.g. observing correlation intelligent parents `<->` intelligent children, we know parents should come first.
+
+The discussion causality is hard to be thorough. That is why, as journalist, once you get the facts (data analysis/ investigation/ desktop research/ ...), it is a common practice to consult experts for comments and insights.
+
+## Bonus: (Statistical) Hypothesis testing
+
+Hypothesis testing is a common statistical tool used in social research domain. Suppose we have observations in `X`, the general process is as follows:
+
+- Establish "null hypothesis" as `H0`, which states that the observation is purely due to chance.
+- Calculate the likelihood that we have such observations under null hypothesis, i.e. `P{X | H0}`. This is called "p-value".
+- If p-value is small, we reject `H0` because `X` is not likely to happen given that condition. In other words, it is "statistically significant that `X` is not happening purely due to chance" -- in short,
+
+> lower p-value --> more significant --> "more convincing"
+
+"Think stats" by Allen has a whole Chapter 7 on hypothesis testing. We omit the detailed discussion here. The purpose of this book is to help new learners to acquire essential Python and data analytics/ visualisation skills so that they can articulate the result by "common sense"/ "data sense". Articulating in a rigorous statistical language is not a requirement here.
+
+In the literatures, people usually put some alternative hypotheses aside `H0`. By reject `H0`, they conclude `H1` or `H2`, ... This is not always correct though. The short message that "lower p-value --> more significant" is a bit misleading. The precise version needs two more elaborations:
+
+- The alternative hypotheses need to be stated in a mutually exclusive and collectively exhaustive way, together with `H0`. Sometimes, people state the alternative not exactly the complement of `H0`.
+- Even if when `H0` is rejected, we can not draw the conclusion on your research question directly. The rejection happens under the assumed model `M`. Under `M`, `X` is unlikely to happen due to chance. There must be something (some cause). However, this do not give us information on how likely `M` itself is correct.
+
+The short take-away is: Use hypothesis with caution. When in double, just do a full reporting on all relevant experiments, tests, results. Leave it to the readers to draw their own conclusions.
+
+## Reference
+
+- Downey, A. B. (2014). Think stats: exploratory data analysis.  O’Reilly Media, Inc. Retrieved from https://the-eye.eu/public/Books/IT%20Various/think_stats.pdf
