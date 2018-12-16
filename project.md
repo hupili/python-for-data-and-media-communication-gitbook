@@ -66,7 +66,7 @@ NOTE: Doing bonus part will not hard other's performance; However, you may get u
 
 Mobile web has been the major channel for people to access and read content today. Although GitHub ecosystem and Jupyter notebook are convenient for us professionals to share among each other, it is hard for normal readers to access. To help your work to reach a wider audience and create an impact, you may want to release it on mobile web. We have prepared a 10-minutes template intended for people with no background: http://project.hupili.net/big-road/ 
 
-You can make a landing page, or put your entire story on this web page. It is subject to your preference and your understanding of the potential audience. In the end of the web (e.g. footer), please following information:
+You can make a landing page, or put your entire story on this web page. It is subject to your preference and your understanding of the potential audience. In the end of the web (e.g. footer), please include the following information:
 
 - Course code/ title
 - Project team
