@@ -259,7 +259,7 @@ The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples
 
 ### Number of journalists killed in different countries
 
-The following map is an interaction diagram(svg) about numbers of journalists killed worldwide. The deeper the color of a country, the more news workers were killed in that country and the more dangerous it is for reporters. However, there is not any interaction in this page. You can 'open image in new tab' to try out the interaction effect.
+The following map is an interaction diagram(svg) about numbers of journalists killed worldwide. The deeper the color of a country, the more news workers were killed in that country and the more dangerous it is for reporters. However, there is not any interaction in this page. You can click [here](http://nbviewer.jupyter.org/github/kaiwenxu94/python-data-assignments/blob/master/assignment2/Number%20of%20Journalists%20Killed%20in%20Different%20Countries.svg) to try out the interaction effect.
 
 ![Journailists killed worldwide](assets/number-of-journalists-killed-in-different-countries.svg)
 
@@ -269,7 +269,6 @@ The tools and precess:
 - Use `pygal.maps.world` to plot the map
 
 The dataset and codes can be found [here](https://github.com/kaiwenxu94/python-data-assignments/tree/master/assignment2).
-
 
 ### England and Ireland pubs using matplotlib
 
