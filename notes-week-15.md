@@ -253,7 +253,7 @@ The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples
 
 A map of Britain and Ireland pubs.
 
-<img src="assets/mapping-pubs.png" width="60%" height="60%" alt="Britain & Ireland mapping pubs"/>
+<img src="assets/mapping-pubs.png" width="40%" height="40%" alt="Britain & Ireland mapping pubs"/>
 
 The tools and process:
 
