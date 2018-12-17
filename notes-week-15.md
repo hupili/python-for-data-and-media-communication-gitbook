@@ -24,6 +24,7 @@
         - [Openrice Sichuan Food using folium](#openrice-sichuan-food-using-folium)
         - [Global data journalist distribution and contribution map using ploty](#global-data-journalist-distribution-and-contribution-map-using-ploty)
         - [American journalist job market map using ploty](#american-journalist-job-market-map-using-ploty)
+        - [Number of journalists killed in different countries](#number-of-journalists-killed-in-different-countries)
         - [England and Ireland pubs using matplotlib](#england-and-ireland-pubs-using-matplotlib)
         - [Hong Kong property price bubble chart using folium](#hong-kong-property-price-bubble-chart-using-folium)
         - [United States unemployment rate 2012 choropleth using folium](#united-states-unemployment-rate-2012-choropleth-using-folium)
@@ -228,9 +229,12 @@ Code repo: https://github.com/hupili/openrice-data-blog-201811
 ### Global data journalist distribution and contribution map using ploty
 Following is an example of scatter plots on maps about how data journalists distribute all over the world.
 
-Like the air crash map above, this map's key data that we should get is also the longitude and latitude of each cities. In addition, we need another dimension to assign the color of each point on this map. In this case, the depth of color represents a journalist's overall github contribution from 2008. 
+Like the air crash map above, this map's key data that we should get is also the longitude and latitude of each cities. In addition, we need another dimension to assign the color of each point on this map. In this case, the depth of color represents a journalist's overall github contribution from 2008.
+
 ![](assets/Geographical-data-scatter.png)
+
 The tools and process:
+
 - Get the geographical data and other information of a journalist from the csv files
 - Use `aggregate()` to accumulate each journalist's Github contribution data from 2008
 - Use `plotly` to visualize the map
@@ -238,16 +242,34 @@ The tools and process:
 The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/Global-Data-Journalist-Distribution).
 
 ### American journalist job market map using ploty
+
 This is an example of choropleth map and a report about the condition of the employment market for journalists in the U.S.
-In this map, the key data is the number of opening positions in each state of the U.S. In addition, this map recognise the states with their abbreviations(VA, NY...). 
+In this map, the key data is the number of opening positions in each state of the U.S. In addition, this map recognise the states with their abbreviations(VA, NY...).
+
 ![](assets/Geographical-data-choropleth.png)
+
 The tools and process:
+
 - Get the data from `0 jobs.csv`
 - Use `pandas` to manipulate the location data from `0 jobs.csv` into `US-States.csv` to code the states of the U.S into their abbreviations
 - Use `list.count()` to categorise the jobs into different states
 - Use `plotly` to visualize the map
 
 The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/2018-America-Journalist-job-market-map).
+
+### Number of journalists killed in different countries
+
+The following map is an interaction diagram(svg) about numbers of journalists killed worldwide. The deeper the color of a country, the more news workers were killed in that country and the more dangerous it is for reporters. However, there is not any interaction in this page. You can 'open image in new tab' to try out the interaction effect.
+
+![Journailists killed worldwide](assets/number-of-journalists-killed-in-different-countries.svg)
+
+The tools and precess:
+
+- Get data from [CPJ](https://cpj.org/data/killed/?status=Killed&motiveConfirmed%5B%5D=Confirmed&type%5B%5D=Journalist&start_year=1992&end_year=2018&group_by=year)
+- Use `pygal.maps.world` to plot the map
+
+The dataset and codes can be found [here](https://github.com/kaiwenxu94/python-data-assignments/tree/master/assignment2).
+
 
 ### England and Ireland pubs using matplotlib
 
