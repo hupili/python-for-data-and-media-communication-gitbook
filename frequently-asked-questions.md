@@ -18,6 +18,7 @@
         - [Cannot read csv files downloaded from a website](#cannot-read-csv-files-downloaded-from-a-website)
         - [Cannot import list of files](#cannot-import-list-of-files)
         - [Expecting value: line 1 column 1 (char 0)](#expecting-value-line-1-column-1-char-0)
+    - [Data extraction - slice elements when one of them may be None](#data-extraction---slice-elements-when-one-of-them-may-be-none)
 
 <!-- /TOC -->
 
@@ -145,3 +146,41 @@ For some specify example solutions, you can refer to [here](https://stackoverflo
 
 <!-- TODO: This is not necessarily caused by encoding problem. sometimes malformed JSON format will also cause the problem. Try to bring up a concrete case. What did you send to the JSON decoder when the error arises? -->
 
+## Data extraction - slice elements when one of them may be None
+
+We can use list slicing, if...else or try...except to test the boundary condition and separate different elements we want.
+
+example: following is the content of series `df['time_countries']`, and we want to get country and time separately.
+
+```python
+上映时间：1993-01-01
+上映时间：1994-10-14(美国)
+上映时间：1953-09-02(美国)
+上映时间：1994-09-14(法国)
+上映时间：1972-03-24(美国)
+上映时间：1998-04-03
+上映时间：1993-07-01(中国香港)
+上映时间：2001-07-20(日本)
+上映时间：1940-05-17(美国)
+上映时间：1939-12-15(美国)
+```
+
+You might notice that some entries have no country, therefore we have to handle two different situations. `if...else` here can helps. We can see that countries starts from index 15 in the string, therefore, we can use 15 to set the condition.
+
+```python
+def get_country(x):
+    #if length > 15, we first separate by (, get the second parts and then separate ), get the first part, which is pure countries name we want.
+    #if length < 15, there is no countries, we return blank
+    if len (x) > 15:
+        return x.split('(')[1].split(')')[0]
+    else:
+        return''
+df['country'] = df['time_countries'].apply(get_country)
+
+
+def get_time(x):
+    #every entries have time, therefore we dont need set condition here. We first separate by ：, get the second parts and then separate (, get the first part, which is pure time we want.
+    return x.split('：')[1].split('(')[0]
+
+df['time'] = df['time_countries'].apply(get_time)
+```
