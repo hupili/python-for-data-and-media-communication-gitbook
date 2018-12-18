@@ -41,3 +41,14 @@
 - ZHANG Ruirong, [mackenziezhang](https://github.com/mackenziezhang)
 - ZHONG Dai, [DaisyZhongDai](https://github.com/DaisyZhongDai)
 - ZHU Jieyan, [Jessicaaaaaaa](https://github.com/Jessicaaaaaaa)
+
+## Projects
+
+- [HK-Properties](https://github.com/data-projects-archive/201804-HK-Properties/tree/master/Final%20Project). A data analysis of Hong Kong residential property from 2008 to 2017. By Zhang Jin, Zhu Jieyan, Zhang Ruirong, and Niu Qizhen.
+- [Airplane crash](https://github.com/data-projects-archive/201804-Air-Crash/tree/master/Final%20Project%20-%20Airplane%20crash). A Brief report Airplane crash worldwide during the past 70 years. By Xu Yucan, Xiao Chao, Jiang Ting, Tan Jiaping.
+- [Career Perspective](https://github.com/data-projects-archive/201804-HKBU-MA-Career-Perspective/tree/master/Final%20Project%20from%20Pili%20Fans%20Club). A data analysis of career perspective for MA students in the top 6 cities of mainland China. By Hu Zizhe, Ma Xinyu, Cai Jiajing, Xu Zishuo, Sun Feier, Gu Danni(Sitting-in).
+- [Female in Top Universities](https://github.com/data-projects-archive/201804-Female-in-Top-Universities/tree/master/Final%20group%20project). A data analysis of higher education of female and the woman's right in top universities of the word. By FENG Zhixu, FANG Ying, GUO Peishan, SHI Fangyuan.
+- [HK Tourism](https://github.com/data-projects-archive/201804-HK-Tourism/tree/master/Final%20Group%20Project). Hong Kong visitor analysis: from the perspectives of country/region of residence, mode of transport and consumption expenditure. By XU Manning, YU Lei, SHEN Yue, WONG Pui Lam.
+- [Xia Chufang](https://github.com/data-projects-archive/201804-Xia-Chu-Fang/tree/master/final%20assignment). Recipes and cuisines analysis of Xia Chufang. By CHEN Yanhua, LIU Wanyin, PENG Yu, GAO XING.
+- [Syria](https://github.com/data-projects-archive/201804-Syria/tree/master/Team%20TED.py_finalproject). A analysis of Syrian civil war and the major outside stakeholder behind. By Eudora Wang, Tiffany Leung, Pragya Bhatnagar, Vera Yan, Daisy Zhong.
+- [Fast Food on Dianping](https://github.com/data-projects-archive/201804-Fast-Food-on-Dianping/tree/master/final_project) A analysis about Chinese-style fast food and insights from big players. By Tan Yiqin, Cui Simeng, Li Xiaotong, Chen Qiman.
