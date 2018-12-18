@@ -152,7 +152,7 @@ We can use list slicing, if...else or try...except to test the boundary conditio
 
 example: following is the content of series `df['time_countries']`, and we want to get country and time separately.
 
-```python
+```text
 上映时间：1993-01-01
 上映时间：1994-10-14(美国)
 上映时间：1953-09-02(美国)
