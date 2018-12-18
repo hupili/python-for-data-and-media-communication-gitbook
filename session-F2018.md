@@ -58,3 +58,23 @@
 - Huimin ZHANG, [@ZhangHuimin97](https://github.com/ZhangHuimin97)
 - Zichun ZHANG, [@NicoleZZC](https://github.com/NicoleZZC)
 - Yuanyuan CHENG, [@niegung](https://github.com/niegung), (Audit)
+
+
+## Projects
+
+### Projects of COMM7780 students
+
+- [How to make and promote apps successfully](https://github.com/data-projects-archive/201812-BigData-final-project-GoogleAppStore). A descriptive statistical analysis of Google Play Apps. By FENG Yujin, GU Minyi, CHEN Ye, DU Jiawei.
+- [Peer into the Job Market for Media Student](https://github.com/data-projects-archive/201812-job_market_for_media_student). An analysis of the employment situation for media graduates. By ZHANG Ning, ZHANG Ning, HUANG Ting.
+- [Behavior Trends of self-service travelers](https://github.com/data-projects-archive/201812-Behavior-Trends-of-self-service-travelers). An analysis of persona of travelers in the Y/Z generation. By Zhang Shiyu, Liu Cong, Cheng Mengjie, Huang Xin.
+- [Survival Guide Of Data Journalist](https://github.com/data-projects-archive/201812-survival-guide-of-data-journalist). How to be a professional data journalists and the trend in data journalism. By Chenxi LI, Chao GAO, Haotian XU, Xingjie ZENG.
+- [Become A Key Opinion Editor in 10 Minutes](https://github.com/data-projects-archive/201812-BigData-Final-Project-woshipm.com). A text analysis of woshipm.com. By Yitong LIN, XueJiao CAI, Jieyi XIE, Huashan ZENG.
+- [The Formula Of FFSO](https://github.com/data-projects-archive/201812-The-Formula-Of-FFSO). The content, cast and channel analyisis of fame & fortune soap opera in the greater China. By ZENG SINING, LIN HUIQING, LUO YI, HUANG YANGMING.
+
+### Projects of JOUR7280 students
+
+- [Read REITs: Insights into Real Estate Investment Trusts](https://github.com/data-projects-archive/201812-Group-Zhai-Menghan-REITs-Insight). A descriptive report about REITs worldwide and insights into Real Estate Investment Trusts. By Zhai Menghan, He Wenshu, Li Shengnan, Yu Qing.
+- [Bubbles Under the Sun](https://github.com/data-projects-archive/201812-bubble-project). Using insights from previous stock disasters in HK to Predict next stock disaster. By Zhang Jingwei, Zhang Bohan, Zhang Zichun, Jiang Nixuan.
+- [Has Alibaba changed the South China Morning Post?](https://github.com/data-projects-archive/201812-Big-Data-Final-Projcet-about-SCMP). The realest out - Does the acquisition by Alibaba change the content and attitude to Beijing? By Xu Wen, Yao Nuan, Li Yijie.
+- [Daring to Remember: Journalists in Danger Worldwide](https://github.com/data-projects-archive/201812-Journalists-Killed). An analysis for working situations for journalists and journalists being killed worldwide. By XU Kaiwen, WANG Ziwei, LI Mengyu, SHI Yuning.
+- [How has China changed during the past ten years?](https://github.com/data-projects-archive/201812-Final-Project-for-People-s-Daily). A text analysis on People's Daily. By Yao Lan, Zhang Huimin, Yang Lin, Jiang Weiqi.
