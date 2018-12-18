@@ -93,7 +93,7 @@ For more details explanation, you can refer to this [example](https://github.com
 Usually, the website will not allow you to do infinitely scrolling, there usually some limitations. Therefore we can do some manually scroll testing and see how many times we can scroll. After that we can use a for loop to adjust the scrolling times by your observation.
 
 ```python
-for i in range(1,00):
+for i in range(1,100): #change time by your observation
     try:
     time.sleep(2)
     #scraping codes here
