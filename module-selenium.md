@@ -1,5 +1,19 @@
 # Selenium
 
+<!-- TOC -->
+
+- [Selenium](#selenium)
+    - [Basic steps](#basic-steps)
+        - [Step 1 install selenium](#step-1-install-selenium)
+        - [Step 2 install webdriver and put it in the project's working directory](#step-2-install-webdriver-and-put-it-in-the-projects-working-directory)
+        - [Step 3 start from opening a dynamic page web url](#step-3-start-from-opening-a-dynamic-page-web-url)
+    - [Chrome driver not found in path error](#chrome-driver-not-found-in-path-error)
+    - [Find elements by Xpath](#find-elements-by-xpath)
+    - [Find elements by css selector](#find-elements-by-css-selector)
+    - [Infinite scroll in a single page](#infinite-scroll-in-a-single-page)
+
+<!-- /TOC -->
+
 Selenium module can be used in dynamic page web scraping on Windows Systems. It supports Firefox, IE, Chrome and Remote.
 
 ## Basic steps
@@ -73,3 +87,21 @@ The following are useful workflow that can help us debug when encounter those pr
 2. The best practice is to use select_elements_x method (notice s) first to verify if the matching is precise. If it is, use the non-"s" version to find the element. If it is not, check if the elements come in specific order. If so, one can use list navigation to locate the precise one.
 
 For more details explanation, you can refer to this [example](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-selenium/CNN%20next%20page.ipynb).
+
+## Infinite scroll in a single page
+
+Usually, the website will not allow you to do infinitely scrolling, there usually some limitations. Therefore we can do some manually scroll testing and see how many times we can scroll. After that we can use a for loop to adjust the scrolling times by your observation.
+
+```python
+for i in range(1,00):
+    try:
+    time.sleep(2)
+    #scraping codes here
+    browser.execute_script('window.scrollTo(0, document.body.scrollHeight);')
+    except:
+    ...
+```
+
+**Note:** When executing web emulation, remember to set a sleep time to avoid risen error. It's suggested to set it as 2 seconds if there is a big loading work. You can increase or reduce by your own observation.
+
+Another solution is using XHR. When a page adopts an infinite scroll design, asynchronous data loading is inevitable. When you encounter those cases, network trace analysis may give more concise solution. There are usually XHR interfaces. You don't even need dynamic crawling (browser simulation). You can refer [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/mafengwo-xhr.ipynb) for a detailed example.
