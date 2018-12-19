@@ -89,10 +89,15 @@
 - **Read REITs: Insights into Real Estate Investment Trusts**. A descriptive report about REITs worldwide and insights into Real Estate Investment Trusts. By Zhai Menghan, He Wenshu, Li Shengnan, Yu Qing.
     - View the full story [here](https://zmh951010.github.io/Read-REITs2/)
     - Find data and codes [here](https://github.com/data-projects-archive/201812-Group-Zhai-Menghan-REITs-Insight)
-- [Bubbles Under the Sun]. Using insights from previous stock disasters in HK to Predict next stock disaster. By Zhang Jingwei, Zhang Bohan, Zhang Zichun, Jiang Nixuan.
+- **Bubbles Under the Sun**. Using insights from previous stock disasters in HK to Predict next stock disaster. By Zhang Jingwei, Zhang Bohan, Zhang Zichun, Jiang Nixuan.
     - View the full story [here](https://github.com/data-projects-archive/201812-bubble-project/blob/master/Bubbles_Under_the_Sun.pptx?raw=true)
     - Find data and codes [here](https://github.com/data-projects-archive/201812-bubble-project)
-
-- [Has Alibaba changed the South China Morning Post?](). The realest out - Does the acquisition by Alibaba change the content and attitude to Beijing? By Xu Wen, Yao Nuan, Li Yijie.
-- [Daring to Remember: Journalists in Danger Worldwide](https://github.com/data-projects-archive/201812-Journalists-Killed). An analysis for working situations for journalists and journalists being killed worldwide. By XU Kaiwen, WANG Ziwei, LI Mengyu, SHI Yuning.
-- [How has China changed during the past ten years?](https://github.com/data-projects-archive/201812-Final-Project-for-People-s-Daily). A text analysis on People's Daily. By Yao Lan, Zhang Huimin, Yang Lin, Jiang Weiqi.
+- **Has Alibaba changed the South China Morning Post?**. The realest out - Does the acquisition by Alibaba change the content and attitude to Beijing? By Xu Wen, Yao Nuan, Li Yijie.
+    - View the full story [here](https://warrior960812.github.io/Has-Alibaba-changed-the-South-China-Morning-Post-/?from=groupmessage&isappinstalled=0)
+    - Find data and codes [here](https://github.com/warrior960812/Big-Data-Final-Projcet-about-SCMP)
+- **Daring to Remember: Journalists in Danger Worldwide**. An analysis for working situations for journalists and journalists being killed worldwide. By XU Kaiwen, WANG Ziwei, LI Mengyu, SHI Yuning.
+    - View the full story [here](https://ivywang958.github.io/WarAndPeace/)
+    - Find data and codes [here](https://github.com/data-projects-archive/201812-Journalists-Killed)
+- **How has China changed during the past ten years?**. A text analysis on People's Daily. By Yao Lan, Zhang Huimin, Yang Lin, Jiang Weiqi.
+    - View the full story [here](https://lullabymia.github.io)
+    - Find data and codes [here](https://github.com/data-projects-archive/201812-Final-Project-for-People-s-Daily)
