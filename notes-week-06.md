@@ -15,6 +15,7 @@
         - [Use API via function calls to other modules/ packages](#use-api-via-function-calls-to-other-modules-packages)
     - [Bonus: Your first automatic writing robot on Twitter](#bonus-your-first-automatic-writing-robot-on-twitter)
     - [Exercises and Challenges](#exercises-and-challenges)
+        - [Newyork Times API](#newyork-times-api)
         - [Douban API](#douban-api)
         - [Yahoo Finance API](#yahoo-finance-api)
         - [GitHub API](#github-api)
@@ -261,6 +262,10 @@ Here are some examples of such robots:
 
 
 ## Exercises and Challenges
+
+### Newyork Times API
+
+https://developer.nytimes.com/
 
 ### Douban API
 
