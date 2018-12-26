@@ -11,6 +11,7 @@
         - [Link to resources in this repo](#link-to-resources-in-this-repo)
         - [Link to other repos](#link-to-other-repos)
     - [Editing environment](#editing-environment)
+    - [Coding style](#coding-style)
 
 <!-- /TOC -->
 
@@ -129,3 +130,9 @@ We suggest to use [VSCode](https://code.visualstudio.com/) with the following ex
 * `Markdown Preview Enhanced` -- See how it works [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/2#issuecomment-406834118)
 * `markdownlint` -- See how it works [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/2#issuecomment-408606441)
 * `Markdown TOC` by AlanWalk -- See more instructions in the current document, [this section](#table-of-contents-toc)
+
+## Coding style
+
+It is hard to exhaust coding style issues. We collect some sample discussions here and conclude later if necessary:
+
+- [Commit on plotly sample](https://github.com/hupili/python-for-data-and-media-communication-gitbook/commit/0a301f821902d8c188cbfa3a1b48c21a0d22e9c5)
