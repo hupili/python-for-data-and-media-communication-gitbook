@@ -218,32 +218,43 @@ For more seaborn examples and tutorials, you can refer [here](hhttps://seaborn.p
 
 Plotly is very powerful to make interactive, publication-quality graphs online. Including line plots, scatter plots, area charts, bar charts, error bars, box plots, histograms, heatmaps, subplots, multiple-axes, polar charts, and bubble charts. If you want to present and publish your work on html, with some fancy appearance and interactive experience, Plotly is a very recommended library.
 
-Install and import:
-
-```python
-!pip install plotly
-import plotly #plot it offline
-import plotly.plotly as py 
-# Note: online plot method requires you to create an account. In online mode, every function in this module will communicate with an external plotly server
-```
-
-Basic usage example:
+Basic usage example: (`pip install plotly` if you have not done so yet)
 
 ```python
 import plotly
+# "go" is short for Graph Object. 
+# You can find many graph models under "go"
 import plotly.graph_objs as go
-# to see relationship between countries and likes
-pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("likes",ascending=False)
-#if you want to plot charts with sorted order, you need to sorted data first, then pass the data into function.
+# You don't have to register and serve API keys using the offline mode.
+# You can try to import iplot and plot from plotly directly (without "offline").
+# In that way, it prompts a message to ask for API keys.
+from plotly.offline import iplot, plot
 
-data = [go.Bar(x=pd_df2.country,
-            y=pd_df2.likes)]
-plotly.offline.plot(data, filename='country_with_average_like_bar') #if you use py.plot(), you will get the output in a new browser window, but with iplot(), you can do interactive actions just in your Jupyter notebook
+# If not init notebook with connection, 
+# the iplot won't output chart onto Jupyter notebook webpage.
+plotly.offline.init_notebook_mode(connected=True)
+
+# Calculate average likes for a country and sort in its descending order
+pd_df2 = df.groupby(['country'])['likes'].mean().reset_index().sort_values("likes",ascending=False)
+
+# Organize data into plotly data structure
+data = [
+    go.Bar(
+        x=pd_df2.country,
+        y=pd_df2.likes)
+]
+
+# Following line outputs your chart into "hello.html" in the CWD
+# Uncomment to see the result yourself.
+# plot(data, filename='hello') 
+
+# Following version, aka "inline plot" plots the chart into Jupyter notebook directly
+iplot(data, filename='hello')
 ```
 
 ![Plotly country with average like](assets/plotly_country_with_average_like.png)
 
-For more plotly examples and tutorials, you can refer [here](https://plot.ly/python/)
+For more plotly examples and tutorials, you can refer to [official documentation](https://plot.ly/python/)
 
 ### pyecharts
 
