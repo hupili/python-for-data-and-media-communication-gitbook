@@ -292,7 +292,7 @@ Python is a popular programming language that is widely used by beginners and lo
 python --version
 ```
 
-In this course, we base our discussions and exercises on Python 3, you can check out the [difference between python 2 and 3](#difference-between-python-2-and-3) and the instruction for [installation of python 3](/setup-environment.md) in related materials in our gitbook *(if you have already set up the python 3, just ignore it)*.
+In this course, we base our discussions and exercises on Python 3, you can check out the [difference between python 2 and 3](python-2-vs-python-3.md#difference-between-python-2-and-3) and the instruction for [installation of python 3](/setup-environment.md) in related materials in our gitbook *(if you have already set up the python 3, just ignore it)*.
 
 ### Modify the `ex1.py` file by a text editor
 
@@ -364,9 +364,9 @@ python -i myscript.py
 
 ## Learn to use Jupyter Notebook
 
-Jupyter notebook is originally called "IPython notebook" (interactive Python notebook), thus having the `.ipynb` suffix/ extention name of the the Jupyter notebook file.
+Jupyter notebook is originally called "IPython notebook" (interactive Python notebook), thus having the `.ipynb` suffix/ extended name of the the Jupyter notebook file.
 
-It provides a web-based interface for you to interactively test and build Python codes. It is well suited for a bottom-up approach when buiding larger projects.
+It provides a web-based interface for you to interactively test and build Python codes. It is well suited for a bottom-up approach when building larger projects.
 
 ### Virtual environment
 
@@ -383,7 +383,7 @@ There are two commands to setup virtualenv:
 
 ### Setup virtualenv and install Jupyter Notebook
 
-If it's the first time you use jupyter notebook, you need create a virtual environment first. The following are the usual path to setup jupyter environment. For users in CVA 517 LAB, please see [here](#setup-jupyter-environment-in-cva517).
+If it's the first time you use jupyter notebook, you need create a virtual environment first. The following are the usual path to setup jupyter environment. For users in CVA 517 LAB, please see [here](module-jupyter.md#set-jupyter-environment-in-cva517).
 
 Step 1: Create virtual environment
 
