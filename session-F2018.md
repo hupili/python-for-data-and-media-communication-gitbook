@@ -64,24 +64,27 @@
 ### Projects of COMM7780 students
 
 - **How to make and promote apps successfully**. A descriptive statistical analysis of Google Play Apps. By FENG Yujin, GU Minyi, CHEN Ye, DU Jiawei.
-    
+
     [[Story]](https://catmint1215.github.io/) | [[Codes]](https://github.com/data-projects-archive/201812-BigData-final-project-GoogleAppStore)
+
 - **Peer into the Job Market for Media Student**. An analysis of the employment situation for media graduates. By ZHANG Ning, ZHANG Ning, HUANG Ting.
-    
+
     [[Story]](https://zhangningnina.github.io/big-road/) | [[Codes]](https://github.com/data-projects-archive/201812-job_market_for_media_student)
+
 - **Behavior Trends of self-service travelers**. An analysis of persona of travelers in the Y/Z generation. By Zhang Shiyu, Liu Cong, Cheng Mengjie, Huang Xin.
-    
+
     [[Story]](https://nbviewer.jupyter.org/github/CathyChang1996/Behavior-Trends-of-self-service-travelers/blob/master/report/Behavior%20trend%20of%20self-service%20travelers.ipynb?jyfyj) | [[Codes]](https://github.com/data-projects-archive/201812-Behavior-Trends-of-self-service-travelers)
+
 - **Survival Guide Of Data Journalist**. How to be a professional data journalists and the trend in data journalism. By Chenxi LI, Chao GAO, Haotian XU, Xingjie ZENG.
-    
+
     [[Story]](https://flystephen.github.io/DJ-insight/) | [[Codes]](https://github.com/data-projects-archive/201812-survival-guide-of-data-journalist)
+
 - **Become A Key Opinion Editor in 10 Minutes**. A text analysis of woshipm.com. By Yitong LIN, XueJiao CAI, Jieyi XIE, Huashan ZENG.
-    
+
     [[Story]](https://github.com/Graceyit/BigData-Final-Project-woshipm.com/blob/master/Data%20presentation/woshipm.com%20Final%20Report.pdf) | [[Codes]](https://github.com/data-projects-archive/201812-BigData-Final-Project-woshipm.com)
 - **The Formula Of FFSO**. The content, cast and channel analyisis of fame & fortune soap opera in the greater China. By ZENG SINING, LIN HUIQING, LUO YI, HUANG YANGMING.
 
     [[Story]](https://github.com/CelineTsang/The-Formula-Of-FFSO/blob/master/the%20formula%20of%20ffso.pptx?raw=true) | [[Codes]](https://github.com/CelineTsang/The-Formula-Of-FFSO)
-
 
 
 ### Projects of JOUR7280 students
