@@ -417,7 +417,8 @@ Assuming that you have the pictures in the folder where your current jupyter not
 
 ```python
 from IPython.display import Image
-Image("top 15 directors.png") #change the name corresponding your own file
+#change the name corresponding your own file
+Image("top 15 directors.png")
 ```
 
 ![Jupyter display pics](assets/jupyter-display-pics.png)
