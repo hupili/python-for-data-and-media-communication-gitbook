@@ -409,8 +409,9 @@ The key points of plotting time series using pandas:
   - `.apply` a function to [convert from string to datetime](#convert-from-string-to-datetime)
   - `.set_index` to move the `datetime` type from column to index. This is essential step to perform time series operation because later functions all refer to index for the datetime value.
 - Use `.resample` to put the data points into different buckets. This is essentially a `.groupby` operation. Instead of working on categorical values like `.groupby`, `.resample` works on datetime ranges. One can specify a time length when performing resample operation, e.g. one week `1w` and two days `2d`.
-- Use `.aggregate` to turn the bucket of data points into a single value. This is the same process like [groupby + aggregate](notes-week-08.md#dataframegroupby) approach, but applied on datetime data types.
-There is a small missing piece of the above Tweets keyword time series from current discussion. Besides handling the index, you also need to have numeric data on columns, e.g. `kw-hillary` as you can see from the chart. You can checkout [Most Common Names in Tweets](notes-week-10.md#case-3-most-frequent-names-in-tweets) example to see how to encode tweet text into such numeric indicator variables.
+- Use `.aggregate` to turn the bucket of data points into a single value. This is the same process like [groupby + aggregate](notes-week-10.md#dataframegroupby) approach, but applied on datetime data types.
+
+There is a small missing piece of the above Tweets keyword time series from current discussion. Besides handling the index, you also need to have numeric data on columns, e.g. `kw-hillary` as you can see from the chart. You can checkout [Most Common Names in Tweets](notes-week-12.md#case-3-most-frequent-names-in-tweets) example to see how to encode tweet text into such numeric indicator variables.
 
 ### Case: Twitter keywords variation by time
 
@@ -562,6 +563,6 @@ Note that the above models are highly simplified presentation of the reality. It
 
 ## References
 
-* timestamp usually come in unit of milliseconds \(1/1000\) of a second. [An example](https://github.com/dmep2017/dmep2017.github.io/blob/master/d3-map-sichuan-earthquate/Data Process.ipynb) to parse this timestamp format into `datetime` format.
+* timestamp usually come in unit of milliseconds \(1/1000\) of a second. [An example](https://github.com/dmep2017/dmep2017.github.io/blob/master/d3-map-sichuan-earthquate/Data%20Process.ipynb) to parse this timestamp format into `datetime` format.
 * Past notes of [datetime](https://github.com/hupili/python-for-data-and-media-communication/tree/master/datetime) from spring 2018.
 * Brockwell, Peter J., and Richard A. Davis. Introduction to Time Series and Forecasting. 2nd ed. Springer Texts in Statistics. New York: Springer, 2002.
