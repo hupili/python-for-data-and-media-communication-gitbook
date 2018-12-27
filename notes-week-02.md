@@ -721,7 +721,7 @@ Suppose you are working on a documentary. You know how many days of footage you 
 
 ### A simple model of media monitoring
 
-You are assigned the task of media monitoring. Your supervisor is intrested in whether certain keywords appear in one article. In this exercise, we make a simple monitoring service. Suppose you already downloaded [this article](https://www.bbc.com/news/business-45392816) somehow (see [notes-week-05.md](notes-week-05.md) and [notes-week-06.md](notes-week-06.md)). The content is stored in variable like this: (called "heredoc")
+You are assigned the task of media monitoring. Your supervisor is intrested in whether certain keywords appear in one article. In this exercise, we make a simple monitoring service. Suppose you already downloaded [this article](https://www.bbc.com/news/business-45392816) somehow (see [notes-week-07.md](notes-week-07.md) and [notes-week-08.md](notes-week-08.md)). The content is stored in variable like this: (called "heredoc")
 
 ```python
 article = '''
@@ -739,7 +739,7 @@ JD.com, also known as Jingdong, has alliances with Tencent and Walmart.
 
 Tasks:
 
-- Try to use string function to identify if certan keywords appears in the above article
+- Try to use string function to identify if certain keywords appears in the above article
 - What if you want to monitor other articles?
 
 ### Mark Six lottery machine
