@@ -57,7 +57,7 @@ Outline:
 
 #### Case 1: Get full URL from HTML A tag's href attribute
 
-To Scrape Initiumlab articles' urls, which we used as an example in [chapter 5](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-05.md#scrape-all-articles-of-one-page)
+To Scrape Initiumlab articles' urls, which we used as an example in [chapter 7](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-07.md#scrape-all-articles-of-one-page)
 
 * Using `split + slice + format`
 
@@ -200,7 +200,7 @@ r.encoding = 'utf-8' #using this line, change the encoding method corresponding 
 data = BeautifulSoup(r.text,"html.parser")
 ```
 
-Case1: You can refer [Chapter 6 - encoding for another example](notes-week-06.md#encoding). 
+Case1: You can refer [Chapter 8 - encoding for another example](notes-week-08.md#encoding). 
 
 Case2 : scraping Chinese websites like `电影天堂`.
 
@@ -304,7 +304,7 @@ The tuition fee is also match because our pattern is not precise enough. In orde
 
 The pattern is to match any 8 character string that starts with "3411" and ends with any four digits. The curious readers may ask: what if the tuition fee is "34113411 dollar"? As you guess, the above pattern fails. How to refine? The short answer is that there is no ultimate way. As long as "34113411" itself is a valid telephone number, we can hardly exclude it from our matching by just looking at itself. 
 
-This issue is quite common text processing, or further more **Natural Language Processing (NL)**. The token itself is not enough for us to understand its meaning. One similar example is: "Apple is good". We are not sure if "the Apple" that produces iPhone is good; or apple, as a fruit, is good. We human being needs context in order to understand this sentence. So is computer. This discussion is beyond our curriculum. Interested readers can search for "NLP".
+This issue is quite common text processing, or further more **Natural Language Processing (NLP)**. The token itself is not enough for us to understand its meaning. One similar example is: "Apple is good". We are not sure if "the Apple" that produces iPhone is good; or apple, as a fruit, is good. We human being needs context in order to understand this sentence. So is computer. This discussion is beyond our curriculum. Interested readers can search for "NLP".
 
 Back to our focus on basic pattern matching, we can conclude that it is easy to match the things one want using RegEx, but rather difficult to fully exclude other unwanted stuffs. When building your RegEx solution, you usually starts with a collection of **cases**. You keep on adding new cases to the collection and test them with your RegEx pattern. You may need to refine multiple times in order to find the one that works well on your dataset.
 
@@ -317,7 +317,7 @@ Suppose the university decides "3411" is a bad prefix and "8888" sounds good. Ho
 ```python
 >>> pattern = re.compile(r'3411(\d{4})')
 >>> re.sub(pattern, r'+852 8888-\1', introduction)
-'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at +852 8888-9999 or Mr B +852 8888-9998. Students who enrol in extra courseswill be charged 12345678 dollar per course.'
+'Student usually can enrol up to 16 courses in 1 semester. If you want to enrol in more courses, please contact Ms A at +852 8888-9999 or Mr B +852 8888-9998. Students who enrol in extra courses will be charged 12345678 dollar per course.'
 ```
 
 Besides changing the telephone prefix, we also added the country code and a hyphen between university prefix and the phone number. Note how this happens:
@@ -349,7 +349,7 @@ for n in words_list:
 
 ### Use pandas.series.value_counts()
 
-Use the [assignment 1](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/assignments.md#assignment-0----bridging-assignment-for-language-efficiency) as an example:
+Use the [assignment 0](assignments.md#assignment-0----bridging-assignment-for-language-efficiency) as an example:
 
 ```python
 import os
@@ -502,7 +502,7 @@ foreign           10
 
 `'utf-8' codec can't decode byte 0x80 in position 3131`
 
-You can refer [here](frequently-asked-questions#cannot-import-list-of-files) for solutions.
+You can refer [here](frequently-asked-questions.md#cannot-import-list-of-files) for solutions.
 
 ### Visualize word frequency
 
@@ -704,7 +704,7 @@ The above is just an intuition of sentiment analysis. The real work involves mor
 
 - Construct classifier using `sklearn`. Checkout the [tutorial](https://towardsdatascience.com/sentiment-analysis-of-tweets-using-multinomial-naive-bayes-1009ed24276b).
 - Online API like [text-processing](http://text-processing.com/docs/sentiment.html).
-- `TextBlob` is also useful and applied in [group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
+- `TextBlob` is also useful and applied in [S2018 group 2's work](https://dnnsociety.org/2018/03/02/using-big-data-to-figure-out-how-fair-china-daily-news-is/).
 
 ## Bonus: word2vec
 
