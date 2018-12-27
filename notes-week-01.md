@@ -31,7 +31,6 @@
     - [Learn to use Jupyter Notebook](#learn-to-use-jupyter-notebook)
         - [Virtual environment](#virtual-environment)
         - [Setup virtualenv and install Jupyter Notebook](#setup-virtualenv-and-install-jupyter-notebook)
-        - [Setup jupyter environment in CVA517](#setup-jupyter-environment-in-cva517)
         - [Basic usage](#basic-usage-1)
     - [Exercises and Challenges](#exercises-and-challenges)
     - [References and Further Readings](#references-and-further-readings)
@@ -293,7 +292,7 @@ Python is a popular programming language that is widely used by beginners and lo
 python --version
 ```
 
-In this course, we base our discussions and exercises on Python 3, you can check out the [difference between python 2 and 3](/python-2-vs-python-3.md) and the instruction for [installation of python 3](/setup-environment.md) in related materials in our gitbook *(if you have already set up the python 3, just ignore it)*.
+In this course, we base our discussions and exercises on Python 3, you can check out the [difference between python 2 and 3](#difference-between-python-2-and-3) and the instruction for [installation of python 3](/setup-environment.md) in related materials in our gitbook *(if you have already set up the python 3, just ignore it)*.
 
 ### Modify the `ex1.py` file by a text editor
 
@@ -407,26 +406,6 @@ pip3 install jupyter
 Step 4: Enter Jupyter notebook
 
 ```bash
-jupyter notebook
-```
-
-### Setup jupyter environment in CVA517
-
-Due to the jupyter and the python conflict, there are problems of installing jupyter by the usual way. Instead, the following will work. For more details explanation, please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/48).
-
-```bash
-pyvenv venv
-source venv/bin/activate
-pip install --upgrade pip
-pip3 install jupyter
-pip3 install 'ipython ==6.5.0'
-pip3 install 'prompt-toolkit ==1.0.15'
-```
-
-Then, next time, you can just type the following command to open jupyter notebook
-
-```bash
-source venv/bin/activate
 jupyter notebook
 ```
 
