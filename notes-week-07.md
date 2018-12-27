@@ -169,8 +169,8 @@ BeautifulSoup parser can convert the results we request into structural data so 
 Eg: <https://initiumlab.com/blog/20170329-trump-and-ivanka/>
 
 ```python
-import requests #week o4 request module
-from bs4 import BeautifulSoup #pay attention to its syntax
+import requests
+from bs4 import BeautifulSoup
 r = requests.get('https://initiumlab.com/blog/20170329-trump-and-ivanka/')
 #print(r) you will get <Response [200]> means request successful
 html_str = r.text #get the content of the request
@@ -183,7 +183,7 @@ Output: This is before the parsing step, you can see that they are like a mess.
 ![HTML Text](assets/html-text.png)
 
 ```python
-data = BeautifulSoup(html_str,"html.parser") #pay attention to it's syntax
+data = BeautifulSoup(html_str,"html.parser")
 ```
 
 Output: After parsing, you can see that the data is more structural, and we can further get/find the data by using `control flows` and manipulating of `[]` and `{}`.
@@ -502,8 +502,8 @@ Potential challenges：
 * Get straight/understanding with 3 layers structure.
 
 ```python
-import requests #week o4 request module
-from bs4 import BeautifulSoup #pay attention to its syntax
+import requests
+from bs4 import BeautifulSoup
 import csv
 
 def scrape_one_article(article_url):  #scrape one articles features, which we've already done this
@@ -565,7 +565,7 @@ Output will be like the following picture, and you can also find the csv file [h
 - First (outer) layer is `list` -- iterate the data items we are interested in.
 - Second (inner) layer is `dict` -- extract the features/ properties of a single data item.
 
-[list-of-list](notes-week-03.md#representing-a-dataset) is one alternative to store the data. The advantage is compact representation of data entrires. Instead of having `{key1: value1, key2: value2, ..}`, we have `[value, value2, ...]`. The (insignificant) disadvantage is missing "table headers", or "column names" which appeared as keys in the list-of-dict representation. One can maintain this information outside `dataset`.
+[list-of-list](notes-week-03.md#representing-a-dataset) is one alternative to store the data. The advantage is compact representation of data entries. Instead of having `{key1: value1, key2: value2, ..}`, we have `[value, value2, ...]`. The (insignificant) disadvantage is missing "table headers", or "column names" which appeared as keys in the list-of-dict representation. One can maintain this information outside `dataset`.
 
 The choice of data structure is closely related the workflow of your program. So, put it another words, it is a reflection of the thought process. Please checkout the [imdb.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/imdb.com.ipynb) for a complete example of this method.
 
@@ -648,7 +648,7 @@ As a beginner of programmatic data collection, you often find crawler is non-nec
 
 - Find pages to scrape from a "hub page" -- e.g. find links to news articles from a list page, and then scrape each page from the list.
 - Manipulate page id parameter in URL -- e.g. a forum/ a Wordpress blog site.
-- Start from a seed page and continuously click "Next Page" -- e.g. search engine results. [notes-week-06.md](notes-week-06.md) will explain in details how to emulate browser in a programmatic way.
+- Start from a seed page and continuously click "Next Page" -- e.g. search engine results. [notes-week-08.md](notes-week-08.md) will explain in details how to emulate browser in a programmatic way.
 
 ### scrapy
 
@@ -742,7 +742,7 @@ The following online job list can be scraped with the knowledge in this chapter:
 - https://www.glassdoor.co.uk/Job/data-journalist-jobs-SRCH_KO0,15.htm
 - https://www.linkedin.com/jobs/search/?keywords=data%20journalism&location=%E5%85%A8%E7%90%83&locationId=OTHERS.worldwide
 
-**Note:** LinkedIn is dynamic and requires [selenium](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-06.md#selenium) in Chapter 6 to run. You need to work around the sign in page.
+**Note:** LinkedIn is dynamic and requires [selenium](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-08.md#selenium) in Chapter 6 to run. You need to work around the sign in page.
 
 (Feel free to add to the list when you find new ones)
 
