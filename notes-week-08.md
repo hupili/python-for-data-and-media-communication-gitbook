@@ -45,7 +45,7 @@
     - [Bonus: Crawl mobile Apps](#bonus-crawl-mobile-apps)
         - [Packet analysis](#packet-analysis)
             - [Example: Kwai (kuaishou)](#example-kwai-kuaishou)
-        - [App decompilation](#app-decompilation)
+        - [App de-compilation](#app-de-compilation)
         - [App emulation](#app-emulation)
     - [Bonus: Other quick scraping/ crawling tricks](#bonus-other-quick-scraping-crawling-tricks)
     - [Exercises and Challenges](#exercises-and-challenges)
@@ -270,7 +270,7 @@ link = open_book.find_element_by_tag_name('a') #find our tutorial
 # you can also find by the link text. link = browser.find_element_by_partial_link_text('GitHub - hupili')
 link.click() #click the link, enter our tutorial
 browser.execute_script("window.scrollTo(0,1200);") #scroll in the page, window.scrollTo(x,y), x means horizontal, y means vertical
-notes_links = browser.find_element_by_link_text('notes-week-06.md') #find link of notes 6
+notes_links = browser.find_element_by_link_text('notes-week-08.md') #find link of notes 6
 notes_links.click() #click into notes 6
 #browser.close()
 ```
@@ -675,9 +675,9 @@ Here's the request operation and its outcome:
 
 <!-- ![](assets/kwai-app.png) -->
 
-Note the `pd.DataFrame` is a `pandas` object, which will be explained in [notes-week-07.md](notes-week-07.md).
+Note the `pd.DataFrame` is a `pandas` object, which will be explained in [notes-week-09.md](notes-week-09.md).
 
-### App decompilation
+### App de-compilation
 
 This means to "crack" the App. You need to first get the installation package of the App, analyse its structure, decompile it, and understand how this App talk with a server from its source code.
 
