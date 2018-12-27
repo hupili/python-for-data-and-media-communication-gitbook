@@ -380,7 +380,7 @@ Here is one way you can create a new branch on GitHub web UI:
 
 ![Create new branch on GitHub](assets/github-web-create-new-branch.png)
 
-**NOTE**: The content is served from `gh-pages` branch by default. You can [change this default settting](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/23).
+**NOTE**: The content is served from `gh-pages` branch by default. You can [change this default setting](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/23).
 
 ### Bonus: Bind a custom domain name
 
@@ -496,7 +496,7 @@ Try out GitHub's search function. See if you can find other open courses, books,
 
 ### Bonus: fork - modify - Pull Request (PR)
 
-Following up the previous challenge, you may want to suggest new entries into our reading material list on [reading-materials.md](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/reading-materials.md#related-github-repos). Please operate in the following steps:
+Following up the previous challenge, you may want to suggest new entries into our reading material list on [reading-materials.md](reading-materials.md#related-github-repos). Please operate in the following steps:
 
 - Fork the current repo
 - Modify the forked version (under your own name). You can do this all with in browser. Just enter the editor from GitHub website.
