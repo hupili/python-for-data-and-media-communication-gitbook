@@ -198,7 +198,7 @@ else:
 
 **Note:** All function definitions or condition comparisons should end with a `:`, and all the content in those functions and conditions need to be indented. you can just indent with clicking `tab`.
 
-Take the case that we talk about chapter 2 as an example. (The full version of the case is [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/)
+Take the case that we talk about chapter 2 as an example. (The full version of the case is [here](https://dnnsociety.org/2018/02/01/calculate-marketing-objective-for-your-media-startup/))
 
 > Example 14: We want to know how much is the cost with the number of users we have.  When the number is less than 50,000, the cost will be 10,000. If the number is not less than 50,000, then cost=10000+0.1×(number_of_users -50000）. The actual number of users we have now is 100,000. The if-else statement will be as fellow:
 
@@ -878,7 +878,7 @@ for (task, e) in fail:
     pass
 ```
 
-In our web scraping example, `tasks` can be a list of URLs to scrape and `do_something_with` is the single page scraping function that takes a URL as input and return the scraped data items if successful. How to implement this `do_something_with` function is the topic of [notes-week-05.md](notes-week-05.md) but it is good to learn the basic idea here.
+In our web scraping example, `tasks` can be a list of URLs to scrape and `do_something_with` is the single page scraping function that takes a URL as input and return the scraped data items if successful. How to implement this `do_something_with` function is the topic of [notes-week-07.md](notes-week-07.md) but it is good to learn the basic idea here.
 
 ### Test and batch execution for repeated tasks
 
@@ -912,7 +912,7 @@ Suppose you have 10 machines and 1000 tasks in `tasks`. You can copy the same co
 
 ### Generate detailed mortgage schedule
 
-In [notes-week-02.md](notes-week-02.md), we made a mortgage calculator using the amortised formula from Wikipedia. Now that we have the monthly instalment number, we can further generate the mortgage schedule that a regular user is highly interested. A mortgage schedule is basically a table in which one row represents the status of a month. One row contains the following information: `month`, `instalment`, `interest in instalment`, `principal in instalment`,  `outstanding principal after this instalment`. The first 12 months are as follows. Try to print this table.
+In [notes-week-02.md](notes-week-02.md#exercise-2-calculate-a-mortgage), we made a mortgage calculator using the amortised formula from Wikipedia. Now that we have the monthly instalment number, we can further generate the mortgage schedule that a regular user is highly interested. A mortgage schedule is basically a table in which one row represents the status of a month. One row contains the following information: `month`, `instalment`, `interest in instalment`, `principal in instalment`,  `outstanding principal after this instalment`. The first 12 months are as follows. Try to print this table.
 
 ```text
 Month	Instalment	Interest	Principal	Outstanding
