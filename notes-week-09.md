@@ -709,7 +709,7 @@ df[(df['price'] == '$101-200') & (df['style'] == '海鮮') & (df['likes'] > 300)
 
 ![Pandas Filter Multiple](assets/pandas-filter-multiple.png)
 
-For how to manipulate multiple conditions, You may need to review the bool comparison logic in the Chapter 3 - [logic operators](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/78e8f08afdd84855295287ba19e360352fca373a/notes-week-03.md#logic-operators)
+For how to manipulate multiple conditions, You may need to review the bool comparison logic in the Chapter 3 - [logic operators](notes-week-03.md#logic-operators)
 
 #### Save data
 

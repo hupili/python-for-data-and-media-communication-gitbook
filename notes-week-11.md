@@ -96,7 +96,7 @@ plt.show()
 
 #### How to order the keys of bar chart
 
-**Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer [the tutorial](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/module-matplotlib.md#how-to-display-chinese-characters-when-using-matplotlib).
+**Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer [the tutorial](module-matplotlib.md#how-to-display-chinese-characters-when-using-matplotlib).
 
 ```python
 # -*- coding: utf-8 -*-

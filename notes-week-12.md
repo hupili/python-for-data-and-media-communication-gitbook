@@ -57,7 +57,7 @@ Outline:
 
 #### Case 1: Get full URL from HTML A tag's href attribute
 
-To Scrape Initiumlab articles' urls, which we used as an example in [chapter 7](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-07.md#scrape-all-articles-of-one-page)
+To Scrape Initiumlab articles' urls, which we used as an example in [chapter 7](notes-week-07.md#scrape-all-articles-of-one-page)
 
 * Using `split + slice + format`
 
