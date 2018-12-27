@@ -86,7 +86,9 @@ import pandas as pd
 data = [1, 5, 2, 3, 2]
 df = pd.DataFrame(data, columns=['value'])
 #df
-plt.bar(df.index, df.value) #pass x label value and y label value
+
+#pass x label value and y label value
+plt.bar(df.index, df.value)
 plt.show()
 ```
 
@@ -100,21 +102,31 @@ plt.show()
 # -*- coding: utf-8 -*-
 import pandas as pd
 from matplotlib import pyplot as plt
-df = pd.read_csv('openrice_viz.csv') #read csv
+df = pd.read_csv('openrice_viz.csv') 
 #df.head()
 
-plt.rcParams['font.sans-serif']=['SimHei'] #set for displaying Chinese characters here.
-plt.rcParams['axes.unicode_minus']=False #set for displaying `-`
+#set for displaying Chinese characters here.
+plt.rcParams['font.sans-serif']=['SimHei']
 
-country_counts=df['country'].value_counts()[:15].sort_values(ascending=False) #sort values
+#set for displaying `-`
+plt.rcParams['axes.unicode_minus']=False 
+
+#sort values
+country_counts=df['country'].value_counts()[:15].sort_values(ascending=False)
+
+#adjust size
 country = pd.DataFrame(country_counts)
-fig = plt.figure(figsize=(14,7)) #adjust size
-plt.bar(country.index, country.country,color = '#46bc99',edgecolor = '#40b4e5') #change color of the bars
+fig = plt.figure(figsize=(14,7))
+
+#change color of the bars
+plt.bar(country.index, country.country,color = '#46bc99',edgecolor = '#40b4e5')
 
 # another way to plot bar in pandas:
 # country_counts=df['country'].value_counts()[:15].sort_values(ascending=False).plot(
-#     kind='bar',color = '#46bc99',edgecolor = '#40b4e5')
-plt.title('top 15 country') #plot title and label name
+# kind='bar',color = '#46bc99',edgecolor = '#40b4e5')
+
+#plot title and label name
+plt.title('top 15 country')
 plt.xlabel('country')
 plt.ylabel('counts')
 plt.show()
@@ -127,8 +139,15 @@ plt.show()
 Sometimes, we can use `plt.subplot` function to plot multiple charts into one output cell, so that we can more easily to compare and tell the difference between different parameters.
 
 ```python
-fig, axes = plt.subplots(nrows=2, ncols=2,constrained_layout=True,figsize=(30,20)) #set a 2*2 canvas, adjust layout to more flexible, adjust figure size, axes means the location of each subplots, you can refer to the following picture below to learn more.
+#set a 2*2 canvas, adjust layout to more flexible
+#adjust figure size, axes means the location of each subplots
+#you can refer to the following picture below to learn more.
+fig, axes = plt.subplots(nrows=2, ncols=2,constrained_layout=True,figsize=(30,20)) 
+```
 
+![Matplotlib axes](assets/matplotlib-axes.png)
+
+```python
 #plot price range count
 price = pd.DataFrame(df['price'].value_counts())
 ax1 = price.plot(kind = 'bar',color = '#46bc99',edgecolor = '#40b4e5',ax=axes[0,0],fontsize=24)
@@ -157,27 +176,18 @@ ax4.set_title("Like with Bookmark count",fontsize=40)
 1. You can pass a lot of parameters like `kind`, `color`, `fontsize` into the function. For more usage examples, please refer [the documentation](https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.plot.html)
 2. Axes is just like the position of the subplots. You can refer to the following picture for better understanding.
 
-![Matplotlib axes](assets/matplotlib-axes.png)
-
 ### seaborn
 
 Seaborn is a Python data visualization library based on matplotlib, basically, you can regard it as the advanced version of matplotlib, and its closely integrated with `pandas data structures`, with which we can draw more attractive and informative statistical graphics. You can refer [it's documentation](https://seaborn.pydata.org/tutorial.html#tutorial).
 
 #### Basic usage
 
-Install and import:
-
-```python
-!pip install seaborn
-import seaborn as sns
-```
-
-Basic usage example:
+Basic usage example: (`pip install seaborn` if you have not done so yet)
 
 ```python
 import seaborn as sns
-sns.distplot(df["bookmark"],bins=20)
 #one can directly pass pandas.series to plot histogram
+sns.distplot(df["bookmark"],bins=20)
 ```
 
 ![Seaborn hist](assets/seaborn-hist.png)
@@ -187,8 +197,10 @@ sns.distplot(df["bookmark"],bins=20)
 Example: Draw a bar chart between price range and likes, you can easily find that $200-400 is the most popular price and acceptable range in Hong Kong.
 
 ```python
-sns.set(font='SimHei') #set font to support Chinese character
-pd_df = df.groupby(['price'])['likes'].mean().reset_index().sort_values("likes",ascending=False) #this is to solve the output chart is not sorted by likes.
+#set font to support Chinese character
+sns.set(font='SimHei')
+
+pd_df = df.groupby(['price'])['likes'].mean().reset_index().sort_values("likes",ascending=False) 
 ax = sns.barplot(x='price', y='likes',data=pd_df)
 plt.title('likes_price', color='gray', fontsize=16, weight='bold')
 ```
@@ -260,21 +272,18 @@ For more plotly examples and tutorials, you can refer to [official documentation
 
 Pyecharts is a library to generate charts using Echarts, which is an open source library from Baidu for data visualization in javascript. Pyecharts provides 30+ kinds of charts, especially with easy-to-use interactive graphs.
 
-Install and import:
+Basic usage example: (`pip install pyecharts` if you have not done so yet)
 
 ```python
-!pip install pyecharts
-from pyecharts import Bar #you can change Bar to other kind of charts, like Line, Pie, HeatMap etc...
-```
-
-Basic usage example:
-
-```python
+#you can change Bar to other kind of charts, like Line, Pie, HeatMap etc...
 from pyecharts import Bar
+
 #to see relationship between countries with likes and bookmarks
 pd_df3 = df.groupby(['country'])['bookmark'].mean().reset_index().sort_values("bookmark",ascending=False)
+
+#you can pass a list-like data here
 attr = pd_df2.country
-v1 = pd_df2.likes  #you can pass a list like data here
+v1 = pd_df2.likes  
 v2 = pd_df3.bookmark
 bar = Bar("Countries by likes and bookmark")
 bar.add("by likes", attr, v1, mark_line=["average"])
@@ -294,10 +303,14 @@ One can also include "bar charts" in your DataFrame, from which you can easily f
 ```python
 pd_df4 = df.pivot_table(index=['country'], columns=['price'], values='name', aggfunc='count')
 #pd_df4
-#select rows with popular cuisine, changes rows to columns for better overview of each cuisine price range, and replace the nan value with 0
+
+#select rows with popular cuisine
+#changes rows to columns for better overview of each cuisine price range
+#replace the nan value with 0
 pd_df4 = pd_df4.loc[['韓國菜','日本菜','西式','意大利菜','粵菜 (廣東)']].fillna(0).T
 
-# because the index is string, not the number, so that we cannot directly sort_index, instead, we need to reindex it.
+# the index is string, not the number, so we cannot directly sort_index
+#instead, we need to reindex it.
 reorderlist = [ '$50以下', '$51-100','$101-200' ,'$201-400' ,'$401-800']
 pd_df4 = pd_df4.reindex(reorderlist)
 pd_df4.style.bar(color='#d65f5f')
@@ -311,14 +324,7 @@ For more inside pandas.DataFrame usage, please refer [it's documentation](https:
 
 Bokeh is an interactive visualization library that targets modern web browsers for presentation.
 
-Install and import:
-
-```python
-!pip install bokeh
-from bokeh.plotting import figure, show
-```
-
-Basic usage example:
+Basic usage example: (`pip install bokeh` if you have not done so yet)
 
 Plot top 10 country grouped with bookmark, and sorted by bookmark.
 
@@ -362,7 +368,7 @@ There is a Python implementation of the very famous `ggplot` that is also availa
 
 ### README.md
 
-"README" is a convention in computer world. You can find a file of this name in almost all software distribution. It means exactly the same as its name indicates: before you do anything, read me first! This file usually gives people instructions on first steps to work with the software. It may point to other more detailed tutorials or mannuals. The `.md` in `README.md` is just a suffix to indicate that this file is written in markdown format. When GitHub sees this file, it renders the file into HTML (for your web browser) using a markdown compiler. You can check out the [README.md](README.md) of this current repo to get an idea.
+"README" is a convention in computer world. You can find a file of this name in almost all software distribution. It means exactly the same as its name indicates: before you do anything, read me first! This file usually gives people instructions on first steps to work with the software. It may point to other more detailed tutorials or manuals. The `.md` in `README.md` is just a suffix to indicate that this file is written in markdown format. When GitHub sees this file, it renders the file into HTML (for your web browser) using a markdown compiler. You can check out the [README.md](README.md) of this current repo to get an idea.
 
 Besides giving important project information and "play the open source way", a good README file is also an "elevator pitch" to potential readers/ users. You want to present the key functions/ highlights in quick/ direct way. Here are some tips for your consideration.
 
