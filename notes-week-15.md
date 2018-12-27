@@ -148,7 +148,7 @@ Plotting points: (Point of Interest; POI)
   - [Sichuan earth quake in 100 years](https://hupili.net/20170800-sichuan-earthquake-in-100years/)
 - Heat map -- diffuse a point to surroundings and shows the density
   - [Mapbox heatmap example](https://www.mapbox.com/mapbox-gl-js/example/heatmap-layer/)
-- Clustering map -- group nearby points to clusters to make scatter plot less cluttered. Clustering map to heatmap is like [histogram to KDE](notes-week-08.md#kernel-density-estimation-kde)
+- Clustering map -- group nearby points to clusters to make scatter plot less cluttered. Clustering map to heatmap is like [histogram to KDE](notes-week-10.md#kernel-density-estimation-kde)
   - [World airport clustering map](https://www.jerriepelser.com/books/airport-explorer/mapping/clustering/)
 
 Plotting lines:
