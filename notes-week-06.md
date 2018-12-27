@@ -258,7 +258,7 @@ Although our focus in this chapter is to get data from different sources via API
 Here are some examples of such robots:
 
 - A robot that summarises Initium Media articles and post status upon new release. You can find [source code](https://github.com/hupili/summary-bot/blob/master/bot.py), or see it [in action](https://twitter.com/summary_bot).
-- [EQBOT](http://eqbot.com/) gets earthquake updates in an interested region and post to Twitter when there is a new earthquake. The bot is reproduced by our TA as [@Chico.xyc](https://twitter.com/chicoxyc), whose source codes are in this [notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/w5-api-json/earthquake_robot.ipynb).
+- [EQBOT](http://eqbot.com/) gets earthquake updates in an interested region and post to Twitter when there is a new earthquake. The bot is reproduced by our TA as [@Chico.xyc](https://twitter.com/chicoxyc), whose source codes are in this [notebook](https://github.com/hupili/python-for-data-and-media-communication/blob/master/api-examples/Taiwan%20earthquake%20robot.ipynb).
 
 
 ## Exercises and Challenges
