@@ -67,7 +67,7 @@ Demo data: [open rice data](https://github.com/hupili/python-for-data-and-media-
 
 #### Why matplotlib?
 
-Matplotlib is a data visualization library which has ability to support you plot various kind of graphs and charts like scatter plot, bar chart, histogram, even 3D graphics and animations and so on. Its powerful and its simple that we usually use it as the basic driver for the basic data visualization. You can refer [here](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html) for it's documentation and functions.
+Matplotlib is a data visualization library which has ability to support you plot various kind of graphs and charts like scatter plot, bar chart, histogram, even 3D graphics and animations and so on. Its powerful and its simple that we usually use it as the basic driver for the basic data visualization. You can refer [it's documentation](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html) for for functions and information.
 
 #### Basic usage
 
@@ -94,7 +94,7 @@ plt.show()
 
 #### How to order the keys of bar chart
 
-**Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/module-matplotlib.md#how-to-display-chinese-characters-when-using-matplotlib) with the tutorial.
+**Note:** Matplotlib doesn't support displaying Chinese characters, we need to do some setup work here. Please refer [the tutorial](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/module-matplotlib.md#how-to-display-chinese-characters-when-using-matplotlib).
 
 ```python
 # -*- coding: utf-8 -*-
@@ -154,14 +154,14 @@ ax4.set_title("Like with Bookmark count",fontsize=40)
 
 **Note:**
 
-1. You can pass a lot of parameters like `kind`, `color`, `fontsize` into the function. For more usage documentation, please refer [here](https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.plot.html)
+1. You can pass a lot of parameters like `kind`, `color`, `fontsize` into the function. For more usage examples, please refer [the documentation](https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.plot.html)
 2. Axes is just like the position of the subplots. You can refer to the following picture for better understanding.
 
 ![Matplotlib axes](assets/matplotlib-axes.png)
 
 ### seaborn
 
-Seaborn is a Python data visualization library based on matplotlib, basically, you can regard it as the advanced version of matplotlib, and its closely integrated with `pandas data structures`, with which we can draw more attractive and informative statistical graphics. You can refer [here](https://seaborn.pydata.org/tutorial.html#tutorial) for it's documentation and functions.
+Seaborn is a Python data visualization library based on matplotlib, basically, you can regard it as the advanced version of matplotlib, and its closely integrated with `pandas data structures`, with which we can draw more attractive and informative statistical graphics. You can refer [it's documentation](https://seaborn.pydata.org/tutorial.html#tutorial).
 
 #### Basic usage
 
@@ -212,7 +212,7 @@ ax = sns.scatterplot(x="bookmark", y="likes",hue='price',data=df)
 
 ![Seaborn likes bookmark](assets/seaborn-likes-bookmark2.png)
 
-For more seaborn examples and tutorials, you can refer [here](hhttps://seaborn.pydata.org/tutorial.html)
+For more seaborn examples, you can refer [the official tutorial](hhttps://seaborn.pydata.org/tutorial.html).
 
 ### plotly
 
@@ -285,7 +285,7 @@ bar
 ![Pyecharts by bookmark](assets/countries-by-likes-and-bookmark.png)
 ![Pyecharts by bookmark2](assets/countries-by-likes-and-bookmark2.png)
 
-For more pyecharts examples and tutorials, you can refer [here](http://pyecharts.org/#/zh-cn/charts_base)
+For more pyecharts examples, you can refer [the official tutorial](http://pyecharts.org/#/zh-cn/charts_base)
 
 ### pandas
 
@@ -305,7 +305,7 @@ pd_df4.style.bar(color='#d65f5f')
 
 ![Bar inside dataframe](assets/bar-inside-dataframe.png)
 
-For more inside pandas.DataFrame usage, please refer [here](https://pandas.pydata.org/pandas-docs/stable/style.html#Bar-charts)
+For more inside pandas.DataFrame usage, please refer [it's documentation](https://pandas.pydata.org/pandas-docs/stable/style.html#Bar-charts)
 
 ### bokeh
 
@@ -338,7 +338,7 @@ show(p)
 
 ![Bokeh test](assets/bokeh-test.png)
 
-For more bokeh examples and tutorials, you can refer [here](http://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#)
+For more bokeh examples, you can refer [the tutorial](http://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#)
 
 ### ggplot
 
@@ -507,7 +507,7 @@ With the wide spread of mobile devices, single column layout is trending. That i
 **Note:**
 
 1. For the image size, the 640px width is usually enough for most occasions. A too much larger image will cause longer loading time, in which situation, you will lose your users. You can resize your image size by Photoshop or other picture processing apps.
-2. Some html generated by pyecharts cannot fit in this template completely. To display a dynamic chart completely, one can initialize the pyecharts object by giving it a relative width/ height number, like the following, the HTML files rendered in this way can fit into Big Road responsive chart area easily. You can refer [here](https://nbviewer.jupyter.org/github/hupili/python-for-data-and-media-communication/blob/master/pyecharts-examples/pyecharts-resize.ipynb#Responsive-output-for-pyecharts) for a detailed example.
+2. Some html generated by pyecharts cannot fit in this template completely. To display a dynamic chart completely, one can initialize the pyecharts object by giving it a relative width/ height number, like the following, the HTML files rendered in this way can fit into Big Road responsive chart area easily. You can refer [one responsive pyecharts example](https://nbviewer.jupyter.org/github/hupili/python-for-data-and-media-communication/blob/master/pyecharts-examples/pyecharts-resize.ipynb#Responsive-output-for-pyecharts).
 
 ```python
 chart = pyecharts.Bar(width='100%', height='90vh')
