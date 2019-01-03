@@ -1,10 +1,10 @@
-# Week 05 - Get semi-structured data: Web scraping
+# Week 07: Get semi-structured data - Web scraping
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 05 - Get semi-structured data: Web scraping](#week-05---get-semi-structured-data-web-scraping)
+- [Week 07: Get semi-structured data - Web scraping](#week-07-get-semi-structured-data---web-scraping)
     - [A word on unified environment](#a-word-on-unified-environment)
         - [virtualenv, Python3 and Python2](#virtualenv-python3-and-python2)
         - [Jupyter notebook](#jupyter-notebook)

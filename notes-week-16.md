@@ -1,8 +1,8 @@
-# Week 14: High Dimensional Data
+# Week 16: High Dimensional Data
 
 <!-- TOC -->
 
-- [Week 14: High Dimensional Data](#week-14-high-dimensional-data)
+- [Week 16: High Dimensional Data](#week-16-high-dimensional-data)
     - [Recap of data points and variables](#recap-of-data-points-and-variables)
     - [Measure the similarity between data points](#measure-the-similarity-between-data-points)
     - [Dimensionality Reduction](#dimensionality-reduction)

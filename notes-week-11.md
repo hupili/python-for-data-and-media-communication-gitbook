@@ -1,10 +1,10 @@
-# Week 09 - Present findings: data visualization and reproducible report
+# Week 11: Present findings - data visualization and reproducible report
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 09 - Present findings: data visualization and reproducible report](#week-09---present-findings-data-visualization-and-reproducible-report)
+- [Week 11: Present findings - data visualization and reproducible report](#week-11-present-findings---data-visualization-and-reproducible-report)
     - [Objective](#objective)
     - [Data Visualization Libraries](#data-visualization-libraries)
         - [matplotlib](#matplotlib)

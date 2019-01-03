@@ -1,9 +1,9 @@
-# Week 08 - Work with table: 1D analysis and 2D analysis
+# Week 10: Work with table - 1D analysis and 2D analysis
 
 <div id="toc">
 <!-- TOC -->
 
-- [Week 08 - Work with table: 1D analysis and 2D analysis](#week-08---work-with-table-1d-analysis-and-2d-analysis)
+- [Week 10: Work with table - 1D analysis and 2D analysis](#week-10-work-with-table---1d-analysis-and-2d-analysis)
     - [Objective](#objective)
     - [More Arithmetics on DataFrame and Series](#more-arithmetics-on-dataframe-and-series)
         - [Exercise: The Berkeley admission synthesis dataset](#exercise-the-berkeley-admission-synthesis-dataset)

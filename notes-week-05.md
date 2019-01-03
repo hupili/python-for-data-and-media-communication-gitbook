@@ -1,10 +1,10 @@
-# Week 05 - Serialization: File, CSV, JSON
+# Week 05: Serialization - File, CSV, JSON
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 05 - Serialization: File, CSV, JSON](#week-05---serialization-file-csv-json)
+- [Week 05: Serialization - File, CSV, JSON](#week-05-serialization---file-csv-json)
     - [Objective](#objective)
     - [File operation](#file-operation)
         - [Write a file](#write-a-file)

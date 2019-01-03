@@ -1,10 +1,10 @@
-# Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty
+# Week 08: Advanced scraping - anti-crawler, browser emulation and other nitty gritty
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 06 - Advanced scraping: anti-crawler, browser emulation and other nitty gritty](#week-06---advanced-scraping-anti-crawler-browser-emulation-and-other-nitty-gritty)
+- [Week 08: Advanced scraping - anti-crawler, browser emulation and other nitty gritty](#week-08-advanced-scraping---anti-crawler-browser-emulation-and-other-nitty-gritty)
     - [Objective](#objective)
     - [Anti-crawling](#anti-crawling)
         - [User agent](#user-agent)

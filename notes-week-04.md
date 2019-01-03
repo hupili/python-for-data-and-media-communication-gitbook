@@ -1,10 +1,10 @@
-# Week 04 - Data Structure
+# Week 04: Data Structure
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 04 - Data Structure](#week-04---data-structure)
+- [Week 04: Data Structure](#week-04-data-structure)
     - [Composite data types (collection)](#composite-data-types-collection)
         - [List []](#list-)
             - [Common features of list](#common-features-of-list)

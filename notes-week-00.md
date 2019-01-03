@@ -1,10 +1,10 @@
-# Week 00 - Introduction and Preparation
+# Week 00: Introduction and Preparation
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 00 - Introduction and Preparation](#week-00---introduction-and-preparation)
+- [Week 00: Introduction and Preparation](#week-00-introduction-and-preparation)
     - [Foreword](#foreword)
         - [Course structure](#course-structure)
     - [Introduction & Objectives](#introduction--objectives)

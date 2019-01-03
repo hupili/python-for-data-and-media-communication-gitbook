@@ -1,10 +1,10 @@
-# Week 06 - API
+# Week 06: API
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 06 - API](#week-06---api)
+- [Week 06: API](#week-06-api)
     - [Requests](#requests)
         - [Make a Request](#make-a-request)
         - [Response Content](#response-content)

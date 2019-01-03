@@ -1,10 +1,10 @@
-# Week 07 - Work with table: data cleaning and pre-processing
+# Week 09: Work with table - data cleaning and pre-processing
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 07 - Work with table: data cleaning and pre-processing](#week-07---work-with-table-data-cleaning-and-pre-processing)
+- [Week 09: Work with table - data cleaning and pre-processing](#week-09-work-with-table---data-cleaning-and-pre-processing)
     - [Objective](#objective)
     - [Preparation](#preparation)
         - [Python environment](#python-environment)

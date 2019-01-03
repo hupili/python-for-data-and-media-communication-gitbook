@@ -1,10 +1,10 @@
-# Week 02 - Use Python as a daily tool
+# Week 02: Use Python as a daily tool
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 02 - Use Python as a daily tool](#week-02---use-python-as-a-daily-tool)
+- [Week 02: Use Python as a daily tool](#week-02-use-python-as-a-daily-tool)
     - [Objective of this week](#objective-of-this-week)
     - [Variables and assignment](#variables-and-assignment)
     - [Basic data types](#basic-data-types)

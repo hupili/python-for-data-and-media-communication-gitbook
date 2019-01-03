@@ -1,10 +1,10 @@
-# Week 01 - Terminal, Python, Jupyter Notebook
+# Week 01: Terminal, Python, Jupyter Notebook
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 01 - Terminal, Python, Jupyter Notebook](#week-01---terminal-python-jupyter-notebook)
+- [Week 01: Terminal, Python, Jupyter Notebook](#week-01-terminal-python-jupyter-notebook)
     - [Objective of this week](#objective-of-this-week)
     - [About terminal on Mac](#about-terminal-on-mac)
         - [What is terminal on Mac？](#what-is-terminal-on-mac)

@@ -1,10 +1,10 @@
-# Week 03 - Control Flow
+# Week 03: Control Flow
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 03 - Control Flow](#week-03---control-flow)
+- [Week 03: Control Flow](#week-03-control-flow)
     - [Objective](#objective)
     - [Use "Help" more to learn by yourself](#use-help-more-to-learn-by-yourself)
     - [Bool and comparisons](#bool-and-comparisons)
