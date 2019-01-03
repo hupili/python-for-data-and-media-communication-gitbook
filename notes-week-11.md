@@ -11,7 +11,7 @@
             - [Why matplotlib?](#why-matplotlib)
             - [Basic usage](#basic-usage)
             - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
-            - [How to add annotation on charts](#how-to-add-annotation-on-charts)
+            - [How to add annotation in matplotlib](#how-to-add-annotation-in-matplotlib)
             - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
         - [seaborn](#seaborn)
             - [Basic usage](#basic-usage-1)
@@ -135,7 +135,7 @@ plt.show()
 
 ![plt bar](assets/plt-bar-by-sorting.png)
 
-#### How to add annotation on charts
+#### How to add annotation in matplotlib
 
 Sometimes, one may need to leave annotations to highlight or explain some data to help readers better understand the story. The following is an example of how to make annotation in matplotlib.
 
