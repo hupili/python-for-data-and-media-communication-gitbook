@@ -24,6 +24,7 @@
             - [Jupyter Notebook](#jupyter-notebook)
             - [Nbviewer](#nbviewer)
             - [Why do we need to preview Jupyter notebook on Nbviewer?](#why-do-we-need-to-preview-jupyter-notebook-on-nbviewer)
+        - [Other uses of GitHub for public discussions](#other-uses-of-github-for-public-discussions)
     - [GitHub Desktop](#github-desktop)
         - [Install GitHub Desktop](#install-github-desktop)
         - [Use GitHub Desktop to synchronize codes between local repository and GitHub hosted repository](#use-github-desktop-to-synchronize-codes-between-local-repository-and-github-hosted-repository)
@@ -263,6 +264,12 @@ Here is an example, you can find one Jupyter notebook from github, and copy the 
 #### Why do we need to preview Jupyter notebook on Nbviewer?
 
 Usually, we can directly preview a Python notebook on GitHub. However, GitHub prohibits Javascript execution for security reasons. If you have interactive chart, e.g. `echart`, `plotly`, those will not render on GitHub. Nbviewer supports javascript and it is the first free online tool to preview Python notebook, so we recommend it. For concrete examples of dynamic charts, here is an [example](http://nbviewer.jupyter.org/github/data-projects-archive/201804-Air-Crash/blob/master/Final%20Project%20-%20Airplane%20crash/A%20Brief%20report%20Airplane%20crash%20worldwide.ipynb) from students' last year. The last interactive map *flight path* can not be shown directly in GitHub, that's why we need Nbviewer.
+
+### Other uses of GitHub for public discussions
+
+GitHub's versioned storage and its adoption of markdown as primary syntax makes it very easy to maintain content on GitHub. Other users can also participate in the discussion via GitHub issue tracker. There were some practices of using GitHub to discuss public events. Following are some pointers for your reference:
+
+- [The article collection related with Yue Xin](https://github.com/sikaozhe1997/Xin-Yue)
 
 ## GitHub Desktop
 
