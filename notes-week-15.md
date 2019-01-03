@@ -24,6 +24,7 @@
         - [Openrice Sichuan Food using folium](#openrice-sichuan-food-using-folium)
         - [Global data journalist distribution and contribution map using ploty](#global-data-journalist-distribution-and-contribution-map-using-ploty)
         - [American journalist job market map using ploty](#american-journalist-job-market-map-using-ploty)
+        - [Tourists footmark of Domestic Tourist Cities](#tourists-footmark-of-domestic-tourist-cities)
         - [Number of journalists killed in different countries](#number-of-journalists-killed-in-different-countries)
         - [England and Ireland pubs using matplotlib](#england-and-ireland-pubs-using-matplotlib)
         - [Hong Kong property price bubble chart using folium](#hong-kong-property-price-bubble-chart-using-folium)
@@ -227,6 +228,7 @@ The tools and process:
 Code repo: https://github.com/hupili/openrice-data-blog-201811
 
 ### Global data journalist distribution and contribution map using ploty
+
 Following is an example of scatter plots on maps about how data journalists distribute all over the world.
 
 Like the air crash map above, this map's key data that we should get is also the longitude and latitude of each cities. In addition, we need another dimension to assign the color of each point on this map. In this case, the depth of color represents a journalist's overall github contribution from 2008.
@@ -256,6 +258,19 @@ The tools and process:
 - Use `plotly` to visualize the map
 
 The dataset and codes can be found [here](https://github.com/FLYSTEPHEN/examples/tree/master/Visualisation/Map/2018-America-Journalist-job-market-map).
+
+### Tourists footmark of Domestic Tourist Cities
+
+This is the interactive map about footmarks of tourists from the top5 domestic tourist cities. As you can see these dots and arrows, most of them are not only hot destinations, but also hot origins. Therefore, they connect with each other and form a network. These footmarks almost concentrate on Eastern China.
+
+![Tourists bookmarks.png](assets/tourists-bookmarks.png)
+
+The tools and process:
+
+- Get the data from `new_final.csv`
+- Use `pyecharts and GeoLines` to visualize the maps.
+
+The dataset and codes can be found [here](https://github.com/CathyChang1996/Behavior-Trends-of-self-service-travelers).
 
 ### Number of journalists killed in different countries
 
