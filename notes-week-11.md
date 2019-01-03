@@ -11,6 +11,7 @@
             - [Why matplotlib?](#why-matplotlib)
             - [Basic usage](#basic-usage)
             - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
+            - [How to add annotation on charts](#how-to-add-annotation-on-charts)
             - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
         - [seaborn](#seaborn)
             - [Basic usage](#basic-usage-1)
@@ -133,6 +134,30 @@ plt.show()
 ```
 
 ![plt bar](assets/plt-bar-by-sorting.png)
+
+#### How to add annotation on charts
+
+Sometimes, one may need to leave annotations to highlight or explain some data to help readers better understand the story. The following is an example of how to make annotation in matplotlib.
+
+```python
+plt.rcParams['font.sans-serif']=['SimHei']
+plt.rcParams['axes.unicode_minus']=False
+fig = plt.figure(figsize=(14,7))
+plt.bar(country.index, country.country,color = '#46bc99',edgecolor = '#40b4e5')
+plt.title('top 15 country') 
+plt.xlabel('country')
+plt.ylabel('counts')
+
+# you can change arrorw style, color, text and text location
+plt.annotate('Japanese Cuisine is the favorite', xy=(1.5, 80), xytext=(4, 60),fontsize=16,
+            arrowprops=dict(arrowstyle='->',facecolor='black'))
+plt.annotate('Sichuan Cuisine is the favorite from mainland China ', xy=(10,10), xytext=(6, 40),fontsize=16,
+            arrowprops=dict(arrowstyle='->',facecolor='black'))
+```
+
+![Text annotation](assets/text-annotation.png)
+
+Also, you can refer [here](https://nbviewer.jupyter.org/github/DaisyZhongDai/hkbu-big-data-media/blob/master/homework3/Top%20200%20online%20novels.ipynb) for another example by one of S2018 students.
 
 #### How to plot multiple chart in one input/ output cell
 
