@@ -25,6 +25,8 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 
 * [Introduction](README.md)
 * [Course Outline](outline.md)
+* [Spring 2018 offering of the course](session-S2018.md)
+* [Fall 2018 offering of the course](session-F2018.md)
 
 ## Weekly Notes
 
@@ -55,6 +57,9 @@ You can search through our whole repo, including all the notes and FAQs using th
 ### General FAQs
 
 * [Course Admin](course-admin.md)
+* [Grading Scheme](grading.md)
+* [Guide for Contributor](guide-for-contributor.md)
+* [Projects Guideline](project.md)
 * [Setup Python Environment on Windows and MAC](setup-environment.md)
 * [Shell](shell.md)
 * [Python Language Basics](python-language-basics.md)
@@ -67,6 +72,9 @@ You can search through our whole repo, including all the notes and FAQs using th
 * [HTML](html.md)
 * [Encoding](encoding.md)
 * [pip](pip.md)
+* [Computational Thinking](computational-thinking.md)
+* [File I/O](file.md)
+* [Leetcode](leetcode.md)
 
 ### Python Modules FAQs
 
@@ -83,6 +91,7 @@ You can search through our whole repo, including all the notes and FAQs using th
 * [module: datetime](module-datetime.md)
 * [module: selenium](module-selenium.md)
 * [module: wordcloud](module-wordcloud.md)
+* [module: geopandas](module-geopandas.md)
 
 ### Other Uncategorized FAQs
 
