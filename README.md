@@ -44,9 +44,9 @@ This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM77
 * [Notes: Week 13 - Datetime and Time Series](notes-week-13.md)
 * [Notes: Week 14 - Network data](notes-week-14.md)
 * [Notes: Week 15 - Geographical data](notes-week-15.md)
-* [Week 16 - High Dimensional Data](notes-week-16.md)
-* [Week 17 - Machine learning primer: clustering, classification, regression](notes-week-17.md)
-* [Week 18 - Python Engineering and Data Engineering](notes-week-18.md)
+* [Notes: Week 16 - High Dimensional Data](notes-week-16.md)
+* [Notes: Week 17 - Machine learning primer: clustering, classification, regression](notes-week-17.md)
+* [Notes: Week 18 - Python Engineering and Data Engineering](notes-week-18.md)
 
 ## FAQ Catalogue
 
