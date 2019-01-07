@@ -547,7 +547,10 @@ df.sort_values(by='likes',ascending=False)
 What's more, in the multiple columns dataset, one may need to filter or sort values by multiple columns, we can use following method to accomplish this:
 
 ```python
-df.sort_values(['likes','bookmark'],ascending=[False,False]) #the first false corresponding to the first column
+#the first false corresponding to the first column
+df.sort_values(['likes','bookmark'],ascending=[False,False])
+#you can also write as following, 0 means false, 1 means true
+#df.sort_values(['likes','bookmark'],ascending=[0,0])
 ```
 
 ![Sort values by multiple columns](assets/sort-values-by-multiple-columns.png)
