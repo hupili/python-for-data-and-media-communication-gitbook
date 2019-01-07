@@ -1,4 +1,4 @@
-# Fall 2018 offering of the course
+# Spring 2018 offering of the course
 
 ## Teaching team
 
