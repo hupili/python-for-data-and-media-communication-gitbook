@@ -11,6 +11,7 @@
         - [Projection system](#projection-system)
             - [Mercator projection](#mercator-projection)
     - [File Formats](#file-formats)
+        - [GeoSeries and GeoDataFrame](#geoseries-and-geodataframe)
         - [GeoJOSN](#geojosn)
         - [TopoJSON](#topojson)
         - [KML](#kml)
@@ -20,6 +21,7 @@
         - [When map is used to show correlation](#when-map-is-used-to-show-correlation)
         - [When map hides key information](#when-map-hides-key-information)
     - [Case studies](#case-studies)
+        - [Shanghai rental sources map visualization](#shanghai-rental-sources-map-visualization)
         - [Air crash map using plotly](#air-crash-map-using-plotly)
         - [Openrice Sichuan Food using folium](#openrice-sichuan-food-using-folium)
         - [Global data journalist distribution and contribution map using ploty](#global-data-journalist-distribution-and-contribution-map-using-ploty)
@@ -49,6 +51,7 @@ Understand geographical data
 
 Libraries:
 
+- `geopandas`
 - `geopy`
 - `folium`
 - `plotly`
@@ -117,6 +120,10 @@ Image from ["How the World Map Looks Wildly Different Than You Think"](https://w
 The key take-away is that, the farther away from earth equator, the larger the distortion.
 
 ## File Formats
+
+### GeoSeries and GeoDataFrame
+
+Those are the subclasses (extension) of `pandas`'s `DataFrame` and `Series`. In essence, it adds one `geometry` column to the ordinary `pandas` table. Technically, there can be more columns representing geometry but one needs to be active in order to enable geometric arithmetics. The `geopandas` module implements all the above GIS basic operations, like geocoding, converting CRS, calculating projections, etc. It also supports geometric arithmetics like `intersects` and `contains`. Those operations can be carried out on a vector for convenience. There are also counterpart like `join` two `DataFrame` in `GeoDataFrame` -- `sjoin`, a.k.a "spatial join", who leverages supported geometric arithmetics on geo elements.
 
 ### GeoJOSN
 
@@ -194,6 +201,16 @@ One way to solve this problem technically is to plot Cartogram. However, bar cha
 ## Case studies
 
 This section includes some selected map visualization cases **made in Python**. There are many other tools that can help you make maps, most notably QGIS, D3 and Carto. We leave pointers in the "other tools" section for readers' reference.
+
+### Shanghai rental sources map visualization
+
+![](assets/geopandas-demo-shanghai-POIs.png)
+
+- Use `geopandas` for geocoding, visualization.
+- Use `GeoDataFrame.sjoin()` to correlate points into polygons (administrative areas).
+- Use `GeoDataFrame.groupby().count()` to count the POIs in each area.
+
+More details can be found on [this article](https://mp.weixin.qq.com/s/nBaXAC6e97cbWON5mffFug).
 
 ### Air crash map using plotly
 
