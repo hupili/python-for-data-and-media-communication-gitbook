@@ -39,6 +39,7 @@
         - [Integrated exercise: Publish a full work in a stand alone page](#integrated-exercise-publish-a-full-work-in-a-stand-alone-page)
             - [Save plotly chart](#save-plotly-chart)
         - [Bonus: Continuously update GitHub Pages](#bonus-continuously-update-github-pages)
+    - [Bonus: Slide show presentation](#bonus-slide-show-presentation)
     - [Bonus: Craft a data service](#bonus-craft-a-data-service)
     - [Code of conduct: Reproducible reporting and full reporting](#code-of-conduct-reproducible-reporting-and-full-reporting)
     - [References](#references)
@@ -552,7 +553,7 @@ chart = pyecharts.Bar(width='100%', height='90vh')
 The default plotly chart includes a tool bar, making the graphical region too small on "Big Road" template. There are two ways to work around:
 
 1. Use `<ratio-1-to-1>` tag to wrap the `<responsive-block>`.
-2. Remove the tool bar from plotly chart.
+2. Remove the tool bar from plotly chart. Use `"displayModeBar": False` in `config`. Checkout [sample code](https://nbviewer.jupyter.org/github/hupili/python-for-data-and-media-communication/blob/master/plotly-examples/Export%20plotly%20chart.ipynb)
 
 The second way is recommended. When using the 1st solution, there will be a large chunk of blank on the page. This area is intended to show the tool bar when hovering your mouse on the chart. Hovering does not make sens on mobile devices.
 
@@ -564,6 +565,10 @@ The GitHub repository can be updated continuously ensure the data presented ther
 - Generate JSON data files to interface between Python and Javascript.
 - Build interactive charts that takes JSON data as input, from a designated location on gh-pages.
 - Periodically run the Python script to make the data up to date. One may find `cron` on Linux or Mac OSX helpful.
+
+## Bonus: Slide show presentation
+
+[Reveal.js](https://github.com/hakimel/reveal.js/) is the most commonly used library to present slides on the web. It is a JavaScript library that parses special HTMl tags and present the slides. It may be too verbose for casual use. A lightweight wrapper is [reveal-md](https://github.com/webpro/reveal-md) that allows one to write content in markdown and turn it into web based slideshow instantly. [RISE](https://github.com/damianavila/RISE) is a Jupyter notebook extention that adds a "slide" cell type. Using `RISE`, one can switch between notebook and slideshow instantly. Moreover, `RISE` allows one to execute codes on the webpage directly.
 
 ## Bonus: Craft a data service
 
