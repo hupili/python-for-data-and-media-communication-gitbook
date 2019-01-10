@@ -41,7 +41,7 @@
         - [Bonus: CSS](#bonus-css)
         - [Single column layout](#single-column-layout)
         - [Integrated exercise: Publish a full work in a stand alone page](#integrated-exercise-publish-a-full-work-in-a-stand-alone-page)
-            - [Save plotly chart](#save-plotly-chart)
+            - [Save plotly chart and put it on gh-pages](#save-plotly-chart-and-put-it-on-gh-pages)
         - [Bonus: Continuously update GitHub Pages](#bonus-continuously-update-github-pages)
     - [Bonus: Slide show presentation](#bonus-slide-show-presentation)
     - [Bonus: Craft a data service](#bonus-craft-a-data-service)
@@ -563,11 +563,16 @@ With the wide spread of mobile devices, single column layout is trending. That i
 chart = pyecharts.Bar(width='100%', height='90vh')
 ```
 
-#### Save plotly chart
+#### Save plotly chart and put it on gh-pages
 
-<!-- TODO: How to save a plotly chart and put into your web story on gh-pages? -->
+We can use offline mode of plotly to save the charts as html files like the example we used [above](#quickstart-for-plotly).
 
-The default plotly chart includes a tool bar, making the graphical region too small on "Big Road" template. There are two ways to work around:
+After we get htmls, we can embed them into other html with help of **iframe**. You can refer [this case](https://chicoxyc.github.io/TSPDT/) for more details.
+
+![HTML embed charts](assets/html-embed-charts.png)
+
+
+**Note:** The default plotly chart includes a tool bar, making the graphical region too small on "Big Road" template. There are two ways to work around:
 
 1. Use `<ratio-1-to-1>` tag to wrap the `<responsive-block>`.
 2. Remove the tool bar from plotly chart. Use `"displayModeBar": False` in `config`. Checkout [sample code](https://nbviewer.jupyter.org/github/hupili/python-for-data-and-media-communication/blob/master/plotly-examples/Export%20plotly%20chart.ipynb)
