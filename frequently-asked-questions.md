@@ -5,7 +5,7 @@
 - [Other Frequently Asked Questions](#other-frequently-asked-questions)
     - [Notes](#notes)
     - [Environment](#environment)
-        - [Two basic modes of shell: script and interactive](#two-basic-modes-of-shell-script-and-interactive)
+        - [Two basic modes of executing codes: script and interactive](#two-basic-modes-of-executing-codes-script-and-interactive)
         - [Setup virtual venv and install Jupyter Notebook](#setup-virtual-venv-and-install-jupyter-notebook)
         - [Install modules in venv, it's equivalent to install in Jupyter](#install-modules-in-venv-its-equivalent-to-install-in-jupyter)
     - [Tricks & Hot key](#tricks--hot-key)
@@ -30,17 +30,13 @@ The whole catalogue is the first entry point for usual readers. It can be found 
 
 ## Environment
 
-### Two basic modes of shell: script and interactive
+### Two basic modes of executing codes: script and interactive
 
 please see [here](notes-week-02.md#two-basic-modes-script-and-interactive)
 
-<!-- TODO: what does this mean? of shell or of Python? -->
-
 ### Setup virtual venv and install Jupyter Notebook
 
-please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/notes-week-04.md#setup-virtualenv-and-install-jupyter-notebook)
-
-<!-- TODO: notes-week-04.md repeats with module-jupyter.md. Our strategy is to keep the weekly notes simple and direct. We only give the one-right-way-to-do-something in the weekly notes. If the readers meet problems, they can find detailed instructions in the FAQ page -->
+please see [here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/blob/master/module-jupyter.md#virtual-environment)
 
 ### Install modules in venv, it's equivalent to install in Jupyter
 
