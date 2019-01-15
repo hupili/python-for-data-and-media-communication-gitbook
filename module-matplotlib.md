@@ -55,3 +55,21 @@ plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 ```
 
 There is a similar issue about Chinese characters (CJK characters) when you use wordcloud. Please refer to [this section](module-wordcloud.md#display-chinese-characters-when-plotting-tag-cloud) for the solution.
+
+## Characters overlapping in text marker
+
+When plotting the charts, you may encounter problem like characters overlapping. One solution is to change the `figure size` to enlarge the text margin.
+
+```python
+fig = plt.figure(figsize=(7,7))
+```
+
+![character overlapping](assets/characters-overlapping.png)
+
+After resizing by change the `figsize`
+
+```python
+fig = plt.figure(figsize=(15,7))
+```
+
+![Resize the charts](assets/characters-overlapping-after.png)
