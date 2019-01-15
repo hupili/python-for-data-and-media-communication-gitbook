@@ -140,7 +140,7 @@ It's a common error of `JSONDecodeError` meaning that there is no JSON can be pa
 
 For some specify example solutions, you can refer to [here](https://stackoverflow.com/questions/16573332/jsondecodeerror-expecting-value-line-1-column-1-char-0) .
 
-<!-- TODO: This is not necessarily caused by encoding problem. sometimes malformed JSON format will also cause the problem. Try to bring up a concrete case. What did you send to the JSON decoder when the error arises? -->
+**NOTE**: This is not necessarily caused by encoding problem. sometimes malformed JSON format will also cause the problem. Network problem may also lead to this type of error. The response object is not a valid JOSN. It may be some error code.
 
 ## Data extraction - slice elements when one of them may be None
 
