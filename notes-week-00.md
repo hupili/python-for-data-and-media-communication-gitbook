@@ -420,6 +420,14 @@ Checkout [this article](https://www.verisign.com/en_US/website-presence/online/h
 
 ### How to collaborate with teammates
 
+#### Invite the collaboraters
+Find settings in repo and input the mail-address to add collaboraters
+![GitHub Repo collaborate](assets/Github-repo-collaborate1.png)
+
+#### Sent invite link
+After the collaborators accept the invitation, they are able to edit in the repository. If they didn't notice the invitation in the mail, you can send the invite link, like the below picture.
+![GitHub Repo collaborate](assets/Github-repo-collaborate2.png)
+
 ### The workflow Fork repo, modify code and send pull Request
 
 #### Fork repo
