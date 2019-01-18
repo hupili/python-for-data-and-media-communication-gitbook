@@ -418,6 +418,8 @@ Checkout [this article](https://www.verisign.com/en_US/website-presence/online/h
 
 ## Bonus: Collaboration on GitHub
 
+### How to collaborate with teammates
+
 ### The workflow Fork repo, modify code and send pull Request
 
 #### Fork repo
