@@ -45,6 +45,9 @@
             - [Step 3. Point GitHub repo to domain name](#step-3-point-github-repo-to-domain-name)
             - [The principle further explained](#the-principle-further-explained)
     - [Bonus: Collaboration on GitHub](#bonus-collaboration-on-github)
+        - [How to collaborate with your teammates](#How-to-collaborate-with-teammates)
+            - [Step 1. Invite the collaboraters](#step-1-Invite-the-collaboraters)
+            - [Step 2. Sent invite link](#step-2-Sent-invite-link)
         - [The workflow Fork repo, modify code and send pull Request](#the-workflow-fork-repo-modify-code-and-send-pull-request)
             - [Fork repo](#fork-repo)
             - [Modify code](#modify-code)
@@ -417,6 +420,16 @@ Checkout the working [CNAME](https://github.com/hkbu-jour2106/hkbu-jour2106.gith
 Checkout [this article](https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml) for how DNS works.
 
 ## Bonus: Collaboration on GitHub
+
+### How to collaborate with teammates
+
+#### Step1: Invite the collaboraters
+Find settings in repository and input the mail-address to add collaboraters
+![GitHub Repo collaborate](assets/Github-repo-collaborate1.png)
+
+#### Step2: Sent invite link
+After the collaborators accept the invitation, they are able to edit in the repository. If they didn't notice the invitation in the mail, you can send the invite link, like the below picture.
+![GitHub Repo collaborate](assets/Github-repo-collaborate2.png)
 
 ### The workflow Fork repo, modify code and send pull Request
 
