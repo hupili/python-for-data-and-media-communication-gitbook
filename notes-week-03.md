@@ -46,6 +46,7 @@
             - [Hint on table formatting](#hint-on-table-formatting)
             - [Hint on math formula](#hint-on-math-formula)
         - [Automatic writer for financial report](#automatic-writer-for-financial-report)
+        - [Calculate credit and expense instalment](#calculate-credit-and-expense-instalment)
     - [References](#references)
 
 <!-- /TOC -->
@@ -979,6 +980,16 @@ You can approach in following ways:
 1. Use regular string templating. The `str.format` function can be useful, especially its keyword argument/ dictionary form.
 
 2. Use `jinja2`. It provides a more expressive templating environment. You can even write branching and looping logics in its template. `jinja2` is commonly used in web development but is not limited to that. With the help of `jinja2`, we can separate the concern: 1) frontend developer, or say "meta reporter", focuses on the presentation and language, i.e. how to embed the variables into the right place of the template; 2) backend developer, or say data supplier, focuses on data ingestion and data analysis. The bridge of the two worlds is a spreadsheet.
+
+### Calculate credit and expense instalment
+
+One reference blog post: https://mp.weixin.qq.com/s/IB_b-4HnhHdVdRiLz5IPuw
+
+Key points:
+
+* Basic arithmetic in Python.
+* Use `random` related library to simulate uncertainty.
+* Use `for` loop to calculate month by month.
 
 ## References
 
