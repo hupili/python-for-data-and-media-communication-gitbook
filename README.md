@@ -13,6 +13,8 @@
 
 <!-- /TOC -->
 
+This is an open source text book for communication students to learn Python and data skills. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This open source book collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining. You can get started by reading [Week 00](notes-week-00.md) note. This note requires no background in programming or technology. It walks you through our learning environment so you know how to find learning materials and seek for help effectively.
+
 ## Overview
 
 * [Introduction](README.md)
