@@ -12,6 +12,7 @@
         - [Link to other repos](#link-to-other-repos)
     - [Editing environment](#editing-environment)
     - [Coding style](#coding-style)
+    - [Generating GitBook](#generating-gitbook)
 
 <!-- /TOC -->
 
@@ -136,3 +137,28 @@ We suggest to use [VSCode](https://code.visualstudio.com/) with the following ex
 It is hard to exhaust coding style issues. We collect some sample discussions here and conclude later if necessary:
 
 - [Commit on plotly sample](https://github.com/hupili/python-for-data-and-media-communication-gitbook/commit/0a301f821902d8c188cbfa3a1b48c21a0d22e9c5)
+
+## Generating GitBook
+
+Related repos:
+
+* https://github.com/GitbookIO/gitbook
+* https://github.com/GitbookIO/gitbook-pdf
+
+```
+# gitbook installation
+npm install gitbook-cli -g
+
+# gitbook-pdf installation
+git clone git@github.com:GitbookIO/gitbook-pdf.git
+cd gitbook-pdf
+npm i -S phantomjs@2.1
+npm link
+
+# PDF export dependencies
+npm install svgexport -g
+brew search calibre
+
+gitbook pdf .
+```
+
