@@ -58,3 +58,23 @@ df_sort['p'].dtype
 ```
 
 The `dtype('int64')` means that this columns is good for numeric computation now.
+
+## Shortcut to select a range from pandas.DataFrame
+
+Normally, you can do the following:
+
+```python
+df[
+     (df[column] > min_value)
+     &
+     (df[column] < max_value)
+]
+```
+
+A simpler version using `Series.between` is:
+
+```python
+df[
+     df[column].between(min_value, max_value)
+]
+```
