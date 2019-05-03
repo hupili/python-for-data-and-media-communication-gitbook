@@ -78,3 +78,8 @@ df[
      df[column].between(min_value, max_value)
 ]
 ```
+
+## Convert pandas.DataFrame to dict presentation
+
+* list-of-dict representation: `DataFrame.to_dict('records')`
+* dict-of-series representation: `DataFrame.to_dict()`
