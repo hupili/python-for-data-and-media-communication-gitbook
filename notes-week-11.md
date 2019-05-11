@@ -12,6 +12,7 @@
             - [How to order the keys of bar chart](#how-to-order-the-keys-of-bar-chart)
             - [How to add annotation in matplotlib](#how-to-add-annotation-in-matplotlib)
             - [How to plot multiple chart in one input/ output cell](#how-to-plot-multiple-chart-in-one-input-output-cell)
+            - [Further reading](#further-reading)
         - [seaborn](#seaborn)
             - [Quickstart for seaborn](#quickstart-for-seaborn)
             - [Plot bar-charts and other charts](#plot-bar-charts-and-other-charts)
@@ -208,6 +209,10 @@ ax4.set_title("Like with Bookmark count",fontsize=40)
 
 1. You can pass a lot of parameters like `kind`, `color`, `fontsize` into the function. For more usage examples, please refer [the documentation](https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.plot.html)
 2. Axes is just like the position of the subplots. You can refer to the following picture for better understanding.
+
+#### Further reading
+
+* [How to plot pictochat in matplotlib](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/148)
 
 ### seaborn
 
