@@ -592,7 +592,7 @@ Here is the [sample codes](https://github.com/hupili/python-for-data-and-media-c
 
 Open "Google Chrome Developer Console" by `command+option+i`. Check out the "Network" tab and use "XHR" filter to find potential packages. We are usually interested in `json` files or `xml` files sent over the line. Most dynamic web pages have predictable / enumerable internal API -- use HTTP request to get certain `json`/ `xml` files.
 
-Some websites render HTML at the backend and send them to the frontend in a dynamic way. You find the URL in address bar stays the same but the content is changed. You can also find the HTML files and their **real URL** via developer console. One such example is [xiachufang.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/xiachufang.com.ipynb).
+Some websites render HTML at the backend and send them to the frontend in a dynamic way. You find the URL in address bar stays the same but the content is changed. You can also find the HTML files and their **real URL** via developer console. One such example is [xiachufang.com scraper](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/scraper-examples/xiachufang.com.ipynb). Another one [here](https://github.com/ivyWANG958/python-data-analysis/tree/master/centalineProperty) scraped Centaline Property's buildings on sale and schools around the buildings use the same way. 
 
 Another common case is "infinite scroll" design. When a page adopts an infinite scroll design, asynchronous data loading is inevitable. When you encounter those cases, network trace analysis may give more concise solution. There are usually `XHR` interfaces. You don't even need dynamic crawling (browser simulation). One example is [mafengwo.com's user history](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/mafengwo-xhr.ipynb).
 
@@ -753,6 +753,7 @@ Please find another system/ another parameter from the system, which you can che
 - Social media crawling example: [Scrape a luxury brand with keyword in Weibo](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-selenium/Weibo.ipynb)
 - Dynamic page crawling, with a matter of parsing page content: [Timeout](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-splinter/timeout.com.ipynb)
 - Dynamic crawling a static page with a matter of pagination: [Amazon Books](https://github.com/hupili/python-for-data-and-media-communication/blob/a4922340f55c4565fff19979f77862605ac19f22/ww-splinter/Amazon%20books.ipynb)
+- A high school student writes Selenium Chinese documents [SELENIUM 的中文文档](https://github.com/xuyichenmo/selenium-document)
 
 ------
 
