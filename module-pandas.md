@@ -1,5 +1,17 @@
 # Pandas
 
+<!-- TOC -->
+
+- [Pandas](#pandas)
+  - [Rename csv header](#rename-csv-header)
+  - [Wordcloud](#wordcloud)
+  - [Check column type and convert column type to numeric](#check-column-type-and-convert-column-type-to-numeric)
+  - [Shortcut to select a range from pandas.DataFrame](#shortcut-to-select-a-range-from-pandasdataframe)
+  - [Convert pandas.DataFrame to dict presentation](#convert-pandasdataframe-to-dict-presentation)
+  - [Use .loc to batch assignment](#use-loc-to-batch-assignment)
+
+<!-- /TOC -->
+
 ## Rename csv header
 
 We can use `rename` function to change the header.
@@ -83,3 +95,22 @@ df[
 
 * list-of-dict representation: `DataFrame.to_dict('records')`
 * dict-of-series representation: `DataFrame.to_dict()`
+
+## Use .loc to batch assignment
+
+Sometimes, we need to perform batch assignment from one data frame to another. The batch assignment involves multiple rows and columns. `DataFrame.loc` comes handy in retrieving (writable) multi-row and multi-column subset of the original data frame. However, note the following caveats:
+
+Suppose `row` and `column1`/ `column2` are both single string, following code updates the new data:
+
+```
+df1.loc[row, column1] = df2.loc[row, column2]
+```
+
+However, following one does not work:
+
+```
+df1.loc[row, [column1]] = df2.loc[row, [column2]]
+```
+
+The latter one will try to match column names. If `column1` and `column2` are different, the update fails and **no error is raised**. The behaviour for pandas to update DataFrame is to match columns and then update.
+
