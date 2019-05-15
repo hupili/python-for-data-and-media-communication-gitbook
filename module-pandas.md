@@ -9,6 +9,7 @@
   - [Shortcut to select a range from pandas.DataFrame](#shortcut-to-select-a-range-from-pandasdataframe)
   - [Convert pandas.DataFrame to dict presentation](#convert-pandasdataframe-to-dict-presentation)
   - [Use .loc to batch assignment](#use-loc-to-batch-assignment)
+  - [Turn a long format table into wide format (unpivot)](#turn-a-long-format-table-into-wide-format-unpivot)
 
 <!-- /TOC -->
 
@@ -113,4 +114,10 @@ df1.loc[row, [column1]] = df2.loc[row, [column2]]
 ```
 
 The latter one will try to match column names. If `column1` and `column2` are different, the update fails and **no error is raised**. The behaviour for pandas to update DataFrame is to match columns and then update.
+
+## Turn a long format table into wide format (unpivot)
+
+`.melt()` is the "unpivot" operation.
+
+In simpler applications, `.stack()` could come handy. It turns the data frame into the "record" format, where records are indexed by composite index of `(original indexes, original columns)`.
 
