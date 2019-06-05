@@ -11,6 +11,7 @@
     - [Find elements by Xpath](#find-elements-by-xpath)
     - [Find elements by css selector](#find-elements-by-css-selector)
     - [Infinite scroll in a single page](#infinite-scroll-in-a-single-page)
+    - [Dealing with iframes](#Dealing-with-iframes)
 
 <!-- /TOC -->
 
@@ -105,3 +106,24 @@ for i in range(1,100): #change time by your observation
 **Note:** When executing web emulation, remember to set a sleep time to avoid risen error. It's suggested to set it as 2 seconds if there is a big loading work. You can increase or reduce by your own observation.
 
 Another solution is using XHR. When a page adopts an infinite scroll design, asynchronous data loading is inevitable. When you encounter those cases, network trace analysis may give more concise solution. There are usually XHR interfaces. You don't even need dynamic crawling (browser simulation). You can refer [here](https://github.com/hupili/python-for-data-and-media-communication/blob/master/scraper-examples/mafengwo-xhr.ipynb) for a detailed example.
+
+## Dealing with iframes
+
+For older websites, the document you requested often contains iframes, in other words, other documents. Without switching the webdriver into these iframes, you cannot find or select the element inside, even when the elements are visible to you and the selectors are correct. 
+
+Finding an element in an iframe before switching to it, an error of `NoSuchElementException` will be thrown. To fix this:
+
+```python
+#select the iframe and switch to it
+browser.switch_to.frame(browser.find_element_by_tag_name("iframe"))
+#...do something with elements in the iframe
+```
+To switch back (use [switch_to](https://selenium-python.readthedocs.io/api.html#module-selenium.common.exceptions)):
+```python
+browser.switch_to.default_content()
+#or browser.switch_to.parent_frame()
+```
+After switching back to parent of default frame,some operations on the previously selected elements may still work, others would fail. In this case, an `StaleElementReferenceException` is thrown. For more, see [here](https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.action_chains).
+
+
+A working case of crawling *Taiwan court judgements* could be found [here](https://github.com/Roytangrb/pangolin/blob/master/taiwan/tw_case_crawler.ipynb).
