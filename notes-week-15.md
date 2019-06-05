@@ -87,7 +87,7 @@ location = geolocator.geocode('The address that you want to geocode')
 location.point
 ```
 
-`Geocoder` is another popular library for geocoding, with simple syntax. An example code of requesting multiple addresses could be find in this [gist](https://gist.github.com/Roytangrb/b7b8e3d052340894f81714bebca10f9b).
+`Geocoder` is another popular library for geocoding, with simple syntax. A code example of requesting multiple addresses could be find in this [gist](https://gist.github.com/Roytangrb/b7b8e3d052340894f81714bebca10f9b).
 
 One can refer to [this notebook](https://github.com/hupili/openrice-data-blog-201811/blob/master/01.%20Geocode%20Sichuan%20Food.ipynb) for a real and complete working example of geocoding. It is part of the [HK Sichuan food growth map](https://github.com/hupili/openrice-data-blog-201811) visualization.
 
