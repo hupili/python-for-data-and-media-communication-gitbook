@@ -12,6 +12,7 @@
     - [Find elements by css selector](#find-elements-by-css-selector)
     - [Infinite scroll in a single page](#infinite-scroll-in-a-single-page)
     - [Dealing with iframes](#Dealing-with-iframes)
+    - [Getting computed values in dynamic pages](#Getting-computed-values-in-dynamic-pages)
 
 <!-- /TOC -->
 
@@ -127,3 +128,46 @@ After switching back to parent of default frame,some operations on the previousl
 
 
 A working case of crawling *Taiwan court judgements* could be found [here](https://github.com/Roytangrb/pangolin/blob/master/taiwan/tw_case_crawler.ipynb).
+
+## Getting computed values in dynamic pages
+
+Oftentimes when we need to scrap a table containing urls, the urls are ready and unmasked. When the urls are computed on request for anti-crawling purpose, we will need a few more tricks to restore the real infomation. This is a real case of extracting urls on [China Judgements Online](http://wenshu.court.gov.cn/).
+
+After locating the url, the following is discovered:
+```html
+<a href="javascript:void(0)" onclick="javascript:Navi(&quot;DcKNwrkRADEIw4RaWjA2EMOyw7Zfw5JdwqJIIx1mFWXDocKNI8K4w4t2wovDqsKeTSbDtisDw5rCrsOhRsO2GMK8Z1wQLzUnwqJBfsOOS1LDvTETw4nCisKTwp7CgRdBw5ouwosJJgp6UzJKw6pWw6/CoS/DqXTDgmfCsS8tGcOsw5rCmsO0T8KTWsKow7vDiQbCqCI2wr0Fw4DCsMKoS8OtLRTCt8Olb3nDlMKGw4U2woXCrcOaRcKrw54Uw67DvCvDicO8AQ==&quot;,&quot;穿山甲&quot;)" target="_self" style="color:Black; text-decoration:none">郑秀怀走私珍贵动物、珍贵动物制品二审刑事裁定书</a>
+```
+`href` attribute is not directly available, instead, a function `Navi` is exceuted with two arguments (could be found easily in parent tags) `id` and `keyword`.
+
+#### Step 1: locate the function
+Since the function is globally callable, we can type in the function name in Chrome's developer console, and click to navigate.
+![Finding a function in the console](assets/module-selenium-find-in-console.png)
+
+#### Step 2: Compute what you need
+This is what the `Navi` function is about:
+```js
+//增加7道爬虫防御 段智峰 20180807
+function Navi(id, keyword) {
+    var unzipid = unzip(id);
+    try {
+        var realid = com.str.Decrypt(unzipid);
+        if (realid == "") {
+            setTimeout("Navi('" + id + "','" + keyword + "')", 1000);
+        } else {
+            var url = "/content/content?DocID=" + realid + "&KeyWord=" + encodeURI(keyword); 
+            openWin(url);
+        }
+    } catch (ex) {
+        setTimeout("Navi('" + id + "','" + keyword + "')", 1000);
+    }
+}
+```
+We can use `execute_script` method [docs](https://selenium-python.readthedocs.io/api.html?highlight=execute_script) to mimic this logic and return the real url:
+```python
+key = item.get_attribute('key')
+# the method returns what the js script returns
+# we can pass arguments into the script
+realid = browser.execute_script('return com.str.Decrypt(unzip(arguments[0]))', key)
+realurl = 'http://wenshu.court.gov.cn/content/content?DocID=' + realid
+```
+A working function for extracting information on a page could be found in this [gist](https://gist.github.com/Roytangrb/9dbd8bc36a7f34cca390384914da9f18).
