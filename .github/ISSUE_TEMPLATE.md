@@ -1,17 +1,10 @@
-# Troubleshooting
+## My environment
 
-## Describe your environment
+* Device/ Operating System: **FILL HERE**
+* Python version: **FILL HERE**
+* Which chapter of book?: **FILL HERE**
 
-* Operating system:
-* Python version:
-* Hardware:
-* Internet access:
-* Jupyter notebook or not? [Y/N]:
-* Which chapter of book?:
-
-<!-- Texts appear in angle brackets like this are comments and will not show in your issue body. They are here to help you fill in this form. Feel free to remove those comments. You can also remove other texts that is irrelevant to your issue -->
-
-## Describe your question
+## My question
 
 Example: I get IOError when running my script to load files.
 
@@ -25,14 +18,13 @@ Example:
 open('path-to-a-file-not-exist')
 ```
 
-<!-- If you have big project hard to summarise, please upload it onto GitHub and put link here -->
+<!-- 
+    If you have big project hard to summarise, please upload it onto GitHub and put link here .
+    Link to Jupyter notebook is recommended.
+-->
 
 ## Describe the efforts you have spent on this issue
 
-Example:
+**FILL HERE**
 
-### Have you Google/ Stackover flow anything?
-
-### Do they solve or partially solve your question?
-
-### What is the closest answer you can find?
+For example, have you Google/ Stackover flow anything? Do they solve or partially solve your question? What is the closest answer you can find?

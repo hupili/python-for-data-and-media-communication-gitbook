@@ -1,7 +1,5 @@
 # Python and Data Analysis for Communication Students
 
-**NOTICE**: The `master` branch you are reading now are the WIP version 2. The chapter structure is different from version 1. If readers want to refer to version 1, please follow this link: https://github.com/hupili/python-for-data-and-media-communication-gitbook/tree/v1
-
 <!-- TOC -->
 
 - [Python and Data Analysis for Communication Students](#python-and-data-analysis-for-communication-students)
@@ -15,11 +13,7 @@
 
 <!-- /TOC -->
 
-This is an open source text book for communication students to learn Python and data skills. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This open source book collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining.
-
-You can get started by reading [Week 00](notes-week-00.md) note. This note requires no background in programming or technology. It walks you through our learning environment so you know how to find learning materials and seek for help effectively. You are also welcome to contact the [Fall 2018 team](session-F2018.md) for any questions, suggestions or discussions. The best way to ask question is to [create an issue in this repo](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new). Our teaching team stands by and regularly checks the issue tracker.
-
-This repo is the text book by [Pili Hu](http://hupili.net/)'s offering of COMM7780/ JOUR7280 in HKBU.
+This is an open source text book for communication students to learn Python and data skills. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communications field. The course involves intensive training of Python and quest in solving practical problems. This open source book collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining. You can get started by reading [Week 00](notes-week-00.md) note. This note requires no background in programming or technology. It walks you through our learning environment so you know how to find learning materials and seek for help effectively.
 
 ## Overview
 
