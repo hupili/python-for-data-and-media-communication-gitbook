@@ -5,39 +5,40 @@
 <!-- TOC -->
 
 - [Week 13: Datetime and Time Series](#week-13-datetime-and-time-series)
-    - [Objective](#objective)
-    - [Datasets](#datasets)
-    - [Datetime](#datetime)
-        - [Create datetime object](#create-datetime-object)
-        - [Convert from string to datetime](#convert-from-string-to-datetime)
-            - [Parse ambiguous dates](#parse-ambiguous-dates)
-            - [Parse incomplete times](#parse-incomplete-times)
-            - [A failed parsing case](#a-failed-parsing-case)
-        - [Convert from datetime to utctimstamp and vice versa](#convert-from-datetime-to-utctimstamp-and-vice-versa)
-            - [What is a timestamp](#what-is-a-timestamp)
-            - [Get a datetime from a timstamp:](#get-a-datetime-from-a-timstamp)
-        - [Format a datetime object to string](#format-a-datetime-object-to-string)
-            - [Get the present time](#get-the-present-time)
-            - [Formating with different style](#formating-with-different-style)
-        - [Arithmetics on datetime](#arithmetics-on-datetime)
-            - [Compare two datetime object](#compare-two-datetime-object)
-            - [Know timedelta object](#know-timedelta-object)
-            - [Get difference between two datetime objects](#get-difference-between-two-datetime-objects)
-            - [Add timedelta to a datetime object](#add-timedelta-to-a-datetime-object)
-        - [Bonus: how to get a datetime object for the current time without microseconds](#bonus-how-to-get-a-datetime-object-for-the-current-time-without-microseconds)
-        - [Bonus: Deal with different scales of time durations](#bonus-deal-with-different-scales-of-time-durations)
-    - [Time Series Basics](#time-series-basics)
-        - [Resample, aggregate and plot](#resample-aggregate-and-plot)
-        - [Case: Twitter keywords variation by time](#case-twitter-keywords-variation-by-time)
-            - [Sample](#sample)
-            - [Resample](#resample)
-            - [Bonus: explore resample](#bonus-explore-resample)
-            - [aggregate](#aggregate)
-            - [plot](#plot)
-    - [Time Series Advanced Topics](#time-series-advanced-topics)
-        - [Smoothing technique: Moving average](#smoothing-technique-moving-average)
-        - [Bonus: Time Series forecasting models](#bonus-time-series-forecasting-models)
-    - [References](#references)
+  - [Objective](#objective)
+  - [Datasets](#datasets)
+  - [Datetime](#datetime)
+    - [Create datetime object](#create-datetime-object)
+    - [Convert from string to datetime](#convert-from-string-to-datetime)
+      - [Parse ambiguous dates](#parse-ambiguous-dates)
+      - [Parse incomplete times](#parse-incomplete-times)
+      - [A failed parsing case](#a-failed-parsing-case)
+    - [Convert from datetime to utctimstamp and vice versa](#convert-from-datetime-to-utctimstamp-and-vice-versa)
+      - [What is a timestamp](#what-is-a-timestamp)
+      - [Get a datetime from a timstamp:](#get-a-datetime-from-a-timstamp)
+    - [Format a datetime object to string](#format-a-datetime-object-to-string)
+      - [Get the present time](#get-the-present-time)
+      - [Formating with different style](#formating-with-different-style)
+    - [Arithmetics on datetime](#arithmetics-on-datetime)
+      - [Compare two datetime object](#compare-two-datetime-object)
+      - [Know timedelta object](#know-timedelta-object)
+      - [Get difference between two datetime objects](#get-difference-between-two-datetime-objects)
+      - [Add timedelta to a datetime object](#add-timedelta-to-a-datetime-object)
+    - [Timezone conversion](#timezone-conversion)
+    - [Bonus: how to get a datetime object for the current time without microseconds](#bonus-how-to-get-a-datetime-object-for-the-current-time-without-microseconds)
+    - [Bonus: Deal with different scales of time durations](#bonus-deal-with-different-scales-of-time-durations)
+  - [Time Series Basics](#time-series-basics)
+    - [Resample, aggregate and plot](#resample-aggregate-and-plot)
+    - [Case: Twitter keywords variation by time](#case-twitter-keywords-variation-by-time)
+      - [Sample](#sample)
+      - [Resample](#resample)
+      - [Bonus: explore resample](#bonus-explore-resample)
+      - [aggregate](#aggregate)
+      - [plot](#plot)
+  - [Time Series Advanced Topics](#time-series-advanced-topics)
+    - [Smoothing technique: Moving average](#smoothing-technique-moving-average)
+    - [Bonus: Time Series forecasting models](#bonus-time-series-forecasting-models)
+  - [References](#references)
 
 <!-- /TOC -->
 
@@ -326,6 +327,16 @@ Output:
 ```
 
 In this case, you can use `datetime.date.today()` instead to get the real-time date.
+
+### Timezone conversion
+
+* For TZ conversion in `datetime` object: https://stackoverflow.com/a/18646797
+   * Use `.replace` to add TZ information
+   * Use `.astimezone` to convert to new TZ 
+* For TZ conversion of `pandas.Timestamp` object: [module-pandas.md#timezone-converson-for-pandastimestamp](module-pandas.md#timezone-converson-for-pandastimestamp)
+   * Use `.tz_localize` to add TZ information
+   * Use `.tz_convert` to convert to new TZ
+
 
 ### Bonus: how to get a datetime object for the current time without microseconds
 
