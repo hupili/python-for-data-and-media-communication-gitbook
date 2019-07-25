@@ -10,6 +10,7 @@
   - [Convert pandas.DataFrame to dict presentation](#convert-pandasdataframe-to-dict-presentation)
   - [Use .loc to batch assignment](#use-loc-to-batch-assignment)
   - [Turn a long format table into wide format (unpivot)](#turn-a-long-format-table-into-wide-format-unpivot)
+  - [Timezone converson for pandas.Timestamp](#timezone-converson-for-pandastimestamp)
 
 <!-- /TOC -->
 
@@ -120,4 +121,29 @@ The latter one will try to match column names. If `column1` and `column2` are di
 `.melt()` is the "unpivot" operation.
 
 In simpler applications, `.stack()` could come handy. It turns the data frame into the "record" format, where records are indexed by composite index of `(original indexes, original columns)`.
+
+
+## Timezone converson for pandas.Timestamp 
+
+Timezone conversion is very convenient for pandas.Timestamp. Use `tz_localize` to add the `original timezone` to a timezone-naive object. Then use `tz_convert` to convert the `target timezone`.
+
+```python
+import pandas as pd
+from datetime import datetime
+import pytz
+
+dt_now = datetime.utcnow()
+
+# convert datetime.datetime to pandas.Timestamp
+s = pd.Series()
+s['now'] = dt_now
+now = s['now']  # pandas.Timestamp
+
+print(now)
+now_tz_aware_utc = now.tz_localize('UTC')
+print(now_tz_aware_utc)
+now_tz_aware_hk = now_tz_aware_utc.tz_convert('Asia/Hong_Kong')
+print(now_tz_aware_hk)
+print(now_tz_aware_hk.strftime('%Y-%m-%d - %H:%M:%S (HKT)'))
+```
 
