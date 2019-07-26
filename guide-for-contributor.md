@@ -1,22 +1,20 @@
 <!-- TOC -->
 
 - [Guide for Contributor](#guide-for-contributor)
-    - [Screenshot on MAC](#screenshot-on-mac)
-    - [Heading levels](#heading-levels)
-    - [Git commit message](#git-commit-message)
-    - [File naming convention](#file-naming-convention)
-    - [Table of Contents (TOC)](#table-of-contents-toc)
-    - [Link whenever possible](#link-whenever-possible)
-        - [Link to GitHub comments](#link-to-github-comments)
-        - [Link to resources in this repo](#link-to-resources-in-this-repo)
-        - [Link to other repos](#link-to-other-repos)
-    - [Editing environment](#editing-environment)
-    - [Coding style](#coding-style)
-    - [Generating GitBook](#generating-gitbook)
+  - [Screenshot on MAC](#screenshot-on-mac)
+  - [Heading levels](#heading-levels)
+  - [Git commit message](#git-commit-message)
+  - [File naming convention](#file-naming-convention)
+  - [Table of Contents (TOC)](#table-of-contents-toc)
+  - [Link whenever possible](#link-whenever-possible)
+    - [Link to GitHub comments](#link-to-github-comments)
+    - [Link to resources in this repo](#link-to-resources-in-this-repo)
+    - [Link to other repos](#link-to-other-repos)
+  - [Editing environment](#editing-environment)
+  - [Coding style](#coding-style)
+  - [Generating GitBook](#generating-gitbook)
 
 <!-- /TOC -->
-
---------
 
 # Guide for Contributor
 
