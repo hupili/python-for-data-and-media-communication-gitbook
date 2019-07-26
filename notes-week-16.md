@@ -3,13 +3,13 @@
 <!-- TOC -->
 
 - [Week 16: High Dimensional Data](#week-16-high-dimensional-data)
-    - [Recap of data points and variables](#recap-of-data-points-and-variables)
-    - [Measure the similarity between data points](#measure-the-similarity-between-data-points)
-    - [Dimensionality Reduction](#dimensionality-reduction)
-        - [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
-        - [Locally Linear Embedding (LLE)](#locally-linear-embedding-lle)
-        - [t-SNE](#t-sne)
-        - [Graph Laplacian methods (Spectral Embedding)](#graph-laplacian-methods-spectral-embedding)
+  - [Recap of data points and variables](#recap-of-data-points-and-variables)
+  - [Measure the similarity between data points](#measure-the-similarity-between-data-points)
+  - [Dimensionality Reduction](#dimensionality-reduction)
+    - [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
+    - [Locally Linear Embedding (LLE)](#locally-linear-embedding-lle)
+    - [t-SNE](#t-sne)
+    - [Graph Laplacian methods (Spectral Embedding)](#graph-laplacian-methods-spectral-embedding)
 
 <!-- /TOC -->
 
