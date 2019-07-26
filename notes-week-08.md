@@ -53,6 +53,7 @@
     - [Crawl the legal case of China](#crawl-the-legal-case-of-china)
     - [Bonus: Crawl Weibo data and discover KOL](#bonus-crawl-weibo-data-and-discover-kol)
     - [Bonus: Cheat an online voting system](#bonus-cheat-an-online-voting-system)
+    - [Bonus: A Facebook timeline bot](#bonus-a-facebook-timeline-bot)
   - [Related Readings](#related-readings)
 
 <!-- /TOC -->
@@ -747,6 +748,18 @@ Some people host competitions online and calculate the leaderboard based on web 
 - Increase Youtube page views by refreshing browser page [code](https://github.com/data-projects-archive/Python-examples/blob/3d4ee06249cf5697c72bae4e2732e814dde97dec/get_youtube_view.py)
 
 Please find another system/ another parameter from the system, which you can cheat using similar tricks.
+
+### Bonus: A Facebook timeline bot
+
+Imagine you have a crush on someone. You follow every posts from her and clicks "like" as soon as you see it. You decide that, you shall be the first one to like her every post even when she posts at mid night. Since you need adequate sleep as a human being, your buddy laptop agrees to help. However, the laptop needs to know what to do in an exact/ step-by-step manner. Now you tell it in the computer's language, i.e. Python, in our exercise. Use browser emulation to:
+
+* Open Facebook
+* Find input boxes for userrname and password and key in the right information.
+* Submit and login
+* Read the posts in the timeline
+* Check if any post is from her
+* If so, click "like"
+* Repeat the above steps every 1 minute 
 
 ## Related Readings
 
