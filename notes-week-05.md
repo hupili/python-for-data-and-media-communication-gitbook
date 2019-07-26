@@ -1,38 +1,38 @@
-# Week 05: Serialization - File, CSV, JSON
+# Week 05: Input/ Output - File, CSV, JSON
 
 <div id="toc">
 
 <!-- TOC -->
 
-- [Week 05: Serialization - File, CSV, JSON](#week-05-serialization---file-csv-json)
-    - [Objective](#objective)
-    - [File operation](#file-operation)
-        - [Write a file](#write-a-file)
-        - [Read a file](#read-a-file)
-        - [Append ()](#append-)
-    - [CSV](#csv)
-        - [csv.reader](#csvreader)
-        - [csv.writer](#csvwriter)
-            - [Write row](#write-row)
-            - [Write rows](#write-rows)
-        - [Exercise](#exercise)
-    - [JSON](#json)
-        - [JSON functions](#json-functions)
-            - [json.dumps: Serialize object to a JSON formatted str](#jsondumps-serialize-object-to-a-json-formatted-str)
-            - [json.loads: Deserialize JSON str to a Python object](#jsonloads-deserialize-json-str-to-a-python-object)
-            - [json.load & json dump](#jsonload--json-dump)
-    - [Exercises and Challenges](#exercises-and-challenges)
-    - [References](#references)
+- [Week 05: Input/ Output - File, CSV, JSON](#week-05-input-output---file-csv-json)
+  - [Objective](#objective)
+  - [File operation](#file-operation)
+    - [Write a file](#write-a-file)
+    - [Read a file](#read-a-file)
+    - [Append ()](#append)
+  - [CSV](#csv)
+    - [csv.reader](#csvreader)
+    - [csv.writer](#csvwriter)
+      - [Write row](#write-row)
+      - [Write rows](#write-rows)
+    - [Exercise](#exercise)
+  - [JSON](#json)
+    - [JSON functions](#json-functions)
+      - [json.dumps: Serialize object to a JSON formatted str](#jsondumps-serialize-object-to-a-json-formatted-str)
+      - [json.loads: Deserialize JSON str to a Python object](#jsonloads-deserialize-json-str-to-a-python-object)
+      - [json.load & json dump](#jsonload--json-dump)
+  - [Further notes on Input/ Output](#further-notes-on-input-output)
+  - [Exercises and Challenges](#exercises-and-challenges)
+  - [References](#references)
 
 <!-- /TOC -->
 
 </div>
 
-Previously, we learned composite data types, and the basic control flows. This week, we will learns how to get data, convert data and save data. Before we step into scraping from the HTML, we will introduce a more convenient method - API. From this week on, you are gradually entering the door of "big data", the API allows you to get more types and a larger bass of data at the same time. After this week, you can use API method to request data from open data websites and social media platforms. And even create an automatic writing robot on Twitter.
+Previously, we learned composite data types, and the basic control flows. This week, we will learn how to get data, convert data and save data. Before we step into scraping from the HTML, we will introduce a more convenient method - API. From this week on, you are gradually entering the door of "big data", the API allows you to get more types and a larger bass of data at the same time. After this week, you can use API method to request data from open data websites and social media platforms. And even create an automatic writing robot on Twitter.
 
 ## Objective
 
-* Learn to use Jupyter notebook. All demos following this week will be conducted in Jupyter notebook.
 * Understand API/ JSON and can retrieve data from online databases (twitter, GitHub, weibo, douban, ...)
 * Understand basic file format like JSON and CSV.
     * Be able to comfortably navigate through compound structures like {} and [].
@@ -414,6 +414,20 @@ Output:
 ```text
 {"age": 20, "score": 88, "name": "Bob"}
 ```
+
+## Further notes on Input/ Output
+
+Input/ Output is often abbreviated as I/O, or simply IO. This is a key topic in computer system design. Before this chapter, we mainly worked with the "internal brain" of a program. In order to make a computer program more useful, it needs to gather input from external world and share the results with people after calculation. In general, there several ways for a computer program to gather input:
+
+* Define variables/ constants. It is a good practice to list your variables/ constanst in the beginning of the program. When you pass your script to the user, she can modify the variables/ constants in order to compute her own problem. This method is widely used in Chapter 1-3. The drawback is to require certain IT literacy of the end users and thus less friendly.
+* stdin/ stdout/ stderr. This is the classical way to interact with computer terminal. Try `input()` (`raw_input()` in Python3); `sys.stdinput.read()`.
+* File. File is a major I/O method. When people organise large data analysis projects, upstream and downstream commonly use data files to exchange information. Refer to the section on file operation in Chapter 5 for more details.
+* HTTP request.
+  * Chapter 6 is about using API. API comes in many forms. The current mainstream form is HTTP based RESTful API. Without bothering with the foreign terms, you can think of API as place for Q/A. You send a question to the server and the server replies you with the answer.
+  * Chapter 7/ 8 is about web scraper. You will make HTTP requests to get external data. Since HTML is semi-structured, one needs to parse the page into structured form, e.g. in Python's list/dict presentation.
+* Database. A data project usually starts with data files and evolve to database as the size grows. Database provides indexing capability to allow one to easily retrieve a subset. Another advantage is in-database computation offered by nearly all DB solutions, which saves network traffic and the computing resources on client side. The topic goes beyond this open book.
+* Graphical User Interface (GUI). This gives your end uesr an experience like other desktop software. Interacting with display could be complex. We usually refrain from coding from scratch but use frameworks like `qt`, `kivy`, etc. The topic goes beyond this open book.
+* Command Line Interface (CLI). In Chapter 1, we used several shell commands, in the form of `command {arg1} {arg2} ...`. The commmand line arguments are a mechanism to give input to a program. One can learn how to design beautiful CLI from UNIX systems. `argparse` is a classical package to help design CLI. `docopt` provides an innovative way to design CLI: the developer only needs to write command documentation in the comment block.
 
 ## Exercises and Challenges
 
