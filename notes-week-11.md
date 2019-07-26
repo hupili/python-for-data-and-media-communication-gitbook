@@ -622,6 +622,14 @@ There are some useful libraries in Python for you to build a backend:
   - Sometimes, manual intervention is required in the process, e.g. clicking a button, substituting cookies, etc. You need to put down notes where the workflow is not fully automated. The core concept of reproducible reporting, is to make sure the readers can reproduce your result, either by code, or by human operation.
 - Full reporting: not only report the successful instances; but also report the unsuccessful instances. Sometimes, you find contradictory results from one dataset. Many authors are selective. In our code of conduct, you need to do a full reporting at one intermediate stages, i.e. showing the possible results/ alternative results that you already find. In the narratives of final report, being selective is usually one necessary evil to make a compelling story. You need to make sure you don't over-state anything.
 
+
+Here are some good examples of reproducible data reports from past students:
+
+- https://github.com/data-projects-archive/201812-BigData-Final-Project-woshipm.com
+- https://github.com/data-projects-archive/201812-survival-guide-of-data-journalist
+- https://github.com/data-projects-archive/201812-Journalists-Killed
+
+
 ## References
 
 - First two chapters \(i.e. before "3D"\) of the article [The Art of Effective Visualization of Multi-dimensional Data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57) by Dipanjan Sarkar
