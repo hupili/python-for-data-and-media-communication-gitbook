@@ -3,26 +3,27 @@
 <!-- TOC -->
 
 - [Jupyter](#jupyter)
-    - [Virtual environment](#virtual-environment)
-        - [Create virtual environment](#create-virtual-environment)
-        - [Enter virtual environment](#enter-virtual-environment)
-        - [Exit virtual environment](#exit-virtual-environment)
-    - [Jupyter Notebook](#jupyter-notebook)
-        - [Install Jupyter notebook](#install-jupyter-notebook)
-        - [Run Jupyter notebook](#run-jupyter-notebook)
-        - [Quit the Jupyter notebook](#quit-the-jupyter-notebook)
-        - [Set jupyter environment in CVA517](#set-jupyter-environment-in-cva517)
-    - [NBViewer](#nbviewer)
-        - [How to use NBViewer to view the notebook online](#how-to-use-nbviewer-to-view-the-notebook-online)
-        - [Codes on NBViewer is not updated](#codes-on-nbviewer-is-not-updated)
-    - [Basic usage](#basic-usage)
-    - [Runtime troubleshooting guide](#runtime-troubleshooting-guide)
-    - [Install frequently used dependencies](#install-frequently-used-dependencies)
-    - [Windows](#windows)
-        - [Instructions of Installing Jupyter Notebook on Windows](#instructions-of-installing-jupyter-notebook-on-windows)
-    - [Display charts in nbviwer](#display-charts-in-nbviwer)
-        - [Import interactive charts in Jupyter notebook](#import-interactive-charts-in-jupyter-notebook)
-        - [Cannot display some static charts](#cannot-display-some-static-charts)
+  - [Virtual environment](#virtual-environment)
+    - [Create virtual environment](#create-virtual-environment)
+    - [Enter virtual environment](#enter-virtual-environment)
+    - [Exit virtual environment](#exit-virtual-environment)
+  - [Jupyter Notebook](#jupyter-notebook)
+    - [Install Jupyter notebook](#install-jupyter-notebook)
+    - [Run Jupyter notebook](#run-jupyter-notebook)
+    - [Quit the Jupyter notebook](#quit-the-jupyter-notebook)
+    - [Set jupyter environment in CVA517](#set-jupyter-environment-in-cva517)
+  - [NBViewer](#nbviewer)
+    - [How to use NBViewer to view the notebook online](#how-to-use-nbviewer-to-view-the-notebook-online)
+    - [Codes on NBViewer is not updated](#codes-on-nbviewer-is-not-updated)
+  - [Basic usage](#basic-usage)
+  - [Runtime troubleshooting guide](#runtime-troubleshooting-guide)
+  - [Install frequently used dependencies](#install-frequently-used-dependencies)
+  - [Windows](#windows)
+    - [Instructions of Installing Jupyter Notebook on Windows](#instructions-of-installing-jupyter-notebook-on-windows)
+  - [Display charts in nbviwer](#display-charts-in-nbviwer)
+    - [Import interactive charts in Jupyter notebook](#import-interactive-charts-in-jupyter-notebook)
+    - [Cannot display some static charts](#cannot-display-some-static-charts)
+  - [Run shell commands in Jupyter notebook](#run-shell-commands-in-jupyter-notebook)
 
 <!-- /TOC -->
 
@@ -195,3 +196,8 @@ This is caused by the temporary cache in the browser. The first solution is you 
 ------
 
 If you have any questions, or seek for help troubleshooting, please [create an issue here](https://github.com/hupili/python-for-data-and-media-communication-gitbook/issues/new)
+
+
+## Run shell commands in Jupyter notebook
+
+In **Jupyter notebook**, you can write shell commands after `!`. `cat` is essentially a shell command that reads the content of a file and output to the screen. It is a common way to check if the output (to a file) is intended. In [notes-week-01.md](notes-week-01.md), we have learned some useful commands like `cd`, `pwd` and `ls`. Those can all be used here. Also recall how we install new Python modules in a Jupyter notebook: `!pip install <package-name>`.
