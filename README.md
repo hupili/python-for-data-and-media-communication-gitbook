@@ -1,7 +1,12 @@
 # Python and Data Analysis for Communication Students
 
 
-This is an open source text book for communication students to learn Python and data skills. The purpose of this course is to motivate the students to become a [T-shape talent](http://www.caseinterview.com/t-shaped-skills) in communication field. The course involves intensive training of Python and quest in solving practical problems. This open source book collects all the materials related with lab exercises covering basic Python, data scraping, table manipulation and data mining. [Week 00](notes-week-00.md) note walks you through our learning environment so you know how to find learning materials and seek for help effectively. You can get started with no background in programming or technology.
+This is an open source text book for communication students to learn Python and data skills. No prerequisites, like prior programming or technology experience, are required. However, expect intensive training and quest in solving practical problems in media and communication fields. This repo collects lecture notes, lab exercises and data sets.
+
+You can get started from [Week 00](notes-week-00.md). It walks you through our learning environment so you know how to find learning materials and seek for help effectively. When you encounter any problem, please use GitHub search function first. For example, you can [search for "encoding"](https://github.com/hupili/python-for-data-and-media-communication-gitbook/search?q=encoding&unscoped_q=encoding) in this repo. If still unsolved, feel free to ask in the issue tracker. Last but not least, you are welcome to contribute to this ever growing open source book. Interested readers please check out [Guide for contributors](guide-for-contributor.md).
+
+We expect the student in the digital era never set any limit for themselves and grow to a [T-shape talent](http://www.caseinterview.com/t-shaped-skills). 
+
 
 <!-- TOC -->
 
