@@ -288,7 +288,7 @@ You can either install from the official website of the package or use other thi
 
 Pip is a function of the Python Packaging Authority ([PyPA](https://www.pypa.io/en/latest/)), which is a working group that maintains many of the relevant projects in Python packaging. `pip` is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4. You can type `python --version` to check out current version. If you are the older versions, please check out [here](https://pip.pypa.io/en/stable/installing/) to install and upgrade `pip`.
 
-**Note** If you use python 3, please use `pip3` to install.
+**Note** If you use python 3, please use `pip3` to install(pip3 means pyton3 edition).
 
 * To install the latest version of “SomeProject”: type `pip3 install 'SomeProject'` in your terminal.
 * To install a specific version: `pip3 install 'SomeProject==1.4'`
