@@ -657,7 +657,8 @@ As a beginner of programmatic data collection, you often find crawler is non-nec
 1. Emit "data item" found in the current page
 2. Emit "page item" that `scrapy` framework needs to follow.
 
-Note the keyword `yield` when you try this framework. This is called "Generator" -- a common construct in most modern programming languages. You have already used generator for many times throughout this class. We don't mention it to avoid possible confusion. Interested readers can find a simple tutorial [here](https://www.liaoxuefeng.com/wikipage/00138681965108490cb4c13182e472f8d87830f13be6e88000).
+Note the keyword `yield` when you try this framework. This is called "Generator" -- a common construct in most modern programming languages. You have already used generator for many times throughout this class. We don't mention it to avoid possible confusion. Interested readers can find a simple tutorial [here]
+(https://webcache.googleusercontent.com/search?q=cache:_GhwV4pdAloJ:https://www.liaoxuefeng.com/wiki/897692888725344/923029685138624+&cd=1&hl=en&ct=clnk&gl=hk).
 
 ### scrapy-cluster
 
