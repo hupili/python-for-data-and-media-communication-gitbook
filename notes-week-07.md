@@ -353,8 +353,8 @@ You can see that `find_all` returns a list and there are so many spans, and the 
 
 ```python
 authors = []
-author_1 = my_span[7].text
-author_2 = my_span[8].text
+author_1 = my_spans[7].text
+author_2 = my_spans[8].text
 authors.append(author_1) #append them into a list
 authors.append(author_2)
 ```
