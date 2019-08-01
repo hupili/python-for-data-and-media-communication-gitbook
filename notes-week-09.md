@@ -322,7 +322,7 @@ import io
 import requests
 url="https://raw.githubusercontent.com/hupili/python-for-data-and-media-communication/master/scraper-examples/open_rice/openrice_sample.csv"
 s=requests.get(url).content
-df=pd.read_csv(io.StringIO(s.decode('utf-8')),header=None, names=['name', 'location','price','country','type','likes','review','bookmark','discount_info'])
+df=pd.read_csv(io.StringIO(s.decode('utf-8')),header=None, names=['name', 'location','price','country','style','likes','review','bookmark','discount_info'])
 ```
 
 #### Select data
