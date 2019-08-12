@@ -336,7 +336,7 @@ bar
 ![Pyecharts by bookmark](assets/countries-by-likes-and-bookmark.png)
 ![Pyecharts by bookmark2](assets/countries-by-likes-and-bookmark2.png)
 
-For more pyecharts examples, you can refer [the official tutorial](http://pyecharts.org/#/zh-cn/charts_base)
+For more pyecharts examples, you can refer [the official tutorial](https://github.com/pyecharts/pyecharts)
 
 ### pandas
 
