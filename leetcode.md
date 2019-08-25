@@ -1,16 +1,16 @@
 # Leetcode
 
 - [Leetcode](#leetcode)
-    - [Getting started](#getting-started)
-    - [Control flow](#control-flow)
-    - [List](#list)
-    - [String](#string)
-    - [Set](#set)
-    - [Algorithms](#algorithms)
-        - [Problem comprehension and simulation](#problem-comprehension-and-simulation)
-        - [Cummulative summation](#cummulative-summation)
-        - [Search, recursion, backtacking](#search-recursion-backtacking)
-        - [Dynamic programming](#dynamic-programming)
+  - [Getting started](#getting-started)
+  - [Control flow](#control-flow)
+  - [List](#list)
+  - [String](#string)
+  - [Set](#set)
+  - [Algorithms](#algorithms)
+    - [Problem comprehension and simulation](#problem-comprehension-and-simulation)
+    - [Cummulative summation](#cummulative-summation)
+    - [Search, recursion, backtacking](#search-recursion-backtacking)
+    - [Dynamic programming](#dynamic-programming)
 
 <!-- /TOC -->
 
@@ -52,6 +52,8 @@ You can win points by copy and pasting the above one-line solution to the input 
 ## Set
 
 - ★★★☆☆ [unique-email-addresses](https://leetcode.com/problems/unique-email-addresses/) - mainly str processing. Use `set()` to efficiently deduplicate and count. This question is also good for people to learn the alternative email address you can use, by adding `.` and `+`. You can try one alternative address with your friend.
+- ★★★☆☆ [invalid-transactions](https://leetcode.com/contest/weekly-contest-151/problems/invalid-transactions/). This problem can be solved by plain 1000x1000 algorithm. However, the result deduplication will cause inefficient execution. One can leverage `set()` to perform efficient execution.
+
 
 ## Algorithms
 
