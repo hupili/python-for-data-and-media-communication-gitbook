@@ -97,3 +97,28 @@ Dynamic Programming (DP) is closely related with search problem. DP problem seem
 The concept is abstract, and can be explained via following exercises:
 
 - ★★★★★★ [minimum-falling-path-sum](https://leetcode.com/problems/minimum-falling-path-sum/) -- We can handle the matrix row by row. For `A[i][j]`, `F[i][j] = min(F[i - 1][j - 1], F[i - 1][j], f[i - 1][j + 1])`. We calculate all `F` by increasing `i`, i.e. row by row. How we reach the minimum at `i-1`th row is not important. The only thing that matters is what is the value at `F[i - 1][:]`.
+
+### Combinatorial Math
+
+Answer the questions like permutations and combinations fall into this category.
+
+- ★★★★★★ [prime-arrangements](https://leetcode.com/problems/prime-arrangements/) -- One needs to first calculate how any primes and non-primes are there and then calculate the total possible arrangements with prime numbers to prime indices and non-prime numbers to non-prime indices.
+
+### Number Theory
+
+This is a hard topic in math. As a note in a beginner's book, we will not delve into the details. Nevertheless, it is good for one to search for following concepts and their basic algorithms:
+
+- ★★★☆☆ Prime number and primality test
+- ☆☆☆☆☆☆ Modulo ("residual") and `%` in Python
+- ★★★★★★ Greatest Common Divisor (GCD) and Euclid's algorithm
+- ★★★★★★ Chinese Remainder Theorem
+
+### Graph Theory
+
+This branch is also out of the scope but following concepts and algorithms see frequent real-life application (as well as coding interview):
+
+- Depth First Search and Breadth First Search
+- Shortest path and all-pairs shortest path
+- Minimum Spanning Tree
+- Matching: Max matching and stable matching
+- Network Flow (max flow; min cut)
