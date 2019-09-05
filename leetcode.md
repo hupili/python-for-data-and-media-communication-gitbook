@@ -9,6 +9,7 @@
   - [Algorithms](#algorithms)
     - [Problem comprehension and simulation](#problem-comprehension-and-simulation)
     - [Cummulative summation](#cummulative-summation)
+    - [Sliding window](#sliding-window)
     - [Search, recursion, backtacking](#search-recursion-backtacking)
     - [Dynamic programming](#dynamic-programming)
 
@@ -71,6 +72,16 @@ Those problems are "straightforward" in the view of algorithm engineers. They do
 Cummulative summation (cumsum) is a common technique to save computation on a sequence of elements. Suppose we have a list of numbers in `A`. Let's denote cumsum of `A` as `C`, where `C[i] = sum(A[: i])`. After this pre processing, a range sum query can be answered by `sum(A[i: j]) = C[j - 1] - C[i - 1]`. The LHS (original sum) involves summation over a series of elements. The RHS (cumsum) involves only **a single subtraction**, thus more efficient.
 
 - ★★★★★★ [flip-string-to-monotone-increasing](https://leetcode.com/problems/flip-string-to-monotone-increasing) -- The key step is to find an index `i` such that `S[: i]` will be flipped into `0` and `S[i: ]` will be flipped into `1`. To efficiently compute how many flips are needed, we need to get cumsum of: 1) number of 1's on the left and 2) number of 0's on the right.
+
+
+### Sliding window
+
+If the problem involves a sub-interval/ sub-array of input elements, you may think if sliding window can improve the efficiency. Enumerating all possible intervals [i, j] costs O(N^2). When you find there are many redundant [i, j] that could be skipped, and i/j moves monotonically, sliding window is one probably solution to reduce the complexity to O(N).
+
+* [diet-plan-performance](https://leetcode.com/problems/diet-plan-performance/) -- The most direct solution is to enumerate all length-k intervals, which results in worst case O(N^2). Use sliding window to reduce the complexity to O(N).
+* [max-consecutive-ones-iii](https://leetcode.com/problems/max-consecutive-ones-iii/) -- We can enumerate all [i, j] and see if the number of 0's is less than K, if so [i, j] is a candidate. Max such (j - i + 1) is our final answer. There are many redundant intervals. For example, if [i, j] contains more than K zeros, [i, j + 1] also contains more than K zeros, which can be skipped. Similarly, [i, j + 2], [i, j+ 3], ... [i, N] can all be skipped. This is an indicator for sliding window.
+* [moving-average-from-data-stream](https://leetcode.com/problems/moving-average-from-data-stream/) -- moving average is a direct application of sliding window. Note that this problem is not an "offline computation", which means that the entire sequence is given a priori. This problem is an "online computation", so you need to maintain a rotational structure to store only the "hot elements", in order to reduce potential large memory consumption.
+
 
 ### Search, recursion, backtacking
 
