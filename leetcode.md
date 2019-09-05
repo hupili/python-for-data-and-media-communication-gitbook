@@ -6,12 +6,16 @@
   - [List](#list)
   - [String](#string)
   - [Set](#set)
+  - [Dict](#dict)
   - [Algorithms](#algorithms)
     - [Problem comprehension and simulation](#problem-comprehension-and-simulation)
     - [Cummulative summation](#cummulative-summation)
     - [Sliding window](#sliding-window)
     - [Search, recursion, backtacking](#search-recursion-backtacking)
     - [Dynamic programming](#dynamic-programming)
+    - [Combinatorial Math](#combinatorial-math)
+    - [Number Theory](#number-theory)
+    - [Graph Theory](#graph-theory)
 
 <!-- /TOC -->
 
@@ -54,6 +58,12 @@ You can win points by copy and pasting the above one-line solution to the input 
 
 - ★★★☆☆ [unique-email-addresses](https://leetcode.com/problems/unique-email-addresses/) - mainly str processing. Use `set()` to efficiently deduplicate and count. This question is also good for people to learn the alternative email address you can use, by adding `.` and `+`. You can try one alternative address with your friend.
 - ★★★☆☆ [invalid-transactions](https://leetcode.com/contest/weekly-contest-151/problems/invalid-transactions/). This problem can be solved by plain 1000x1000 algorithm. However, the result deduplication will cause inefficient execution. One can leverage `set()` to perform efficient execution.
+
+## Dict 
+
+Also known as map/ hashmap/ hash. Dict can retrieve elements using O(1) complexity.
+
+- [TODO] Call for suitable entry-level examples.
 
 
 ## Algorithms
