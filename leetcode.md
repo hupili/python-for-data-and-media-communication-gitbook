@@ -138,10 +138,14 @@ This is a hard topic in math. As a note in a beginner's book, we will not delve 
 
 This branch is also out of the scope but following concepts and algorithms see frequent real-life application (as well as coding interview):
 
-- Depth First Search and Breadth First Search
-- Shortest path and all-pairs shortest path
+- Traversal:
+  - Depth First Search
+  - Breadth First Search
+- Shortest path:
+  - Dijkstra algorithm - for single source, O(N^2)
+  - Floyd-Warshall - for all pairs shortest path, O(N^3)
 - Minimum Spanning Tree
-- Bridges in graph. Tarjon algorithm can work out all bridges in O(N+M).
+- Bridges in graph. [Tarjon algorithm](https://cp-algorithms.com/graph/bridge-searching.html) can work out all bridges in O(N+M).
   - [critical-connections-in-a-network](https://leetcode.com/problems/critical-connections-in-a-network/)
 - Matching: Max matching and stable matching
 - Network Flow (max flow; min cut)
