@@ -141,5 +141,7 @@ This branch is also out of the scope but following concepts and algorithms see f
 - Depth First Search and Breadth First Search
 - Shortest path and all-pairs shortest path
 - Minimum Spanning Tree
+- Bridges in graph. Tarjon algorithm can work out all bridges in O(N+M).
+  - [critical-connections-in-a-network](https://leetcode.com/problems/critical-connections-in-a-network/)
 - Matching: Max matching and stable matching
 - Network Flow (max flow; min cut)
