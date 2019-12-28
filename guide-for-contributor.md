@@ -101,7 +101,7 @@ To help our future development, e.g. render the openbook via a static site gener
 
 Potential issues:
 
-- Latest VSCode clashes with the plugin. Checkout [this issue](https://github.com/AlanWalk/markdown-toc/issues/65) for solution. Changing `file.eol` in the settings can temporarily solve the issue.
+- Latest VSCode clashes with the plugin. Checkout [this issue](https://github.com/AlanWalk/markdown-toc/issues/65) for solution. Changing `file.eol` in the settings can temporarily solve the issue. Use `cmd+,` to open settings, search `file.eol` and change to `\n` on MAC.
 
 ## Link whenever possible
 
