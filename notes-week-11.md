@@ -314,7 +314,7 @@ Pyecharts is a library to generate charts using Echarts, which is an open source
 
 #### Quickstart for pyecharts
 
-Basic usage example: (`pip install pyecharts` if you have not done so yet)
+Basic usage example: (1. use `print(sys.path)`to find your packages location. 2.cd in the path, then `pip install pyecharts==v1.0.0` if you have not done so yet)
 
 ```python
 #you can change Bar to other kind of charts, like Line, Pie, HeatMap etc...
